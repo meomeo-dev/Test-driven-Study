@@ -1,0 +1,116 @@
+{
+  "protocol_version": 1,
+  "course_id": "concept-graph",
+  "version": "1.0.0",
+  "title": "知识图谱样例",
+  "language": "zh-CN",
+  "description": "用于验证知识点先修关系与学习路径的样例课程。",
+  "units": [
+    {
+      "id": "basics",
+      "title": "基础运算",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "基础运算",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "counting",
+          "title": "计数",
+          "estimated_minutes": 10,
+          "lesson": "basics",
+          "summary": "按顺序数出物体的个数。"
+        },
+        {
+          "id": "addition",
+          "title": "加法",
+          "estimated_minutes": 20,
+          "lesson": "basics",
+          "prerequisites": [
+            {
+              "all_of": [
+                "counting"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subtraction",
+          "title": "减法",
+          "estimated_minutes": 20,
+          "lesson": "basics",
+          "prerequisites": [
+            {
+              "all_of": [
+                "counting"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applied",
+      "title": "应用",
+      "question_file": "questions/applied.json",
+      "lessons": [
+        {
+          "id": "applied",
+          "title": "应用",
+          "file": "lessons/applied.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "word-problems",
+          "title": "文字题",
+          "estimated_minutes": 25,
+          "lesson": "applied",
+          "summary": "从情境中列出加法或减法算式。",
+          "prerequisites": [
+            {
+              "all_of": [
+                "addition"
+              ]
+            },
+            {
+              "all_of": [
+                "subtraction"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "estimation",
+          "title": "估算",
+          "estimated_minutes": 15,
+          "prerequisites": [
+            {
+              "all_of": [
+                "addition",
+                "subtraction"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "explain-aloud",
+          "title": "口头讲解",
+          "estimated_minutes": 10,
+          "summary": "向他人讲清一道文字题的解法。",
+          "prerequisites": [
+            {
+              "all_of": [
+                "word-problems"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

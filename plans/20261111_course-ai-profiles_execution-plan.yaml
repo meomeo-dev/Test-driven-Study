@@ -1,0 +1,441 @@
+schema_version: 1
+id: course-ai-profiles
+title: Load AI teaching profiles by course version
+status: completed
+progress_revision: 28
+created_at: 2026-11-11
+updated_at: 2026-11-11
+source_assessment: docs/features/course-platform/course-ai-prompts.md
+objective: Let each installed course version supply assistant guidance and a
+  memory palace template under a common execution protocol.
+execution_contract:
+  scheduling: serial
+  max_in_progress_work_units: 1
+  unit_definition: One independently verified and recoverable change.
+  completion_rule: Complete all four phases before starting the next unit.
+  forbidden_batching:
+    - Complete each work unit before dispatching its successor.
+  change_boundary:
+    - Use the primary checkout and ordinary issue branch.
+    - Run against isolated data and local provider fixtures.
+  mode: plan-todo
+phase_contract:
+  order:
+    - prepare
+    - migrate
+    - verify
+    - close
+  status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  transition_rules:
+    - Complete phases in order.
+  required_progress_fields:
+    - status
+    - started_at
+    - completed_at
+    - evidence
+    - notes
+  update_protocol:
+    before_phase:
+      - Increment progress_revision and set the active phase.
+    after_phase:
+      - Record evidence and update recovery.
+    on_blocked:
+      - Record the blocker and its recovery condition.
+    after_compaction:
+      - Resume from recovery.next_action.
+status_model:
+  work_unit_status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  plan_status_enum:
+    - draft
+    - ready
+    - in-progress
+    - completed
+    - blocked
+  optional_unit_rule: Optional units require an explicit activation decision.
+resume:
+  current_work_unit: null
+  active_todo: null
+  current_phase: null
+  last_completed_work_unit: WU-003
+  next_work_unit: null
+  next_action: PLAN completed; no further work unit is pending.
+  last_checkpoint: WU-003.close.completed
+  blockers: []
+invariants:
+  - id: I-001
+    statement: The installed question version resolves private teaching files
+      independently of model settings and provider policy.
+  - id: I-002
+    statement: Previous replies and image jobs retain their provenance and saved
+      prompts after course upgrades.
+  - id: I-003
+    statement: Legacy courses, local transcript evidence, and source restrictions
+      remain supported.
+verification_profiles:
+  packages:
+    automated:
+      - command: go test ./internal/course ./internal/storage
+        expected: Profile validation and immutable retrieval pass.
+    manual_tier: focused
+  execution:
+    automated:
+      - command: npm run test:go and npm run check:generated
+        expected: Both AI entry points and persistence pass.
+    manual_tier: focused
+  release:
+    automated:
+      - command: npm run check
+        expected: Full acceptance passes with local providers.
+    manual_tier: full
+manual_gates:
+  focused:
+    - Review actual changes, isolated acceptance and rollback.
+  full:
+    - Verify feature parity, scoped persistence, and recovery across courses.
+baseline:
+  captured_at: 2026-11-11
+  git_head: 3d9c39c6c291deb54a18c6f20b2828dd14533772
+  working_tree_note: Clean main before the plan. The live learner service and paid
+    providers are separate from verification.
+  results:
+    route: PLAN-TODO[*]
+    estimated_minutes: 195
+work_units:
+  - id: WU-001
+    title: Validate and install course AI profiles
+    activation: required
+    status: completed
+    depends_on: []
+    todo_binding:
+      required: true
+      rationale: Retain verification and recovery evidence for a separately committed
+        change.
+      creation_phase: prepare
+    verification_profile: packages
+    intent: Validate optional teaching files, include them in package digests, and
+      resolve installed private resources by course and version.
+    file_group:
+      modify:
+        - contracts/course/
+        - internal/course/
+        - internal/storage/
+        - internal/study/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior and affected inputs.
+      migrate:
+        - Validate optional teaching files, include them in package digests, and
+          resolve installed private resources by course and version.
+      verify:
+        - Two releases of a course resolve distinct installed profiles while old
+          packages and absent fields remain readable.
+      close:
+        - Record verified changes, acceptance, and a rollback commit.
+    independent_acceptance:
+      - Two releases of a course resolve distinct installed profiles while old
+        packages and absent fields remain readable.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T13:50:29.714Z
+        completed_at: 2026-11-11T13:50:31.666Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Use private versioned package resources and the existing
+            installation transaction.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T13:50:33.359Z
+        completed_at: 2026-11-11T13:52:39.109Z
+        evidence:
+          - Optional manifest declarations validate and install with existing
+            immutable course storage.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T13:52:40.965Z
+        completed_at: 2026-11-11T13:53:33.160Z
+        evidence:
+          - Course, storage and study Go tests passed. Versioned private profile
+            files and rejection of unknown template placeholders were verified.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T13:53:34.961Z
+        completed_at: 2026-11-11T13:53:37.118Z
+        evidence:
+          - The profile resolver reads the exact installed manifest and private
+            files.
+          - "Independent acceptance passed: Two releases of a course resolve
+            distinct installed profiles while old packages and absent fields
+            remain readable."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-001.close.
+      changed_files:
+        - internal/course/ai_profile.go
+        - internal/storage/ai_profiles_test.go
+        - internal/study/ai_profile.go
+      rollback_ref: 14e2c8f
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain the scope and compatibility criteria.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Validate optional teaching files, include them in package digests, and
+          resolve installed private resources by course and version.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Two releases of a course resolve distinct installed profiles while old
+          packages and absent fields remain readable.
+  - id: WU-002
+    title: Use the installed profile in both AI workflows
+    activation: required
+    status: completed
+    depends_on:
+      - WU-001
+    todo_binding:
+      required: true
+      rationale: Retain verification and recovery evidence for a separately committed
+        change.
+      creation_phase: prepare
+    verification_profile: execution
+    intent: Load question-scoped tutor guidance and palace templates, preserve
+      policy and transcript evidence, and record profile identity for persisted
+      work.
+    file_group:
+      modify:
+        - cmd/server/
+        - internal/httpapi/
+        - internal/llm/
+        - internal/palace/
+        - contracts/http/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior and affected inputs.
+      migrate:
+        - Load question-scoped tutor guidance and palace templates, preserve
+          policy and transcript evidence, and record profile identity for
+          persisted work.
+      verify:
+        - Both AI workflows use the selected version and record provenance while
+          old records and image-only retries remain readable.
+      close:
+        - Record verified changes, acceptance, and a rollback commit.
+    independent_acceptance:
+      - Both AI workflows use the selected version and record provenance while
+        old records and image-only retries remain readable.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T13:53:38.346Z
+        completed_at: 2026-11-11T13:53:39.837Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Use the same question snapshot for teaching guidance, transcript
+            evidence, and persisted provenance.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T13:53:41.396Z
+        completed_at: 2026-11-11T13:56:47.626Z
+        evidence:
+          - Both AI entry points load guidance for the resolved question, and
+            saved jobs and assistant turns record profile provenance.
+          - Updated the retry fixture for the optional canonical-prompt match.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T13:56:49.189Z
+        completed_at: 2026-11-11T13:57:24.899Z
+        evidence:
+          - The first staged snapshot passed all other Go packages.
+          - All Go packages passed in the staged snapshot across the original
+            run and the palace fixture rerun. Generated API types include
+            provenance.
+        notes:
+          - "Blocked: A palace retry fixture still used the previous resolver
+            signature."
+      close:
+        status: completed
+        started_at: 2026-11-11T13:57:26.779Z
+        completed_at: 2026-11-11T13:57:29.038Z
+        evidence:
+          - Assistant turns and palace jobs record the selected profile. Retries
+            retain the saved prompt.
+          - "Independent acceptance passed: Both AI workflows use the selected
+            version and record provenance while old records and image-only
+            retries remain readable."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-002.close.
+      changed_files:
+        - internal/httpapi/chat.go
+        - internal/llm/conversation_turn.go
+        - internal/palace/service.go
+      rollback_ref: 3e9658a
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain the scope and compatibility criteria.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Load question-scoped tutor guidance and palace templates, preserve policy
+          and transcript evidence, and record profile identity for persisted
+          work.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Both AI workflows use the selected version and record provenance while
+          old records and image-only retries remain readable.
+  - id: WU-003
+    title: Ship bundled teaching profiles and verify the upgrade
+    activation: required
+    status: completed
+    depends_on:
+      - WU-002
+    todo_binding:
+      required: true
+      rationale: Retain verification and recovery evidence for a separately committed
+        change.
+      creation_phase: prepare
+    verification_profile: release
+    intent: Ship IELTS teaching files, move the driving profile onto the shared
+      resolver, and verify a legacy preview upgrade using local provider
+      fixtures.
+    file_group:
+      modify:
+        - courses/
+        - docs/features/course-platform/
+        - tests/browser/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior and affected inputs.
+      migrate:
+        - Ship IELTS teaching files, move the driving profile onto the shared
+          resolver, and verify a legacy preview upgrade using local provider
+          fixtures.
+      verify:
+        - IELTS and Yunnan load their own profiles through the shared resolver,
+          and existing learning records survive the preview upgrade.
+      close:
+        - Record verified changes, acceptance, and a rollback commit.
+    independent_acceptance:
+      - IELTS and Yunnan load their own profiles through the shared resolver,
+        and existing learning records survive the preview upgrade.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T13:57:30.381Z
+        completed_at: 2026-11-11T13:57:32.277Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Publish the IELTS profile, migrate the original Yunnan prompts, and
+            verify the installed course upgrade.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T13:57:34.520Z
+        completed_at: 2026-11-11T13:59:57.664Z
+        evidence:
+          - Bundled IELTS and Yunnan 1.2.0 profiles, versioned fixtures, and the
+            Yunnan startup migration are ready.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T13:59:59.267Z
+        completed_at: 2026-11-11T14:06:44.667Z
+        evidence:
+          - Both course package checks and the full npm run check passed,
+            including 118 browser tests. An isolated copy of the earlier preview
+            database retained all conversation, exam and palace records after
+            upgrade, and both IELTS transcript versions were readable.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T14:06:46.537Z
+        completed_at: 2026-11-11T14:06:48.943Z
+        evidence:
+          - Accepted on the verified implementation snapshot and the preview
+            database copy.
+          - "Independent acceptance passed: IELTS and Yunnan load their own
+            profiles through the shared resolver, and existing learning records
+            survive the preview upgrade."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-003.close.
+      changed_files:
+        - courses/ielts/course.json
+        - courses/yunnan-driving/course.json
+        - tests/browser/ielts.spec.ts
+      rollback_ref: 0470ee5
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain the scope and compatibility criteria.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Ship IELTS teaching files, move the driving profile onto the shared
+          resolver, and verify a legacy preview upgrade using local provider
+          fixtures.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: IELTS and Yunnan load their own profiles through the shared resolver, and
+          existing learning records survive the preview upgrade.
+dag:
+  nodes: &a1
+    - WU-001
+    - WU-002
+    - WU-003
+  dispatch_order: *a1
+  edges:
+    - from: WU-001
+      to: WU-002
+    - from: WU-002
+      to: WU-003
+completion_summary:
+  required_units: *a1
+  optional_units: []
+  completed_units:
+    - WU-001
+    - WU-002
+    - WU-003
+  skipped_optional_units: []
+  final_evidence:
+    - The profile resolver reads the exact installed manifest and private files.
+    - "Independent acceptance passed: Two releases of a course resolve distinct
+      installed profiles while old packages and absent fields remain readable."
+    - Assistant turns and palace jobs record the selected profile. Retries
+      retain the saved prompt.
+    - "Independent acceptance passed: Both AI workflows use the selected version
+      and record provenance while old records and image-only retries remain
+      readable."
+    - Accepted on the verified implementation snapshot and the preview database
+      copy.
+    - "Independent acceptance passed: IELTS and Yunnan load their own profiles
+      through the shared resolver, and existing learning records survive the
+      preview upgrade."

@@ -1,0 +1,43 @@
+[
+  {
+    "id": "4",
+    "type": "numeric",
+    "stem": "1 ÷ 4 等于多少？请填写小数。",
+    "explanation": "分子 1 除以分母 4 得到 0.25，末尾的零不改变数值。",
+    "grading": {
+      "value": "0.25",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "5",
+    "type": "single_choice",
+    "stem": "0.25 等于哪个百分数？",
+    "options": [
+      { "id": "a", "text": "2.5%" },
+      { "id": "b", "text": "25%" },
+      { "id": "c", "text": "250%" }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "explanation": "0.25 × 100 = 25，所以是 25%。"
+  },
+  {
+    "id": "6",
+    "type": "multiple_choice",
+    "stem": "选出所有等于 0.5 的写法。",
+    "options": [
+      { "id": "a", "text": "1/2" },
+      { "id": "b", "text": "50%" },
+      { "id": "c", "text": "0.05" }
+    ],
+    "grading": { "choice_ids": ["a", "b"] },
+    "explanation": "1 ÷ 2 = 0.5，50 ÷ 100 也等于 0.5。"
+  },
+  {
+    "id": "7",
+    "type": "true_false",
+    "stem": "0.2 和 0.20 的数值相等。",
+    "grading": { "boolean": true },
+    "explanation": "小数末尾的零不改变数值。"
+  }
+]

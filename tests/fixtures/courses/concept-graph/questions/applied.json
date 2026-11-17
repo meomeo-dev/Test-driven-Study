@@ -1,0 +1,131 @@
+[
+  {
+    "id": "word-problems-1",
+    "type": "numeric",
+    "chapter": "文字题",
+    "concepts": [
+      "word-problems"
+    ],
+    "stem": "盒子里有 3 个零件，又放入 2 个，现在有几个？",
+    "explanation": "3 + 2 = 5。",
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "word-problems-2",
+    "type": "numeric",
+    "chapter": "文字题",
+    "concepts": [
+      "word-problems"
+    ],
+    "stem": "托盘上有 8 个零件，取走 3 个，还剩几个？",
+    "explanation": "8 - 3 = 5。",
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "word-problems-3",
+    "type": "numeric",
+    "chapter": "文字题",
+    "concepts": [
+      "word-problems"
+    ],
+    "stem": "两排各有 4 个螺丝，一共有几个？",
+    "explanation": "4 + 4 = 8。",
+    "grading": {
+      "value": "8",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "estimation-1",
+    "type": "single_choice",
+    "chapter": "估算",
+    "concepts": [
+      "estimation"
+    ],
+    "stem": "19 + 21 大约是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "20"
+      },
+      {
+        "id": "b",
+        "text": "40"
+      },
+      {
+        "id": "c",
+        "text": "60"
+      }
+    ],
+    "explanation": "约为 20 + 20 = 40。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "estimation-2",
+    "type": "single_choice",
+    "chapter": "估算",
+    "concepts": [
+      "estimation"
+    ],
+    "stem": "52 - 29 大约是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "20"
+      },
+      {
+        "id": "b",
+        "text": "50"
+      },
+      {
+        "id": "c",
+        "text": "80"
+      }
+    ],
+    "explanation": "约为 50 - 30 = 20。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "estimation-3",
+    "type": "single_choice",
+    "chapter": "估算",
+    "concepts": [
+      "estimation"
+    ],
+    "stem": "98 + 3 大约是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "50"
+      },
+      {
+        "id": "b",
+        "text": "100"
+      },
+      {
+        "id": "c",
+        "text": "150"
+      }
+    ],
+    "explanation": "约为 100。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  }
+]

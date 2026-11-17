@@ -1,0 +1,510 @@
+[
+  {
+    "id": "structured-text-1",
+    "type": "single_choice",
+    "chapter": "结构化文本 ST 入门",
+    "concepts": [
+      "structured-text"
+    ],
+    "stem": "在结构化文本（ST）中，关于变量赋值与数值比较的符号使用规则，下列叙述正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "赋值采用 =，比较采用 :="
+      },
+      {
+        "id": "b",
+        "text": "赋值采用 :=，比较采用 ="
+      },
+      {
+        "id": "c",
+        "text": "赋值和比较均使用 :="
+      },
+      {
+        "id": "d",
+        "text": "赋值和比较均使用 ="
+      }
+    ],
+    "explanation": "结构化文本遵循类 Pascal 语法规范，变量赋值必须使用冒号等号 :=，逻辑等于比较使用单等号 =。选项 a 颠倒了符号用途，选项 c 和 d 混淆了赋值与比较运算符。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "structured-text-2",
+    "type": "single_choice",
+    "chapter": "结构化文本 ST 入门",
+    "concepts": [
+      "structured-text"
+    ],
+    "stem": "某分拣站使用整型变量 nState 表示当前运行工位状态（1 代表待机，2 代表送料，3 代表检测，4 代表分流）。若要编写结构清晰且易于扩展的分支转移逻辑，最推荐采用下列哪种 ST 语句结构？",
+    "options": [
+      {
+        "id": "a",
+        "text": "WHILE 循环语句"
+      },
+      {
+        "id": "b",
+        "text": "FOR 循环语句"
+      },
+      {
+        "id": "c",
+        "text": "CASE 多分支选择语句"
+      },
+      {
+        "id": "d",
+        "text": "连续多层嵌套的 GOTO 跳转语句"
+      }
+    ],
+    "explanation": "CASE 语句通过离散整型或枚举标签进行状态分流，最适合用于实现状态机顺序控制。循环语句 WHILE 和 FOR 用于重复执行，若在扫描周期内未退出会造成看门狗超时；GOTO 语句会破坏程序结构。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "structured-text-3",
+    "type": "multiple_choice",
+    "chapter": "结构化文本 ST 入门",
+    "concepts": [
+      "structured-text"
+    ],
+    "stem": "在分拣站逻辑控制中，下列关于结构化文本（ST）与梯形图（LD）对应关系的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "梯形图中的常开触点串联逻辑对应 ST 中的 AND 运算"
+      },
+      {
+        "id": "b",
+        "text": "梯形图中的常开触点并联逻辑对应 ST 中的 OR 运算"
+      },
+      {
+        "id": "c",
+        "text": "梯形图中的常闭触点对应 ST 中的 XOR 运算"
+      },
+      {
+        "id": "d",
+        "text": "梯形图中的输出线圈驱动对应 ST 中的比较运算 ="
+      }
+    ],
+    "explanation": "在逻辑等效转换中，串联对应逻辑与运算 AND，并联对应逻辑或运算 OR，故选项 a 和 b 正确。常闭触点对应逻辑非运算 NOT 而非异或；输出线圈驱动对应变量赋值 := 而非比较运算 =。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "structured-text-4",
+    "type": "true_false",
+    "chapter": "结构化文本 ST 入门",
+    "concepts": [
+      "structured-text"
+    ],
+    "stem": "在结构化文本（ST）编程中，若在同一个扫描周期内对同一个布尔变量多次执行赋值语句，则该变量在该周期末尾的最终输出值由最后一条执行的赋值语句决定。",
+    "explanation": "PLC 采用周期性循环扫描机制，程序自上而下顺序执行。当同一个周期内对同一变量多次赋值时，靠后的赋值会覆盖靠前的结果，最终输出取最后执行的一条语句结果。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "structured-text-5",
+    "type": "numeric",
+    "chapter": "结构化文本 ST 入门",
+    "concepts": [
+      "structured-text"
+    ],
+    "stem": "某分拣站的状态转移逻辑由 ST 编写。计数变量 nCount 初始值为 0。PLC 扫描周期为 10 ms。在自动运行期间，每经过 1 次扫描周期，程序均执行一次赋值语句 nCount := nCount + 2。若该状态持续运行了 0.5 秒且中途未被复位，则 0.5 秒结束时 nCount 的数值为多少？",
+    "explanation": "持续时间 0.5 秒等于 500 ms，扫描周期为 10 ms，因此共执行 500 ÷ 10 = 50 次扫描周期。每个周期累加 2，故最终计数值为 50 × 2 = 100。",
+    "grading": {
+      "value": "100",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "function-blocks-1",
+    "type": "single_choice",
+    "chapter": "功能块与程序组织",
+    "concepts": [
+      "function-blocks"
+    ],
+    "stem": "在 IEC 61131-3 标准中，关于功能块（FB）与纯函数（FC）的核心区别，下列描述正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "功能块具有独立的数据存储区用于保持内部状态，而纯函数没有静态内部状态"
+      },
+      {
+        "id": "b",
+        "text": "功能块不能接收任何输入参数，而纯函数可以接收输入参数"
+      },
+      {
+        "id": "c",
+        "text": "纯函数调用必须实例化并分配背景数据块，而功能块不需要"
+      },
+      {
+        "id": "d",
+        "text": "纯函数可以调用功能块，但功能块严禁调用纯函数"
+      }
+    ],
+    "explanation": "功能块 FB 与纯函数 FC 最本质的区别在于 FB 具备背景数据区，能在不同扫描周期之间保持内部变量与定时器状态；FC 没有内部持久记忆。选项 b、c、d 的表述均不符合标准规范。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "function-blocks-2",
+    "type": "single_choice",
+    "chapter": "功能块与程序组织",
+    "concepts": [
+      "function-blocks"
+    ],
+    "stem": "桌面分拣站中包含合格品挡板和不合格品挡板两个相同的双作用气缸。为了提升软件复用性与降低维护成本，最佳的程序组织方式是下列哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "将控制逻辑全部复制粘贴到主程序中，并手动修改两套变量名"
+      },
+      {
+        "id": "b",
+        "text": "让两个气缸在同一扫描周期内共用同一个气缸功能块实例进行轮流控制"
+      },
+      {
+        "id": "c",
+        "text": "将气缸动作逻辑写为两个独立的无状态纯函数 FC，并在 FC 内部使用全局定时器"
+      },
+      {
+        "id": "d",
+        "text": "编写通用的气缸控制功能块 FB_Cylinder，并分别为两个气缸各声明一个独立实例"
+      }
+    ],
+    "explanation": "针对重复的机械执行机构，应封装通用的功能块 FB，并为每个机构分配独立的背景实例，既实现了逻辑复用，又避免了内部状态与定时器变量的冲突。选项 a 冗余度高；选项 b 共用实例会导致状态覆盖；选项 c 破坏了封装性。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "function-blocks-3",
+    "type": "multiple_choice",
+    "chapter": "功能块与程序组织",
+    "concepts": [
+      "function-blocks"
+    ],
+    "stem": "在定义和调用功能块（FB）时，下列关于接口变量分类与特性的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "VAR_INPUT 区域声明的变量用于从调用方接收外部输入数据"
+      },
+      {
+        "id": "b",
+        "text": "VAR_OUTPUT 区域声明的变量可以直接由调用方任意写入修改"
+      },
+      {
+        "id": "c",
+        "text": "VAR 区域声明的内部静态变量跨扫描周期保留其数值"
+      },
+      {
+        "id": "d",
+        "text": "VAR_TEMP 区域声明的临时变量其数值会自动保留到下一个扫描周期"
+      }
+    ],
+    "explanation": "VAR_INPUT 负责接收外部传入参数，VAR 声明的静态内部变量驻留在背景数据块中跨周期保持数值，故选项 a 和 c 正确。VAR_OUTPUT 是输出变量，由功能块内部逻辑驱动；VAR_TEMP 临时变量单次调用结束后清空，不能保留到下一周期。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "function-blocks-4",
+    "type": "true_false",
+    "chapter": "功能块与程序组织",
+    "concepts": [
+      "function-blocks"
+    ],
+    "stem": "如果在 PLC 程序中让分拣站的合格品推杆与次品推杆在同一个扫描周期内调用同一个气缸功能块实例，由于算法相同，两个气缸的延时控制与报警状态均能正常独立工作互不影响。",
+    "explanation": "功能块实例拥有唯一的内部存储区。若两个物理对象在同一周期共用同一实例，双方的输入参数会轮流覆盖内部变量，导致计时被冲掉或报警逻辑混乱，因此每个独立执行机构必须分配独立实例。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "function-blocks-5",
+    "type": "numeric",
+    "chapter": "功能块与程序组织",
+    "concepts": [
+      "function-blocks"
+    ],
+    "stem": "某气缸监控功能块内部采用 TON 定时器进行动作超时监控。若定义进气动作的超时时间参数 PT 为 1200 ms。PLC 扫描周期为 20 ms。当电磁阀开启后由于气管脱落导致气缸未能触及到位传感器，按定时器每个扫描周期累加 20 ms 计算，累计时间首次达到 PT 时共经过了多少个扫描周期？",
+    "explanation": "超时预设时间为 1200 ms，扫描周期为 20 ms。定时器在连续保持未到位输入条件下计时，达到预设值所需的扫描周期数为 1200 ÷ 20 = 60 次。",
+    "grading": {
+      "value": "60",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "simulation-testing-1",
+    "type": "single_choice",
+    "chapter": "仿真与测试用例",
+    "concepts": [
+      "simulation-testing"
+    ],
+    "stem": "在使用 PLC 仿真软件对桌面分拣站进行离线调试时，“强制输入”（Force Input）的主要作用是下列哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "永久修改 PLC CPU 的硬件固件程序"
+      },
+      {
+        "id": "b",
+        "text": "越过实际硬件信号，人为将特定输入映像区的值锁定为设定状态以模拟现场工况"
+      },
+      {
+        "id": "c",
+        "text": "提高软 PLC 运行时的指令执行速度以缩短扫描周期"
+      },
+      {
+        "id": "d",
+        "text": "自动生成测试报告并上传至工业云平台"
+      }
+    ],
+    "explanation": "强制输入功能可以在缺少实体传感器的情况下，由调试人员直接在软件环境中将输入变量锁定为 0 或 1，从而模拟工件到位、检测开关动作等现场物理信号。选项 a、c、d 均不属于强制输入的功能。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "simulation-testing-2",
+    "type": "single_choice",
+    "chapter": "仿真与测试用例",
+    "concepts": [
+      "simulation-testing"
+    ],
+    "stem": "在针对分拣站“检测超时与异常分流”的仿真测试用例设计中，为了验证相机检测结果缺失时的系统自保与容错行为，下列哪项操作是正确的故障注入方法？",
+    "options": [
+      {
+        "id": "a",
+        "text": "工件到位后，人为保持不输入合格信号与次品信号，观察超时报警与停机动作"
+      },
+      {
+        "id": "b",
+        "text": "直接在仿真器中关闭软 PLC 的供电电源模拟停机"
+      },
+      {
+        "id": "c",
+        "text": "修改程序将所有报警逻辑行直接删除后再运行"
+      },
+      {
+        "id": "d",
+        "text": "强制将急停按钮锁定为正常通电状态，防止系统发生任何停机"
+      }
+    ],
+    "explanation": "故障注入测试是在不改动控制程序的前提下，人为模拟外设通信异常或信号丢失（如相机未返回检测结论），以验证程序中的超时判定与安全联锁逻辑。选项 b 无法验证逻辑行为；选项 c 破坏了测试对象；选项 d 掩盖了故障。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "simulation-testing-3",
+    "type": "multiple_choice",
+    "chapter": "仿真与测试用例",
+    "concepts": [
+      "simulation-testing"
+    ],
+    "stem": "在进行 PLC 顺序控制仿真测试与用例归档时，下列哪些做法符合规范的工程测试流程？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "只要正常走通一次送料分流，即可认为所有工况测试合格无需测试异常"
+      },
+      {
+        "id": "b",
+        "text": "测试用例应明确记录前置条件、测试输入序列、预期输出与实际输出"
+      },
+      {
+        "id": "c",
+        "text": "为了快速通过测试，遇到故障报警逻辑报错时应直接在主程序中强行跳过该步骤"
+      },
+      {
+        "id": "d",
+        "text": "在完成特定信号的强制测试后，必须及时解除强制（Unforce）以防影响后续测试"
+      }
+    ],
+    "explanation": "规范的测试必须具备清晰的测试要素记录（前置条件、输入、预期与实测结果），且测试完毕必须清理强制状态以防干扰后续逻辑，故选项 b 和 d 正确。选项 a 忽视了故障用例；选项 c 属于篡改逻辑的违规操作。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "simulation-testing-4",
+    "type": "true_false",
+    "chapter": "仿真与测试用例",
+    "concepts": [
+      "simulation-testing"
+    ],
+    "stem": "在 PLC 仿真测试中，操作仿真界面闭合或断开输入开关，本质上是在修改软 PLC 内存中对应的输入映像区（Process Image Input）状态位，并在下一个扫描周期被用户程序读取。",
+    "explanation": "PLC 采用输入映像机制，仿真软件通过改写内存中的输入映射表来模拟物理接线端子的电平变化，程序在扫描周期的输入刷新阶段读取该区域数据。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "simulation-testing-5",
+    "type": "numeric",
+    "chapter": "仿真与测试用例",
+    "concepts": [
+      "simulation-testing"
+    ],
+    "stem": "某分拣站送料皮带运行速度恒定为 0.20 m/s，工件从上料口行进到检测到位传感器处的物理距离为 0.50 m。为防止工件卡死或打滑，在 PLC 程序中设置了送料超时监控定时器。请计算：在正常无打滑情况下，工件从上料到触发传感器所需的理论运行时间为多少秒？",
+    "explanation": "根据匀速直线运动公式 t = s ÷ v，代入距离 s = 0.50 m 与速度 v = 0.20 m/s，计算得到理论运行时间 t = 0.50 ÷ 0.20 = 2.5 秒。该数值是设计超时监控阈值的基准依据。",
+    "grading": {
+      "value": "2.5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "hmi-communication-1",
+    "type": "single_choice",
+    "chapter": "HMI 与通信",
+    "concepts": [
+      "hmi-communication"
+    ],
+    "stem": "在分拣站使用的 Modbus 通信协议标准中，若上位机需要读取 PLC 内部保存的 16 位整型生产计数数据（如合格品总数），应当采用下列哪种数据对象类型？",
+    "options": [
+      {
+        "id": "a",
+        "text": "离散输入（Discrete Input，1xxxx）"
+      },
+      {
+        "id": "b",
+        "text": "线圈（Coil，0xxxx）"
+      },
+      {
+        "id": "c",
+        "text": "保持寄存器（Holding Register，4xxxx）"
+      },
+      {
+        "id": "d",
+        "text": "临时中间触点"
+      }
+    ],
+    "explanation": "Modbus 协议中，离散输入与线圈均为单比特位对象，只用于表示开关量；保持寄存器（4xxxx）为 16 位字对象，专门用于存放整数、模拟量及计数器数值。选项 d 不属于 Modbus 标准数据模型。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "hmi-communication-2",
+    "type": "single_choice",
+    "chapter": "HMI 与通信",
+    "concepts": [
+      "hmi-communication"
+    ],
+    "stem": "某工业触摸屏（HMI）需要实时显示分拣站电磁阀动作超时的故障信息，并在屏幕顶部弹出红色报警条。在 PLC 与 HMI 的协同设计中，最标准的做法是下列哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "发生故障时由 PLC 直接控制 HMI 屏幕断开电源"
+      },
+      {
+        "id": "b",
+        "text": "发生故障时不通知 HMI，完全由操作员肉眼观察机械结构后再在 HMI 上手动寻找对应画面"
+      },
+      {
+        "id": "c",
+        "text": "由 HMI 替代 PLC 执行所有的底层互锁逻辑与安全急停控制"
+      },
+      {
+        "id": "d",
+        "text": "在 PLC 中置位对应的报警标志位，HMI 通过周期性通信轮询该报警位并关联报警列表触发显示"
+      }
+    ],
+    "explanation": "工业标准架构中，PLC 负责底层逻辑判定并置位报警布尔标志字，HMI 通过通信驱动扫描该标志字并在触发时调出预先配置好的报警条目与排故指南。选项 a、b 失去 HMI 监视作用；选项 c 违背控制层与监控层职责分离的原则。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "hmi-communication-3",
+    "type": "multiple_choice",
+    "chapter": "HMI 与通信",
+    "concepts": [
+      "hmi-communication"
+    ],
+    "stem": "上位机通过 Modbus TCP 协议采集分拣站运行数据时，下列关于通信寄存器配置与数据读取的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "读取保持寄存器数据时，上位机通常发送功能码 03"
+      },
+      {
+        "id": "b",
+        "text": "线圈地址能够直接保存 32 位浮点数格式的模拟量数值"
+      },
+      {
+        "id": "c",
+        "text": "所有的安全急停与机械联锁信号均应优先通过 Modbus 通信线路由上位机远程触发"
+      },
+      {
+        "id": "d",
+        "text": "点位表中的保持寄存器 40001，在采用 0 基寻址的 Modbus 报文中对应偏移地址 0"
+      }
+    ],
+    "explanation": "功能码 03 用于读取保持寄存器，且当采用 0 基寻址协议报文时，用户侧编号 40001 对应的偏移量为 0，故选项 a 和 d 正确。线圈仅能存储单位开关量，无法存储 32 位浮点数；安全急停必须走硬接线安全回路，严禁完全依赖通用网络通信。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "hmi-communication-4",
+    "type": "true_false",
+    "chapter": "HMI 与通信",
+    "concepts": [
+      "hmi-communication"
+    ],
+    "stem": "为了保障分拣站生产安全，国家与国际安全标准允许将系统急停按钮（E-Stop）通过普通 Modbus 通信线连接至触摸屏，再由触摸屏发送网络报文控制 PLC 停机。",
+    "explanation": "工业安全标准（如 IEC 62061 与 ISO 13849）严格要求急停回路必须具备确定性与失效安全（Fail-Safe）特性，通常采用硬接线双通道接入安全继电器或安全 PLC，严禁仅通过无安全认证的普通 Modbus 通信链路传输急停信号。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "hmi-communication-5",
+    "type": "numeric",
+    "chapter": "HMI 与通信",
+    "concepts": [
+      "hmi-communication"
+    ],
+    "stem": "上位机通过 Modbus 读取分拣站生产数据。保持寄存器 40002 中记录的合格品总数为 216，保持寄存器 40003 中记录的次品总数为 24。该批次无其他工件遗漏。请计算：当前批次工件的良品率百分比数值为多少？（只填写纯数字，不需要输入百分号符号，例如 85% 请填写 85）",
+    "explanation": "总工件数为合格品数加上次品数，即 216 + 24 = 240 件。良品率计算公式为合格品数除以总工件数，即 (216 ÷ 240) × 100% = 90%。因此对应的百分比数值为 90。",
+    "grading": {
+      "value": "90",
+      "absolute_tolerance": "0"
+    }
+  }
+]

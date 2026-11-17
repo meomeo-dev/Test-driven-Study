@@ -1,0 +1,129 @@
+[
+  {
+    "id": "program-structure-1",
+    "type": "single_choice",
+    "chapter": "脚本结构与调试",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在编写工件检测记录处理脚本时，通常会在文件末尾使用 if __name__ == '__main__': main() 结构。关于该结构的作用，下列说法正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "它可以让脚本在发生语法错误时自动跳过错误行继续向下执行"
+      },
+      {
+        "id": "b",
+        "text": "它可以确保脚本被其他文件作为模块导入时不会自动执行主流程"
+      },
+      {
+        "id": "c",
+        "text": "它是 Python 运行脚本的强制语法要求若不编写则程序无法执行"
+      },
+      {
+        "id": "d",
+        "text": "它可以显著提升工件记录文件读取与循环计数的运行速度"
+      }
+    ],
+    "explanation": "直接运行脚本时内置变量 __name__ 的值为 __main__，主函数会正常运行；当脚本被其他文件作为模块导入时，该变量为模块名，条件不成立，从而避免误执行主流程。Python 并没有强制要求该结构，它也不能跳过语法错误或提升运算速度。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-2",
+    "type": "single_choice",
+    "chapter": "脚本结构与调试",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "运行工件检测统计脚本时，若程序因异常中断并在终端输出了多行回溯信息（Traceback），排查错误时最合理的首选步骤是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "从回溯信息第一行向下逐行阅读并修改第一行指出的代码文件"
+      },
+      {
+        "id": "b",
+        "text": "重复运行脚本多次并观察回溯信息是否会自动消除"
+      },
+      {
+        "id": "c",
+        "text": "先查看回溯信息最底部的异常类型与原因，再结合上一行定位具体出错的文件与行号"
+      },
+      {
+        "id": "d",
+        "text": "立即删除所有拆分的独立函数并将逻辑全部写在文件顶层重新运行"
+      }
+    ],
+    "explanation": "Traceback 的最底部给出了最具体的异常类型和错误原因描述，其紧邻的上方一行指出了直接引发异常的文件名与代码行号，因此从底部向上阅读能最快定位核心问题。从顶部逐行阅读或盲目重试无法高效排查错误。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-3",
+    "type": "multiple_choice",
+    "chapter": "脚本结构与调试",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在编写分拣工位工件检测数据统计脚本时，为了提升程序的可维护性并高效排查逻辑错误，下列做法合理的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "将文件读取、单行校验与汇总统计拆分为多个单一职责的独立函数"
+      },
+      {
+        "id": "b",
+        "text": "将所有变量命名为单个字母以缩短代码长度并减少输入错误"
+      },
+      {
+        "id": "c",
+        "text": "在大规模数据循环内部无条件打印所有局部变量的中间状态"
+      },
+      {
+        "id": "d",
+        "text": "在关键条件分支与数据处理节点插入带有变量名称标记的 print 语句"
+      }
+    ],
+    "explanation": "将任务拆分为职责单一的独立函数便于分别测试与复用；在关键分支与计算节点插入带标记的 print 语句能清晰追踪程序执行轨迹与变量变化。单个字母命名会严重破坏代码可读性，而在大规模循环内无节制打印会导致控制台输出混乱失焦。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-4",
+    "type": "true_false",
+    "chapter": "脚本结构与调试",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "如果一个 Python 脚本中没有编写 if __name__ == '__main__': 入口语句，该脚本就无法在命令行终端中作为独立程序直接运行。",
+    "explanation": "Python 并不强制要求编写该入口语句，即使没有该结构，在终端中直接运行脚本时，解释器也会按顺序依次执行文件中的顶层代码。编写该入口的核心目的是防止脚本作为模块被导入时自动触发执行。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "program-structure-5",
+    "type": "numeric",
+    "chapter": "脚本结构与调试",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在调试分拣记录统计脚本时，为了验证字典计数逻辑，运行了如下测试代码：\ncounts = {'PASS': 0, 'REJECT': 0}\nrecords = ['PASS', 'REJECT', 'PASS', 'ERR', 'PASS']\nfor r in records: counts[r] = counts.get(r, 0) + 1\nprint(counts['PASS'])\n请问上述代码执行后，终端输出的数字是多少？",
+    "explanation": "循环遍历包含 5 个元素的 records 列表，其中 PASS 出现了 3 次，字典 counts 中键 PASS 对应的值分别在第 1、3、5 次循环中自增 1；REJECT 出现 1 次；ERR 出现 1 次。因此 counts['PASS'] 最终值为 3，终端输出 3。",
+    "grading": {
+      "value": "3",
+      "absolute_tolerance": "0"
+    }
+  }
+]

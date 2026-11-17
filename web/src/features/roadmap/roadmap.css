@@ -1,0 +1,24 @@
+.catalog-tabs { margin-bottom: 14px; }
+.roadmap-content { display: flex; flex-direction: column; gap: 10px; }
+.roadmap-content .graph-scroll { max-height: 56dvh; }
+.roadmap-note { padding: 6px 10px; border-left: 3px solid var(--primary); background: var(--surface-muted); color: var(--text-secondary); font-size: var(--font-size-label); }
+
+.graph-edge.recommended { stroke-dasharray: 2 4; }
+.graph-edge.alternative.recommended { stroke-dasharray: 6 4 2 4; }
+.graph-node[data-state="completed"] rect { fill: var(--success-bg); stroke: var(--success-border); }
+.graph-node[data-state="in_progress"] rect { fill: var(--warning-bg); stroke: var(--warning-border); }
+.graph-node[data-state="waiting"] rect { fill: var(--surface-muted); stroke-dasharray: 4 3; }
+.graph-node[data-selected][data-state] rect { stroke: var(--focus); stroke-width: 3; stroke-dasharray: none; }
+
+.state-badge[data-state="completed"] { border-color: var(--success-border); background: var(--success-badge); color: var(--success); }
+.state-badge[data-state="in_progress"] { border-color: var(--warning-border); background: var(--warning-bg); color: var(--warning); }
+.path-step[data-state="completed"] { opacity: .78; }
+
+.roadmap-others { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-subtle); }
+.roadmap-others h3 { margin: 0 0 8px; font-size: var(--font-size-label); font-weight: 600; color: var(--text-secondary); }
+.roadmap-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.roadmap-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 31px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); color: var(--text); font-size: var(--font-size-control); cursor: pointer; }
+.roadmap-chip span { color: var(--muted); font-size: var(--font-size-caption); }
+.roadmap-chip[data-state="completed"] { border-color: var(--success-border); background: var(--success-bg); }
+.roadmap-chip[aria-pressed="true"] { border-color: var(--focus); box-shadow: inset 0 0 0 1px var(--focus); }
+.roadmap-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }

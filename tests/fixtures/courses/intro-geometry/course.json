@@ -1,0 +1,14 @@
+{
+  "protocol_version": 1,
+  "course_id": "intro-geometry",
+  "version": "1.0.0",
+  "title": "平面图形",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "三角形",
+      "question_file": "questions/intro.json"
+    }
+  ]
+}

@@ -1,0 +1,460 @@
+{
+  "protocol_version": 1,
+  "course_id": "automatic-control",
+  "version": "1.1.0",
+  "title": "自动控制原理",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "控制系统基础",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "控制系统基础",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "control-concepts",
+          "title": "控制系统的组成",
+          "summary": "被控对象、传感器、执行器、控制器，设定值、测量值、误差与控制量",
+          "estimated_minutes": 65,
+          "lesson": "intro"
+        },
+        {
+          "id": "open-closed-loop",
+          "title": "开环与闭环",
+          "summary": "开环控制没有测量反馈，闭环控制用测量值修正控制量，各自的优缺点",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "control-concepts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "error-feedback",
+          "title": "误差与负反馈",
+          "summary": "负反馈减小误差，正反馈的危害，扰动与抑制",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "open-closed-loop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "block-diagrams",
+          "title": "方框图",
+          "summary": "串联、并联、反馈连接，负反馈闭环 G/(1 + GH)，方框图化简",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "error-feedback"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modeling",
+      "title": "系统建模",
+      "question_file": "questions/modeling.json",
+      "lessons": [
+        {
+          "id": "modeling",
+          "title": "系统建模",
+          "file": "lessons/modeling.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "first-order-models",
+          "title": "一阶系统模型",
+          "summary": "τ·dy/dt + y = K·u，静态增益 K 与时间常数 τ 的物理意义，加热与电机实例",
+          "estimated_minutes": 85,
+          "lesson": "modeling",
+          "prerequisites": [
+            {
+              "all_of": [
+                "block-diagrams"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transfer-functions",
+          "title": "传递函数入门",
+          "summary": "拉普拉斯变换的直观作用，s 表示求导，G(s) = K/(τs + 1)，极点",
+          "estimated_minutes": 80,
+          "lesson": "modeling",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-models"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "motor-model",
+          "title": "直流电机速度模型",
+          "summary": "电压到转速的一阶近似，机械时间常数，负载变化作为扰动",
+          "estimated_minutes": 65,
+          "lesson": "modeling",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-models"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "time-response",
+      "title": "时域响应",
+      "question_file": "questions/time-response.json",
+      "lessons": [
+        {
+          "id": "time-response",
+          "title": "时域响应",
+          "file": "lessons/time-response.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "first-order-step",
+          "title": "一阶阶跃响应",
+          "summary": "y(t) = K·A·(1 − e^(−t/τ))，t = τ 时约 63.2%，约 4τ 进入 2% 误差带",
+          "estimated_minutes": 85,
+          "lesson": "time-response",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-models"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "second-order-response",
+          "title": "二阶系统与超调",
+          "summary": "阻尼比 ζ 与自然频率 ωn，欠阻尼、临界阻尼、过阻尼，超调与振荡",
+          "estimated_minutes": 85,
+          "lesson": "time-response",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-step"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "performance-specs",
+          "title": "性能指标",
+          "summary": "上升时间、峰值时间、调节时间、超调量、稳态误差，从阶跃响应曲线读取",
+          "estimated_minutes": 65,
+          "lesson": "time-response",
+          "prerequisites": [
+            {
+              "all_of": [
+                "second-order-response"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "steady-state-error",
+          "title": "稳态误差",
+          "summary": "终值定理的结论，比例控制下一阶系统阶跃稳态误差 = 1/(1 + K) 倍设定值，积分作用消除稳态误差",
+          "estimated_minutes": 70,
+          "lesson": "time-response",
+          "prerequisites": [
+            {
+              "all_of": [
+                "performance-specs",
+                "transfer-functions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stability",
+      "title": "稳定性",
+      "question_file": "questions/stability.json",
+      "lessons": [
+        {
+          "id": "stability",
+          "title": "稳定性",
+          "file": "lessons/stability.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "stability-poles",
+          "title": "稳定性与极点",
+          "summary": "稳定的定义，极点实部为负则稳定，一阶和二阶系统的稳定条件",
+          "estimated_minutes": 80,
+          "lesson": "stability",
+          "prerequisites": [
+            {
+              "all_of": [
+                "transfer-functions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "routh-criterion",
+          "title": "劳斯判据",
+          "summary": "三阶特征方程的劳斯表，首列变号次数，增益的稳定范围",
+          "estimated_minutes": 70,
+          "lesson": "stability",
+          "prerequisites": [
+            {
+              "all_of": [
+                "stability-poles"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gain-delay-oscillation",
+          "title": "增益、延迟与振荡",
+          "summary": "增益过大和测量延迟导致振荡，传感器滞后，采样延迟的影响",
+          "estimated_minutes": 65,
+          "lesson": "stability",
+          "prerequisites": [
+            {
+              "all_of": [
+                "stability-poles"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pid",
+      "title": "PID 控制",
+      "question_file": "questions/pid.json",
+      "lessons": [
+        {
+          "id": "pid",
+          "title": "PID 控制",
+          "file": "lessons/pid.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "p-control",
+          "title": "比例控制",
+          "summary": "u = Kp·e，增大 Kp 加快响应但增加超调，残余稳态误差",
+          "estimated_minutes": 70,
+          "lesson": "pid",
+          "prerequisites": [
+            {
+              "all_of": [
+                "steady-state-error"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pi-control",
+          "title": "积分作用",
+          "summary": "积分项累加误差，消除稳态误差，积分过强引起超调和振荡",
+          "estimated_minutes": 70,
+          "lesson": "pid",
+          "prerequisites": [
+            {
+              "all_of": [
+                "p-control"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pd-control",
+          "title": "微分作用",
+          "summary": "微分项根据误差变化率提前抑制，减小超调，放大噪声",
+          "estimated_minutes": 60,
+          "lesson": "pid",
+          "prerequisites": [
+            {
+              "all_of": [
+                "p-control"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pid-tuning",
+          "title": "PID 整定",
+          "summary": "先 P 后 I 再 D 的试凑法，Ziegler–Nichols 临界比例度法的思路，整定记录",
+          "estimated_minutes": 85,
+          "lesson": "pid",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pi-control",
+                "pd-control"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "windup-saturation",
+          "title": "积分饱和与执行器限幅",
+          "summary": "执行器输出受限，积分饱和导致大超调，积分限幅与停止积分",
+          "estimated_minutes": 60,
+          "lesson": "pid",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pi-control"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "digital-control",
+      "title": "离散采样与数字控制",
+      "question_file": "questions/digital-control.json",
+      "lessons": [
+        {
+          "id": "digital-control",
+          "title": "离散采样与数字控制",
+          "file": "lessons/digital-control.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "sampling-period",
+          "title": "采样周期与混叠",
+          "summary": "采样周期与采样频率，采样周期相对时间常数的选择，混叠的现象",
+          "estimated_minutes": 65,
+          "lesson": "digital-control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-step"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "discrete-pid",
+          "title": "离散 PID 实现",
+          "summary": "位置式 PID：积分用累加 Σe·T，微分用 (eₖ − eₖ₋₁)/T，增量式 PID，定时调用",
+          "estimated_minutes": 85,
+          "lesson": "digital-control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pid-tuning",
+                "sampling-period"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "noise-filtering",
+          "title": "测量噪声与滤波",
+          "summary": "一阶低通滤波 yₖ = α·xₖ + (1 − α)·yₖ₋₁，滤波带来的延迟",
+          "estimated_minutes": 60,
+          "lesson": "digital-control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "discrete-pid"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "频率特性与应用",
+      "question_file": "questions/applications.json",
+      "lessons": [
+        {
+          "id": "applications",
+          "title": "频率特性与应用",
+          "file": "lessons/applications.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "frequency-response",
+          "title": "频率响应入门",
+          "summary": "正弦输入下的幅值比与相位滞后，带宽，一阶系统在 ω = 1/τ 时幅值降为约 0.707",
+          "estimated_minutes": 70,
+          "lesson": "applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "transfer-functions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cascade-loops",
+          "title": "速度环与位置环",
+          "summary": "串级控制，内环快于外环，伺服电机的位置环、速度环、电流环",
+          "estimated_minutes": 65,
+          "lesson": "applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pid-tuning"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "step-simulation-lab",
+          "title": "电机速度阶跃仿真（自评）",
+          "summary": "用表格或 Python 按固定采样周期仿真一阶电机速度模型和离散 PI 控制，画出速度、误差和控制量曲线，比较两组参数的超调和调节时间。",
+          "estimated_minutes": 90,
+          "lesson": "applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "first-order-step",
+                "discrete-pid"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "用反馈、阶跃响应和 PID 理解速度和位置控制。"
+}

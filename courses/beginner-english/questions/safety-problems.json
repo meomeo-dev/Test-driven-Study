@@ -1,0 +1,586 @@
+[
+  {
+    "id": "modal-must-1",
+    "type": "single_choice",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "桌面质检分拣工位的操作规程要求员工在作业前必须佩戴防静电手套。请选出最符合该安全要求的英文句子。",
+    "options": [
+      {
+        "id": "a",
+        "text": "You must wearing gloves."
+      },
+      {
+        "id": "b",
+        "text": "You must wear gloves."
+      },
+      {
+        "id": "c",
+        "text": "You must to wear gloves."
+      },
+      {
+        "id": "d",
+        "text": "You wear must gloves."
+      }
+    ],
+    "explanation": "情态动词 `must` 表达强制性规程要求，后面必须直接接动词原形 `wear`，因此 `You must wear gloves.` 正确。选项 a 误用了动名词 `wearing`，选项 c 错误地添加了不定式符号 `to`，选项 d 语序颠倒错误。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "modal-must-2",
+    "type": "single_choice",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "传送带正在运转，班长提醒操作工绝对不可用手触碰运动中的传送带。请选出最恰当的英文警示句子。",
+    "options": [
+      {
+        "id": "a",
+        "text": "You must touch the belt."
+      },
+      {
+        "id": "b",
+        "text": "You don't must touch the belt."
+      },
+      {
+        "id": "c",
+        "text": "You not must touch the belt."
+      },
+      {
+        "id": "d",
+        "text": "You must not touch the belt."
+      }
+    ],
+    "explanation": "在安全规程中表示“绝对不可、严禁”必须使用 `must not`（或 `mustn't`）加动词原形，故 `You must not touch the belt.` 正确。选项 a 含义为必须触碰，与规程相反；选项 b 把 don't 与 must 连用，形式错误；选项 c 否定词位置错误。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "modal-must-3",
+    "type": "multiple_choice",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "在分拣工位安全规程培训中，下列哪些句子正确表达了“必须”或“严禁”的要求？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "You have to check the sensor before starting."
+      },
+      {
+        "id": "b",
+        "text": "You must not to put tools on the belt."
+      },
+      {
+        "id": "c",
+        "text": "Operators must keep the workbench clean."
+      },
+      {
+        "id": "d",
+        "text": "He must wears safety glasses today."
+      }
+    ],
+    "explanation": "选项 a 中 `have to check` 正确表示客观规程要求“开机前必须检查传感器”；选项 c 中 `must keep` 正确在情态动词后接动词原形保持台面清洁。选项 b 在 `must not` 后面多余添加了 `to`；选项 d 在 `must` 后面错误使用了第三人称单数词尾 `wears`。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "modal-must-4",
+    "type": "true_false",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "在工位安全英语中，句子 `You mustn't touch the belt.` 的含义是“你不需要触碰传送带，但如果想碰也可以碰”。",
+    "explanation": "`mustn't` 即 `must not`，表示不可违抗的“严禁、绝对不可”，绝不是“不需要”。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "modal-must-5",
+    "type": "single_choice",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "班组长向质检员重申车间统一规章：“我们在车间里必须穿安全鞋。”根据客观制度要求，横线处应填入哪一项？`We _____ wear safety shoes in the workshop.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "have to"
+      },
+      {
+        "id": "b",
+        "text": "has to"
+      },
+      {
+        "id": "c",
+        "text": "must to"
+      },
+      {
+        "id": "d",
+        "text": "having to"
+      }
+    ],
+    "explanation": "主语为第一人称复数 `We`，表达遵守外部制度的“必须”使用 `have to` 后接动词原形。选项 b 为第三人称单数形式与主语不符；选项 c 中情态动词 `must` 后面不能带 `to`；选项 d 为分词形式不能单独作谓语。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "safety-signs-1",
+    "type": "single_choice",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "当桌面分拣站的分拣舵机发生机械卡死并伴有异响等紧急险情时，操作员应立即拍下标有哪项英文的红色凸起按钮？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exit"
+      },
+      {
+        "id": "b",
+        "text": "Caution"
+      },
+      {
+        "id": "c",
+        "text": "Emergency stop"
+      },
+      {
+        "id": "d",
+        "text": "No entry"
+      }
+    ],
+    "explanation": "`Emergency stop` 表示“紧急停止 / 急停”，对应工位切断电源的红色急停开关。选项 a 为“安全出口”，选项 b 为“注意/小心”，选项 d 为“禁止入内”。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "safety-signs-2",
+    "type": "single_choice",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "分拣工位视觉检测相机旁的持续强光补光灯工作温度极高，外壳贴有防烫警示标签。该标签通常应标明什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hot surface"
+      },
+      {
+        "id": "b",
+        "text": "Keep out"
+      },
+      {
+        "id": "c",
+        "text": "Wear safety glasses"
+      },
+      {
+        "id": "d",
+        "text": "Exit"
+      }
+    ],
+    "explanation": "`Hot surface` 意为“高温表面”，用于提醒操作人员谨防接触烫伤。选项 b 为“闲人免进”，选项 c 为“佩戴护目镜”，选项 d 为“安全出口”。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "safety-signs-3",
+    "type": "multiple_choice",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "在车间安全警示标识中，下列哪些标识属于限制人员进入或限制手部动作的禁止类指令？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "Wear safety glasses"
+      },
+      {
+        "id": "b",
+        "text": "No entry"
+      },
+      {
+        "id": "c",
+        "text": "Emergency stop"
+      },
+      {
+        "id": "d",
+        "text": "Do not touch"
+      }
+    ],
+    "explanation": "选项 b `No entry`（禁止入内）和选项 d `Do not touch`（请勿触碰）属于禁止人员进入特定区域或禁止接触设备的指令。选项 a 属于防护装备佩戴指令，选项 c 属于应急制动装置标识。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "safety-signs-4",
+    "type": "true_false",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "在车间安全标识中，带有绿色背景或亮灯的 `Exit` 标识通常指示人员疏散的安全出口方向。",
+    "explanation": "`Exit` 的含义为“出口 / 安全出口”，在生产车间与公共场所中用于指引火灾或突发事故时的紧急疏散通道。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "safety-signs-5",
+    "type": "single_choice",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "自动化分拣台的电气控制柜周边设有黄色安全围栏，标牌提醒无关人员“闲人免进 / 请勿靠近”。该标牌的英文应为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "Danger"
+      },
+      {
+        "id": "b",
+        "text": "Warning"
+      },
+      {
+        "id": "c",
+        "text": "Caution"
+      },
+      {
+        "id": "d",
+        "text": "Keep out"
+      }
+    ],
+    "explanation": "`Keep out` 意为“闲人免进 / 请勿靠近”，用于设立隔离防线防止非作业人员靠近。选项 a、b、c 分别为危险、警告、注意等危险等级词，而非具体的隔离指令。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "can-permission-1",
+    "type": "single_choice",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "在工位交接与技能登记时，操作员想要向组长说明自己“会使用条码扫描枪”。下列哪句表达最准确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "I can using the scanner."
+      },
+      {
+        "id": "b",
+        "text": "I can to use the scanner."
+      },
+      {
+        "id": "c",
+        "text": "I can use the scanner."
+      },
+      {
+        "id": "d",
+        "text": "I can used the scanner."
+      }
+    ],
+    "explanation": "情态动词 `can` 表示能力时后接动词原形，故 `I can use the scanner.` 正确。选项 a 误用了现在分词 `using`，选项 b 错误地添加了 `to`，选项 d 误用了过去式 `used`。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "can-permission-2",
+    "type": "single_choice",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "质检员连续工作两小时后，想要礼貌地向班长申请“我可以休息一下吗？”。请选出最规范的英文问句。",
+    "options": [
+      {
+        "id": "a",
+        "text": "I can take a break?"
+      },
+      {
+        "id": "b",
+        "text": "Can I take a break?"
+      },
+      {
+        "id": "c",
+        "text": "Can I taking a break?"
+      },
+      {
+        "id": "d",
+        "text": "Can I to take a break?"
+      }
+    ],
+    "explanation": "向管理人员申请许可使用疑问句型 `Can I + 动词原形 ...?`，故 `Can I take a break?` 正确。选项 a 为陈述句语序；选项 c 动词误用了分词形式；选项 d 动词前错误添加了 `to`。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "can-permission-3",
+    "type": "multiple_choice",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "下列工位情境表达中，正确使用了情态动词 `can` 或 `can't` 的句子是哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "You can't stand here."
+      },
+      {
+        "id": "b",
+        "text": "He cans check the sensor."
+      },
+      {
+        "id": "c",
+        "text": "Can we to start the test?"
+      },
+      {
+        "id": "d",
+        "text": "She can sort twenty parts in one minute."
+      }
+    ],
+    "explanation": "选项 a `You can't stand here.` 正确使用 `can't + 动词原形` 表示此处不许站立的现场规则；选项 d 正确使用 `can + 动词原形 sort` 表达一分钟分拣二十个零件的能力。选项 b 错误地给情态动词加了第三人称单数 `cans`；选项 c 错误地在 `start` 前加了 `to`。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "can-permission-4",
+    "type": "true_false",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "句子 `The technician can fixing the sorting servo.` 语法完全正确，符合工位英语规范。",
+    "explanation": "情态动词 `can` 后面必须接动词原形 `fix`，不能接动名词或现在分词 `fixing`。规范表达应为 `The technician can fix the sorting servo.`。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "can-permission-5",
+    "type": "single_choice",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "分拣工位安全巡检员发现某员工站在了AGV自动导引小车的通道警戒线内，上前制止并说明“你不能站在这里”。正确的英文表述是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "You can't stand here."
+      },
+      {
+        "id": "b",
+        "text": "You not can stand here."
+      },
+      {
+        "id": "c",
+        "text": "You can't to stand here."
+      },
+      {
+        "id": "d",
+        "text": "You can not standing here."
+      }
+    ],
+    "explanation": "表达规则不允许做某事使用 `can't + 动词原形`，故 `You can't stand here.` 正确。选项 b 否定词位置错误；选项 c 多余添加了 `to`；选项 d 在情态动词后误用了分词 `standing`。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "reporting-problems-1",
+    "type": "single_choice",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "桌面分拣站的工业相机突然黑屏无法采集图像，质检员需要向技术员报告“摄像头出问题了”。最规范地道的工位英文是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "There are a problem with the camera."
+      },
+      {
+        "id": "b",
+        "text": "There is a problem of the camera."
+      },
+      {
+        "id": "c",
+        "text": "The camera have problem."
+      },
+      {
+        "id": "d",
+        "text": "There is a problem with the camera."
+      }
+    ],
+    "explanation": "报告某部件发生故障使用固定句型 `There is a problem with + 部件`。选项 a 中单数名词 `a problem` 误用了复数 be 动词 `are`；选项 b 介词误用了 `of`；选项 c 表达不符合英语语法习惯。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "reporting-problems-2",
+    "type": "single_choice",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "当工件卡在传送带边缘导致传送带无法转动时，操作工向现场技术员准确报告“传送带卡住了”，应使用下列哪句？",
+    "options": [
+      {
+        "id": "a",
+        "text": "The belt is stick."
+      },
+      {
+        "id": "b",
+        "text": "The belt sticking."
+      },
+      {
+        "id": "c",
+        "text": "The belt is stuck."
+      },
+      {
+        "id": "d",
+        "text": "The belt stucks."
+      }
+    ],
+    "explanation": "`stuck` 作形容词表示“卡住的、动弹不得的”，句型 `The belt is stuck.` 表示当前机械卡滞状态。选项 a 中 `stick` 为动词原形；选项 b 缺少谓语动词；选项 d 词形变化错误。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "reporting-problems-3",
+    "type": "multiple_choice",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "分拣工位发生异常，操作员需要向班长简明描述故障现象并请求技术支持。下列哪些句子表述规范准确？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "The light is no work."
+      },
+      {
+        "id": "b",
+        "text": "The light doesn't work."
+      },
+      {
+        "id": "c",
+        "text": "Please call the technician."
+      },
+      {
+        "id": "d",
+        "text": "The machine are not moving."
+      }
+    ],
+    "explanation": "选项 b `The light doesn't work.` 正确使用第三人称单数助动词否定说明指示灯不亮；选项 c `Please call the technician.` 是标准的求助祈使句。选项 a 否定句结构错误；选项 d 主语 `The machine` 为单数，be 动词误用了 `are`。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "reporting-problems-4",
+    "type": "true_false",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "句子 `The machine is not moving.` 使用现在进行时的否定形式，在分拣工位上可以准确表达“机器当前没有动作/停止运转”的故障状态。",
+    "explanation": "`is not moving` 为现在进行时的否定式，准确反映了设备在当前时刻处于停止动作、无反应的异常状态，常用于现场故障描述。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "reporting-problems-5",
+    "type": "single_choice",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "分拣员发现工件到位传感器上的绿色指示灯不亮，需要向巡检员报告“指示灯不工作”。正确的句子是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "The light not work."
+      },
+      {
+        "id": "b",
+        "text": "The light doesn't work."
+      },
+      {
+        "id": "c",
+        "text": "The light don't work."
+      },
+      {
+        "id": "d",
+        "text": "The light isn't work."
+      }
+    ],
+    "explanation": "主语 `The light` 为第三人称单数，一般现在时中实义动词 `work` 的否定式使用助动词 `doesn't + 动词原形`，故 `The light doesn't work.` 正确。选项 a 缺少助动词；选项 c 助动词人称错误；选项 d 助动词混淆了 be 动词。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  }
+]

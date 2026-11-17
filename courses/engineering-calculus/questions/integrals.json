@@ -1,0 +1,510 @@
+[
+  {
+    "id": "antiderivatives-1",
+    "type": "single_choice",
+    "chapter": "原函数与不定积分",
+    "concepts": [
+      "antiderivatives"
+    ],
+    "stem": "在质检分拣站中，步进电机的角加速度传感器检测到角速度的变化率满足 ω'(t) = 6t + 4（单位：rad/s²）。若不考虑初始条件，其角速度函数 ω(t) 的不定积分通解表达式为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "3t² + 4t + C"
+      },
+      {
+        "id": "b",
+        "text": "6t² + 4t + C"
+      },
+      {
+        "id": "c",
+        "text": "3t² + C"
+      },
+      {
+        "id": "d",
+        "text": "2t³ + 2t² + C"
+      }
+    ],
+    "explanation": "对 6t + 4 求不定积分，得 6 × (1/2)t² + 4t + C = 3t² + 4t + C。选项 b 积分时漏乘系数 1/2，选项 c 遗漏了一次项积分，选项 d 误进行了三次方的错误运算。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "antiderivatives-2",
+    "type": "single_choice",
+    "chapter": "原函数与不定积分",
+    "concepts": [
+      "antiderivatives"
+    ],
+    "stem": "传送带电机的驱动速度函数为 v(t) = 30 e^(2t)（单位：mm/s）。若工件在 t = 0 s 时的初始位移 s(0) = 25 mm，且位移满足 s'(t) = v(t)，则工件的位移函数 s(t) 表达式为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "60 e^(2t) - 35"
+      },
+      {
+        "id": "b",
+        "text": "15 e^(2t) + 10"
+      },
+      {
+        "id": "c",
+        "text": "30 e^(2t) - 5"
+      },
+      {
+        "id": "d",
+        "text": "15 e^(2t) + 25"
+      }
+    ],
+    "explanation": "位移通解为 s(t) = ∫ 30 e^(2t) dt = 15 e^(2t) + C；将初始条件 s(0) = 15(1) + C = 25 代入，解得 C = 10，因此 s(t) = 15 e^(2t) + 10。选项 a 误将指数积分算成求导乘以 2，选项 d 直接将初始值 25 作为 C 而未减去 15，选项 c 遗漏了指数系数的除法。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "antiderivatives-3",
+    "type": "multiple_choice",
+    "chapter": "原函数与不定积分",
+    "concepts": [
+      "antiderivatives"
+    ],
+    "stem": "在质检站控制系统的运动学建模中，关于函数原函数与不定积分的性质，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "若 F(t) 是速度 v(t) 的原函数，则 F(t) + 8 也是 v(t) 的原函数"
+      },
+      {
+        "id": "b",
+        "text": "任意连续函数的所有原函数之间在同一个区间上仅相差一个常数"
+      },
+      {
+        "id": "c",
+        "text": "幂函数 f(t) = t⁻¹ 在 t > 0 时的不定积分为 -t⁻² + C"
+      },
+      {
+        "id": "d",
+        "text": "若两个工件运动的加速度相同，则它们在任意时刻的速度必定完全相等"
+      }
+    ],
+    "explanation": "常数的导数为零，原函数之间相差常数其导数仍为 v(t)，且区间上同一函数的原函数族仅相差常数 C，故 a 和 b 正确。选项 c 误将积分按求导公式计算，实际原函数为 ln t + C；选项 d 忽略了初速度常数的可能差异。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "antiderivatives-4",
+    "type": "true_false",
+    "chapter": "原函数与不定积分",
+    "concepts": [
+      "antiderivatives"
+    ],
+    "stem": "在质检站推杆控制中，已知推杆的加速度函数 a(t) 以及初速度 v(0)，即可通过求不定积分并代入初值唯一确定任意时刻的速度 v(t)。",
+    "explanation": "陈述正确。加速度函数 a(t) 的不定积分包含一个任意常数 C，代入给定的初速度初始条件 v(0) = v₀ 能够唯一解出常数 C，从而确定唯一的特解 v(t)。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "antiderivatives-5",
+    "type": "numeric",
+    "chapter": "原函数与不定积分",
+    "concepts": [
+      "antiderivatives"
+    ],
+    "stem": "分拣站气动挡板在复位弹簧作用下的回弹速度为 v(t) = 12t² - 18t + 20（单位：mm/s）。已知当 t = 0 s 时挡板位置 s(0) = 10 mm，且 s'(t) = v(t)。请计算当 t = 2 s 时挡板的实际位置 s(2)（单位：mm，填入整数）。",
+    "explanation": "对速度求不定积分得位移通解 s(t) = 4t³ - 9t² + 20t + C，由 s(0) = 10 解得 C = 10。代入 t = 2 s 得 s(2) = 4(8) - 9(4) + 20(2) + 10 = 32 - 36 + 40 + 10 = 46 mm。",
+    "grading": {
+      "value": "46",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "definite-integral-1",
+    "type": "single_choice",
+    "chapter": "定积分与面积",
+    "concepts": [
+      "definite-integral"
+    ],
+    "stem": "质检站传送带在平稳调速过程中，某时段内的运行速度为 v(t) = 6t² - 4t（单位：mm/s）。利用牛顿–莱布尼茨公式计算工件在时间区间 t ∈ [1, 3]（单位：s）内的总位移为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "52 mm"
+      },
+      {
+        "id": "b",
+        "text": "44 mm"
+      },
+      {
+        "id": "c",
+        "text": "36 mm"
+      },
+      {
+        "id": "d",
+        "text": "28 mm"
+      }
+    ],
+    "explanation": "原函数为 F(t) = 2t³ - 2t²。由牛顿–莱布尼茨公式，总位移为 F(3) - F(1) = (2×27 - 2×9) - (2×1 - 2×1) = 36 - 0 = 36 mm。选项 a、b、d 均在多项式代入或求原函数系数时计算错误。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "definite-integral-2",
+    "type": "single_choice",
+    "chapter": "定积分与面积",
+    "concepts": [
+      "definite-integral"
+    ],
+    "stem": "关于定积分的几何意义与物理意义，若 v(t) 表示传送带电机的线速度（可正可负），则定积分 ∫ₐᵇ v(t) dt 在物理上和几何上分别代表：",
+    "options": [
+      {
+        "id": "a",
+        "text": "工件运动走过的实际总路程，曲线下方图形的绝对总面积"
+      },
+      {
+        "id": "b",
+        "text": "工件在时间区间内的净位移，曲线与横轴所围图形的有向面积代数和"
+      },
+      {
+        "id": "c",
+        "text": "工件在时间区间内的瞬时速度，曲线在终点切线的斜率"
+      },
+      {
+        "id": "d",
+        "text": "工件在时间区间内的平均加速度，速度曲线上两端点的割线斜率"
+      }
+    ],
+    "explanation": "定积分中正向面积与负向面积代数相加得到有向面积，对应物理上的净位移。实际总路程需对速率绝对值 |v(t)| 积分，选项 a 混淆了路程与位移；选项 c 和 d 分别对应导数和平均变化率。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "definite-integral-3",
+    "type": "multiple_choice",
+    "chapter": "定积分与面积",
+    "concepts": [
+      "definite-integral"
+    ],
+    "stem": "设 f(t) 与 g(t) 在闭区间 [a, b] 上连续，k 为非零常数。根据定积分的基本性质，下列等式必定成立的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "∫ₐᵇ [f(t) + g(t)] dt = ∫ₐᵇ f(t) dt + ∫ₐᵇ g(t) dt"
+      },
+      {
+        "id": "b",
+        "text": "∫ₐᵇ f(t) · g(t) dt = [∫ₐᵇ f(t) dt] · [∫ₐᵇ g(t) dt]"
+      },
+      {
+        "id": "c",
+        "text": "若 a < c < b，则 ∫ₐᵇ f(t) dt = ∫ₐᶜ f(t) dt + ∫(c→b) f(t) dt"
+      },
+      {
+        "id": "d",
+        "text": "∫ₐᵇ k f(t) dt = (1/k) ∫ₐᵇ f(t) dt"
+      }
+    ],
+    "explanation": "定积分具有加法线性性质以及关于积分区间的可加性，故 a 和 c 正确。选项 b 错误，乘积的积分通常不等于积分的乘积；选项 d 提常数时应为 k 倍而非 1/k。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "definite-integral-4",
+    "type": "true_false",
+    "chapter": "定积分与面积",
+    "concepts": [
+      "definite-integral"
+    ],
+    "stem": "若质检站相机检测触发信号的强度函数 I(t) 在区间 [0, 5] 上连续，且处处满足 I(t) > 0，则必定有定积分 ∫₀⁵ I(t) dt > 0。",
+    "explanation": "陈述正确。连续且处处大于零的函数，其曲线位于横轴上方，与横轴围成的面积严格为正，因此定积分严格大于零。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "definite-integral-5",
+    "type": "numeric",
+    "chapter": "定积分与面积",
+    "concepts": [
+      "definite-integral"
+    ],
+    "stem": "质检站分拣推杆电机的瞬时功率为 P(t) = 9t² - 12t + 8（单位：W）。请利用牛顿–莱布尼茨公式计算推杆在 t = 0 s 到 t = 3 s 内所消耗的总电能 W_total（单位：J，填入整数）。",
+    "explanation": "电能为功率在时间上的定积分。原函数为 F(t) = 3t³ - 6t² + 8t，代入区间 [0, 3] 计算得 F(3) - F(0) = (3×27 - 6×9 + 8×3) - 0 = 81 - 54 + 24 = 51 J。",
+    "grading": {
+      "value": "51",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "integration-techniques-1",
+    "type": "single_choice",
+    "chapter": "换元积分与分部积分",
+    "concepts": [
+      "integration-techniques"
+    ],
+    "stem": "质检站光学测距探头的热敏漂移电压信号满足 v(t) = 6t (t² + 1)²（单位：mV）。若采用第一类换元法（凑微分法）求其不定积分 ∫ 6t (t² + 1)² dt，令中间变量 u = t² + 1，则化简后的积分结果为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "3 (t² + 1)³ + C"
+      },
+      {
+        "id": "b",
+        "text": "2 (t² + 1)³ + C"
+      },
+      {
+        "id": "c",
+        "text": "(1/3) (t² + 1)³ + C"
+      },
+      {
+        "id": "d",
+        "text": "(t² + 1)³ + C"
+      }
+    ],
+    "explanation": "令 u = t² + 1，则 du = 2t dt，因此 6t dt = 3 du。原式转化为 ∫ 3u² du = u³ + C = (t² + 1)³ + C。选项 a 积分时漏除以幂指数 3，选项 b 与 c 在凑微分系数对应时代数运算错误。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "integration-techniques-2",
+    "type": "single_choice",
+    "chapter": "换元积分与分部积分",
+    "concepts": [
+      "integration-techniques"
+    ],
+    "stem": "分拣工位气阀开启过程中的流速满足 f(t) = 8t e^(4t)（单位：L/s）。利用分部积分公式 ∫ u dv = uv - ∫ v du 计算不定积分 ∫ 8t e^(4t) dt 时，若选取 u = 8t，dv = e^(4t) dt，则计算得到的原函数表达式为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "2t e^(4t) - (1/2) e^(4t) + C"
+      },
+      {
+        "id": "b",
+        "text": "8t e^(4t) - 2 e^(4t) + C"
+      },
+      {
+        "id": "c",
+        "text": "2t e^(4t) + (1/2) e^(4t) + C"
+      },
+      {
+        "id": "d",
+        "text": "32t e^(4t) - 8 e^(4t) + C"
+      }
+    ],
+    "explanation": "由 u = 8t 得 du = 8 dt，由 dv = e^(4t) dt 得 v = (1/4) e^(4t)。代入公式得 8t × (1/4)e^(4t) - ∫ (1/4)e^(4t) × 8 dt = 2t e^(4t) - (1/2)e^(4t) + C。选项 c 符号错误，选项 b 积分 dv 时漏除以 4，选项 d 误将积分算成了求导。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "integration-techniques-3",
+    "type": "multiple_choice",
+    "chapter": "换元积分与分部积分",
+    "concepts": [
+      "integration-techniques"
+    ],
+    "stem": "在工控算法中应用换元积分与分部积分处理信号模型时，下列运算规则与操作正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "采用定积分换元法完成换元换限后，在最后一步必须将 u 反代回原来的变量 t 才能代入上下限"
+      },
+      {
+        "id": "b",
+        "text": "应用定积分换元法时，若将积分变量 t 替换为 u = g(t)，则积分上下限必须同步换为 g(a) 和 g(b)"
+      },
+      {
+        "id": "c",
+        "text": "对于形如 ∫ t cos t dt 的积分，应优先选取 u = cos t，dv = t dt 进行化简"
+      },
+      {
+        "id": "d",
+        "text": "分部积分公式 ∫ u dv = uv - ∫ v du 在定积分中的形式为 [uv]ₐᵇ - ∫ₐᵇ v du"
+      }
+    ],
+    "explanation": "定积分换元法换元必须同步换限，换限后直接代入新限计算无须反代，故 b 正确、a 错误；定积分分部积分两部分均需应用上下限，d 正确；选项 c 若选 dv = t dt 会导致多项式升幂更加繁琐。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "integration-techniques-4",
+    "type": "true_false",
+    "chapter": "换元积分与分部积分",
+    "concepts": [
+      "integration-techniques"
+    ],
+    "stem": "在利用定积分换元法计算 ∫₀¹ 2t (t² + 3)⁴ dt 时，若令 u = t² + 3 完成换限与换元，求得关于 u 的原函数后，必须再将 u 替换回 t² + 3 并代入原积分上下限 0 和 1 才能得到正确结果。",
+    "explanation": "陈述错误。定积分换元法换元必须同时换限，换限后的定积分只需直接代入新变量 u 的上下限（3 与 4）计算即可，无须也不应该再将变量反代回原自变量。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "integration-techniques-5",
+    "type": "numeric",
+    "chapter": "换元积分与分部积分",
+    "concepts": [
+      "integration-techniques"
+    ],
+    "stem": "质检站视觉检测相机的进给电机在对焦过程中的输入功率满足 P(t) = 12t (t² + 1)²（单位：mW）。请利用定积分换元法计算电动机从 t = 0 s 到 t = 1 s 内消耗的电能 W（单位：mJ，填入整数）。",
+    "explanation": "W = ∫₀¹ 12t (t² + 1)² dt。令 u = t² + 1，则 du = 2t dt，12t dt = 6 du。积分限由 [0, 1] 换为 [1, 2]。因此 W = ∫₁² 6u² du = [2u³]₁² = 2(8) - 2(1) = 16 - 2 = 14 mJ。",
+    "grading": {
+      "value": "14",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "numerical-integration-1",
+    "type": "single_choice",
+    "chapter": "数值积分",
+    "concepts": [
+      "numerical-integration"
+    ],
+    "stem": "质检站单片机以固定时间间隔 h 采集传送带位移速度数据，并使用复合梯形法则估算工件的总位移。在复合梯形求和公式中，关于首末两点与中间各采样点权重的描述，正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "所有采样点的权重完全相同，均为 1"
+      },
+      {
+        "id": "b",
+        "text": "首末两个采样点的权重为 1，中间所有采样点的权重均为 2"
+      },
+      {
+        "id": "c",
+        "text": "首末两个采样点的权重为 2，中间所有采样点的权重均为 1"
+      },
+      {
+        "id": "d",
+        "text": "奇数序号采样点的权重为 2，偶数序号采样点的权重为 4"
+      }
+    ],
+    "explanation": "复合梯形公式为 (h/2)[f(t₀) + 2f(t₁) + ... + 2f(tₙ₋₁) + f(tₙ)]，首末采样点属于单个区间故权重为 1，中间点属于相邻两区间累加后权重为 2。选项 a 为矩形法特征，选项 c 颠倒了权重，选项 d 为辛普森法则特征。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "numerical-integration-2",
+    "type": "single_choice",
+    "chapter": "数值积分",
+    "concepts": [
+      "numerical-integration"
+    ],
+    "stem": "质检站数据记录系统保存了传送带运行功率的离散 CSV 数据。若使用复合梯形法则计算累计能耗，理论上当采样周期 h 由 0.2 s 缩短至 0.1 s（采样频率提高一倍）时，数值积分的截断误差约为原来的：",
+    "options": [
+      {
+        "id": "a",
+        "text": "二分之一"
+      },
+      {
+        "id": "b",
+        "text": "三分之一"
+      },
+      {
+        "id": "c",
+        "text": "四分之一"
+      },
+      {
+        "id": "d",
+        "text": "八分之一"
+      }
+    ],
+    "explanation": "复合梯形法则具有二阶精度，截断误差与步长的平方 h² 成正比。当步长 h 减半时，误差减少为 (1/2)² = 1/4。选项 a 混淆了矩形法的一阶精度，选项 d 误套用了三阶精度公式。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "numerical-integration-3",
+    "type": "multiple_choice",
+    "chapter": "数值积分",
+    "concepts": [
+      "numerical-integration"
+    ],
+    "stem": "在工控现场利用离散采样数据估算累计量时，关于数值积分与梯形法则的应用特点，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "梯形法则只能在已知连续函数解析表达式时使用，无法处理 CSV 离散表格数据"
+      },
+      {
+        "id": "b",
+        "text": "梯形法则在每个子区间上用连接两端点的割线代替曲线，以直角梯形面积近似曲边梯形面积"
+      },
+      {
+        "id": "c",
+        "text": "只要传感器采样频率足够高、步长 h 足够小，复合梯形法则就能满足绝大多数工程累计量的精度要求"
+      },
+      {
+        "id": "d",
+        "text": "使用梯形法则时，无论采样间隔如何变化，计算公式前端的系数始终固定为 (1/2) 且与步长 h 无关"
+      }
+    ],
+    "explanation": "梯形法则的几何本质是用割线近似曲线，截断误差为 O(h²)，在高频采样下能提供高精度估算，故 b 和 c 正确。选项 a 错误，梯形法则正是处理离散数据的标准算法；选项 d 错误，系数包含步长因子 h/2。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "numerical-integration-4",
+    "type": "true_false",
+    "chapter": "数值积分",
+    "concepts": [
+      "numerical-integration"
+    ],
+    "stem": "在质检站单片机中，若将复合梯形法则估算程序中的采样步长 h 减小一半，则单片机在同一时间跨度内需要读取并计算的采样数据点数量将减少一半。",
+    "explanation": "陈述错误。采样步长 h 减小一半意味着采样周期缩短一半、采样频率翻倍，在相同的总时间跨度内采集和处理的数据点数量将增加为原来的两倍，而不是减少。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "numerical-integration-5",
+    "type": "numeric",
+    "chapter": "数值积分",
+    "concepts": [
+      "numerical-integration"
+    ],
+    "stem": "质检站物料到位后，气动顶升缸在提升工件时，PLC 以固定周期 h = 0.1 s 记录其实时提升速度。在 t 从 0 s 到 0.4 s 内记录的 5 个等间隔采样点速度依次为：v₀ = 0 mm/s，v₁ = 30 mm/s，v₂ = 50 mm/s，v₃ = 40 mm/s，v₄ = 20 mm/s。请使用复合梯形法则估算气缸在这 0.4 s 内的累计提升高度 H（单位：mm，填入整数）。",
+    "explanation": "步长 h = 0.1 s。根据复合梯形法则，累计提升高度为 H = (0.1 / 2) × [0 + 2×30 + 2×50 + 2×40 + 20] = 0.05 × [60 + 100 + 80 + 20] = 0.05 × 260 = 13 mm。",
+    "grading": {
+      "value": "13",
+      "absolute_tolerance": "0"
+    }
+  }
+]

@@ -1,0 +1,488 @@
+{
+  "protocol_version": 1,
+  "course_id": "engineering-calculus",
+  "version": "1.1.0",
+  "title": "高等数学（工程应用）",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "函数与变化率",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "函数与变化率",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "functions-review",
+          "title": "函数与常见函数",
+          "summary": "定义域与值域，多项式、指数、对数、正弦函数的图像与性质，复合函数",
+          "estimated_minutes": 60,
+          "lesson": "intro"
+        },
+        {
+          "id": "average-rate",
+          "title": "平均变化率",
+          "summary": "Δy/Δx，割线斜率，平均速度 = 位移/时间，由数据表计算",
+          "estimated_minutes": 55,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "functions-review"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "limits",
+          "title": "极限的直观理解",
+          "summary": "数值逼近与图像，左右极限，常见极限的计算，无穷大与无穷小",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "average-rate"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "continuity",
+          "title": "连续性",
+          "summary": "连续的含义，间断点，分段函数在分界点处的连续性",
+          "estimated_minutes": 45,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "limits"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "derivatives",
+      "title": "导数",
+      "question_file": "questions/derivatives.json",
+      "lessons": [
+        {
+          "id": "derivatives",
+          "title": "导数",
+          "file": "lessons/derivatives.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "derivative-definition",
+          "title": "导数的定义与意义",
+          "summary": "f'(x) = lim (f(x+h) − f(x))/h，瞬时变化率，切线斜率，单位",
+          "estimated_minutes": 75,
+          "lesson": "derivatives",
+          "prerequisites": [
+            {
+              "all_of": [
+                "limits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "derivative-rules",
+          "title": "求导法则",
+          "summary": "幂函数、常数倍、和差、乘积与商的求导法则",
+          "estimated_minutes": 85,
+          "lesson": "derivatives",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-definition"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chain-rule",
+          "title": "复合函数求导",
+          "summary": "链式法则 dy/dx = dy/du · du/dx，识别内层与外层函数",
+          "estimated_minutes": 75,
+          "lesson": "derivatives",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transcendental-derivatives",
+          "title": "指数、对数与三角函数的导数",
+          "summary": "(eˣ)' = eˣ，(ln x)' = 1/x，(sin x)' = cos x，(cos x)' = −sin x，与链式法则结合",
+          "estimated_minutes": 70,
+          "lesson": "derivatives",
+          "prerequisites": [
+            {
+              "all_of": [
+                "chain-rule"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "derivative-applications",
+      "title": "导数的应用",
+      "question_file": "questions/derivative-applications.json",
+      "lessons": [
+        {
+          "id": "derivative-applications",
+          "title": "导数的应用",
+          "file": "lessons/derivative-applications.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "monotonicity-extrema",
+          "title": "单调性与极值",
+          "summary": "导数符号与单调性，驻点，极大值与极小值，闭区间上的最值",
+          "estimated_minutes": 80,
+          "lesson": "derivative-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "optimization",
+          "title": "最优化问题",
+          "summary": "建立目标函数，求材料最省、面积最大、时间最短等问题",
+          "estimated_minutes": 80,
+          "lesson": "derivative-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "monotonicity-extrema"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "linear-approximation",
+          "title": "线性近似与微分",
+          "summary": "Δy ≈ f'(x)Δx，用微分估计测量误差的传递",
+          "estimated_minutes": 60,
+          "lesson": "derivative-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-definition"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "related-rates",
+          "title": "速度、加速度与相关变化率",
+          "summary": "位置、速度、加速度的导数关系，两个随时间变化的量之间的变化率",
+          "estimated_minutes": 60,
+          "lesson": "derivative-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "chain-rule"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "integrals",
+      "title": "积分",
+      "question_file": "questions/integrals.json",
+      "lessons": [
+        {
+          "id": "integrals",
+          "title": "积分",
+          "file": "lessons/integrals.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "antiderivatives",
+          "title": "原函数与不定积分",
+          "summary": "原函数，基本积分公式，积分常数 C，由初始条件确定 C",
+          "estimated_minutes": 70,
+          "lesson": "integrals",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "definite-integral",
+          "title": "定积分与面积",
+          "summary": "黎曼和的思想，牛顿–莱布尼茨公式，有向面积，积分的线性性质",
+          "estimated_minutes": 80,
+          "lesson": "integrals",
+          "prerequisites": [
+            {
+              "all_of": [
+                "antiderivatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "integration-techniques",
+          "title": "换元积分与分部积分",
+          "summary": "第一类换元法，分部积分 ∫u dv = uv − ∫v du，定积分换元换限",
+          "estimated_minutes": 85,
+          "lesson": "integrals",
+          "prerequisites": [
+            {
+              "all_of": [
+                "definite-integral",
+                "chain-rule"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "numerical-integration",
+          "title": "数值积分",
+          "summary": "梯形法则，由等间隔采样数据估计累计量，步长与误差",
+          "estimated_minutes": 60,
+          "lesson": "integrals",
+          "prerequisites": [
+            {
+              "all_of": [
+                "definite-integral"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "integral-applications",
+      "title": "积分的应用",
+      "question_file": "questions/integral-applications.json",
+      "lessons": [
+        {
+          "id": "integral-applications",
+          "title": "积分的应用",
+          "file": "lessons/integral-applications.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "accumulation",
+          "title": "累计量与净位移",
+          "summary": "速度积分得净位移，速率积分得总路程，流量积分得体积",
+          "estimated_minutes": 70,
+          "lesson": "integral-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "definite-integral"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "average-value",
+          "title": "函数的平均值",
+          "summary": "平均值 = (1/(b − a))∫ₐᵇ f(x) dx，平均功率与平均温度",
+          "estimated_minutes": 50,
+          "lesson": "integral-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "definite-integral"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "area-volume-work",
+          "title": "面积、体积与功",
+          "summary": "两曲线间的面积，旋转体体积（圆盘法），变力做功",
+          "estimated_minutes": 60,
+          "lesson": "integral-applications",
+          "prerequisites": [
+            {
+              "all_of": [
+                "definite-integral"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "differential-equations",
+      "title": "一阶微分方程",
+      "question_file": "questions/differential-equations.json",
+      "lessons": [
+        {
+          "id": "differential-equations",
+          "title": "一阶微分方程",
+          "file": "lessons/differential-equations.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "ode-basics",
+          "title": "微分方程的基本概念",
+          "summary": "微分方程、阶、解，初值条件，验证一个函数是否为解",
+          "estimated_minutes": 55,
+          "lesson": "differential-equations",
+          "prerequisites": [
+            {
+              "all_of": [
+                "antiderivatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "separable-odes",
+          "title": "可分离变量方程",
+          "summary": "分离变量后两边积分，指数增长与衰减，冷却过程",
+          "estimated_minutes": 75,
+          "lesson": "differential-equations",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ode-basics",
+                "integration-techniques"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "first-order-response",
+          "title": "一阶线性系统与时间常数",
+          "summary": "τ·dy/dt + y = K·u 的阶跃响应 y = K·u·(1 − e^(−t/τ))，t = τ 时约 63.2%，约 5τ 达到稳态",
+          "estimated_minutes": 85,
+          "lesson": "differential-equations",
+          "prerequisites": [
+            {
+              "all_of": [
+                "separable-odes",
+                "transcendental-derivatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "euler-method",
+          "title": "欧拉法数值求解",
+          "summary": "yₙ₊₁ = yₙ + h·f(tₙ, yₙ)，步长对精度的影响，用表格逐步计算",
+          "estimated_minutes": 60,
+          "lesson": "differential-equations",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ode-basics"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "multivariable",
+      "title": "多元函数入门",
+      "question_file": "questions/multivariable.json",
+      "lessons": [
+        {
+          "id": "multivariable",
+          "title": "多元函数入门",
+          "file": "lessons/multivariable.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "partial-derivatives",
+          "title": "偏导数",
+          "summary": "多元函数，对一个变量求导时其他变量看作常数，偏导数的意义",
+          "estimated_minutes": 60,
+          "lesson": "multivariable",
+          "prerequisites": [
+            {
+              "all_of": [
+                "derivative-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gradient",
+          "title": "梯度与方向",
+          "summary": "梯度向量，函数增长最快的方向，梯度下降的思路",
+          "estimated_minutes": 60,
+          "lesson": "multivariable",
+          "prerequisites": [
+            {
+              "all_of": [
+                "partial-derivatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "taylor-series",
+          "title": "泰勒展开入门",
+          "summary": "在一点附近用多项式近似函数，eˣ、sin x 的前几项，截断误差的直观意义",
+          "estimated_minutes": 55,
+          "lesson": "multivariable",
+          "prerequisites": [
+            {
+              "all_of": [
+                "linear-approximation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sampling-curve-lab",
+          "title": "位置与速度曲线采样（自评）",
+          "summary": "用表格按 0.5 s 间隔计算 x(t) = t² 和 v(t) = 2t，比较相邻采样点的平均速度与区间中点的瞬时速度。",
+          "estimated_minutes": 60,
+          "lesson": "multivariable",
+          "prerequisites": [
+            {
+              "all_of": [
+                "average-rate",
+                "derivative-definition"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "从导数、积分和常微分方程理解速度、累计量与设备响应。"
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "counting-1",
+    "type": "numeric",
+    "chapter": "计数",
+    "concepts": [
+      "counting"
+    ],
+    "stem": "数一数：●●● 有几个点？",
+    "explanation": "共有 3 个点。",
+    "grading": {
+      "value": "3",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "counting-2",
+    "type": "numeric",
+    "chapter": "计数",
+    "concepts": [
+      "counting"
+    ],
+    "stem": "数一数：▲▲▲▲ 有几个三角形？",
+    "explanation": "共有 4 个三角形。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "counting-3",
+    "type": "numeric",
+    "chapter": "计数",
+    "concepts": [
+      "counting"
+    ],
+    "stem": "数一数：■■ 有几个方块？",
+    "explanation": "共有 2 个方块。",
+    "grading": {
+      "value": "2",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "addition-1",
+    "type": "numeric",
+    "chapter": "加法",
+    "concepts": [
+      "addition"
+    ],
+    "stem": "计算 2 + 3。",
+    "explanation": "2 加 3 等于 5。",
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "addition-2",
+    "type": "numeric",
+    "chapter": "加法",
+    "concepts": [
+      "addition"
+    ],
+    "stem": "计算 4 + 4。",
+    "explanation": "4 加 4 等于 8。",
+    "grading": {
+      "value": "8",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "addition-3",
+    "type": "numeric",
+    "chapter": "加法",
+    "concepts": [
+      "addition"
+    ],
+    "stem": "计算 1 + 6。",
+    "explanation": "1 加 6 等于 7。",
+    "grading": {
+      "value": "7",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "subtraction-1",
+    "type": "numeric",
+    "chapter": "减法",
+    "concepts": [
+      "subtraction"
+    ],
+    "stem": "计算 9 - 4。",
+    "explanation": "9 减 4 等于 5。",
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "subtraction-2",
+    "type": "numeric",
+    "chapter": "减法",
+    "concepts": [
+      "subtraction"
+    ],
+    "stem": "计算 7 - 2。",
+    "explanation": "7 减 2 等于 5。",
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "subtraction-3",
+    "type": "numeric",
+    "chapter": "减法",
+    "concepts": [
+      "subtraction"
+    ],
+    "stem": "计算 6 - 6。",
+    "explanation": "6 减 6 等于 0。",
+    "grading": {
+      "value": "0",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "warm-up",
+    "type": "single_choice",
+    "chapter": "热身",
+    "stem": "哪个数最大？",
+    "options": [
+      {
+        "id": "a",
+        "text": "2"
+      },
+      {
+        "id": "b",
+        "text": "9"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      }
+    ],
+    "explanation": "9 最大。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  }
+]

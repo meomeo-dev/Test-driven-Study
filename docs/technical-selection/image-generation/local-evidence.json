@@ -1,0 +1,172 @@
+{
+  "review_date": "2026-11-01",
+  "source": "futuristic_viz/data",
+  "source_hashes": {
+    "meta.json": "da4e366331dcc712848762f6bf08f39ddbdd0f31d12149ad1e3df729eaaa99d5",
+    "curated.json": "4cf3206981566566ba8ea61d05655accf84eecd667fb59838db171239a3e8123",
+    "repos.json": "522f6e5cf93a662dc7a2299426589e0aad634b21911f7a528bc2ae2d94fd5c63",
+    "repo_scans.json": "422cfb017db0a4dfdec891de5491f74a5ff92269b473af73aa3c97859c8b4af9",
+    "js_frequency.json": "6e4434815ca0ff05d20e88311c51405285a6dd4e68595a22df74064c59a9cbfd",
+    "py_frequency.json": "eb0884a40ac73cb6f3cb1deb7c82bb129297114455f6204745ed4eb05196c76b"
+  },
+  "repo_records": 2849,
+  "scan_records": 2395,
+  "limitations": [
+    "No dedicated image-generation category in curated.json.",
+    "Dependency presence does not prove image-API usage or versions.",
+    "Empty extracted hits do not prove dependency absence."
+  ],
+  "observations": [
+    {
+      "repo": "ItzCrazyKns/Vane",
+      "batch": "first",
+      "dependency_file": "master:package.json",
+      "matched_dependencies": [
+        "@google/genai",
+        "openai"
+      ]
+    },
+    {
+      "repo": "simstudioai/sim",
+      "batch": "first",
+      "dependency_file": "main:apps/sim/package.json",
+      "matched_dependencies": [
+        "@google/genai",
+        "openai"
+      ]
+    },
+    {
+      "repo": "vercel/ai",
+      "batch": "first",
+      "dependency_file": "main:packages/ai/package.json",
+      "matched_dependencies": [
+        "@ai-sdk/amazon-bedrock",
+        "@ai-sdk/deepseek",
+        "@ai-sdk/gateway",
+        "@ai-sdk/google",
+        "@ai-sdk/groq",
+        "@ai-sdk/huggingface",
+        "@ai-sdk/moonshotai",
+        "@ai-sdk/openai",
+        "@ai-sdk/provider",
+        "@ai-sdk/provider-utils",
+        "@ai-sdk/test-server",
+        "@ai-sdk/xai"
+      ]
+    },
+    {
+      "repo": "dyad-sh/dyad",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@ai-sdk/amazon-bedrock",
+        "@ai-sdk/anthropic",
+        "@ai-sdk/azure",
+        "@ai-sdk/google",
+        "@ai-sdk/google-vertex",
+        "@ai-sdk/mcp",
+        "@ai-sdk/openai",
+        "@ai-sdk/openai-compatible",
+        "@ai-sdk/provider-utils",
+        "@ai-sdk/xai",
+        "ai"
+      ]
+    },
+    {
+      "repo": "di-sukharev/opencommit",
+      "batch": "first",
+      "dependency_file": "master:package.json",
+      "matched_dependencies": [
+        "openai"
+      ]
+    },
+    {
+      "repo": "mishushakov/llm-scraper",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@ai-sdk/openai",
+        "@ai-sdk/provider",
+        "ai"
+      ]
+    },
+    {
+      "repo": "askrella/whatsapp-chatgpt",
+      "batch": "first",
+      "dependency_file": "master:package.json",
+      "matched_dependencies": [
+        "openai"
+      ]
+    },
+    {
+      "repo": "cogentapps/chat-with-gpt",
+      "batch": "first",
+      "dependency_file": "main:app/package.json",
+      "matched_dependencies": [
+        "openai"
+      ]
+    },
+    {
+      "repo": "PragmaticMachineLearning/probly",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "openai"
+      ]
+    },
+    {
+      "repo": "felladrin/MiniSearch",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@ai-sdk/openai-compatible",
+        "ai"
+      ]
+    },
+    {
+      "repo": "agnt-gg/agnt",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@google/genai",
+        "openai"
+      ]
+    },
+    {
+      "repo": "ai-ng/2txt",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@ai-sdk/openai",
+        "@ai-sdk/react",
+        "ai"
+      ]
+    },
+    {
+      "repo": "OpenAssistantGPT/OpenAssistantGPT",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "ai",
+        "openai"
+      ]
+    },
+    {
+      "repo": "Kong/volcano-agent-sdk",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "openai"
+      ]
+    },
+    {
+      "repo": "Jamessdevops/micracode",
+      "batch": "first",
+      "dependency_file": "main:package.json",
+      "matched_dependencies": [
+        "@ai-sdk/react",
+        "ai"
+      ]
+    }
+  ]
+}

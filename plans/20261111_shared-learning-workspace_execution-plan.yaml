@@ -1,0 +1,548 @@
+schema_version: 1
+id: shared-learning-workspace
+title: Unify the learning workspace across courses
+status: completed
+progress_revision: 40
+created_at: 2026-11-11
+updated_at: 2026-11-11
+source_assessment: docs/features/course-platform/shared-learning-workspace.md
+objective: Run the full Yunnan driving learning experience for every installed
+  course through shared feature code and isolated course data.
+execution_contract:
+  scheduling: serial
+  max_in_progress_work_units: 1
+  unit_definition: One independently verified and recoverable change.
+  completion_rule: Complete all four phases before starting the next unit.
+  forbidden_batching:
+    - Complete each work unit before dispatching its successor.
+  change_boundary:
+    - Use the primary checkout and ordinary issue branch.
+    - Run against isolated data and local provider fixtures.
+  mode: plan-todo
+phase_contract:
+  order:
+    - prepare
+    - migrate
+    - verify
+    - close
+  status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  transition_rules:
+    - Complete phases in order.
+  required_progress_fields:
+    - status
+    - started_at
+    - completed_at
+    - evidence
+    - notes
+  update_protocol:
+    before_phase:
+      - Increment progress_revision and set the active phase.
+    after_phase:
+      - Record evidence and update recovery.
+    on_blocked:
+      - Record the blocker and its recovery condition.
+    after_compaction:
+      - Resume from recovery.next_action.
+status_model:
+  work_unit_status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  plan_status_enum:
+    - draft
+    - ready
+    - in-progress
+    - completed
+    - blocked
+  optional_unit_rule: Optional units require an explicit activation decision.
+resume:
+  current_work_unit: null
+  active_todo: null
+  current_phase: null
+  last_completed_work_unit: WU-004
+  next_work_unit: null
+  next_action: PLAN completed; no further work unit is pending.
+  last_checkpoint: WU-004.close.completed
+  blockers: []
+invariants:
+  - id: I-001
+    statement: All courses share the study, review, exam, guide and AI workflows.
+  - id: I-002
+    statement: Questions, learner state, media and AI history resolve within the
+      selected course.
+  - id: I-003
+    statement: Legacy records retain their identity, grading, timestamps, and
+      recovery semantics.
+  - id: I-004
+    statement: Course packages contain data and the application owns execution and
+      provider policy.
+verification_profiles:
+  identity:
+    automated:
+      - command: npm run test:go
+        expected: The work unit's independent acceptance passes.
+    manual_tier: focused
+  workspace:
+    automated:
+      - command: npm run typecheck and focused browser checks
+        expected: The work unit's independent acceptance passes.
+    manual_tier: focused
+  features:
+    automated:
+      - command: Go tests and focused exam and AI browser checks
+        expected: The work unit's independent acceptance passes.
+    manual_tier: focused
+  release:
+    automated:
+      - command: npm run check
+        expected: The work unit's independent acceptance passes.
+    manual_tier: full
+manual_gates:
+  focused:
+    - Review actual changes, isolated acceptance and rollback.
+  full:
+    - Verify feature parity, scoped persistence, and recovery across courses.
+baseline:
+  captured_at: 2026-11-11
+  git_head: db50f036a36cbb3ca80ce74a6e21ee36dcc1d2fb
+  working_tree_note: Clean main at db50f03 before saving the approved design. The
+    learner's running application is kept separate from tests.
+  results:
+    route: PLAN-TODO[*]
+    estimated_minutes: 450
+work_units:
+  - id: WU-001
+    title: Course-scoped identities and history
+    activation: required
+    status: completed
+    depends_on: []
+    todo_binding:
+      required: true
+      rationale: Preserve changes and acceptance across interrupted execution.
+      creation_phase: prepare
+    verification_profile: identity
+    intent: Attach persistent item and unit identities to installed packages and
+      consolidate existing typed practice history.
+    file_group:
+      modify:
+        - internal/storage/
+        - internal/study/
+        - db/
+    phase_requirements:
+      prepare:
+        - Confirm contracts, affected paths, and compatibility checks.
+      migrate:
+        - Attach persistent item and unit identities to installed packages and
+          consolidate existing typed practice history.
+      verify:
+        - A migrated database keeps original grades, deadlines and references,
+          and overlapping course IDs remain isolated.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - A migrated database keeps original grades, deadlines and references, and
+        overlapping course IDs remain isolated.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T10:04:00.672Z
+        completed_at: 2026-11-11T10:04:02.055Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Inventory original question foreign keys, course version mapping,
+            immutable practice rows and subject-specific exam constraints.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T10:04:03.512Z
+        completed_at: 2026-11-11T10:09:47.762Z
+        evidence:
+          - Migration 11 and history import are ready for isolated validation.
+          - Stored snapshots in an additive table and corrected the migration 4
+            fixture to start at its actual baseline.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T10:09:49.460Z
+        completed_at: 2026-11-11T10:10:20.298Z
+        evidence:
+          - All other Go packages passed. Two storage fixtures failed while
+            constructing legacy data.
+          - Go packages passed after rerunning storage with corrected historical
+            fixtures. Added proof of stable overlapping item IDs and single
+            import of an existing numeric grade.
+        notes:
+          - "Blocked: Historical test construction used current generated
+            practice columns and an already projected generic bank."
+      close:
+        status: completed
+        started_at: 2026-11-11T10:10:22.168Z
+        completed_at: 2026-11-11T10:10:24.757Z
+        evidence:
+          - Migration verified against historical fixtures and repeated startup.
+          - "Independent acceptance passed: A migrated database keeps original
+            grades, deadlines and references, and overlapping course IDs remain
+            isolated."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-001.close.
+      changed_files:
+        - internal/storage/migrations/00011_shared_workspace.sql
+        - internal/storage/workspace.go
+      rollback_ref: 21d21e4
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain feature parity and scope.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the shared application.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify course isolation and compatibility.
+  - id: WU-002
+    title: Shared workspace and typed practice
+    activation: required
+    status: completed
+    depends_on:
+      - WU-001
+    todo_binding:
+      required: true
+      rationale: Preserve changes and acceptance across interrupted execution.
+      creation_phase: prepare
+    verification_profile: workspace
+    intent: Route both courses to the existing study pages and use their complete
+      typed practice, memorization, analysis and review flows.
+    file_group:
+      modify:
+        - web/
+        - internal/study/
+        - internal/httpapi/
+        - contracts/http/
+    phase_requirements:
+      prepare:
+        - Confirm contracts, affected paths, and compatibility checks.
+      migrate:
+        - Route both courses to the existing study pages and use their complete
+          typed practice, memorization, analysis and review flows.
+      verify:
+        - Both courses use the same study shell and rich practice and review
+          flow.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - Both courses use the same study shell and rich practice and review flow.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T10:10:26.053Z
+        completed_at: 2026-11-11T10:10:27.469Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Use existing study pages and rich shared attempts. Keep versioned
+            snapshots and a numeric answer control.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T10:10:29.167Z
+        completed_at: 2026-11-11T10:15:26.795Z
+        evidence:
+          - Both courses route to the same study shell, grader and history.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T10:15:28.617Z
+        completed_at: 2026-11-11T10:16:39.629Z
+        evidence:
+          - Typecheck and two browser cases passed. The existing sidebar and
+            exercise page work for both courses; numeric results appear in the
+            shared review book.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T10:16:41.249Z
+        completed_at: 2026-11-11T10:16:44.046Z
+        evidence:
+          - Verified shared sidebar, numeric entry and review book.
+          - "Independent acceptance passed: Both courses use the same study
+            shell and rich practice and review flow."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-002.close.
+      changed_files:
+        - web/src/app/workspace.ts
+        - internal/study/answers.go
+        - web/src/features/courses/CoursePages.tsx
+      rollback_ref: 427eec0
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain feature parity and scope.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the shared application.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify course isolation and compatibility.
+  - id: WU-003
+    title: Shared exam, guide and AI
+    activation: required
+    status: completed
+    depends_on:
+      - WU-002
+    todo_binding:
+      required: true
+      rationale: Preserve changes and acceptance across interrupted execution.
+      creation_phase: prepare
+    verification_profile: features
+    intent: Make the exam terminal, guide, assistant, palace and durable tasks
+      resolve content in the selected course.
+    file_group:
+      modify:
+        - internal/study/
+        - internal/llm/
+        - internal/palace/
+        - internal/httpapi/
+        - web/
+    phase_requirements:
+      prepare:
+        - Confirm contracts, affected paths, and compatibility checks.
+      migrate:
+        - Make the exam terminal, guide, assistant, palace and durable tasks
+          resolve content in the selected course.
+      verify:
+        - A question-only course reaches the same exam, guide and AI features
+          with shared defaults.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - A question-only course reaches the same exam, guide and AI features with
+        shared defaults.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T10:16:45.291Z
+        completed_at: 2026-11-11T10:16:46.728Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Keep one exam terminal and provider configuration. Add default
+            rules, guides and teaching material by course, preserving recorded
+            paper and task behavior.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T10:16:48.382Z
+        completed_at: 2026-11-11T12:35:15.657Z
+        evidence:
+          - Shared exam, guide, tutor and memory palace routes are wired with
+            generic course data.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T12:35:17.455Z
+        completed_at: 2026-11-11T12:38:38.411Z
+        evidence:
+          - Go tests and 23 focused browser scenarios passed across the exam,
+            guide and assistant runs. An earlier local provider fixture failure
+            was corrected and all affected cases passed on retry.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T12:38:39.995Z
+        completed_at: 2026-11-11T12:39:02.160Z
+        evidence:
+          - The shared feature routes work with package content and preserve
+            driving exam and AI behavior.
+          - "Independent acceptance passed: A question-only course reaches the
+            same exam, guide and AI features with shared defaults."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-003.close.
+      changed_files:
+        - internal/study/exam_rules.go
+        - internal/study/guide.go
+        - tests/browser/courses.spec.ts
+      rollback_ref: f91a80b
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain feature parity and scope.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the shared application.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify course isolation and compatibility.
+  - id: WU-004
+    title: Compatibility cutover and acceptance
+    activation: required
+    status: completed
+    depends_on:
+      - WU-003
+    todo_binding:
+      required: true
+      rationale: Preserve changes and acceptance across interrupted execution.
+      creation_phase: prepare
+    verification_profile: release
+    intent: Retire the simplified workspace, confirm both courses share feature
+      routes and verify a third installed package.
+    file_group:
+      modify:
+        - web/
+        - contracts/
+        - courses/
+        - tests/
+        - README.md
+        - handoff.md
+    phase_requirements:
+      prepare:
+        - Confirm contracts, affected paths, and compatibility checks.
+      migrate:
+        - Retire the simplified workspace, confirm both courses share feature
+          routes and verify a third installed package.
+      verify:
+        - One acceptance suite covers both bundled courses and a third
+          question-only course, with historical recovery intact.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - One acceptance suite covers both bundled courses and a third
+        question-only course, with historical recovery intact.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T12:39:16.240Z
+        completed_at: 2026-11-11T12:39:17.657Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Retire the lightweight runtime and test a third question-only
+            package through the same shared application.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T12:39:19.285Z
+        completed_at: 2026-11-11T12:43:38.145Z
+        evidence:
+          - Removed the alternate course-only practice UI and HTTP endpoints.
+            Added a minimal course fixture installed through the CLI and a
+            versioned grading regression for the shared path.
+          - Restored legacy URL fallback for unused subject IDs and made
+            presentation creation atomic with its package snapshot.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T12:43:39.810Z
+        completed_at: 2026-11-11T12:49:02.953Z
+        evidence:
+          - Issue and generated checks passed.
+          - Generated bindings and issue checks, 28 frontend unit tests, all Go
+            packages, 4 startup tests, the production build, and all 116 browser
+            cases passed. CLI and production HTTP smoke checks passed with
+            bundled courses and a generic-only installation.
+        notes:
+          - "Blocked: An existing frontend unit test found that a reserved
+            subject URL stopped falling back to Subject 1."
+      close:
+        status: completed
+        started_at: 2026-11-11T12:49:04.592Z
+        completed_at: 2026-11-11T12:49:07.030Z
+        evidence:
+          - All three courses passed shared workspace acceptance. Historical
+            practice and timed exam recovery passed on isolated databases.
+          - "Independent acceptance passed: One acceptance suite covers both
+            bundled courses and a third question-only course, with historical
+            recovery intact."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-004.close.
+      changed_files:
+        - tests/browser/courses.spec.ts
+        - playwright.config.ts
+        - README.md
+      rollback_ref: d27f734
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Maintain feature parity and scope.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the shared application.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify course isolation and compatibility.
+dag:
+  nodes:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  dispatch_order:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  edges:
+    - from: WU-001
+      to: WU-002
+    - from: WU-002
+      to: WU-003
+    - from: WU-003
+      to: WU-004
+completion_summary:
+  required_units:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  optional_units: []
+  completed_units:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  skipped_optional_units: []
+  final_evidence:
+    - Migration verified against historical fixtures and repeated startup.
+    - "Independent acceptance passed: A migrated database keeps original grades,
+      deadlines and references, and overlapping course IDs remain isolated."
+    - Verified shared sidebar, numeric entry and review book.
+    - "Independent acceptance passed: Both courses use the same study shell and
+      rich practice and review flow."
+    - The shared feature routes work with package content and preserve driving
+      exam and AI behavior.
+    - "Independent acceptance passed: A question-only course reaches the same
+      exam, guide and AI features with shared defaults."
+    - All three courses passed shared workspace acceptance. Historical practice
+      and timed exam recovery passed on isolated databases.
+    - "Independent acceptance passed: One acceptance suite covers both bundled
+      courses and a third question-only course, with historical recovery
+      intact."

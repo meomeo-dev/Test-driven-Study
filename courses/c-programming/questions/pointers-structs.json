@@ -1,0 +1,637 @@
+[
+  {
+    "id": "pointers-1",
+    "type": "single_choice",
+    "chapter": "指针与地址",
+    "concepts": [
+      "pointers"
+    ],
+    "stem": "分拣工位上定义了工件重量变量 int weight = 15;，若要定义一个指针变量 ptr 指向 weight，下列正确的语句是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "int *ptr = &weight;"
+      },
+      {
+        "id": "b",
+        "text": "int ptr = &weight;"
+      },
+      {
+        "id": "c",
+        "text": "int *ptr = weight;"
+      },
+      {
+        "id": "d",
+        "text": "int *ptr = *weight;"
+      }
+    ],
+    "explanation": "指针变量声明需使用星号标明为指针类型 int *，赋值时右侧需使用取地址符 & 获取变量地址。选项 b 缺失星号声明为普通整型；选项 c 误将整数值直接赋给指针；选项 d 试图对普通整数解引用，语法错误。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "pointers-2",
+    "type": "single_choice",
+    "chapter": "指针与地址",
+    "concepts": [
+      "pointers"
+    ],
+    "stem": "在单片机控制程序中，函数 reset_counter 需要将外部传入的计数器变量值重置为 0。下列函数定义正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "void reset_counter(int cnt) { cnt = 0; }"
+      },
+      {
+        "id": "b",
+        "text": "void reset_counter(int &cnt) { cnt = 0; }"
+      },
+      {
+        "id": "c",
+        "text": "void reset_counter(int *cnt) { if (cnt != NULL) *cnt = 0; }"
+      },
+      {
+        "id": "d",
+        "text": "void reset_counter(int *cnt) { cnt = 0; }"
+      }
+    ],
+    "explanation": "C 语言通过传递指针并解引用 *cnt 才能修改调用者的实际变量，同时需防御空指针。选项 a 是值传递无法修改实参；选项 b 是 C++ 引用语法在 C 中非法；选项 d 仅将局部指针本身赋为 0，未修改目标变量。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "pointers-3",
+    "type": "multiple_choice",
+    "chapter": "指针与地址",
+    "concepts": [
+      "pointers"
+    ],
+    "stem": "关于 C 语言中的空指针 NULL 与指针操作，下列哪两项陈述是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "NULL 在标准库中通常被定义为 ((void *)0) 或 0，用于表示指针不指向任何有效内存对象"
+      },
+      {
+        "id": "b",
+        "text": "对值为 NULL 的指针执行 *ptr 解引用写入数据是安全的，单片机会自动丢弃该数据"
+      },
+      {
+        "id": "c",
+        "text": "局部指针变量在声明后如果不立即指向明确地址，应显式赋值为 NULL 以防野指针"
+      },
+      {
+        "id": "d",
+        "text": "取地址运算符 & 既可以作用于普通变量，也可以作用于字面常量如 &100"
+      }
+    ],
+    "explanation": "NULL 用于指示空指针，养成赋 NULL 习惯可避免野指针误操作，a、c 正确。对 NULL 指针解引用会导致非法内存访问或程序崩溃，b 错误；字面常量没有持久内存地址，不能对其取地址，d 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "pointers-4",
+    "type": "true_false",
+    "chapter": "指针与地址",
+    "concepts": [
+      "pointers"
+    ],
+    "stem": "在某个函数内部声明局部变量 int *p; 而没有赋初值，此时 p 中的地址值不确定，它并没有指向任何确定的整数变量。这一说法是否正确？",
+    "explanation": "正确。局部指针变量的声明只分配存储指针本身所需的内存，未初始化前其值不确定（野指针），并未绑定到有效整数变量，不可解引用。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "pointers-5",
+    "type": "numeric",
+    "chapter": "指针与地址",
+    "concepts": [
+      "pointers"
+    ],
+    "stem": "阅读下列代码，计算程序执行后变量 total 的整数值。\nint total = 10;\nint delta = 5;\nint *pt = &total;\nint *pd = &delta;\n*pt = *pt + *pd * 2;\n*pd = *pt - 5;",
+    "explanation": "初始 total 为 10，delta 为 5。执行 *pt = *pt + *pd * 2 即 total = 10 + 5 * 2 = 20；随后的 *pd 修改的是 delta 的值，不影响 total。最终 total 的值为 20。",
+    "grading": {
+      "value": "20",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "pointer-arrays-1",
+    "type": "single_choice",
+    "chapter": "指针、数组与传参",
+    "concepts": [
+      "pointer-arrays"
+    ],
+    "stem": "分拣站用数组 int scores[5] = {90, 85, 88, 92, 95}; 保存最近 5 件工件得分。若定义 int *p = scores;，则下列哪个表达式与 scores[3] 的值不相等？",
+    "options": [
+      {
+        "id": "a",
+        "text": "*(p + 3)"
+      },
+      {
+        "id": "b",
+        "text": "*p + 3"
+      },
+      {
+        "id": "c",
+        "text": "*(scores + 3)"
+      },
+      {
+        "id": "d",
+        "text": "p[3]"
+      }
+    ],
+    "explanation": "根据数组与指针等价规则，scores[3]、*(scores + 3)、*(p + 3) 以及 p[3] 均表示第 4 个元素 92。而 *p + 3 是先解引用取出首元素 90 再加 3，结果为 93，因此不相等。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "pointer-arrays-2",
+    "type": "single_choice",
+    "chapter": "指针、数组与传参",
+    "concepts": [
+      "pointer-arrays"
+    ],
+    "stem": "分拣工位需要编写一个函数 print_data 读取并打印传感器历史数据数组，为了防止该函数内部无意中修改数组中的元素，形参声明最规范的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "void print_data(int arr[], int n)"
+      },
+      {
+        "id": "b",
+        "text": "void print_data(int *arr, int n)"
+      },
+      {
+        "id": "c",
+        "text": "void print_data(int * const arr, int n)"
+      },
+      {
+        "id": "d",
+        "text": "void print_data(const int *arr, int n)"
+      }
+    ],
+    "explanation": "const int *arr 表示底层 const，指针指向的数据为只读，函数内修改 *arr 会在编译期报错。选项 a 和 b 均允许修改数组元素；选项 c 是顶层 const，仅限制指针自身不能改变指向，却允许修改指向的元素内容。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "pointer-arrays-3",
+    "type": "multiple_choice",
+    "chapter": "指针、数组与传参",
+    "concepts": [
+      "pointer-arrays"
+    ],
+    "stem": "下列关于 C 语言中数组与指针关系的描述，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "数组名作为函数实参传递时，整个数组的所有元素会被完整复制到函数形参栈空间中"
+      },
+      {
+        "id": "b",
+        "text": "数组名在作为函数实参传递时会隐式退化为指向首元素的指针"
+      },
+      {
+        "id": "c",
+        "text": "对于数组 int a[10];，可以在后续代码中执行 a = a + 1 改变数组首地址"
+      },
+      {
+        "id": "d",
+        "text": "当指针 p 指向数组首元素时，表达式 *(p + i) 与 p[i] 在语法和行为上完全等价"
+      }
+    ],
+    "explanation": "数组传参退化为指针传递首地址，不复制整个数组，b 正确、a 错误。数组名是不可修改的地址常量，不能被赋值，c 错误；下标运算符本质上就是指针加法与解引用的简写，d 正确。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "pointer-arrays-4",
+    "type": "true_false",
+    "chapter": "指针、数组与传参",
+    "concepts": [
+      "pointer-arrays"
+    ],
+    "stem": "在 32 位系统中，函数声明为 void check(int buf[10])，在函数体内部执行 sizeof(buf) 所获得的结果为 40 字节。",
+    "explanation": "错误。当数组作为函数形参时，哪怕写了长度 10，也会完全退化为指针类型 int *buf。在 32 位系统中指针占用 4 字节，因此 sizeof(buf) 的结果为 4 字节而非 40 字节。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "pointer-arrays-5",
+    "type": "numeric",
+    "chapter": "指针、数组与传参",
+    "concepts": [
+      "pointer-arrays"
+    ],
+    "stem": "阅读下列代码，计算程序执行后变量 sum 的整数值。\nint arr[4] = {10, 20, 30, 40};\nint *ptr = arr;\nint sum = 0;\nptr = ptr + 1;\nsum = sum + *ptr;\nptr = ptr + 2;\nsum = sum + *ptr;",
+    "explanation": "ptr 初始指向 arr[0]。执行 ptr = ptr + 1 后指向 arr[1]（值为 20），累加后 sum 为 20；再执行 ptr = ptr + 2 后指向 arr[3]（值为 40），累加后 sum 为 20 + 40 = 60。",
+    "grading": {
+      "value": "60",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "structs-1",
+    "type": "single_choice",
+    "chapter": "结构体",
+    "concepts": [
+      "structs"
+    ],
+    "stem": "质检站定义了工件结构体：\nstruct Part {\nint id;\nint is_pass;\n};\n现定义变量 struct Part p = {101, 1}; 和指针 struct Part *ptr = &p;，下列访问成员 is_pass 的写法中错误的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "ptr.is_pass"
+      },
+      {
+        "id": "b",
+        "text": "ptr->is_pass"
+      },
+      {
+        "id": "c",
+        "text": "(*ptr).is_pass"
+      },
+      {
+        "id": "d",
+        "text": "p.is_pass"
+      }
+    ],
+    "explanation": "ptr 是结构体指针，必须使用箭头运算符 ptr->is_pass 或先解引用 (*ptr).is_pass 访问其成员。直接对指针使用点运算符 ptr.is_pass 会导致编译错误。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "structs-2",
+    "type": "single_choice",
+    "chapter": "结构体",
+    "concepts": [
+      "structs"
+    ],
+    "stem": "分拣工位需要管理待检工件队列，定义了包含 3 个工件的结构体数组：\nstruct Item {\nint id;\nint weight;\n};\nstruct Item queue[3] = {{1, 100}, {2, 200}, {3, 300}};\n若要将第 2 个工件（下标为 1）的重量修改为 250，正确的语句是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "queue->weight[1] = 250;"
+      },
+      {
+        "id": "b",
+        "text": "queue[1]->weight = 250;"
+      },
+      {
+        "id": "c",
+        "text": "queue[1].weight = 250;"
+      },
+      {
+        "id": "d",
+        "text": "(queue + 1).weight = 250;"
+      }
+    ],
+    "explanation": "queue[1] 是结构体实体，访问其实体成员使用点运算符，即 queue[1].weight = 250。queue[1] 不是指针不能用 ->；(queue + 1) 是指针，需写成 (queue + 1)->weight。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "structs-3",
+    "type": "multiple_choice",
+    "chapter": "结构体",
+    "concepts": [
+      "structs"
+    ],
+    "stem": "关于 C 语言中的结构体（struct）与结构体指针，下列哪两项陈述是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "结构体可以将不同数据类型的多个成员组合成一个单一的复合类型"
+      },
+      {
+        "id": "b",
+        "text": "结构体类型定义在花括号结束后不需要加分号"
+      },
+      {
+        "id": "c",
+        "text": "将大型结构体变量作为实参传给函数时，按值传递比传递结构体指针运行效率更高"
+      },
+      {
+        "id": "d",
+        "text": "表达式 p->member 与 (*p).member 在语义和执行效果上完全等价"
+      }
+    ],
+    "explanation": "结构体用于聚合异构数据，箭头运算符等价于解引用后再取成员，a、d 正确。结构体声明结束必须加分号，b 错误；按值传递会完整拷贝结构体所有字节，而传递指针仅拷贝地址，大结构体传指针效率显著更高，c 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "structs-4",
+    "type": "true_false",
+    "chapter": "结构体",
+    "concepts": [
+      "structs"
+    ],
+    "stem": "假设已定义结构体指针 p 指向某工件变量，表达式 *p.id 可以正确获取该工件的 id 成员。",
+    "explanation": "错误。在 C 语言运算符优先级中，成员访问点运算符 . 的优先级高于解引用运算符 *，因此 *p.id 实际上等同于 *(p.id)。而 p 是指针并不是结构体实体，会导致编译错误；正确写法应为 (*p).id 或 p->id。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "structs-5",
+    "type": "numeric",
+    "chapter": "结构体",
+    "concepts": [
+      "structs"
+    ],
+    "stem": "阅读下列代码，计算程序执行后变量 total_bad 的整数值。\nstruct Box {\nint count;\nint bad;\n};\nstruct Box stations[2] = {{10, 2}, {20, 5}};\nstruct Box *p = stations;\np->bad = p->bad + 1;\n(p + 1)->bad = (p + 1)->bad + 3;\nint total_bad = stations[0].bad + stations[1].bad;",
+    "explanation": "初始 stations[0].bad 为 2，stations[1].bad 为 5。p 指向 stations[0]，修改后 stations[0].bad 变为 3；p + 1 指向 stations[1]，修改后 stations[1].bad 变为 8。最终 total_bad = 3 + 8 = 11。",
+    "grading": {
+      "value": "11",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "bit-operations-1",
+    "type": "single_choice",
+    "chapter": "位运算与掩码",
+    "concepts": [
+      "bit-operations"
+    ],
+    "stem": "单片机分拣控制中，若需要将状态变量 unsigned char status 的第 3 位（从第 0 位算起）强制置为 1，同时保持其余各位不变，下列正确的操作是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "status = status & (1 << 3);"
+      },
+      {
+        "id": "b",
+        "text": "status = status ^ (1 << 3);"
+      },
+      {
+        "id": "c",
+        "text": "status = status | 3;"
+      },
+      {
+        "id": "d",
+        "text": "status = status | (1 << 3);"
+      }
+    ],
+    "explanation": "置位操作应使用按位或运算符 | 配合掩码 (1 << 3)。选项 a 是检测或保留第 3 位，其他位会被清零；选项 b 是按位异或取反；选项 c 中常数 3 的二进制为 00000011，会误将第 0 位和第 1 位置位。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "bit-operations-2",
+    "type": "single_choice",
+    "chapter": "位运算与掩码",
+    "concepts": [
+      "bit-operations"
+    ],
+    "stem": "若要将单片机端口寄存器 unsigned char port 的第 4 位清零，同时保持其他位状态不变，应执行的代码是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "port &= ~(1 << 4);"
+      },
+      {
+        "id": "b",
+        "text": "port &= (1 << 4);"
+      },
+      {
+        "id": "c",
+        "text": "port |= ~(1 << 4);"
+      },
+      {
+        "id": "d",
+        "text": "port ^= ~(1 << 4);"
+      }
+    ],
+    "explanation": "清零特定位使用 &= 与取反掩码，~(1 << 4) 会生成仅第 4 位为 0、其余位均为 1 的掩码，使第 4 位清零而其他位保持原样。选项 b 会将除第 4 位之外的所有位全清零；选项 c 和 d 运算逻辑完全错误。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "bit-operations-3",
+    "type": "multiple_choice",
+    "chapter": "位运算与掩码",
+    "concepts": [
+      "bit-operations"
+    ],
+    "stem": "关于 C 语言中的位运算符及其应用，下列哪两项陈述是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "表达式 1 << 3 的运算结果是十进制的 6"
+      },
+      {
+        "id": "b",
+        "text": "表达式 reg ^ (1 << n) 可以将变量 reg 的第 n 位电平翻转"
+      },
+      {
+        "id": "c",
+        "text": "判断变量 reg 的第 2 位是否为 1，可以使用条件表达式 (reg & (1 << 2)) != 0"
+      },
+      {
+        "id": "d",
+        "text": "逻辑与 && 与按位与 & 的功能与运算结果始终完全相同"
+      }
+    ],
+    "explanation": "异或 1 可以实现位翻转，按位与配合对应位掩码能检测特定位电平，b、c 正确。1 << 3 的结果是 2 的 3 次方即 8，a 错误；&& 是逻辑运算只产生 0 或 1，& 是按位逐位运算，二者不同，d 错误。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "bit-operations-4",
+    "type": "true_false",
+    "chapter": "位运算与掩码",
+    "concepts": [
+      "bit-operations"
+    ],
+    "stem": "在 C 语言中，执行表达式 0x0F & 0xF0 的结果为十六进制的 0x00。",
+    "explanation": "正确。0x0F 的二进制为 00001111，0xF0 的二进制为 11110000，按位与运算要求对应位同为 1 才为 1，逐位与后结果每一位都是 0，即 0x00。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "bit-operations-5",
+    "type": "numeric",
+    "chapter": "位运算与掩码",
+    "concepts": [
+      "bit-operations"
+    ],
+    "stem": "阅读下列代码，计算程序执行后变量 reg 的十进制整数值。\nunsigned char reg = 0x05;\nreg = reg | 0x02;\nreg = reg ^ 0x01;\nreg = reg << 1;",
+    "explanation": "初始 0x05 的二进制为 00000101。与 0x02（00000010）按位或后得 00000111；再与 0x01（00000001）异或得 00000110（十进制 6）；最后左移 1 位得到 00001100，转换为十进制为 12。",
+    "grading": {
+      "value": "12",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "const-macros-1",
+    "type": "single_choice",
+    "chapter": "常量、宏与头文件",
+    "concepts": [
+      "const-macros"
+    ],
+    "stem": "分拣站用宏定义计算工件通过速度：\n#define SPEED(dist, time) dist / time\n若在程序中调用 int v = SPEED(10 + 20, 2 + 3);，则变量 v 最终被赋予的值为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "6"
+      },
+      {
+        "id": "b",
+        "text": "23"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "30"
+      }
+    ],
+    "explanation": "宏展开为纯文本替换：10 + 20 / 2 + 3。除法优先级高于加法，计算顺序为 10 + (20 / 2) + 3 = 10 + 10 + 3 = 23。若要得到期望的 (10 + 20) / (2 + 3) = 6，宏定义必须写为 ((dist) / (time))。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "const-macros-2",
+    "type": "single_choice",
+    "chapter": "常量、宏与头文件",
+    "concepts": [
+      "const-macros"
+    ],
+    "stem": "在工程项目中编写头文件 sensor.h 时，下列哪种结构是防止头文件被重复包含的标准写法？",
+    "options": [
+      {
+        "id": "a",
+        "text": "#include SENSOR_H ... #endif"
+      },
+      {
+        "id": "b",
+        "text": "#ifdef SENSOR_H #define SENSOR_H ... #endif"
+      },
+      {
+        "id": "c",
+        "text": "#pragma stop SENSOR_H ... #endif"
+      },
+      {
+        "id": "d",
+        "text": "#ifndef SENSOR_H #define SENSOR_H ... #endif"
+      }
+    ],
+    "explanation": "标准 include 防护语法是 #ifndef 检查宏是否未定义，若未定义则通过 #define 定义该宏，结尾配对 #endif。选项 b 中 #ifdef 会在宏未定义时跳过全部声明；选项 a 和 c 语法均错误。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "const-macros-3",
+    "type": "multiple_choice",
+    "chapter": "常量、宏与头文件",
+    "concepts": [
+      "const-macros"
+    ],
+    "stem": "关于 C 语言中的 const 变量与 #define 宏定义，下列哪两项陈述是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "const 定义的变量具有明确的数据类型，编译器在编译时会对其进行类型安全检查"
+      },
+      {
+        "id": "b",
+        "text": "#define 是由预处理器执行的文本替换，不占用程序的运行期变量存储空间"
+      },
+      {
+        "id": "c",
+        "text": "const 修饰的局部变量可以通过后续赋值语句直接改变其数值"
+      },
+      {
+        "id": "d",
+        "text": "带参数的宏在替换时会自动对其参数加上括号，因此书写宏体时无需手动添加括号"
+      }
+    ],
+    "explanation": "const 具有类型安全且不可修改，宏是预处理纯文本替换不占变量内存，a、b 正确。const 变量一旦定义不可直接赋值修改，c 错误；宏不会自动添加括号，必须由程序员显式加括号以防优先级错误，d 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "const-macros-4",
+    "type": "true_false",
+    "chapter": "常量、宏与头文件",
+    "concepts": [
+      "const-macros"
+    ],
+    "stem": "为了共享全局变量，可以在头文件中编写 int global_counter = 0; 并在多个源文件中同时包含该头文件。",
+    "explanation": "错误。在头文件中直接定义变量实体并在多个源文件中包含，会导致每个源文件都生成一份同名全局符号，最终在链接阶段触发符号多重定义错误（multiple definition）；正确做法是在头文件中使用 extern int global_counter; 声明，在且仅在一个 .c 文件中定义。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "const-macros-5",
+    "type": "numeric",
+    "chapter": "常量、宏与头文件",
+    "concepts": [
+      "const-macros"
+    ],
+    "stem": "阅读下列代码，计算程序执行后变量 res 的整数值。\n#define MULTIPLY(a, b) a * b\nint x = 2;\nint y = 3;\nint res = MULTIPLY(x + 1, y + 2);",
+    "explanation": "宏展开为纯文本替换：res = x + 1 * y + 2; 代入 x = 2, y = 3 得 2 + 1 * 3 + 2 = 2 + 3 + 2 = 7。由于宏定义未对参数加括号，并未执行预期的 (2 + 1) * (3 + 2) = 15。",
+    "grading": {
+      "value": "7",
+      "absolute_tolerance": "0"
+    }
+  }
+]

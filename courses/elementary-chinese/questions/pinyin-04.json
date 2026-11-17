@@ -1,0 +1,227 @@
+[
+  {
+    "id": "pinyin-04-2-1",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。l___ yǔ",
+    "image": "assets/thunderstorm.png",
+    "options": [
+      {"id": "a", "text": "ié"},
+      {"id": "b", "text": "iě"},
+      {"id": "c", "text": "éi"},
+      {"id": "d", "text": "ěi"}
+    ],
+    "grading": {"choice_ids": ["c"]},
+    "explanation": "雷雨读 léi yǔ。雷是第二声，声调标在 e 上。"
+  },
+  {
+    "id": "pinyin-04-2-2",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。w___ jīn",
+    "image": "assets/scarf.png",
+    "options": [
+      {"id": "a", "text": "iè"},
+      {"id": "b", "text": "éi"},
+      {"id": "c", "text": "èi"},
+      {"id": "d", "text": "ié"}
+    ],
+    "grading": {"choice_ids": ["b"]},
+    "explanation": "围巾读 wéi jīn。围是第二声，声调标在 e 上。"
+  },
+  {
+    "id": "pinyin-04-2-3",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。d___ yī fu",
+    "image": "assets/folding-clothes.png",
+    "options": [
+      {"id": "a", "text": "ié"},
+      {"id": "b", "text": "iè"},
+      {"id": "c", "text": "éi"},
+      {"id": "d", "text": "èi"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "叠衣服读 dié yī fu。叠是第二声，声调标在 e 上。"
+  },
+  {
+    "id": "pinyin-04-2-4",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。sh___ hú",
+    "image": "assets/watering-can.png",
+    "options": [
+      {"id": "a", "text": "iǔ"},
+      {"id": "b", "text": "uí"},
+      {"id": "c", "text": "iú"},
+      {"id": "d", "text": "uǐ"}
+    ],
+    "grading": {"choice_ids": ["d"]},
+    "explanation": "水壶读 shuǐ hú。水是第三声，ui 的声调标在 i 上。"
+  },
+  {
+    "id": "pinyin-04-2-5",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。l___ shù",
+    "image": "assets/willow.png",
+    "options": [
+      {"id": "a", "text": "uǐ"},
+      {"id": "b", "text": "iǔ"},
+      {"id": "c", "text": "iù"},
+      {"id": "d", "text": "uì"}
+    ],
+    "grading": {"choice_ids": ["b"]},
+    "explanation": "柳树读 liǔ shù。柳是第三声，iu 的声调标在 u 上。"
+  },
+  {
+    "id": "pinyin-04-2-6",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。ch___ qì q___（第一个空）",
+    "image": "assets/blowing-balloon.png",
+    "options": [
+      {"id": "a", "text": "iū"},
+      {"id": "b", "text": "iú"},
+      {"id": "c", "text": "uī"},
+      {"id": "d", "text": "uí"}
+    ],
+    "grading": {"choice_ids": ["c"]},
+    "explanation": "吹气球读 chuī qì qiú。吹是第一声，ui 的声调标在 i 上。"
+  },
+  {
+    "id": "pinyin-04-2-7",
+    "type": "single_choice",
+    "chapter": "二、选择韵母并标声调",
+    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。ch___ qì q___（第二个空）",
+    "image": "assets/blowing-balloon.png",
+    "options": [
+      {"id": "a", "text": "iú"},
+      {"id": "b", "text": "iù"},
+      {"id": "c", "text": "uí"},
+      {"id": "d", "text": "uì"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "吹气球读 chuī qì qiú。球是第二声，iu 的声调标在 u 上。"
+  },
+  {
+    "id": "pinyin-04-3-1",
+    "type": "multiple_choice",
+    "chapter": "三、整体认读音节",
+    "stem": "圈出第 1 行的整体认读音节。请选择所有符合的音节。",
+    "options": [
+      {"id": "a", "text": "ài"},
+      {"id": "b", "text": "yuán"},
+      {"id": "c", "text": "dǐng"},
+      {"id": "d", "text": "zì"}
+    ],
+    "grading": {"choice_ids": ["b", "d"]},
+    "explanation": "yuán 和 zì 都是整体认读音节。"
+  },
+  {
+    "id": "pinyin-04-3-2",
+    "type": "multiple_choice",
+    "chapter": "三、整体认读音节",
+    "stem": "圈出第 2 行的整体认读音节。请选择所有符合的音节。",
+    "options": [
+      {"id": "a", "text": "xí"},
+      {"id": "b", "text": "yín"},
+      {"id": "c", "text": "yán"},
+      {"id": "d", "text": "yě"}
+    ],
+    "grading": {"choice_ids": ["b", "d"]},
+    "explanation": "yín 和 yě 都是整体认读音节。yán 要拼读。"
+  },
+  {
+    "id": "pinyin-04-3-3",
+    "type": "multiple_choice",
+    "chapter": "三、整体认读音节",
+    "stem": "圈出第 3 行的整体认读音节。请选择所有符合的音节。",
+    "options": [
+      {"id": "a", "text": "shū"},
+      {"id": "b", "text": "yuè"},
+      {"id": "c", "text": "tóng"},
+      {"id": "d", "text": "rì"}
+    ],
+    "grading": {"choice_ids": ["b", "d"]},
+    "explanation": "yuè 和 rì 都是整体认读音节。"
+  },
+  {
+    "id": "pinyin-04-4-1",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/door.png",
+    "options": [
+      {"id": "a", "text": "méng"},
+      {"id": "b", "text": "mén"}
+    ],
+    "grading": {"choice_ids": ["b"]},
+    "explanation": "图中是门，读 mén，韵母是 en。"
+  },
+  {
+    "id": "pinyin-04-4-2",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/butterfly.png",
+    "options": [
+      {"id": "a", "text": "hú déi"},
+      {"id": "b", "text": "hú dié"}
+    ],
+    "grading": {"choice_ids": ["b"]},
+    "explanation": "图中是蝴蝶，读 hú dié，蝶的韵母是 ie。"
+  },
+  {
+    "id": "pinyin-04-4-3",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/scissors.png",
+    "options": [
+      {"id": "a", "text": "jiǎn dāo"},
+      {"id": "b", "text": "juǎn dāo"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "图中是剪刀，读 jiǎn dāo。"
+  },
+  {
+    "id": "pinyin-04-4-4",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/bed.png",
+    "options": [
+      {"id": "a", "text": "chuáng"},
+      {"id": "b", "text": "chuán"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "图中是床，读 chuáng，韵母带后鼻音。"
+  },
+  {
+    "id": "pinyin-04-4-5",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/spring-festival.png",
+    "options": [
+      {"id": "a", "text": "chūn jié"},
+      {"id": "b", "text": "chūn jéi"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "图中表示春节，读 chūn jié。"
+  },
+  {
+    "id": "pinyin-04-4-6",
+    "type": "single_choice",
+    "chapter": "四、看图选音节",
+    "stem": "看图，在正确的音节后面打“√”。",
+    "image": "assets/dancing.png",
+    "options": [
+      {"id": "a", "text": "tiào wǔ"},
+      {"id": "b", "text": "tào wǔ"}
+    ],
+    "grading": {"choice_ids": ["a"]},
+    "explanation": "图中是跳舞，读 tiào wǔ，跳的韵母是 iao。"
+  }
+]

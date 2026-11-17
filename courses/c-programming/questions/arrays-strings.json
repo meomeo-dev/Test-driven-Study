@@ -1,0 +1,544 @@
+[
+  {
+    "id": "arrays-1",
+    "type": "single_choice",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "分拣工位用数组缓存 4 个光电传感器的状态。下列关于数组定义与初始化的语句中，语法合法且能将所有元素正确初始化为 0 的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "int sensor[4] = {0};"
+      },
+      {
+        "id": "b",
+        "text": "int sensor[4] = {0, 0, 0, 0, 0};"
+      },
+      {
+        "id": "c",
+        "text": "int sensor[] = 0;"
+      },
+      {
+        "id": "d",
+        "text": "int sensor(4) = {0};"
+      }
+    ],
+    "explanation": "在 C 语言中，使用 int sensor[4] = {0}; 会将首元素显式初始化为 0，其余未指定的元素自动补 0，满足全 0 初始化需求。选项 b 列表中有 5 个元素超过了声明容量 4；选项 c 缺少花括号初始化列表；选项 d 误用圆括号定义数组容量。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "arrays-2",
+    "type": "single_choice",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "分拣工位定义了保存料盒编号的数组 int bin[6];。关于该数组的下标与元素访问，下列说法正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "bin[6] 表示数组中的最后一个料盒元素"
+      },
+      {
+        "id": "b",
+        "text": "合法的元素访问下标范围是 0 到 5"
+      },
+      {
+        "id": "c",
+        "text": "执行 bin[7] = 1; 时，编译器必定报错并终止编译"
+      },
+      {
+        "id": "d",
+        "text": "数组首元素的下标是 1"
+      }
+    ],
+    "explanation": "长度为 6 的数组合法下标为 0 到 5，首元素是 bin[0]，末元素是 bin[5]。选项 a 访问 bin[6] 属于越界访问；选项 c 错误，C 语言标准不强制编译器进行越界检查，越界属于未定义行为而非必定编译报错；选项 d 数组首元素下标为 0。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "arrays-3",
+    "type": "multiple_choice",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "分拣控制器在本地函数中定义了数组 int queue[8];。关于该数组的长度计算与边界特性，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "表达式 sizeof(queue) / sizeof(queue[0]) 的计算结果为 8"
+      },
+      {
+        "id": "b",
+        "text": "表达式 sizeof(queue) 直接返回数组中当前保存的有效数据个数"
+      },
+      {
+        "id": "c",
+        "text": "访问 queue[-1] 属于未定义行为，可能破坏其他内存数据"
+      },
+      {
+        "id": "d",
+        "text": "数组下标越界在 C 语言运行时会自动抛出异常终止程序"
+      }
+    ],
+    "explanation": "在数组定义所在作用域中，sizeof(queue) / sizeof(queue[0]) 可以正确计算出数组元素个数 8，且访问负数下标 queue[-1] 属于未定义行为。选项 b 错误，sizeof 返回数组占用的总字节数 32 而非有效数据个数；选项 d 错误，C 语言没有运行时边界检查与异常捕获机制。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "arrays-4",
+    "type": "true_false",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "在 C 语言程序中，如果程序执行了越界访问（例如对声明容量为 5 的数组执行 a[5] = 10;），该行为属于未定义行为，其执行后果无法由 C 语言标准保证。",
+    "explanation": "陈述正确。C 语言不对数组下标进行运行时边界检查，越界访问属于未定义行为，可能导致内存覆盖、数据错误或系统崩溃，标准对其行为不作任何保证。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "arrays-5",
+    "type": "numeric",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "阅读下列 C 语言代码，计算程序执行后变量 ans 的最终值。\nint adc[6] = {5, 12, 18};\nint n = sizeof(adc) / sizeof(adc[0]);\nint ans = adc[n - 5] + adc[n - 1];\n\n问 ans 的值是多少？",
+    "explanation": "数组 adc 的容量为 6，计算得到 n = 6。由于只显式初始化了前 3 个元素，末尾元素 adc[5] 自动补零。因此 adc[n - 5] 即 adc[1] 为 12，adc[n - 1] 即 adc[5] 为 0，最终计算 ans = 12 + 0 = 12。",
+    "grading": {
+      "value": "12",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "array-algorithms-1",
+    "type": "single_choice",
+    "chapter": "数组求和、最值与计数",
+    "concepts": [
+      "array-algorithms"
+    ],
+    "stem": "分拣工位需要编写一个统计传感器采样值最大值的函数。下列函数声明与调用方式中，最符合 C 语言标准规范且安全的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "声明 int get_max(int a[]); 并仅靠 sizeof(a) 在函数内获取长度"
+      },
+      {
+        "id": "b",
+        "text": "声明 int get_max(int a[100]); 无论传入多长数组其长度都在函数内固定为 100"
+      },
+      {
+        "id": "c",
+        "text": "声明 int get_max(int a[], int len); 并在调用时显式传入实际元素个数"
+      },
+      {
+        "id": "d",
+        "text": "声明 int get_max(void); 直接在函数体内访问调用者的局部数组变量"
+      }
+    ],
+    "explanation": "C 语言中数组作为函数形参时退化为指针，函数无法通过 sizeof 获取数组实际大小，因此必须显式传入长度参数 len。选项 a 无法在函数内用 sizeof 计算出数组真实元素个数；选项 b 中的 100 仅为修饰，不能获取实参真实长度；选项 d 无法跨作用域访问调用者的局部变量。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "array-algorithms-2",
+    "type": "single_choice",
+    "chapter": "数组求和、最值与计数",
+    "concepts": [
+      "array-algorithms"
+    ],
+    "stem": "分拣站采集了若干个工件在冷库环境中的检测温度（均为负整数，例如 -15, -8, -22）。在编写寻找最高温度的算法时，初学者将初值设为 0（即 int max = 0;）。关于该算法执行后的结果，下列说法正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "程序将因整数除零错误而异常终止"
+      },
+      {
+        "id": "b",
+        "text": "循环结束后能够正确找到数组中的最高温度"
+      },
+      {
+        "id": "c",
+        "text": "编译时编译器会报语法错误，无法通过编译"
+      },
+      {
+        "id": "d",
+        "text": "循环结束后 max 仍为 0，无法反映数组中实际的最高温度"
+      }
+    ],
+    "explanation": "当数组元素全部为负整数时，所有元素均小于 0，更新最大值的条件始终不成立，循环结束后 max 仍保持初值 0，导致结果错误。求最值应将初值设为数组首个元素 a[0]。选项 a、c 属于对编译与运行时错误的臆测；选项 b 结论错误。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "array-algorithms-3",
+    "type": "multiple_choice",
+    "chapter": "数组求和、最值与计数",
+    "concepts": [
+      "array-algorithms"
+    ],
+    "stem": "分拣工位用数组 int weights[5] = {48, 55, 52, 46, 50}; 存储工件克重，需统计总重量以及合格品（重量大于等于 50 克）的数量。下列关于算法实现逻辑的叙述中，正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "累加总重量前，保存总和的变量 sum 必须显式初始化为 0"
+      },
+      {
+        "id": "b",
+        "text": "统计合格品数量时，只需在循环内判定 weights[i] >= 50 成立则计数器加 1"
+      },
+      {
+        "id": "c",
+        "text": "遍历数组的 for 循环控制表达式应写为 for (int i = 0; i <= 5; i++)"
+      },
+      {
+        "id": "d",
+        "text": "计算平均重量时，表达式 sum / 5 能够自动保留任意位小数的浮点结果"
+      }
+    ],
+    "explanation": "累加前 sum 必须初始化为 0 以防引入随机垃圾值；条件计数器在满足 weights[i] >= 50 时递增符合计数逻辑。选项 c 错误，i <= 5 会在 i = 5 时导致下标越界；选项 d 错误，整数相除会截断小数部分，若需浮点结果需写为 (double)sum / 5。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "array-algorithms-4",
+    "type": "true_false",
+    "chapter": "数组求和、最值与计数",
+    "concepts": [
+      "array-algorithms"
+    ],
+    "stem": "在 C 语言中，若 int sum = 15; 且数组长度 int len = 4;，则执行 double avg = sum / len; 后，变量 avg 中存储的值是 3.75。",
+    "explanation": "陈述错误。sum 和 len 均为整型变量，表达式 sum / len 执行整数截断除法，计算结果为整数 3；赋值给 double 类型的 avg 时转换为 3.0，而不是 3.75。正确写法应为 (double)sum / len。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "array-algorithms-5",
+    "type": "numeric",
+    "chapter": "数组求和、最值与计数",
+    "concepts": [
+      "array-algorithms"
+    ],
+    "stem": "分拣系统对 6 件产品的重量差值进行统计，执行下列 C 语言代码后，变量 count 的最终值是多少？\nint diff[6] = {2, -3, 5, 0, -1, 4};\nint count = 0;\nfor (int i = 0; i < 6; i++) {\nif (diff[i] > 0) {\ncount++;\n}\n}",
+    "explanation": "数组中大于 0 的元素为 2、5、4，共 3 个；0、-3、-1 均不满足大于 0 的条件。因此 if 条件成立 3 次，count 最终递增为 3。",
+    "grading": {
+      "value": "3",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "strings-1",
+    "type": "single_choice",
+    "chapter": "字符数组与字符串",
+    "concepts": [
+      "strings"
+    ],
+    "stem": "分拣工位用字符数组接收传感器状态描述字符串。关于 C 语言字符串的结束标志与内存占用，下列说法正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "字符串以换行符 '\\n' 作为内存中的结束标志"
+      },
+      {
+        "id": "b",
+        "text": "存储包含 4 个有效字符的字符串 \"PASS\"，字符数组的容量至少需要 5 个字节"
+      },
+      {
+        "id": "c",
+        "text": "字符常量 'A' 和字符串常量 \"A\" 在内存中所占字节数相同"
+      },
+      {
+        "id": "d",
+        "text": "字符串中间如果包含字符 '0'，字符串会立即在此处提前结束"
+      }
+    ],
+    "explanation": "C 语言字符串以空字符 '\\0' 结尾，存储 4 个有效字符的字符串必须预留 1 个字节存放 '\\0'，故数组容量至少为 5 字节。选项 a 结束标志是 '\\0'；选项 c 中 'A' 占 1 字节而 \"A\" 包含 '\\0' 占 2 字节；选项 d 中字符 '0' 的 ASCII 码为 48，并非空字符 '\\0'。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "strings-2",
+    "type": "single_choice",
+    "chapter": "字符数组与字符串",
+    "concepts": [
+      "strings"
+    ],
+    "stem": "分拣上位机向单片机下发指令，单片机将收到的指令存放在字符数组 char cmd[10] 中。要判断当前指令是否为放行指令 \"PASS\"，下列代码书写正确且符合 C 语言标准的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "if (strcmp(cmd, \"PASS\") == 0)"
+      },
+      {
+        "id": "b",
+        "text": "if (cmd == \"PASS\")"
+      },
+      {
+        "id": "c",
+        "text": "if (strcmp(cmd, \"PASS\") == 1)"
+      },
+      {
+        "id": "d",
+        "text": "if (cmd.equals(\"PASS\"))"
+      }
+    ],
+    "explanation": "在 C 语言中比较字符串内容必须使用 string.h 中的 strcmp 函数，当两字符串完全相同时返回 0。选项 b 比较的是数组地址而非字符串内容；选项 c 错误，相等时返回 0 而非 1；选项 d 为其他高级语言的语法，C 语言不支持该调用。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "strings-3",
+    "type": "multiple_choice",
+    "chapter": "字符数组与字符串",
+    "concepts": [
+      "strings"
+    ],
+    "stem": "在分拣通信模块中定义了字符数组 char tag[12] = \"READY\";。关于表达式 sizeof(tag) 与 strlen(tag) 的对比，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "strlen(tag) 的计算结果包含了字符串结尾的 '\\0'"
+      },
+      {
+        "id": "b",
+        "text": "sizeof(tag) 的值为 6"
+      },
+      {
+        "id": "c",
+        "text": "sizeof(tag) 的计算结果为 12"
+      },
+      {
+        "id": "d",
+        "text": "strlen(tag) 的计算结果为 5"
+      }
+    ],
+    "explanation": "tag 数组分配的内存容量为 12 字节，故 sizeof(tag) 为 12；strlen(tag) 计算从首字符到 '\\0' 前的有效字符个数，\"READY\" 共有 5 个字符，故其值为 5。选项 a 错误，strlen 不包含 '\\0'；选项 b 混淆了数组分配大小与字符串占用字节数。",
+    "grading": {
+      "choice_ids": [
+        "c",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "strings-4",
+    "type": "true_false",
+    "chapter": "字符数组与字符串",
+    "concepts": [
+      "strings"
+    ],
+    "stem": "若字符数组 s1 中存储字符串 \"FAIL\"，字符数组 s2 中存储字符串 \"PASS\"，则表达式 strcmp(s1, s2) == 0 的计算结果为真。",
+    "explanation": "陈述错误。字符串 \"FAIL\" 与 \"PASS\" 的内容并不相同，strcmp 比较首字符 'F' 与 'P' 的 ASCII 码值返回非零值（负数），因此表达式结果为假。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "strings-5",
+    "type": "numeric",
+    "chapter": "字符数组与字符串",
+    "concepts": [
+      "strings"
+    ],
+    "stem": "分拣工位接收到工件状态编码，执行下列 C 语言代码后，变量 len 的最终值是多少？\nchar status[12] = \"SORT_PASS\";\nstatus[4] = '\\0';\nint len = strlen(status);",
+    "explanation": "数组 status 初始字符串为 \"SORT_PASS\"，执行 status[4] = '\\0'; 后，第 4 号下标位置（即下划线 '_'）被替换为空字符 '\\0'。strlen 从头统计至首个 '\\0' 为止，仅包含 'S'、'O'、'R'、'T' 共 4 个字符，因此 len 最终值为 4。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sorting-search-1",
+    "type": "single_choice",
+    "chapter": "排序与查找",
+    "concepts": [
+      "sorting-search"
+    ],
+    "stem": "分拣工位需要将传送带上传感的 5 个工件尺寸数据使用基础冒泡排序算法（不带提前终止标志）按升序排列。在排序过程中，相邻元素之间总共需要进行的比较次数是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "5 次"
+      },
+      {
+        "id": "b",
+        "text": "20 次"
+      },
+      {
+        "id": "c",
+        "text": "10 次"
+      },
+      {
+        "id": "d",
+        "text": "25 次"
+      }
+    ],
+    "explanation": "包含 n 个元素的基础冒泡排序总比较次数为 n * (n - 1) / 2。当 n = 5 时，计算为 5 * 4 / 2 = 10 次。选项 a 误当成了数组长度；选项 b 缺少除以 2；选项 d 是 n 的平方 5 * 5。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "sorting-search-2",
+    "type": "single_choice",
+    "chapter": "排序与查找",
+    "concepts": [
+      "sorting-search"
+    ],
+    "stem": "在分拣控制程序中，工程师需要检索某个特定工件编号是否存在于数组中。关于线性查找与二分查找的适用场景与特性，下列说法正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "线性查找要求数组元素必须已经按升序或降序排列"
+      },
+      {
+        "id": "b",
+        "text": "二分查找可以直接应用于任意完全无序的数组并保证找到目标"
+      },
+      {
+        "id": "c",
+        "text": "线性查找在包含 n 个元素的数组中查找目标时，每次都能在 1 次比较内完成"
+      },
+      {
+        "id": "d",
+        "text": "二分查找要求数组必须是有序的，每次比对中点后可将搜索区间缩减约一半"
+      }
+    ],
+    "explanation": "二分查找的基本前提是数组必须有序，每次通过与中点元素比对可排除半数区间；选项 a 错误，线性查找不要求数组有序；选项 b 错误，无序数组使用二分查找会导致逻辑错误；选项 c 错误，线性查找平均与最坏情况下需要 O(n) 次比较。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "sorting-search-3",
+    "type": "multiple_choice",
+    "chapter": "排序与查找",
+    "concepts": [
+      "sorting-search"
+    ],
+    "stem": "在升序数组 a 中使用二分查找检索目标值 target（已设 low = 0, high = len - 1）。在某次循环中发现 a[mid] < target。关于后续处理步骤与逻辑，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "下一步应当调整右边界 high = mid - 1;"
+      },
+      {
+        "id": "b",
+        "text": "目标值 target 如果存在，必然位于当前中点 mid 的右侧区间"
+      },
+      {
+        "id": "c",
+        "text": "此时可以立即判定 target 不在数组中并直接退出函数"
+      },
+      {
+        "id": "d",
+        "text": "下一步应当调整左边界 low = mid + 1;"
+      }
+    ],
+    "explanation": "因为数组升序排列，a[mid] < target 说明目标若存在必在 mid 右侧，因此应当调整左边界 low = mid + 1 继续在右半区间查找。选项 a 调整 high 会向左查找导致方向相反；选项 c 属于未遍历完区间就过早断定数据不存在。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "sorting-search-4",
+    "type": "true_false",
+    "chapter": "排序与查找",
+    "concepts": [
+      "sorting-search"
+    ],
+    "stem": "在二分查找实现中，当查找区间下界 low 超过上界 high（即 low > high）时，说明待查区间已无候选元素，可以判定目标值在数组中不存在。",
+    "explanation": "陈述正确。二分查找有效区间的合法条件是 low <= high，当 low > high 时表明搜索区间已经收缩为空，确认目标数据不存在，应返回未找到标志（如 -1）。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "sorting-search-5",
+    "type": "numeric",
+    "chapter": "排序与查找",
+    "concepts": [
+      "sorting-search"
+    ],
+    "stem": "分拣工位有一组已排序的工件公差档位 int a[5] = {10, 20, 30, 40, 50};。执行下列代码检索目标值 40 时，变量 count 的最终值是多少？\nint low = 0, high = 4, count = 0;\nwhile (low <= high) {\ncount++;\nint mid = (low + high) / 2;\nif (a[mid] == 40) break;\nif (a[mid] < 40) low = mid + 1;\nelse high = mid - 1;\n}",
+    "explanation": "初态 low = 0, high = 4。第 1 次循环：count 变为 1，mid = 2，a[2] = 30 < 40，更新 low = 3；第 2 次循环：count 变为 2，mid = 3，a[3] = 40 == 40，命中 break 退出循环。因此 while 循环共执行 2 次，count 最终值为 2。",
+    "grading": {
+      "value": "2",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sample-multiple",
+    "type": "multiple_choice",
+    "chapter": "数组与下标边界",
+    "concepts": [
+      "arrays"
+    ],
+    "stem": "对 int samples[4]，下面哪些下标可以安全读取？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "-1"
+      },
+      {
+        "id": "b",
+        "text": "0"
+      },
+      {
+        "id": "c",
+        "text": "3"
+      },
+      {
+        "id": "d",
+        "text": "4"
+      }
+    ],
+    "explanation": "合法下标从 0 到 3。4 和 -1 都越界。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  }
+]

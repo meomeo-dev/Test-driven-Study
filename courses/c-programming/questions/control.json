@@ -1,0 +1,416 @@
+[
+  {
+    "id": "relational-logical-1",
+    "type": "single_choice",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "分拣工位传感器检测到工件长度 len 为 25 毫米。关于表达式 len = 30 与 len == 30 的区别，下列说法正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "len = 30 是关系表达式，其计算结果为 1"
+      },
+      {
+        "id": "b",
+        "text": "len == 30 将数值 30 赋给变量 len，表达式的值为 30"
+      },
+      {
+        "id": "c",
+        "text": "len = 30 是赋值表达式，会将 len 修改为 30 且表达式值为 30"
+      },
+      {
+        "id": "d",
+        "text": "两个表达式在 C 语言中完全等价，均用于判断 len 是否等于 30"
+      }
+    ],
+    "explanation": "len = 30 是赋值表达式，会将变量 len 的值修改为 30，整个表达式的值也是 30；len == 30 才是关系表达式，仅测试是否相等，相等返回 1，不相等返回 0。选项 a 和 b 混淆了赋值与判等；选项 d 忽视了两者的本质区别。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "relational-logical-2",
+    "type": "single_choice",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "分拣站检测工件时，使用到位标志 in_pos 和计数器 count。执行下列代码片段后，变量 count 的值是多少？\nint in_pos = 0;\nint count = 10;\nint check = in_pos && (++count > 10);",
+    "options": [
+      {
+        "id": "a",
+        "text": "11"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "explanation": "逻辑与运算 && 具有短路求值特性。当左操作数 in_pos 为 0（假）时，整个逻辑与表达式的值已确定为 0，右操作数 ++count > 10 将被跳过不执行，因此 count 保持初始值 10。选项 a 误以为右侧表达式必然执行。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "relational-logical-3",
+    "type": "multiple_choice",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "在分拣站工件质检逻辑中，变量 len 表示工件长度（毫米），变量 width 表示工件宽度（毫米）。若要求“长度大于等于 20 且小于等于 50，同时宽度不等于 15”，下列能够正确表达该判断条件的 C 语言表达式有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "len >= 20 && len <= 50 && width != 15"
+      },
+      {
+        "id": "b",
+        "text": "20 <= len <= 50 && width != 15"
+      },
+      {
+        "id": "c",
+        "text": "!(len < 20 || len > 50) && width != 15"
+      },
+      {
+        "id": "d",
+        "text": "len >= 20 || len <= 50 && width != 15"
+      }
+    ],
+    "explanation": "选项 a 显式使用 && 组合两个边界条件与宽度要求，逻辑严密；选项 c 运用德·摩根定律，取“小于 20 或大于 50”的反面，等价于闭区间 [20, 50]，同样正确。选项 b 中 20 <= len <= 50 在 C 中会先求 20 <= len（得 0 或 1），再与 50 比较恒为真；选项 d 中 && 优先级高于 ||，无法对长度上限构成约束。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "relational-logical-4",
+    "type": "true_false",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "在 C 语言中，关系表达式（如 a > b）和逻辑表达式（如 a && b）的计算结果均为整数类型 int，条件成立时结果为 1，条件不成立时结果为 0。",
+    "explanation": "C 语言中的关系运算符与逻辑运算符计算结果均为 int 类型。当比较或逻辑判断成立时返回 1（真），不成立时返回 0（假）。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "relational-logical-5",
+    "type": "numeric",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "分析下列分拣站数据处理中的逻辑计算代码片段：\nint a = 2;\nint b = 0;\nint x = 5;\nint y = 10;\nint r1 = (a < 1) && (++x > 0);\nint r2 = (b == 0) || (++y > 0);\nint ans = x + y + r1 + r2;\n程序执行完成后，变量 ans 的最终值是多少？",
+    "explanation": "在计算 r1 时，因 a < 1 为假（0），触发 && 短路，++x 不执行，x 保持 5，r1 赋值为 0；在计算 r2 时，因 b == 0 为真（1），触发 || 短路，++y 不执行，y 保持 10，r2 赋值为 1。最终 ans = 5 + 10 + 0 + 1 = 16。",
+    "grading": {
+      "value": "16",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "if-else-1",
+    "type": "single_choice",
+    "chapter": "条件语句 if / else",
+    "concepts": [
+      "if-else"
+    ],
+    "stem": "分拣站根据工件重量 weight（克）判定料盒编号 bin。分析下列代码片段：\nint weight = 80;\nint bin = 0;\nif (weight > 100)\nif (weight > 120)\nbin = 1;\nelse\nbin = 2;\n程序执行完成后，变量 bin 的最终值是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "0"
+      },
+      {
+        "id": "b",
+        "text": "1"
+      },
+      {
+        "id": "c",
+        "text": "2"
+      },
+      {
+        "id": "d",
+        "text": "3"
+      }
+    ],
+    "explanation": "C 语言规定 else 始终与之前最近且未配对的 if 结合，因此 else bin = 2 属于内层 if (weight > 120) 的分支。当 weight 为 80 时，外层条件 weight > 100 为假，整个内层语句结构均被跳过，bin 保持初始值 0。若误认为 else 与外层 if 配对，则会误选 2。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "if-else-2",
+    "type": "single_choice",
+    "chapter": "条件语句 if / else",
+    "concepts": [
+      "if-else"
+    ],
+    "stem": "分拣工位在判定瑕疵工件的分流动作时，编写了如下代码：\nint defect = 0;\nint servo_angle = 0;\nint alarm = 0;\nif (defect == 0)\nservo_angle = 90;\nelse\nservo_angle = 180;\nalarm = 1;\n当 defect 初始值为 0 时，执行上述代码后，servo_angle 和 alarm 的最终值分别是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "servo_angle 为 90，alarm 为 0"
+      },
+      {
+        "id": "b",
+        "text": "servo_angle 为 180，alarm 为 1"
+      },
+      {
+        "id": "c",
+        "text": "servo_angle 为 0，alarm 为 0"
+      },
+      {
+        "id": "d",
+        "text": "servo_angle 为 90，alarm 为 1"
+      }
+    ],
+    "explanation": "当没有使用大括号 {} 组织复合语句时，else 子句只管辖紧随其后的单条语句 servo_angle = 180;。因此条件 defect == 0 成立时执行 servo_angle = 90;，跳过 else 分支；而随后的 alarm = 1; 是一条独立的顺序执行语句，无论分支如何都会被执行，故 alarm 最终为 1。选项 a 误以为 alarm = 1 属于 else 内部。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "if-else-3",
+    "type": "multiple_choice",
+    "chapter": "条件语句 if / else",
+    "concepts": [
+      "if-else"
+    ],
+    "stem": "在分拣控制程序的分支结构编写中，关于 if-else 语句的语法与行为规则，下列说法正确的有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "else if 阶梯结构末尾必须显式写出 else 分支，否则无法通过编译"
+      },
+      {
+        "id": "b",
+        "text": "无论分支内包含一条还是多条语句，使用大括号 {} 组织复合代码块都是合法且良好的编码习惯"
+      },
+      {
+        "id": "c",
+        "text": "if 语句圆括号内的条件必须是关系表达式，不能填入算术运算或赋值语句"
+      },
+      {
+        "id": "d",
+        "text": "在 if...else if...else 链式结构中各分支相互排斥，一旦某一分支执行，后续所有分支均被跳过"
+      }
+    ],
+    "explanation": "选项 b 正确，显式使用大括号能明确作用域并防止悬空 else 错误；选项 d 正确，阶梯式多分支按顺序求值且具有互斥性，首个匹配分支执行后即离开结构。选项 a 错误，结尾的 else 是可选的；选项 c 错误，C 语言中任何结果为标量类型的表达式（包括算术表达式与赋值）均可作为分支条件。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "if-else-4",
+    "type": "true_false",
+    "chapter": "条件语句 if / else",
+    "concepts": [
+      "if-else"
+    ],
+    "stem": "在 C 语言中，若在 if 条件圆括号后误加分号（例如 if (x > 0);），会导致编译器报告语法错误而无法生成可执行程序。",
+    "explanation": "if 条件后直接写分号会被编译器视为包含一条空语句（null statement），属于合法语法。这会导致无论条件真假，分号后的原本代码块都会脱离 if 控制无条件执行，属于逻辑缺陷而非语法编译错误。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "if-else-5",
+    "type": "numeric",
+    "chapter": "条件语句 if / else",
+    "concepts": [
+      "if-else"
+    ],
+    "stem": "分析下列分拣工件数据计算代码片段：\nint x = 45;\nint score = 10;\nif (x > 50) score = score + 5;\nelse if (x > 40) score = score + 15;\nelse score = score + 25;\nif (score > 20) x = x * 2;\nelse x = x * 3;\n程序执行完成后，变量 x 的最终值是多少？",
+    "explanation": "在第一组 if-else if 结构中，x 为 45，条件 x > 50 为假，进入 else if (x > 40) 判断为真，执行 score = score + 15，score 变为 25 并跳过后续 else；在第二组 if-else 结构中，条件 score > 20（25 > 20）成立，执行 x = x * 2，因此 x 最终值为 45 * 2 = 90。",
+    "grading": {
+      "value": "90",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "switch-case-1",
+    "type": "single_choice",
+    "chapter": "多分支 switch",
+    "concepts": [
+      "switch-case"
+    ],
+    "stem": "在分拣站串口控制程序中，需要根据上位机下发的操作指令执行不同动作。关于 switch 语句中 case 标签的要求，下列书写合法的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "case cmd:"
+      },
+      {
+        "id": "b",
+        "text": "case 1.5:"
+      },
+      {
+        "id": "c",
+        "text": "case 'A':"
+      },
+      {
+        "id": "d",
+        "text": "case >= 10:"
+      }
+    ],
+    "explanation": "case 后的标签必须是整型常量表达式，字符常量 'A' 在 C 语言中属于整型常量，因此选项 c 合法。选项 a 中的 cmd 是变量；选项 b 中的 1.5 是浮点型（switch 不支持浮点类型）；选项 d 中的 >= 10 属于非法语法。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "switch-case-2",
+    "type": "single_choice",
+    "chapter": "多分支 switch",
+    "concepts": [
+      "switch-case"
+    ],
+    "stem": "分拣工位根据串口接收到的工作模式代号 mode 控制挡板目标位置 target。分析下列代码片段：\nint mode = 2;\nint target = 0;\nswitch (mode) {\ncase 2: target = target + 20;\ncase 3: target = target + 30;\nbreak;\ndefault: target = target + 40;\n}\n程序执行完成后，变量 target 的最终值是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "20"
+      },
+      {
+        "id": "b",
+        "text": "50"
+      },
+      {
+        "id": "c",
+        "text": "70"
+      },
+      {
+        "id": "d",
+        "text": "90"
+      }
+    ],
+    "explanation": "mode 为 2，程序直接跳转到 case 2 执行 target = target + 20，target 变为 20；由于没有 break，程序贯穿执行 case 3 中的 target = target + 30，target 变为 50；随后遇到 break 跳出 switch，default 不会执行。选项 a 忽略了贯穿行为；选项 d 误以为 default 也会执行。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "switch-case-3",
+    "type": "multiple_choice",
+    "chapter": "多分支 switch",
+    "concepts": [
+      "switch-case"
+    ],
+    "stem": "在分拣站的通信协议解析与状态机调度中，常使用 switch 语句实现多路分支。下列关于 switch 语句特性的说法中，正确的有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "switch 语句圆括号内的控制表达式结果必须是整型或字符型，不能是浮点数"
+      },
+      {
+        "id": "b",
+        "text": "每个 case 分支末尾必须使用 break 语句，否则会导致编译错误"
+      },
+      {
+        "id": "c",
+        "text": "default 标签在语法上必须放置在所有 case 标签的末尾，不可放在其他位置"
+      },
+      {
+        "id": "d",
+        "text": "合理省略 break 实现贯穿（fall-through），可以让多个 case 共享同一段执行代码"
+      }
+    ],
+    "explanation": "选项 a 正确，switch 仅支持整型及其兼容类型（如 char）；选项 d 正确，故意省略 break 可以让不同分支共享处理逻辑（如大写与小写指令共用执行代码）。选项 b 错误，break 是可选的跳转语句而非语法强制要求；选项 c 错误，default 标签在语法上可位于 switch 体内的任意位置。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "switch-case-4",
+    "type": "true_false",
+    "chapter": "多分支 switch",
+    "concepts": [
+      "switch-case"
+    ],
+    "stem": "在 C 语言中，如果 switch 语句中没有 default 分支，且控制表达式的值与所有 case 标签均不匹配，则程序会跳过整个 switch 结构继续向下执行。",
+    "explanation": "当 switch 表达式的值未命中任何 case 标签，且结构中未定义 default 标签时，switch 语句体内的任何语句都不会被执行，程序直接跳出 switch 结构继续顺序执行后续代码，这属于完全合法的运行行为。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "switch-case-5",
+    "type": "numeric",
+    "chapter": "多分支 switch",
+    "concepts": [
+      "switch-case"
+    ],
+    "stem": "分析下列控制舵机动作次数的代码片段：\nint cmd = 1;\nint count = 5;\nswitch (cmd) {\ncase 0: count = count + 2;\ncase 1: count = count * 3;\ncase 2: count = count + 4;\nbreak;\n}\n程序执行完成后，变量 count 的最终值是多少？",
+    "explanation": "cmd 为 1，程序跳过 case 0 直接匹配 case 1，执行 count = count * 3 后 count 变为 15；由于没有 break，程序贯穿执行 case 2 中的 count = count + 4，count 变为 19；随后遇到 break 跳出 switch。故 count 最终值为 19。",
+    "grading": {
+      "value": "19",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sample-single",
+    "type": "single_choice",
+    "chapter": "关系与逻辑运算",
+    "concepts": [
+      "relational-logical"
+    ],
+    "stem": "在 C 中，哪条表达式用于判断整数 value 是否等于 10？",
+    "options": [
+      {
+        "id": "a",
+        "text": "value > 10"
+      },
+      {
+        "id": "b",
+        "text": "value != 10"
+      },
+      {
+        "id": "c",
+        "text": "value == 10"
+      },
+      {
+        "id": "d",
+        "text": "value = 10"
+      }
+    ],
+    "explanation": "== 比较是否相等。= 是赋值。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  }
+]

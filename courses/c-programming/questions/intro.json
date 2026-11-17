@@ -1,0 +1,650 @@
+[
+  {
+    "id": "program-structure-1",
+    "type": "single_choice",
+    "chapter": "程序结构与编译运行",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "分拣工位单片机控制程序的源文件在生成机器可执行文件的过程中，下列哪个阶段负责将多个目标文件（.o或.obj）与标准库函数组合连接在一起？",
+    "options": [
+      {
+        "id": "a",
+        "text": "预处理阶段"
+      },
+      {
+        "id": "b",
+        "text": "汇编阶段"
+      },
+      {
+        "id": "c",
+        "text": "链接阶段"
+      },
+      {
+        "id": "d",
+        "text": "编译阶段"
+      }
+    ],
+    "explanation": "链接阶段负责将编译汇编生成的各目标文件与所需的系统库和运行时支持库绑定，最终生成可执行程序或固件镜像。预处理负责展开头文件和宏，编译负责将 C 代码转换为汇编代码，汇编阶段将汇编指令转换为机器目标文件。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-2",
+    "type": "single_choice",
+    "chapter": "程序结构与编译运行",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在编写工件检测主程序时，关于 main 函数与代码编写规范，下列说法正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "C 语言程序执行总是从 main 函数开始"
+      },
+      {
+        "id": "b",
+        "text": "可以在同一个工程中定义两个名字相同且并列的 main 函数"
+      },
+      {
+        "id": "c",
+        "text": "预处理指令 #include 语句末尾必须添加英文分号"
+      },
+      {
+        "id": "d",
+        "text": "单行注释 // 后面的说明文字会被编译器编译为机器指令"
+      }
+    ],
+    "explanation": "C 语言标准规定 main 函数是程序执行的唯一入口。一个工程中不可重复定义 main 函数；#include 是预处理指令，末尾不加分号；注释在预处理阶段即被剔除，不生成机器代码。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-3",
+    "type": "multiple_choice",
+    "chapter": "程序结构与编译运行",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在桌面分拣站代码中添加注释和包含头文件时，下列哪些书写形式完全符合 C 语言语法规范？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "#include <stdio.h>"
+      },
+      {
+        "id": "b",
+        "text": "#include <stdio.h>;"
+      },
+      {
+        "id": "c",
+        "text": "/* 检测到工件到位 */"
+      },
+      {
+        "id": "d",
+        "text": "/* 传感器启动 /* 舵机复位 */ 到位 */"
+      }
+    ],
+    "explanation": "选项 a 是合法的标准头文件引入指令，预处理指令末尾不加分号，故 b 错误；选项 c 是合法的块注释；选项 d 的块注释在第一个 */ 处结束（块注释不嵌套），其后的 到位 */ 成为非法的代码，导致编译错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "program-structure-4",
+    "type": "true_false",
+    "chapter": "程序结构与编译运行",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "在 C 语言源文件中，如果省略语句末尾的英文分号，编译器会自动根据回车换行符判断语句结束并正常完成编译。",
+    "explanation": "C 语言是自由格式语言，回车换行仅视为空白字符，语句结束完全依赖英文分号标示。若缺少分号，编译器会直接报告语法错误。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "program-structure-5",
+    "type": "numeric",
+    "chapter": "程序结构与编译运行",
+    "concepts": [
+      "program-structure"
+    ],
+    "stem": "分析以下分拣站初始化程序的代码，程序执行完毕后，main 函数返回给操作系统的整数值是多少？\nint main(void) {\nint sensor_ok = 1;\nint motor_ok = 1;\nint status = sensor_ok + motor_ok * 3;\nreturn status;\n}",
+    "explanation": "乘法运算符优先级高于加法运算符，表达式先计算 motor_ok * 3 得 3，再与 sensor_ok 相加得 1 + 3 = 4，因此 main 函数最终返回整数 4。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "variables-types-1",
+    "type": "single_choice",
+    "chapter": "变量与基本类型",
+    "concepts": [
+      "variables-types"
+    ],
+    "stem": "在桌面分拣站系统中，需要定义一个变量用于存储从上位机串口接收到的单个字符控制指令（如 'S' 代表启动，'P' 代表暂停）。下列最合适的数据类型是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "float"
+      },
+      {
+        "id": "b",
+        "text": "double"
+      },
+      {
+        "id": "c",
+        "text": "int"
+      },
+      {
+        "id": "d",
+        "text": "char"
+      }
+    ],
+    "explanation": "char 是字符类型，占用 1 个字节，最适合存储单个 ASCII 字符或指令码。float 和 double 用于存储浮点数，int 占用 4 字节且语义上表示整数，用 char 存储单字符最契合且节省内存。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "variables-types-2",
+    "type": "single_choice",
+    "chapter": "变量与基本类型",
+    "concepts": [
+      "variables-types"
+    ],
+    "stem": "在符合 C99 标准且 int 为 32 位的运行环境下，执行下列代码后，变量 bytes 的值是多少？\nint count = 100;\nint bytes = sizeof(count);",
+    "options": [
+      {
+        "id": "a",
+        "text": "2"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "8"
+      },
+      {
+        "id": "d",
+        "text": "100"
+      }
+    ],
+    "explanation": "在 32 位环境下，int 类型变量占用 4 个字节，sizeof 运算符计算并返回其占用的内存字节数，因此 bytes 的值为 4，而不是变量中保存的数值 100。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "variables-types-3",
+    "type": "multiple_choice",
+    "chapter": "变量与基本类型",
+    "concepts": [
+      "variables-types"
+    ],
+    "stem": "在分拣站程序中声明与初始化变量时，下列哪些代码片段完全符合 C 语言语法且变量具有明确初值？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "int 1st_counter = 0;"
+      },
+      {
+        "id": "b",
+        "text": "float item_weight = 12.5f;"
+      },
+      {
+        "id": "c",
+        "text": "char cmd = \"A\";"
+      },
+      {
+        "id": "d",
+        "text": "int pass_count = 0, fail_count = 0;"
+      }
+    ],
+    "explanation": "选项 b 声明单精度浮点变量并正确赋初值；选项 d 在同一语句中声明并初始化了两个整型变量。选项 a 错误，C 语言标识符不能以数字开头；选项 c 错误，字符型常量必须使用单引号 'A'，双引号表示字符串字面量。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "variables-types-4",
+    "type": "true_false",
+    "chapter": "变量与基本类型",
+    "concepts": [
+      "variables-types"
+    ],
+    "stem": "在 C 语言函数内部声明局部变量时若未进行显式初始化，该变量所占用的内存单元中可能保留原有未清除的随机数值。",
+    "explanation": "C 语言中函数内部的局部变量默认属于自动存储期，系统不会自动对其进行清零初始化，其初值是不确定的内存残留值，未初始化直接读取会导致逻辑错误。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "variables-types-5",
+    "type": "numeric",
+    "chapter": "变量与基本类型",
+    "concepts": [
+      "variables-types"
+    ],
+    "stem": "在标准 C99 环境下（int 占 4 字节，double 占 8 字节，char 占 1 字节），计算以下程序执行后变量 total_size 的数值（单位：字节）：\nint total_size;\nint id = 101;\ndouble weight = 45.6;\nchar grade = 'A';\ntotal_size = sizeof(id) + sizeof(weight) + sizeof(grade);",
+    "explanation": "在题设环境下，sizeof(id) 为 4 字节，sizeof(weight) 为 8 字节，sizeof(grade) 为 1 字节。三者相加得 4 + 8 + 1 = 13，因此 total_size 的数值为 13。",
+    "grading": {
+      "value": "13",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "io-printf-scanf-1",
+    "type": "single_choice",
+    "chapter": "格式化输入输出",
+    "concepts": [
+      "io-printf-scanf"
+    ],
+    "stem": "分拣工位上位机通过 printf 向串口控制台输出浮点型工件厚度变量 thickness 时，若要求保留两位小数输出，格式控制字符串应采用哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "\"%.2f\""
+      },
+      {
+        "id": "b",
+        "text": "\"%2d\""
+      },
+      {
+        "id": "c",
+        "text": "\"%f.2\""
+      },
+      {
+        "id": "d",
+        "text": "\"%2.f\""
+      }
+    ],
+    "explanation": "在 printf 中，使用 %.2f 可以精确控制浮点数保留两位小数输出。%2d 用于至少占用两位宽度的整数；%f.2 与 %2.f 均不是合法的浮点小数位数修饰格式。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "io-printf-scanf-2",
+    "type": "single_choice",
+    "chapter": "格式化输入输出",
+    "concepts": [
+      "io-printf-scanf"
+    ],
+    "stem": "若要使用 scanf 从终端输入读取分拣工位的工件合格标志（整型变量 status），正确的调用语句是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "scanf(\"%d\", status);"
+      },
+      {
+        "id": "b",
+        "text": "scanf(\"%f\", &status);"
+      },
+      {
+        "id": "c",
+        "text": "scanf(\"%d\", &status);"
+      },
+      {
+        "id": "d",
+        "text": "scanf(&status, \"%d\");"
+      }
+    ],
+    "explanation": "scanf 读取基本整型变量时，第一个参数应为格式字符串 \"%d\"，第二个参数必须是变量的内存地址 &status。选项 a 漏写取地址符 &；选项 b 占位符类型不匹配；选项 d 参数顺序颠倒。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "io-printf-scanf-3",
+    "type": "multiple_choice",
+    "chapter": "格式化输入输出",
+    "concepts": [
+      "io-printf-scanf"
+    ],
+    "stem": "关于分拣站串口通信中常用的转义字符与格式占位符，下列陈述中哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "转义字符 \\n 的作用是将输出光标移动到下一行的行首"
+      },
+      {
+        "id": "b",
+        "text": "格式说明符 %c 用于输出或读取单个字符"
+      },
+      {
+        "id": "c",
+        "text": "在 printf 的格式字符串中若要输出字符 % 应当写为 \\%"
+      },
+      {
+        "id": "d",
+        "text": "scanf 使用 %c 读取字符时会自动跳过输入缓冲区中的空格与换行符"
+      }
+    ],
+    "explanation": "选项 a 和 b 正确描述了换行符与单字符占位符的功能。选项 c 错误，输出百分号应使用 %%；选项 d 错误，%c 会如实读取包括空格和换行在内的任何字符，不会自动跳过。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "io-printf-scanf-4",
+    "type": "true_false",
+    "chapter": "格式化输入输出",
+    "concepts": [
+      "io-printf-scanf"
+    ],
+    "stem": "在 C 语言中调用语句 printf(\"%d\\n\", 3.14); 时，编译器会自动把浮点数 3.14 转换为整数 3 并正确打印在屏幕上。",
+    "explanation": "printf 是可变参数函数，调用时不会自动根据格式占位符对浮点参数进行四舍五入或截断转换；用 %d 读取浮点参数会直接按整数方式解析其内存表示，输出未定义的错误数值。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "io-printf-scanf-5",
+    "type": "numeric",
+    "chapter": "格式化输入输出",
+    "concepts": [
+      "io-printf-scanf"
+    ],
+    "stem": "阅读以下模拟分拣计数显示程序，求程序执行完毕后变量 printed_val 的整数值：\nint printed_val;\nint raw_count = 15;\nint offset = 7;\nprinted_val = raw_count - offset;\nprintf(\"%d\", printed_val);",
+    "explanation": "程序中 raw_count - offset 计算 15 - 7 = 8，并赋值给 printed_val，printf 打印输出此值，因此 printed_val 的整数值为 8。",
+    "grading": {
+      "value": "8",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "arithmetic-1",
+    "type": "single_choice",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "分拣站工件按每 6 个装入一盒。若当前已检测到 23 个工件，用 C 语言表达式计算当前未装满盒的剩余散件数量，下列运算式正确的是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "23 / 6"
+      },
+      {
+        "id": "b",
+        "text": "23 % 6"
+      },
+      {
+        "id": "c",
+        "text": "23 * 6"
+      },
+      {
+        "id": "d",
+        "text": "23.0 / 6"
+      }
+    ],
+    "explanation": "取余运算符 % 用于计算两数相除的余数，23 % 6 的结果为 5，即尚未装满一整盒的散件数；23 / 6 是整数除法，计算结果为整盒数 3。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "arithmetic-2",
+    "type": "single_choice",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "下列 C 语言语句执行完毕后，变量 a 和变量 b 的值分别是多少？\nint a = 5;\nint b = a++;",
+    "options": [
+      {
+        "id": "a",
+        "text": "a 为 5，b 为 5"
+      },
+      {
+        "id": "b",
+        "text": "a 为 5，b 为 6"
+      },
+      {
+        "id": "c",
+        "text": "a 为 6，b 为 6"
+      },
+      {
+        "id": "d",
+        "text": "a 为 6，b 为 5"
+      }
+    ],
+    "explanation": "a++ 是后缀自增运算符，先将 a 原来的值（5）作为表达式的值赋给 b，随后 a 自身完成加 1 变为 6，因此执行后 a 为 6，b 为 5。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "arithmetic-3",
+    "type": "multiple_choice",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "下列关于 C 语言算术运算符与表达式求值的规则中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "表达式 7 / 2 在 C 语言中的计算结果是 3.5"
+      },
+      {
+        "id": "b",
+        "text": "取余运算符 % 的两个操作数可以是 float 或 double 类型"
+      },
+      {
+        "id": "c",
+        "text": "乘法运算符 *、除法运算符 / 的优先级高于加法 + 和减法 -"
+      },
+      {
+        "id": "d",
+        "text": "表达式 17 % 5 的计算结果等于 2"
+      }
+    ],
+    "explanation": "选项 c 正确表述了算术运算符的优先级顺序；选项 d 中 17 除以 5 商 3 余 2，取余结果为 2。选项 a 错误，两个整数相除为整除截断结果为 3；选项 b 错误，% 运算要求两端操作数必须均为整数类型。",
+    "grading": {
+      "choice_ids": [
+        "c",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "arithmetic-4",
+    "type": "true_false",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "在 C 语言中，执行整数除法时若结果存在小数部分，计算机制会直接截断丢弃小数部分，而不是进行四舍五入取整。",
+    "explanation": "C 语言标准规定两个整数相除执行向零截断，例如 7 / 2 的计算结果为 3，小数部分直接被截断丢弃，不会进行四舍五入。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "arithmetic-5",
+    "type": "numeric",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "追踪以下分拣计数程序的执行过程，求出程序运行结束时变量 result 的最终整数值：\nint count = 10;\nint factor = 3;\nint result;\ncount = count + 2;\nresult = count % factor + count / factor;",
+    "explanation": "执行 count = count + 2 后 count 的值变为 12；随后 count % factor 即 12 % 3 计算得 0，count / factor 即 12 / 3 计算得 4；两者相加 0 + 4 = 4，因此 result 最终为 4。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "type-conversion-1",
+    "type": "single_choice",
+    "chapter": "类型转换与溢出",
+    "concepts": [
+      "type-conversion"
+    ],
+    "stem": "分拣站统计程序中，pass_items 为 int 类型变量（值为 7），total_items 为 int 类型变量（值为 10）。为了精确计算出合格率 0.7 并赋给 double 变量 rate，下列语句正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "rate = pass_items / total_items;"
+      },
+      {
+        "id": "b",
+        "text": "rate = (double)(pass_items / total_items);"
+      },
+      {
+        "id": "c",
+        "text": "rate = (double)pass_items / total_items;"
+      },
+      {
+        "id": "d",
+        "text": "rate = pass_items / (int)total_items;"
+      }
+    ],
+    "explanation": "选项 c 中 (double)pass_items 先将 pass_items 强转为 double，随后 total_items 隐式提升为 double 进行浮点除法，结果为 0.7；选项 a 与 b 均先在括号内执行整数除法 7 / 10 得到 0，强转或赋值后均为 0.0；选项 d 仍是整数相除。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "type-conversion-2",
+    "type": "single_choice",
+    "chapter": "类型转换与溢出",
+    "concepts": [
+      "type-conversion"
+    ],
+    "stem": "在 8 位有符号字符型（signed char，取值范围 -128 到 127）的分拣状态编码中，若变量 val 当前值为 127，执行语句 val = val + 1; 时，加法结果 128 超出 signed char 范围，再存回 val。在采用补码表示的常见机器上，val 的值通常变为多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "-128"
+      },
+      {
+        "id": "b",
+        "text": "128"
+      },
+      {
+        "id": "c",
+        "text": "0"
+      },
+      {
+        "id": "d",
+        "text": "255"
+      }
+    ],
+    "explanation": "val + 1 先在 int 中算出 128，存回 signed char 时超出范围，结果由实现定义；常见补码机器按低 8 位截取，二进制 10000000 表示 -128。因此通常得到 -128，不能依赖该行为编写可移植程序。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "type-conversion-3",
+    "type": "multiple_choice",
+    "chapter": "类型转换与溢出",
+    "concepts": [
+      "type-conversion"
+    ],
+    "stem": "下列关于 C 语言类型转换与数据表示的说法中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "将 float 赋值给 int 变量时，小数部分会自动进行四舍五入保留"
+      },
+      {
+        "id": "b",
+        "text": "unsigned int 类型只能表示非负整数，其最小值为 0"
+      },
+      {
+        "id": "c",
+        "text": "计算机内二进制浮点数无法精确表示所有十进制小数，比较时应避免直接使用 =="
+      },
+      {
+        "id": "d",
+        "text": "强制类型转换表达式 (int)3.8 的运算结果为 4"
+      }
+    ],
+    "explanation": "选项 b 正确指出了无符号整型的非负属性；选项 c 正确指出了二进制浮点数的精度舍入问题。选项 a 错误，浮点赋给整型会直接截断小数部分而非四舍五入；选项 d 错误，(int)3.8 截断后结果为 3。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "type-conversion-4",
+    "type": "true_false",
+    "chapter": "类型转换与溢出",
+    "concepts": [
+      "type-conversion"
+    ],
+    "stem": "在 C 语言中，表达式 10 + 2.5f 的计算过程中，浮点数 2.5f 会先被自动隐式转换为整数 2，然后再与 10 进行整数加法。",
+    "explanation": "C 语言的隐式类型提升规则是将低精度向高精度提升。整型 10 会先被自动提升为单精度浮点型 10.0f，随后与 2.5f 进行浮点加法，结果为 12.5f。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "type-conversion-5",
+    "type": "numeric",
+    "chapter": "类型转换与溢出",
+    "concepts": [
+      "type-conversion"
+    ],
+    "stem": "追踪以下混合类型转换与截断计算程序，求出程序运行结束时变量 final_val 的最终整数值：\ndouble sensor_reading = 18.75;\nint base = 4;\nint truncated;\nint final_val;\ntruncated = (int)sensor_reading;\nfinal_val = truncated / base;",
+    "explanation": "执行 (int)sensor_reading 发生强制类型转换，18.75 截断小数后 truncated 为 18；接着执行整数除法 18 / 4，截断小数后商为 4，因此 final_val 的最终值为 4。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sample-boolean",
+    "type": "true_false",
+    "chapter": "算术运算、整除与取余",
+    "concepts": [
+      "arithmetic"
+    ],
+    "stem": "在 C 中，表达式 5 / 2 和 5.0 / 2 的结果分别是整数 2 和浮点数 2.5。",
+    "explanation": "两个整数相除会舍弃小数部分。有浮点操作数时，除法按浮点运算执行。",
+    "grading": {
+      "boolean": true
+    }
+  }
+]

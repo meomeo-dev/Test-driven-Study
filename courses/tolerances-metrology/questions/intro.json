@@ -1,0 +1,557 @@
+[
+  {
+    "id": "nominal-dimensions-1",
+    "type": "single_choice",
+    "chapter": "名义尺寸与尺寸标注",
+    "concepts": [
+      "nominal-dimensions"
+    ],
+    "stem": "桌面质检分拣站的定位夹具图纸上，一个用于固定光电传感器的圆孔标注为 ⌀8 mm，其拐角倒角标注为 R2 mm。下列关于这两个尺寸的理解，正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "传感器安装孔的名义半径为 8 mm"
+      },
+      {
+        "id": "b",
+        "text": "拐角倒角圆弧的名义直径为 2 mm"
+      },
+      {
+        "id": "c",
+        "text": "拐角倒角圆弧的名义曲率半径为 4 mm"
+      },
+      {
+        "id": "d",
+        "text": "传感器安装孔的名义直径为 8 mm"
+      }
+    ],
+    "explanation": "符号 ⌀ 表示圆的直径，因此 ⌀8 mm 表示该孔的名义直径为 8 mm；符号 R 表示圆弧半径，因此 R2 mm 表示倒角圆弧的名义半径为 2 mm。选项 a 将直径误当作半径，选项 b 将半径误当作直径，选项 c 错误放大了半径值。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "nominal-dimensions-2",
+    "type": "single_choice",
+    "chapter": "名义尺寸与尺寸标注",
+    "concepts": [
+      "nominal-dimensions"
+    ],
+    "stem": "在分拣站工件图纸中，工件左侧端面被设定为主要基准边 A。图纸标注从基准边 A 到定位凹槽中心线的线性距离为 35 mm。质检员在测量该位置时，正确的操作是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "以工件右侧任意端面为起点测量到凹槽中心线"
+      },
+      {
+        "id": "b",
+        "text": "以图纸规定的左侧基准边 A 为测量起点进行测量"
+      },
+      {
+        "id": "c",
+        "text": "测量两个凹槽之间的间距后直接推算，无需参考基准边 A"
+      },
+      {
+        "id": "d",
+        "text": "将卡尺零位对准凹槽中心线，向工件任意侧边缘拉伸读取数值"
+      }
+    ],
+    "explanation": "图样标注尺寸是从基准边引出的，实际检测时必须以图纸规定的基准边 A 作为测量起点，才能保证加工与检验基准重合，避免基准不一致引入累积误差。选项 a、c、d 均脱离了设计基准边，会导致测量结果失真。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "nominal-dimensions-3",
+    "type": "multiple_choice",
+    "chapter": "名义尺寸与尺寸标注",
+    "concepts": [
+      "nominal-dimensions"
+    ],
+    "stem": "在机械图样与 3D 打印件检验中，关于名义尺寸与标注符号的说法，正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "名义尺寸是设计时给定的理论基准尺寸，实际加工件的尺寸通常允许围绕其波动"
+      },
+      {
+        "id": "b",
+        "text": "名义尺寸就是合格零件在质检分拣时必须完全达到的绝对测量尺寸"
+      },
+      {
+        "id": "c",
+        "text": "半径符号 R 只能用于标注 360 度的完整圆孔结构"
+      },
+      {
+        "id": "d",
+        "text": "整圆或大于半圆的圆弧结构，在尺寸数值前通常加注直径符号 ⌀"
+      }
+    ],
+    "explanation": "选项 a 正确，名义尺寸是设计的基准尺寸，加工件实际尺寸允许在公差带内波动；选项 d 正确，整圆或大于半圆的圆弧按国家标准需加注直径符号 ⌀。选项 b 错误，实际加工尺寸客观上不可能绝对等于名义尺寸；选项 c 错误，半径符号 R 用于半圆或小于半圆的圆弧过渡，整圆标注应使用直径符号 ⌀。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "nominal-dimensions-4",
+    "type": "true_false",
+    "chapter": "名义尺寸与尺寸标注",
+    "concepts": [
+      "nominal-dimensions"
+    ],
+    "stem": "在桌面质检分拣站的检测中，若打印工件的某个线性尺寸测量值没有完全等于图纸上的名义尺寸，则该工件必然是不合格品。",
+    "explanation": "陈述错误。名义尺寸只是设计基准尺寸，由于机械加工与 3D 打印必然存在制造误差，只要工件的实际测量尺寸落在规定的上、下极限尺寸范围之内，即判定为合格品，不需要也不可能绝对等于名义尺寸。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "nominal-dimensions-5",
+    "type": "numeric",
+    "chapter": "名义尺寸与尺寸标注",
+    "concepts": [
+      "nominal-dimensions"
+    ],
+    "stem": "桌面质检分拣站的定位夹具上加工有一个对称圆弧形定位块，图纸标注该定位圆弧的半径为 R16.5 mm。若质检相机需要根据其对应的完整外接圆直径参数进行圆心拟合算法校准，该圆弧所对应的外接圆名义直径应为多少 mm？（答案填整数数值）",
+    "explanation": "外接圆名义直径 D 等于半径 R 的两倍，即 D = 2 × R = 2 × 16.5 = 33 mm。",
+    "grading": {
+      "value": "33",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "limits-deviations-1",
+    "type": "single_choice",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "桌面分拣站用于卡紧工件的轴类销柱名义尺寸为 d = 15 mm。图纸设计要求的最大极限尺寸为 15.03 mm，最小极限尺寸为 14.96 mm。该销柱的下偏差 ei 为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "−0.04 mm"
+      },
+      {
+        "id": "b",
+        "text": "+0.03 mm"
+      },
+      {
+        "id": "c",
+        "text": "+0.04 mm"
+      },
+      {
+        "id": "d",
+        "text": "−0.07 mm"
+      }
+    ],
+    "explanation": "轴的下偏差等于最小极限尺寸减去名义尺寸，即 ei = dmin − d = 14.96 − 15 = −0.04 mm。选项 b 为上偏差 es（15.03 − 15 = +0.03 mm），选项 c 颠倒了代数差符号，选项 d 计算数值错误。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "limits-deviations-2",
+    "type": "single_choice",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "分拣站待检孔类零件的名义尺寸为 D = 40 mm，孔的上偏差 ES = +0.05 mm，下偏差 EI = 0 mm。分拣站传感器采集到某件样品的实际孔径为 40.06 mm。PLC 控制系统应对该工件执行的操作是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "判定为合格，控制挡板拨入合格料盒"
+      },
+      {
+        "id": "b",
+        "text": "判定为孔径偏小，控制挡板拨入废品料盒"
+      },
+      {
+        "id": "c",
+        "text": "判定为孔径超差偏大，控制挡板拨入不合格料盒"
+      },
+      {
+        "id": "d",
+        "text": "判定为尺寸达到下极限，控制挡板拨入返工料盒"
+      }
+    ],
+    "explanation": "孔的上极限尺寸 Dmax = 40 + 0.05 = 40.05 mm，下极限尺寸 Dmin = 40 + 0 = 40.00 mm，允许合格尺寸范围为 [40.00, 40.05] mm。实测孔径 40.06 mm 大于上极限尺寸 40.05 mm，属于尺寸偏大超差，因此应判定为不合格品并分拣至不合格料盒。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "limits-deviations-3",
+    "type": "multiple_choice",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "关于极限尺寸与极限偏差的概念及合格判定，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "轴的上偏差 es 必然恒大于零，下偏差 ei 必然恒小于零"
+      },
+      {
+        "id": "b",
+        "text": "工件合格的条件是实际尺寸介于最大极限尺寸与最小极限尺寸之间（含临界值）"
+      },
+      {
+        "id": "c",
+        "text": "极限偏差是极限尺寸与名义尺寸的代数差，其数值可以为正数、负数或零"
+      },
+      {
+        "id": "d",
+        "text": "实际尺寸若刚好等于最小极限尺寸，因处于临界危险状态应判定为不合格"
+      }
+    ],
+    "explanation": "选项 b 正确，工件合格的判定条件是实际尺寸落在上、下极限尺寸构成的闭区间内；选项 c 正确，极限偏差为代数差，数值可正、可负或为零。选项 a 错误，偏差正负取决于公差带相对零线的位置，上偏差亦可为负数或零；选项 d 错误，最小极限尺寸属于允许范围的合格边界，等于边界值仍属合格。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "limits-deviations-4",
+    "type": "true_false",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "在机械制造与尺寸公差标准中，孔的上偏差 ES 与下偏差 EI 的数值可以同时小于零。",
+    "explanation": "陈述正确。极限偏差是极限尺寸减名义尺寸的代数差。当下极限尺寸与上极限尺寸均小于名义尺寸时，上偏差 ES 和下偏差 EI 均为负数（例如名义尺寸 50 mm，上偏差 −0.01 mm，下偏差 −0.04 mm）。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "limits-deviations-5",
+    "type": "numeric",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "桌面质检分拣站待测滑块的厚度名义尺寸为 12 mm，设计图样给定的上偏差 es = +0.06 mm，下偏差 ei = −0.02 mm。分拣站卡尺测得某工件的实际尺寸为 11.95 mm。请问该工件的实际尺寸比下极限尺寸小了多少 mm？（答案填数值，保留两位小数）",
+    "explanation": "该工件的下极限尺寸 dmin = d + ei = 12 + (−0.02) = 11.98 mm。实测尺寸为 11.95 mm，因此比下极限尺寸小了 11.98 − 11.95 = 0.03 mm。",
+    "grading": {
+      "value": "0.03",
+      "absolute_tolerance": "0.005"
+    }
+  },
+  {
+    "id": "tolerance-notation-1",
+    "type": "single_choice",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "桌面分拣站打印定位块的宽度标注为 24 ± 0.08 mm。该尺寸的公差 T 为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.08 mm"
+      },
+      {
+        "id": "b",
+        "text": "0.04 mm"
+      },
+      {
+        "id": "c",
+        "text": "24.16 mm"
+      },
+      {
+        "id": "d",
+        "text": "0.16 mm"
+      }
+    ],
+    "explanation": "尺寸标注为 24 ± 0.08 mm 时，上偏差 es = +0.08 mm，下偏差 ei = −0.08 mm。尺寸公差 T = es − ei = 0.08 − (−0.08) = 0.16 mm。选项 a 误将单侧偏差当成公差，选项 b 将单侧偏差减半，选项 c 混淆了极限尺寸与公差。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "tolerance-notation-2",
+    "type": "single_choice",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "某定位销外径在图样上标注为 18 (+0.05, +0.01) mm。关于该尺寸的公差与极限尺寸，下列叙述正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "上极限尺寸为 18.05 mm，公差为 0.04 mm"
+      },
+      {
+        "id": "b",
+        "text": "下极限尺寸为 18.00 mm，公差为 0.05 mm"
+      },
+      {
+        "id": "c",
+        "text": "上极限尺寸为 18.06 mm，公差为 0.06 mm"
+      },
+      {
+        "id": "d",
+        "text": "下极限尺寸为 17.99 mm，公差为 0.04 mm"
+      }
+    ],
+    "explanation": "该轴的名义尺寸为 18 mm，上极限尺寸 dmax = 18 + 0.05 = 18.05 mm，下极限尺寸 dmin = 18 + 0.01 = 18.01 mm。公差 T = dmax − dmin = 18.05 − 18.01 = 0.04 mm。选项 b 下极限尺寸算错，选项 c 上极限尺寸算错，选项 d 下极限尺寸算错。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "tolerance-notation-3",
+    "type": "multiple_choice",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "关于机械图样中的尺寸公差（T）与公差带，下列叙述正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "尺寸公差恒为绝对正值，数值上绝不可能为负数或零"
+      },
+      {
+        "id": "b",
+        "text": "若图样尺寸标注的上、下偏差均为负数，则计算所得的公差 T 也应为负数"
+      },
+      {
+        "id": "c",
+        "text": "公差带图解中，公差带的宽度（大小）由尺寸公差数值确定"
+      },
+      {
+        "id": "d",
+        "text": "零件图样中标注的极限尺寸数值可以小于 0 mm"
+      }
+    ],
+    "explanation": "选项 a 正确，公差是最大极限尺寸与最小极限尺寸之差，恒为正数；选项 c 正确，公差带的大小（宽度）由尺寸公差数值确定。选项 b 错误，即使上下偏差均为负数，上偏差减下偏差仍恒为正值；选项 d 错误，机械零件的实际线性尺寸与极限尺寸均为正几何量，不能小于 0 mm。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "tolerance-notation-4",
+    "type": "true_false",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "某装配孔尺寸标注为 30 (0, −0.03) mm，由于其上偏差为 0 mm，因此该孔的尺寸公差 T 等于 0 mm。",
+    "explanation": "陈述错误。尺寸公差 T = 上偏差 − 下偏差 = 0 − (−0.03) = 0.03 mm。公差是允许尺寸变动的范围大小，只要允许有变动量，公差就大于 0，绝不可能等于 0 mm。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "tolerance-notation-5",
+    "type": "numeric",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "桌面分拣站用于安装电机的铝型材支架槽宽图纸标注为 50 (+0.07, −0.05) mm。该槽宽尺寸的公差 T 为多少 mm？（答案填数值，保留两位小数）",
+    "explanation": "尺寸公差 T = 上偏差 − 下偏差 = 0.07 − (−0.05) = 0.12 mm。",
+    "grading": {
+      "value": "0.12",
+      "absolute_tolerance": "0.005"
+    }
+  },
+  {
+    "id": "general-tolerances-1",
+    "type": "single_choice",
+    "chapter": "一般公差",
+    "concepts": [
+      "general-tolerances"
+    ],
+    "stem": "在桌面质检分拣站的机械图样技术要求中，注有“未注公差按 GB/T 1804-m 执行”。关于该注写的工程含义，下列理解正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "图样中所有尺寸均没有公差约束，加工时可以任意发挥"
+      },
+      {
+        "id": "b",
+        "text": "图样中未单独标注公差的线性尺寸，均按国家标准中等级 m 的极限偏差执行"
+      },
+      {
+        "id": "c",
+        "text": "该零件只能使用手工粗加工制造，不能上数控机床"
+      },
+      {
+        "id": "d",
+        "text": "仅有标注了公差的尺寸需要检验，未注公差的尺寸完全无需质检"
+      }
+    ],
+    "explanation": "“未注公差按 GB/T 1804-m 执行”表示图样中未单独注出公差的线性尺寸并非没有公差，而是统一按国家标准 GB/T 1804 中等级（m 级）规定的极限偏差进行控制与验收。选项 a 和 d 错误地认为未注公差等于没有公差或不检验，选项 c 混淆了公差要求与制造工艺。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "general-tolerances-2",
+    "type": "single_choice",
+    "chapter": "一般公差",
+    "concepts": [
+      "general-tolerances"
+    ],
+    "stem": "国家标准 GB/T 1804 规定的线性尺寸一般公差分为四个等级：精密级（f）、中等级（m）、粗糙级（c）和最粗级（v）。下列关于这四个等级公差带大小与加工要求的比较，正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "最粗级（v）的公差带最小，加工要求最高"
+      },
+      {
+        "id": "b",
+        "text": "粗糙级（c）的公差带小于精密级（f）的公差带"
+      },
+      {
+        "id": "c",
+        "text": "精密级（f）的公差带最小，允许变动量最小，制造精度要求最高"
+      },
+      {
+        "id": "d",
+        "text": "中等级（m）的公差数值大于粗糙级（c）的公差数值"
+      }
+    ],
+    "explanation": "在一般公差等级中，公差数值从小到大（精度由高到低）依次为：精密级（f）< 中等级（m）< 粗糙级（c）< 最粗级（v）。因此精密级（f）公差带最小，精度要求最高。选项 a、b、d 的大小关系均叙述错误。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "general-tolerances-3",
+    "type": "multiple_choice",
+    "chapter": "一般公差",
+    "concepts": [
+      "general-tolerances"
+    ],
+    "stem": "在 3D 打印与机械制造实务中，关于采用“一般公差”标准的意义与规则，正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "采用一般公差要求所有未注公差尺寸的加工误差必须为 0 mm"
+      },
+      {
+        "id": "b",
+        "text": "图样技术要求注明一般公差可以简化图样标注，突出重要配合尺寸"
+      },
+      {
+        "id": "c",
+        "text": "只要图纸注明了一般公差等级，生产车间就完全不需要进行任何尺寸质检"
+      },
+      {
+        "id": "d",
+        "text": "未注公差尺寸在质检判定时，应根据名义尺寸所在的分段区间查取对应的极限偏差"
+      }
+    ],
+    "explanation": "选项 b 正确，非关键尺寸采用一般公差能使图面简洁清晰，突出核心配合要素；选项 d 正确，一般公差表按名义尺寸大小分段，检验时必须查取对应分段区间的极限偏差。选项 a 错误，一般公差允许合理变动量，误差不可能为 0；选项 c 错误，未注公差尺寸仍须符合对应等级公差，超差同样判定为不合格。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "general-tolerances-4",
+    "type": "true_false",
+    "chapter": "一般公差",
+    "concepts": [
+      "general-tolerances"
+    ],
+    "stem": "桌面质检分拣站的控制程序在自动判断工件未注公差尺寸时，对于相同的一般公差等级 m，名义尺寸为 100 mm 的尺寸段所允许的公差值，通常大于名义尺寸为 10 mm 的尺寸段所允许的公差值。",
+    "explanation": "陈述正确。根据国家标准 GB/T 1804，同一公差等级下，名义尺寸越大，常规工艺加工保证难度越大，标准给出的极限偏差和公差数值随尺寸分段增大而增大（例如 m 级中，>6~30 mm 为 ±0.2 mm，>30~120 mm 为 ±0.3 mm）。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "general-tolerances-5",
+    "type": "numeric",
+    "chapter": "一般公差",
+    "concepts": [
+      "general-tolerances"
+    ],
+    "stem": "桌面分拣站外壳挡板侧边名义尺寸为 60 mm，图样技术要求注明“未注公差按 GB/T 1804-m 执行”。经查表得知该尺寸段 m 级的一般公差极限偏差为 ±0.3 mm。若分拣站相机测得该外壳长度实际为 60.45 mm，则该实际尺寸超出了最大极限尺寸多少 mm？（答案填数值，保留两位小数）",
+    "explanation": "挡板的最大极限尺寸为 60 + 0.3 = 60.30 mm。实际测量尺寸为 60.45 mm，超出最大极限尺寸 60.45 − 60.30 = 0.15 mm。",
+    "grading": {
+      "value": "0.15",
+      "absolute_tolerance": "0.005"
+    }
+  },
+  {
+    "id": "sample-single",
+    "type": "single_choice",
+    "chapter": "极限尺寸与极限偏差",
+    "concepts": [
+      "limits-deviations"
+    ],
+    "stem": "图纸标注孔径 10.00 ± 0.10 mm。允许的最大孔径是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "10.00 mm"
+      },
+      {
+        "id": "b",
+        "text": "9.90 mm"
+      },
+      {
+        "id": "c",
+        "text": "10.10 mm"
+      },
+      {
+        "id": "d",
+        "text": "10.20 mm"
+      }
+    ],
+    "explanation": "上限等于名义尺寸加上允许的正偏差。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "sample-numeric",
+    "type": "numeric",
+    "chapter": "公差标注与公差带",
+    "concepts": [
+      "tolerance-notation"
+    ],
+    "stem": "尺寸允许范围为 19.95 mm 至 20.05 mm。公差带宽度是多少毫米？",
+    "explanation": "上限减下限，20.05 − 19.95 = 0.10 mm。",
+    "grading": {
+      "value": "0.10",
+      "absolute_tolerance": "0"
+    }
+  }
+]

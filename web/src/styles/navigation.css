@@ -1,0 +1,90 @@
+.navigation-drawer {
+  position: fixed; top: 54px; right: 12px; bottom: 12px;
+  width: min(420px, calc(100vw - 20px)); z-index: 70;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 12px 45px var(--shadow);
+}
+.navigation-heading {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0; padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+}
+.navigation-heading h2 { margin: 0; color: var(--text-secondary); font-size: 15px; font-weight: 650; }
+.question-navigator {
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  gap: 12px; padding: 12px; overflow: hidden;
+}
+.navigation-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; gap: 8px; font-size: 11px; color: var(--muted);
+}
+.navigation-summary .inline-action { display: flex; gap: 4px; align-items: center; }
+.navigation-current { display: flex; flex-direction: column; gap: 3px; }
+.navigation-current strong { color: var(--text-secondary); font-weight: 650; }
+.navigation-current small { font-size: 10px; }
+.navigation-legend {
+  display: flex; justify-content: space-between; flex-shrink: 0;
+  gap: 6px; flex-wrap: wrap; font-size: 10px; color: var(--muted);
+}
+.navigation-legend span { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.navigation-legend i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+.navigation-legend i.mastered { background: var(--success-border); }
+.navigation-legend i.review { background: var(--warning-border); }
+.navigation-browser {
+  flex: 1; min-height: 0; display: grid;
+  grid-template-columns: minmax(0, 1fr) 46px;
+  grid-template-rows: minmax(0, 1fr); gap: 12px;
+}
+.question-waterfall {
+  min-height: 0; overflow: auto; overscroll-behavior: contain;
+  scrollbar-gutter: stable; padding: 2px;
+}
+.question-grid {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 44px; gap: 6px; padding-bottom: 2px;
+}
+.grid-question {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 2px; line-height: 1.1;
+  height: 44px; min-width: 0; background: var(--surface-muted);
+  border: 1px solid var(--border); color: var(--muted); border-radius: 5px;
+  padding: 0 2px; font-size: 12px; font-variant-numeric: tabular-nums;
+}
+.grid-original-id { color: var(--muted); font-size: 9px; line-height: 1; }
+.grid-question.mastered { background: var(--success-bg); color: var(--success); }
+.grid-question.review { background: var(--warning-bg); color: var(--warning); }
+.grid-question.current {
+  border: 2px solid var(--primary); background: var(--primary-soft);
+  color: var(--link); font-weight: 650;
+}
+.question-index {
+  position: relative; display: flex; flex-direction: column;
+  justify-content: space-between; min-height: 0;
+}
+.question-index::before {
+  content: ''; position: absolute; left: 6px; top: 13px; bottom: 13px;
+  width: 1px; background: var(--border);
+}
+.question-index:empty::before, .question-index:has(button:only-child)::before { display: none; }
+.question-index button {
+  position: relative; flex: 0 1 26px; min-height: 0;
+  display: flex; align-items: center; gap: 7px;
+  background: transparent; color: var(--muted); padding: 0 3px;
+  text-align: left; font-size: 10px; font-variant-numeric: tabular-nums;
+}
+.question-index i {
+  flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--muted); outline: 3px solid var(--surface);
+}
+.question-index button:hover, .question-index button:focus-visible { color: var(--link); }
+.question-index button:hover i, .question-index button:focus-visible i { background: var(--primary); }
+.question-index button[data-current="true"] { color: var(--link); font-weight: 650; }
+.question-index button[data-current="true"] i { background: var(--primary); }
+.question-index button:first-child, .question-index button:last-child { font-weight: 650; }
+.empty-navigation { font-size: 13px; color: var(--muted); margin: 14px 0; }
+.grid-question.has-palace, .grid-question.has-conversation { border-color: var(--primary); }
+.grid-resource-indicators {
+  display: flex; align-items: center; justify-content: center;
+  gap: 4px; min-height: 11px; color: var(--link);
+}
+.grid-resource-indicators svg { flex-shrink: 0; }

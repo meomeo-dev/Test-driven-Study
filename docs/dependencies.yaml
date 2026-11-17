@@ -1,0 +1,208 @@
+review_date: '2026-11-08'
+status: initialized
+packages:
+- name: react-markdown
+  version: 10.1.0
+  license: MIT
+  purpose: Render course lessons as Markdown.
+  rationale: Already used by the assistant stack and available from the
+    committed lockfile. The course reader needs its standalone component.
+  alternative: Plain text lessons or an owned Markdown subset.
+  boundary_and_exit: Course lesson component only. Replace if lesson rendering
+    or accessibility requirements exceed this renderer's support.
+  security: Retains default URL filtering, skips raw HTML, and disables images.
+  supply_chain: The package was already transitive through assistant-ui.
+  cost_and_license: Local MIT renderer, with no service or account.
+  upgrade_checks: Render a course lesson and run course browser acceptance.
+- name: github.com/santhosh-tekuri/jsonschema/v6
+  version: 6.0.3
+  license: Apache-2.0
+  purpose: Enforce the published Draft 2020-12 course package schemas in Go.
+  rationale: Uses the same schemas for authoring and runtime import, including
+    discriminated item variants, without duplicating structural validation.
+  alternative: Typed encoding/json decoding and handwritten structural checks.
+  boundary_and_exit: Restricted to internal/course/schema.go. Replace if
+    Draft 2020-12 support, maintenance, or security no longer meets the contract.
+  security: Schemas are embedded and the loader rejects unregistered URLs.
+  supply_chain: Uses golang.org/x/text selected by the existing Go dependency graph.
+    The upstream regexp2 dependency is used by upstream tests.
+  cost_and_license: Local Apache-2.0 library, with no external service.
+  upgrade_checks: Validate the sample package and modular course packages and reject
+    unknown variants, extra fields, and invalid references.
+  evidence: https://github.com/santhosh-tekuri/jsonschema/releases/tag/v6.0.3
+- name: '@assistant-ui/react-markdown'
+  version: 0.14.25
+  license: MIT
+  purpose: Render assistant text parts as structured Markdown during streaming
+  rationale: Integrates the existing assistant-ui 0.15 runtime and React 19 while
+    preserving the application-owned transcript and Go transport.
+  alternative: react-markdown directly, Streamdown or markdown-it
+  boundary_and_exit: Assistant Text renderer only; replace if compatibility, security
+    or measured rendering cost outweighs message-context integration.
+  security: Raw HTML and images are disabled; retain default URL filtering and
+    restrict clickable links to HTTP(S). Installation audit found zero vulnerabilities.
+  supply_chain: react-markdown with unified, remark and micromark parsing packages.
+  cost_and_license: MIT local rendering; no hosted service or new runtime cost.
+  upgrade_checks: Typecheck, build, Markdown structure/streaming/safety browser cases.
+  evidence: docs/technical-selection/question-chat/2026-11-08.md
+- name: remark-gfm
+  version: 4.0.1
+  license: MIT
+  purpose: GitHub-flavored Markdown tables, strikethrough and task-list syntax
+  rationale: Maintained unified plugin matching the selected CommonMark renderer.
+  alternative: CommonMark-only rendering or another GFM parser
+  boundary_and_exit: Remark parser plugin only; remove when GFM syntax is no longer
+    needed or replace with the renderer's supported equivalent.
+  supply_chain: GFM-specific mdast and micromark extensions.
+  security: Shared renderer blocks raw HTML, remote images and unsafe link protocols.
+  cost_and_license: MIT local parser extension; no service credential or usage cost.
+  upgrade_checks: Markdown table, list and safety browser cases.
+  evidence: docs/technical-selection/question-chat/2026-11-08.md
+- name: '@assistant-ui/react'
+  version: 0.15.33
+  license: MIT
+  purpose: Question-scoped chat runtime, floating panel, composer and message controls
+  rationale: LocalRuntime adapts the existing Go API without adopting another LLM SDK.
+  alternative: Vercel AI SDK, ChatScope or owned React state
+  boundary_and_exit: Frontend assistant feature only; replace its runtime and components
+    if pre-1.0 API churn, accessibility issues or bundle cost outweigh the benefit.
+    The application owns the Go endpoint, question context and stream protocol.
+  loading: The conversation runtime is dynamically imported on first activation.
+  measured_runtime_chunk: Approximately 701 kB minified and 207 kB gzipped in
+    the 2026-11-08 production build; Vite reports its default chunk-size advisory.
+  maintenance: Active releases; React 18 and 19 peer support; exact version pinned.
+  security: npm install audit reported zero vulnerabilities on 2026-11-08.
+  supply_chain: Radix, Zustand, Zod and assistant-ui runtime packages are transitive
+    dependencies. Cloud features are optional and are not configured by this app.
+  cost_and_license: MIT local UI dependency; model and search use existing provider billing.
+  upgrade_checks: Typecheck, production build and question-assistant browser checks.
+  evidence: docs/technical-selection/question-chat/2026-11-08.md
+- name: react/react-dom
+  version: 19.3.1
+  license: MIT
+  purpose: UI runtime
+  alternative: Vue
+  boundary_and_exit: Rendering boundary; replace if product needs or team convention
+    change.
+- name: react-router
+  version: 8.5.1
+  license: MIT
+  purpose: Declarative navigation and query parameters
+  alternative: TanStack Router
+  boundary_and_exit: Navigation only; replace for material typed-URL requirements.
+- name: '@tanstack/react-query'
+  version: 5.105.0
+  license: MIT
+  purpose: Server state, cache invalidation, mutations
+  alternative: Native fetch and component state
+  boundary_and_exit: HTTP state only; remove when its shared cache no longer helps.
+- name: '@radix-ui/react-dialog'
+  version: 1.3.1
+  license: MIT
+  purpose: Accessible original-image lightbox
+  alternative: Native dialog
+  boundary_and_exit: Dialog wrapper isolates behavior; replace for compatibility or
+    accessibility issues.
+- name: lucide-react
+  version: 1.66.0
+  license: ISC
+  purpose: Consistent interface icons
+  alternative: Small owned SVG set
+  boundary_and_exit: Decorative/UI icons only; replace if bundle or design needs change.
+- name: vite/@vitejs/plugin-react
+  version: 8.3.5/6.1.2
+  license: MIT
+  purpose: Development server and static build
+  alternative: Another static bundler
+  boundary_and_exit: Build boundary; reconsider only for a real rendering requirement.
+- name: tailwindcss/@tailwindcss/vite
+  version: 4.3.3
+  license: MIT
+  purpose: Selected styling/toolchain convention
+  alternative: CSS only
+  boundary_and_exit: Styles are also split into small owned CSS files; remove if unused.
+- name: typescript
+  version: 5.9.3
+  license: Apache-2.0
+  purpose: Strict frontend checking
+  alternative: A later compatible TypeScript release
+  boundary_and_exit: Development only; upgrade after generated types and tooling pass.
+- name: concurrently
+  version: 10.0.6
+  license: MIT
+  purpose: Coordinate Vite and Go lifecycles
+  alternative: Node child-process launcher
+  boundary_and_exit: Development only; replace if packaging removes the dual-process
+    launch.
+- name: '@hey-api/openapi-ts'
+  version: 0.99.0
+  license: MIT
+  purpose: Generate type-only API declarations
+  alternative: openapi-typescript
+  boundary_and_exit: Pinned pre-1.0 generator; output consumed only as application
+    types.
+- name: vitest
+  version: 5.0.5
+  license: MIT
+  purpose: Navigation and filter domain checks
+  alternative: Node test runner
+  boundary_and_exit: Test-only boundary; replace if Vite integration stops helping.
+- name: '@playwright/test'
+  version: 1.64.1
+  license: Apache-2.0
+  purpose: Browser acceptance with real API
+  alternative: Manual browser acceptance
+  boundary_and_exit: Test-only; retain only while browser workflows need automation.
+- name: modernc.org/sqlite
+  version: v1.61.1
+  license: BSD-3-Clause
+  purpose: CGo-free local database
+  alternative: mattn/go-sqlite3 or PostgreSQL
+  boundary_and_exit: database/sql boundary; replace for compatibility or measured
+    contention.
+- name: github.com/pressly/goose/v3
+  version: v3.29.0
+  license: MIT
+  purpose: Embedded schema migrations
+  alternative: Owned ordered SQL migrations
+  boundary_and_exit: Migration-only; replace if support or dependency cost is unacceptable.
+- name: github.com/sqlc-dev/sqlc
+  version: v1.31.1
+  license: MIT
+  purpose: Generate checked Go SQL bindings
+  alternative: Handwritten database/sql bindings
+  boundary_and_exit: Pinned development tool; replace if unsupported SQL outweighs
+    benefits.
+type_declarations:
+  packages:
+  - '@types/node@26.6.6'
+  - '@types/react@19.3.0'
+  - '@types/react-dom@19.3.0'
+  license: MIT
+  purpose: Development declarations matching Node/React runtimes
+security_override:
+  package: '@hey-api/json-schema-ref-parser@1.4.4'
+  dependency: js-yaml
+  version: 4.3.2
+  reason: The parser pins 4.2.0 with known YAML denial-of-service advisories. Same-major
+    update preserves the used parsing API.
+  verification: Actual contract generation, generated-file drift check, TypeScript
+    compilation, and npm audit.
+  exit_condition: Remove override when the parser declares a patched compatible release.
+  sources:
+  - https://heyapi.dev/docs/openapi/typescript/plugins/typescript
+  - https://github.com/nodeca/js-yaml/blob/4.3.2/CHANGELOG.md
+  - https://github.com/advisories/GHSA-52cp-r559-cp3m
+  - https://github.com/advisories/GHSA-5p4m-2wfm-xmqj
+  - https://github.com/advisories/GHSA-2883-xcg3-v3hh
+selection_adjustments:
+- Use the supported Hey API type-only generator instead of forcing a major Redocly/minimatch
+  override into openapi-typescript.
+- Component source and CSS use the selected shadcn-style visual conventions; only
+  the needed Radix dialog primitive is installed.
+- Question chat uses assistant-ui LocalRuntime with an owned Go transport adapter.
+  Existing LLM and search settings remain the provider boundary.
+upgrade_policy:
+- Commit npm lockfile and Go checksums.
+- Preserve modernc.org/libc v1.79.0 as required by the driver.
+- Re-run generation, focused acceptance, and dependency review for relevant changes.

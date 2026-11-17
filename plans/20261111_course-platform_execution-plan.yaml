@@ -1,0 +1,592 @@
+schema_version: 1
+id: course-platform
+title: Course platform migration
+status: completed
+progress_revision: 36
+created_at: 2026-11-11
+updated_at: 2026-11-11
+source_assessment: Repository investigation at 08e65d8 and approved split proposal
+objective: Run multiple independently maintained course packages in one offline
+  Go and React study application while preserving Yunnan driving history and
+  behavior.
+execution_contract:
+  scheduling: serial
+  max_in_progress_work_units: 1
+  unit_definition: A dependency-ordered increment that can be accepted, committed,
+    and reverted independently.
+  completion_rule: Complete all four phases before starting the next unit.
+  forbidden_batching:
+    - Close the current work unit before dispatching its successor.
+  change_boundary:
+    - Use the primary checkout and an ordinary issue branch.
+    - Use isolated databases and local provider fixtures for verification.
+  mode: plan-todo
+phase_contract:
+  order:
+    - prepare
+    - migrate
+    - verify
+    - close
+  status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  transition_rules:
+    - Complete phases in order.
+  required_progress_fields:
+    - status
+    - started_at
+    - completed_at
+    - evidence
+    - notes
+  update_protocol:
+    before_phase:
+      - Increment progress_revision and set the active phase.
+    after_phase:
+      - Record evidence and update recovery.
+    on_blocked:
+      - Record the blocker and its recovery condition.
+    after_compaction:
+      - Resume from recovery.next_action.
+status_model:
+  work_unit_status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  plan_status_enum:
+    - draft
+    - ready
+    - in-progress
+    - completed
+    - blocked
+  optional_unit_rule: Optional units require an explicit activation decision.
+resume:
+  current_work_unit: null
+  active_todo: null
+  current_phase: null
+  last_completed_work_unit: WU-004
+  next_work_unit: null
+  next_action: PLAN completed; no further work unit is pending.
+  last_checkpoint: WU-004.close.completed
+  blockers: []
+invariants:
+  - id: I-001
+    statement: Course packages contain local data and media. Application code owns
+      scoring, authorization and provider policy.
+  - id: I-002
+    statement: Original question and option identities, historical grades, exam
+      deadlines and AI task recovery remain readable.
+  - id: I-003
+    statement: External IDs and assets are scoped to the course. A rejected update
+      leaves installed content and records valid.
+  - id: I-004
+    statement: Study and assessment work without a remote provider. Active
+      unanswered exam responses use a public question projection.
+verification_profiles:
+  course:
+    automated:
+      - command: go test ./internal/course ./cmd/course
+        expected: Package structure, semantic checks, scaffold and Yunnan parity pass.
+    manual_tier: focused
+  storage:
+    automated:
+      - command: npm run test:go
+        expected: Fresh import, legacy migration and scoped assets pass on isolated data.
+    manual_tier: focused
+  practice:
+    automated:
+      - command: npm run typecheck && npm run test:e2e
+        expected: Types and two-course learner flows pass.
+    manual_tier: focused
+  release:
+    automated:
+      - command: npm run check
+        expected: Generated contracts, unit, build, startup and browser gates pass.
+    manual_tier: full
+manual_gates:
+  focused:
+    - Record the tested boundary, actual files and reversible commit point.
+  full:
+    - Confirm fresh course onboarding, preserved legacy recovery and both
+      production deep links.
+baseline:
+  captured_at: 2026-11-11
+  git_head: 08e65d8c525e496602e6db407b4013612aee9569
+  working_tree_note: Clean main before plan creation. Learner data and running
+    services are out of scope.
+  results:
+    source_bank: 3,147 questions and 1,359 unique existing media references verified
+    route: PLAN-TODO[*]
+    estimated_minutes: 420
+work_units:
+  - id: WU-001
+    title: Versioned course packages and authoring
+    activation: required
+    status: completed
+    depends_on: []
+    todo_binding:
+      required: true
+      rationale: Persist implementation and acceptance evidence for this boundary.
+      creation_phase: prepare
+    verification_profile: course
+    intent: Define the v1 resource contract, course loader and authoring CLI.
+      Produce the Yunnan package from preserved source material.
+    file_group:
+      modify:
+        - contracts/course/v1/
+        - internal/course/
+        - cmd/course/
+        - courses/yunnan-driving/
+        - package.json
+        - docs/dependencies.yaml
+    phase_requirements:
+      prepare:
+        - Freeze item identity, answer types, manifest and asset rules with
+          regression cases.
+      migrate:
+        - Implement shared validation, deterministic conversion, and the
+          course:new and course:check commands.
+      verify:
+        - Check the full Yunnan bank and scaffold a valid temporary course with
+          a numeric item.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - The validated package represents all 3,147 source questions and 1,359
+        referenced media.
+      - The same loader accepts scaffolded content and rejects invalid package
+        references.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T07:41:06.455Z
+        completed_at: 2026-11-11T07:41:20.647Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - "Issue #37, course identities, four response variants and package
+            path invariants recorded in the plan."
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T07:41:22.213Z
+        completed_at: 2026-11-11T07:47:40.405Z
+        evidence:
+          - Implemented Draft 2020-12 validation, typed grading and standalone
+            Yunnan conversion.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T07:47:41.932Z
+        completed_at: 2026-11-11T07:48:27.504Z
+        evidence:
+          - Go course tests, full bank check (3147 items), and go mod verify
+            passed.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T07:48:29.194Z
+        completed_at: 2026-11-11T07:48:47.024Z
+        evidence:
+          - Full package, scaffold, and grading checks passed. Initial close
+            invocation used a paraphrased acceptance label and was rejected
+            without a state change.
+          - "Independent acceptance passed: The validated package represents all
+            3,147 source questions and 1,359 referenced media."
+          - "Independent acceptance passed: The same loader accepts scaffolded
+            content and rejects invalid package references."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-001.close.
+      changed_files:
+        - contracts/course/v1/manifest.schema.json
+        - cmd/course/main.go
+        - internal/course/load.go
+        - courses/yunnan-driving/course.json
+      rollback_ref: 213f5ce (pre-implementation baseline)
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Preserve scope, dependencies, and compatibility.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the current work unit.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Check regression evidence and rollback.
+  - id: WU-002
+    title: Course installation, storage isolation and legacy recovery
+    activation: required
+    status: completed
+    depends_on:
+      - WU-001
+    todo_binding:
+      required: true
+      rationale: Persist implementation and acceptance evidence for this boundary.
+      creation_phase: prepare
+    verification_profile: storage
+    intent: Add explicit course identity and immutable installed revisions while
+      preserving legacy learner references.
+    file_group:
+      modify:
+        - internal/storage/
+        - db/queries.sql
+        - internal/study/
+        - cmd/server/
+        - internal/httpapi/
+    phase_requirements:
+      prepare:
+        - Inventory course-owned rows, legacy revision hashes and media readers.
+      migrate:
+        - Add forward-only migration, scoped course item and asset access, and
+          idempotent installation. Preserve old read and submission paths.
+      verify:
+        - Exercise an isolated pre-migration database and overlapping course
+          IDs, including active exam recovery.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - Legacy primary keys, attempts, deadlines, conversations and task
+        references remain valid.
+      - Installing identical content is idempotent and rejected content leaves
+        active content intact.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T07:49:45.198Z
+        completed_at: 2026-11-11T07:49:46.624Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Legacy course ID 1/4, question integer foreign keys and original
+            revisions remain in place. New course data is scoped by course and
+            package version.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T07:49:48.151Z
+        completed_at: 2026-11-11T07:54:15.536Z
+        evidence:
+          - Installed course versions and scoped asset URLs in SQLite; canonical
+            source and media now live under the Yunnan package.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T07:54:18.198Z
+        completed_at: 2026-11-11T07:55:11.695Z
+        evidence:
+          - npm run test:go passed, including migration from schema 8, in-flight
+            practice and exam, and atomic overlapping installs.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T07:55:13.173Z
+        completed_at: 2026-11-11T07:55:15.140Z
+        evidence:
+          - Validated source and media byte equality before removing the
+            duplicated legacy paths. Existing application data and service were
+            untouched.
+          - "Independent acceptance passed: Legacy primary keys, attempts,
+            deadlines, conversations and task references remain valid."
+          - "Independent acceptance passed: Installing identical content is
+            idempotent and rejected content leaves active content intact."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-002.close.
+      changed_files:
+        - internal/storage/migrations/00009_course_packages.sql
+        - internal/storage/courses.go
+        - internal/httpapi/files.go
+      rollback_ref: 6b1b95a (WU-001 baseline)
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Preserve scope, dependencies, and compatibility.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the current work unit.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Check regression evidence and rollback.
+  - id: WU-003
+    title: Course navigation and typed practice
+    activation: required
+    status: completed
+    depends_on:
+      - WU-002
+    todo_binding:
+      required: true
+      rationale: Persist implementation and acceptance evidence for this boundary.
+      creation_phase: prepare
+    verification_profile: practice
+    intent: Expose course-aware HTTP and React flows with a second course covering
+      numeric assessment.
+    file_group:
+      modify:
+        - contracts/http/
+        - internal/httpapi/
+        - internal/study/
+        - web/
+        - courses/basic-math/
+        - tests/browser/
+    phase_requirements:
+      prepare:
+        - Agree public question and response variants and namespaced route/query
+          keys.
+      migrate:
+        - Add the course selector, lesson content, typed grading and practice
+          for both packages.
+      verify:
+        - Exercise numeric equivalence and incorrect inputs, deep links, answer
+          visibility and cross-course isolation.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - A generated non-driving course can be installed and used for study
+        without source changes.
+      - Two courses with overlapping IDs and filenames preserve independent
+        progress and grades.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T07:55:47.298Z
+        completed_at: 2026-11-11T07:55:48.623Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Course list, unit view, versioned presentation, typed response, and
+            per-course attempts/cursor. Keep driving study routes on their
+            existing learner records.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T07:55:50.147Z
+        completed_at: 2026-11-11T08:05:03.302Z
+        evidence:
+          - Course URLs, scoped queries and immutable revision grading
+            implemented. Sample course derived from the scaffold.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T08:05:04.925Z
+        completed_at: 2026-11-11T08:06:11.492Z
+        evidence:
+          - Typecheck, basic-math validation, scoped Go revision and asset test,
+            and the two-course browser spec all passed.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-11T08:06:13.068Z
+        completed_at: 2026-11-11T08:06:15.495Z
+        evidence:
+          - Validated browser onboarding, Markdown, all four answer types,
+            persisted cursor, and course-scoped attempts and assets.
+          - "Independent acceptance passed: A generated non-driving course can
+            be installed and used for study without source changes."
+          - "Independent acceptance passed: Two courses with overlapping IDs and
+            filenames preserve independent progress and grades."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-003.close.
+      changed_files:
+        - internal/study/course_practice.go
+        - web/src/features/courses/CoursePages.tsx
+        - courses/basic-math/course.json
+      rollback_ref: 121ef95 (WU-002 baseline)
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Preserve scope, dependencies, and compatibility.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the current work unit.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Check regression evidence and rollback.
+  - id: WU-004
+    title: Course feature boundaries and integrated acceptance
+    activation: required
+    status: completed
+    depends_on:
+      - WU-003
+    todo_binding:
+      required: true
+      rationale: Persist implementation and acceptance evidence for this boundary.
+      creation_phase: prepare
+    verification_profile: release
+    intent: Place driving guide, exam rules, and AI profile at the course boundary
+      and verify both courses in production serving.
+    file_group:
+      modify:
+        - courses/yunnan-driving/
+        - internal/study/
+        - internal/llm/
+        - internal/palace/
+        - web/
+        - tests/
+        - README.md
+        - handoff.md
+    phase_requirements:
+      prepare:
+        - Separate course policy from exam and AI execution. Inventory legacy
+          compatibility routes and production deep links.
+      migrate:
+        - Use package-owned driving configuration, retain existing driving
+          presentation and recovery, and document authoring and upgrades.
+      verify:
+        - Run the complete acceptance gate with isolated fixtures, checking
+          preserved legacy features and offline operation.
+      close:
+        - Record actual files, independent acceptance and a reversible Git
+          reference.
+    independent_acceptance:
+      - Yunnan exam quotas, coverage qualifications, snapshots and AI recovery
+        remain consistent.
+      - Courses without optional capabilities display only their supported study
+        modes.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-11T08:07:56.141Z
+        completed_at: 2026-11-11T08:07:57.575Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Driving-only resource files will contain the existing guide, exam
+            rules, assistant instructions and palace template. Historical
+            snapshots and workflow policy stay in the app.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-11T08:07:59.149Z
+        completed_at: 2026-11-11T08:20:37.748Z
+        evidence:
+          - Guide and exam rules now read from the course; chat and image
+            teaching resources use the bundled profile. Generic-only startup
+            omits driving routes and providers.
+          - Returning from verify to migrate for the guide response guard.
+          - Guide content handles an empty response before dereferencing a stage.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-11T08:20:39.233Z
+        completed_at: 2026-11-11T08:25:55.172Z
+        evidence:
+          - Generated bindings, frontend unit, all Go packages and startup
+            checks passed. The build stopped at TS18048 in GuidePage.
+          - Generated checks, 28 frontend unit tests, all Go packages, four
+            startup cases, production build and 114 browser cases passed.
+            Production HTTP passed with both bundles and with Basic Math alone.
+            Course CLI repeat install and byte-exact bank conversion also
+            passed.
+        notes:
+          - "Blocked: TypeScript requires a guard for an empty stage array from
+            the guide API."
+      close:
+        status: completed
+        started_at: 2026-11-11T08:25:56.731Z
+        completed_at: 2026-11-11T08:25:58.729Z
+        evidence:
+          - Final browser, production, authoring, and legacy migration evidence
+            passed. Learner data remained untouched.
+          - "Independent acceptance passed: Yunnan exam quotas, coverage
+            qualifications, snapshots and AI recovery remain consistent."
+          - "Independent acceptance passed: Courses without optional
+            capabilities display only their supported study modes."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-004.close.
+      changed_files:
+        - courses/yunnan-driving/course.json
+        - internal/course/driving.go
+        - cmd/server/main.go
+        - web/src/features/guide/GuidePage.tsx
+      rollback_ref: 1447fad (WU-003 baseline)
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: Preserve scope, dependencies, and compatibility.
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Deliver the current work unit.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Check regression evidence and rollback.
+dag:
+  nodes:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  dispatch_order:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  edges:
+    - from: WU-001
+      to: WU-002
+    - from: WU-002
+      to: WU-003
+    - from: WU-003
+      to: WU-004
+completion_summary:
+  required_units:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  optional_units: []
+  completed_units:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+  skipped_optional_units: []
+  final_evidence:
+    - Full package, scaffold, and grading checks passed. Initial close
+      invocation used a paraphrased acceptance label and was rejected without a
+      state change.
+    - "Independent acceptance passed: The validated package represents all 3,147
+      source questions and 1,359 referenced media."
+    - "Independent acceptance passed: The same loader accepts scaffolded content
+      and rejects invalid package references."
+    - Validated source and media byte equality before removing the duplicated
+      legacy paths. Existing application data and service were untouched.
+    - "Independent acceptance passed: Legacy primary keys, attempts, deadlines,
+      conversations and task references remain valid."
+    - "Independent acceptance passed: Installing identical content is idempotent
+      and rejected content leaves active content intact."
+    - Validated browser onboarding, Markdown, all four answer types, persisted
+      cursor, and course-scoped attempts and assets.
+    - "Independent acceptance passed: A generated non-driving course can be
+      installed and used for study without source changes."
+    - "Independent acceptance passed: Two courses with overlapping IDs and
+      filenames preserve independent progress and grades."
+    - Final browser, production, authoring, and legacy migration evidence
+      passed. Learner data remained untouched.
+    - "Independent acceptance passed: Yunnan exam quotas, coverage
+      qualifications, snapshots and AI recovery remain consistent."
+    - "Independent acceptance passed: Courses without optional capabilities
+      display only their supported study modes."

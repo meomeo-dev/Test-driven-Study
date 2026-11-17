@@ -1,0 +1,543 @@
+[
+  {
+    "id": "pythagoras-1",
+    "type": "single_choice",
+    "chapter": "勾股定理",
+    "concepts": [
+      "pythagoras"
+    ],
+    "stem": "在分拣站的底板定位夹具上，两直角边方向的定位销孔中心距分别为 15 mm 与 20 mm。根据勾股定理，两销孔中心之间的直线距离是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "22 mm"
+      },
+      {
+        "id": "b",
+        "text": "25 mm"
+      },
+      {
+        "id": "c",
+        "text": "30 mm"
+      },
+      {
+        "id": "d",
+        "text": "35 mm"
+      }
+    ],
+    "explanation": "根据勾股定理 c = √(a² + b²) = √(15² + 20²) = √625 = 25 mm，这对应 3-4-5 勾股数按比例放大 5 倍。选项 a 为粗略估算错误；选项 c 与 d 误将直角边简单相加或放大了比例关系。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "pythagoras-2",
+    "type": "single_choice",
+    "chapter": "勾股定理",
+    "concepts": [
+      "pythagoras"
+    ],
+    "stem": "分拣站垂直相机立柱外侧安装了一根斜向加强筋，加强筋两端螺孔中心距（斜边）为 65 mm，立柱上的固定孔距工作台面（直角边）高度为 60 mm。则加强筋在底面上的水平跨度（另一条直角边）是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "15 mm"
+      },
+      {
+        "id": "b",
+        "text": "20 mm"
+      },
+      {
+        "id": "c",
+        "text": "24 mm"
+      },
+      {
+        "id": "d",
+        "text": "25 mm"
+      }
+    ],
+    "explanation": "已知斜边 c = 65 mm 与直角边 a = 60 mm，由勾股定理得另一条直角边 b = √(c² − a²) = √(4225 − 3600) = √625 = 25 mm（5-12-13 的 5 倍放大，直角边 60 对应 12×5，斜边 65 对应 13×5）。其他选项与计算结果不符。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "pythagoras-3",
+    "type": "multiple_choice",
+    "chapter": "勾股定理",
+    "concepts": [
+      "pythagoras"
+    ],
+    "stem": "质检站装配调试时，装配工使用钢尺测量支架与滑轨上的三个基准标记点之间的距离。下列哪两组边长数据能够证明这三个标记点构成了直角三角形？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "9 mm、12 mm、15 mm"
+      },
+      {
+        "id": "b",
+        "text": "10 mm、20 mm、25 mm"
+      },
+      {
+        "id": "c",
+        "text": "30 mm、40 mm、50 mm"
+      },
+      {
+        "id": "d",
+        "text": "12 mm、15 mm、20 mm"
+      }
+    ],
+    "explanation": "根据勾股定理逆定理，两较短边的平方和等于最长边平方即为直角三角形。选项 a 中 9² + 12² = 81 + 144 = 225 = 15²，选项 c 中 30² + 40² = 900 + 1600 = 2500 = 50²，两者均为 3-4-5 勾股数的整倍数；选项 b（10² + 20² = 500 ≠ 625）与选项 d（12² + 15² = 369 ≠ 400）均不满足逆定理。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "pythagoras-4",
+    "type": "true_false",
+    "chapter": "勾股定理",
+    "concepts": [
+      "pythagoras"
+    ],
+    "stem": "在任意直角三角形中，已知两直角边长分别为 a 和 b，斜边长为 c，则必有 c > a 且 c > b，即斜边长度严格大于任意一条直角边的长度。",
+    "explanation": "陈述正确。在直角三角形中直角为 90° 是最大角，由大角对大边可知斜边必为最长边；且由 c = √(a² + b²) 易知当 a、b 均为正数时，c 严格大于 a 和 b。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "pythagoras-5",
+    "type": "numeric",
+    "chapter": "勾股定理",
+    "concepts": [
+      "pythagoras"
+    ],
+    "stem": "分拣站的直角定位角码两条直角边在图纸上的设计长度分别为 36 mm 和 48 mm。质检员测量该角码两端点之间的斜边长度，理论尺寸应为多少 mm？",
+    "explanation": "两直角边 a = 36 mm，b = 48 mm，由勾股定理可得斜边 c = √(36² + 48²) = √(1296 + 2304) = √3600 = 60 mm，该尺寸刚好为标准 3-4-5 勾股数放大 12 倍。",
+    "grading": {
+      "value": "60",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sin-cos-tan-1",
+    "type": "single_choice",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "在分拣站的直角定位块截面中，某一锐角 θ 的对边长度为 6 mm，邻边长度为 8 mm，斜边长度为 10 mm。锐角 θ 的正弦值 sin θ 是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.6"
+      },
+      {
+        "id": "b",
+        "text": "0.75"
+      },
+      {
+        "id": "c",
+        "text": "0.8"
+      },
+      {
+        "id": "d",
+        "text": "1.33"
+      }
+    ],
+    "explanation": "根据正弦函数定义，sin θ = 对边 / 斜边 = 6 / 10 = 0.6。选项 b 为正切值 tan θ（6/8 = 0.75），选项 c 为余弦值 cos θ（8/10 = 0.8），选项 d 为邻边与对边之比。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "sin-cos-tan-2",
+    "type": "single_choice",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "分拣站的下料滑槽与水平底板成 45° 倾角。在工程三角函数表中，tan 45° 的精确值是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.5"
+      },
+      {
+        "id": "b",
+        "text": "(√2)/2"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "√3"
+      }
+    ],
+    "explanation": "45° 直角三角形两直角边等长，故正切值 tan 45° = 对边 / 邻边 = 1。选项 a 为 sin 30°，选项 b 为 sin 45° 或 cos 45°，选项 d 为 tan 60°。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "sin-cos-tan-3",
+    "type": "multiple_choice",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "在机械图纸与工装设计中经常使用 30° 与 60° 特殊角。下列关于这些特殊角三角函数值的数学等式中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "sin 30° = (√3)/2"
+      },
+      {
+        "id": "b",
+        "text": "cos 60° = 0.5"
+      },
+      {
+        "id": "c",
+        "text": "tan 30° = 1"
+      },
+      {
+        "id": "d",
+        "text": "sin 60° = (√3)/2"
+      }
+    ],
+    "explanation": "根据特殊角三角函数值，cos 60° = 1/2 = 0.5，sin 60° = (√3)/2，选项 b 与 d 正确；选项 a 混淆了 30° 与 60° 的正弦值（sin 30° 应为 0.5），选项 c 中 1 为 tan 45° 的数值（tan 30° 应为 (√3)/3）。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "sin-cos-tan-4",
+    "type": "true_false",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "在任意直角三角形中，锐角 θ 的正弦值 sin θ 与正切值 tan θ 均随着角度从 0° 增大到 90° 而单调增大，且两者的取值范围都恒在 0 与 1 之间（即 0 < sin θ < 1 且 0 < tan θ < 1）。",
+    "explanation": "陈述错误。对于锐角 θ，0 < sin θ < 1 恒成立，但正切值 tan θ = 对边 / 邻边；当锐角大于 45° 时对边大于邻边，tan θ 将严格大于 1（例如 tan 60° = √3 ≈ 1.732），其取值可趋于正无穷，并非恒小于 1。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "sin-cos-tan-5",
+    "type": "numeric",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "分拣工位的滑槽安装倾角为 30°，工件下滑的导轨斜边全长为 180 mm。该斜槽顶端距离底平面的垂直高度（即 30° 角所对的直角边）是多少 mm？",
+    "explanation": "在直角三角形中，30° 锐角所对的对边高度 h = 斜边 · sin 30° = 180 · 0.5 = 90 mm。",
+    "grading": {
+      "value": "90",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "solving-right-triangles-1",
+    "type": "single_choice",
+    "chapter": "解直角三角形",
+    "concepts": [
+      "solving-right-triangles"
+    ],
+    "stem": "分拣站的下料斜槽在 100 mm 的水平跨度内，垂直高度下降了 25 mm。该导料斜槽的坡度 i 是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.04"
+      },
+      {
+        "id": "b",
+        "text": "0.20"
+      },
+      {
+        "id": "c",
+        "text": "0.25"
+      },
+      {
+        "id": "d",
+        "text": "4.00"
+      }
+    ],
+    "explanation": "坡度 i 定义为垂直高差与水平跨度之比，即 i = 高差 / 水平跨度 = 25 / 100 = 0.25。选项 a 为垂直高差倒数计算错误，选项 b 读错尺寸，选项 d 将水平跨度与垂直高度颠倒算成 100/25。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "solving-right-triangles-2",
+    "type": "single_choice",
+    "chapter": "解直角三角形",
+    "concepts": [
+      "solving-right-triangles"
+    ],
+    "stem": "PLC 控制的挡板摇臂结构中，已知直角三角形连杆的一个锐角为 30°，该角所对的直角边长为 50 mm。该直角三角形的斜边长度是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "100 mm"
+      },
+      {
+        "id": "b",
+        "text": "86.6 mm"
+      },
+      {
+        "id": "c",
+        "text": "70.7 mm"
+      },
+      {
+        "id": "d",
+        "text": "25 mm"
+      }
+    ],
+    "explanation": "根据正弦函数定义，sin 30° = 对边 / 斜边，故斜边 = 对边 / sin 30° = 50 / 0.5 = 100 mm。选项 b 为求邻边（50√3 ≈ 86.6 mm），选项 c 误用了 45° 三角函数，选项 d 误将对边除以 2。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "solving-right-triangles-3",
+    "type": "multiple_choice",
+    "chapter": "解直角三角形",
+    "concepts": [
+      "solving-right-triangles"
+    ],
+    "stem": "在 CAD 建模与机构设计中，只要具备特定的已知条件，就能完全解出直角三角形的所有边长和内角。下列哪两组已知条件足以唯一确定一个直角三角形的尺寸与形状？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "已知斜边长度与一条直角边长度"
+      },
+      {
+        "id": "b",
+        "text": "已知一条直角边长度与一个锐角的大小"
+      },
+      {
+        "id": "c",
+        "text": "已知两个锐角的大小（但无任何边长数据）"
+      },
+      {
+        "id": "d",
+        "text": "仅已知斜边的长度"
+      }
+    ],
+    "explanation": "解直角三角形必须至少包含一条已知边长。选项 a 可由勾股定理求出另一边并由反三角函数求出锐角；选项 b 可由三角函数求出其余边长及互余锐角；选项 c 缺少长度基准只能确定形状相似；选项 d 仅有斜边无法唯一确定直角边与锐角。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "solving-right-triangles-4",
+    "type": "true_false",
+    "chapter": "解直角三角形",
+    "concepts": [
+      "solving-right-triangles"
+    ],
+    "stem": "若已知一个直角三角形工件的垂直高度为 30 mm，水平跨度为 40 mm，则可以直接使用反正弦函数 arcsin(30/40) 计算出斜面与水平面的倾角。",
+    "explanation": "陈述错误。垂直高度是对边，水平跨度是邻边，二者之比为正切值 tan θ = 30 / 40 = 0.75，计算倾角应使用反正切函数 arctan(30/40) ≈ 36.87°；若要使用反正弦函数 arcsin，分母必须为斜边长度 50 mm，即 arcsin(30/50)。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "solving-right-triangles-5",
+    "type": "numeric",
+    "chapter": "解直角三角形",
+    "concepts": [
+      "solving-right-triangles"
+    ],
+    "stem": "分拣站相机支架的直角固定三角板水平底边长为 80 mm，垂直高度为 60 mm。斜边与水平底边所夹的锐角约为多少度？（结果保留一位小数，不写单位）",
+    "explanation": "两直角边分别为对边 60 mm 与邻边 80 mm，夹角 θ 满足 tan θ = 60 / 80 = 0.75。通过反正切函数计算 θ = arctan(0.75) ≈ 36.87°，四舍五入保留一位小数为 36.9°。",
+    "grading": {
+      "value": "36.9",
+      "absolute_tolerance": "0.05"
+    }
+  },
+  {
+    "id": "radians-1",
+    "type": "single_choice",
+    "chapter": "弧度与弧长",
+    "concepts": [
+      "radians"
+    ],
+    "stem": "分拣机构的气动摆动转轴从初始等待位旋转到废品剔除位，旋转的角度为 60°。该角度对应的弧度值用含 π 的代数式表示是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "π/6 rad"
+      },
+      {
+        "id": "b",
+        "text": "π/4 rad"
+      },
+      {
+        "id": "c",
+        "text": "π/2 rad"
+      },
+      {
+        "id": "d",
+        "text": "π/3 rad"
+      }
+    ],
+    "explanation": "由换算公式 θ_rad = deg · (π / 180) 可得，60 · (π / 180) = π/3 rad。选项 a 为 30° 对应的弧度，选项 b 为 45° 对应的弧度，选项 c 为 90° 对应的弧度。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "radians-2",
+    "type": "single_choice",
+    "chapter": "弧度与弧长",
+    "concepts": [
+      "radians"
+    ],
+    "stem": "单片机步进电机驱动参数中设定挡板每次动作的偏转角为 3π/4 rad。该转角转换为角度制是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "120°"
+      },
+      {
+        "id": "b",
+        "text": "135°"
+      },
+      {
+        "id": "c",
+        "text": "150°"
+      },
+      {
+        "id": "d",
+        "text": "225°"
+      }
+    ],
+    "explanation": "弧度转换为度的方法为乘以 180/π，即 (3π/4) · (180° / π) = 3 · 45° = 135°。选项 a 为 2π/3 rad（120°），选项 c 为 5π/6 rad（150°），选项 d 为 5π/4 rad（225°）。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "radians-3",
+    "type": "multiple_choice",
+    "chapter": "弧度与弧长",
+    "concepts": [
+      "radians"
+    ],
+    "stem": "弧度制是高等数学与机器人运动学的基础。下列关于度与弧度换算以及弧长计算的表述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "1 弧度（rad）等于 180°"
+      },
+      {
+        "id": "b",
+        "text": "弧长公式 s = rθ 中，角度 θ 必须采用“度（°）”为单位计算"
+      },
+      {
+        "id": "c",
+        "text": "平角 180° 对应的弧度值严格等于圆周率 π rad"
+      },
+      {
+        "id": "d",
+        "text": "半径为 50 mm 的圆弧，当圆心角为 2 rad 时，其对应的弧长为 100 mm"
+      }
+    ],
+    "explanation": "π rad 严格对应平角 180°，选项 c 正确；当圆心角以弧度为单位时，弧长 s = rθ = 50 · 2 = 100 mm，选项 d 正确；选项 a 错误，1 rad ≈ 57.3°，π rad 才等于 180°；选项 b 错误，公式 s = rθ 的成立前提是 θ 必须以弧度为单位。",
+    "grading": {
+      "choice_ids": [
+        "c",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "radians-4",
+    "type": "true_false",
+    "chapter": "弧度与弧长",
+    "concepts": [
+      "radians"
+    ],
+    "stem": "在半径为 r 的圆周运动中，如果圆心角为 θ（单位为弧度），则所对的圆弧长度 s 与半径 r 的比值恰好等于该圆心角的弧度数，即 θ = s / r。",
+    "explanation": "陈述正确。弧度的几何定义正是单位半径上所对的弧长，即圆心角的弧度数值严格等于弧长与半径之比 θ = s / r，该定义的代数变形即为常用弧长公式 s = rθ。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "radians-5",
+    "type": "numeric",
+    "chapter": "弧度与弧长",
+    "concepts": [
+      "radians"
+    ],
+    "stem": "分拣站拨动推杆的回转半径为 60 mm，电机控制其转过 90° 的圆心角将工件推入支线轨道。推杆末端扫过的圆弧轨迹长度是多少 mm？（π 取 3.14，结果保留一位小数，不写单位）",
+    "explanation": "90° 对应的弧度为 π/2 rad。根据弧长公式 s = r · θ = 60 · (π / 2) = 30π ≈ 30 · 3.14 = 94.2 mm。",
+    "grading": {
+      "value": "94.2",
+      "absolute_tolerance": "0.05"
+    }
+  },
+  {
+    "id": "sample-single",
+    "type": "single_choice",
+    "chapter": "正弦、余弦与正切",
+    "concepts": [
+      "sin-cos-tan"
+    ],
+    "stem": "已知直角三角形的一个锐角。哪种比值是该角的正弦？",
+    "options": [
+      {
+        "id": "a",
+        "text": "对边 ÷ 邻边"
+      },
+      {
+        "id": "b",
+        "text": "斜边 ÷ 对边"
+      },
+      {
+        "id": "c",
+        "text": "对边 ÷ 斜边"
+      },
+      {
+        "id": "d",
+        "text": "邻边 ÷ 斜边"
+      }
+    ],
+    "explanation": "对边和邻边随所选锐角而变化，正弦取对边与斜边之比。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  }
+]

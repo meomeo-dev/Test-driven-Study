@@ -1,0 +1,586 @@
+[
+  {
+    "id": "past-be-1",
+    "type": "single_choice",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "工位交接时，你想向下个班次的同事说明“昨天工件到位传感器是干净的”，横线处应填入哪个词？`The sensor ____ clean yesterday.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "was"
+      },
+      {
+        "id": "b",
+        "text": "were"
+      },
+      {
+        "id": "c",
+        "text": "is"
+      },
+      {
+        "id": "d",
+        "text": "are"
+      }
+    ],
+    "explanation": "主语 `The sensor` 是单数名词，且句中有过去时间状语 `yesterday`，be 动词应选用过去式单数 `was`。`were` 搭配复数主语，`is` 与 `are` 属于现在时。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "past-be-2",
+    "type": "single_choice",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "接班同事询问上一班次料盒里的废品数量，你应该如何用英文表达“刚才不合格品料盒里有 3 个不合格零件”？",
+    "options": [
+      {
+        "id": "a",
+        "text": "`There was 3 NG parts in the bin.`"
+      },
+      {
+        "id": "b",
+        "text": "`There is 3 NG parts in the bin.`"
+      },
+      {
+        "id": "c",
+        "text": "`There were 3 NG parts in the bin.`"
+      },
+      {
+        "id": "d",
+        "text": "`There are 3 NG parts in the bin.`"
+      }
+    ],
+    "explanation": "陈述过去的客观事实且被描述对象为复数名词 `3 NG parts` 时，存在句应使用 `There were`。选项 a 错误使用了单数 `was`，选项 b 和 d 为一般现在时。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "past-be-3",
+    "type": "multiple_choice",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "在交接班巡检记录中，下列哪两句的过去时 be 动词搭配是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "`The camera was ready at 8:00.`"
+      },
+      {
+        "id": "b",
+        "text": "`We was on Shift A yesterday.`"
+      },
+      {
+        "id": "c",
+        "text": "`The servo and the sensor was OK.`"
+      },
+      {
+        "id": "d",
+        "text": "`The parts were not defective.`"
+      }
+    ],
+    "explanation": "选项 a 中单数主语 `The camera` 搭配 `was` 正确；选项 d 中复数主语 `The parts` 搭配 `were` 正确。选项 b 中复数主语 `We` 误搭配了 `was`（应为 `were`）；选项 c 中 and 连接的并列主语为复数，应使用 `were`。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "past-be-4",
+    "type": "true_false",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "句子 `Was the OK bin full this morning?` 的语法结构完全正确，意思是“今天早上合格品料盒满了吗？”。",
+    "explanation": "该句为主语是单数名词 `the OK bin` 的一般疑问句，过去式 be 动词 `Was` 提前至句首，句型和时态搭配完全正确。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "past-be-5",
+    "type": "single_choice",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "交接班时你想表达“今天早上摄像头没有连接到电脑”，横线处应填入哪个否定词？`The camera ____ connected to the PC this morning.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "weren't"
+      },
+      {
+        "id": "b",
+        "text": "wasn't"
+      },
+      {
+        "id": "c",
+        "text": "isn't"
+      },
+      {
+        "id": "d",
+        "text": "aren't"
+      }
+    ],
+    "explanation": "主语 `The camera` 为第三人称单数，时间状语 `this morning` 表示过去时间，be 动词过去式的单数否定形式为 `wasn't`。`weren't` 搭配复数主语，`isn't` 和 `aren't` 为现在时。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "past-regular-1",
+    "type": "single_choice",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "交班记录中需要表述“质检员昨晚测试了舵机挡板”，动词 `test` 的规则过去式拼写是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "test"
+      },
+      {
+        "id": "b",
+        "text": "testted"
+      },
+      {
+        "id": "c",
+        "text": "testing"
+      },
+      {
+        "id": "d",
+        "text": "tested"
+      }
+    ],
+    "explanation": "规则动词 `test` 的过去式直接在词尾加 `-ed`，拼写为 `tested`。选项 b 错误地双写了词尾辅音，选项 c 是现在分词。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "past-regular-2",
+    "type": "single_choice",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "在描述分拣站挡板动作时，句子 `The servo moved the part.` 中的单词 `moved`，其词尾 `-ed` 的正确读音是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "/t/"
+      },
+      {
+        "id": "b",
+        "text": "/d/"
+      },
+      {
+        "id": "c",
+        "text": "/ɪd/"
+      },
+      {
+        "id": "d",
+        "text": "/s/"
+      }
+    ],
+    "explanation": "动词 `move` 词尾为浊辅音 /v/，根据发音规律，浊辅音后加 `-ed` 读浊辅音 /d/。/t/ 用于清辅音后，/ɪd/ 用于 /t/ 或 /d/ 音后。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "past-regular-3",
+    "type": "multiple_choice",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "下列关于工位动作规则动词过去式的拼写形式，哪两项是完全正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "`stoped`（动词原形为 stop）"
+      },
+      {
+        "id": "b",
+        "text": "`checked`（动词原形为 check）"
+      },
+      {
+        "id": "c",
+        "text": "`stopped`（动词原形为 stop）"
+      },
+      {
+        "id": "d",
+        "text": "`tryed`（动词原形为 try）"
+      }
+    ],
+    "explanation": "选项 b 中 `check` 直接加 `-ed` 为 `checked`；选项 c 中 `stop` 以辅音+元音+辅音结尾，需双写 p 再加 `-ed` 为 `stopped`。选项 a 缺少双写辅音，选项 d 遗漏了变 y 为 i 的规则（应为 `tried`）。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "past-regular-4",
+    "type": "true_false",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "动词 `check` 的规则过去式 `checked`，其末尾 `-ed` 的读音为 /ɪd/。",
+    "explanation": "`check` 词尾为清辅音 /k/，按发音规则清辅音后加 `-ed` 应念清辅音 /t/，而不是 /ɪd/。只有以 /t/ 或 /d/ 音结尾的动词加 `-ed` 才读 /ɪd/。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "past-regular-5",
+    "type": "single_choice",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "生产线重启后，质检员向组长汇报“今天早上我们尝试了重新连接串口”，横线处应填入哪个单词？`We ____ to reconnect the serial port this morning.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "trys"
+      },
+      {
+        "id": "b",
+        "text": "tryed"
+      },
+      {
+        "id": "c",
+        "text": "tried"
+      },
+      {
+        "id": "d",
+        "text": "trying"
+      }
+    ],
+    "explanation": "动词 `try` 以“辅音字母 + y”结尾，过去式需变 y 为 i 再加 `-ed`，正确拼写为 `tried`。选项 b 拼写错误，选项 a 为现在时单三形式，选项 d 为现在分词。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "past-irregular-1",
+    "type": "single_choice",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "工位交接时你想表达“上一班次舵机挡板坏了，无法分拣零件”，横线处应填入动词 `break` 的过去式：`The servo baffle ____ during the last shift.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "breaked"
+      },
+      {
+        "id": "b",
+        "text": "breaks"
+      },
+      {
+        "id": "c",
+        "text": "broked"
+      },
+      {
+        "id": "d",
+        "text": "broke"
+      }
+    ],
+    "explanation": "动词 `break` 是不规则动词，其过去式为 `broke`。选项 a 与 c 属于错误的规则化拼写，选项 b 是第三人称单数现在时。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "past-irregular-2",
+    "type": "single_choice",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "接班时你想说明“质检员昨晚把不合格零件放进了红色料盒”，横线处应填入动词 `put` 的过去式：`The inspector ____ the NG parts into the red bin last night.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "put"
+      },
+      {
+        "id": "b",
+        "text": "putted"
+      },
+      {
+        "id": "c",
+        "text": "puts"
+      },
+      {
+        "id": "d",
+        "text": "putten"
+      }
+    ],
+    "explanation": "动词 `put` 是特殊不规则动词，其过去式与原形同形，仍为 `put`。选项 b 与 d 属于臆造错误形式，选项 c 是现在时单三形式。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "past-irregular-3",
+    "type": "multiple_choice",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "下列交接班汇报的英文句子中，哪两项正确使用了常用不规则动词的过去式？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "`I found two bad screws on the table.`"
+      },
+      {
+        "id": "b",
+        "text": "`He seed an error message on the PC.`"
+      },
+      {
+        "id": "c",
+        "text": "`We took the OK parts to the warehouse.`"
+      },
+      {
+        "id": "d",
+        "text": "`The engineer gived me a new sensor.`"
+      }
+    ],
+    "explanation": "选项 a 中 `find` 的过去式 `found` 正确；选项 c 中 `take` 的过去式 `took` 正确。选项 b 中 `see` 的过去式应为 `saw`（不能加 `-ed`）；选项 d 中 `give` 的过去式应为 `gave`（不能加 `-ed`）。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "past-irregular-4",
+    "type": "true_false",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "动词 `tell`（告知）的过去式是不规则形式 `told`，例如句子 `I told the team leader about the fault.` 表达“我向班组长汇报了这项故障”。",
+    "explanation": "`tell` 的过去式为不规则变化 `told`，句型结构与工位交接语义表达均完全正确。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "past-irregular-5",
+    "type": "single_choice",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "汇报上一班次的合格品入库情况时，你想表达“今天上午我们得到了 150 个合格零件”，横线处应填入哪个单词？`We ____ 150 OK parts this morning.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "getted"
+      },
+      {
+        "id": "b",
+        "text": "got"
+      },
+      {
+        "id": "c",
+        "text": "gets"
+      },
+      {
+        "id": "d",
+        "text": "gotted"
+      }
+    ],
+    "explanation": "动词 `get` 的不规则过去式为 `got`。选项 a 和 d 属于错误的规则化变形，选项 c 为一般现在时单三形式。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "did-questions-1",
+    "type": "single_choice",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "接班人员想要询问上一班同事“你检查传感器电线了吗？”，正确的英文句子是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "`Did you checked the sensor wire?`"
+      },
+      {
+        "id": "b",
+        "text": "`Do you checked the sensor wire?`"
+      },
+      {
+        "id": "c",
+        "text": "`Did you check the sensor wire?`"
+      },
+      {
+        "id": "d",
+        "text": "`Were you check the sensor wire?`"
+      }
+    ],
+    "explanation": "一般过去时疑问句借助助动词 `Did` 提前，句中实义动词必须恢复为原形 `check`。选项 a 错误保留了过去式，选项 b 为现在时且动词形式矛盾，选项 d 助动词选用错误。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "did-questions-2",
+    "type": "single_choice",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "当接班同事询问 `Did you clean the inspection table?`（你清洁质检台了吗？），如果你刚才确实清洁了，正确的肯定简略回答是哪一个？",
+    "options": [
+      {
+        "id": "a",
+        "text": "`Yes, I was.`"
+      },
+      {
+        "id": "b",
+        "text": "`Yes, I do.`"
+      },
+      {
+        "id": "c",
+        "text": "`Yes, I cleaned.`"
+      },
+      {
+        "id": "d",
+        "text": "`Yes, I did.`"
+      }
+    ],
+    "explanation": "对 `Did you ...?` 引导的过去时疑问句，肯定简略回答统一使用助动词 `did`，即 `Yes, I did.`。选项 a 误用了 be 动词，选项 b 误用了现在时 `do`，选项 c 不是标准简略答语。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "did-questions-3",
+    "type": "multiple_choice",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "下列工位交接用语中，哪两项正确遵循了“助动词 did / didn't 后接动词原形”的规则？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "`I didn't saw the red warning light.`"
+      },
+      {
+        "id": "b",
+        "text": "`Did they stop the sorting machine?`"
+      },
+      {
+        "id": "c",
+        "text": "`He didn't tested the new servo.`"
+      },
+      {
+        "id": "d",
+        "text": "`We didn't find any defects on the parts.`"
+      }
+    ],
+    "explanation": "选项 b 中 `Did` 疑问句后动词原形 `stop` 正确；选项 d 中 `didn't` 否定句后动词原形 `find` 正确。选项 a 在 `didn't` 后误用了过去式 `saw`（应为 `see`）；选项 c 在 `didn't` 后误用了过去式 `tested`（应为 `test`）。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "did-questions-4",
+    "type": "true_false",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "句子 `I didn't received the serial signal from the PC.` 语法正确，表达“我刚才没有接收到来自电脑的串口信号”。",
+    "explanation": "助动词 `didn't` 之后实义动词必须恢复为动词原形，原句中错误使用了过去式 `received`，应改为原形 `receive`。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "did-questions-5",
+    "type": "single_choice",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "交接班时向主管说明“上一班次我们没有出任何错误”，横线处应填入哪个动词形式？`We didn't ____ any mistakes last shift.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "make"
+      },
+      {
+        "id": "b",
+        "text": "made"
+      },
+      {
+        "id": "c",
+        "text": "maked"
+      },
+      {
+        "id": "d",
+        "text": "making"
+      }
+    ],
+    "explanation": "在过去时否定助动词 `didn't` 之后，实义动词必须使用动词原形 `make`。选项 b 为过去式，选项 c 拼写错误，选项 d 为现在分词。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  }
+]

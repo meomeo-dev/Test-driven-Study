@@ -1,0 +1,548 @@
+[
+  {
+    "id": "tools-parts-1",
+    "type": "single_choice",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "在工位上看到装配提示 `Use the screwdriver.`，请问应该拿起哪种工具？",
+    "options": [
+      {
+        "id": "a",
+        "text": "扳手"
+      },
+      {
+        "id": "b",
+        "text": "螺丝刀"
+      },
+      {
+        "id": "c",
+        "text": "托盘"
+      },
+      {
+        "id": "d",
+        "text": "手套"
+      }
+    ],
+    "explanation": "`screwdriver` 表示“螺丝刀”，在工位装配中常用于拧紧或拆卸螺丝。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "tools-parts-2",
+    "type": "single_choice",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "组长指着工作台上的塑料盘说：`Put the small parts on the tray.`。句中的 `tray` 是指什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "纸箱"
+      },
+      {
+        "id": "b",
+        "text": "工作台"
+      },
+      {
+        "id": "c",
+        "text": "摄像头"
+      },
+      {
+        "id": "d",
+        "text": "托盘"
+      }
+    ],
+    "explanation": "`tray` 在车间通常指放置零件的“托盘”，用于收纳或流转小零件。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "tools-parts-3",
+    "type": "multiple_choice",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "车间安全规范要求佩戴防护用品并检查控制装置。下列选项中哪两项分别表示“手套”和“按钮”？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "gloves"
+      },
+      {
+        "id": "b",
+        "text": "wrench"
+      },
+      {
+        "id": "c",
+        "text": "button"
+      },
+      {
+        "id": "d",
+        "text": "screw"
+      }
+    ],
+    "explanation": "`gloves` 表示“手套”，`button` 表示“按钮”；`wrench` 是扳手，`screw` 是螺丝。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "tools-parts-4",
+    "type": "true_false",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "工程师指着工位上的设备说：`The green light is on.`，这句话的意思是“绿灯亮着”。判断：该表述是否正确？",
+    "explanation": "`light` 意为“指示灯”，`green light is on` 表示绿色的指示灯亮起。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "tools-parts-5",
+    "type": "numeric",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "工人查看备料清单：`Take 5 bolts and 3 nuts.`。请问工人总共需要领取多少个零件？请用阿拉伯数字作答。",
+    "explanation": "清单中的 `5 bolts`（5个螺栓）加上 `3 nuts`（3个螺母），总数为 5 + 3 = 8 个零件。",
+    "grading": {
+      "value": "8",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "measurement-units-1",
+    "type": "single_choice",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "图纸上标有工件长度规格 `15 mm`，在工位上用英语读出该尺寸时，正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "fifteen meters"
+      },
+      {
+        "id": "b",
+        "text": "fifteen grams"
+      },
+      {
+        "id": "c",
+        "text": "fifteen millimeters"
+      },
+      {
+        "id": "d",
+        "text": "fifteen centimeters"
+      }
+    ],
+    "explanation": "`mm` 是毫米的缩写，英文完整读法为 `millimeters`，因此 `15 mm` 读作 `fifteen millimeters`。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "measurement-units-2",
+    "type": "single_choice",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "电子秤显示成品重量为 `2 kg`。这里的单位 `kg` 代表什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "千克（公斤）"
+      },
+      {
+        "id": "b",
+        "text": "克"
+      },
+      {
+        "id": "c",
+        "text": "厘米"
+      },
+      {
+        "id": "d",
+        "text": "米"
+      }
+    ],
+    "explanation": "`kg` 是重量单位千克（kilogram）的英文缩写，等于 1000 克。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "measurement-units-3",
+    "type": "multiple_choice",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "装配台上需要分别测量长度与称量重量。下列选项中哪两项属于长度计量单位？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "kg"
+      },
+      {
+        "id": "b",
+        "text": "cm"
+      },
+      {
+        "id": "c",
+        "text": "g"
+      },
+      {
+        "id": "d",
+        "text": "m"
+      }
+    ],
+    "explanation": "`cm`（厘米）和 `m`（米）属于长度计量单位；`kg`（千克）和 `g`（克）属于重量单位。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "measurement-units-4",
+    "type": "true_false",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "尺寸图纸上注明：`1 m = 10 cm`。判断：该单位换算关系是否正确？",
+    "explanation": "`1 m`（米）等于 `100 cm`（厘米），因此 `1 m = 10 cm` 是错误的换算。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "measurement-units-5",
+    "type": "numeric",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "操作规程要求切断一段 `3 cm` 长的导线。请问这段导线换算为毫米（mm）是多少？请用阿拉伯数字作答。",
+    "explanation": "因为 `1 cm = 10 mm`，所以 `3 cm` 等于 3 × 10 = 30 毫米。",
+    "grading": {
+      "value": "30",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "workbench-actions-1",
+    "type": "single_choice",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "描述工人的日常动作“我每天检查零件”，英语表达正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "I checks the part every day."
+      },
+      {
+        "id": "b",
+        "text": "I check the part every day."
+      },
+      {
+        "id": "c",
+        "text": "I checking the part every day."
+      },
+      {
+        "id": "d",
+        "text": "I is check the part every day."
+      }
+    ],
+    "explanation": "主语是第一人称 `I` 时，一般现在时谓语动词使用原形 `check`，第三人称单数才加 -s。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "workbench-actions-2",
+    "type": "single_choice",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "描述女同事在流水线上的动作“她清点托盘里的螺丝”，空缺处应填入哪个动词形式？`She _____ the screws on the tray.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "count"
+      },
+      {
+        "id": "b",
+        "text": "counting"
+      },
+      {
+        "id": "c",
+        "text": "are count"
+      },
+      {
+        "id": "d",
+        "text": "counts"
+      }
+    ],
+    "explanation": "主语 `She` 是第三人称单数，在一般现在时陈述句中，动词 `count` 需加词尾 -s 变为 `counts`。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "workbench-actions-3",
+    "type": "multiple_choice",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "工位交接班时，下列选项中哪两句符合一般现在时主谓一致规则？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "They pick up the box."
+      },
+      {
+        "id": "b",
+        "text": "She count the screws."
+      },
+      {
+        "id": "c",
+        "text": "He cleans the table."
+      },
+      {
+        "id": "d",
+        "text": "I checks the light."
+      }
+    ],
+    "explanation": "复数主语 `They` 搭配动词原形 `pick up`，第三人称单数 `He` 搭配单三形式 `cleans`；b项动词应为 `counts`，d项动词应为 `check`。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "workbench-actions-4",
+    "type": "true_false",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "巡检时师傅说：`It moves slowly.`，这句话的意思是“它移动得很慢”。判断：该理解是否正确？",
+    "explanation": "`It moves` 表示“它移动”，`slowly` 表示“缓慢地”，整句话翻译为“它移动得很慢”。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "workbench-actions-5",
+    "type": "single_choice",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "工位看板写着“机器每天早上停机检修”，英文句子的横线处应填入哪个词？`The machine _____ every morning.`",
+    "options": [
+      {
+        "id": "a",
+        "text": "stops"
+      },
+      {
+        "id": "b",
+        "text": "stop"
+      },
+      {
+        "id": "c",
+        "text": "stopping"
+      },
+      {
+        "id": "d",
+        "text": "are stop"
+      }
+    ],
+    "explanation": "主语 `The machine` 是第三人称单数，一般现在时谓语动词应加 -s 使用 `stops`。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "workbench-instructions-1",
+    "type": "single_choice",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "班长发出指令：`Put the screw in the box on the left.`，工人的正确操作是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "把螺丝放进右边的托盘里"
+      },
+      {
+        "id": "b",
+        "text": "从左边的盒子里拿出螺栓"
+      },
+      {
+        "id": "c",
+        "text": "把螺丝放进左边的盒子里"
+      },
+      {
+        "id": "d",
+        "text": "把螺丝刀放在桌子左边"
+      }
+    ],
+    "explanation": "`Put... in...` 表示“放入”，`the screw` 是“螺丝”，`in the box on the left` 表示“在左边的盒子里”。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "workbench-instructions-2",
+    "type": "single_choice",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "听到指令 `Take the wrench and tighten the bolt.`，工人接下来应该做哪两步动作？",
+    "options": [
+      {
+        "id": "a",
+        "text": "拿起扳手并拧紧螺栓"
+      },
+      {
+        "id": "b",
+        "text": "拿起螺丝刀并松开螺母"
+      },
+      {
+        "id": "c",
+        "text": "收起扳手并清点零件"
+      },
+      {
+        "id": "d",
+        "text": "戴上手套并按下按钮"
+      }
+    ],
+    "explanation": "`Take the wrench` 意思是“拿起扳手”，`tighten the bolt` 意思是“拧紧螺栓”。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "workbench-instructions-3",
+    "type": "multiple_choice",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "组长对工位下达指令：`Pick up the part and check the light.`。这句话包含哪两个具体动作？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "拿起零件"
+      },
+      {
+        "id": "b",
+        "text": "检查指示灯"
+      },
+      {
+        "id": "c",
+        "text": "关闭设备"
+      },
+      {
+        "id": "d",
+        "text": "移动托盘"
+      }
+    ],
+    "explanation": "`Pick up the part` 意为“拿起零件”，`check the light` 意为“检查指示灯”。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "workbench-instructions-4",
+    "type": "true_false",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "师傅对你说：`Put the gloves in the box on the right.`，工人理解为“把手套放在桌子下面的托盘里”。判断：工人的理解是否正确？",
+    "explanation": "指令中的 `in the box on the right` 意思是“在右边的盒子里”，而不是“桌子下面的托盘里”。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "workbench-instructions-5",
+    "type": "single_choice",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "听到指令 `Clean the table and turn off the light.`，正确的操作顺序是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "先打开指示灯，再擦拭工作台"
+      },
+      {
+        "id": "b",
+        "text": "先清点零件，再关闭总电源"
+      },
+      {
+        "id": "c",
+        "text": "先关灯，再离开工作台"
+      },
+      {
+        "id": "d",
+        "text": "先清理工作台，再关灯"
+      }
+    ],
+    "explanation": "`Clean the table` 表示“清理工作台”，`turn off the light` 表示“关灯”，按先后顺序操作即为先清理工作台、再关灯。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  }
+]

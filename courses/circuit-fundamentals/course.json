@@ -1,0 +1,505 @@
+{
+  "protocol_version": 1,
+  "course_id": "circuit-fundamentals",
+  "version": "1.1.0",
+  "title": "电路基础",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "电学量与单位",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "电学量与单位",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "current-charge",
+          "title": "电流与电荷",
+          "summary": "电流 I=Q/t，单位 A、mA，约定电流方向与电子流方向，闭合回路才有电流",
+          "estimated_minutes": 50,
+          "lesson": "intro"
+        },
+        {
+          "id": "voltage-ground",
+          "title": "电压、电位与地",
+          "summary": "电压是两点电位差，GND 参考点，3.3 V/5 V/12 V 常见电平，测某点电压即对地电压",
+          "estimated_minutes": 50,
+          "lesson": "intro"
+        },
+        {
+          "id": "resistance",
+          "title": "电阻与导体",
+          "summary": "电阻含义与单位 Ω、kΩ、MΩ，导体与绝缘体，四环色环读值",
+          "estimated_minutes": 45,
+          "lesson": "intro"
+        },
+        {
+          "id": "unit-prefixes",
+          "title": "单位与词头换算",
+          "summary": "m、k、M、µ 词头，mA↔A、kΩ↔Ω、mW↔W、µF↔F 换算",
+          "estimated_minutes": 45,
+          "lesson": "intro"
+        },
+        {
+          "id": "power-energy",
+          "title": "功率与电能",
+          "summary": "P=UI，单位 W、mW，电能 J 与 kWh，元件发热",
+          "estimated_minutes": 55,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "current-charge",
+                "voltage-ground"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ohms-law",
+      "title": "欧姆定律与功率计算",
+      "question_file": "questions/ohms-law.json",
+      "lessons": [
+        {
+          "id": "ohms-law",
+          "title": "欧姆定律与功率计算",
+          "file": "lessons/ohms-law.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "ohms-law",
+          "title": "欧姆定律",
+          "summary": "U=IR 及 I=U/R、R=U/I，带单位换算的计算",
+          "estimated_minutes": 80,
+          "lesson": "ohms-law",
+          "prerequisites": [
+            {
+              "all_of": [
+                "voltage-ground",
+                "current-charge",
+                "resistance"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "power-calculation",
+          "title": "功率计算",
+          "summary": "P=UI=I²R=U²/R，电阻上的功耗",
+          "estimated_minutes": 60,
+          "lesson": "ohms-law",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ohms-law",
+                "power-energy"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "resistor-rating",
+          "title": "电阻额定功率与选型",
+          "summary": "1/4 W、1/2 W 额定功率，降额使用，E12 标称值选型",
+          "estimated_minutes": 50,
+          "lesson": "ohms-law",
+          "prerequisites": [
+            {
+              "all_of": [
+                "power-calculation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "series-parallel",
+      "title": "串联、并联与分压",
+      "question_file": "questions/series-parallel.json",
+      "lessons": [
+        {
+          "id": "series-parallel",
+          "title": "串联、并联与分压",
+          "file": "lessons/series-parallel.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "series-circuits",
+          "title": "串联电路",
+          "summary": "串联电流处处相等，总电阻相加，电压按电阻比例分配",
+          "estimated_minutes": 60,
+          "lesson": "series-parallel",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ohms-law"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "parallel-circuits",
+          "title": "并联电路",
+          "summary": "并联电压相等，总电流相加，两电阻并联 R1R2/(R1+R2)",
+          "estimated_minutes": 60,
+          "lesson": "series-parallel",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ohms-law"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "combination-circuits",
+          "title": "混联电路化简",
+          "summary": "先化简并联再串联，求总电阻、总电流和支路电流",
+          "estimated_minutes": 80,
+          "lesson": "series-parallel",
+          "prerequisites": [
+            {
+              "all_of": [
+                "series-circuits",
+                "parallel-circuits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "voltage-divider",
+          "title": "电阻分压",
+          "summary": "Vout=Vin·R2/(R1+R2)，负载电阻对分压的影响",
+          "estimated_minutes": 70,
+          "lesson": "series-parallel",
+          "prerequisites": [
+            {
+              "all_of": [
+                "series-circuits"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kirchhoff",
+      "title": "基尔霍夫定律",
+      "question_file": "questions/kirchhoff.json",
+      "lessons": [
+        {
+          "id": "kirchhoff",
+          "title": "基尔霍夫定律",
+          "file": "lessons/kirchhoff.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "kcl",
+          "title": "基尔霍夫电流定律",
+          "summary": "流入节点电流之和等于流出电流之和",
+          "estimated_minutes": 60,
+          "lesson": "kirchhoff",
+          "prerequisites": [
+            {
+              "all_of": [
+                "parallel-circuits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kvl",
+          "title": "基尔霍夫电压定律",
+          "summary": "沿闭合回路电压升降代数和为零",
+          "estimated_minutes": 60,
+          "lesson": "kirchhoff",
+          "prerequisites": [
+            {
+              "all_of": [
+                "series-circuits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "node-voltage",
+          "title": "节点电压法入门",
+          "summary": "选参考地，对一个未知节点列 KCL 方程求电压",
+          "estimated_minutes": 90,
+          "lesson": "kirchhoff",
+          "prerequisites": [
+            {
+              "all_of": [
+                "kcl",
+                "kvl"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "measurement",
+      "title": "万用表测量与安全",
+      "question_file": "questions/measurement.json",
+      "lessons": [
+        {
+          "id": "measurement",
+          "title": "万用表测量与安全",
+          "file": "lessons/measurement.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "measure-voltage",
+          "title": "测电压（并联）",
+          "summary": "电压挡并联在被测两点，红黑表笔极性，量程选择",
+          "estimated_minutes": 50,
+          "lesson": "measurement",
+          "prerequisites": [
+            {
+              "all_of": [
+                "voltage-ground"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "measure-current",
+          "title": "测电流（串联）",
+          "summary": "断开回路串入电表，电流插孔，误用电流挡并联会短路",
+          "estimated_minutes": 55,
+          "lesson": "measurement",
+          "prerequisites": [
+            {
+              "all_of": [
+                "current-charge",
+                "series-circuits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "measure-resistance",
+          "title": "测电阻与通断",
+          "summary": "断电测电阻，在路测量误差，通断挡蜂鸣",
+          "estimated_minutes": 45,
+          "lesson": "measurement",
+          "prerequisites": [
+            {
+              "all_of": [
+                "resistance"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bench-safety",
+          "title": "低压实验安全与电源",
+          "summary": "断电接线，可调电源限流，短路与极性反接，静电防护",
+          "estimated_minutes": 45,
+          "lesson": "measurement"
+        },
+        {
+          "id": "breadboard-wiring",
+          "title": "面包板与接线",
+          "summary": "面包板内部连通规律，电源轨，跳线与元件跨中槽",
+          "estimated_minutes": 45,
+          "lesson": "measurement"
+        },
+        {
+          "id": "lab-divider-measurement",
+          "title": "5 V 分压实测（自评）",
+          "summary": "在面包板上搭建 5 V 分压电路，先计算再用万用表测量中点对地电压。",
+          "estimated_minutes": 75,
+          "lesson": "measurement",
+          "prerequisites": [
+            {
+              "all_of": [
+                "voltage-divider",
+                "measure-voltage",
+                "breadboard-wiring"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "元件与传感器信号",
+      "question_file": "questions/components.json",
+      "lessons": [
+        {
+          "id": "components",
+          "title": "元件与传感器信号",
+          "file": "lessons/components.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "capacitor-rc",
+          "title": "电容与 RC 时间常数",
+          "summary": "电容单位，充放电，τ=RC，约 5τ 基本充满",
+          "estimated_minutes": 80,
+          "lesson": "components",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ohms-law"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "diode-led",
+          "title": "LED 与限流电阻",
+          "summary": "二极管单向导电，LED 正向压降，R=(Vs−Vf)/I",
+          "estimated_minutes": 60,
+          "lesson": "components",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ohms-law"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pull-resistors",
+          "title": "开关与上拉、下拉电阻",
+          "summary": "按键接上拉或下拉电阻使输入有确定电平，悬空输入的问题",
+          "estimated_minutes": 55,
+          "lesson": "components",
+          "prerequisites": [
+            {
+              "all_of": [
+                "voltage-divider"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sensor-signals",
+          "title": "传感器信号与电平检查",
+          "summary": "数字与模拟输出，3.3 V 逻辑电平，用分压把 5 V 信号降到 3.3 V",
+          "estimated_minutes": 60,
+          "lesson": "components",
+          "prerequisites": [
+            {
+              "all_of": [
+                "voltage-divider",
+                "measure-voltage"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transistor-switch",
+          "title": "三极管与 MOSFET 开关",
+          "summary": "低边开关，基极电阻，续流二极管，引脚不能直接驱动电机",
+          "estimated_minutes": 75,
+          "lesson": "components",
+          "prerequisites": [
+            {
+              "all_of": [
+                "diode-led",
+                "power-calculation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "power-loads",
+      "title": "电源、负载与故障排查",
+      "question_file": "questions/power-loads.json",
+      "lessons": [
+        {
+          "id": "power-loads",
+          "title": "电源、负载与故障排查",
+          "file": "lessons/power-loads.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "dc-supplies",
+          "title": "直流电源与稳压",
+          "summary": "稳压器与 LDO，输入输出压差，散热功耗 (Vin−Vout)·I，USB 供电电流限制",
+          "estimated_minutes": 60,
+          "lesson": "power-loads",
+          "prerequisites": [
+            {
+              "all_of": [
+                "power-calculation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "load-driving",
+          "title": "负载与电机供电",
+          "summary": "执行器独立供电并共地，启动电流，电源去耦电容",
+          "estimated_minutes": 60,
+          "lesson": "power-loads",
+          "prerequisites": [
+            {
+              "all_of": [
+                "transistor-switch",
+                "dc-supplies"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fault-finding",
+          "title": "电路故障排查",
+          "summary": "按电源、地、信号顺序排查，常见故障：断路、短路、接反、虚接",
+          "estimated_minutes": 60,
+          "lesson": "power-loads",
+          "prerequisites": [
+            {
+              "all_of": [
+                "measure-voltage",
+                "measure-resistance"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lab-sensor-interface",
+          "title": "传感器接口实作（自评）",
+          "summary": "给到位传感器和执行器接好电源与共地，检查信号电平并记录测量值。",
+          "estimated_minutes": 60,
+          "lesson": "power-loads",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sensor-signals",
+                "load-driving"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "用电压、电流和功率分析低压传感器与执行器电路。"
+}

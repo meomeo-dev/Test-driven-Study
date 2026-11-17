@@ -1,0 +1,29 @@
+topic: study_question_context_and_explanation_scrolling
+date: '2026-11-01'
+modes: [memorize, practice]
+layout:
+  question_type_row: [type_badge, chapter, filtered_position, full_view_action]
+  stem_column_header: [original_question_id, study_state, optional_prior_exposure]
+  heading_alignment: stem_options_and_explanation
+  explanation_region_name: 解析正文
+  long_chapter: ellipsis_with_complete_text_and_title
+keyboard:
+  ArrowDown: scroll_visible_overflowing_explanation_down_48px
+  ArrowUp: scroll_visible_overflowing_explanation_up_48px
+  repeat: continuous_local_scrolling
+  small_screen: analysis_dialog_body
+  printable_shortcuts_disabled: arrow_scrolling_available
+  guards: [editing, IME, Ctrl, Command, Alt, Shift_selection, handled_events]
+  other_dialogs: retain_native_navigation_and_controls
+navigation:
+  tile_primary: filtered_list_position
+  tile_secondary: original_question_id
+  current_summary: original_id_and_filtered_position
+  locate: center_and_focus_current_tile_without_changing_question
+  index_step: 100
+  index_meaning: filtered_list_position
+invariants:
+  - Practice explanation remains hidden until a saved grade exists.
+  - Only the local explanation or its dialog body scrolls.
+  - Question navigation remains a floating continuous grid.
+  - Original question data, images, grades, and records are unchanged.

@@ -1,0 +1,760 @@
+schema_version: 1
+id: course-learning-paths
+title: Course knowledge graphs and learning paths
+status: completed
+progress_revision: 48
+created_at: 2026-11-13
+updated_at: 2026-11-13
+source_assessment: docs/features/learning-path/README.md reviewed by three
+  design reviewers at 489ffdc
+objective: Courses declare concept graphs with AND/OR prerequisites, and each
+  learner can generate, follow and replan a saved learning path driven by
+  practice evidence, piloted on Beginner English.
+execution_contract:
+  scheduling: serial
+  max_in_progress_work_units: 1
+  unit_definition: A dependency-ordered change that can be accepted, committed and
+    reverted independently.
+  completion_rule: Complete all four phases before starting the next unit.
+  forbidden_batching:
+    - Close the current work unit before dispatching its successor.
+  change_boundary:
+    - Use the primary checkout and the issue branch; no worktrees.
+    - Use isolated databases and local fixtures for verification.
+  mode: plan-todo
+phase_contract:
+  order:
+    - prepare
+    - migrate
+    - verify
+    - close
+  status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  transition_rules:
+    - Complete phases in order.
+  required_progress_fields:
+    - status
+    - started_at
+    - completed_at
+    - evidence
+    - notes
+  update_protocol:
+    before_phase:
+      - Increment progress_revision and set the active phase.
+    after_phase:
+      - Record evidence and update recovery.
+    on_blocked:
+      - Record the blocker and its recovery condition.
+    after_compaction:
+      - Resume from recovery.next_action.
+status_model:
+  work_unit_status_enum:
+    - not-started
+    - in-progress
+    - completed
+    - blocked
+  plan_status_enum:
+    - draft
+    - ready
+    - in-progress
+    - completed
+    - blocked
+  optional_unit_rule: Optional units require an explicit activation decision.
+resume:
+  current_work_unit: null
+  active_todo: null
+  current_phase: null
+  last_completed_work_unit: WU-006
+  next_work_unit: null
+  next_action: PLAN completed; no further work unit is pending.
+  last_checkpoint: WU-006.close.completed
+  blockers: []
+invariants:
+  - id: I-001
+    statement: Packages own concept graphs, the learner database owns marks and
+      paths, and application code owns mastery and planning.
+  - id: I-002
+    statement: Packages without concepts keep their digests, routes, grading and
+      history, including Yunnan driving.
+  - id: I-003
+    statement: Item IDs, attempts, exam snapshots and learner data remain readable;
+      every attempt remains a separate record.
+  - id: I-004
+    statement: Concept tags never reach learner-facing question JSON or AI prompts.
+  - id: I-005
+    statement: Verification uses isolated data and local fixtures; item drafting
+      tools receive course content only, never source code.
+verification_profiles:
+  packages:
+    automated:
+      - command: go test ./internal/course ./internal/storage ./internal/study
+        expected: Validation, digest and projection tests pass.
+      - command: npm run course:check -- tests/fixtures/courses/concept-graph
+        expected: The fixture validates and reports concept counts.
+    manual_tier: focused
+  service:
+    automated:
+      - command: npm run generate:db && go test ./internal/study ./internal/storage
+        expected: Planner, state and path tests pass with current bindings.
+    manual_tier: focused
+  http:
+    automated:
+      - command: npm run generate:api && go test ./internal/httpapi && npm run typecheck
+        expected: Handlers, contract types and frontend types agree.
+    manual_tier: focused
+  ui:
+    automated:
+      - command: npm run test:unit && npm run typecheck && npx playwright test
+          tests/browser/learning-path.spec.ts
+        expected: Layout tests and the learning-path browser spec pass.
+    manual_tier: focused
+  course:
+    automated:
+      - command: npm run course:check -- courses/beginner-english
+        expected: Beginner English 1.1.0 validates with the planned graph.
+    manual_tier: focused
+  release:
+    automated:
+      - command: npm run check
+        expected: The full acceptance gate passes.
+    manual_tier: full
+manual_gates:
+  focused:
+    - Review actual changes, isolated acceptance and the rollback commit.
+  full:
+    - Verify the learning page on the pilot course and regression of existing
+      courses on isolated data.
+baseline:
+  captured_at: 2026-11-13
+  git_head: 489ffdcd85fce02a0005779bb4403efe5c0f54d4
+  working_tree_note: Clean issue branch from main at 489ffdc. Learner services and
+    data are untouched.
+  results:
+    route: PLAN-TODO[*]
+    estimated_minutes: 480
+    reviews: three APPROVE-WITH-CHANGES, applied
+work_units:
+  - id: WU-001
+    title: Concept package protocol
+    activation: required
+    status: completed
+    depends_on: []
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: packages
+    intent: Add concepts, prerequisite groups and item tags to protocol v1 with
+      graph and tag validation.
+    file_group:
+      modify:
+        - contracts/course/v1/
+        - internal/course/
+        - cmd/course/
+        - tests/fixtures/courses/concept-graph/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Extend both schemas, the Go model and protocol README.
+        - Validate IDs, minutes, lessons, groups, containment, cycles and tags.
+        - Print concept counts and low-item warnings in course:check.
+        - Add a fixture course with AND and OR groups.
+      verify:
+        - Run course, storage and study Go tests and course:check on the fixture.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - Each validation rule fails with a message naming the concept, the
+        intro-geometry digest is unchanged and question JSON has no tags.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:03:11.867Z
+        completed_at: 2026-11-13T13:03:53.324Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Loader, schemas and fixture setup reviewed; concepts live in the
+            stored manifest and tags in item payloads.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:03:55.226Z
+        completed_at: 2026-11-13T13:07:43.369Z
+        evidence:
+          - Protocol v1 schemas, model, validation, course:check summary and the
+            concept-graph fixture are implemented.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:07:45.121Z
+        completed_at: 2026-11-13T13:07:47.117Z
+        evidence:
+          - go test ./internal/course ./internal/storage ./internal/study
+            passed; fixture course:check reports 6 concepts and 6 groups;
+            baseline digests equal main.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:07:49.023Z
+        completed_at: 2026-11-13T13:07:51.288Z
+        evidence:
+          - "Independent acceptance passed: Each validation rule fails with a
+            message naming the concept, the intro-geometry digest is unchanged
+            and question JSON has no tags."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-001.close.
+      changed_files:
+        - contracts/course/v1/manifest.schema.json
+        - contracts/course/v1/items.schema.json
+        - contracts/course/v1/README.md
+        - internal/course/model.go
+        - internal/course/concepts.go
+        - internal/course/load.go
+        - internal/course/concepts_test.go
+        - cmd/course/main.go
+        - internal/storage/concepts_test.go
+        - tests/fixtures/courses/concept-graph/course.json
+      rollback_ref: 489ffdc
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Add concepts, prerequisite groups and item tags to protocol v1 with graph
+          and tag validation.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+  - id: WU-002
+    title: Planner, concept state and saved paths
+    activation: required
+    status: completed
+    depends_on:
+      - WU-001
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: service
+    intent: Compute concept states from evidence and marks, plan paths and persist
+      them per course.
+    file_group:
+      modify:
+        - internal/study/
+        - internal/storage/migrations/
+        - db/queries.sql
+        - internal/storage/storedb/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Implement the pure planner with redundant-alternative pruning.
+        - Add concept_marks and learning_paths with a one-active-path index.
+        - Implement states, marks, graph digest, path creation and live view.
+      verify:
+        - Regenerate sqlc bindings and run study and storage Go tests.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - Planner, mastery table, overridden marks, archive transaction, stale
+        digest and missing-step tests pass.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:08:43.770Z
+        completed_at: 2026-11-13T13:09:03.296Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Attempts from practice and finalized exams share answer_attempts;
+            ListPracticeQuestions gives latest state with source_item_id;
+            manifest_json and course_items payloads carry concepts and tags.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:09:05.017Z
+        completed_at: 2026-11-13T13:14:32.114Z
+        evidence:
+          - Pure planner, migration 00013, concept states, known marks and saved
+            learning paths implemented.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:14:33.829Z
+        completed_at: 2026-11-13T13:14:35.785Z
+        evidence:
+          - go test ./internal/study ./internal/storage ./internal/course passed
+            after npm run generate:db.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:14:37.716Z
+        completed_at: 2026-11-13T13:14:40.066Z
+        evidence:
+          - "Independent acceptance passed: Planner, mastery table, overridden
+            marks, archive transaction, stale digest and missing-step tests
+            pass."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-002.close.
+      changed_files:
+        - internal/study/learning_plan.go
+        - internal/study/concepts.go
+        - internal/study/learning_paths.go
+        - internal/study/learning_plan_test.go
+        - internal/study/learning_paths_test.go
+        - internal/storage/migrations/00013_learning_paths.sql
+        - db/queries.sql
+        - internal/storage/storedb/queries.sql.go
+      rollback_ref: 39acbe8
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Compute concept states from evidence and marks, plan paths and persist
+          them per course.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+  - id: WU-003
+    title: HTTP contract and practice concept filter
+    activation: required
+    status: completed
+    depends_on:
+      - WU-002
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: http
+    intent: Expose concepts, marks and paths over HTTP and filter practice by concept.
+    file_group:
+      modify:
+        - contracts/http/openapi.yaml
+        - web/src/api/generated/
+        - internal/httpapi/
+        - internal/study/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Add OpenAPI paths and schemas and regenerate types.
+        - Add handlers with course and concept not-found messages and limits.
+        - Apply the concept filter to every practice state.
+      verify:
+        - Run httpapi Go tests, typecheck and the generated-code drift check.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - Endpoints return the documented shapes, limits and errors, and the
+        filter lists only tagged items of the concept's unit.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:14:52.721Z
+        completed_at: 2026-11-13T13:17:15.216Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Routes, decodeBody limits, respondError mapping, practice filter
+            path and OpenAPI layout reviewed.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:17:17.013Z
+        completed_at: 2026-11-13T13:17:21.689Z
+        evidence:
+          - HTTP contract, handlers, learner-facing errors and the practice
+            concept filter implemented.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:17:23.928Z
+        completed_at: 2026-11-13T13:17:26.118Z
+        evidence:
+          - go test ./internal/httpapi ./internal/study passed; typecheck
+            passed; generated HTTP types and SQL bindings are current.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:17:28.938Z
+        completed_at: 2026-11-13T13:17:32.086Z
+        evidence:
+          - "Independent acceptance passed: Endpoints return the documented
+            shapes, limits and errors, and the filter lists only tagged items of
+            the concept's unit."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-003.close.
+      changed_files:
+        - contracts/http/openapi.yaml
+        - internal/httpapi/learning.go
+        - internal/httpapi/learning_test.go
+        - internal/httpapi/server.go
+        - internal/httpapi/practice.go
+        - internal/study/practice.go
+        - web/src/api/generated/types.gen.ts
+      rollback_ref: bfeb1a0
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Expose concepts, marks and paths over HTTP and filter practice by
+          concept.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+  - id: WU-004
+    title: Learning page and graph view
+    activation: required
+    status: completed
+    depends_on:
+      - WU-003
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: ui
+    intent: Add the 学习路径 workspace page with path and graph tabs and the practice
+      concept chip.
+    file_group:
+      modify:
+        - web/src/features/learning/
+        - web/src/api/
+        - web/src/components/Sidebar.tsx
+        - web/src/main.tsx
+        - web/src/app/
+        - web/src/features/practice/
+        - tests/browser/learning-path.spec.ts
+        - playwright.config.ts
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Add the client, page, goal form, progress states and step actions.
+        - Add the tested layered layout and SVG graph view.
+        - Add the sidebar entry, route and practice concept chip.
+        - Install the fixture in browser runs and add the browser spec.
+      verify:
+        - Run unit tests, typecheck and the learning-path browser spec.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - Chrome completes the goal form, progress, graph selection, practice
+        chip, known mark and empty state on the fixture.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:18:44.555Z
+        completed_at: 2026-11-13T13:25:30.937Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Routes, sidebar modes, workspace links, practice filters, Tabs,
+            tokens and Playwright fixture setup reviewed.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:25:32.865Z
+        completed_at: 2026-11-13T13:25:39.463Z
+        evidence:
+          - Learning page with path and graph tabs, sidebar entry, practice
+            concept chip and browser spec implemented.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:25:41.366Z
+        completed_at: 2026-11-13T13:25:43.337Z
+        evidence:
+          - npm run test:unit passed 34 cases; typecheck passed; learning-path
+            browser spec passed 2 cases on isolated ports.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:25:45.114Z
+        completed_at: 2026-11-13T13:25:47.553Z
+        evidence:
+          - "Independent acceptance passed: Chrome completes the goal form,
+            progress, graph selection, practice chip, known mark and empty state
+            on the fixture."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-004.close.
+      changed_files:
+        - web/src/features/learning/LearningPage.tsx
+        - web/src/features/learning/PathPanel.tsx
+        - web/src/features/learning/GraphPanel.tsx
+        - web/src/components/Sidebar.tsx
+        - tests/browser/learning-path.spec.ts
+      rollback_ref: "8493140"
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Add the 学习路径 workspace page with path and graph tabs and the practice
+          concept chip.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+  - id: WU-005
+    title: Beginner English 1.1.0 concept graph
+    activation: required
+    status: completed
+    depends_on:
+      - WU-004
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: course
+    intent: Rebuild Beginner English as four units and sixteen concepts with at
+      least sixty original items.
+    file_group:
+      modify:
+        - courses/beginner-english/
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Draft items per concept with agy and gemini-3.8-flash from a content
+          brief.
+        - Review, correct and tag items; keep the four existing item IDs.
+        - Write the manifest, unit lessons and README for version 1.1.0.
+      verify:
+        - Run course:check and serve the course from an isolated data directory.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - The package validates with four units, sixteen concepts, the OR group
+        and sixty or more items, and its graph and path load in the app.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:26:11.649Z
+        completed_at: 2026-11-13T13:27:32.625Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - Existing 1.0.0 package, item IDs, audio item and README reviewed;
+            item drafting delegated to agy gemini-3.8-flash-high per unit with a
+            content-only brief.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:27:34.686Z
+        completed_at: 2026-11-13T13:29:41.927Z
+        evidence:
+          - Beginner English rebuilt as version 1.1.0 with a concept graph and
+            79 items.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:29:43.972Z
+        completed_at: 2026-11-13T13:29:46.150Z
+        evidence:
+          - course:check passed with 16 concepts and 79 tagged items; go test
+            ./internal/storage ./internal/course ./internal/study passed;
+            isolated Chrome check of graph and path.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:29:48.249Z
+        completed_at: 2026-11-13T13:29:50.836Z
+        evidence:
+          - "Independent acceptance passed: The package validates with four
+            units, sixteen concepts, the OR group and sixty or more items, and
+            its graph and path load in the app."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-005.close.
+      changed_files:
+        - courses/beginner-english/course.json
+        - courses/beginner-english/questions/numbers-places.json
+        - courses/beginner-english/questions/requests.json
+        - courses/beginner-english/questions/workbench.json
+        - courses/beginner-english/lessons/numbers-places.md
+        - courses/beginner-english/README.md
+      rollback_ref: 90b4f02
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Rebuild Beginner English as four units and sixteen concepts with at least
+          sixty original items.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+  - id: WU-006
+    title: Acceptance and handoff
+    activation: required
+    status: completed
+    depends_on:
+      - WU-005
+    todo_binding:
+      required: true
+      rationale: Retain local task, evidence and recovery records for a separately
+        committed change.
+      creation_phase: prepare
+    verification_profile: release
+    intent: Run the full gate and record documentation, handoff and issue closure.
+    file_group:
+      modify:
+        - README.md
+        - handoff.md
+        - docs/features/learning-path/README.md
+        - issues/0047-feat-add-course-knowledge-graphs-and-learning-paths.md
+    phase_requirements:
+      prepare:
+        - Confirm current behavior, affected files and the design rules.
+      migrate:
+        - Update the README feature list, handoff and issue status.
+      verify:
+        - Run npm run check.
+      close:
+        - Record verified changes, acceptance and a rollback commit.
+    independent_acceptance:
+      - npm run check passes and the issue is closed with its commit.
+    progress:
+      prepare:
+        status: completed
+        started_at: 2026-11-13T13:30:07.262Z
+        completed_at: 2026-11-13T13:30:36.290Z
+        evidence:
+          - PLAN-TODO created the active TODO binding before local WU execution.
+          - README feature list, handoff format and the issue close pattern
+            (closes commit, then closed-by record) reviewed.
+        notes: []
+      migrate:
+        status: completed
+        started_at: 2026-11-13T13:30:40.820Z
+        completed_at: 2026-11-13T13:36:31.289Z
+        evidence:
+          - README, handoff and issue records updated; closing commit
+            26885eb83eb155004c636e2e209b62e324b6efbe.
+        notes: []
+      verify:
+        status: completed
+        started_at: 2026-11-13T13:36:32.947Z
+        completed_at: 2026-11-13T13:36:34.796Z
+        evidence:
+          - npm run check passed with 34 unit tests, Go tests, 4 startup checks,
+            the build and 120 browser cases.
+        notes: []
+      close:
+        status: completed
+        started_at: 2026-11-13T13:36:36.461Z
+        completed_at: 2026-11-13T13:36:38.620Z
+        evidence:
+          - "Independent acceptance passed: npm run check passes and the issue
+            is closed with its commit."
+        notes: []
+    recovery:
+      last_completed_phase: close
+      next_action: Continue WU-006.close.
+      changed_files:
+        - README.md
+        - handoff.md
+        - issues/0047-feat-add-course-knowledge-graphs-and-learning-paths.md
+      rollback_ref: a58e560
+      blockers: []
+    squad:
+      pm:
+        id: root
+        role: Planning
+        focus: 'Keep scope to the reviewed design and issue #47.'
+      senior_engineer:
+        id: root
+        role: Implementation
+        focus: Run the full gate and record documentation, handoff and issue closure.
+      ca_qa_lead:
+        id: root
+        role: Acceptance
+        focus: Verify invariants with isolated data and fixtures.
+dag:
+  nodes: &id001
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+    - WU-005
+    - WU-006
+  dispatch_order: *id001
+  edges:
+    - from: WU-001
+      to: WU-002
+    - from: WU-002
+      to: WU-003
+    - from: WU-003
+      to: WU-004
+    - from: WU-004
+      to: WU-005
+    - from: WU-005
+      to: WU-006
+completion_summary:
+  required_units: *id001
+  optional_units: []
+  completed_units:
+    - WU-001
+    - WU-002
+    - WU-003
+    - WU-004
+    - WU-005
+    - WU-006
+  skipped_optional_units: []
+  final_evidence:
+    - "Independent acceptance passed: Each validation rule fails with a message
+      naming the concept, the intro-geometry digest is unchanged and question
+      JSON has no tags."
+    - "Independent acceptance passed: Planner, mastery table, overridden marks,
+      archive transaction, stale digest and missing-step tests pass."
+    - "Independent acceptance passed: Endpoints return the documented shapes,
+      limits and errors, and the filter lists only tagged items of the concept's
+      unit."
+    - "Independent acceptance passed: Chrome completes the goal form, progress,
+      graph selection, practice chip, known mark and empty state on the
+      fixture."
+    - "Independent acceptance passed: The package validates with four units,
+      sixteen concepts, the OR group and sixty or more items, and its graph and
+      path load in the app."
+    - "Independent acceptance passed: npm run check passes and the issue is
+      closed with its commit."

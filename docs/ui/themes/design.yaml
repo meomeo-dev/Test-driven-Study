@@ -1,0 +1,39 @@
+topic: application_color_themes
+date: '2026-11-01'
+selected_previews:
+  light: ../theme-options/2026-11-01/a-brand-blue.png
+  dark: ../theme-options/2026-11-01/c-dark-blue.png
+tokens: ../../../web/src/styles/tokens.css
+typography:
+  source: ../../../web/src/styles/tokens.css
+  roles:
+    caption: --font-size-caption
+    control: --font-size-control
+    label: --font-size-label
+    body: --font-size-body
+    dialog_title: --font-size-dialog-title
+  invariants:
+    - Shared modal bodies explicitly use the body token across portal boundaries.
+    - Task labels and selects use the control token shared with application buttons.
+    - Theme switches preserve typography sizes.
+default: light
+preference:
+  storage: localStorage
+  key: yunnan-driving-study.theme
+  bootstrap: index.html_before_application_render
+  blocked_storage: in_memory_switching_with_light_default
+control:
+  location: each_page_toolbar
+  accessible_name: 深色模式
+  state: aria-pressed
+  keyboard: native_Enter_and_Space
+invariants:
+  - Preserve compact 100dvh layout and existing study navigation.
+  - Preserve original logo colors and unmodified question images.
+  - Preserve current selections and saved attempts during theme switches.
+  - Distinguish success, error, and review states in both themes.
+acceptance:
+  - Persistence across routes and reloads.
+  - Usable fallback when browser storage is blocked.
+  - Desktop and mobile bounds for all three modes and overlays.
+  - Core reading text and active controls have at least 4.5-to-1 contrast.

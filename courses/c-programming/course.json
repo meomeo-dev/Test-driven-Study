@@ -1,0 +1,518 @@
+{
+  "protocol_version": 1,
+  "course_id": "c-programming",
+  "version": "1.1.0",
+  "title": "C 语言程序设计",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "程序结构与数据",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "程序结构与数据",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "program-structure",
+          "title": "程序结构与编译运行",
+          "summary": "#include、main 函数、语句与分号、注释，编译、链接与运行",
+          "estimated_minutes": 50,
+          "lesson": "intro"
+        },
+        {
+          "id": "variables-types",
+          "title": "变量与基本类型",
+          "summary": "int、float、double、char，声明、初始化与赋值，sizeof",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "program-structure"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "io-printf-scanf",
+          "title": "格式化输入输出",
+          "summary": "printf 的 %d %f %c %s 与转义字符，scanf 读入需取地址 &",
+          "estimated_minutes": 55,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arithmetic",
+          "title": "算术运算、整除与取余",
+          "summary": "+ - * / %，整数除法截断，取余，运算优先级，自增自减",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "type-conversion",
+          "title": "类型转换与溢出",
+          "summary": "隐式与强制类型转换，整数溢出，unsigned 与 signed，浮点精度",
+          "estimated_minutes": 55,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arithmetic"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "title": "条件与分支",
+      "question_file": "questions/control.json",
+      "lessons": [
+        {
+          "id": "control",
+          "title": "条件与分支",
+          "file": "lessons/control.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "relational-logical",
+          "title": "关系与逻辑运算",
+          "summary": "== != < > <= >=，&& || !，短路求值，= 与 == 的区别",
+          "estimated_minutes": 55,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arithmetic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "if-else",
+          "title": "条件语句 if / else",
+          "summary": "if、else if、else，代码块，嵌套分支，阈值判断",
+          "estimated_minutes": 70,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "relational-logical"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "switch-case",
+          "title": "多分支 switch",
+          "summary": "switch、case、default、break，贯穿（fall-through）",
+          "estimated_minutes": 45,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "if-else"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "循环",
+      "question_file": "questions/loops.json",
+      "lessons": [
+        {
+          "id": "loops",
+          "title": "循环",
+          "file": "lessons/loops.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "while-loops",
+          "title": "while 与 do-while",
+          "summary": "循环条件，do-while 至少执行一次，避免死循环",
+          "estimated_minutes": 60,
+          "lesson": "loops",
+          "prerequisites": [
+            {
+              "all_of": [
+                "if-else"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "for-loops",
+          "title": "for 循环与计数",
+          "summary": "初始化、条件、更新三部分，循环次数计算，累加",
+          "estimated_minutes": 70,
+          "lesson": "loops",
+          "prerequisites": [
+            {
+              "all_of": [
+                "if-else"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "loop-control",
+          "title": "break 与 continue",
+          "summary": "提前结束循环与跳过本次迭代",
+          "estimated_minutes": 40,
+          "lesson": "loops",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nested-loops",
+          "title": "嵌套循环与执行次数",
+          "summary": "内外层循环次数相乘，二维遍历",
+          "estimated_minutes": 55,
+          "lesson": "loops",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "函数与测试",
+      "question_file": "questions/functions.json",
+      "lessons": [
+        {
+          "id": "functions",
+          "title": "函数与测试",
+          "file": "lessons/functions.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "function-basics",
+          "title": "函数定义、参数与返回值",
+          "summary": "函数声明与定义，形参与实参，值传递，return，void",
+          "estimated_minutes": 80,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scope-lifetime",
+          "title": "作用域、生命周期与 static",
+          "summary": "局部与全局变量，块作用域，static 局部变量保持值",
+          "estimated_minutes": 50,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "function-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "boundary-testing",
+          "title": "边界输入与断言测试",
+          "summary": "用 assert 检查结果，空输入、等于阈值、最大最小值等边界用例",
+          "estimated_minutes": 60,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "function-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "recursion",
+          "title": "递归入门",
+          "summary": "基准情形与递归调用，阶乘，递归调用次数",
+          "estimated_minutes": 45,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "function-basics"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arrays-strings",
+      "title": "数组与字符串",
+      "question_file": "questions/arrays-strings.json",
+      "lessons": [
+        {
+          "id": "arrays-strings",
+          "title": "数组与字符串",
+          "file": "lessons/arrays-strings.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "arrays",
+          "title": "数组与下标边界",
+          "summary": "声明与初始化，下标从 0 开始，越界访问是未定义行为，数组长度计算",
+          "estimated_minutes": 75,
+          "lesson": "arrays-strings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "array-algorithms",
+          "title": "数组求和、最值与计数",
+          "summary": "遍历求和、平均、最大值、满足条件的计数，数组作为函数参数需传长度",
+          "estimated_minutes": 65,
+          "lesson": "arrays-strings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arrays",
+                "function-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "strings",
+          "title": "字符数组与字符串",
+          "summary": "'\\0' 结尾，strlen 与数组大小的区别，字符串比较用 strcmp",
+          "estimated_minutes": 60,
+          "lesson": "arrays-strings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arrays"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sorting-search",
+          "title": "排序与查找",
+          "summary": "冒泡排序的比较次数，线性查找，有序数组的二分查找",
+          "estimated_minutes": 75,
+          "lesson": "arrays-strings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "array-algorithms",
+                "nested-loops"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pointers-structs",
+      "title": "指针、结构体与位运算",
+      "question_file": "questions/pointers-structs.json",
+      "lessons": [
+        {
+          "id": "pointers-structs",
+          "title": "指针、结构体与位运算",
+          "file": "lessons/pointers-structs.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "pointers",
+          "title": "指针与地址",
+          "summary": "& 取地址与 * 解引用，指针类型，通过指针修改调用者变量，NULL",
+          "estimated_minutes": 85,
+          "lesson": "pointers-structs",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types",
+                "function-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pointer-arrays",
+          "title": "指针、数组与传参",
+          "summary": "数组名退化为指针，指针加法与下标等价，const 指针参数",
+          "estimated_minutes": 75,
+          "lesson": "pointers-structs",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pointers",
+                "arrays"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "structs",
+          "title": "结构体",
+          "summary": "struct 定义与成员访问，结构体数组，-> 运算符",
+          "estimated_minutes": 70,
+          "lesson": "pointers-structs",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arrays"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bit-operations",
+          "title": "位运算与掩码",
+          "summary": "& | ^ ~ << >>，置位、清零、取反、检测某一位，十六进制",
+          "estimated_minutes": 60,
+          "lesson": "pointers-structs",
+          "prerequisites": [
+            {
+              "all_of": [
+                "arithmetic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "const-macros",
+          "title": "常量、宏与头文件",
+          "summary": "const 变量，#define 常量与宏的陷阱，头文件与 include 防护",
+          "estimated_minutes": 45,
+          "lesson": "pointers-structs",
+          "prerequisites": [
+            {
+              "all_of": [
+                "function-basics"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "title": "数据处理项目",
+      "question_file": "questions/project.json",
+      "lessons": [
+        {
+          "id": "project",
+          "title": "数据处理项目",
+          "file": "lessons/project.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "modular-programs",
+          "title": "多文件与模块化",
+          "summary": "声明放 .h、定义放 .c，extern，按功能拆分模块",
+          "estimated_minutes": 50,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "const-macros"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sensor-data-processing",
+          "title": "传感器数据处理",
+          "summary": "滑动平均，阈值计数，剔除异常值，处理空输入",
+          "estimated_minutes": 80,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "array-algorithms",
+                "structs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "debugging",
+          "title": "调试与常见错误",
+          "summary": "编译错误与警告，未初始化变量，越界，用 printf 定位问题",
+          "estimated_minutes": 65,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "boundary-testing"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "threshold-project",
+          "title": "实作：阈值计数函数与测试（自评）",
+          "summary": "编写统计高于阈值样本数的函数，用空数组、等于阈值和高于阈值的输入测试。",
+          "estimated_minutes": 85,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sensor-data-processing",
+                "boundary-testing"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "从变量、分支和循环到可测试的传感数据处理函数。"
+}

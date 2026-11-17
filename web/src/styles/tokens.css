@@ -1,0 +1,52 @@
+@import "tailwindcss";
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  color: var(--text); background: var(--background); font-synthesis: none;
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+  color-scheme: light; accent-color: var(--primary);
+  scrollbar-color: var(--border) var(--surface);
+  --font-size-caption: 11px; --font-size-control: 12px;
+  --font-size-label: 13px; --font-size-body: 14px; --font-size-dialog-title: 17px;
+  --primary: #0879c7; --primary-hover: #0664a6; --on-primary: #fff; --link: #0664a6;
+  --background: #f3f8fd; --sidebar: #eaf4fc; --surface: #fff;
+  --surface-muted: #f3f8fd; --surface-hover: #edf6fd; --primary-soft: #e3f1fd;
+  --text: #17324d; --text-secondary: #355670; --muted: #526a81;
+  --border: #d7e5f2; --border-subtle: #e4edf6; --focus: #0879c7;
+  --success: #126847; --success-bg: #ebf7f0;
+  --success-border: #aedac2; --success-badge: #d4eddf;
+  --danger: #b62d40; --danger-bg: #fff0f2; --danger-border: #eba9b3;
+  --warning: #8b6517; --warning-bg: #fff6db; --warning-border: #e5d199;
+  --overlay: #061426b8; --shadow: #14263d24;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: #269fe6; --primary-hover: #57b8ee; --on-primary: #071826; --link: #7dd3fc;
+  --background: #0d1726; --sidebar: #0a1320; --surface: #152337;
+  --surface-muted: #1b2e45; --surface-hover: #203850; --primary-soft: #153e5e;
+  --text: #e5eff8; --text-secondary: #bed0e3; --muted: #9aaec5;
+  --border: #2c4059; --border-subtle: #27394f; --focus: #7dd3fc;
+  --success: #66e5b7; --success-bg: #12392f;
+  --success-border: #24694f; --success-badge: #174c3c;
+  --danger: #fda4af; --danger-bg: #3c2032; --danger-border: #8d4155;
+  --warning: #f5d27b; --warning-bg: #3a3120; --warning-border: #7e6738;
+  --overlay: #030912c9; --shadow: #00000070;
+}
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; min-height: 0; margin: 0; overflow: hidden; overscroll-behavior: none; }
+body { min-width: 320px; }
+button, input, select { font: inherit; color: inherit; }
+button, select { cursor: pointer; }
+button { border: 0; }
+button:disabled { cursor: not-allowed; opacity: .4; }
+a { color: inherit; text-decoration: none; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button, a, select { touch-action: manipulation; }
+.muted { color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.skip-link { position: fixed; top: -60px; left: 170px; padding: 10px 16px; background: var(--primary); color: var(--on-primary); z-index: 100; border-radius: 6px; }
+.skip-link:focus { top: 8px; }
+kbd { display: inline-grid; place-items: center; min-width: 18px; height: 20px; padding: 0 4px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-muted); font: 11px ui-monospace, monospace; color: var(--text-secondary); white-space: nowrap; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

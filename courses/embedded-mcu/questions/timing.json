@@ -1,0 +1,410 @@
+[
+  {
+    "id": "nonblocking-timing-1",
+    "type": "single_choice",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "在桌面质检分拣站控制程序中，若在主循环中使用 delay(1000) 等待工件移动到分拣位，会带来的最主要负面影响是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "单片机内部硬件定时器会因此停止计数并导致系统死锁"
+      },
+      {
+        "id": "b",
+        "text": "单片机在延时期间无法及时响应到位传感器或串口通信事件"
+      },
+      {
+        "id": "c",
+        "text": "GPIO 输出引脚电平会由于 CPU 阻塞而自动翻转为低电平"
+      },
+      {
+        "id": "d",
+        "text": "系统供电电流会急剧增大并超出引脚最大电气限制"
+      }
+    ],
+    "explanation": "delay() 是阻塞式延时函数，在等待期间 CPU 处于空转状态，无法执行循环中的其他代码，导致传感器信号无法被轮询读取，上位机指令无法及时接收。定时器硬件由独立时钟驱动不会停止，引脚输出电平由硬件锁存器保持不变，延时亦不会异常增加功耗。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "nonblocking-timing-2",
+    "type": "single_choice",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "下列使用 millis() 实现非阻塞定时的 C 语言条件表达式中，能够正确应对 32 位无符号整型（unsigned long）时间溢出回绕的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "if (currentMillis >= previousMillis + interval)"
+      },
+      {
+        "id": "b",
+        "text": "if (currentMillis > previousMillis + interval)"
+      },
+      {
+        "id": "c",
+        "text": "if (previousMillis - currentMillis >= interval)"
+      },
+      {
+        "id": "d",
+        "text": "if (currentMillis - previousMillis >= interval)"
+      }
+    ],
+    "explanation": "两个 32 位无符号整数相减按模 2^32 运算，差值始终等于实际经过的时间，因此选项 d 在 millis() 回绕前后都能正确判断。选项 a、b 把 interval 加到旧时间戳上，该和一旦回绕或当前时间回绕，比较结果就会出错；选项 c 的减数与被减数颠倒，差值按模运算后是一个很大的数，会立刻误判为超时。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "nonblocking-timing-3",
+    "type": "multiple_choice",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "在分拣工位的主控程序中，为了使传送带运转的同时指示灯能以固定频率闪烁，下列关于编写非阻塞计时代码的原则，正确的有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "记录时间戳的变量应使用与 millis() 返回值同宽的无符号整型（如 unsigned long）"
+      },
+      {
+        "id": "b",
+        "text": "每次检测到时间到达后，应当调用 delay(0) 让出 CPU 执行时间"
+      },
+      {
+        "id": "c",
+        "text": "在满足超时条件的分支内部，必须更新上一次触发的时间戳变量"
+      },
+      {
+        "id": "d",
+        "text": "为防止时间变量回绕，必须在程序中编写复位单片机的定时重启代码"
+      }
+    ],
+    "explanation": "millis() 返回 unsigned long，时间戳变量使用同宽无符号类型才能正确进行模减法运算（选项 a 正确）；触发条件满足后必须更新基准时间戳以开启下一轮计时（选项 c 正确）。单片机裸机主循环无需也不存在 delay(0) 让出机制，故 b 错误；无符号整数减法天然适应回绕，无需为防止回绕而定时重启单片机，故 d 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "nonblocking-timing-4",
+    "type": "true_false",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "在单片机主循环中使用非阻塞计时结构时，只要单次循环内其余非阻塞任务的执行耗时远小于预设的时间间隔，系统就能实现多个任务在宏观上的并发执行。",
+    "explanation": "非阻塞架构通过快速轮询各任务的时间条件，让 CPU 在任务间快速切换执行。只要主循环周期远小于任务设定的定时周期，就能保证各任务都能按时推进，达到宏观并发的效果。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "nonblocking-timing-5",
+    "type": "numeric",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "在分拣工位的非阻塞计时程序中，时间变量均使用 32 位无符号整型（unsigned long）。若某次记录的起始时间 previousMillis 为 4294967246 毫秒，当前 millis() 经过 32 位溢出回绕后读取的值为 50 毫秒，则无符号减法表达式（millis() - previousMillis）计算出的时间差为多少毫秒？（只需填写整数数值）",
+    "explanation": "32 位无符号数的模为 2^32 = 4294967296。无符号减法在发生下溢时自动按模 2^32 计算：(50 - 4294967246) mod 4294967296 = 50 + (4294967296 - 4294967246) = 50 + 50 = 100 毫秒。",
+    "grading": {
+      "value": "100",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "interrupts-1",
+    "type": "single_choice",
+    "chapter": "外部中断与 volatile",
+    "concepts": [
+      "interrupts"
+    ],
+    "stem": "桌面分拣站中工件高速通过光电对射传感器，单片机使用外部中断检测到位信号。关于编写该中断服务函数（ISR），下列做法最符合规范的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "仅在 ISR 中将一个工件到达标志位置 1 并累加计数，具体分拣逻辑交由主循环处理"
+      },
+      {
+        "id": "b",
+        "text": "在 ISR 中直接调用 delay(200) 等待工件完全平稳后再执行后续判断"
+      },
+      {
+        "id": "c",
+        "text": "在 ISR 中调用复杂的图像识别算法并等待串口完整回传判定结果"
+      },
+      {
+        "id": "d",
+        "text": "在 ISR 中使用 while 循环死等推料气缸的限位开关动作完成"
+      }
+    ],
+    "explanation": "中断服务函数（ISR）必须尽可能短小精悍，通常只负责捕获瞬态硬件事件、设置标志位或更新计数器，耗时任务必须留给主循环执行。在 ISR 中调用 delay、死循环等待或执行耗时运算会导致系统无法响应其他中断，甚至导致单片机假死。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "interrupts-2",
+    "type": "single_choice",
+    "chapter": "外部中断与 volatile",
+    "concepts": [
+      "interrupts"
+    ],
+    "stem": "在单片机程序中，主循环负责读取工件计数值，外部中断服务函数负责累加该计数值。定义该计数变量时必须使用 volatile 关键字，其主要原因是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "volatile 能自动为多线程或中断变量加上硬件互斥锁以避免数据竞争"
+      },
+      {
+        "id": "b",
+        "text": "volatile 能将变量强制存放在闪存中以防止掉电丢失计数值"
+      },
+      {
+        "id": "c",
+        "text": "volatile 告知编译器该变量可能在程序流程外被修改，禁止将其优化缓存到寄存器中"
+      },
+      {
+        "id": "d",
+        "text": "volatile 能使 8 位单片机在读取 32 位变量时自动具备硬件原子操作保护"
+      }
+    ],
+    "explanation": "编译器优化时可能会把循环中频繁读取的变量缓存在 CPU 寄存器中而不每次读取 RAM，导致主循环感知不到 ISR 对内存中变量的修改；volatile 关键字强制每次访问都直接读取内存。volatile 不具备加锁功能，不保证多字节访问的原子性，也不代表存入 Flash。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "interrupts-3",
+    "type": "multiple_choice",
+    "chapter": "外部中断与 volatile",
+    "concepts": [
+      "interrupts"
+    ],
+    "stem": "在评估桌面分拣工位中各个外设输入采用“外部中断”还是“主循环轮询”时，下列说法正确的有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "机械急停按键因信号极其重要，必须且只能配置为外部中断，不能采用轮询消抖"
+      },
+      {
+        "id": "b",
+        "text": "持续时间仅数十微秒的高速工件遮光脉冲，适合使用外部中断进行捕获"
+      },
+      {
+        "id": "c",
+        "text": "外部中断没有上下文切换开销，因此系统中所有传感器都应尽可能改为中断触发"
+      },
+      {
+        "id": "d",
+        "text": "若主循环的执行周期远小于传感器信号的持续时间，采用轮询方式可以简化程序并降低并发风险"
+      }
+    ],
+    "explanation": "极窄的快速硬件脉冲如果采用轮询容易遗漏，适合用外部中断捕获；若信号持续时间足够长且主循环周转快，轮询实现更简单且无需处理中断并发带来的数据竞争，故 b、d 正确。机械按键存在毫秒级机械抖动，若直接挂中断易造成雪崩式频繁触发，常采用定时器轮询消抖；中断存在保存现场等开销，并非越多越好，故 a、c 错误。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "interrupts-4",
+    "type": "true_false",
+    "chapter": "外部中断与 volatile",
+    "concepts": [
+      "interrupts"
+    ],
+    "stem": "因为外部中断具有最高响应优先级，所以在 Arduino 平台的外部中断服务函数（ISR）中，可以安全地调用 Serial.println() 输出详细的调试字符串。",
+    "explanation": "Serial.println() 依赖串口发送缓冲，缓冲写满后需要靠串口发送中断腾出空间；而在 AVR 等常见 Arduino 板的 ISR 执行期间全局中断默认关闭，缓冲一旦写满就会无限等待。此外 ISR 必须快进快出，不应打印大量文本。中断优先级高并不意味着可以在 ISR 中调用阻塞函数。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "interrupts-5",
+    "type": "numeric",
+    "chapter": "外部中断与 volatile",
+    "concepts": [
+      "interrupts"
+    ],
+    "stem": "分拣工位传送带上的光电测速码盘每转动一周产生 20 个脉冲（上升沿）。单片机外部中断引脚配置为上升沿触发，在中断服务函数中对脉冲数进行自增计数。已知传送带驱动电机带动测速码盘以每秒 15 转的恒定速度运转，则该中断服务函数每秒钟被触发执行的次数为多少次？（只需填写整数数值）",
+    "explanation": "触发频率等于转速乘以每转脉冲数：15 转/秒 × 20 脉冲/转 = 300 次/秒。因此中断服务函数每秒被触发 300 次。",
+    "grading": {
+      "value": "300",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "timers-pwm-1",
+    "type": "single_choice",
+    "chapter": "定时器与 PWM",
+    "concepts": [
+      "timers-pwm"
+    ],
+    "stem": "某个分拣工位使用 PWM 驱动直流减速电机传送带。已知单片机输出的 PWM 信号周期为 1000 微秒，高电平持续时间为 250 微秒，则该 PWM 信号的占空比为多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "75%"
+      },
+      {
+        "id": "b",
+        "text": "50%"
+      },
+      {
+        "id": "c",
+        "text": "33.3%"
+      },
+      {
+        "id": "d",
+        "text": "25%"
+      }
+    ],
+    "explanation": "占空比定义为高电平持续时间与整个周期的百分比，即 D = (Ton / T) * 100% = (250 us / 1000 us) * 100% = 25%。选项 a 为低电平所占比例（75%），选项 b、c 计算错误。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "timers-pwm-2",
+    "type": "single_choice",
+    "chapter": "定时器与 PWM",
+    "concepts": [
+      "timers-pwm"
+    ],
+    "stem": "在 Arduino Uno 上对硬件 PWM 引脚（如 9 号脚）调用 analogWrite(pin, 128) 输出 PWM 信号，下列关于单片机硬件工作机制的描述，正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "单片机内部数模转换器（DAC）输出一个平滑的 2.5 V 恒定直流电压"
+      },
+      {
+        "id": "b",
+        "text": "单片机片内硬件定时器自动翻转引脚电平，期间无需 CPU 核心参与中断或轮询"
+      },
+      {
+        "id": "c",
+        "text": "CPU 会暂停主循环，通过内部死循环延时精准控制引脚高低电平翻转"
+      },
+      {
+        "id": "d",
+        "text": "该引脚必须配置为模拟输入引脚才能产生对应的模拟比较输出"
+      }
+    ],
+    "explanation": "Arduino 的 analogWrite 是基于片上硬件定时器的比较匹配输出功能实现的，定时器在后台独立工作翻转引脚电平，无需 CPU 软件循环或干预，故 b 正确。大多数单片机引脚输出的是高频数字方波而非平滑 DAC 直流电压，且 PWM 输出必须使用具备硬件定时器通道的数字引脚，故 a、c、d 错误。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "timers-pwm-3",
+    "type": "multiple_choice",
+    "chapter": "定时器与 PWM",
+    "concepts": [
+      "timers-pwm"
+    ],
+    "stem": "在质检分拣站中，需要利用 PWM 信号控制合格指示灯的明暗程度。下列关于 PWM 原理及特性的陈述，正确的有哪些？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "若供电高电平为 5 V，通过改变占空比可以改变负载端获得的等效平均电压"
+      },
+      {
+        "id": "b",
+        "text": "提高 PWM 信号的占空比，会成比例地提高 PWM 信号的方波频率"
+      },
+      {
+        "id": "c",
+        "text": "保持占空比不变，只要 PWM 频率高于人眼暂留极限（约 60 Hz），人眼就感知不到闪烁而只感知亮度变化"
+      },
+      {
+        "id": "d",
+        "text": "调用 analogWrite(ledPin, 0) 时，引脚输出的方波占空比为 50%"
+      }
+    ],
+    "explanation": "PWM 的平均输出电压 Vavg = Vcc * Duty，通过调节占空比改变平均电压从而调节亮度；只要频率高于人眼视觉暂留频率，人眼就会积分感知为均匀亮度，故 a、c 正确。占空比反映高电平占周期的比例，与信号频率相互独立，故 b 错误；analogWrite(pin, 0) 输出恒定低电平，占空比为 0%，故 d 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "timers-pwm-4",
+    "type": "true_false",
+    "chapter": "定时器与 PWM",
+    "concepts": [
+      "timers-pwm"
+    ],
+    "stem": "在 8 位 PWM 控制中，若调用 analogWrite(pin, 255)，单片机引脚输出的是一个频率为 1 kHz、高电平与低电平时间各占一半的方波信号。",
+    "explanation": "在 8 位分辨率下，analogWrite(pin, 255) 对应 100% 占空比，即引脚持续输出恒定高电平，而不是高低电平各占一半（50% 占空比对应参数值约 127 或 128）。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "timers-pwm-5",
+    "type": "numeric",
+    "chapter": "定时器与 PWM",
+    "concepts": [
+      "timers-pwm"
+    ],
+    "stem": "分拣工位的单片机供电及逻辑高电平为 5.0 V。若通过定时器产生的 PWM 信号驱动指示灯，测得该 PWM 信号的周期为 2 毫秒，每个周期内高电平持续时间为 0.6 毫秒。则该 PWM 信号输出的等效平均电压为多少伏？（结果保留一位小数，只需填写数字）",
+    "explanation": "占空比 D = Ton / T = 0.6 ms / 2 ms = 0.30（即 30%）。等效平均电压 Vavg = Vhigh * D = 5.0 V * 0.30 = 1.5 V。保留一位小数为 1.5。",
+    "grading": {
+      "value": "1.5",
+      "absolute_tolerance": "0.05"
+    }
+  },
+  {
+    "id": "sample-boolean",
+    "type": "true_false",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "用当前时间减去触发时间判断是否超时，可以让程序在等待期间继续轮询输入。",
+    "explanation": "时间差比较可在每轮快速完成。轮询式程序调用长时间 delay() 则会推迟下一轮输入检查。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "sample-numeric",
+    "type": "numeric",
+    "chapter": "阻塞延时与非阻塞计时",
+    "concepts": [
+      "nonblocking-timing"
+    ],
+    "stem": "假设每 10 ms 采样一次，在半开区间 [0 ms, 1000 ms) 内从 0 ms 开始均匀采样，一共采样多少次？",
+    "explanation": "采样点为 0、10、…、990 ms，共 1000 ÷ 10 = 100 次。",
+    "grading": {
+      "value": "100",
+      "absolute_tolerance": "0"
+    }
+  }
+]

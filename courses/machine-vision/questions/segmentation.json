@@ -1,0 +1,543 @@
+[
+  {
+    "id": "thresholding-1",
+    "type": "single_choice",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "在分拣站背光照明检测工位中，白色光源背景的灰度约为 220，深色金属垫片的灰度约为 40。若希望将垫片分割为白色前景（像素值为 255），背景分割为黑色（像素值为 0），应在 cv2.threshold 中选择哪种阈值处理模式？",
+    "options": [
+      {
+        "id": "a",
+        "text": "cv2.THRESH_BINARY"
+      },
+      {
+        "id": "b",
+        "text": "cv2.THRESH_TRUNC"
+      },
+      {
+        "id": "c",
+        "text": "cv2.THRESH_TOZERO"
+      },
+      {
+        "id": "d",
+        "text": "cv2.THRESH_BINARY_INV"
+      }
+    ],
+    "explanation": "背光下金属垫片灰度小于背景灰度，属于暗目标亮背景场景。采用 cv2.THRESH_BINARY_INV 时，像素值小于等于阈值的暗区会被置为 255，大于阈值的亮背景被置为 0，符合将垫片提取为白色前景的要求。cv2.THRESH_BINARY 则会将亮背景置为 255，而 cv2.THRESH_TRUNC 和 cv2.THRESH_TOZERO 不会生成标准二值图像。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "thresholding-2",
+    "type": "single_choice",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "Otsu 算法（大津法）在工业质检图像分割中被广泛用于自动确定全局阈值。关于该算法的核心判据与适用条件，下列叙述正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "通过最大化目标与背景的类间方差寻找最佳阈值，最适用于灰度直方图呈明显双峰的图像"
+      },
+      {
+        "id": "b",
+        "text": "通过最小化全图像素的灰度均值寻找最佳阈值，最适用于光照严重不均的渐变图像"
+      },
+      {
+        "id": "c",
+        "text": "通过最大化前景区域的像素数量寻找最佳阈值，适用于任意单峰或扁平分布的图像"
+      },
+      {
+        "id": "d",
+        "text": "通过计算邻域梯度中位数寻找最佳阈值，适用于边缘极度模糊且无对比度的图像"
+      }
+    ],
+    "explanation": "Otsu 算法基于统计学原理，遍历所有候选灰度级，以类间方差最大作为最优分割准则；当直方图具有明显的双峰分布时，两峰之间的谷底能有效区分目标与背景。它假设整幅图像照度均匀，无法解决光照严重不均或单峰无对比度图像的分割问题。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "thresholding-3",
+    "type": "multiple_choice",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "工程师使用 OpenCV 对工件图像进行 Otsu 自动阈值分割，编写如下代码段：\nret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)\n关于该函数调用与返回值的描述，下列哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "输入图像 gray 必须为三通道 BGR 彩色数组格式"
+      },
+      {
+        "id": "b",
+        "text": "传入的阈值参数 0 在实际计算中会被忽略，由算法自动搜索并确定最优阈值"
+      },
+      {
+        "id": "c",
+        "text": "返回值 ret 存储的是 Otsu 算法最终计算出的全局最优阈值数值"
+      },
+      {
+        "id": "d",
+        "text": "返回值 thresh 数组的形状会被自动裁剪为仅包含前景包络矩形的小图像"
+      }
+    ],
+    "explanation": "在使用 cv2.THRESH_OTSU 标志时，函数会忽略第二个参数传入的初始阈值 0，并通过算法自动搜索最优分割点，计算得到的最佳阈值保存在返回值 ret 中。输出二值图 thresh 保持原图尺寸不变，且输入图像必须是单通道灰度图而非三通道彩色图。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "thresholding-4",
+    "type": "true_false",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "在工件分拣工位中，桌面左侧受强光直射、右侧处于暗阴影下，图像背景与工件的灰度整体呈左右渐变分布，且左侧背景的灰度已高于右侧垫片的灰度。此时无论选用固定阈值还是 Otsu 全局阈值，都无法仅凭单一数值将整幅图像中的垫片完整分割出来。",
+    "explanation": "全局阈值法对整幅图像所有像素应用统一门限。左侧背景比右侧垫片还亮时，任何单一阈值都会使一侧垫片缺失或另一侧背景被误分为前景，因此全局阈值法失效，应改用自适应阈值。该陈述正确。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "thresholding-5",
+    "type": "numeric",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "某 4×4 像素的灰度检测区域矩阵各像素灰度如下：\n第一行：35, 42, 160, 180\n第二行：40, 150, 170, 195\n第三行：38, 48, 165, 185\n第四行：45, 155, 175, 190\n工程师执行以下代码进行全局二值化：\nret, dst = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)\n二值化输出矩阵 dst 中，数值等于 255 的像素总共有多少个？请直接填写整数数值。",
+    "explanation": "在 cv2.THRESH_BINARY 模式下，输入像素灰度大于阈值 100 时输出为 255，否则为 0。逐行统计大于 100 的像素：第一行有 160、180 共 2 个；第二行有 150、170、195 共 3 个；第三行有 165、185 共 2 个；第四行有 155、175、190 共 3 个。合计为 2 + 3 + 2 + 3 = 10 个像素。",
+    "grading": {
+      "value": "10",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "adaptive-threshold-1",
+    "type": "single_choice",
+    "chapter": "自适应阈值与光照不均",
+    "concepts": [
+      "adaptive-threshold"
+    ],
+    "stem": "在使用 OpenCV 的 cv2.adaptiveThreshold 函数处理光照不均工件图像时，参数 blockSize 指定局部邻域窗口的尺寸。下列关于 blockSize 参数取值的要求与含义，正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "必须为大于 1 的偶数，以便对称划分正负灰度区间"
+      },
+      {
+        "id": "b",
+        "text": "可以取任意正浮点数，代表局部高斯核的标准差"
+      },
+      {
+        "id": "c",
+        "text": "必须为大于 1 的奇数，以保证邻域窗口存在唯一的中心像素点"
+      },
+      {
+        "id": "d",
+        "text": "必须等于输入图像的长宽最大公约数，避免分块边界产生重叠"
+      }
+    ],
+    "explanation": "cv2.adaptiveThreshold 中的 blockSize 代表局部计算窗口的边长（像素数），必须是大于 1 的奇数（如 3, 5, 7, 21 等），以确保窗口具有唯一的几何中心像素点。传入偶数会触发 OpenCV 断言失败异常。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "adaptive-threshold-2",
+    "type": "single_choice",
+    "chapter": "自适应阈值与光照不均",
+    "concepts": [
+      "adaptive-threshold"
+    ],
+    "stem": "在自适应阈值分割函数 cv2.adaptiveThreshold 中，常数 C 是从局部均值中减去的微调量。当使用 THRESH_BINARY_INV 模式提取深色垫片时，如果将常数 C 适当调大，会对分割结果产生什么影响？",
+    "options": [
+      {
+        "id": "a",
+        "text": "将所有输出二值像素的数值由 255 放大为 512"
+      },
+      {
+        "id": "b",
+        "text": "自动将局部窗口的形状由矩形转换为圆形"
+      },
+      {
+        "id": "c",
+        "text": "迫使算法退化为全图统一的固定全局阈值分割"
+      },
+      {
+        "id": "d",
+        "text": "判定门槛更严格，可减少背景中因微弱照度波动引起的杂点，但可能使垫片边缘收缩"
+      }
+    ],
+    "explanation": "在 THRESH_BINARY_INV 模式下，判定条件为像素灰度小于等于局部均值减去 C。增大 C 会降低局部阈值，要求像素必须比局部背景暗得更多才能被判定为前景，从而有效滤除背景轻微光照起伏产生的噪点，但过大的 C 也会导致垫片边缘变细或丢失。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "adaptive-threshold-3",
+    "type": "multiple_choice",
+    "chapter": "自适应阈值与光照不均",
+    "concepts": [
+      "adaptive-threshold"
+    ],
+    "stem": "OpenCV 的自适应阈值函数 cv2.adaptiveThreshold 支持两种局部均值计算方式。关于这两种方法在工件质检中的特性对比，下列哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "ADAPTIVE_THRESH_MEAN_C 对邻域内所有像素赋予相同的权重计算算术平均值"
+      },
+      {
+        "id": "b",
+        "text": "ADAPTIVE_THRESH_MEAN_C 计算得到的二值边缘通常比高斯法更为光滑连续"
+      },
+      {
+        "id": "c",
+        "text": "ADAPTIVE_THRESH_GAUSSIAN_C 允许 blockSize 参数设置为偶数以提高卷积计算效率"
+      },
+      {
+        "id": "d",
+        "text": "ADAPTIVE_THRESH_GAUSSIAN_C 按照高斯函数为邻域像素加权，距离中心越近权重越高"
+      }
+    ],
+    "explanation": "ADAPTIVE_THRESH_MEAN_C 是对邻域窗口内所有像素求无加权的算术均值；ADAPTIVE_THRESH_GAUSSIAN_C 则采用高斯分布加权，距离中心点越近权重越大，因而分割边缘通常更平滑。两种方法的 blockSize 都严格要求必须为大于 1 的奇数。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "adaptive-threshold-4",
+    "type": "true_false",
+    "chapter": "自适应阈值与光照不均",
+    "concepts": [
+      "adaptive-threshold"
+    ],
+    "stem": "在自适应阈值分割中，为了尽可能精确地捕捉垫片的局部微小特征，邻域窗口 blockSize 的尺寸取得越小越好；即使 blockSize 小于垫片实心边框的宽度，也不会影响垫片实心区域的二值化完整性。",
+    "explanation": "若 blockSize 小于工件实心区域的宽度，当窗口完全处于工件实心内部时，局部均值将等于工件自身灰度，减去常数 C 后会导致中心像素无法满足判定条件，工件实心区域中心会被错误掏空，产生大面积破洞或斑驳。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "adaptive-threshold-5",
+    "type": "numeric",
+    "chapter": "自适应阈值与光照不均",
+    "concepts": [
+      "adaptive-threshold"
+    ],
+    "stem": "某工件图像中，以坐标 (x, y) 处像素为中心的 3×3 邻域灰度矩阵如下：\n第一行：100, 110, 120\n第二行：90, 50, 100\n第三行：80, 90, 70\n工程师调用如下自适应阈值函数处理该像素：\ndst = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 3, 5)\n该算法在坐标 (x, y) 处计算出的局部判定阈值 T（即邻域算术均值减去常数 C）为多少？请直接填写整数数值。",
+    "explanation": "邻域 9 个像素的灰度总和为 100 + 110 + 120 + 90 + 50 + 100 + 80 + 90 + 70 = 810。邻域算术均值为 810 ÷ 9 = 90。局部阈值 T = 均值 - C = 90 - 5 = 85。",
+    "grading": {
+      "value": "85",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "morphology-1",
+    "type": "single_choice",
+    "chapter": "形态学操作",
+    "concepts": [
+      "morphology"
+    ],
+    "stem": "在垫片孔位检测前处理中，二值图像的黑色背景上存在微小的白色金属反光杂点，同时垫片边缘有微小毛刺。若要消除这些孤立白噪点且不显著改变垫片主要尺寸，最适宜采用哪种形态学操作？",
+    "options": [
+      {
+        "id": "a",
+        "text": "膨胀操作（Dilation）"
+      },
+      {
+        "id": "b",
+        "text": "开运算（Opening）"
+      },
+      {
+        "id": "c",
+        "text": "闭运算（Closing）"
+      },
+      {
+        "id": "d",
+        "text": "顶帽变换（Top-Hat）"
+      }
+    ],
+    "explanation": "开运算是先腐蚀后膨胀。腐蚀步骤能消除小于结构元素的孤立白色噪点与毛刺，随后的膨胀步骤恢复工件主体的几何尺寸，因此最适合消除背景白噪点。闭运算是先膨胀后腐蚀，用于填补工件内部小孔，不能消除孤立白噪点。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "morphology-2",
+    "type": "single_choice",
+    "chapter": "形态学操作",
+    "concepts": [
+      "morphology"
+    ],
+    "stem": "工程师使用 3×3 矩形结构元素对二值图像进行一次膨胀操作（cv2.dilate）。关于该操作对白色前景区域和黑色背景区域的影响，下列描述正确的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "白色前景区域向外扩张，工件内部微小的黑色空洞被缩小或填补"
+      },
+      {
+        "id": "b",
+        "text": "仅保留白色前景的几何骨架，将所有边缘向内削减 1 个像素"
+      },
+      {
+        "id": "c",
+        "text": "黑色背景区域向外扩张，白色前景内部的孔洞尺寸显著变大"
+      },
+      {
+        "id": "d",
+        "text": "图像中所有像素数值取反，实现前景与背景的高速黑白反转"
+      }
+    ],
+    "explanation": "膨胀操作的本质是：只要结构元素与白色前景有交集，中心像素就被置为白色。因此白色前景会向外扩张扩大，工件内部微小的黑色孔洞或缝隙会被周围的白色区域向内挤压而缩小或填满。向内削减是腐蚀的作用，黑白取反是位非操作。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "morphology-3",
+    "type": "multiple_choice",
+    "chapter": "形态学操作",
+    "concepts": [
+      "morphology"
+    ],
+    "stem": "在对冲压金属垫片二值图进行形态学处理时，需要调用 OpenCV 的形态学接口。下列关于形态学操作与结构元素的叙述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "闭运算的数学定义是先进行腐蚀操作，然后再进行膨胀操作"
+      },
+      {
+        "id": "b",
+        "text": "cv2.morphologyEx 函数通过指定 op 参数可以实现开运算、闭运算和形态学梯度等多种操作"
+      },
+      {
+        "id": "c",
+        "text": "结构元素尺寸取得越大，计算速度越快且能更完整地保留垫片的所有微小边缘转角"
+      },
+      {
+        "id": "d",
+        "text": "在垫片为白色、孔为黑色的二值图中，结构元素的尺寸应小于孔的直径，否则膨胀或闭运算会把内孔填平"
+      }
+    ],
+    "explanation": "cv2.morphologyEx 是形态学通用接口，传入 cv2.MORPH_OPEN 或 cv2.MORPH_CLOSE 等标志即可执行对应操作，b 正确。白色垫片上的黑色内孔，若结构元素不小于孔径，膨胀或闭运算会将其填平，d 正确。闭运算是先膨胀后腐蚀，a 错误；结构元素越大，计算越慢，细节丢失越多，c 错误。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "morphology-4",
+    "type": "true_false",
+    "chapter": "形态学操作",
+    "concepts": [
+      "morphology"
+    ],
+    "stem": "在二值图像的腐蚀操作中，只有当结构元素覆盖的所有像素点全部为白色前景（数值为 255）时，输出图像的对应中心像素才会被置为 255；只要结构元素范围内包含任意一个黑色背景像素（数值为 0），输出中心像素即为 0。",
+    "explanation": "这是数学形态学中腐蚀操作的标准定义。腐蚀要求结构元素完全包含于前景集合中，中心像素才保留为前景（255），因此任何触碰背景（0）的边缘像素都会被剥离为 0，使前景区域整体收缩。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "morphology-5",
+    "type": "numeric",
+    "chapter": "形态学操作",
+    "concepts": [
+      "morphology"
+    ],
+    "stem": "某 6×6 像素的二值图像中包含一个矩形金属工件前景。各行像素值如下（0 代表黑色背景，255 代表白色工件）：\n第 0 行：0, 0, 0, 0, 0, 0\n第 1 行：0, 255, 255, 255, 255, 0\n第 2 行：0, 255, 255, 255, 255, 0\n第 3 行：0, 255, 255, 255, 255, 0\n第 4 行：0, 255, 255, 255, 255, 0\n第 5 行：0, 0, 0, 0, 0, 0\n工程师使用 3×3 矩形结构元素对该图像执行一次腐蚀操作：\nkernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))\ndst = cv2.erode(img, kernel)\n腐蚀处理完成后，输出图像 dst 中像素值等于 255 的像素总数为多少？请直接填写整数数值。",
+    "explanation": "3×3 矩形结构元素的腐蚀操作要求当前像素周围 3×3 邻域内所有 9 个像素全为 255，输出才为 255。原白色区域为第 1 至 4 行、第 1 至 4 列。边界像素的邻域均会触碰值为 0 的背景，腐蚀后全变为 0。仅有第 2、3 行且第 2、3 列这 4 个中心像素的 3×3 邻域完全处于白色区域内，腐蚀后保持为 255。因此输出图像中数值为 255 的像素总数为 4。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "contours-1",
+    "type": "single_choice",
+    "chapter": "轮廓提取与层级",
+    "concepts": [
+      "contours"
+    ],
+    "stem": "在桌面分拣工位中，相机拍摄包含中心圆孔的冲压垫片。若质检系统需要分别获取垫片的外轮廓尺寸以及中心孔的内轮廓尺寸，在调用 cv2.findContours 时应选用哪种检索模式？",
+    "options": [
+      {
+        "id": "a",
+        "text": "cv2.RETR_EXTERNAL"
+      },
+      {
+        "id": "b",
+        "text": "cv2.RETR_CCOMP"
+      },
+      {
+        "id": "c",
+        "text": "cv2.CHAIN_APPROX_NONE"
+      },
+      {
+        "id": "d",
+        "text": "cv2.RETR_MARKER"
+      }
+    ],
+    "explanation": "cv2.RETR_CCOMP 模式将所有轮廓组织为两级层级结构，顶层为工件的外轮廓，次层为孔洞等内轮廓，能够同时提取外轮廓与中心孔；cv2.RETR_EXTERNAL 只提取最外层轮廓，会忽略内部的孔洞。cv2.CHAIN_APPROX_NONE 是轮廓点的近似方式而非检索模式，cv2.RETR_MARKER 不存在。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "contours-2",
+    "type": "single_choice",
+    "chapter": "轮廓提取与层级",
+    "concepts": [
+      "contours"
+    ],
+    "stem": "在使用 OpenCV 提取轮廓时返回的 hierarchy 层级数组形状为 (1, N, 4)，其中每个轮廓包含 4 个整数元素 [Next, Previous, First_Child, Parent]。若某个轮廓代表垫片的中心内孔，则其层级数组中关于 Parent 的数值具有什么特征？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Parent 等于 -1"
+      },
+      {
+        "id": "b",
+        "text": "Parent 等于 0 且 First_Child 等于 -1"
+      },
+      {
+        "id": "c",
+        "text": "Parent 不等于 -1，其数值为对应外边界父轮廓的索引编号"
+      },
+      {
+        "id": "d",
+        "text": "Parent 必须为负无穷大，表示该轮廓不存在任何几何包络"
+      }
+    ],
+    "explanation": "在 OpenCV 轮廓层级定义中，Parent 表示父轮廓的索引下标。若 Parent 为 -1，说明该轮廓为最顶层的外轮廓；内孔嵌套在外轮廓内部，属于子轮廓，其 Parent 数值不等于 -1，记录的是包含它的父轮廓索引编号。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "contours-3",
+    "type": "multiple_choice",
+    "chapter": "轮廓提取与层级",
+    "concepts": [
+      "contours"
+    ],
+    "stem": "工程师调用 cv2.findContours 函数分析二值化垫片图像，代码如下：\ncontours, hierarchy = cv2.findContours(bin_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)\n关于该函数调用与轮廓近似方式的描述，下列哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "CHAIN_APPROX_SIMPLE 会压缩水平、垂直和对角线段，仅保留线段端点以节省内存"
+      },
+      {
+        "id": "b",
+        "text": "在 OpenCV 4.x 中，执行 findContours 会直接修改破坏输入图像 bin_img 的像素内容"
+      },
+      {
+        "id": "c",
+        "text": "若改为 CHAIN_APPROX_NONE，则轮廓上所有相邻边界像素点的坐标都会被完整保留"
+      },
+      {
+        "id": "d",
+        "text": "返回的 contours 列表中每个轮廓元素均为保存图像所有像素灰度的二维浮点数组"
+      }
+    ],
+    "explanation": "cv2.CHAIN_APPROX_SIMPLE 通过只保留直线段的端点来压缩轮廓点数量，有效减少存储；而 cv2.CHAIN_APPROX_NONE 则存储轮廓边界上的每一个点。OpenCV 4.x 不会修改输入图像，且轮廓点保存的是边界几何坐标而非像素灰度。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "contours-4",
+    "type": "true_false",
+    "chapter": "轮廓提取与层级",
+    "concepts": [
+      "contours"
+    ],
+    "stem": "在工件分拣流程中，使用 cv2.findContours 函数时可以直接传入未经二值化处理的 3 通道 BGR 彩色原始图像，OpenCV 会在函数内部自动完成灰度转换与边缘提取并返回高精度的内外双层轮廓。",
+    "explanation": "cv2.findContours 要求输入图像必须是 8 位单通道二值图像。若直接传入 3 通道彩色图像，OpenCV 会抛出类型不匹配的断言错误异常，不会在函数内部隐式进行色彩转换与二值化。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "contours-5",
+    "type": "numeric",
+    "chapter": "轮廓提取与层级",
+    "concepts": [
+      "contours"
+    ],
+    "stem": "某次检测采集到包含 2 个垫片工件的图像，调用 cv2.findContours 采用 RETR_CCOMP 模式提取到 5 个轮廓，其对应的 hierarchy 数组（形状为 1×5×4）第一维度内容展开如下：\n轮廓 0：[ 2, -1, 1, -1]\n轮廓 1：[-1, -1, -1, 0]\n轮廓 2：[-1, 0, 3, -1]\n轮廓 3：[ 4, -1, -1, 2]\n轮廓 4：[-1, 3, -1, 2]\n工程师编写代码遍历该 hierarchy 数组，通过判断 Parent 字段（即第四个元素）是否不等于 -1 来统计工件内孔的总数量。根据该数据，图像中检测出的内孔（内轮廓）总数为多少个？请直接填写整数数值。",
+    "explanation": "hierarchy 数组中每个轮廓的第四个元素代表其父轮廓索引 Parent；Parent 等于 -1 代表外轮廓，不等于 -1 则代表内部孔洞。分析 5 个轮廓：轮廓 0 的 Parent 为 -1（外轮廓）；轮廓 1 的 Parent 为 0（内孔）；轮廓 2 的 Parent 为 -1（外轮廓）；轮廓 3 的 Parent 为 2（内孔）；轮廓 4 的 Parent 为 2（内孔）。满足 Parent != -1 的内孔轮廓共有轮廓 1、轮廓 3、轮廓 4，共计 3 个。",
+    "grading": {
+      "value": "3",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sample-single",
+    "type": "single_choice",
+    "chapter": "全局阈值与 Otsu",
+    "concepts": [
+      "thresholding"
+    ],
+    "stem": "已固定俯视相机和背光。垫片孔在灰度图中明显比工件本体亮。第一版可用什么方法找孔？",
+    "options": [
+      {
+        "id": "a",
+        "text": "读取图像文件名长度"
+      },
+      {
+        "id": "b",
+        "text": "把图像随机旋转"
+      },
+      {
+        "id": "c",
+        "text": "仅统计照片总数"
+      },
+      {
+        "id": "d",
+        "text": "在工件范围内对灰度图做阈值分割"
+      }
+    ],
+    "explanation": "在稳定背光下，亮度阈值可把孔区与工件本体分开。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  }
+]

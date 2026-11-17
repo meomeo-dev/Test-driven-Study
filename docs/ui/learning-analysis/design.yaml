@@ -1,0 +1,29 @@
+topic: learning_analysis
+created: '2026-11-01'
+themes: ../themes/design.yaml
+layout:
+  viewport: fixed_100dvh
+  header: subject_and_tabs
+  tabs: [overview, review_book]
+  overview_filter: time_window
+  review_book: ranked_single_list_with_pending_mastered_all_filters
+  metrics: [attempts, recent_latest_accuracy, bank_coverage, provisional_bank_score]
+  primary: [daily_trend, chapter_error_distribution]
+  secondary: [evidence_linked_advice, first_repeat_and_period_comparisons]
+  tertiary: [history_dialog, calculation_dialog]
+  compact_scrolling: local_panel_only
+behavior:
+  windows_days: [7, 30, 90, 0]
+  default_window_days: 30
+  window_zero: all_records
+  timestamps: server_utc_milliseconds
+  daily_bins: utc_including_partial_boundary_days
+  recent_half_life_days: 14
+  recent_population: latest_attempt_per_distinct_question_in_window
+  comparison: equal_seven_day_periods
+  comparison_minimum_attempts_per_period: 5
+  forecast_minimum_distinct_questions: 20
+  forecast_requires_all_bank_chapters: true
+  forecast_weights: bank_chapter_proportions
+  forecast_calibrated_to_exams: false
+  pass_probability: unavailable

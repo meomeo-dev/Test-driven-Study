@@ -1,0 +1,9 @@
+[
+  {
+    "id": "4",
+    "type": "numeric",
+    "stem": "平面三角形的内角和是多少度？",
+    "grading": { "value": "180", "absolute_tolerance": "0" },
+    "explanation": "平面三角形的三个内角相加得到 180 度。"
+  }
+]

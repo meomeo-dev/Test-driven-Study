@@ -1,0 +1,383 @@
+[
+  {
+    "id": "partial-derivatives-1",
+    "type": "single_choice",
+    "chapter": "偏导数",
+    "concepts": [
+      "partial-derivatives"
+    ],
+    "stem": "在分拣站输送线上，某电机的电功率由公式 P(U, I) = U·I 计算，其中 U 为电压（单位：V），I 为电流（单位：A）。若对电压 U 求偏导数 ∂P/∂U，其结果是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "U"
+      },
+      {
+        "id": "b",
+        "text": "I"
+      },
+      {
+        "id": "c",
+        "text": "0"
+      },
+      {
+        "id": "d",
+        "text": "U + I"
+      }
+    ],
+    "explanation": "对 U 求偏导数时将电流 I 视为常数，常数乘以自变量的导数等于该常数，因此 ∂P/∂U = I。选项 a 混淆了自变量与常数，选项 c 错误地将非常数乘积项整体当成常数求导成 0。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "partial-derivatives-2",
+    "type": "single_choice",
+    "chapter": "偏导数",
+    "concepts": [
+      "partial-derivatives"
+    ],
+    "stem": "质检相机采集区域的照度函数为 E(x, y) = x²·y + 3y³（单位：lux），其中 x 和 y 为载物台平面坐标（单位：mm）。在点 (x, y) 处，照度对坐标 x 的偏导数 ∂E/∂x 为何值？",
+    "options": [
+      {
+        "id": "a",
+        "text": "2x·y + 9y²"
+      },
+      {
+        "id": "b",
+        "text": "x² + 9y²"
+      },
+      {
+        "id": "c",
+        "text": "2x·y"
+      },
+      {
+        "id": "d",
+        "text": "2x"
+      }
+    ],
+    "explanation": "对 x 求偏导数时将 y 视为常数，第一项 x²·y 对 x 求导得 2x·y，第二项 3y³ 不含自变量 x 视为常数项，求导得 0，因此 ∂E/∂x = 2x·y。选项 a 错误地对常数项 3y³ 进行了求导，选项 d 遗漏了常数乘数 y。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "partial-derivatives-3",
+    "type": "multiple_choice",
+    "chapter": "偏导数",
+    "concepts": [
+      "partial-derivatives"
+    ],
+    "stem": "设某机械臂末端夹具抓取工件时的接触压强分布函数为 p(x, y) = 4x² + 5y² - 2x·y（单位：kPa）。关于该函数的偏导数计算与工程意义，下列哪些说法是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "对 x 的偏导数表达式为 ∂p/∂x = 8x - 2y"
+      },
+      {
+        "id": "b",
+        "text": "对 y 的偏导数表达式为 ∂p/∂y = 10y - 2"
+      },
+      {
+        "id": "c",
+        "text": "在点 (1, 1) 处，若保持 y 坐标不变，微小增加 x 会导致压强下降"
+      },
+      {
+        "id": "d",
+        "text": "偏导数 ∂p/∂x 反映了在保持 y 坐标恒定时压强随 x 方向位置的瞬时变化率"
+      }
+    ],
+    "explanation": "对 x 求偏导把 y 看作常数，得 ∂p/∂x = 8x - 2y，选项 a 正确；偏导数本质是固定其他自变量时该方向的局部瞬时变化率，选项 d 正确。选项 b 中 -2x·y 对 y 的偏导应为 -2x 而非 -2；在点 (1, 1) 处 ∂p/∂x = 8(1) - 2(1) = 6 > 0，说明压强随 x 增大而升高，选项 c 错误。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "partial-derivatives-4",
+    "type": "true_false",
+    "chapter": "偏导数",
+    "concepts": [
+      "partial-derivatives"
+    ],
+    "stem": "在计算多元函数 f(x, y) 对变量 x 的偏导数时，对于乘积项 x·y，因为 y 是另一个自变量，所以必须应用乘积求导法则写成 y + x·(dy/dx)。",
+    "explanation": "偏导数的定义是在考察某个自变量变化时假定其余变量均固定保持不变，即把 y 视为常数，因此对 x 求偏导时 ∂(x·y)/∂x = y，无需也不能引入全导数项 dy/dx。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "partial-derivatives-5",
+    "type": "numeric",
+    "chapter": "偏导数",
+    "concepts": [
+      "partial-derivatives"
+    ],
+    "stem": "桌面分拣站中，气缸推动工件移动的阻力函数为 F(v, m) = 3·v² + 4·m·v（单位：N），其中 v 为气缸运动速度（单位：m/s），m 为工件质量（单位：kg）。已知当前工件质量 m = 2 kg，气缸速度 v = 1.5 m/s。求此时阻力对速度的偏导数 ∂F/∂v 的值（单位：N/(m/s)，答案填纯数字）。",
+    "explanation": "对速度 v 求偏导得 ∂F/∂v = 6v + 4m。代入 v = 1.5 m/s 和 m = 2 kg，计算得 6 × 1.5 + 4 × 2 = 9 + 8 = 17 N/(m/s)。",
+    "grading": {
+      "value": "17",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "gradient-1",
+    "type": "single_choice",
+    "chapter": "梯度与方向",
+    "concepts": [
+      "gradient"
+    ],
+    "stem": "在分拣系统的参数自整定算法中，函数 f(x, y) 在某点 (x₀, y₀) 处的梯度向量 ∇f(x₀, y₀) 的核心物理与几何意义是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "梯度向量的方向是函数值下降最快的方向"
+      },
+      {
+        "id": "b",
+        "text": "梯度向量的模长恒等于 1"
+      },
+      {
+        "id": "c",
+        "text": "梯度向量是一个标量，表示切线斜率"
+      },
+      {
+        "id": "d",
+        "text": "梯度向量的方向是函数值增长最快的方向"
+      }
+    ],
+    "explanation": "梯度向量由各偏导数构成，其方向指向函数值在该点增长最快（坡度最陡）的方向，其模长代表最大增长率。选项 a 指的是负梯度方向，选项 b 错误因为梯度模长取决于实际变化率并非恒为 1，选项 c 混淆了向量与标量。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "gradient-2",
+    "type": "single_choice",
+    "chapter": "梯度与方向",
+    "concepts": [
+      "gradient"
+    ],
+    "stem": "设分拣台的水平定位盘势能分布函数为 U(x, y) = x² + 2y²（单位：J），其中 x 和 y 的单位为 m。在位置点 (3, 2) 处，势能的梯度向量 ∇U(3, 2) 为多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "(6, 8)"
+      },
+      {
+        "id": "b",
+        "text": "(3, 4)"
+      },
+      {
+        "id": "c",
+        "text": "(9, 8)"
+      },
+      {
+        "id": "d",
+        "text": "10"
+      }
+    ],
+    "explanation": "分别求偏导数得 ∂U/∂x = 2x，∂U/∂y = 4y。代入点 (3, 2) 得到 ∇U(3, 2) = (2×3, 4×2) = (6, 8)。选项 b 遗漏了求导系数 2，选项 c 错误地将自变量直接平方代入，选项 d 是梯度的模长 √(6² + 8²) = 10 而非向量本身。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "gradient-3",
+    "type": "multiple_choice",
+    "chapter": "梯度与方向",
+    "concepts": [
+      "gradient"
+    ],
+    "stem": "在优化分拣机械手定位误差的算法中，常用到梯度下降法（Gradient Descent）。关于梯度及其在优化中的应用，下列哪些说法是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "沿梯度正方向更新参数可以使误差函数最快减小"
+      },
+      {
+        "id": "b",
+        "text": "负梯度方向 -∇f 是局部函数值下降最快的方向"
+      },
+      {
+        "id": "c",
+        "text": "当连续可微的误差函数达到平稳极小值点时，其梯度向量通常为零向量 (0, 0)"
+      },
+      {
+        "id": "d",
+        "text": "梯度的模长越大，说明函数在该点沿最大变化率方向的变化越缓慢"
+      }
+    ],
+    "explanation": "梯度向量指向增长最快方向，其相反方向（负梯度方向）是局部下降最快的方向，选项 b 正确；在平稳极小值点处各方向变化率均为 0，故梯度为零向量，选项 c 正确。选项 a 沿正梯度更新会导致误差变大发散；选项 d 梯度的模长代表最大变化率，模长越大变化越剧烈。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "gradient-4",
+    "type": "true_false",
+    "chapter": "梯度与方向",
+    "concepts": [
+      "gradient"
+    ],
+    "stem": "二元函数 z = f(x, y) 在某点处的梯度 ∇f(x, y) 是一个由各偏导数构成的向量，而不是一个单独的标量数值。",
+    "explanation": "梯度是由函数关于各个自变量的偏导数按次序组成的向量，记作 (∂f/∂x, ∂f/∂y)，兼具大小与方向属性，因而是向量而非标量。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "gradient-5",
+    "type": "numeric",
+    "chapter": "梯度与方向",
+    "concepts": [
+      "gradient"
+    ],
+    "stem": "桌面分拣站视觉相机的安装定位损耗函数为 L(x, y) = 3x² + 2y²（单位：mm²），其中 x 和 y 为调节偏置位移（单位：mm）。在微调工作点 (1, 2) 处，计算该损耗函数的梯度模长 ||∇L(1, 2)||（即在该点沿最大变化率方向的模长大小，单位：mm²/mm，答案填纯整数）。",
+    "explanation": "首先求各偏导数：∂L/∂x = 6x，∂L/∂y = 4y。代入点 (1, 2) 得到梯度向量 ∇L(1, 2) = (6×1, 4×2) = (6, 8)。其模长为 √(6² + 8²) = √(36 + 64) = √100 = 10 mm²/mm。",
+    "grading": {
+      "value": "10",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "taylor-series-1",
+    "type": "single_choice",
+    "chapter": "泰勒展开入门",
+    "concepts": [
+      "taylor-series"
+    ],
+    "stem": "在设备控制信号分析中，连续可导函数 f(x) 在基准点 x = 0 处的一阶泰勒多项式近似公式由哪两项组成？",
+    "options": [
+      {
+        "id": "a",
+        "text": "f(0) + f'(0)·x"
+      },
+      {
+        "id": "b",
+        "text": "f'(0) + f''(0)·x"
+      },
+      {
+        "id": "c",
+        "text": "f(0) + [f''(0)/2]·x²"
+      },
+      {
+        "id": "d",
+        "text": "f(0)·x + f'(0)"
+      }
+    ],
+    "explanation": "在 x = 0 处的泰勒展开式中，前两项（常数项与一次项）为 f(0) + f'(0)·x，这与微积分中的线性近似完全一致。选项 b 遗漏了基准函数值 f(0)，选项 c 遗漏了一次项，选项 d 颠倒了变量 x 的乘积位置。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "taylor-series-2",
+    "type": "single_choice",
+    "chapter": "泰勒展开入门",
+    "concepts": [
+      "taylor-series"
+    ],
+    "stem": "单片机在计算角度传感器信号时，常用多项式来近似正弦函数 sin x（x 为弧度）。已知 sin x 在 x = 0 附近的前两项非零展开式为 sin x ≈ x - x³/6。当旋转角 x 从 0 增加到 0.1 rad 时，若仅采用一阶线性近似 sin x ≈ x，其舍去的主要截断误差项大小最接近下列哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "text": "0.1"
+      },
+      {
+        "id": "b",
+        "text": "0.00017"
+      },
+      {
+        "id": "c",
+        "text": "0.05"
+      },
+      {
+        "id": "d",
+        "text": "0.005"
+      }
+    ],
+    "explanation": "舍去的第一项为 x³/6。将 x = 0.1 代入，得 (0.1)³/6 = 0.001 / 6 ≈ 0.000167，约等于 0.00017。选项 a 是一次项本身的值，选项 c 和 d 计算了错误的幂次或系数。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "taylor-series-3",
+    "type": "multiple_choice",
+    "chapter": "泰勒展开入门",
+    "concepts": [
+      "taylor-series"
+    ],
+    "stem": "质检分拣站的温度传感器信号调理电路常采用指数响应模型 y = eˣ。关于 eˣ 在 x = 0 附近的泰勒展开与工程多项式逼近，下列哪些说法是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "eˣ 在 x = 0 处的二阶麦克劳林展开式为 1 + x + x²"
+      },
+      {
+        "id": "b",
+        "text": "当自变量 x 远离 0（如 x = 5）时，使用低阶多项式逼近引起的截断误差通常会显著增大"
+      },
+      {
+        "id": "c",
+        "text": "eˣ 在 x = 0 处的前三项展开式为 1 + x + x²/2"
+      },
+      {
+        "id": "d",
+        "text": "泰勒多项式的阶数越高，在展开点局部邻域内的逼近精度越低"
+      }
+    ],
+    "explanation": "eˣ 在 0 处的前三项展开式为 1 + x + x²/2! = 1 + x + x²/2，选项 c 正确；泰勒多项式是局部近似，当自变量远离展开中心时截断误差显著增大，选项 b 正确。选项 a 漏掉了二次项分母上的阶乘 2! = 2；选项 d 阶数越高局部逼近精度越高。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "taylor-series-4",
+    "type": "true_false",
+    "chapter": "泰勒展开入门",
+    "concepts": [
+      "taylor-series"
+    ],
+    "stem": "泰勒展开是一种全局等价变换，在 x = 0 处展开得到的二阶多项式，无论自变量 x 偏离 0 有多远，其逼近误差都会保持在恒定的极小范围内。",
+    "explanation": "泰勒多项式本质是局部逼近，截断误差与偏离展开中心的距离紧密相关。当 x 显著远离基准点 0 时，未展开高阶项的累积会导致截断误差急剧增大。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "taylor-series-5",
+    "type": "numeric",
+    "chapter": "泰勒展开入门",
+    "concepts": [
+      "taylor-series"
+    ],
+    "stem": "桌面分拣站电磁挡板线圈通电后，电流响应满足关系 i(t) = 10·(1 - e^(-2t))（单位：A）。工程师在单片机中对指数项在 t = 0 附近采用二阶泰勒展开近似 e^(-2t) ≈ 1 - 2t + 2t²。利用该二阶近似，计算通电初始时刻 t = 0.1 s 时电流的近似估计值（单位：A，保留一位小数，答案填纯数字）。",
+    "explanation": "由展开式 1 - e^(-2t) ≈ 1 - (1 - 2t + 2t²) = 2t - 2t²，得电流近似多项式 i(t) ≈ 10·(2t - 2t²) = 20t - 20t²。代入 t = 0.1 s，得 i(0.1) ≈ 20×0.1 - 20×(0.1)² = 2.0 - 0.2 = 1.8 A。",
+    "grading": {
+      "value": "1.8",
+      "absolute_tolerance": "0.05"
+    }
+  }
+]

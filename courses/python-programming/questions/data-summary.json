@@ -1,0 +1,510 @@
+[
+  {
+    "id": "counting-grouping-1",
+    "type": "single_choice",
+    "chapter": "计数与分组汇总",
+    "concepts": [
+      "counting-grouping"
+    ],
+    "stem": "分拣站记录处理程序用字典 counts 记录各类缺陷的数量。当前 counts 中尚不存在键 'scratch'，此时表达式 counts.get('scratch', 0) 的返回值是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "None"
+      },
+      {
+        "id": "b",
+        "text": "0"
+      },
+      {
+        "id": "c",
+        "text": "1"
+      },
+      {
+        "id": "d",
+        "text": "抛出 KeyError 异常"
+      }
+    ],
+    "explanation": "当字典中不存在指定键时，get 方法返回设定的默认值 0，所以常用 counts[k] = counts.get(k, 0) + 1 完成首次计数。若直接通过方括号访问不存在的键 counts['scratch'] 才会抛出 KeyError 异常。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "counting-grouping-2",
+    "type": "single_choice",
+    "chapter": "计数与分组汇总",
+    "concepts": [
+      "counting-grouping"
+    ],
+    "stem": "分拣站使用 collections 模块中的 Counter 对工件状态列表进行频数统计，代码如下：\nfrom collections import Counter\nstatus_list = ['pass', 'pass', 'reject', 'pass', 'reject']\nc = Counter(status_list)\ntop = c.most_common(1)\n变量 top 的取值是什么？",
+    "options": [
+      {
+        "id": "a",
+        "text": "('pass', 3)"
+      },
+      {
+        "id": "b",
+        "text": "{'pass': 3}"
+      },
+      {
+        "id": "c",
+        "text": "[('pass', 3)]"
+      },
+      {
+        "id": "d",
+        "text": "['pass']"
+      }
+    ],
+    "explanation": "Counter 的 most_common(n) 方法返回一个由元组组成的列表，每个元组的形式为 (元素, 频数)，因此传入 1 时返回包含一个元组的列表 [('pass', 3)]。选项 a 遗漏了外层列表，选项 b 为字典形式，均不符合该方法的规范返回值。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "counting-grouping-3",
+    "type": "multiple_choice",
+    "chapter": "计数与分组汇总",
+    "concepts": [
+      "counting-grouping"
+    ],
+    "stem": "在处理分拣站的多批次数据时，需要对各批次的缺陷数量进行分组累加或频数统计。下列关于 Python 计数与分组统计的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "使用 counts.get(k, 0) 可以在键不存在时返回默认值 0，避免访问字典时抛出 KeyError"
+      },
+      {
+        "id": "b",
+        "text": "Counter 对象虽然具有计数功能，但不能像普通字典一样通过键直接读取频数"
+      },
+      {
+        "id": "c",
+        "text": "对列表调用 Counter(items) 可以直接构建统计每个元素出现次数的计数器"
+      },
+      {
+        "id": "d",
+        "text": "c.most_common(2) 会返回频数最低的两个元素及其出现次数"
+      }
+    ],
+    "explanation": "选项 a 正确，get 方法提供安全的默认值回退机制；选项 c 正确，向 Counter 传入列表等可迭代对象即可直接初始化频数字典。选项 b 错误，Counter 是 dict 的子类，完全支持方括号按键读取；选项 d 错误，most_common 返回的是频数最高的前 n 项。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "counting-grouping-4",
+    "type": "true_false",
+    "chapter": "计数与分组汇总",
+    "concepts": [
+      "counting-grouping"
+    ],
+    "stem": "在 Python 中，使用 collections.Counter 对包含工件状态的列表进行统计后，若通过中括号访问一个从未出现过的缺陷类型键（例如 c['crack']），程序会抛出 KeyError 异常。",
+    "explanation": "Counter 继承自字典但重写了缺失键的处理逻辑，访问不存在的键时会自动返回 0 而不是抛出 KeyError 异常。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "counting-grouping-5",
+    "type": "numeric",
+    "chapter": "计数与分组汇总",
+    "concepts": [
+      "counting-grouping"
+    ],
+    "stem": "质检分拣站连续检测了 4 件工件，记录了其批次与缺陷扣分数。运行以下代码：\ndata = [{'b': 1, 'score': 2}, {'b': 2, 'score': 5}, {'b': 1, 'score': 3}, {'b': 1, 'score': 4}]\nb1_score = 0\nfor d in data: b1_score += d['score'] if d['b'] == 1 else 0\n代码执行完毕后，变量 b1_score 的整数值是多少？",
+    "explanation": "循环遍历所有记录，当记录的批次键 b 为 1 时累加其扣分数。满足条件的记录得分为 2、3、4，累加总和为 2 + 3 + 4 = 9。",
+    "grading": {
+      "value": "9",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "basic-statistics-1",
+    "type": "single_choice",
+    "chapter": "均值、最值与比例",
+    "concepts": [
+      "basic-statistics"
+    ],
+    "stem": "分拣站测得某批次 5 个工件的外径（单位：毫米）依次为 19.8、20.1、20.0、20.5、19.6。若使用 statistics.median 计算这组数据的中位数，返回的结果是多少？",
+    "options": [
+      {
+        "id": "a",
+        "text": "20.1"
+      },
+      {
+        "id": "b",
+        "text": "19.8"
+      },
+      {
+        "id": "c",
+        "text": "20.5"
+      },
+      {
+        "id": "d",
+        "text": "20.0"
+      }
+    ],
+    "explanation": "计算中位数时需先将数据从小到大排序：19.6、19.8、20.0、20.1、20.5，处于正中间位置的第三个数值是 20.0。选项 a、b、c 分别是排序后的第四、第二、第五个数值。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "basic-statistics-2",
+    "type": "single_choice",
+    "chapter": "均值、最值与比例",
+    "concepts": [
+      "basic-statistics"
+    ],
+    "stem": "在分拣脚本中，测量数据列表 values 可能因为传感器未就绪而为空列表 []。若直接执行表达式 sum(values) / len(values)，Python 会引发什么运行时错误？",
+    "options": [
+      {
+        "id": "a",
+        "text": "ZeroDivisionError"
+      },
+      {
+        "id": "b",
+        "text": "ValueError"
+      },
+      {
+        "id": "c",
+        "text": "IndexError"
+      },
+      {
+        "id": "d",
+        "text": "TypeError"
+      }
+    ],
+    "explanation": "当 values 为空列表时，len(values) 的结果为 0，在 Python 中对数字执行除以 0 的运算会引发 ZeroDivisionError。选项 b、c、d 分别代表数值无效、索引越界和类型不匹配，均不是由除以 0 引起的。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "basic-statistics-3",
+    "type": "multiple_choice",
+    "chapter": "均值、最值与比例",
+    "concepts": [
+      "basic-statistics"
+    ],
+    "stem": "质检分拣站需计算某检测批次的合格率与关键尺寸指标。关于 Python 内置数学统计函数的运用，下列哪两项描述是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "sum 函数只能对整数列表求和，不能直接传入包含浮点数的列表"
+      },
+      {
+        "id": "b",
+        "text": "若列表内均为浮点数，max 函数与 min 函数可以直接求得最大值与最小值"
+      },
+      {
+        "id": "c",
+        "text": "statistics.mean 在传入空列表时会自动返回 0.0 而不报错"
+      },
+      {
+        "id": "d",
+        "text": "在计算合格率 pass_count / total 时，必须在除法前确认 total 大于 0 以防崩溃"
+      }
+    ],
+    "explanation": "选项 b 正确，内置的 max 和 min 支持由浮点数组成的数值列表；选项 d 正确，总数为 0 时必须做防除零判断以防 ZeroDivisionError。选项 a 错误，sum 原生支持整数与浮点数混合求和；选项 c 错误，statistics.mean 传入空列表会抛出 StatisticsError。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "basic-statistics-4",
+    "type": "true_false",
+    "chapter": "均值、最值与比例",
+    "concepts": [
+      "basic-statistics"
+    ],
+    "stem": "Python 标准库中的 statistics.mean() 函数可以用于计算一组工件测量尺寸的算术平均值，当传入的列表中包含整数和浮点数时能够正常完成计算。",
+    "explanation": "statistics.mean() 接受包含数值类型（包括整数与浮点数）的可迭代对象并返回算术平均值。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "basic-statistics-5",
+    "type": "numeric",
+    "chapter": "均值、最值与比例",
+    "concepts": [
+      "basic-statistics"
+    ],
+    "stem": "分拣站检测了 20 件工件，运行以下代码计算合格率：\ntotal = 20\npassed = 17\nrate = int((passed / total) * 100)\n代码执行完毕后，变量 rate 的整数值是多少？",
+    "explanation": "合格工件数为 17，总件数为 20，合格率比例为 17 / 20 = 0.85，乘以 100 并转为整数后结果为 85。",
+    "grading": {
+      "value": "85",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sorting-reporting-1",
+    "type": "single_choice",
+    "chapter": "排序与报告输出",
+    "concepts": [
+      "sorting-reporting"
+    ],
+    "stem": "分拣站的检测记录列表 records 中每个元素为一个工件字典，包含工件号 'id' 与测量误差 'error'。若要将记录按误差 'error' 从小到大升序排序并生成新列表，下列哪行代码是正确的？",
+    "options": [
+      {
+        "id": "a",
+        "text": "sorted_records = sorted(records, key='error')"
+      },
+      {
+        "id": "b",
+        "text": "sorted_records = records.sort(key=lambda r: r['error'])"
+      },
+      {
+        "id": "c",
+        "text": "sorted_records = sorted(records, key=lambda r: r['error'])"
+      },
+      {
+        "id": "d",
+        "text": "sorted_records = sorted(records, reverse='error')"
+      }
+    ],
+    "explanation": "sorted 函数会返回排序后的新列表，通过 key 参数传入 lambda r: r['error'] 指定以字典中的 error 键的值作为排序依据。选项 b 中 list.sort() 是原地修改列表且返回值为 None，选项 a 与 d 的参数传法均不正确。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "sorting-reporting-2",
+    "type": "single_choice",
+    "chapter": "排序与报告输出",
+    "concepts": [
+      "sorting-reporting"
+    ],
+    "stem": "在生成分拣报表时，需要将工件编号变量 item_id 以 6 个字符宽度左对齐输出，将测量数值变量 val 以 8 个字符宽度右对齐且保留两位小数输出。下列格式化字符串表达式正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "f\"{item_id:>6}{val:<8.2f}\""
+      },
+      {
+        "id": "b",
+        "text": "f\"{item_id:6}{val:8}\""
+      },
+      {
+        "id": "c",
+        "text": "f\"{item_id:^6}{val:^8.2f}\""
+      },
+      {
+        "id": "d",
+        "text": "f\"{item_id:<6}{val:>8.2f}\""
+      }
+    ],
+    "explanation": "在格式化说明符中，< 表示左对齐，> 表示右对齐，.2f 表示保留两位小数的浮点数，因此左对齐宽 6 位为 {item_id:<6}，右对齐宽 8 位且保留两位小数为 {val:>8.2f}。选项 a 颠倒了左右对齐方向，选项 b 缺少对齐符号且未限定小数位数，选项 c 为居中对齐。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "sorting-reporting-3",
+    "type": "multiple_choice",
+    "chapter": "排序与报告输出",
+    "concepts": [
+      "sorting-reporting"
+    ],
+    "stem": "在分拣站报表生成任务中，需要对记录进行排序并写入磁盘文件。下列关于 Python 排序与文件写入的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "使用 with open('report.txt', 'w', encoding='utf-8') as f 可以安全打开文件并保证写完后自动关闭"
+      },
+      {
+        "id": "b",
+        "text": "sorted 函数的 reverse 参数默认值为 True，即默认按降序排列"
+      },
+      {
+        "id": "c",
+        "text": "使用 lambda 作为 sorted 的 key 时，只能对整数类型字段排序，无法对字符串排序"
+      },
+      {
+        "id": "d",
+        "text": "对 sorted 函数设置 reverse=True 参数，可以将排序结果由默认的升序转为降序"
+      }
+    ],
+    "explanation": "选项 a 正确，with 语句作为上下文管理器能够确保文件在操作完成后自动安全关闭；选项 d 正确，sorted 默认升序，设置 reverse=True 后变为降序排列。选项 b 错误，reverse 默认值为 False；选项 c 错误，key 指定的 lambda 可以提取字符串等任何可比较类型的字段。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "sorting-reporting-4",
+    "type": "true_false",
+    "chapter": "排序与报告输出",
+    "concepts": [
+      "sorting-reporting"
+    ],
+    "stem": "在 Python 中执行 records = records.sort(key=lambda r: r['score']) 后，变量 records 将保存按 score 排序后的新列表。",
+    "explanation": "列表的 sort() 方法是就地（in-place）修改原列表，其返回值固定为 None，因此将其赋值给变量 records 会导致原记录被覆盖为 None。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "sorting-reporting-5",
+    "type": "numeric",
+    "chapter": "排序与报告输出",
+    "concepts": [
+      "sorting-reporting"
+    ],
+    "stem": "分拣站记录了 3 件工件的检测数据，包含工件编号 id 与误差绝对值 err。运行以下代码：\nrecords = [{'id': 1, 'err': 14}, {'id': 2, 'err': 4}, {'id': 3, 'err': 9}]\nsorted_list = sorted(records, key=lambda r: r['err'])\nfirst_id = sorted_list[0]['id']\n代码执行完毕后，变量 first_id 的整数值是多少？",
+    "explanation": "sorted 函数默认按 err 字段升序排列，排序后的顺序依次为 id 为 2（err 为 4）、id 为 3（err 为 9）、id 为 1（err 为 14）。索引 0 对应的首个工件编号为 2。",
+    "grading": {
+      "value": "2",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "datetime-basics-1",
+    "type": "single_choice",
+    "chapter": "时间戳与日期",
+    "concepts": [
+      "datetime-basics"
+    ],
+    "stem": "分拣站 CSV 文件中记录的时间戳格式为 2026-03-15 08:30:00。若要使用 datetime.strptime 解析该字符串，下列哪个格式化格式串是正确的？",
+    "options": [
+      {
+        "id": "a",
+        "text": "%Y-%m-%d %H:%M:%S"
+      },
+      {
+        "id": "b",
+        "text": "%y-%m-%d %h:%m:%s"
+      },
+      {
+        "id": "c",
+        "text": "%Y-%M-%d %H:%m:%S"
+      },
+      {
+        "id": "d",
+        "text": "%Y-%d-%m %H:%M:%S"
+      }
+    ],
+    "explanation": "四位年份用 %Y，两位月份用 %m，两位日期用 %d，24小时制小时用 %H，分钟用 %M，秒用 %S，因此对应格式为 %Y-%m-%d %H:%M:%S。选项 b 中大小写错误，选项 c 混淆了月份与分钟的代号，选项 d 颠倒了月份与日期的顺序。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "datetime-basics-2",
+    "type": "single_choice",
+    "chapter": "时间戳与日期",
+    "concepts": [
+      "datetime-basics"
+    ],
+    "stem": "在测量分拣站工件分拣周期时，两时间对象相减得到 timedelta 对象 delta。若要获取这两个时刻相差的完整总秒数（包含小数部分），应调用 timedelta 的哪个方法？",
+    "options": [
+      {
+        "id": "a",
+        "text": "delta.seconds()"
+      },
+      {
+        "id": "b",
+        "text": "delta.total_seconds()"
+      },
+      {
+        "id": "c",
+        "text": "delta.to_seconds()"
+      },
+      {
+        "id": "d",
+        "text": "delta.all_seconds()"
+      }
+    ],
+    "explanation": "timedelta 对象的 total_seconds() 方法能够将天、秒、微秒换算并返回整个时间间隔的总秒数（浮点数）。选项 a 中 seconds 是属性而非方法且仅表示除去整天后剩余的秒数（范围 0 到 86399），选项 c 与 d 在标准库中不存在。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "datetime-basics-3",
+    "type": "multiple_choice",
+    "chapter": "时间戳与日期",
+    "concepts": [
+      "datetime-basics"
+    ],
+    "stem": "质检分拣站需要对进料与出料时间进行分析以评估节拍，并按工作班次筛选记录。下列关于 datetime 模块操作的描述中，哪两项是正确的？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "两个 datetime 对象相减得到的是一个表示具体日期的新的 datetime 对象"
+      },
+      {
+        "id": "b",
+        "text": "两个 datetime 对象可以直接使用比较运算符（如 <、>、<=）比较先后顺序"
+      },
+      {
+        "id": "c",
+        "text": "利用 total_seconds() 计算出的耗时数值可直接参与数值比较以判断工件是否滞留超时"
+      },
+      {
+        "id": "d",
+        "text": "strptime 方法的作用是将 datetime 对象转换并输出为指定格式的字符串"
+      }
+    ],
+    "explanation": "选项 b 正确，datetime 对象原生支持时间先后的比较运算；选项 c 正确，total_seconds() 返回浮点数秒数，可直接与设定的节拍阈值进行大小比较。选项 a 错误，两个 datetime 对象相减的结果是 timedelta 时间差对象；选项 d 错误，将时间对象转为字符串应使用 strftime，strptime 是将字符串解析为时间对象。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "datetime-basics-4",
+    "type": "true_false",
+    "chapter": "时间戳与日期",
+    "concepts": [
+      "datetime-basics"
+    ],
+    "stem": "在 Python 中，通过 from datetime import datetime 导入后，表达式 datetime.strptime('2026-03-15', '%Y-%m-%d').day 的求值结果为整数 15。",
+    "explanation": "datetime.strptime 会将符合格式的日期字符串解析为 datetime 对象，其 day 属性保存该日期的具体日数值，类型为整数 15。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "datetime-basics-5",
+    "type": "numeric",
+    "chapter": "时间戳与日期",
+    "concepts": [
+      "datetime-basics"
+    ],
+    "stem": "分拣站到位传感器与出料传感器分别记录了某工件的进入与离开时刻。运行以下代码：\nfrom datetime import datetime\nt1 = datetime.strptime('09:00:10', '%H:%M:%S')\nt2 = datetime.strptime('09:00:25', '%H:%M:%S')\nduration = int((t2 - t1).total_seconds())\n代码执行完毕后，工件滞留时间变量 duration 的整数值是多少（单位：秒）？",
+    "explanation": "两个时间对象相减得到时间差对象，从 09:00:10 到 09:00:25 相差 15 秒，调用 total_seconds() 后转换为整数的结果为 15。",
+    "grading": {
+      "value": "15",
+      "absolute_tolerance": "0"
+    }
+  }
+]

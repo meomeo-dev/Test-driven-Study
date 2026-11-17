@@ -1,0 +1,22 @@
+{
+  "protocol_version": 1,
+  "course_id": "elementary-chinese",
+  "version": "1.0.1",
+  "title": "小学语文",
+  "language": "zh-CN",
+  "description": "一年级第一学期拼音练习。描写音节、选韵母和声调、辨认整体认读音节、看图选音节。",
+  "units": [
+    {
+      "id": "grade-1-term-1-pinyin",
+      "title": "一年级上册 · 拼音练习（四）",
+      "question_file": "questions/pinyin-04.json",
+      "lessons": [
+        {
+          "id": "pinyin-04",
+          "title": "练习（四） · 音节描写",
+          "file": "lessons/pinyin-04.md"
+        }
+      ]
+    }
+  ]
+}

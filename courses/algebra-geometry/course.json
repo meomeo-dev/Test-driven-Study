@@ -1,0 +1,475 @@
+{
+  "protocol_version": 1,
+  "course_id": "algebra-geometry",
+  "version": "1.1.0",
+  "title": "代数、三角与空间几何",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "比例与单位",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "比例与单位",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "ratios-proportions",
+          "title": "比与比例",
+          "summary": "比的化简，比例式 a:b = c:d 的计算，比例尺与缩放",
+          "estimated_minutes": 60,
+          "lesson": "intro"
+        },
+        {
+          "id": "unit-conversion",
+          "title": "长度与面积单位换算",
+          "summary": "mm、cm、m、in 的换算，面积和体积单位的换算倍数",
+          "estimated_minutes": 65,
+          "lesson": "intro"
+        },
+        {
+          "id": "scientific-notation",
+          "title": "科学记数法与有效数字",
+          "summary": "a × 10ⁿ，有效数字位数，计算结果的合理位数，四舍五入",
+          "estimated_minutes": 55,
+          "lesson": "intro"
+        },
+        {
+          "id": "percent-error",
+          "title": "百分比与相对误差",
+          "summary": "百分数，增加与减少的百分比，相对误差 = |测量值 − 真值|/真值",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ratios-proportions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "title": "代数式与方程",
+      "question_file": "questions/algebra.json",
+      "lessons": [
+        {
+          "id": "algebra",
+          "title": "代数式与方程",
+          "file": "lessons/algebra.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "expressions",
+          "title": "代数式与运算律",
+          "summary": "合并同类项，去括号，乘法分配律，整式乘法与常用乘法公式",
+          "estimated_minutes": 60,
+          "lesson": "algebra"
+        },
+        {
+          "id": "linear-equations",
+          "title": "一元一次方程",
+          "summary": "移项与系数化为 1，列方程解应用题",
+          "estimated_minutes": 65,
+          "lesson": "algebra",
+          "prerequisites": [
+            {
+              "all_of": [
+                "expressions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "formula-rearranging",
+          "title": "公式变形",
+          "summary": "把公式变形为指定变量，例如由 P = UI 求 U，由周长公式求直径",
+          "estimated_minutes": 65,
+          "lesson": "algebra",
+          "prerequisites": [
+            {
+              "all_of": [
+                "linear-equations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "linear-systems",
+          "title": "二元一次方程组",
+          "summary": "代入消元与加减消元，用方程组求两个未知尺寸",
+          "estimated_minutes": 65,
+          "lesson": "algebra",
+          "prerequisites": [
+            {
+              "all_of": [
+                "linear-equations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "quadratics",
+          "title": "一元二次方程",
+          "summary": "因式分解法，求根公式，判别式与根的个数",
+          "estimated_minutes": 80,
+          "lesson": "algebra",
+          "prerequisites": [
+            {
+              "all_of": [
+                "formula-rearranging"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coordinates",
+      "title": "坐标与函数图像",
+      "question_file": "questions/coordinates.json",
+      "lessons": [
+        {
+          "id": "coordinates",
+          "title": "坐标与函数图像",
+          "file": "lessons/coordinates.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "cartesian-coordinates",
+          "title": "平面直角坐标系",
+          "summary": "坐标轴与象限，点的坐标，平移后的坐标，CAD 中原点与坐标的对应",
+          "estimated_minutes": 55,
+          "lesson": "coordinates"
+        },
+        {
+          "id": "slope-lines",
+          "title": "斜率与直线方程",
+          "summary": "斜率 k = Δy/Δx，水平线和竖直线，斜截式 y = kx + b，两点式，平行与垂直的斜率关系",
+          "estimated_minutes": 85,
+          "lesson": "coordinates",
+          "prerequisites": [
+            {
+              "all_of": [
+                "cartesian-coordinates",
+                "linear-equations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "distance-midpoint",
+          "title": "距离与中点公式",
+          "summary": "两点距离 √((x₂ − x₁)² + (y₂ − y₁)²)，中点坐标，孔中心距",
+          "estimated_minutes": 55,
+          "lesson": "coordinates",
+          "prerequisites": [
+            {
+              "all_of": [
+                "cartesian-coordinates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "functions-graphs",
+          "title": "函数与图像",
+          "summary": "函数的定义，一次函数与二次函数的图像，顶点与对称轴，读图求值",
+          "estimated_minutes": 65,
+          "lesson": "coordinates",
+          "prerequisites": [
+            {
+              "all_of": [
+                "slope-lines"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right-triangles",
+      "title": "直角三角形与三角函数",
+      "question_file": "questions/right-triangles.json",
+      "lessons": [
+        {
+          "id": "right-triangles",
+          "title": "直角三角形与三角函数",
+          "file": "lessons/right-triangles.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "pythagoras",
+          "title": "勾股定理",
+          "summary": "a² + b² = c²，求斜边或直角边，勾股数 3-4-5，逆定理判断直角",
+          "estimated_minutes": 60,
+          "lesson": "right-triangles",
+          "prerequisites": [
+            {
+              "all_of": [
+                "expressions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sin-cos-tan",
+          "title": "正弦、余弦与正切",
+          "summary": "对边、邻边、斜边，sin、cos、tan 的定义，30°、45°、60° 的三角函数值",
+          "estimated_minutes": 85,
+          "lesson": "right-triangles",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pythagoras",
+                "ratios-proportions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "solving-right-triangles",
+          "title": "解直角三角形",
+          "summary": "已知一边一角或两边求其余量，反三角函数求角，坡度与倾角",
+          "estimated_minutes": 85,
+          "lesson": "right-triangles",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sin-cos-tan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "radians",
+          "title": "弧度与弧长",
+          "summary": "π 弧度 = 180°，度与弧度换算，弧长 s = rθ（θ 用弧度）",
+          "estimated_minutes": 60,
+          "lesson": "right-triangles",
+          "prerequisites": [
+            {
+              "all_of": [
+                "unit-conversion",
+                "sin-cos-tan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trig-plane",
+      "title": "三角函数与平面几何",
+      "question_file": "questions/trig-plane.json",
+      "lessons": [
+        {
+          "id": "trig-plane",
+          "title": "三角函数与平面几何",
+          "file": "lessons/trig-plane.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "unit-circle",
+          "title": "单位圆与任意角",
+          "summary": "单位圆上的坐标 (cosθ, sinθ)，各象限三角函数的符号，sin²θ + cos²θ = 1",
+          "estimated_minutes": 65,
+          "lesson": "trig-plane",
+          "prerequisites": [
+            {
+              "all_of": [
+                "radians"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "laws-sines-cosines",
+          "title": "正弦定理与余弦定理",
+          "summary": "a/sinA = b/sinB，c² = a² + b² − 2ab·cosC，求斜三角形的边和角",
+          "estimated_minutes": 85,
+          "lesson": "trig-plane",
+          "prerequisites": [
+            {
+              "all_of": [
+                "solving-right-triangles"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "circles-arcs",
+          "title": "圆、扇形与均布孔",
+          "summary": "周长与面积，扇形面积，圆周均布孔的坐标 (r·cosθ, r·sinθ)",
+          "estimated_minutes": 65,
+          "lesson": "trig-plane",
+          "prerequisites": [
+            {
+              "all_of": [
+                "radians"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "polar-cartesian",
+          "title": "极坐标与直角坐标换算",
+          "summary": "x = r·cosθ，y = r·sinθ，r = √(x² + y²)，由坐标求角度时注意象限",
+          "estimated_minutes": 60,
+          "lesson": "trig-plane",
+          "prerequisites": [
+            {
+              "all_of": [
+                "unit-circle",
+                "cartesian-coordinates"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "solids",
+      "title": "立体几何与投影",
+      "question_file": "questions/solids.json",
+      "lessons": [
+        {
+          "id": "solids",
+          "title": "立体几何与投影",
+          "file": "lessons/solids.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "areas-volumes",
+          "title": "面积与体积",
+          "summary": "常见平面图形面积，长方体、圆柱、圆锥的体积和表面积，打印用料估算",
+          "estimated_minutes": 65,
+          "lesson": "solids",
+          "prerequisites": [
+            {
+              "all_of": [
+                "expressions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "space-coordinates",
+          "title": "空间直角坐标",
+          "summary": "x、y、z 轴与右手系，空间两点距离，长方体对角线",
+          "estimated_minutes": 65,
+          "lesson": "solids",
+          "prerequisites": [
+            {
+              "all_of": [
+                "cartesian-coordinates",
+                "pythagoras"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "projections-views",
+          "title": "三视图与正投影",
+          "summary": "主视图、俯视图、左视图，长对正、高平齐、宽相等，由三视图想象形体",
+          "estimated_minutes": 80,
+          "lesson": "solids",
+          "prerequisites": [
+            {
+              "all_of": [
+                "space-coordinates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "angles-in-space",
+          "title": "空间角与投影长度",
+          "summary": "线段在平面上的投影长度 L·cosθ，斜面与水平面的夹角，倾斜孔的投影",
+          "estimated_minutes": 65,
+          "lesson": "solids",
+          "prerequisites": [
+            {
+              "all_of": [
+                "space-coordinates",
+                "sin-cos-tan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sketch-geometry",
+      "title": "草图中的几何",
+      "question_file": "questions/sketch-geometry.json",
+      "lessons": [
+        {
+          "id": "sketch-geometry",
+          "title": "草图中的几何",
+          "file": "lessons/sketch-geometry.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "sketch-constraints-math",
+          "title": "草图约束中的几何关系",
+          "summary": "平行、垂直、相切、同心、对称约束对应的几何条件，用尺寸确定位置",
+          "estimated_minutes": 65,
+          "lesson": "sketch-geometry",
+          "prerequisites": [
+            {
+              "all_of": [
+                "slope-lines",
+                "circles-arcs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "triangle-sketch-lab",
+          "title": "直角三角形草图核对（自评）",
+          "summary": "在 CAD 中画两直角边为 30 mm 和 40 mm 的直角三角形，用勾股定理和反三角函数算出斜边与锐角，再与软件测量值核对。",
+          "estimated_minutes": 60,
+          "lesson": "sketch-geometry",
+          "prerequisites": [
+            {
+              "all_of": [
+                "pythagoras",
+                "solving-right-triangles"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "为 CAD 和高数补齐单位、坐标、斜率、角度与投影。",
+  "roadmap": {
+    "note": "小数和百分数可先练项目内的《基础数学》。",
+    "prerequisites": [
+      {
+        "all_of": [
+          "basic-math"
+        ],
+        "strength": "recommended"
+      }
+    ]
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "protocol_version": 1,
+  "course_id": "industrial-automation",
+  "version": "1.1.0",
+  "title": "工业自动化与 PLC",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "工业控制系统",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "工业控制系统",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "automation-overview",
+          "title": "自动化系统组成",
+          "summary": "PLC、传感器、执行器、HMI 与上位机，工位控制的层次",
+          "estimated_minutes": 60,
+          "lesson": "intro"
+        },
+        {
+          "id": "plc-hardware",
+          "title": "PLC 硬件与 I/O 模块",
+          "summary": "CPU、数字量输入 DI、数字量输出 DO、模拟量 AI/AO，24 V DC 信号，继电器与晶体管输出",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "automation-overview"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "scan-cycle",
+          "title": "扫描周期",
+          "summary": "读输入映像、执行程序、写输出映像，扫描时间，信号短于扫描周期可能漏检",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "plc-hardware"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "io-addressing",
+          "title": "I/O 分配表与数据类型",
+          "summary": "I/O 分配表，位、字节、字地址，BOOL、INT、REAL、TIME 数据类型",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "plc-hardware"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cycle-time",
+          "title": "节拍与产量",
+          "summary": "单件节拍、产量 = 运行时间/节拍，等待时间与瓶颈工序",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "automation-overview"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "field-devices",
+      "title": "现场器件",
+      "question_file": "questions/field-devices.json",
+      "lessons": [
+        {
+          "id": "field-devices",
+          "title": "现场器件",
+          "file": "lessons/field-devices.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "discrete-sensors",
+          "title": "开关量传感器",
+          "summary": "接近开关、光电开关、限位开关，NPN 与 PNP 输出，常开与常闭",
+          "estimated_minutes": 65,
+          "lesson": "field-devices",
+          "prerequisites": [
+            {
+              "all_of": [
+                "plc-hardware"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "actuators",
+          "title": "电磁阀、气缸与继电器",
+          "summary": "单电控与双电控电磁阀，气缸到位检测，中间继电器与接触器",
+          "estimated_minutes": 65,
+          "lesson": "field-devices",
+          "prerequisites": [
+            {
+              "all_of": [
+                "plc-hardware"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "analog-signals",
+          "title": "模拟量信号与量程换算",
+          "summary": "4–20 mA 与 0–10 V，原始值到工程量的线性换算，断线检测",
+          "estimated_minutes": 70,
+          "lesson": "field-devices",
+          "prerequisites": [
+            {
+              "all_of": [
+                "plc-hardware"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ladder",
+      "title": "梯形图基础",
+      "question_file": "questions/ladder.json",
+      "lessons": [
+        {
+          "id": "ladder",
+          "title": "梯形图基础",
+          "file": "lessons/ladder.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "ladder-basics",
+          "title": "梯形图与触点线圈",
+          "summary": "常开触点、常闭触点、输出线圈，从左到右、从上到下执行",
+          "estimated_minutes": 80,
+          "lesson": "ladder",
+          "prerequisites": [
+            {
+              "all_of": [
+                "scan-cycle",
+                "io-addressing"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "boolean-logic",
+          "title": "逻辑组合",
+          "summary": "串联为与、并联为或、常闭为非，用逻辑式描述动作条件",
+          "estimated_minutes": 65,
+          "lesson": "ladder",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ladder-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "latching",
+          "title": "自锁、置位与复位",
+          "summary": "启保停电路，SET 与 RESET 指令，停止优先，双线圈问题",
+          "estimated_minutes": 70,
+          "lesson": "ladder",
+          "prerequisites": [
+            {
+              "all_of": [
+                "boolean-logic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "edge-detection",
+          "title": "上升沿与下降沿",
+          "summary": "边沿检测只在一个扫描周期为真，按一次只计一次",
+          "estimated_minutes": 60,
+          "lesson": "ladder",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ladder-basics"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "timers-counters",
+      "title": "定时与计数",
+      "question_file": "questions/timers-counters.json",
+      "lessons": [
+        {
+          "id": "timers-counters",
+          "title": "定时与计数",
+          "file": "lessons/timers-counters.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "timers",
+          "title": "定时器 TON、TOF 与 TP",
+          "summary": "通电延时 TON、断电延时 TOF、脉冲 TP 的时序，预设值与当前值",
+          "estimated_minutes": 80,
+          "lesson": "timers-counters",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ladder-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counters",
+          "title": "计数器 CTU 与 CTD",
+          "summary": "加计数与减计数，预设值，复位，计数信号用边沿",
+          "estimated_minutes": 65,
+          "lesson": "timers-counters",
+          "prerequisites": [
+            {
+              "all_of": [
+                "ladder-basics",
+                "edge-detection"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "timeouts",
+          "title": "超时监控",
+          "summary": "动作发出后在规定时间内等待到位信号，超时报警，超时时间的设定",
+          "estimated_minutes": 65,
+          "lesson": "timers-counters",
+          "prerequisites": [
+            {
+              "all_of": [
+                "timers"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sequence",
+      "title": "顺序控制",
+      "question_file": "questions/sequence.json",
+      "lessons": [
+        {
+          "id": "sequence",
+          "title": "顺序控制",
+          "file": "lessons/sequence.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "sequential-control",
+          "title": "顺序功能图 SFC",
+          "summary": "步、转换条件、动作，单序列、选择分支与并行分支",
+          "estimated_minutes": 85,
+          "lesson": "sequence",
+          "prerequisites": [
+            {
+              "all_of": [
+                "latching",
+                "timers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "state-machine-plc",
+          "title": "用状态字实现顺序控制",
+          "summary": "用整数状态变量和 CASE 语句实现步进，每步只做一件事，转换条件清楚",
+          "estimated_minutes": 80,
+          "lesson": "sequence",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sequential-control"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "interlocks",
+          "title": "互锁与联锁",
+          "summary": "正反转互锁，挡板与送料联锁，检测结果确认前不分流",
+          "estimated_minutes": 70,
+          "lesson": "sequence",
+          "prerequisites": [
+            {
+              "all_of": [
+                "latching"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "safety-faults",
+      "title": "安全与故障处理",
+      "question_file": "questions/safety-faults.json",
+      "lessons": [
+        {
+          "id": "safety-faults",
+          "title": "安全与故障处理",
+          "file": "lessons/safety-faults.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "safety-basics",
+          "title": "急停与安全回路",
+          "summary": "急停按钮用常闭触点，安全继电器，硬件安全回路与 PLC 程序的分工，复位后不自动重启",
+          "estimated_minutes": 70,
+          "lesson": "safety-faults",
+          "prerequisites": [
+            {
+              "all_of": [
+                "interlocks"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fault-handling",
+          "title": "故障检测、报警与复位",
+          "summary": "故障锁存，报警信息，确认与复位，排除原因后从安全状态重新开始",
+          "estimated_minutes": 80,
+          "lesson": "safety-faults",
+          "prerequisites": [
+            {
+              "all_of": [
+                "timeouts",
+                "state-machine-plc"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "operating-modes",
+          "title": "手动与自动模式",
+          "summary": "手动点动、自动运行、单步，模式切换条件，回原点",
+          "estimated_minutes": 60,
+          "lesson": "safety-faults",
+          "prerequisites": [
+            {
+              "all_of": [
+                "state-machine-plc"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "programming",
+      "title": "编程与调试",
+      "question_file": "questions/programming.json",
+      "lessons": [
+        {
+          "id": "programming",
+          "title": "编程与调试",
+          "file": "lessons/programming.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "structured-text",
+          "title": "结构化文本 ST 入门",
+          "summary": "赋值 :=，IF 与 CASE 语句，比较与布尔运算，与梯形图的对应",
+          "estimated_minutes": 70,
+          "lesson": "programming",
+          "prerequisites": [
+            {
+              "all_of": [
+                "boolean-logic",
+                "timers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "function-blocks",
+          "title": "功能块与程序组织",
+          "summary": "功能块 FB 与实例，输入输出参数，复用同一套设备逻辑",
+          "estimated_minutes": 60,
+          "lesson": "programming",
+          "prerequisites": [
+            {
+              "all_of": [
+                "structured-text"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "simulation-testing",
+          "title": "仿真与测试用例",
+          "summary": "用仿真强制输入，正常流程与故障流程测试用例，记录预期与实际结果",
+          "estimated_minutes": 65,
+          "lesson": "programming",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fault-handling"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hmi-communication",
+          "title": "HMI 与通信",
+          "summary": "HMI 显示状态与报警，Modbus 寄存器与线圈地址，上位机读取计数",
+          "estimated_minutes": 60,
+          "lesson": "programming",
+          "prerequisites": [
+            {
+              "all_of": [
+                "automation-overview"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sorting-sequence-lab",
+          "title": "送料检测分流仿真（自评）",
+          "summary": "在 PLC 仿真中实现送料、检测、分流三步顺序控制，分别触发传感器超时、结果缺失和急停，验证设备停机后等待人工复位再继续。",
+          "estimated_minutes": 95,
+          "lesson": "programming",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fault-handling",
+                "simulation-testing"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "用扫描周期、定时和互锁表达工位顺序与故障恢复。",
+  "roadmap": {
+    "note": "建议先完成单片机状态机。",
+    "prerequisites": [
+      {
+        "all_of": [
+          "embedded-mcu"
+        ],
+        "strength": "recommended"
+      }
+    ]
+  }
+}

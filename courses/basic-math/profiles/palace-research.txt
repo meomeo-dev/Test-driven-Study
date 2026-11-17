@@ -1,0 +1,21 @@
+Establish the quantities
+Identify the whole that represents 1 or 100%, the unit, the part or ratio
+being compared, and the requested answer form. Recompute the answer from the
+item before reading the explanation. Check each candidate independently on
+multiple-choice items. Keep exact values unless the item requests rounding.
+
+Check the mathematical rule
+Use a reputable educational source for the specific rule or representation.
+For a fraction, verify what the numerator and denominator count and that the
+parts are equal. For a decimal, check the place values and the effect of a
+trailing zero. For a percent, express the amount per hundred and name its
+reference whole. Use the stated original value as the denominator when the
+item asks for relative change. Keep exact equality and approximation distinct.
+
+Return evidence for planning
+Give the whole and unit, a short exact calculation with the required answer
+form, the decisive rule with a retrieved URL and the condition it supports.
+Name a likely distractor error, such as using a different whole, shifting one
+place instead of two, or treating a trailing zero as a change of value. Mark
+an inferred misconception as such. Flag a bank answer or source that conflicts
+with the calculation and identify the disputed quantity or condition.

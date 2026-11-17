@@ -1,0 +1,565 @@
+{
+  "protocol_version": 1,
+  "course_id": "beginner-english",
+  "version": "1.2.0",
+  "title": "零基础英语（听说与基础语法）",
+  "language": "zh-CN",
+  "description": "从自我介绍、数字和简短指令开始，逐步衔接工程英语。",
+  "units": [
+    {
+      "id": "intro",
+      "title": "自我介绍与问候",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "自我介绍与问候",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "greetings",
+          "title": "问候与告别",
+          "summary": "见面、接班和下班时的问候与告别。",
+          "estimated_minutes": 40,
+          "lesson": "intro"
+        },
+        {
+          "id": "be-verb",
+          "title": "be 动词 am / is / are",
+          "summary": "按主语选择 am、is、are 及其否定和缩写。",
+          "estimated_minutes": 60,
+          "lesson": "intro"
+        },
+        {
+          "id": "spelling",
+          "title": "字母与拼读",
+          "summary": "用字母名称拼出名字，人名首字母大写。",
+          "estimated_minutes": 40,
+          "lesson": "intro"
+        },
+        {
+          "id": "self-introduction",
+          "title": "自我介绍句型",
+          "summary": "用 My name is、I am from、I live in 介绍自己。",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "greetings",
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "oral-self-introduction",
+          "title": "口语自我介绍（自评）",
+          "summary": "关字幕录一段 20–30 秒自我介绍，按指南自评后标记已会。",
+          "estimated_minutes": 60,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "self-introduction",
+                "spelling"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "numbers-places",
+      "title": "数字、位置与时间",
+      "question_file": "questions/numbers-places.json",
+      "lessons": [
+        {
+          "id": "numbers-places",
+          "title": "数字、位置与时间",
+          "file": "lessons/numbers-places.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "numbers",
+          "title": "数字 0–100",
+          "summary": "读写 0–100，区分 thirteen 与 thirty。",
+          "estimated_minutes": 60,
+          "lesson": "numbers-places"
+        },
+        {
+          "id": "there-is-are",
+          "title": "There is / There are",
+          "summary": "说出某处有什么、有多少。",
+          "estimated_minutes": 50,
+          "lesson": "numbers-places",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb",
+                "numbers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "positions",
+          "title": "方位介词",
+          "summary": "用 on、under、next to 等说明位置。",
+          "estimated_minutes": 50,
+          "lesson": "numbers-places",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "clock-time",
+          "title": "钟点与时间",
+          "summary": "询问并说出整点、半点和一刻钟。",
+          "estimated_minutes": 50,
+          "lesson": "numbers-places",
+          "prerequisites": [
+            {
+              "all_of": [
+                "numbers"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "requests",
+      "title": "简短请求与指令",
+      "question_file": "questions/requests.json",
+      "lessons": [
+        {
+          "id": "requests",
+          "title": "简短请求与指令",
+          "file": "lessons/requests.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "imperatives",
+          "title": "祈使句指令",
+          "summary": "听懂并发出 Press、Turn off、Don't 等直接指令。",
+          "estimated_minutes": 45,
+          "lesson": "requests"
+        },
+        {
+          "id": "yes-no-questions",
+          "title": "一般疑问句",
+          "summary": "用 Are you、Do you 提问并简短回答。",
+          "estimated_minutes": 60,
+          "lesson": "requests",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "polite-requests",
+          "title": "礼貌请求",
+          "summary": "用 Please 或 Can you … please? 礼貌地请人帮忙。",
+          "estimated_minutes": 50,
+          "lesson": "requests",
+          "prerequisites": [
+            {
+              "all_of": [
+                "imperatives"
+              ]
+            },
+            {
+              "all_of": [
+                "yes-no-questions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "workbench",
+      "title": "工位动作与单位",
+      "question_file": "questions/workbench.json",
+      "lessons": [
+        {
+          "id": "workbench",
+          "title": "工位动作与单位",
+          "file": "lessons/workbench.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "tools-parts",
+          "title": "工具与零件词汇",
+          "summary": "认识螺丝、扳手、托盘等工位常用词。",
+          "estimated_minutes": 60,
+          "lesson": "workbench"
+        },
+        {
+          "id": "measurement-units",
+          "title": "长度与重量单位",
+          "summary": "读出 mm、cm、kg 并做简单换算。",
+          "estimated_minutes": 50,
+          "lesson": "workbench",
+          "prerequisites": [
+            {
+              "all_of": [
+                "numbers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "workbench-actions",
+          "title": "工位动作现在时",
+          "summary": "用一般现在时描述工位动作，注意第三人称 -s。",
+          "estimated_minutes": 60,
+          "lesson": "workbench",
+          "prerequisites": [
+            {
+              "all_of": [
+                "tools-parts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "workbench-instructions",
+          "title": "听懂工位指令",
+          "summary": "听懂组合了动作、位置和工具的多步骤指令。",
+          "estimated_minutes": 75,
+          "lesson": "workbench",
+          "prerequisites": [
+            {
+              "all_of": [
+                "imperatives",
+                "positions",
+                "tools-parts"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "daily-routine",
+      "title": "日常作息与班次",
+      "question_file": "questions/daily-routine.json",
+      "lessons": [
+        {
+          "id": "daily-routine",
+          "title": "日常作息与班次",
+          "file": "lessons/daily-routine.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "days-dates",
+          "title": "星期、月份与日期",
+          "summary": "Monday–Sunday、January–December，序数词 first–thirty-first，日期读法 March 3rd，介词 on Monday / in May / at 8:00",
+          "estimated_minutes": 50,
+          "lesson": "daily-routine",
+          "prerequisites": [
+            {
+              "all_of": [
+                "numbers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "wh-questions",
+          "title": "特殊疑问句",
+          "summary": "what、where、when、who、how many、how much、what time，疑问词 + be / do 的语序与简短回答",
+          "estimated_minutes": 60,
+          "lesson": "daily-routine",
+          "prerequisites": [
+            {
+              "all_of": [
+                "yes-no-questions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frequency-adverbs",
+          "title": "频率副词",
+          "summary": "always、usually、often、sometimes、never，放在 be 动词后、实义动词前，How often…?、every day、twice a week",
+          "estimated_minutes": 45,
+          "lesson": "daily-routine",
+          "prerequisites": [
+            {
+              "all_of": [
+                "workbench-actions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shift-schedule",
+          "title": "班次与日程",
+          "summary": "morning / day / night shift，start、finish、break，My shift starts at 7 a.m.，The break is from 12:00 to 12:30.",
+          "estimated_minutes": 60,
+          "lesson": "daily-routine",
+          "prerequisites": [
+            {
+              "all_of": [
+                "clock-time",
+                "days-dates",
+                "frequency-adverbs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "describing-parts",
+      "title": "描述零件与质量",
+      "question_file": "questions/describing-parts.json",
+      "lessons": [
+        {
+          "id": "describing-parts",
+          "title": "描述零件与质量",
+          "file": "lessons/describing-parts.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "colors-shapes",
+          "title": "颜色与形状",
+          "summary": "red、blue、green、yellow、black、white、gray，round、square、flat、long、short，The cap is red and round.",
+          "estimated_minutes": 45,
+          "lesson": "describing-parts",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "adjectives-quality",
+          "title": "质量形容词",
+          "summary": "good、bad、OK、NG（not good）、broken、cracked、scratched、dirty、clean、loose、tight、bent，a cracked part 与 The part is cracked. 两种位置",
+          "estimated_minutes": 50,
+          "lesson": "describing-parts",
+          "prerequisites": [
+            {
+              "all_of": [
+                "colors-shapes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "demonstratives",
+          "title": "指示代词 this / that / these / those",
+          "summary": "近指与远指、单数与复数，与 be 动词和名词单复数一致，These parts are OK.、Is this box full?",
+          "estimated_minutes": 45,
+          "lesson": "describing-parts",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "comparatives",
+          "title": "形容词比较级",
+          "summary": "-er 与 more、than，longer、shorter、bigger、heavier，good-better、bad-worse，This bolt is 2 mm longer than that one.",
+          "estimated_minutes": 60,
+          "lesson": "describing-parts",
+          "prerequisites": [
+            {
+              "all_of": [
+                "adjectives-quality",
+                "measurement-units"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "safety-problems",
+      "title": "安全与问题报告",
+      "question_file": "questions/safety-problems.json",
+      "lessons": [
+        {
+          "id": "safety-problems",
+          "title": "安全与问题报告",
+          "file": "lessons/safety-problems.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "modal-must",
+          "title": "必须与禁止 must",
+          "summary": "must、must not（mustn't）、have to 后接动词原形，You must wear gloves.、You must not touch the belt.",
+          "estimated_minutes": 50,
+          "lesson": "safety-problems",
+          "prerequisites": [
+            {
+              "all_of": [
+                "imperatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "safety-signs",
+          "title": "安全标志与警示语",
+          "summary": "Danger、Warning、Caution、No entry、Keep out、Wear safety glasses、Emergency stop、Exit、Do not touch、Hot surface",
+          "estimated_minutes": 45,
+          "lesson": "safety-problems",
+          "prerequisites": [
+            {
+              "all_of": [
+                "modal-must"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "can-permission",
+          "title": "能力与许可 can",
+          "summary": "can / can't 后接动词原形表示能力与许可，I can use the scanner.、Can I take a break?、You can't stand here.",
+          "estimated_minutes": 45,
+          "lesson": "safety-problems",
+          "prerequisites": [
+            {
+              "all_of": [
+                "polite-requests"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reporting-problems",
+          "title": "报告故障与问题",
+          "summary": "There is a problem with the camera.、The light doesn't work.、The belt is stuck.、The machine is not moving.、Please call the technician.",
+          "estimated_minutes": 75,
+          "lesson": "safety-problems",
+          "prerequisites": [
+            {
+              "all_of": [
+                "there-is-are",
+                "adjectives-quality",
+                "workbench-actions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "past-reports",
+      "title": "交接班汇报",
+      "question_file": "questions/past-reports.json",
+      "lessons": [
+        {
+          "id": "past-reports",
+          "title": "交接班汇报",
+          "file": "lessons/past-reports.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "past-be",
+          "title": "一般过去时 was / were",
+          "summary": "was 与 were 的主语搭配，wasn't / weren't，Was it…?，There were 3 NG parts.",
+          "estimated_minutes": 50,
+          "lesson": "past-reports",
+          "prerequisites": [
+            {
+              "all_of": [
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "past-regular",
+          "title": "规则动词过去式",
+          "summary": "-ed 拼写规则（checked、stopped、tried、moved）与读音 /t/ /d/ /ɪd/，yesterday、last night、this morning",
+          "estimated_minutes": 60,
+          "lesson": "past-reports",
+          "prerequisites": [
+            {
+              "all_of": [
+                "workbench-actions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "past-irregular",
+          "title": "常用不规则动词过去式",
+          "summary": "go-went、come-came、have-had、make-made、take-took、put-put、find-found、see-saw、get-got、break-broke、give-gave、tell-told",
+          "estimated_minutes": 75,
+          "lesson": "past-reports",
+          "prerequisites": [
+            {
+              "all_of": [
+                "past-regular"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "did-questions",
+          "title": "过去时疑问与否定 did",
+          "summary": "Did you check the parts? Yes, I did.，I didn't see the error.，did / didn't 后接动词原形",
+          "estimated_minutes": 55,
+          "lesson": "past-reports",
+          "prerequisites": [
+            {
+              "all_of": [
+                "past-regular",
+                "yes-no-questions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "oral-shift-report",
+          "title": "口头交接班汇报（自评）",
+          "summary": "用过去时口头汇报一个班次的产量、问题和处理结果，录音后自评。",
+          "estimated_minutes": 60,
+          "lesson": "past-reports",
+          "prerequisites": [
+            {
+              "all_of": [
+                "past-irregular",
+                "did-questions",
+                "reporting-problems"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  }
+}

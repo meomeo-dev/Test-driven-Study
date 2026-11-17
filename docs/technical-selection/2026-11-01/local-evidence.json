@@ -1,0 +1,516 @@
+{
+  "review_date": "2026-11-01",
+  "source_directory": "<local-evidence-dir>/ai-dependency-collection/futuristic_viz/data",
+  "source_export_at": "2026-11-01T05:03:16Z",
+  "curated_checked_at": "2026-10-25",
+  "dataset_counts": {
+    "repos": 2849,
+    "repos_stars_gt_1000": 1603,
+    "repos_stars_le_1000": 1246,
+    "repo_scans": 2395,
+    "repo_scans_distinct_repos": 2195,
+    "js_frequency": 76,
+    "py_frequency": 26,
+    "evidence_A": 1302,
+    "evidence_B": 714,
+    "evidence_C": 379,
+    "repos_language_null": 253,
+    "repo_scans_language_null": 647
+  },
+  "source_files": [
+    {
+      "file": "curated.json",
+      "bytes": 5281,
+      "sha256": "4cf3206981566566ba8ea61d05655accf84eecd667fb59838db171239a3e8123"
+    },
+    {
+      "file": "js_frequency.json",
+      "bytes": 22647,
+      "sha256": "6e4434815ca0ff05d20e88311c51405285a6dd4e68595a22df74064c59a9cbfd"
+    },
+    {
+      "file": "meta.json",
+      "bytes": 1134,
+      "sha256": "da4e366331dcc712848762f6bf08f39ddbdd0f31d12149ad1e3df729eaaa99d5"
+    },
+    {
+      "file": "py_frequency.json",
+      "bytes": 6896,
+      "sha256": "eb0884a40ac73cb6f3cb1deb7c82bb129297114455f6204745ed4eb05196c76b"
+    },
+    {
+      "file": "repo_scans.json",
+      "bytes": 562499,
+      "sha256": "422cfb017db0a4dfdec891de5491f74a5ff92269b473af73aa3c97859c8b4af9"
+    },
+    {
+      "file": "repos.json",
+      "bytes": 848794,
+      "sha256": "522f6e5cf93a662dc7a2299426589e0aad634b21911f7a528bc2ae2d94fd5c63"
+    },
+    {
+      "file": "validation-report.json",
+      "bytes": 12563,
+      "sha256": "5ea108a8d2c51dd49cec81181087aba221ad5069f4d762e1211630067d42b06a"
+    }
+  ],
+  "evidence_definitions": {
+    "A": "No dependency file path was found; not positive dependency evidence.",
+    "B": "A dependency path was found, but no target dependency was extracted.",
+    "C": "A dependency path and at least one extracted target dependency were found."
+  },
+  "evidence_layers": {
+    "A": {
+      "rows": 1302,
+      "unique_repositories": 1102,
+      "with_dependency_path": 0,
+      "with_dependency_hits": 0
+    },
+    "B": {
+      "rows": 714,
+      "unique_repositories": 714,
+      "with_dependency_path": 714,
+      "with_dependency_hits": 0
+    },
+    "C": {
+      "rows": 379,
+      "unique_repositories": 379,
+      "with_dependency_path": 379,
+      "with_dependency_hits": 379
+    }
+  },
+  "go_scan_coverage": {
+    "rows": 106,
+    "with_dependency_hits": 0
+  },
+  "js_frequency": [
+    {
+      "category": "ui",
+      "dependency": "tailwindcss",
+      "per_batch": {
+        "first": 18,
+        "second": 61,
+        "second-under1k": 49
+      },
+      "unique_repositories": 128
+    },
+    {
+      "category": "bundler",
+      "dependency": "vite",
+      "per_batch": {
+        "first": 17,
+        "second": 58,
+        "second-under1k": 48
+      },
+      "unique_repositories": 123
+    },
+    {
+      "category": "bundler",
+      "dependency": "esbuild",
+      "per_batch": {
+        "first": 7,
+        "second": 40,
+        "second-under1k": 38
+      },
+      "unique_repositories": 85
+    },
+    {
+      "category": "bundler",
+      "dependency": "next",
+      "per_batch": {
+        "first": 13,
+        "second": 25,
+        "second-under1k": 14
+      },
+      "unique_repositories": 52
+    },
+    {
+      "category": "animation",
+      "dependency": "framer-motion",
+      "per_batch": {
+        "first": 8,
+        "second": 16,
+        "second-under1k": 13
+      },
+      "unique_repositories": 37
+    },
+    {
+      "category": "ui",
+      "dependency": "@radix-ui/react-dialog",
+      "per_batch": {
+        "first": 3,
+        "second": 19,
+        "second-under1k": 13
+      },
+      "unique_repositories": 35
+    },
+    {
+      "category": "canvas",
+      "dependency": "@xyflow/react",
+      "per_batch": {
+        "first": 2,
+        "second": 9,
+        "second-under1k": 8
+      },
+      "unique_repositories": 19
+    },
+    {
+      "category": "bundler",
+      "dependency": "webpack",
+      "per_batch": {
+        "first": 8,
+        "second": 9,
+        "second-under1k": 1
+      },
+      "unique_repositories": 18
+    },
+    {
+      "category": "animation",
+      "dependency": "motion",
+      "per_batch": {
+        "first": 2,
+        "second": 7,
+        "second-under1k": 8
+      },
+      "unique_repositories": 17
+    },
+    {
+      "category": "3d",
+      "dependency": "three",
+      "per_batch": {
+        "first": 2,
+        "second": 6,
+        "second-under1k": 7
+      },
+      "unique_repositories": 15
+    },
+    {
+      "category": "ui",
+      "dependency": "radix-ui",
+      "per_batch": {
+        "first": 1,
+        "second": 4,
+        "second-under1k": 7
+      },
+      "unique_repositories": 12
+    },
+    {
+      "category": "bundler",
+      "dependency": "rollup",
+      "per_batch": {
+        "first": 2,
+        "second": 8,
+        "second-under1k": 2
+      },
+      "unique_repositories": 12
+    },
+    {
+      "category": "ui",
+      "dependency": "@mui/material",
+      "per_batch": {
+        "first": 4,
+        "second": 4,
+        "second-under1k": 1
+      },
+      "unique_repositories": 9
+    },
+    {
+      "category": "orchestrator_js",
+      "dependency": "@langchain/core",
+      "per_batch": {
+        "second": 5,
+        "second-under1k": 3
+      },
+      "unique_repositories": 8
+    },
+    {
+      "category": "orchestrator_js",
+      "dependency": "langchain",
+      "per_batch": {
+        "first": 1,
+        "second": 5,
+        "second-under1k": 1
+      },
+      "unique_repositories": 7
+    },
+    {
+      "category": "3d",
+      "dependency": "@react-three/drei",
+      "per_batch": {
+        "second": 3,
+        "second-under1k": 2
+      },
+      "unique_repositories": 5
+    },
+    {
+      "category": "3d",
+      "dependency": "@react-three/fiber",
+      "per_batch": {
+        "second": 3,
+        "second-under1k": 2
+      },
+      "unique_repositories": 5
+    },
+    {
+      "category": "ui",
+      "dependency": "antd",
+      "per_batch": {
+        "second": 1,
+        "second-under1k": 4
+      },
+      "unique_repositories": 5
+    },
+    {
+      "category": "ui",
+      "dependency": "@chakra-ui/react",
+      "per_batch": {
+        "first": 1,
+        "second": 2,
+        "second-under1k": 1
+      },
+      "unique_repositories": 4
+    },
+    {
+      "category": "ui",
+      "dependency": "@mantine/core",
+      "per_batch": {
+        "first": 2,
+        "second-under1k": 2
+      },
+      "unique_repositories": 4
+    },
+    {
+      "category": "animation",
+      "dependency": "gsap",
+      "per_batch": {
+        "second": 1,
+        "second-under1k": 3
+      },
+      "unique_repositories": 4
+    },
+    {
+      "category": "canvas",
+      "dependency": "konva",
+      "per_batch": {
+        "first": 1,
+        "second-under1k": 2
+      },
+      "unique_repositories": 3
+    },
+    {
+      "category": "animation",
+      "dependency": "lottie-react",
+      "per_batch": {
+        "second": 2,
+        "second-under1k": 1
+      },
+      "unique_repositories": 3
+    },
+    {
+      "category": "canvas",
+      "dependency": "pixi.js",
+      "per_batch": {
+        "first": 1,
+        "second": 1,
+        "second-under1k": 1
+      },
+      "unique_repositories": 3
+    },
+    {
+      "category": "canvas",
+      "dependency": "react-konva",
+      "per_batch": {
+        "first": 1,
+        "second-under1k": 2
+      },
+      "unique_repositories": 3
+    },
+    {
+      "category": "orchestrator_js",
+      "dependency": "@langchain/langgraph",
+      "per_batch": {
+        "first": 1,
+        "second": 1
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": "workflow_edges_layout",
+      "dependency": "@xyflow/react",
+      "per_batch": {
+        "first": 2
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": "animation",
+      "dependency": "animejs",
+      "per_batch": {
+        "second-under1k": 2
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": "canvas",
+      "dependency": "reactflow",
+      "per_batch": {
+        "first": 2
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": "workflow_edges_layout",
+      "dependency": "reactflow",
+      "per_batch": {
+        "first": 2
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": "canvas",
+      "dependency": "@excalidraw/excalidraw",
+      "per_batch": {
+        "second": 1
+      },
+      "unique_repositories": 1
+    },
+    {
+      "category": "animation",
+      "dependency": "@lottiefiles/dotlottie-react",
+      "per_batch": {
+        "first": 1
+      },
+      "unique_repositories": 1
+    },
+    {
+      "category": "animation",
+      "dependency": "@react-spring/web",
+      "per_batch": {
+        "second": 1
+      },
+      "unique_repositories": 1
+    },
+    {
+      "category": "bundler",
+      "dependency": "@rspack/core",
+      "per_batch": {
+        "second": 1
+      },
+      "unique_repositories": 1
+    }
+  ],
+  "python_frequency": [
+    {
+      "category": null,
+      "dependency": "langchain",
+      "per_batch": {
+        "first": 22,
+        "second": 49,
+        "second-under1k": 10
+      },
+      "unique_repositories": 81
+    },
+    {
+      "category": null,
+      "dependency": "langgraph",
+      "per_batch": {
+        "first": 7,
+        "second": 24,
+        "second-under1k": 10
+      },
+      "unique_repositories": 41
+    },
+    {
+      "category": null,
+      "dependency": "llama-index",
+      "per_batch": {
+        "first": 7,
+        "second": 9,
+        "second-under1k": 1
+      },
+      "unique_repositories": 17
+    },
+    {
+      "category": null,
+      "dependency": "pydantic-ai",
+      "per_batch": {
+        "first": 2,
+        "second": 8,
+        "second-under1k": 1
+      },
+      "unique_repositories": 11
+    },
+    {
+      "category": null,
+      "dependency": "crewai",
+      "per_batch": {
+        "first": 2,
+        "second": 4,
+        "second-under1k": 3
+      },
+      "unique_repositories": 9
+    },
+    {
+      "category": null,
+      "dependency": "llamaindex",
+      "per_batch": {
+        "first": 2,
+        "second": 6
+      },
+      "unique_repositories": 8
+    },
+    {
+      "category": null,
+      "dependency": "agno",
+      "per_batch": {
+        "first": 1,
+        "second": 3,
+        "second-under1k": 1
+      },
+      "unique_repositories": 5
+    },
+    {
+      "category": null,
+      "dependency": "autogen",
+      "per_batch": {
+        "first": 1,
+        "second": 3,
+        "second-under1k": 1
+      },
+      "unique_repositories": 5
+    },
+    {
+      "category": null,
+      "dependency": "haystack",
+      "per_batch": {
+        "second": 2
+      },
+      "unique_repositories": 2
+    },
+    {
+      "category": null,
+      "dependency": "pyautogen",
+      "per_batch": {
+        "second": 1
+      },
+      "unique_repositories": 1
+    },
+    {
+      "category": null,
+      "dependency": "smolagents",
+      "per_batch": {
+        "second-under1k": 1
+      },
+      "unique_repositories": 1
+    }
+  ],
+  "limitations": [
+    "This is a selected repository sample, not global adoption or market share.",
+    "Batches include repositories above and below 1000 stars; preserve that distinction.",
+    "Union repository names within each exact dependency/category pair across batches.",
+    "Do not merge package aliases, JS/Python namespaces, or categories.",
+    "Counts do not establish suitability, security, licensing, or maintained status.",
+    "Curated descriptions and star strings are source claims, not new verification.",
+    "Go dependencies require independent official-source verification."
+  ]
+}

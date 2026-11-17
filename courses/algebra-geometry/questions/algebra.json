@@ -1,0 +1,637 @@
+[
+  {
+    "id": "expressions-1",
+    "type": "single_choice",
+    "chapter": "代数式与运算律",
+    "concepts": [
+      "expressions"
+    ],
+    "stem": "在分拣站夹具零件尺寸设计中，需要对代数式 5(a - 2b) - 2(2a - 3b) 进行去括号与化简。化简后的正确结果是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "a - 4b"
+      },
+      {
+        "id": "b",
+        "text": "a - 16b"
+      },
+      {
+        "id": "c",
+        "text": "9a - 4b"
+      },
+      {
+        "id": "d",
+        "text": "a + 4b"
+      }
+    ],
+    "explanation": "原式去括号得 5a − 10b − 4a + 6b，合并同类项后为 a − 4b。选项 b 把 −2(−3b) 的 +6b 错算为 −6b；选项 c 把 −4a 错算为 +4a。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "expressions-2",
+    "type": "single_choice",
+    "chapter": "代数式与运算律",
+    "concepts": [
+      "expressions"
+    ],
+    "stem": "某方形定位销的截面边长为 (x + 3) mm，其横截面积展开表达式计算正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "x² + 9"
+      },
+      {
+        "id": "b",
+        "text": "x² + 3x + 9"
+      },
+      {
+        "id": "c",
+        "text": "x² + 6x + 9"
+      },
+      {
+        "id": "d",
+        "text": "2x + 6"
+      }
+    ],
+    "explanation": "根据完全平方公式 (a + b)² = a² + 2ab + b²，展开得 x² + 6x + 9。选项 a 漏掉了中间项 2ab 即 6x；选项 b 中间项漏乘了系数 2。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "expressions-3",
+    "type": "multiple_choice",
+    "chapter": "代数式与运算律",
+    "concepts": [
+      "expressions"
+    ],
+    "stem": "下列关于代数式化简与运算律的变形中，结果正确的有两个。请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "(2x - 1)(2x + 1) = 4x² - 1"
+      },
+      {
+        "id": "b",
+        "text": "3x²y - 2x²y = x²y"
+      },
+      {
+        "id": "c",
+        "text": "(a - b)² = a² - b²"
+      },
+      {
+        "id": "d",
+        "text": "-(2a - 3b) = -2a - 3b"
+      }
+    ],
+    "explanation": "选项 a 依据平方差公式展开为 4x² - 1；选项 b 中同类项系数相减 3 - 2 = 1，结果为 x²y。选项 c 混淆了完全平方与平方差公式；选项 d 去括号时负负得正应为 +3b。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "expressions-4",
+    "type": "true_false",
+    "chapter": "代数式与运算律",
+    "concepts": [
+      "expressions"
+    ],
+    "stem": "在代数式运算中，3a²b 与 2ab² 因为包含相同的字母 a 和 b，所以属于同类项，可以直接合并为 5a²b²。",
+    "explanation": "同类项必须所含字母相同且相同字母的指数也完全相同，3a²b 中 a 的指数是 2，而 2ab² 中 a 的指数是 1，二者不是同类项，不能直接相加合并。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "expressions-5",
+    "type": "numeric",
+    "chapter": "代数式与运算律",
+    "concepts": [
+      "expressions"
+    ],
+    "stem": "桌面分拣站的定位夹具宽度由代数式 4(2x + 15) - 3(x + 10) 给出，单位为 mm。当参数 x 设定为 5 时，计算该夹具的实际总宽度（结果直接填写数字，单位为 mm）。",
+    "explanation": "原式展开去括号得 8x + 60 - 3x - 30 = 5x + 30。将 x = 5 代入式中，计算得 5 × 5 + 30 = 55 mm。",
+    "grading": {
+      "value": "55",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "linear-equations-1",
+    "type": "single_choice",
+    "chapter": "一元一次方程",
+    "concepts": [
+      "linear-equations"
+    ],
+    "stem": "解一元一次方程 4x - 7 = 2x + 5，移项并合并同类项后正确的结果是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "2x = -2"
+      },
+      {
+        "id": "b",
+        "text": "2x = 12"
+      },
+      {
+        "id": "c",
+        "text": "6x = 12"
+      },
+      {
+        "id": "d",
+        "text": "6x = -2"
+      }
+    ],
+    "explanation": "含未知数的项移到左边：4x − 2x，常数项移到右边：5 + 7 = 12，合并后为 2x = 12。选项 a 错误在于右侧 5 − 7 的符号处理有误；选项 c 和 d 错误在于移项时没有变号。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "linear-equations-2",
+    "type": "single_choice",
+    "chapter": "一元一次方程",
+    "concepts": [
+      "linear-equations"
+    ],
+    "stem": "分拣站气动推杆从初始位置匀速前伸，位移满足方程 50t + 30 = 180，其中 t 为动作时间（单位 s），位移单位为 mm。推杆伸长到 180 mm 位置所需时间 t 为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 s"
+      },
+      {
+        "id": "b",
+        "text": "4.2 s"
+      },
+      {
+        "id": "c",
+        "text": "3.6 s"
+      },
+      {
+        "id": "d",
+        "text": "3 s"
+      }
+    ],
+    "explanation": "移项得 50t = 180 - 30 = 150，系数化为 1 得 t = 150 / 50 = 3 s。选项 c 错误在于未减去初位移 30 直接用 180 除以 50；选项 b 错误在于将移项错算为相加。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "linear-equations-3",
+    "type": "multiple_choice",
+    "chapter": "一元一次方程",
+    "concepts": [
+      "linear-equations"
+    ],
+    "stem": "下列关于一元一次方程求解规则与步骤的陈述中，正确的有两个。请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "移项的依据是等式的基本性质，任何项跨越等号移到另一边时必须改变正负符号"
+      },
+      {
+        "id": "b",
+        "text": "方程两边去分母时，只乘以含有分母的项，常数项无需乘以公分母"
+      },
+      {
+        "id": "c",
+        "text": "如果方程两边同乘以一个负数，方程的解会随之发生改变"
+      },
+      {
+        "id": "d",
+        "text": "将方程 ax = b 的系数化为 1 时，必须满足系数 a ≠ 0"
+      }
+    ],
+    "explanation": "选项 a 正确，移项本质是等式两边同加减，跨等号必须变号；选项 d 正确，除数不能为零，系数化为 1 要求 a ≠ 0。选项 b 错误，去分母必须各项都乘以最小公倍数；选项 c 错误，两边同乘非零数属于等解变形，解不变。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "linear-equations-4",
+    "type": "true_false",
+    "chapter": "一元一次方程",
+    "concepts": [
+      "linear-equations"
+    ],
+    "stem": "若关于 x 的一元一次方程 3x - k = 5 的解为 x = 3，则常数 k 的值等于 4。",
+    "explanation": "将 x = 3 代入方程得 3 × 3 - k = 5，即 9 - k = 5，解得 k = 4。因此该陈述完全正确。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "linear-equations-5",
+    "type": "numeric",
+    "chapter": "一元一次方程",
+    "concepts": [
+      "linear-equations"
+    ],
+    "stem": "分拣传送带以 80 mm/s 的速度匀速运转。工件从通过光电传感器 A 点开始计时，经过 t 秒后到达相机正下方的 B 点，位移满足关系 80t + 40 = 520（单位均为 mm）。求工件从 A 点运行到 B 点所需的时间 t（结果直接填写数字，单位为 s）。",
+    "explanation": "移项得 80t = 520 - 40 = 480，两边同时除以 80 得 t = 6 s。",
+    "grading": {
+      "value": "6",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "formula-rearranging-1",
+    "type": "single_choice",
+    "chapter": "公式变形",
+    "concepts": [
+      "formula-rearranging"
+    ],
+    "stem": "分拣站控制箱直流电源的电功率计算公式为 P = UI（其中 P 为功率，U 为电压，I 为电流）。若已知功率 P 和电流 I（I ≠ 0），将该公式变形为求解电压 U 的表达式是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "U = P - I"
+      },
+      {
+        "id": "b",
+        "text": "U = PI"
+      },
+      {
+        "id": "c",
+        "text": "U = P / I"
+      },
+      {
+        "id": "d",
+        "text": "U = I / P"
+      }
+    ],
+    "explanation": "由 P = UI 两边同时除以 I（I ≠ 0），解得 U = P / I。选项 a 错误地使用了减法；选项 d 将被除数与除数颠倒。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "formula-rearranging-2",
+    "type": "single_choice",
+    "chapter": "公式变形",
+    "concepts": [
+      "formula-rearranging"
+    ],
+    "stem": "传送带电机的传动线速度计算公式为 v = (π d n) / 60，其中 v 为线速度，d 为皮带轮直径，n 为电机转速。将该公式变形为求解转速 n 的表达式正确的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "n = (60 v) / (π d)"
+      },
+      {
+        "id": "b",
+        "text": "n = v / (60 π d)"
+      },
+      {
+        "id": "c",
+        "text": "n = (60 π d) / v"
+      },
+      {
+        "id": "d",
+        "text": "n = 60 / (π d v)"
+      }
+    ],
+    "explanation": "两边同乘 60 得 60v = πdn，再同除以 πd（d ≠ 0），得 n = (60v) / (πd)。选项 b 漏掉了 60 移项后在分子；选项 c 将分子分母颠倒。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "formula-rearranging-3",
+    "type": "multiple_choice",
+    "chapter": "公式变形",
+    "concepts": [
+      "formula-rearranging"
+    ],
+    "stem": "在分拣定位工装尺寸设计中，梯形台截面积公式为 S = (a + b)h / 2。下列公式变形中结果正确的有两个。请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "h = S / (2(a + b))"
+      },
+      {
+        "id": "b",
+        "text": "h = 2S / (a + b)"
+      },
+      {
+        "id": "c",
+        "text": "a = 2S / h - b"
+      },
+      {
+        "id": "d",
+        "text": "b = 2S / h + a"
+      }
+    ],
+    "explanation": "选项 b 两边乘 2 得 2S = (a + b)h，再除以 (a + b) 得 h = 2S / (a + b)；选项 c 两边除以 h 得 a + b = 2S / h，移项得 a = 2S / h - b。选项 a 漏乘常数 2；选项 d 移项时未将 a 变号。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "formula-rearranging-4",
+    "type": "true_false",
+    "chapter": "公式变形",
+    "concepts": [
+      "formula-rearranging"
+    ],
+    "stem": "根据机械零件受热伸长量公式 ΔL = α L₀ Δt，当需要求初始长度 L₀ 时，可正确变形为 L₀ = α Δt / ΔL。",
+    "explanation": "由 ΔL = α L₀ Δt 两边同除以 α Δt，正解应为 L₀ = ΔL / (α Δt)，原题将分子与分母颠倒写反。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "formula-rearranging-5",
+    "type": "numeric",
+    "chapter": "公式变形",
+    "concepts": [
+      "formula-rearranging"
+    ],
+    "stem": "分拣站气缸活塞推力计算公式为 F = p · S，其中活塞受压有效面积 S = π r²。若实测气压 p = 0.5 N/mm²，活塞半径 r = 20 mm，取 π = 3.14。计算该气缸产生的理论推力 F（结果直接填写数字，单位为 N）。",
+    "explanation": "有效面积 S = π r² = 3.14 × 20² = 1256 mm²，推力 F = p · S = 0.5 × 1256 = 628 N。",
+    "grading": {
+      "value": "628",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "linear-systems-1",
+    "type": "single_choice",
+    "chapter": "二元一次方程组",
+    "concepts": [
+      "linear-systems"
+    ],
+    "stem": "解二元一次方程组：式 1 为 x + y = 20，式 2 为 2x - y = 10。采用加减消元法将式 1 与式 2 直接相加，得到的一元一次方程是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "x = 10"
+      },
+      {
+        "id": "b",
+        "text": "3x = 30"
+      },
+      {
+        "id": "c",
+        "text": "3x = 10"
+      },
+      {
+        "id": "d",
+        "text": "3x + 2y = 30"
+      }
+    ],
+    "explanation": "式 1 与式 2 中 y 的系数分别为 1 和 -1，两式直接相加得 (x + 2x) + (y - y) = 20 + 10，即 3x = 30。选项 c 遗漏了右边常数项相加；选项 d 没有成功消去 y。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "linear-systems-2",
+    "type": "single_choice",
+    "chapter": "二元一次方程组",
+    "concepts": [
+      "linear-systems"
+    ],
+    "stem": "桌面分拣站用两个料盒存放工件，A 型工件每个厚度为 10 mm，B 型工件每个厚度为 15 mm。已知两类工件共 12 个，叠放总高度为 155 mm。设 A 型工件有 x 个，B 型工件有 y 个，建立的正确方程组是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "x + y = 12 且 10x + 15y = 155"
+      },
+      {
+        "id": "b",
+        "text": "x + y = 155 且 10x + 15y = 12"
+      },
+      {
+        "id": "c",
+        "text": "x + y = 12 且 15x + 10y = 155"
+      },
+      {
+        "id": "d",
+        "text": "10x + y = 12 且 x + 15y = 155"
+      }
+    ],
+    "explanation": "工件总数为 12 对应 x + y = 12；总高度由两类工件厚度乘以数量累加，对应 10x + 15y = 155。选项 b 将数量与高度颠倒；选项 c 将两类工件的厚度参数颠倒。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "linear-systems-3",
+    "type": "multiple_choice",
+    "chapter": "二元一次方程组",
+    "concepts": [
+      "linear-systems"
+    ],
+    "stem": "关于求解二元一次方程组的消元策略与性质，下列陈述中正确的有两个。请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "任何二元一次方程组都只能使用代入法求解，加减法存在应用局限"
+      },
+      {
+        "id": "b",
+        "text": "两方程相加消元时，待消去未知数的系数必须大小相等且符号相同"
+      },
+      {
+        "id": "c",
+        "text": "代入消元法与加减消元法的共同核心思想是将未知数由二元转化为一元"
+      },
+      {
+        "id": "d",
+        "text": "当方程组中某一未知数的系数为 1 或 -1 时，通常优先选择代入消元法"
+      }
+    ],
+    "explanation": "选项 c 正确，消元法的本质是化二元为一元；选项 d 正确，系数为 1 或 -1 易于直接表示且计算时不产生繁琐分式。选项 a 错误，两种方法均普适；选项 b 错误，符号相同时应当两式相减消元。",
+    "grading": {
+      "choice_ids": [
+        "c",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "linear-systems-4",
+    "type": "true_false",
+    "chapter": "二元一次方程组",
+    "concepts": [
+      "linear-systems"
+    ],
+    "stem": "二元一次方程组 x + 2y = 8 与 2x + 4y = 10 在平面直角坐标系中对应两条相互平行的直线，因此该方程组无实数解。",
+    "explanation": "第一个方程两边同乘 2 得 2x + 4y = 16，与第二个方程 2x + 4y = 10 产生矛盾（16 ≠ 10），几何上对应两条平行且不重合的直线，因此无解。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "linear-systems-5",
+    "type": "numeric",
+    "chapter": "二元一次方程组",
+    "concepts": [
+      "linear-systems"
+    ],
+    "stem": "分拣夹具底板开有两个不同直径的定位圆孔。已知大孔直径与小孔直径之和为 38 mm，大孔直径比小孔直径大 14 mm。求大孔的直径（结果直接填写数字，单位为 mm）。",
+    "explanation": "设大孔直径为 x mm，小孔直径为 y mm。列方程组 x + y = 38 且 x - y = 14。两式相加得 2x = 52，解得 x = 26 mm。",
+    "grading": {
+      "value": "26",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "quadratics-1",
+    "type": "single_choice",
+    "chapter": "一元二次方程",
+    "concepts": [
+      "quadratics"
+    ],
+    "stem": "利用因式分解法求解一元二次方程 x² - 8x + 15 = 0，方程的两个解为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "x₁ = -3, x₂ = -5"
+      },
+      {
+        "id": "b",
+        "text": "x₁ = -3, x₂ = 5"
+      },
+      {
+        "id": "c",
+        "text": "x₁ = 3, x₂ = 5"
+      },
+      {
+        "id": "d",
+        "text": "x₁ = 3, x₂ = -5"
+      }
+    ],
+    "explanation": "原方程左边因式分解为 (x - 3)(x - 5) = 0，令各因式为零得 x₁ = 3，x₂ = 5。选项 a 错误地将因式内的减数直接当作根而未变号；选项 b 和 d 符号混淆。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "quadratics-2",
+    "type": "single_choice",
+    "chapter": "一元二次方程",
+    "concepts": [
+      "quadratics"
+    ],
+    "stem": "一元二次方程 2x² - 4x + 3 = 0 的根的判别式 Δ 的值与实数根的情况为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "Δ = 40，方程有两个不相等实数根"
+      },
+      {
+        "id": "b",
+        "text": "Δ = 8，方程有两个不相等实数根"
+      },
+      {
+        "id": "c",
+        "text": "Δ = 0，方程有两个相等实数根"
+      },
+      {
+        "id": "d",
+        "text": "Δ = -8，方程无实数根"
+      }
+    ],
+    "explanation": "根据判别式公式 Δ = b² - 4ac = (-4)² - 4 × 2 × 3 = 16 - 24 = -8。因为 Δ < 0，所以该方程在实数范围内无解。选项 a 错误在于将减法错算为加法 16 + 24 = 40。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "quadratics-3",
+    "type": "multiple_choice",
+    "chapter": "一元二次方程",
+    "concepts": [
+      "quadratics"
+    ],
+    "stem": "关于一元二次方程 ax² + bx + c = 0（a ≠ 0）及其求根方法，下列陈述中正确的有两个。请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "若二次项系数 a = 0，该方程仍然属于一元二次方程"
+      },
+      {
+        "id": "b",
+        "text": "当判别式 Δ = b² - 4ac > 0 时，方程在实数范围内必有两个不相等的实数根"
+      },
+      {
+        "id": "c",
+        "text": "一元二次方程的求根公式为 x = (-b ± √(b² - 4ac)) / (2a)"
+      },
+      {
+        "id": "d",
+        "text": "只有当常数项 c = 0 时，才能使用因式分解法求解方程"
+      }
+    ],
+    "explanation": "选项 b 正确，Δ > 0 时二次方程有两个不相等的实数根；选项 c 正确，这是标准求根公式。选项 a 错误，a ≠ 0 是二次方程的前提定义；选项 d 错误，十字相乘法等因式分解在常数项不为零时完全适用。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "quadratics-4",
+    "type": "true_false",
+    "chapter": "一元二次方程",
+    "concepts": [
+      "quadratics"
+    ],
+    "stem": "某机械结构计算得到方程 x² + 25 = 0，该方程在实数范围内有两个实数解 x₁ = 5 和 x₂ = -5。",
+    "explanation": "移项得 x² = -25，在实数范围内任何实数的平方均大于等于 0，负数没有实数平方根，因此该方程在实数范围内无解。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "quadratics-5",
+    "type": "numeric",
+    "chapter": "一元二次方程",
+    "concepts": [
+      "quadratics"
+    ],
+    "stem": "分拣站工件定位槽为矩形，设计要求长比宽多 10 mm，有效放置面积为 1200 mm²。求该定位槽的宽度（尺寸必须为正数，结果直接填写数字，单位为 mm）。",
+    "explanation": "设宽为 w mm，列方程 w(w + 10) = 1200，整理得 w² + 10w - 1200 = 0。因式分解为 (w - 30)(w + 40) = 0，解得正数解 w = 30 mm（负解 -40 舍去）。",
+    "grading": {
+      "value": "30",
+      "absolute_tolerance": "0"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+export const markdownReply = [
+  '## 本题讲解', '',
+  '先看 **适用条件**，再区分 *具体情境*。', '',
+  '1. 阅读题干。', '2. 排除错误选项。', '',
+  '- 看清信号。', '- 核对条件。', '',
+  '> 记忆方法：先情境，后规则。', '',
+  '[查看官方原文](https://www.gov.cn/fixture-rule?utm_source=openai)', '',
+  '| 条件 | 学习要点 |', '| --- | --- |', '| 信号 | 观察变化 |', '| 情境 | 区分条件 |', '',
+  '使用 `选项编号` 保持原题含义，~~直接猜测~~。', '',
+  '```text', '先读题，再判断。', '```', '',
+  '<script>window.tutorMarkdownInjected = true</script>',
+  '<img src="https://remote-image.invalid/raw.png" onerror="window.tutorMarkdownInjected=true">',
+  '![外部配图](https://remote-image.invalid/markdown.png)', '',
+  '[危险链接](javascript:alert%281%29)',
+  '[数据链接](data:text/html,unsafe)',
+].join('\n');

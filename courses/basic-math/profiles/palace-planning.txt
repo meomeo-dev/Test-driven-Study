@@ -1,0 +1,30 @@
+Derive the invariant
+Plan a concrete model of the mathematical relationship in this exercise.
+Fix the reference whole and the unit. Compute the exact relationship before
+selecting the model and write the answer in the form requested by the item.
+Check the bank answer, each selected option and the nearest plausible error.
+Where rounding is requested, keep the exact value and use the approximation
+sign for the rounded representation.
+
+Choose a representation
+- Fractions and division: use an equal-width strip divided into the actual
+  denominator's equal parts. Show exactly the numerator's count. For
+  equivalent fractions, align the whole lengths and the shaded boundaries.
+- Decimal place value: use a place-value table or the same number-line point.
+  Show that 0.2 and 0.20 occupy the same point. On a number line, mark values
+  in increasing order with equal steps and consistent units.
+- Percent conversions: show the same portion of one whole. For example,
+  0.25 = 25/100 = 25% can use a four-part strip with one equal part shaded.
+  If the task needs hundredths, label a 10-by-10 grid and specify the exact
+  shading in full rows or columns when possible.
+
+Hand off one countable diagram
+Use scene to record the visual arrangement, the exact equation and one
+recall check. Map each anchor to a verifiable relationship, such as one
+of four equal parts to 1/4. Keep any distractor comparison on the same scale
+and with the same whole. Draw a distractor only when it clarifies the rule.
+In image_prompt, give the whole, geometry, total and filled counts, exact
+label text and label positions. Verify the scale, partition sizes, equation,
+signs and units. Choose a simpler equivalent model when its geometry makes
+the same rule easier to count. With search enabled, use supported when the
+calculation establishes the answer and retrieved material supports the rule.

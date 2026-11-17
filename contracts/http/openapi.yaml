@@ -1,0 +1,4587 @@
+openapi: 3.1.0
+info:
+  title: Test-driven Study HTTP API
+  version: 0.1.0
+paths:
+  /api/courses:
+    get:
+      operationId: listCourses
+      responses:
+        '200':
+          description: Installed course catalog
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/CourseSummary' }
+        default: &course_error
+          description: Course request failed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /api/guide:
+    get:
+      operationId: readGuide
+      parameters:
+        - { name: subject, in: query, schema: { type: integer } }
+      responses:
+        '200':
+          description: Guide for the selected course
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseGuide' }
+        default: *course_error
+  /api/courses/{course}/concepts:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: readConceptGraph
+      responses:
+        '200':
+          description: Concepts of the active course version with live states
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ConceptGraph' }
+        default: *course_error
+  /api/courses/{course}/concepts/{concept}/known:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+      - { name: concept, in: path, required: true, schema: { type: string } }
+    put:
+      operationId: setConceptKnown
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ConceptKnownRequest' }
+      responses:
+        '200':
+          description: Updated concept graph
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ConceptGraph' }
+        default: *course_error
+  /api/courses/{course}/learning-path:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: readLearningPath
+      responses:
+        '200':
+          description: Active learning path, or null
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LearningPathView' }
+        default: *course_error
+    post:
+      operationId: createLearningPath
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LearningPathRequest' }
+      responses:
+        '201':
+          description: New active learning path; the previous one is archived
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LearningPath' }
+        default: *course_error
+  /api/courses/{course}/completed:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+    put:
+      operationId: setCourseCompleted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CourseCompletedRequest' }
+      responses:
+        '200':
+          description: Updated course roadmap
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseRoadmap' }
+        default: *course_error
+  /api/roadmap:
+    get:
+      operationId: readCourseRoadmap
+      responses:
+        '200':
+          description: Active courses with relations, completion and advisory states
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseRoadmap' }
+        default: *course_error
+  /api/roadmap/path:
+    get:
+      operationId: readRoadmapPath
+      responses:
+        '200':
+          description: Active route across courses, or null
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RoadmapPathView' }
+        default: *course_error
+    post:
+      operationId: createRoadmapPath
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RoadmapPathRequest' }
+      responses:
+        '201':
+          description: New active route; the previous one is archived
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/RoadmapPath' }
+        default: *course_error
+  /api/courses/{course}/versions/{version}/assets/{asset}:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+      - { name: version, in: path, required: true, schema: { type: string } }
+      - { name: asset, in: path, required: true, schema: { type: string } }
+    get:
+      operationId: readCourseAsset
+      responses:
+        '200':
+          description: Referenced media from an installed version
+          content:
+            'image/*':
+              schema: { type: string, format: binary }
+            audio/mpeg:
+              schema: { type: string, format: binary }
+            text/plain:
+              schema: { type: string }
+        default: *course_error
+  /api/study/overview:
+    get:
+      operationId: getOverview
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectOverview'
+        '400':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - &ref_0
+          name: subject
+          in: query
+          required: false
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 4
+            default: 1
+  /api/questions:
+    get:
+      operationId: listQuestions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuestionSummary'
+        '400':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - *ref_0
+        - name: chapter
+          in: query
+          required: false
+          schema: &ref_3
+            type: integer
+            format: int64
+        - name: state
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - all
+              - unlearned
+              - review
+              - mastered
+        - name: q
+          in: query
+          required: false
+          schema: &ref_6
+            type: string
+  /api/questions/{id}:
+    get:
+      operationId: getQuestion
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionDetail'
+        '400':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - &ref_1
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+  /api/questions/{id}/progress:
+    put:
+      operationId: setProgress
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state: &ref_2
+                    type: string
+                    enum:
+                      - unlearned
+                      - review
+                      - mastered
+                required:
+                  - state
+        '400':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - *ref_1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state: *ref_2
+              required:
+                - state
+  /api/study/cursor:
+    put:
+      operationId: setCursor
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  saved:
+                    type: boolean
+                required:
+                  - saved
+        '400':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject_id:
+                  type: integer
+                  enum:
+                    - 1
+                    - 4
+                question_id: *ref_3
+              required:
+                - subject_id
+                - question_id
+  /api/practice/overview:
+    get:
+      operationId: getPracticeOverview
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PracticeOverview'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - &ref_4
+          name: subject
+          in: query
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 4
+            default: 1
+  /api/practice/questions:
+    get:
+      operationId: listPracticeQuestions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PracticeSummary'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - *ref_4
+        - name: chapter
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+        - name: state
+          in: query
+          schema:
+            type: string
+            enum:
+              - all
+              - unanswered
+              - correct
+              - incorrect
+              - review
+        - name: q
+          in: query
+          schema:
+            type: string
+            maxLength: 200
+        - name: concept
+          in: query
+          description: Limit the list to items tagged with this concept of the unit
+          schema:
+            type: string
+            maxLength: 64
+  /api/practice/presentations:
+    post:
+      operationId: openPresentation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Presentation'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: &ref_5
+              type: object
+              additionalProperties: false
+              required:
+                - id
+                - question_id
+              properties:
+                id:
+                  type: string
+                  minLength: 16
+                  maxLength: 80
+                question_id:
+                  type: integer
+                  minimum: 1
+  /api/practice/presentations/{presentation}/answer:
+    post:
+      operationId: submitAnswer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttemptResult'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - name: presentation
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+                - selected
+              properties:
+                numeric: { type: string, maxLength: 64 }
+                selected:
+                  type: array
+                  minItems: 1
+                  maxItems: 8
+                  uniqueItems: true
+                  items:
+                    type: integer
+                    minimum: 1
+  /api/study/exposures:
+    post:
+      operationId: recordExposure
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - saved
+                properties:
+                  saved:
+                    type: boolean
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: *ref_5
+  /api/practice/cursor:
+    put:
+      operationId: setPracticeCursor
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - saved
+                properties:
+                  saved:
+                    type: boolean
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - subject_id
+                - question_id
+              properties:
+                subject_id:
+                  type: integer
+                  enum:
+                    - 1
+                    - 4
+                question_id:
+                  type: integer
+                  minimum: 1
+  /api/analysis:
+    get:
+      operationId: getAnalysis
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analysis'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - *ref_4
+        - name: days
+          in: query
+          schema:
+            type: integer
+            enum:
+              - 0
+              - 7
+              - 30
+              - 90
+            default: 30
+  /api/analysis/review-book:
+    get:
+      operationId: getReviewBook
+      parameters:
+        - *ref_4
+      responses:
+        '200':
+          description: Subject review items in priority order with mastered items last
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewBook'
+        '400':
+          description: Invalid subject
+  /api/palaces/info:
+    get:
+      operationId: getPalaceInfo
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceInfo'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/preview:
+    post:
+      operationId: previewPalace
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PalacePreviewInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalacePreview'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs:
+    get:
+      operationId: listPalaceJobs
+      parameters:
+        - name: subject
+          in: query
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 4
+            default: 1
+        - name: question
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createPalaceJob
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PalaceCreate'
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}:
+    get:
+      operationId: getPalaceJob
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}/cancel:
+    post:
+      operationId: cancelPalaceJob
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}/pause:
+    post:
+      operationId: pausePalaceJob
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}/resume:
+    post:
+      operationId: resumePalaceJob
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}/retry:
+    post:
+      operationId: retryPalaceJob
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [id]
+              properties:
+                id:
+                  type: string
+                  format: uuid
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/jobs/{job}/retry-image:
+    post:
+      operationId: retryPalaceImage
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageRetryInput'
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PalaceJob'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/tasks:
+    get:
+      operationId: listTasks
+      parameters:
+        - name: scope
+          in: query
+          schema:
+            type: string
+            enum: [active, all]
+        - name: before
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Global palace tasks, newest first, up to 50 per page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskPage'
+        '400':
+          description: Invalid scope or cursor
+  /api/tasks/{job}/events:
+    get:
+      operationId: taskEvents
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Persisted state transitions in chronological order
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskEvent'
+        '404':
+          description: Task not found
+  /api/palaces/jobs/{job}/image:
+    get:
+      operationId: getPalaceImage
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: download
+          in: query
+          schema:
+            type: integer
+            enum:
+              - 1
+      responses:
+        '200':
+          description: Locally saved image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/settings:
+    get:
+      operationId: getProviderSettings
+      responses:
+        '200':
+          description: Safe configuration metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: saveProviderSettings
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderUpdate'
+      responses:
+        '200':
+          description: Safe configuration metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/settings/test:
+    post:
+      operationId: testProviderSettings
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderUpdate'
+      responses:
+        '200':
+          description: Safe configuration metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderConnection'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/palaces/coverage:
+    get:
+      operationId: getPalaceCoverage
+      parameters:
+        - name: subject
+          in: query
+          schema:
+            type: integer
+            enum:
+              - 1
+              - 4
+            default: 1
+      responses:
+        '200':
+          description: All successful questions, independent of recent history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PalaceCoverage'
+        '400':
+          description: Invalid subject
+  /api/llm/chat:
+    post:
+      operationId: chatWithQuestion
+      description: >-
+        Stream question-scoped AI replies as newline-delimited JSON. A status
+        event starts the stream, delta events append text, and a done event
+        supplies the complete reply and retrieved official sources. An error
+        event is terminal. Disconnecting cancels the upstream request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionChatInput'
+      responses:
+        '200':
+          description: Reply events, terminated by done or error
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/QuestionChatEvent'
+        '400':
+          description: Invalid question or bounded conversation input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Question does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: LLM configuration is unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/llm/conversations:
+    get:
+      operationId: listConversations
+      parameters:
+        - in: query
+          name: question_id
+          schema: { type: integer, format: int64, minimum: 0 }
+          description: Zero or omitted lists all questions
+        - in: query
+          name: before
+          schema: { type: string }
+      responses:
+        '200':
+          description: Most recently updated conversations, at most 50 per page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationPage'
+        '400':
+          description: Invalid filter or cursor
+    post:
+      operationId: createConversation
+      description: Idempotently create an empty question-scoped conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [id, question_id]
+              properties:
+                id: { type: string, format: uuid }
+                question_id: { type: integer, format: int64, minimum: 1 }
+      responses:
+        '200':
+          description: Created or existing conversation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationRecord'
+        '400':
+          description: Invalid identifier
+        '404':
+          description: Question not found
+        '409':
+          description: Identifier belongs to a different question
+  /api/llm/conversations/coverage:
+    get:
+      operationId: getConversationCoverage
+      description: >-
+        Question-level counts of conversations containing saved messages, across
+        the full subject. Empty conversations are excluded. No transcripts or
+        history pagination are involved.
+      parameters:
+        - in: query
+          name: subject
+          schema: { type: integer, enum: [1, 4], default: 1 }
+      responses:
+        '200':
+          description: Questions with saved conversations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConversationCoverage'
+        '400':
+          description: Invalid subject
+  /api/llm/conversations/{conversation}:
+    parameters:
+      - in: path
+        name: conversation
+        required: true
+        schema: { type: string, format: uuid }
+    get:
+      operationId: getConversation
+      responses:
+        '200':
+          description: Saved messages including partial interrupted replies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationRecord'
+        '404':
+          description: Conversation not found
+  /api/llm/conversations/{conversation}/messages:
+    parameters:
+      - in: path
+        name: conversation
+        required: true
+        schema: { type: string, format: uuid }
+    post:
+      operationId: sendConversationMessage
+      description: >-
+        Persist a new turn and stream reply events. History and question facts
+        come from the server. Repeating a completed turn ID returns its saved
+        reply; accepted interrupted requests are never automatically replayed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [id, text]
+              properties:
+                id: { type: string, format: uuid }
+                text: { type: string, minLength: 1, maxLength: 2000 }
+      responses:
+        '200':
+          description: NDJSON events terminated by done or error
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/QuestionChatEvent'
+        '400':
+          description: Invalid message or conversation length limit
+        '404':
+          description: Conversation not found
+        '409':
+          description: Active turn or previously accepted noncompleted turn ID
+        '503':
+          description: LLM configuration is unavailable
+  /api/llm/info:
+    get:
+      operationId: getLLMInfo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMInfo'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/llm/settings:
+    get:
+      operationId: getLLMSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: saveLLMSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LLMProviderUpdate'
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+  /api/llm/settings/test:
+    post:
+      operationId: testLLMSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderConnection'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LLMProviderUpdate'
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+  /api/llm/plans:
+    post:
+      operationId: createLLMPlan
+      responses:
+        '202':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMPlanRecord'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LLMPlanInput'
+  /api/llm/plans/{plan}:
+    get:
+      operationId: getLLMPlan
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LLMPlanRecord'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+        - name: plan
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+  /api/palaces/jobs/{job}/trace:
+    get:
+      operationId: getTaskTrace
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: after
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+      responses:
+        '200':
+          description: Up to 256 observed events after the cursor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TracePage'
+        '400':
+          description: Invalid cursor
+        '404':
+          description: Task not found
+  /api/palaces/jobs/{job}/trace/stream:
+    get:
+      operationId: streamTaskTrace
+      parameters:
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: after
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+        - name: Last-Event-ID
+          in: header
+          schema:
+            type: integer
+            minimum: 0
+      responses:
+        '200':
+          description: Persisted trace events; event IDs resume reads without restarting generation
+          content:
+            text/event-stream:
+              schema:
+                type: string
+        '400':
+          description: Invalid cursor
+        '404':
+          description: Task not found
+  /api/exams/rules:
+    get:
+      operationId: examRules
+      parameters:
+        - name: subject
+          in: query
+          schema:
+            type: integer
+            enum: [1, 4]
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamRule'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams:
+    get:
+      operationId: listExams
+      parameters:
+        - name: subject
+          in: query
+          schema:
+            type: integer
+            enum: [1, 4]
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExamSummary'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createExam
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamCreate'
+      responses:
+        '201':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams/{exam}:
+    get:
+      operationId: getExam
+      parameters:
+        - name: exam
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams/{exam}/answer:
+    post:
+      operationId: answerExam
+      parameters:
+        - name: exam
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamAnswerInput'
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams/{exam}/navigate:
+    post:
+      operationId: navigateExam
+      parameters:
+        - name: exam
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamNavigateInput'
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams/{exam}/cursor:
+    put:
+      operationId: moveExam
+      parameters:
+        - name: exam
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamMoveInput'
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/exams/{exam}/submit:
+    post:
+      operationId: submitExam
+      parameters:
+        - name: exam
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyRequest'
+      responses:
+        '200':
+          description: Local examination response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamSession'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    CourseGuide:
+      type: object
+      required: [reviewed, sources, stages, hour_notes, booking_notes, total_hours]
+      properties:
+        reviewed: { type: string }
+        sources:
+          type: array
+          items: { $ref: '#/components/schemas/CourseGuideSource' }
+        stages:
+          type: array
+          items: { $ref: '#/components/schemas/CourseGuideStage' }
+        hour_notes: { type: array, items: { type: string } }
+        booking_notes: { type: array, items: { type: string } }
+        total_hours:
+          type: object
+          additionalProperties: { type: integer }
+    CourseGuideSource:
+      type: object
+      required: [id, title, date, publisher, url]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        date: { type: string }
+        publisher: { type: string }
+        url: { type: string }
+    CourseGuideStage:
+      type: object
+      required: [id, title, short, official, hours, pass, format, learning, exam, refs, prerequisites]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        short: { type: string }
+        official: { type: string }
+        hours:
+          type: object
+          additionalProperties: { type: integer }
+        pass: { type: integer }
+        format: { type: string }
+        learning: { type: array, items: { type: string } }
+        exam: { type: array, items: { type: string } }
+        refs: { type: array, items: { type: string } }
+        prerequisites:
+          type: object
+          required: [C1, C2]
+          properties:
+            C1: { type: array, items: { type: string } }
+            C2: { type: array, items: { type: string } }
+    CourseSummary:
+      type: object
+      required: [id, version, title, language, legacy, units, concept_count]
+      properties:
+        id: { type: string }
+        version: { type: string }
+        title: { type: string }
+        language: { type: string }
+        description: { type: string }
+        logo: { type: string }
+        legacy: { type: boolean }
+        concept_count: { type: integer, minimum: 0 }
+        units:
+          type: array
+          items: { $ref: '#/components/schemas/CourseUnitSummary' }
+    ConceptGraph:
+      type: object
+      required: [course_id, version, units, concepts]
+      properties:
+        course_id: { type: string }
+        version: { type: string }
+        units:
+          type: array
+          items: { $ref: '#/components/schemas/ConceptUnit' }
+        concepts:
+          type: array
+          items: { $ref: '#/components/schemas/ConceptStatus' }
+    ConceptUnit:
+      type: object
+      required: [id, title, subject_id]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        subject_id: { type: integer }
+    ConceptState:
+      type: string
+      enum: [mastered, known, learning, ready, locked]
+    ConceptStatus:
+      type: object
+      required: [id, title, unit_id, subject_id, estimated_minutes, prerequisites,
+        item_count, attempted, correct, required_correct, known, unlocked, state]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        summary: { type: string }
+        unit_id: { type: string }
+        subject_id: { type: integer }
+        lesson: { type: string }
+        estimated_minutes: { type: integer }
+        prerequisites:
+          description: Alternative groups; every member of one group unlocks the concept
+          type: array
+          items: { type: array, items: { type: string } }
+        item_count: { type: integer }
+        attempted: { type: integer }
+        correct: { type: integer }
+        required_correct: { type: integer }
+        known: { type: boolean, description: The learner's mark, even when overridden }
+        unlocked: { type: boolean }
+        state: { $ref: '#/components/schemas/ConceptState' }
+    ConceptKnownRequest:
+      type: object
+      required: [known]
+      additionalProperties: false
+      properties:
+        known: { type: boolean }
+    LearningPathRequest:
+      type: object
+      required: [daily_minutes]
+      additionalProperties: false
+      properties:
+        targets:
+          type: array
+          maxItems: 16
+          uniqueItems: true
+          items: { type: string }
+        daily_minutes: { type: integer, minimum: 10, maximum: 480 }
+    LearningPathView:
+      type: object
+      required: [path]
+      properties:
+        path:
+          oneOf:
+            - $ref: '#/components/schemas/LearningPath'
+            - type: 'null'
+    LearningPathStep:
+      type: object
+      required: [concept_id, title, unit_id, subject_id, estimated_minutes, group, state,
+        done, unlocked, missing]
+      properties:
+        concept_id: { type: string }
+        title: { type: string }
+        unit_id: { type: string }
+        subject_id: { type: integer }
+        estimated_minutes: { type: integer }
+        group: { type: array, items: { type: string } }
+        state:
+          type: string
+          enum: [mastered, known, learning, ready, locked, missing]
+        done: { type: boolean }
+        unlocked: { type: boolean }
+        missing: { type: boolean }
+    LearningPath:
+      type: object
+      required: [id, course_id, course_version, targets, daily_minutes, created_at_ms, steps,
+        mastered_steps, known_steps, remaining_steps, total_minutes, remaining_minutes,
+        estimated_days, completed, stale, replan_suggested]
+      properties:
+        id: { type: integer }
+        course_id: { type: string }
+        course_version: { type: string }
+        targets: { type: array, items: { type: string } }
+        daily_minutes: { type: integer }
+        created_at_ms: { type: integer }
+        steps:
+          type: array
+          items: { $ref: '#/components/schemas/LearningPathStep' }
+        mastered_steps: { type: integer }
+        known_steps: { type: integer }
+        remaining_steps: { type: integer }
+        total_minutes: { type: integer }
+        remaining_minutes: { type: integer }
+        estimated_days: { type: integer }
+        next_concept: { type: string }
+        completed: { type: boolean }
+        stale: { type: boolean }
+        replan_suggested: { type: boolean }
+    CourseRoadmap:
+      type: object
+      required: [courses]
+      properties:
+        courses:
+          type: array
+          items: { $ref: '#/components/schemas/RoadmapCourse' }
+    PrerequisiteStrength:
+      type: string
+      enum: [required, recommended]
+    RoadmapGroup:
+      type: object
+      required: [all_of, strength]
+      properties:
+        all_of: { type: array, items: { type: string } }
+        strength: { $ref: '#/components/schemas/PrerequisiteStrength' }
+    CourseState:
+      type: string
+      enum: [completed, in_progress, ready, waiting]
+    RoadmapCourse:
+      type: object
+      required: [id, title, version, prerequisites, parallel_with, missing, concept_count,
+        satisfied_concepts, marked_completed, completed, prerequisites_met, state]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        version: { type: string }
+        note: { type: string, description: README sentence that states the relations }
+        prerequisites:
+          description: Alternative groups; every installed member of one group meets them
+          type: array
+          items: { $ref: '#/components/schemas/RoadmapGroup' }
+        parallel_with:
+          description: Installed courses to study alongside, in both directions
+          type: array
+          items: { type: string }
+        missing:
+          description: Referenced courses that are not installed
+          type: array
+          items: { type: string }
+        concept_count: { type: integer, minimum: 0 }
+        satisfied_concepts: { type: integer, minimum: 0 }
+        marked_completed: { type: boolean, description: The stored learner mark }
+        completed: { type: boolean }
+        prerequisites_met: { type: boolean }
+        state: { $ref: '#/components/schemas/CourseState' }
+    CourseCompletedRequest:
+      type: object
+      required: [completed]
+      additionalProperties: false
+      properties:
+        completed: { type: boolean }
+    RoadmapPathRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        targets:
+          type: array
+          maxItems: 16
+          uniqueItems: true
+          items: { type: string }
+    RoadmapPathView:
+      type: object
+      required: [path]
+      properties:
+        path:
+          oneOf:
+            - $ref: '#/components/schemas/RoadmapPath'
+            - type: 'null'
+    RoadmapStep:
+      type: object
+      required: [course_id, title, group, state, done, prerequisites_met, missing]
+      properties:
+        course_id: { type: string }
+        title: { type: string }
+        group: { type: array, items: { type: string } }
+        strength: { $ref: '#/components/schemas/PrerequisiteStrength' }
+        state:
+          type: string
+          enum: [completed, in_progress, ready, waiting, missing]
+        done: { type: boolean }
+        prerequisites_met: { type: boolean }
+        missing: { type: boolean }
+    RoadmapPath:
+      type: object
+      required: [id, targets, created_at_ms, steps, completed_steps, remaining_steps,
+        completed, stale, replan_suggested]
+      properties:
+        id: { type: integer }
+        targets: { type: array, items: { type: string } }
+        created_at_ms: { type: integer }
+        steps:
+          type: array
+          items: { $ref: '#/components/schemas/RoadmapStep' }
+        completed_steps: { type: integer }
+        remaining_steps: { type: integer }
+        next_course: { type: string }
+        completed: { type: boolean }
+        stale: { type: boolean }
+        replan_suggested: { type: boolean }
+    CourseUnitSummary:
+      type: object
+      required: [id, title, has_practice, subject_id]
+      properties:
+        subject_id: { type: integer }
+        id: { type: string }
+        title: { type: string }
+        has_practice: { type: boolean }
+    ProgressState: *ref_2
+    QuestionOption:
+      type: object
+      properties:
+        sign: *ref_3
+        item_title: *ref_6
+        boolean_value: { type: boolean }
+        title: {}
+      required:
+        - sign
+        - item_title
+    Question:
+      type: object
+      properties:
+        package_id: { type: string }
+        package_version: { type: string }
+        source_item_id: { type: string }
+        audio_url: { type: string }
+        transcript_url: { type: string }
+        question_id: *ref_3
+        question_type: *ref_3
+        title: *ref_6
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionOption'
+        image_url: *ref_6
+        image_type: *ref_3
+        answer: *ref_6
+        analysis: *ref_6
+        skill: *ref_6
+        difficulty: *ref_3
+        tags: *ref_6
+        licence_id: *ref_3
+        subject_id: *ref_3
+        chapter_id: *ref_3
+        chapter_name: *ref_6
+        sub_chapter_id: *ref_3
+        sub_chapter_name: *ref_6
+        course_id: *ref_3
+        course_name: *ref_6
+        sort: *ref_3
+        province_id: *ref_3
+        city_id: *ref_3
+      required:
+        - question_id
+        - question_type
+        - title
+        - items
+        - image_url
+        - image_type
+        - answer
+        - analysis
+        - skill
+        - difficulty
+        - tags
+        - licence_id
+        - subject_id
+        - chapter_id
+        - chapter_name
+        - sub_chapter_id
+        - sub_chapter_name
+        - course_id
+        - course_name
+        - sort
+        - province_id
+        - city_id
+    QuestionDetail:
+      type: object
+      properties:
+        question:
+          $ref: '#/components/schemas/Question'
+        state: *ref_2
+        image_available:
+          type: boolean
+      required:
+        - question
+        - state
+        - image_available
+    QuestionSummary:
+      type: object
+      properties:
+        question_id: *ref_3
+        source_item_id: { type: string }
+        title: *ref_6
+        question_type: *ref_3
+        chapter_id: *ref_3
+        chapter_name: *ref_6
+        difficulty: *ref_3
+        state: *ref_2
+      required:
+        - question_id
+        - title
+        - question_type
+        - chapter_id
+        - chapter_name
+        - difficulty
+        - state
+    Chapter:
+      type: object
+      properties:
+        chapter_id: *ref_3
+        chapter_name: *ref_6
+        total: *ref_3
+      required:
+        - chapter_id
+        - chapter_name
+        - total
+    SubjectOverview:
+      type: object
+      properties:
+        subject_id: *ref_3
+        total: *ref_3
+        mastered: *ref_3
+        review: *ref_3
+        unlearned: *ref_3
+        last_question_id: *ref_3
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chapter'
+      required:
+        - subject_id
+        - total
+        - mastered
+        - review
+        - unlearned
+        - last_question_id
+        - chapters
+    Error:
+      type: object
+      properties:
+        error: *ref_6
+      required:
+        - error
+    PublicQuestion:
+      type: object
+      additionalProperties: false
+      required:
+        - question_id
+        - question_type
+        - title
+        - items
+        - image_url
+        - image_type
+        - difficulty
+        - tags
+        - licence_id
+        - subject_id
+        - chapter_id
+        - chapter_name
+        - sub_chapter_id
+        - sub_chapter_name
+        - course_id
+        - course_name
+        - sort
+        - province_id
+        - city_id
+      properties:
+        package_id: { type: string }
+        package_version: { type: string }
+        source_item_id: { type: string }
+        audio_url: { type: string }
+        transcript_url: { type: string }
+        question_id:
+          type: integer
+          format: int64
+        question_type:
+          type: integer
+          format: int64
+        title:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionOption'
+        image_url:
+          type: string
+        image_type:
+          type: integer
+          format: int64
+        difficulty:
+          type: integer
+          format: int64
+        tags:
+          type: string
+        licence_id:
+          type: integer
+          format: int64
+        subject_id:
+          type: integer
+          format: int64
+        chapter_id:
+          type: integer
+          format: int64
+        chapter_name:
+          type: string
+        sub_chapter_id:
+          type: integer
+          format: int64
+        sub_chapter_name:
+          type: string
+        course_id:
+          type: integer
+          format: int64
+        course_name:
+          type: string
+        sort:
+          type: integer
+          format: int64
+        province_id:
+          type: integer
+          format: int64
+        city_id:
+          type: integer
+          format: int64
+    PracticeDetail:
+      type: object
+      additionalProperties: false
+      required:
+        - question
+        - image_available
+      properties:
+        question:
+          $ref: '#/components/schemas/PublicQuestion'
+        image_available:
+          type: boolean
+    Presentation:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - detail
+        - opened_at_ms
+        - prior_attempts
+        - prior_exposure
+      properties:
+        id:
+          type: string
+        detail:
+          $ref: '#/components/schemas/PracticeDetail'
+        opened_at_ms:
+          type: integer
+          format: int64
+        prior_attempts:
+          type: integer
+          format: int64
+        prior_exposure:
+          type: boolean
+    PracticeOverview:
+      type: object
+      additionalProperties: false
+      required:
+        - subject_id
+        - total
+        - correct
+        - incorrect
+        - unanswered
+        - last_question_id
+        - chapters
+      properties:
+        subject_id:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        correct:
+          type: integer
+          format: int64
+        incorrect:
+          type: integer
+          format: int64
+        unanswered:
+          type: integer
+          format: int64
+        last_question_id:
+          type: integer
+          format: int64
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chapter'
+    Attempt:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - presentation_id
+        - question_id
+        - subject_id
+        - chapter_id
+        - chapter_name
+        - question_title
+        - question_revision
+        - selected
+        - correct_answer
+        - correct
+        - first_attempt
+        - prior_exposure
+        - opened_at_ms
+        - answered_at_ms
+      properties:
+        numeric: { type: string }
+        correct_numeric: { type: string }
+        id:
+          type: integer
+          format: int64
+        presentation_id:
+          type: string
+        question_id:
+          type: integer
+          format: int64
+        subject_id:
+          type: integer
+          format: int64
+        chapter_id:
+          type: integer
+          format: int64
+        chapter_name:
+          type: string
+        question_title:
+          type: string
+        question_revision:
+          type: string
+        selected:
+          type: array
+          items:
+            type: integer
+            format: int64
+        correct_answer:
+          type: array
+          items:
+            type: integer
+            format: int64
+        correct:
+          type: boolean
+        first_attempt:
+          type: boolean
+        prior_exposure:
+          type: boolean
+        opened_at_ms:
+          type: integer
+          format: int64
+        answered_at_ms:
+          type: integer
+          format: int64
+    AttemptResult:
+      type: object
+      additionalProperties: false
+      required:
+        - attempt
+        - detail
+      properties:
+        attempt:
+          $ref: '#/components/schemas/Attempt'
+        detail:
+          $ref: '#/components/schemas/QuestionDetail'
+    Rate:
+      type: object
+      additionalProperties: false
+      required:
+        - attempts
+        - correct
+        - accuracy
+      properties:
+        attempts:
+          type: integer
+          format: int64
+        correct:
+          type: integer
+          format: int64
+        accuracy:
+          type:
+            - number
+            - 'null'
+    ChapterAnalysis:
+      type: object
+      additionalProperties: false
+      required:
+        - chapter_id
+        - chapter_name
+        - total
+        - attempts
+        - wrong_attempts
+        - unique_questions
+        - latest_incorrect
+        - improved_questions
+        - error_rate
+        - recent_accuracy
+      properties:
+        chapter_id:
+          type: integer
+          format: int64
+        chapter_name:
+          type: string
+        total:
+          type: integer
+          format: int64
+        attempts:
+          type: integer
+          format: int64
+        wrong_attempts:
+          type: integer
+          format: int64
+        unique_questions:
+          type: integer
+          format: int64
+        latest_incorrect:
+          type: integer
+          format: int64
+        improved_questions:
+          type: integer
+          format: int64
+        error_rate:
+          type:
+            - number
+            - 'null'
+        recent_accuracy:
+          type:
+            - number
+            - 'null'
+    DailyAnalysis:
+      type: object
+      additionalProperties: false
+      required:
+        - day
+        - attempts
+        - correct
+      properties:
+        day:
+          type: string
+        attempts:
+          type: integer
+          format: int64
+        correct:
+          type: integer
+          format: int64
+    PeriodComparison:
+      type: object
+      additionalProperties: false
+      required:
+        - current
+        - previous
+        - change_pp
+      properties:
+        current:
+          $ref: '#/components/schemas/Rate'
+        previous:
+          $ref: '#/components/schemas/Rate'
+        change_pp:
+          type:
+            - number
+            - 'null'
+    ScoreForecast:
+      type: object
+      additionalProperties: false
+      required:
+        - score
+        - status
+        - sample_questions
+        - missing_chapters
+        - basis
+        - minimum_questions
+      properties:
+        score:
+          type:
+            - number
+            - 'null'
+        status:
+          type: string
+        sample_questions:
+          type: integer
+          format: int64
+        missing_chapters:
+          type: integer
+          format: int64
+        basis:
+          type: string
+        minimum_questions:
+          type: integer
+          format: int64
+    Analysis:
+      type: object
+      additionalProperties: false
+      required:
+        - subject_id
+        - window_days
+        - as_of_ms
+        - since_ms
+        - total_questions
+        - unique_questions
+        - coverage
+        - overall
+        - first
+        - repeat
+        - prior_exposure_attempts
+        - latest_incorrect
+        - improved_questions
+        - recent_accuracy
+        - half_life_days
+        - last_attempt_ms
+        - comparison
+        - chapters
+        - trend
+        - trend_days
+        - forecast
+        - advice
+        - recent_attempts
+      properties:
+        subject_id:
+          type: integer
+          format: int64
+        window_days:
+          type: integer
+          format: int64
+        as_of_ms:
+          type: integer
+          format: int64
+        since_ms:
+          type:
+            - integer
+            - 'null'
+          format: int64
+        total_questions:
+          type: integer
+          format: int64
+        unique_questions:
+          type: integer
+          format: int64
+        coverage:
+          type: number
+        overall:
+          $ref: '#/components/schemas/Rate'
+        first:
+          $ref: '#/components/schemas/Rate'
+        repeat:
+          $ref: '#/components/schemas/Rate'
+        prior_exposure_attempts:
+          type: integer
+          format: int64
+        latest_incorrect:
+          type: integer
+          format: int64
+        improved_questions:
+          type: integer
+          format: int64
+        recent_accuracy:
+          type:
+            - number
+            - 'null'
+        half_life_days:
+          type: integer
+          format: int64
+        last_attempt_ms:
+          type:
+            - integer
+            - 'null'
+          format: int64
+        comparison:
+          $ref: '#/components/schemas/PeriodComparison'
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChapterAnalysis'
+        trend:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyAnalysis'
+        trend_days:
+          type: integer
+          format: int64
+        forecast:
+          $ref: '#/components/schemas/ScoreForecast'
+        advice:
+          type: array
+          items:
+            type: string
+        recent_attempts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attempt'
+    ReviewBook:
+      type: object
+      required: [subject_id, as_of_ms, items]
+      properties:
+        subject_id: { type: integer, enum: [1, 4] }
+        as_of_ms: { type: integer, format: int64 }
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewItem'
+    ReviewItem:
+      type: object
+      required: [question_id, title, chapter_name, practice_errors, exam_errors, help_requests, confirmations, score, status]
+      properties:
+        question_id: { type: integer, format: int64 }
+        title: { type: string }
+        chapter_name: { type: string }
+        practice_errors: { type: integer, minimum: 0 }
+        exam_errors: { type: integer, minimum: 0 }
+        help_requests: { type: integer, minimum: 0 }
+        confirmations: { type: integer, minimum: 0, maximum: 5 }
+        score: { type: integer, minimum: 0, maximum: 100 }
+        status: { type: string, enum: [needs_review, learning, due, mastered] }
+        last_answered_at_ms: { type: integer, format: int64 }
+        last_correct: { type: boolean }
+        next_review_at_ms: { type: integer, format: int64 }
+    PracticeState:
+      type: string
+      enum:
+        - unanswered
+        - correct
+        - incorrect
+    PracticeSummary:
+      type: object
+      properties:
+        question_id: &ref_7
+          type: integer
+          format: int64
+        source_item_id: { type: string }
+        title: &ref_8
+          type: string
+        question_type: *ref_7
+        chapter_id: *ref_7
+        chapter_name: *ref_8
+        difficulty: *ref_7
+        state:
+          $ref: '#/components/schemas/PracticeState'
+      required:
+        - question_id
+        - title
+        - question_type
+        - chapter_id
+        - chapter_name
+        - difficulty
+        - state
+    PalaceInfo:
+      type: object
+      required:
+        - ready
+        - models
+        - default_model
+        - proxy_enabled
+        - message
+        - template_id
+        - template_version
+      properties:
+        ready:
+          type: boolean
+        models:
+          type: array
+          items:
+            type: string
+        default_model:
+          type: string
+        proxy_enabled:
+          type: boolean
+        message:
+          type: string
+        template_id:
+          type: string
+        template_version:
+          type: string
+    PalaceSettings:
+      type: object
+      required:
+        - model
+        - size
+        - quality
+        - palace_address
+        - use_reference
+      properties:
+        plan_id:
+          type: string
+          format: uuid
+        model:
+          type: string
+        size:
+          type: string
+          enum:
+            - 720x1280
+            - 1152x2048
+            - 2160x3840
+            - 672x1008
+            - 1376x2064
+            - 2336x3504
+            - 1024x1536
+        quality:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+        palace_address:
+          type: string
+        use_reference:
+          type: boolean
+        aspect_ratio:
+          type: string
+          enum:
+            - '9:16'
+            - '2:3'
+        resolution:
+          type: string
+          enum:
+            - 1k
+            - 2k
+            - 4k
+        generation_mode:
+          type: string
+          enum:
+            - direct
+            - pipeline
+        llm:
+          $ref: '#/components/schemas/LLMParameters'
+    PalaceCreate:
+      type: object
+      required:
+        - id
+        - question_id
+        - model
+        - size
+        - quality
+        - palace_address
+        - use_reference
+      properties:
+        id:
+          type: string
+          format: uuid
+        question_id:
+          type: integer
+          format: int64
+        model:
+          type: string
+        size:
+          type: string
+          enum:
+            - 720x1280
+            - 1152x2048
+            - 2160x3840
+            - 672x1008
+            - 1376x2064
+            - 2336x3504
+            - 1024x1536
+        quality:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+        palace_address:
+          type: string
+        use_reference:
+          type: boolean
+        aspect_ratio:
+          type: string
+          enum:
+            - '9:16'
+            - '2:3'
+        resolution:
+          type: string
+          enum:
+            - 1k
+            - 2k
+            - 4k
+    PalacePreviewInput:
+      type: object
+      required:
+        - question_id
+        - palace_address
+      properties:
+        plan_id:
+          type: string
+          format: uuid
+        question_id:
+          type: integer
+          format: int64
+        palace_address:
+          type: string
+    PalacePreview:
+      type: object
+      required:
+        - question_id
+        - prompt
+        - template_id
+        - template_version
+        - reference_available
+      properties:
+        question_id:
+          type: integer
+          format: int64
+        prompt:
+          type: string
+        template_id:
+          type: string
+        template_version:
+          type: string
+        reference_available:
+          type: boolean
+        ai_profile_version:
+          $ref: '#/components/schemas/AIProfileVersion'
+    AIProfileVersion:
+      type: object
+      required: [course_id, course_version]
+      properties:
+        course_id: { type: string }
+        course_version: { type: string }
+    PalaceSnapshot:
+      type: object
+      required:
+        - question
+        - settings
+        - prompt
+        - template_id
+        - template_version
+        - reference_hash
+      properties:
+        retry_of:
+          type: string
+          description: Source job whose exact final prompt is reused for this image attempt
+        question:
+          $ref: '#/components/schemas/Question'
+        settings:
+          $ref: '#/components/schemas/PalaceSettings'
+        prompt:
+          type: string
+        template_id:
+          type: string
+        template_version:
+          type: string
+        reference_hash:
+          type: string
+        pipeline:
+          $ref: '#/components/schemas/PalacePipeline'
+        ai_profile_version:
+          $ref: '#/components/schemas/AIProfileVersion'
+    PalaceUsage:
+      type: object
+      required:
+        - input_tokens
+        - output_tokens
+        - total_tokens
+      properties:
+        input_tokens:
+          type: integer
+          format: int64
+        output_tokens:
+          type: integer
+          format: int64
+        total_tokens:
+          type: integer
+          format: int64
+    PalaceImage:
+      type: object
+      required:
+        - filename
+        - content_type
+        - width
+        - height
+        - bytes
+        - sha256
+        - usage
+      properties:
+        filename:
+          type: string
+        content_type:
+          type: string
+        width:
+          type: integer
+          format: int64
+        height:
+          type: integer
+          format: int64
+        bytes:
+          type: integer
+          format: int64
+        sha256:
+          type: string
+        usage:
+          $ref: '#/components/schemas/PalaceUsage'
+    PalaceFailure:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        parameter:
+          type: string
+        operation:
+          type: string
+          enum:
+            - response
+            - input_count
+            - compaction
+            - compaction_v2
+    PalaceJob:
+      type: object
+      required:
+        - can_retry_image
+        - id
+        - question_id
+        - subject_id
+        - status
+        - created_at_ms
+        - updated_at_ms
+        - snapshot
+      properties:
+        can_retry_image:
+          type: boolean
+        id:
+          type: string
+        question_id:
+          type: integer
+          format: int64
+        subject_id:
+          type: integer
+          format: int64
+        status:
+          type: string
+          enum:
+            - queued
+            - running
+            - pausing
+            - paused
+            - succeeded
+            - failed
+            - canceled
+            - interrupted
+        created_at_ms:
+          type: integer
+          format: int64
+        updated_at_ms:
+          type: integer
+          format: int64
+        snapshot:
+          $ref: '#/components/schemas/PalaceSnapshot'
+        image:
+          $ref: '#/components/schemas/PalaceImage'
+        error:
+          $ref: '#/components/schemas/PalaceFailure'
+    ProviderSettings:
+      type: object
+      required:
+        - base_url
+        - models
+        - proxy_url
+        - proxy_auth_configured
+        - key_configured
+        - storage
+        - write_token
+        - ready
+        - message
+      properties:
+        base_url:
+          type: string
+        models:
+          type: array
+          items:
+            type: string
+        proxy_url:
+          type: string
+        proxy_auth_configured:
+          type: boolean
+        key_configured:
+          type: boolean
+        storage:
+          type: string
+        write_token:
+          type: string
+        ready:
+          type: boolean
+        message:
+          type: string
+    ProviderUpdate:
+      type: object
+      required:
+        - base_url
+        - models
+        - proxy_url
+        - clear_key
+        - reuse_key
+      properties:
+        base_url:
+          type: string
+        models:
+          type: array
+          items:
+            type: string
+        proxy_url:
+          type: string
+        api_key:
+          type: string
+        clear_key:
+          type: boolean
+        reuse_key:
+          type: boolean
+    ProviderConnection:
+      type: object
+      required:
+        - connected
+        - available_models
+        - message
+      properties:
+        connected:
+          type: boolean
+        available_models:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+    PalaceCoverage:
+      type: object
+      required:
+        - question_id
+        - image_count
+        - latest_job_id
+      properties:
+        question_id:
+          type: integer
+          format: int64
+        image_count:
+          type: integer
+          format: int64
+        latest_job_id:
+          type: string
+          format: uuid
+    SavedChatMessage:
+      type: object
+      required: [id, role, text, status, search_used, created_at_ms]
+      properties:
+        id: { type: string }
+        role: { type: string, enum: [user, assistant] }
+        text: { type: string }
+        status: { type: string, enum: [running, completed, failed, interrupted] }
+        search_used: { type: boolean }
+        created_at_ms: { type: integer, format: int64 }
+        error: { type: string }
+        ai_profile_version:
+          $ref: '#/components/schemas/AIProfileVersion'
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/LLMSource'
+    ConversationRecord:
+      type: object
+      required: [id, question_id, title, messages, active_turn_id, revision, created_at_ms, updated_at_ms]
+      properties:
+        id: { type: string, format: uuid }
+        question_id: { type: integer, format: int64 }
+        title: { type: string }
+        active_turn_id: { type: string }
+        revision: { type: integer, format: int64 }
+        created_at_ms: { type: integer, format: int64 }
+        updated_at_ms: { type: integer, format: int64 }
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedChatMessage'
+    ConversationSummary:
+      type: object
+      required: [id, question_id, title, message_count, active_turn_id, updated_at_ms, subject_id, question_title]
+      properties:
+        id: { type: string, format: uuid }
+        question_id: { type: integer, format: int64 }
+        title: { type: string }
+        message_count: { type: integer }
+        active_turn_id: { type: string }
+        updated_at_ms: { type: integer, format: int64 }
+        subject_id: { type: integer, format: int64 }
+        question_title: { type: string }
+    ConversationCoverage:
+      type: object
+      required: [question_id, conversation_count]
+      properties:
+        question_id: { type: integer, format: int64 }
+        conversation_count: { type: integer, minimum: 1 }
+    ConversationPage:
+      type: object
+      required: [items, next_cursor]
+      properties:
+        next_cursor: { type: string }
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConversationSummary'
+    QuestionChatMessage:
+      type: object
+      additionalProperties: false
+      required: [role, text]
+      properties:
+        role:
+          type: string
+          enum: [user, assistant]
+        text:
+          type: string
+          minLength: 1
+          maxLength: 8000
+          description: User messages have a stricter 2000-character limit
+    QuestionChatInput:
+      type: object
+      additionalProperties: false
+      required: [question_id, messages]
+      properties:
+        question_id:
+          type: integer
+          format: int64
+          minimum: 1
+        messages:
+          type: array
+          minItems: 1
+          maxItems: 24
+          description: Last message must be user; combined text at most 32000 characters
+          items:
+            $ref: '#/components/schemas/QuestionChatMessage'
+    QuestionChatEvent:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [status, delta, done, error]
+        text:
+          type: string
+        search_used:
+          type: boolean
+        sources:
+          type: array
+          maxItems: 12
+          items:
+            $ref: '#/components/schemas/LLMSource'
+    LLMParameters:
+      type: object
+      additionalProperties: false
+      properties:
+        model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+          deprecated: true
+          description: Compatibility field. The UI derives this allowance from compact_reserve_k.
+        context_budget_k: &ref_9
+          type: integer
+          minimum: 32
+          maximum: 2048
+          default: 274
+        compact_threshold_k: &ref_10
+          type: integer
+          minimum: 16
+          default: 210
+        compact_reserve_k: &ref_11
+          type: integer
+          minimum: 1
+          maximum: 256
+          default: 64
+        web_search: &ref_12
+          type: string
+          enum:
+            - required
+            - 'off'
+          default: required
+      required:
+        - model
+        - reasoning_effort
+        - max_output_tokens_k
+    LLMInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        ready:
+          type: boolean
+        models:
+          type: array
+          items:
+            type: string
+        default_model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+        efforts:
+          type: array
+          items:
+            type: string
+            enum:
+              - default
+              - none
+              - minimal
+              - low
+              - medium
+              - high
+              - xhigh
+              - max
+        message:
+          type: string
+        context_budget_k: *ref_9
+        compact_threshold_k: *ref_10
+        compact_reserve_k: *ref_11
+        web_search: *ref_12
+      required:
+        - ready
+        - models
+        - default_model
+        - reasoning_effort
+        - max_output_tokens_k
+        - efforts
+        - message
+    LLMProviderSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        base_url:
+          type: string
+        models:
+          type: array
+          items:
+            type: string
+        proxy_url:
+          type: string
+        proxy_auth_configured:
+          type: boolean
+        key_configured:
+          type: boolean
+        storage:
+          type: string
+        write_token:
+          type: string
+        ready:
+          type: boolean
+        default_model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+        efforts:
+          type: array
+          items:
+            type: string
+            enum:
+              - default
+              - none
+              - minimal
+              - low
+              - medium
+              - high
+              - xhigh
+              - max
+        message:
+          type: string
+        context_budget_k: *ref_9
+        compact_threshold_k: *ref_10
+        compact_reserve_k: *ref_11
+        web_search: *ref_12
+      required:
+        - base_url
+        - models
+        - proxy_url
+        - proxy_auth_configured
+        - key_configured
+        - storage
+        - write_token
+        - ready
+        - default_model
+        - reasoning_effort
+        - max_output_tokens_k
+        - efforts
+        - message
+    LLMProviderUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        base_url:
+          type: string
+        models:
+          type: array
+          items:
+            type: string
+        proxy_url:
+          type: string
+        default_model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+          deprecated: true
+          description: Compatibility field. The UI derives this allowance from compact_reserve_k.
+        api_key:
+          type: string
+        clear_key:
+          type: boolean
+        reuse_key:
+          type: boolean
+        context_budget_k: *ref_9
+        compact_threshold_k: *ref_10
+        compact_reserve_k: *ref_11
+        web_search: *ref_12
+      required:
+        - base_url
+        - models
+        - proxy_url
+        - default_model
+        - reasoning_effort
+        - max_output_tokens_k
+        - clear_key
+        - reuse_key
+    LLMPlanInput:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        question_id:
+          type: integer
+          format: int64
+        palace_address:
+          type: string
+        model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+        context_budget_k: *ref_9
+        compact_threshold_k: *ref_10
+        compact_reserve_k: *ref_11
+        web_search: *ref_12
+      required:
+        - id
+        - question_id
+        - palace_address
+        - model
+        - reasoning_effort
+        - max_output_tokens_k
+    LLMPlan:
+      type: object
+      additionalProperties: false
+      required:
+        - title
+        - scene
+        - anchors
+        - pitfalls
+        - image_prompt
+      properties:
+        title:
+          type: string
+        scene:
+          type: string
+        anchors:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required:
+              - cue
+              - meaning
+            properties:
+              cue:
+                type: string
+              meaning:
+                type: string
+        pitfalls:
+          type: array
+          items:
+            type: string
+        image_prompt:
+          type: string
+        research:
+          type: object
+          additionalProperties: false
+          required:
+            - status
+            - explanation
+            - sources
+          properties:
+            status:
+              type: string
+              enum:
+                - supported
+                - conflict
+                - insufficient
+                - not_requested
+            explanation:
+              type: string
+            sources:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required:
+                  - url
+                  - title
+                  - claim
+                properties:
+                  url:
+                    type: string
+                  title:
+                    type: string
+                  claim:
+                    type: string
+    LLMPlanRecord:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        question_id:
+          type: integer
+          format: int64
+        palace_address:
+          type: string
+        model:
+          type: string
+        reasoning_effort:
+          type: string
+          enum:
+            - default
+            - none
+            - minimal
+            - low
+            - medium
+            - high
+            - xhigh
+            - max
+        max_output_tokens_k:
+          type: integer
+          minimum: 1
+          maximum: 128
+        status:
+          type: string
+          enum:
+            - running
+            - paused
+            - succeeded
+            - failed
+            - interrupted
+        source_prompt:
+          type: string
+        ai_profile_version:
+          $ref: '#/components/schemas/AIProfileVersion'
+        plan:
+          $ref: '#/components/schemas/LLMPlan'
+        usage:
+          $ref: '#/components/schemas/PalaceUsage'
+        error:
+          $ref: '#/components/schemas/PalaceFailure'
+        created_at_ms:
+          type: integer
+        updated_at_ms:
+          type: integer
+        context_budget_k: *ref_9
+        compact_threshold_k: *ref_10
+        compact_reserve_k: *ref_11
+        web_search: *ref_12
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/LLMImageReference'
+        session:
+          $ref: '#/components/schemas/LLMSession'
+      required:
+        - id
+        - question_id
+        - palace_address
+        - model
+        - reasoning_effort
+        - max_output_tokens_k
+        - status
+        - source_prompt
+        - usage
+        - created_at_ms
+        - updated_at_ms
+    PalacePipeline:
+      type: object
+      additionalProperties: false
+      required:
+        - stage
+        - plan_id
+        - llm_usage
+      properties:
+        stage:
+          type: string
+          enum:
+            - planning
+            - generating
+        plan_id:
+          type: string
+          format: uuid
+        llm_usage:
+          $ref: '#/components/schemas/PalaceUsage'
+    LLMSource:
+      type: object
+      required:
+        - url
+        - title
+      properties:
+        url:
+          type: string
+        title:
+          type: string
+    LLMSession:
+      type: object
+      required:
+        - rounds
+        - compactions
+        - searches
+        - phase
+        - context_tokens
+        - sources
+        - usage
+      properties:
+        evidence_gap:
+          type: string
+        research_rounds:
+          type: integer
+        page_opens:
+          type: integer
+        page_finds:
+          type: integer
+        rounds:
+          type: integer
+        compactions:
+          type: integer
+        searches:
+          type: integer
+        phase:
+          type: string
+        context_tokens:
+          type: integer
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/LLMSource'
+        usage:
+          $ref: '#/components/schemas/PalaceUsage'
+        compaction_method:
+          type: string
+          enum:
+            - ''
+            - native
+            - codex_v2
+            - summary
+        search_protocol:
+          type: string
+    LLMImageReference:
+      type: object
+      required:
+        - sha256
+        - content_type
+        - bytes
+        - frame
+        - total_frames
+      properties:
+        sha256:
+          type: string
+        content_type:
+          type: string
+        bytes:
+          type: integer
+        frame:
+          type: integer
+        total_frames:
+          type: integer
+    TaskSummary:
+      type: object
+      required: [can_retry_image, id, question_id, subject_id, title, status, stage, model, created_at_ms, updated_at_ms]
+      properties:
+        can_retry_image:
+          type: boolean
+        id:
+          type: string
+        question_id:
+          type: integer
+        subject_id:
+          type: integer
+        title:
+          type: string
+        status:
+          type: string
+          enum: [queued, running, pausing, paused, succeeded, failed, canceled, interrupted]
+        stage:
+          type: string
+        model:
+          type: string
+        created_at_ms:
+          type: integer
+        updated_at_ms:
+          type: integer
+        error:
+          $ref: '#/components/schemas/PalaceFailure'
+    TaskPage:
+      type: object
+      required: [tasks, next_cursor]
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskSummary'
+        next_cursor:
+          type: string
+    TaskEvent:
+      type: object
+      required: [id, kind, from_state, to_state, created_at_ms]
+      properties:
+        id:
+          type: integer
+        kind:
+          type: string
+        from_state:
+          type: string
+        to_state:
+          type: string
+        created_at_ms:
+          type: integer
+    TraceEvent:
+      type: object
+      required: [id, span_id, parent_id, kind, label, type, status, origin, content, observed_at_ms]
+      properties:
+        id:
+          type: integer
+          format: int64
+        span_id:
+          type: string
+        parent_id:
+          type: string
+        kind:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+          enum: [start, delta, end, note]
+        status:
+          type: string
+        origin:
+          type: string
+          enum: [application, stream, response]
+        content:
+          type: string
+        observed_at_ms:
+          type: integer
+          format: int64
+    TracePage:
+      type: object
+      required: [events, cursor, has_more, limited, status]
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraceEvent'
+        cursor:
+          type: integer
+          format: int64
+        has_more:
+          type: boolean
+        limited:
+          type: boolean
+        status:
+          type: string
+    ImageRetryInput:
+      type: object
+      additionalProperties: false
+      required: [id]
+      properties:
+        id:
+          type: string
+          format: uuid
+        model:
+          type: string
+        aspect_ratio:
+          type: string
+          enum: ['9:16', '2:3']
+        resolution:
+          type: string
+          enum: [1k, 2k, 4k]
+        quality:
+          type: string
+          enum: [low, medium, high]
+    ExamTypeQuota:
+      type: object
+      additionalProperties: false
+      required: [question_type, name, count]
+      properties:
+        question_type:
+          type: integer
+          enum: [1, 2, 3]
+        name:
+          type: string
+        count:
+          type: integer
+          minimum: 1
+    ExamTopicQuota:
+      type: object
+      additionalProperties: false
+      required: [name, count]
+      properties:
+        name:
+          type: string
+        count:
+          type: integer
+          minimum: 1
+    ExamRuleSource:
+      type: object
+      additionalProperties: false
+      required: [title, url]
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+          format: uri
+    ExamBlueprint:
+      type: object
+      additionalProperties: false
+      required: [scope, content_alignment, types, topics, sources]
+      properties:
+        scope:
+          type: string
+        content_alignment:
+          type: string
+          enum: [unverified]
+          description: Topic and local classification is not verified; topics are targets, not sampled counts.
+        types:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExamTypeQuota'
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExamTopicQuota'
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExamRuleSource'
+    ExamRule:
+      type: object
+      additionalProperties: false
+      required: [subject_id, count, minutes, points, pass_score, version]
+      properties:
+        subject_id:
+          type: integer
+        count:
+          type: integer
+        minutes:
+          type: integer
+        points:
+          type: integer
+        pass_score:
+          type: integer
+        version:
+          type: string
+        blueprint:
+          description: Absent in historical papers created before type-quota alignment.
+          $ref: '#/components/schemas/ExamBlueprint'
+    ExamNavigateInput:
+      type: object
+      additionalProperties: false
+      required: [from_index, to_index, selected]
+      properties:
+        from_index:
+          type: integer
+          minimum: 0
+        to_index:
+          type: integer
+          minimum: 0
+        selected:
+          type: array
+          uniqueItems: true
+          maxItems: 4
+          description: Empty skips the current question; otherwise commits and locks it before moving.
+          items:
+            type: integer
+    ExamItem:
+      type: object
+      additionalProperties: false
+      required: [detail, selected, answered, flagged]
+      properties:
+        numeric: { type: string }
+        detail:
+          $ref: '#/components/schemas/PracticeDetail'
+        selected:
+          type: array
+          uniqueItems: true
+          items:
+            type: integer
+        answered:
+          type: boolean
+        flagged:
+          type: boolean
+        correct:
+          type: boolean
+          description: Present only after this item is committed or the paper is finished.
+        review:
+          $ref: '#/components/schemas/Question'
+    ExamSession:
+      type: object
+      additionalProperties: false
+      required: [id, subject_id, status, rule, started_at_ms, deadline_at_ms, server_now_ms, finished_at_ms, reason, current_index, items]
+      properties:
+        id:
+          type: string
+          format: uuid
+        subject_id:
+          type: integer
+        status:
+          type: string
+          enum: [in_progress, finished]
+        rule:
+          $ref: '#/components/schemas/ExamRule'
+        started_at_ms:
+          type: integer
+        deadline_at_ms:
+          type: integer
+        server_now_ms:
+          type: integer
+        finished_at_ms:
+          type: integer
+        reason:
+          type: string
+        score:
+          type: integer
+        current_index:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExamItem'
+    ExamSummary:
+      type: object
+      additionalProperties: false
+      required: [id, subject_id, status, started_at_ms, finished_at_ms, reason, answered, total]
+      properties:
+        id:
+          type: string
+          format: uuid
+        subject_id:
+          type: integer
+        status:
+          type: string
+          enum: [in_progress, finished]
+        started_at_ms:
+          type: integer
+        finished_at_ms:
+          type: integer
+        reason:
+          type: string
+        score:
+          type: integer
+        answered:
+          type: integer
+        total:
+          type: integer
+    ExamCreate:
+      type: object
+      additionalProperties: false
+      required: [id, subject_id]
+      properties:
+        id:
+          type: string
+          format: uuid
+        subject_id:
+          type: integer
+    ExamAnswerInput:
+      type: object
+      additionalProperties: false
+      required: [index, selected]
+      properties:
+        index:
+          type: integer
+          minimum: 0
+          maximum: 99
+        selected:
+          type: array
+          uniqueItems: true
+          items:
+            type: integer
+    ExamMoveInput:
+      type: object
+      additionalProperties: false
+      required: [index]
+      properties:
+        index:
+          type: integer
+          minimum: 0
+          maximum: 99
+        flagged:
+          type: boolean
+    EmptyRequest:
+      type: object
+      additionalProperties: false

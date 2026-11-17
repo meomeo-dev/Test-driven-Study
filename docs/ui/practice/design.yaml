@@ -1,0 +1,42 @@
+topic: practice
+created: '2026-11-01'
+themes: ../themes/design.yaml
+question_context: ../study-context/design.yaml
+source:
+  directory: web/src/features/memorization
+  commit: 5b31d00
+  method: filesystem_copy_then_targeted_changes
+  copied_source_files: 14
+layout:
+  viewport: fixed_100dvh
+  reading_lane_max_width: 820px
+  text_question_flow: [stem, selectable_options, actions]
+  wide_image_question_columns: [question_and_image, selectable_options]
+  overflow: full_task_scrolls_in_reading_lane
+  explanation_before_submission: absent
+  explanation_after_submission: below_actions_on_wide_screens
+  small_screen: stacked_task_and_analysis_dialog
+  assistant_entry: compact_toolbar_button
+  navigation: copied_continuous_floating_drawer_with_hundred_question_index
+  footer: directly_after_options_within_reading_lane
+  footer_left: existing_previous_next_pair
+  footer_right_before_grading: submit
+  footer_right_after_grading: [retry, next]
+  footer_primary_target: stable_submit_then_next
+interaction:
+  option_keys: [1, 2, 3, 4]
+  submit: Enter
+  next_after_grading: Enter
+  repeat: r
+  multiple_choice: exact_set_after_explicit_submit
+  result: server_graded_and_persisted_before_reveal
+  history: append_only
+  before_answer_full_view: public_question_and_plain_options_only
+  printable_shortcuts: persistent_off_switch
+acceptance:
+  - No answer or explanation properties in public presentations.
+  - No correct-option annotation or original explanation before grading.
+  - Correct, incorrect, multi-select, retry, and navigation flows work.
+  - Dialog focus does not override a numeric selection made after closing.
+  - Existing memorization behavior and local images remain functional.
+  - Personal learning records are excluded from acceptance tests.

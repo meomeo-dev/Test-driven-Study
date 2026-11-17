@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F3F8FD" />
+    <script>
+      // Set the stored theme before paint; keep the key aligned with ThemeProvider.
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem('test-driven-study.theme') === 'dark' ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+      document.querySelector('meta[name="theme-color"]').content =
+        document.documentElement.dataset.theme === 'dark' ? '#0D1726' : '#F3F8FD';
+    </script>
+    <meta name="description" content="本地课程学习、练习与复习。" />
+    <title>Test-driven Study · 课程学习</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/web/src/main.tsx"></script>
+  </body>
+</html>

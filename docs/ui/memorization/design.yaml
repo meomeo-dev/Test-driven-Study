@@ -1,0 +1,76 @@
+topic: memorization
+revision: 4
+status: implementation_reference
+created: '2026-11-01'
+original_image: mockup-desktop.png
+current_desktop: implemented-desktop.png
+current_mobile: implemented-mobile.png
+purpose: Read original questions and answers, then record recall.
+locale: zh-CN
+themes: ../themes/design.yaml
+question_context: ../study-context/design.yaml
+layout:
+  viewport: fixed_100dvh
+  document_scrolling: disabled
+  sidebar_desktop_px: 152
+  sidebar_medium_px: 136
+  sidebar_compact_px: 64
+  subject_controls: left_memorization_submenu
+  heading: screen_reader_only
+  removed: [breadcrumbs, large_heading, slogan, decorative_notes]
+  primary_columns: [question_and_original_image, options_and_answers, explanation]
+  primary_column_ratio: '1:1:1'
+  primary_column_height: bounded_remaining_workspace
+  footer: fixed_within_question_card
+  save_notice: reserved_height
+  permanent_right_sidebar: false
+  navigation_control: toolbar
+  navigation_default: collapsed
+  navigation_open: floating_right_drawer
+  navigation_width_px: 420
+  navigation_reserves_layout_space: false
+  explanation_dialog_at_or_below_px: 900
+  sidebar_rail_at_or_below_px: 900
+  stacked_primary_at_or_below_px: 650
+  local_overflow: bounded_question_columns_and_modal_body
+  border_radius_px: 10
+behavior:
+  default_subject: 1
+  answer_visibility: always_visible_in_memorization_mode
+  order: original_import_order
+  progress_states: [unlearned, review, mastered]
+  filters: [subject, chapter, progress_state, question_text_or_id]
+  persistence: SQLite_progress_and_last_viewed_question
+  keyboard_source: web/src/features/memorization/shortcuts.ts
+  keyboard_reference: keyboard.md
+  keyboard_preference: persistent_single_character_shortcut_toggle
+  question_navigation:
+    order: current_filtered_list
+    list: continuous_question_number_grid
+    columns: 6
+    pagination: false
+    index: vertical_line_and_dots
+    index_step: 100
+    extra_index_points: [first, last]
+    jump: scroll_local_list_without_selecting
+    selection: open_question_and_collapse_drawer
+    reopen: position_and_focus_current_question
+    dismissal: [toolbar_toggle, close_button, Escape, outside_click]
+    keyboard: arrows_Home_End_Enter
+  explanation: full_text_in_third_desktop_column
+  tertiary_information: full_question_analysis_and_metadata_dialog_tabs
+  full_text: original_unabridged_content_in_detail_dialog
+  missing_image: explicit_source_image_missing_message
+  future_navigation: disabled
+acceptance:
+  - No document or outer workspace overflow at supported viewport sizes.
+  - Desktop question length does not move the answer/explanation columns or footer.
+  - Navigation opens over the page without changing primary panel dimensions.
+  - All filtered question numbers remain in one continuous local scroll list.
+  - Hundred-question index jumps leave the current question unchanged.
+  - Save notices do not change available reading height.
+  - Original question and option content remains accessible in full.
+  - Subjects switch from the left memorization submenu.
+  - Character shortcuts protect editing, IME, modifiers, and active dialogs.
+  - Dialogs restore focus; tab lists use standard keyboard interactions.
+  - Tests use disposable SQLite data and preserve personal study progress.

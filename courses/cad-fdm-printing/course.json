@@ -1,0 +1,469 @@
+{
+  "protocol_version": 1,
+  "course_id": "cad-fdm-printing",
+  "version": "1.1.0",
+  "title": "参数化建模与 3D 打印",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "参数化建模基础",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "参数化建模基础",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "cad-workflow",
+          "title": "参数化建模流程",
+          "summary": "草图到特征到零件的流程，特征历史树，设计意图，修改尺寸后模型自动更新",
+          "estimated_minutes": 60,
+          "lesson": "intro"
+        },
+        {
+          "id": "sketch-geometry",
+          "title": "草图与几何元素",
+          "summary": "草图平面，直线、圆、圆弧、矩形，构造线，闭合轮廓",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "cad-workflow"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sketch-constraints",
+          "title": "几何约束",
+          "summary": "重合、水平、竖直、平行、垂直、相切、同心、对称、相等约束",
+          "estimated_minutes": 80,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sketch-geometry"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dimension-constraints",
+          "title": "尺寸约束与完全约束",
+          "summary": "线性、直径、角度尺寸，欠约束、完全约束与过约束，自由度",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "sketch-constraints"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "title": "特征建模",
+      "question_file": "questions/features.json",
+      "lessons": [
+        {
+          "id": "features",
+          "title": "特征建模",
+          "file": "lessons/features.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "extrude-revolve",
+          "title": "拉伸与旋转",
+          "summary": "拉伸长度与方向，拉伸切除，旋转特征与旋转轴",
+          "estimated_minutes": 70,
+          "lesson": "features",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dimension-constraints"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "holes-patterns",
+          "title": "孔特征与阵列",
+          "summary": "简单孔、沉头孔、螺纹底孔，线性阵列与圆周阵列，孔位定位",
+          "estimated_minutes": 70,
+          "lesson": "features",
+          "prerequisites": [
+            {
+              "all_of": [
+                "extrude-revolve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fillets-chamfers",
+          "title": "圆角、倒角与抽壳",
+          "summary": "圆角与倒角的作用，抽壳与壁厚，特征顺序的影响",
+          "estimated_minutes": 60,
+          "lesson": "features",
+          "prerequisites": [
+            {
+              "all_of": [
+                "extrude-revolve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "parameters-equations",
+          "title": "参数表与设计变更",
+          "summary": "命名参数与表达式，孔距等关键尺寸驱动模型，修改参数验证设计意图",
+          "estimated_minutes": 70,
+          "lesson": "features",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dimension-constraints"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "assembly-drawings",
+      "title": "装配与工程图",
+      "question_file": "questions/assembly-drawings.json",
+      "lessons": [
+        {
+          "id": "assembly-drawings",
+          "title": "装配与工程图",
+          "file": "lessons/assembly-drawings.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "datums-references",
+          "title": "基准面与参考几何",
+          "summary": "基准面、基准轴、基准点，偏移平面，以设计基准建模",
+          "estimated_minutes": 60,
+          "lesson": "assembly-drawings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "extrude-revolve"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "assembly-mates",
+          "title": "装配与配合约束",
+          "summary": "固定零件，重合、同轴、距离配合，干涉检查",
+          "estimated_minutes": 70,
+          "lesson": "assembly-drawings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "datums-references"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "drawings-export",
+          "title": "工程图与文件导出",
+          "summary": "三视图与尺寸标注，STEP、STL、3MF 格式的用途，导出精度",
+          "estimated_minutes": 60,
+          "lesson": "assembly-drawings",
+          "prerequisites": [
+            {
+              "all_of": [
+                "holes-patterns"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fdm-basics",
+      "title": "FDM 原理与材料",
+      "question_file": "questions/fdm-basics.json",
+      "lessons": [
+        {
+          "id": "fdm-basics",
+          "title": "FDM 原理与材料",
+          "file": "lessons/fdm-basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "fdm-process",
+          "title": "FDM 工作原理",
+          "summary": "挤出机、热端、喷嘴、热床，逐层堆积，挤出线宽与层高",
+          "estimated_minutes": 60,
+          "lesson": "fdm-basics"
+        },
+        {
+          "id": "materials",
+          "title": "常用材料与选用",
+          "summary": "PLA、PETG、ABS、TPU 的打印温度、强度、耐热与收缩，受潮",
+          "estimated_minutes": 65,
+          "lesson": "fdm-basics",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fdm-process"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "printer-setup",
+          "title": "调平、首层与喷嘴",
+          "summary": "热床调平，Z 偏移，首层附着，喷嘴直径与堵塞",
+          "estimated_minutes": 65,
+          "lesson": "fdm-basics",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fdm-process"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "slicing",
+      "title": "切片与参数",
+      "question_file": "questions/slicing.json",
+      "lessons": [
+        {
+          "id": "slicing",
+          "title": "切片与参数",
+          "file": "lessons/slicing.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "slicing-basics",
+          "title": "切片流程与预览",
+          "summary": "导入模型、摆放、切片、逐层预览、G-code，首层与支撑的检查",
+          "estimated_minutes": 65,
+          "lesson": "slicing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fdm-process",
+                "drawings-export"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "layer-height-walls",
+          "title": "层高、壁厚与填充",
+          "summary": "层高与层数、表面质量和时间，壁线数与壁厚，填充率与图案，打印时间估算",
+          "estimated_minutes": 80,
+          "lesson": "slicing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "slicing-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "supports-orientation",
+          "title": "支撑与打印方向",
+          "summary": "悬垂角约 45°，桥接，支撑与接触面，层间结合弱导致强度各向异性",
+          "estimated_minutes": 80,
+          "lesson": "slicing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "slicing-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "speed-temperature",
+          "title": "速度、温度与冷却",
+          "summary": "打印速度与体积流量，喷嘴和热床温度，风扇冷却对悬垂和层间强度的影响",
+          "estimated_minutes": 60,
+          "lesson": "slicing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "slicing-basics",
+                "materials"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "design-for-printing",
+      "title": "面向打印的设计",
+      "question_file": "questions/design-for-printing.json",
+      "lessons": [
+        {
+          "id": "design-for-printing",
+          "title": "面向打印的设计",
+          "file": "lessons/design-for-printing.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "dfam-rules",
+          "title": "面向 FDM 的设计规则",
+          "summary": "最小壁厚为线宽的整数倍，避免大悬垂，竖直孔与水平孔，倒角代替底部圆角",
+          "estimated_minutes": 70,
+          "lesson": "design-for-printing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "supports-orientation",
+                "fillets-chamfers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "clearance-test",
+          "title": "间隙试片与孔径补偿",
+          "summary": "孔通常打小、轴通常打大，配合间隙，试片法确定补偿量",
+          "estimated_minutes": 80,
+          "lesson": "design-for-printing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dfam-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "print-defects",
+          "title": "常见打印缺陷与排查",
+          "summary": "翘边、拉丝、层错位、象脚、欠挤出与过挤出的原因与处理",
+          "estimated_minutes": 70,
+          "lesson": "design-for-printing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "printer-setup",
+                "speed-temperature"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "part-measurement",
+          "title": "打印件测量与记录",
+          "summary": "用卡尺测量孔径与外形，记录打印方向、材料和实测尺寸，比较设计值与实测值",
+          "estimated_minutes": 60,
+          "lesson": "design-for-printing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "clearance-test"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "post-processing",
+          "title": "后处理与热熔螺母",
+          "summary": "去支撑与修边，热熔铜螺母孔径，自攻螺钉孔",
+          "estimated_minutes": 50,
+          "lesson": "design-for-printing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dfam-rules"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fixtures",
+      "title": "定位夹具",
+      "question_file": "questions/fixtures.json",
+      "lessons": [
+        {
+          "id": "fixtures",
+          "title": "定位夹具",
+          "file": "lessons/fixtures.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "locating-principles",
+          "title": "定位原理与基准面",
+          "summary": "六点定位与 3-2-1 原则，欠定位与过定位，定位面与夹紧方向",
+          "estimated_minutes": 80,
+          "lesson": "fixtures",
+          "prerequisites": [
+            {
+              "all_of": [
+                "assembly-mates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fixture-design",
+          "title": "定位夹具设计",
+          "summary": "定位销与挡边，取放空间，防错设计，安装孔与工位固定",
+          "estimated_minutes": 70,
+          "lesson": "fixtures",
+          "prerequisites": [
+            {
+              "all_of": [
+                "locating-principles",
+                "holes-patterns"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "base-plate-lab",
+          "title": "定位底板与间隙试片（自评）",
+          "summary": "设计带两个安装孔和定位基准面的底板，先打印三组不同孔径的试片选定孔径，再打印底板并把同一工件取放 20 次检查是否每次贴紧基准面。",
+          "estimated_minutes": 110,
+          "lesson": "fixtures",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fixture-design",
+                "clearance-test"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "从尺寸草图、切片到能重复定位工件的 FDM 夹具。"
+}

@@ -1,0 +1,16 @@
+Learning target and evidence
+Identify one decision or skill the learner should be able to repeat on a new
+item. Record the decisive condition and the supplied evidence that supports it.
+Use the passage, transcript, diagram or stated values for item-specific facts.
+For a numeric item, record the quantity, unit and an exact calculation.
+
+Retrieval and gap checks
+Use search to verify the general method, definition or rule that explains the
+decision. Prefer a primary or authoritative teaching source. Check which
+conditions and scope the source supports, including the version or effective
+date when it matters. A missing external copy of the item is not an evidence gap.
+
+Handoff
+Return brief notes with the learning target, decisive item evidence and its
+location, the external teaching claim and retrieved source URL, and any
+material conflict or gap. Label a plausible learner mistake as an inference.

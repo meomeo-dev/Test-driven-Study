@@ -1,0 +1,479 @@
+{
+  "protocol_version": 1,
+  "course_id": "tolerances-metrology",
+  "version": "1.1.0",
+  "title": "公差配合与测量",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "尺寸与公差",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "尺寸与公差",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "nominal-dimensions",
+          "title": "名义尺寸与尺寸标注",
+          "summary": "名义尺寸，线性尺寸、直径 ⌀、半径 R 的标注，基准边与尺寸起点",
+          "estimated_minutes": 65,
+          "lesson": "intro"
+        },
+        {
+          "id": "limits-deviations",
+          "title": "极限尺寸与极限偏差",
+          "summary": "上极限尺寸与下极限尺寸，上偏差 ES/es 与下偏差 EI/ei，实际尺寸是否在范围内",
+          "estimated_minutes": 80,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "nominal-dimensions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tolerance-notation",
+          "title": "公差标注与公差带",
+          "summary": "对称公差 ±、单向公差、极限尺寸标注，公差 = 上极限尺寸 − 下极限尺寸",
+          "estimated_minutes": 70,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "limits-deviations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "general-tolerances",
+          "title": "一般公差",
+          "summary": "未注公差尺寸按一般公差等级执行，精密、中等、粗糙等级的含义",
+          "estimated_minutes": 50,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "tolerance-notation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fits",
+      "title": "孔轴配合",
+      "question_file": "questions/fits.json",
+      "lessons": [
+        {
+          "id": "fits",
+          "title": "孔轴配合",
+          "file": "lessons/fits.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "hole-shaft-basics",
+          "title": "孔、轴与基孔制",
+          "summary": "孔与轴的广义含义，基孔制 H 与基轴制 h，优先采用基孔制的原因",
+          "estimated_minutes": 65,
+          "lesson": "fits",
+          "prerequisites": [
+            {
+              "all_of": [
+                "limits-deviations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fit-types",
+          "title": "间隙、过盈与过渡配合",
+          "summary": "最大间隙 = 孔上极限 − 轴下极限，最小间隙 = 孔下极限 − 轴上极限，过盈与过渡配合的判断",
+          "estimated_minutes": 90,
+          "lesson": "fits",
+          "prerequisites": [
+            {
+              "all_of": [
+                "hole-shaft-basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iso-fits",
+          "title": "公差等级与配合代号",
+          "summary": "IT 公差等级，H7/g6、H7/k6、H7/p6 的读法与配合性质",
+          "estimated_minutes": 70,
+          "lesson": "fits",
+          "prerequisites": [
+            {
+              "all_of": [
+                "fit-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fit-selection",
+          "title": "配合的选用",
+          "summary": "滑动、定位、压装场合的配合选择，打印件与金属件配合的差别",
+          "estimated_minutes": 55,
+          "lesson": "fits",
+          "prerequisites": [
+            {
+              "all_of": [
+                "iso-fits"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "instruments",
+      "title": "量具与读数",
+      "question_file": "questions/instruments.json",
+      "lessons": [
+        {
+          "id": "instruments",
+          "title": "量具与读数",
+          "file": "lessons/instruments.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "caliper-reading",
+          "title": "游标卡尺与数显卡尺",
+          "summary": "外测量爪、内测量爪与深度尺，0.02 mm 游标读数方法，数显卡尺清零",
+          "estimated_minutes": 90,
+          "lesson": "instruments",
+          "prerequisites": [
+            {
+              "all_of": [
+                "nominal-dimensions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "micrometer",
+          "title": "千分尺读数",
+          "summary": "螺距 0.5 mm、微分筒 50 格、分度值 0.01 mm，读数 = 固定套管读数 + 微分筒读数",
+          "estimated_minutes": 65,
+          "lesson": "instruments",
+          "prerequisites": [
+            {
+              "all_of": [
+                "caliper-reading"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gauges",
+          "title": "塞规、量块与半径规",
+          "summary": "通规与止规的判定，量块组合，半径规与塞尺",
+          "estimated_minutes": 55,
+          "lesson": "instruments",
+          "prerequisites": [
+            {
+              "all_of": [
+                "caliper-reading"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dial-indicator",
+          "title": "百分表与比较测量",
+          "summary": "百分表分度值 0.01 mm 的读数，与基准件比较测量，测平面度和跳动时的装夹",
+          "estimated_minutes": 45,
+          "lesson": "instruments",
+          "prerequisites": [
+            {
+              "all_of": [
+                "caliper-reading"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "resolution-accuracy",
+          "title": "分辨力、准确度与精密度",
+          "summary": "分辨力不等于准确度，准确与精密的区别，量具分辨力与被测公差的比例",
+          "estimated_minutes": 70,
+          "lesson": "instruments",
+          "prerequisites": [
+            {
+              "all_of": [
+                "caliper-reading"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "measurement-method",
+      "title": "测量方法与误差",
+      "question_file": "questions/measurement-method.json",
+      "lessons": [
+        {
+          "id": "measurement-method",
+          "title": "测量方法与误差",
+          "file": "lessons/measurement-method.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "measurement-errors",
+          "title": "测量误差的来源",
+          "summary": "系统误差与随机误差，阿贝误差，温度、测量力、毛刺与变形的影响",
+          "estimated_minutes": 75,
+          "lesson": "measurement-method",
+          "prerequisites": [
+            {
+              "all_of": [
+                "resolution-accuracy"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "measuring-technique",
+          "title": "测量位置与操作方法",
+          "summary": "测量面贴合与对正，固定测量位置，多点测量，打印件的层纹与毛边",
+          "estimated_minutes": 65,
+          "lesson": "measurement-method",
+          "prerequisites": [
+            {
+              "all_of": [
+                "caliper-reading"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "recording-rounding",
+          "title": "测量记录与数值修约",
+          "summary": "读数位数与量具分辨力一致，修约规则（四舍六入五成双），平均值多保留一位，记录格式",
+          "estimated_minutes": 45,
+          "lesson": "measurement-method",
+          "prerequisites": [
+            {
+              "all_of": [
+                "resolution-accuracy"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "reference-parts",
+          "title": "基准件与零点校准",
+          "summary": "用量块或基准件检查零点和示值，系统偏差的修正",
+          "estimated_minutes": 55,
+          "lesson": "measurement-method",
+          "prerequisites": [
+            {
+              "all_of": [
+                "measurement-errors"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometric-tolerances",
+      "title": "几何公差",
+      "question_file": "questions/geometric-tolerances.json",
+      "lessons": [
+        {
+          "id": "geometric-tolerances",
+          "title": "几何公差",
+          "file": "lessons/geometric-tolerances.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "datums",
+          "title": "基准与基准体系",
+          "summary": "基准要素与基准符号，第一、第二、第三基准，基准的选择与装配关系",
+          "estimated_minutes": 70,
+          "lesson": "geometric-tolerances",
+          "prerequisites": [
+            {
+              "all_of": [
+                "tolerance-notation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "form-tolerances",
+          "title": "形状公差",
+          "summary": "直线度、平面度、圆度、圆柱度的含义与公差带",
+          "estimated_minutes": 70,
+          "lesson": "geometric-tolerances",
+          "prerequisites": [
+            {
+              "all_of": [
+                "datums"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "orientation-location",
+          "title": "方向与位置公差",
+          "summary": "平行度、垂直度、位置度，理论正确尺寸，孔组位置度",
+          "estimated_minutes": 90,
+          "lesson": "geometric-tolerances",
+          "prerequisites": [
+            {
+              "all_of": [
+                "form-tolerances"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "runout-roughness",
+          "title": "跳动与表面粗糙度",
+          "summary": "圆跳动与全跳动，表面粗糙度 Ra 的含义与标注",
+          "estimated_minutes": 55,
+          "lesson": "geometric-tolerances",
+          "prerequisites": [
+            {
+              "all_of": [
+                "orientation-location"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "title": "测量数据分析",
+      "question_file": "questions/analysis.json",
+      "lessons": [
+        {
+          "id": "analysis",
+          "title": "测量数据分析",
+          "file": "lessons/analysis.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "repeatability",
+          "title": "重复性与再现性",
+          "summary": "同一人同一量具重复测量的重复性，不同人或不同量具的再现性，用极差和标准差描述",
+          "estimated_minutes": 90,
+          "lesson": "analysis",
+          "prerequisites": [
+            {
+              "all_of": [
+                "measurement-errors"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "conformance-decision",
+          "title": "合格判定与测量不确定度",
+          "summary": "测量值靠近极限时的判定风险，测量不确定度与保护带，误收与误废",
+          "estimated_minutes": 75,
+          "lesson": "analysis",
+          "prerequisites": [
+            {
+              "all_of": [
+                "repeatability",
+                "limits-deviations"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tolerance-stackup",
+          "title": "尺寸链与公差累积",
+          "summary": "组成环与封闭环，极值法计算封闭环极限，统计法 RSS 的思路",
+          "estimated_minutes": 100,
+          "lesson": "analysis",
+          "prerequisites": [
+            {
+              "all_of": [
+                "limits-deviations"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inspection",
+      "title": "检验实作",
+      "question_file": "questions/inspection.json",
+      "lessons": [
+        {
+          "id": "inspection",
+          "title": "检验实作",
+          "file": "lessons/inspection.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "inspection-plan",
+          "title": "检验计划与记录表",
+          "summary": "检验特征、量具、测量位置、抽样数量与记录格式，判定结论的写法",
+          "estimated_minutes": 65,
+          "lesson": "inspection",
+          "prerequisites": [
+            {
+              "all_of": [
+                "conformance-decision",
+                "measuring-technique"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "repeat-measurement-lab",
+          "title": "卡尺重复测量（自评）",
+          "summary": "用同一把卡尺在标记位置重复测量一块打印件的同一特征 10 次，记录最大值、最小值、极差和标准差，并判断测量是否足以检验该尺寸公差。",
+          "estimated_minutes": 75,
+          "lesson": "inspection",
+          "prerequisites": [
+            {
+              "all_of": [
+                "repeatability",
+                "caliper-reading"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "从名义尺寸、上下限到卡尺测量和重复性检查。",
+  "roadmap": {
+    "note": "建议与参数化建模并行。",
+    "parallel_with": [
+      "cad-fdm-printing"
+    ]
+  }
+}

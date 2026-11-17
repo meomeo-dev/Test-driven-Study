@@ -1,0 +1,27 @@
+{
+  "protocol_version": 1,
+  "course_id": "basic-math",
+  "version": "1.2.0",
+  "title": "基础数学",
+  "language": "zh-CN",
+  "description": "练习分数、小数与百分数的换算。",
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "units": [
+    {
+      "id": "intro",
+      "title": "分数与小数",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "分数、小数与百分数",
+          "file": "lessons/intro.md"
+        }
+      ]
+    }
+  ]
+}

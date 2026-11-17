@@ -1,0 +1,510 @@
+{
+  "protocol_version": 1,
+  "course_id": "python-programming",
+  "version": "1.1.0",
+  "title": "Python 程序设计",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "intro",
+      "title": "Python 入门与基本类型",
+      "question_file": "questions/intro.json",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "Python 入门与基本类型",
+          "file": "lessons/intro.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "run-scripts",
+          "title": "运行脚本与 print",
+          "summary": "解释器与 .py 脚本，print 输出多个值与 sep，注释，出错时读 Traceback 最后一行",
+          "estimated_minutes": 50,
+          "lesson": "intro"
+        },
+        {
+          "id": "variables-types",
+          "title": "变量与基本类型",
+          "summary": "int、float、str、bool，type()，赋值与重新赋值，变量命名规则",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "run-scripts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "arithmetic",
+          "title": "算术运算与类型转换",
+          "summary": "+ - * / // % ** 与优先级，/ 总得 float，int()/float()/str() 转换，round()",
+          "estimated_minutes": 65,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "strings",
+          "title": "字符串操作",
+          "summary": "拼接与重复，len，索引与切片（含负索引），upper/lower/strip/split/replace/join，f-string",
+          "estimated_minutes": 75,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "input-output",
+          "title": "输入与格式化输出",
+          "summary": "input() 返回 str，转换后再计算，f-string 格式 {x:.2f}、{n:>5}",
+          "estimated_minutes": 45,
+          "lesson": "intro",
+          "prerequisites": [
+            {
+              "all_of": [
+                "strings",
+                "arithmetic"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "title": "条件与循环",
+      "question_file": "questions/control.json",
+      "lessons": [
+        {
+          "id": "control",
+          "title": "条件与循环",
+          "file": "lessons/control.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "comparisons-bool",
+          "title": "比较与布尔逻辑",
+          "summary": "== != < <= > >=，链式比较，and、or、not 与短路，真值（0、空字符串、空列表为假）",
+          "estimated_minutes": 55,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "variables-types"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "if-statements",
+          "title": "if 分支",
+          "summary": "if/elif/else，缩进表示代码块，条件顺序，按尺寸区间判定合格",
+          "estimated_minutes": 70,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "comparisons-bool"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "for-loops",
+          "title": "for 循环与 range",
+          "summary": "range(start, stop, step) 不含 stop，遍历字符串和列表，累加与计数，enumerate",
+          "estimated_minutes": 75,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "if-statements"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "while-loops",
+          "title": "while 与 break、continue",
+          "summary": "条件循环，break 提前结束，continue 跳过本次，避免死循环",
+          "estimated_minutes": 65,
+          "lesson": "control",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "列表、字典与集合",
+      "question_file": "questions/collections.json",
+      "lessons": [
+        {
+          "id": "collections",
+          "title": "列表、字典与集合",
+          "file": "lessons/collections.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "lists",
+          "title": "列表",
+          "summary": "创建与索引，append/insert/pop/remove，切片，len/sum/max/min，in 判断，列表可变",
+          "estimated_minutes": 75,
+          "lesson": "collections",
+          "prerequisites": [
+            {
+              "all_of": [
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "list-comprehension",
+          "title": "列表推导式与排序",
+          "summary": "[表达式 for x in 序列 if 条件]，sorted 与 list.sort，key 与 reverse 参数",
+          "estimated_minutes": 65,
+          "lesson": "collections",
+          "prerequisites": [
+            {
+              "all_of": [
+                "lists"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dicts",
+          "title": "字典",
+          "summary": "键值对，d[key] 与 d.get(key, 默认值)，遍历 items()，增删改，键不存在时 KeyError",
+          "estimated_minutes": 80,
+          "lesson": "collections",
+          "prerequisites": [
+            {
+              "all_of": [
+                "lists"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tuples-sets",
+          "title": "元组与集合",
+          "summary": "元组不可变与拆包赋值，set 去重，交集、并集、差集",
+          "estimated_minutes": 50,
+          "lesson": "collections",
+          "prerequisites": [
+            {
+              "all_of": [
+                "lists"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nested-data",
+          "title": "记录列表与嵌套结构",
+          "summary": "由字典组成的列表表示多条记录，按字段取值与筛选，嵌套索引",
+          "estimated_minutes": 65,
+          "lesson": "collections",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dicts"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "函数与模块",
+      "question_file": "questions/functions.json",
+      "lessons": [
+        {
+          "id": "functions",
+          "title": "函数与模块",
+          "file": "lessons/functions.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "define-functions",
+          "title": "定义与调用函数",
+          "summary": "def、形参与实参、return、没有 return 时返回 None",
+          "estimated_minutes": 75,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "if-statements",
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "parameters-scope",
+          "title": "参数与作用域",
+          "summary": "默认参数与关键字参数，局部变量与全局变量，可变默认参数的陷阱",
+          "estimated_minutes": 55,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "define-functions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "modules-imports",
+          "title": "模块与标准库",
+          "summary": "import 与 from…import，math、statistics、random 常用函数，导入自己写的模块",
+          "estimated_minutes": 45,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "define-functions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "docstrings-testing",
+          "title": "文档字符串与简单测试",
+          "summary": "docstring，用 assert 写测试，覆盖空输入和边界输入",
+          "estimated_minutes": 50,
+          "lesson": "functions",
+          "prerequisites": [
+            {
+              "all_of": [
+                "define-functions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "files-errors",
+      "title": "文件与异常",
+      "question_file": "questions/files-errors.json",
+      "lessons": [
+        {
+          "id": "files-errors",
+          "title": "文件与异常",
+          "file": "lessons/files-errors.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "read-write-files",
+          "title": "读写文本文件",
+          "summary": "open 与模式 r/w/a，with 语句，逐行读取与 strip，encoding='utf-8'",
+          "estimated_minutes": 65,
+          "lesson": "files-errors",
+          "prerequisites": [
+            {
+              "all_of": [
+                "strings",
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "exceptions",
+          "title": "异常处理",
+          "summary": "try/except/else/finally，ValueError、KeyError、FileNotFoundError、ZeroDivisionError，raise",
+          "estimated_minutes": 75,
+          "lesson": "files-errors",
+          "prerequisites": [
+            {
+              "all_of": [
+                "define-functions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "csv-module",
+          "title": "用 csv 模块读写表格",
+          "summary": "csv.reader 与 csv.DictReader，表头，读到的值都是字符串，newline='' 写出 CSV",
+          "estimated_minutes": 80,
+          "lesson": "files-errors",
+          "prerequisites": [
+            {
+              "all_of": [
+                "read-write-files",
+                "dicts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "validate-records",
+          "title": "检查记录：空值与格式",
+          "summary": "空字段、无法转换的数字、未知的判定值，记录错误行号，坏记录不计入统计",
+          "estimated_minutes": 75,
+          "lesson": "files-errors",
+          "prerequisites": [
+            {
+              "all_of": [
+                "csv-module",
+                "exceptions"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-summary",
+      "title": "数据汇总与统计",
+      "question_file": "questions/data-summary.json",
+      "lessons": [
+        {
+          "id": "data-summary",
+          "title": "数据汇总与统计",
+          "file": "lessons/data-summary.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "counting-grouping",
+          "title": "计数与分组汇总",
+          "summary": "计数字典与 get，按批次分组求和，collections.Counter 与 most_common",
+          "estimated_minutes": 70,
+          "lesson": "data-summary",
+          "prerequisites": [
+            {
+              "all_of": [
+                "dicts",
+                "for-loops"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "basic-statistics",
+          "title": "均值、最值与比例",
+          "summary": "sum/len 求均值，max/min，statistics.mean/median，合格率百分比，空列表与除零",
+          "estimated_minutes": 65,
+          "lesson": "data-summary",
+          "prerequisites": [
+            {
+              "all_of": [
+                "lists",
+                "arithmetic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sorting-reporting",
+          "title": "排序与报告输出",
+          "summary": "按字段排序 sorted(key=lambda r: r['x'])，对齐的表格输出，把报告写入文件",
+          "estimated_minutes": 55,
+          "lesson": "data-summary",
+          "prerequisites": [
+            {
+              "all_of": [
+                "list-comprehension",
+                "input-output"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "datetime-basics",
+          "title": "时间戳与日期",
+          "summary": "datetime.strptime 解析时间字符串，时间差 timedelta 与 total_seconds，按日期筛选",
+          "estimated_minutes": 45,
+          "lesson": "data-summary",
+          "prerequisites": [
+            {
+              "all_of": [
+                "strings",
+                "modules-imports"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "title": "检测记录处理项目",
+      "question_file": "questions/project.json",
+      "lessons": [
+        {
+          "id": "project",
+          "title": "检测记录处理项目",
+          "file": "lessons/project.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "program-structure",
+          "title": "脚本结构与调试",
+          "summary": "main 函数与 if __name__ == '__main__'，拆分函数，print 调试，按 Traceback 定位错误行",
+          "estimated_minutes": 55,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "define-functions",
+                "exceptions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "csv-report-lab",
+          "title": "检测记录统计脚本（自评）",
+          "summary": "读取检测记录 CSV，列出无法解析的行及原因，统计合格和拒收数，并用手算核对。",
+          "estimated_minutes": 90,
+          "lesson": "project",
+          "prerequisites": [
+            {
+              "all_of": [
+                "validate-records",
+                "counting-grouping",
+                "program-structure"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ai_profile": {
+    "palace_template": "profiles/memory-palace.json",
+    "palace_planning_instructions": "profiles/palace-planning.txt",
+    "palace_research_instructions": "profiles/palace-research.txt"
+  },
+  "description": "从基础语法到整理工件检测记录和处理异常。"
+}

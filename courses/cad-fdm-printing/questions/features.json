@@ -1,0 +1,543 @@
+[
+  {
+    "id": "extrude-revolve-1",
+    "type": "single_choice",
+    "chapter": "拉伸与旋转",
+    "concepts": [
+      "extrude-revolve"
+    ],
+    "stem": "桌面质检分拣站的传感器支架安装板需要从二维草图生成厚度为 10 mm 的实体。若草图绘制在设备工作台的对称中心基准面上，为了使零件向两侧对称展开且保留中心基准面以便后续装配定位，最合理的拉伸终止类型是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "单向给定深度（Blind）"
+      },
+      {
+        "id": "b",
+        "text": "成形到下一表面（Up to next）"
+      },
+      {
+        "id": "c",
+        "text": "成形到指定面（Up to surface）"
+      },
+      {
+        "id": "d",
+        "text": "对称拉伸（Symmetric / Mid-plane）"
+      }
+    ],
+    "explanation": "对称拉伸以草图平面为中心向两侧各拉伸一半厚度，使基准面始终处于实体几何对称中心，极大方便后续装配配合与镜像操作。单向拉伸无法保留中心基准面，成形到面需要已有目标几何表面。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "extrude-revolve-2",
+    "type": "single_choice",
+    "chapter": "拉伸与旋转",
+    "concepts": [
+      "extrude-revolve"
+    ],
+    "stem": "在为分拣站电动挡板建立回转轴衬套时，需要利用旋转（Revolve）特征生成一个外径 18 mm、内孔 10 mm、长度 25 mm 的中空圆柱体。若旋转角度为 360°，在草图绘制截面矩形时，矩形边长及相对旋转轴的定位应当是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "宽 8 mm、高 25 mm，内侧边重合于旋转轴"
+      },
+      {
+        "id": "b",
+        "text": "宽 4 mm、高 25 mm，内侧边重合于旋转轴"
+      },
+      {
+        "id": "c",
+        "text": "宽 4 mm、高 25 mm，内侧边距离旋转轴 5 mm"
+      },
+      {
+        "id": "d",
+        "text": "宽 8 mm、高 25 mm，内侧边距离旋转轴 5 mm"
+      }
+    ],
+    "explanation": "外径 18 mm 对应外半径 9 mm，内孔 10 mm 对应内半径 5 mm，截面壁厚为 9 - 5 = 4 mm。旋转截面应为单侧半剖面，即宽 4 mm、高 25 mm 的矩形，且内侧边距离旋转轴等于内半径 5 mm。选项 a、b 旋转后内孔为 0（实心），选项 d 旋转后外径达到 26 mm。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "extrude-revolve-3",
+    "type": "multiple_choice",
+    "chapter": "拉伸与旋转",
+    "concepts": [
+      "extrude-revolve"
+    ],
+    "stem": "在分拣站定位底板上创建工件放置凹槽或通孔时，需要使用拉伸切除（Extrude Cut）特征。关于拉伸切除的方向与终止条件，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "贯通（Through All）切除能使孔洞随底板厚度参数的变大而自动保持完全穿透"
+      },
+      {
+        "id": "b",
+        "text": "拉伸切除的草图轮廓内部必须包含至少一条开放曲线才能进行布尔减运算"
+      },
+      {
+        "id": "c",
+        "text": "给定深度切除在底板厚度参数被改大后可能变成盲孔而无法穿透"
+      },
+      {
+        "id": "d",
+        "text": "拉伸切除的终止条件只能选择给定深度，不能选择贯通整个零件"
+      }
+    ],
+    "explanation": "贯通切除会穿过沿途全部材料，底板增厚后仍能保持穿透；给定深度是固定尺寸，板厚增加后可能变成盲孔。选项 b 错误，切除轮廓通常应为闭合曲线；选项 d 错误，终止条件可选给定深度、贯通、到指定面等。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "extrude-revolve-4",
+    "type": "true_false",
+    "chapter": "拉伸与旋转",
+    "concepts": [
+      "extrude-revolve"
+    ],
+    "stem": "在参数化 CAD 软件中执行旋转（Revolve）特征时，草图截面轮廓绝对不允许跨越旋转轴线，否则会导致旋转体在中心处发生自相交而报错。",
+    "explanation": "旋转特征要求截面轮廓必须完全位于旋转轴的单侧或刚好与旋转轴贴合，若轮廓跨越旋转轴会产生体积自相交与几何拓扑歧义，导致特征求解失败。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "extrude-revolve-5",
+    "type": "numeric",
+    "chapter": "拉伸与旋转",
+    "concepts": [
+      "extrude-revolve"
+    ],
+    "stem": "质检分拣站的传感器定位支架由一个实心长方体基座经过拉伸切除制作。已知基座长方体长 60 mm、宽 50 mm、厚 12 mm。工程师在顶面草图上绘制一个长 30 mm、宽 20 mm 的矩形，并沿 12 mm 厚度方向执行贯通拉伸切除槽。求切除后支架实体的剩余体积是多少 mm³？（填写整数数值）",
+    "explanation": "基座体积为 60 × 50 × 12 = 36000 mm³，贯通切除槽体积为 30 × 20 × 12 = 7200 mm³，剩余体积等于 36000 - 7200 = 28800 mm³。",
+    "grading": {
+      "value": "28800",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "holes-patterns-1",
+    "type": "single_choice",
+    "chapter": "孔特征与阵列",
+    "concepts": [
+      "holes-patterns"
+    ],
+    "stem": "在桌面分拣站定位底板上安装 M4 规格的内六角圆柱头螺钉，为了使螺钉头部完全沉入底板表面下方而不阻碍工件滑动，在孔特征中应选用的孔类型是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "简单通孔（Simple Hole）"
+      },
+      {
+        "id": "b",
+        "text": "柱形沉孔/沉头孔（Counterbore）"
+      },
+      {
+        "id": "c",
+        "text": "锥形沉孔（Countersink）"
+      },
+      {
+        "id": "d",
+        "text": "盲孔螺纹孔（Threaded Hole）"
+      }
+    ],
+    "explanation": "柱形沉头孔（Counterbore）具有平底柱状凹槽，专门用于容纳内六角圆柱头螺钉的头部使其低于安装面。锥形沉孔用于十字沉头螺钉，简单通孔与螺纹孔均无法让柱状螺钉头沉入表面。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "holes-patterns-2",
+    "type": "single_choice",
+    "chapter": "孔特征与阵列",
+    "concepts": [
+      "holes-patterns"
+    ],
+    "stem": "质检分拣站圆形料盘上需要沿圆周均匀布置 6 个用于安放待测工件的定位圆孔。若使用圆周阵列（Circular Pattern）特征，在指定旋转中心轴后，最便捷且保证等分的参数设置方式是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "角度设为 360°，数量设为 6，勾选等间距（Equal Spacing）"
+      },
+      {
+        "id": "b",
+        "text": "步进角度设为 50°，数量设为 6，不勾选等间距"
+      },
+      {
+        "id": "c",
+        "text": "角度设为 180°，数量设为 6，勾选等间距"
+      },
+      {
+        "id": "d",
+        "text": "步进角度设为 72°，数量设为 5，勾选等间距"
+      }
+    ],
+    "explanation": "勾选等间距并将总角度设置为 360°、数量设置为 6 时，CAD 系统会自动计算相邻孔夹角为 360° / 6 = 60°，分布最为均匀且便于后续修改孔数。50° 或 180° 无法完成整圆等分布置。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "holes-patterns-3",
+    "type": "multiple_choice",
+    "chapter": "孔特征与阵列",
+    "concepts": [
+      "holes-patterns"
+    ],
+    "stem": "在定位底板上创建阵列特征时，关于线性阵列（Linear Pattern）与孔特征定位，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "孔特征的位置通常可以通过草图中的点图元添加几何约束和尺寸约束来精确定位"
+      },
+      {
+        "id": "b",
+        "text": "在线性阵列中，若总跨度确定，设置阵列间距等于总跨度除以孔数量 N 即可获得正确孔距"
+      },
+      {
+        "id": "c",
+        "text": "线性阵列只能沿单一坐标轴方向复制特征，无法在二维平面内同时沿两个方向阵列"
+      },
+      {
+        "id": "d",
+        "text": "采用特征阵列建立重复孔位比在同一个草图内手动绘制多个圆切除更利于后续统一修改"
+      }
+    ],
+    "explanation": "孔特征依赖草图点完全约束定位，且特征阵列允许修改单孔尺寸或阵列数量即可全自动更新，大幅优于草图手画多个圆。选项 b 错误，阵列间隔数应为 N - 1 而非 N；选项 c 错误，线性阵列普遍支持双向网格阵列。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "holes-patterns-4",
+    "type": "true_false",
+    "chapter": "孔特征与阵列",
+    "concepts": [
+      "holes-patterns"
+    ],
+    "stem": "在 3D 打印定位底板上加工用于拧入 M3 金属螺钉的螺纹底孔时，底孔的建模直径必须完全等于公称直径 3.0 mm，以便打印后直接配合。",
+    "explanation": "螺纹底孔直径应接近螺纹小径而不是公称直径，例如 M3 的攻丝底孔约 2.5 mm；建模为 3.0 mm 会使螺纹没有可咬合的材料。FDM 打印的小孔通常还会略微偏小，具体补偿量应通过试片确定。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "holes-patterns-5",
+    "type": "numeric",
+    "chapter": "孔特征与阵列",
+    "concepts": [
+      "holes-patterns"
+    ],
+    "stem": "质检分拣站底板总长 180 mm，需要在底板中心线上使用线性阵列创建一排 5 个工件固定孔。已知第 1 个孔的中心 X 坐标为 20 mm，相邻孔中心距设定为 35 mm。求第 5 个孔的中心 X 坐标是多少 mm？（填写整数数值）",
+    "explanation": "线性阵列中第 5 个孔与第 1 个孔相距 4 个间距，因此第 5 个孔的 X 坐标为 20 + 4 × 35 = 160 mm。",
+    "grading": {
+      "value": "160",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "fillets-chamfers-1",
+    "type": "single_choice",
+    "chapter": "圆角、倒角与抽壳",
+    "concepts": [
+      "fillets-chamfers"
+    ],
+    "stem": "在使用 FDM 3D 打印分拣站定位底板时，底板直接贴附在打印热床上。为了预防首层挤出过多膨胀导致的底边“大象腿”飞边并改善起模容易度，底板底面外周边缘应优先添加的设计特征是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "底面边缘添加 0.5–1 mm 的倒角或圆角"
+      },
+      {
+        "id": "b",
+        "text": "底面边缘添加锐利的 90° 直角"
+      },
+      {
+        "id": "c",
+        "text": "底面边缘向外延伸 5 mm 的凸耳"
+      },
+      {
+        "id": "d",
+        "text": "对底面边缘执行大厚度抽壳特征"
+      }
+    ],
+    "explanation": "在贴床底边设置 0.5–1 mm 的倒角或小圆角，能为首层挤出膨胀提供退让补偿间隙，有效抑制大象腿溢料并便于铲刀插入起模。直角边缘容易产生大象腿向外扩张，凸耳无法解决溢料问题。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  },
+  {
+    "id": "fillets-chamfers-2",
+    "type": "single_choice",
+    "chapter": "圆角、倒角与抽壳",
+    "concepts": [
+      "fillets-chamfers"
+    ],
+    "stem": "某分拣站工件收集盒需要制作成开口中空薄壁容器，外轮廓竖直棱边具有外圆角 R = 5 mm，容器各处内壁厚度要求均匀为 2 mm。为了使内部对应棱角自动生成同心内圆角并保持壁厚完全一致，最合理的特征建模顺序是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "先建实心体，再抽壳壁厚 2 mm，最后在外棱边添加 R = 5 mm 圆角"
+      },
+      {
+        "id": "b",
+        "text": "先建实心体，在外棱边添加 R = 5 mm 圆角，最后抽壳壁厚 2 mm 并移除顶面"
+      },
+      {
+        "id": "c",
+        "text": "先建实心体，再对顶面执行拉伸切除挖出内腔，最后对内外棱边都添加 R = 5 mm 圆角"
+      },
+      {
+        "id": "d",
+        "text": "先建实心体，再对顶面执行拉伸切除挖出内腔，最后只对外棱边添加 R = 5 mm 圆角，内腔棱角保持直角"
+      }
+    ],
+    "explanation": "先在实心体外棱边建立圆角，再执行抽壳，系统会按壁厚向内偏置，自动生成半径为 5 - 2 = 3 mm 的同心内圆角，壁厚处处相等。先抽壳后圆角，或内外圆角半径相同、内腔保持直角，都会使转角处壁厚不均。",
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "fillets-chamfers-3",
+    "type": "multiple_choice",
+    "chapter": "圆角、倒角与抽壳",
+    "concepts": [
+      "fillets-chamfers"
+    ],
+    "stem": "关于参数化模型中的圆角（Fillet）、倒角（Chamfer）与抽壳（Shell）特征，下列说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "抽壳特征只能向实体内部掏空材料，无法指定向实体外部偏置增加厚度"
+      },
+      {
+        "id": "b",
+        "text": "在承受循环振动的分拣机械构件中，对内凹直角棱边添加圆角能显著降低应力集中"
+      },
+      {
+        "id": "c",
+        "text": "为适应 FDM 打印工艺，抽壳壁厚一般宜设定为打印机喷嘴挤出线宽的整数倍"
+      },
+      {
+        "id": "d",
+        "text": "圆角与倒角属于基础草图特征，不能在已生成的拉伸实体棱边上直接应用"
+      }
+    ],
+    "explanation": "内凹转角处加圆角可有效分散应力集中；3D 打印壁厚匹配喷嘴线宽整数倍（如 0.4 mm 喷嘴取 1.2 mm 或 1.6 mm）可使外壁填充饱满。选项 a 错误，现代 CAD 抽壳均支持外向抽壳；选项 d 错误，圆角倒角属于直接作用于三维棱边的修饰特征。",
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "fillets-chamfers-4",
+    "type": "true_false",
+    "chapter": "圆角、倒角与抽壳",
+    "concepts": [
+      "fillets-chamfers"
+    ],
+    "stem": "在 CAD 建模特征树中，特征的先后顺序对最终几何形貌没有影响，因此先对盒体抽壳再对外边缘倒圆角与先倒圆角后抽壳所生成的内壁转角几何完全相同。",
+    "explanation": "特征历史顺序决定几何拓扑结构。先倒外圆角再抽壳，内壁会自动生成同心内圆角保持等壁厚；先抽壳再对外倒圆角，内壁转角仍为直角，二者几何结构和受力特性完全不同。",
+    "grading": {
+      "boolean": false
+    }
+  },
+  {
+    "id": "fillets-chamfers-5",
+    "type": "numeric",
+    "chapter": "圆角、倒角与抽壳",
+    "concepts": [
+      "fillets-chamfers"
+    ],
+    "stem": "分拣站的合格品收集盒外形为长方体。工程师在实心长方体阶段对外侧 4 条竖直棱边添加了半径 R = 6 mm 的外圆角，随后以顶面为移除面执行向内抽壳特征，设定均匀壁厚为 2 mm。求抽壳完成后，料盒内部对应 4 个竖直转角处的内圆弧半径是多少 mm？（填写整数数值）",
+    "explanation": "先建立外圆角再向内抽壳时，内表面以内凹同心圆弧偏置生成，内圆弧半径等于外圆角半径减去壁厚，即 6 - 2 = 4 mm。",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "parameters-equations-1",
+    "type": "single_choice",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "在桌面分拣站定位底板的模型设计中，工程师希望两端安装孔到对应外边缘的边距 margin 始终固定为 15 mm。若底板总长参数定义为 base_length，两安装孔中心距定义为 hole_pitch，在参数表（Parameters）中应编写的关系表达式为：",
+    "options": [
+      {
+        "id": "a",
+        "text": "hole_pitch = base_length - margin"
+      },
+      {
+        "id": "b",
+        "text": "hole_pitch = (base_length - margin) / 2"
+      },
+      {
+        "id": "c",
+        "text": "hole_pitch = base_length - 2 * margin"
+      },
+      {
+        "id": "d",
+        "text": "hole_pitch = base_length + 2 * margin"
+      }
+    ],
+    "explanation": "两端各保留一个边距 margin，因此两孔中心距等于总长度减去两倍边距，即 hole_pitch = base_length - 2 * margin。选项 a 只减去单侧边距，选项 b 错误除以 2，选项 d 反向增加了长度。",
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    }
+  },
+  {
+    "id": "parameters-equations-2",
+    "type": "single_choice",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "在参数化建模规范中，关于全局参数的命名与使用习惯，下列做法中最符合工程规范的是：",
+    "options": [
+      {
+        "id": "a",
+        "text": "保持软件默认的尺寸名称（如 d1、d12、Sketch2.d3），无需手动修改"
+      },
+      {
+        "id": "b",
+        "text": "尽可能将所有孔径和板厚在草图中直接输入常数数值，以提高建模速度"
+      },
+      {
+        "id": "c",
+        "text": "在不同的草图里为同一个装配基准尺寸重复创建各自独立的驱动参数"
+      },
+      {
+        "id": "d",
+        "text": "给关键尺寸赋予具有明确物理意义的规范命名（如 base_length、hole_dia）"
+      }
+    ],
+    "explanation": "赋予明确语义的命名（如 base_length、hole_dia）能大幅提升参数表可读性，降低后续维护和设计变更出错的概率。默认名称晦涩难辨，草图硬编码数值无法联动，重复定义参数会破坏关联性。",
+    "grading": {
+      "choice_ids": [
+        "d"
+      ]
+    }
+  },
+  {
+    "id": "parameters-equations-3",
+    "type": "multiple_choice",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "当工程师在 CAD 参数表中修改分拣底板的长度或孔距以验证设计变更时，下列关于参数驱动与模型报错（Rebuild Error）的说法正确的有哪两项？请选择两项。",
+    "options": [
+      {
+        "id": "a",
+        "text": "参数驱动能使相关联的草图约束、特征深度及阵列位置按表达式逻辑自动同步更新"
+      },
+      {
+        "id": "b",
+        "text": "若尺寸修改过大导致某切除特征完全脱离实体表面，可能会引发特征重建错误"
+      },
+      {
+        "id": "c",
+        "text": "参数表中只要编写公式，就无需为几何草图添加几何约束与完全约束"
+      },
+      {
+        "id": "d",
+        "text": "参数之间允许建立相互引用的闭环公式（例如 A = B + 2 且 B = A - 1）"
+      }
+    ],
+    "explanation": "参数表达式可实现多特征级联更新，但尺寸剧烈变化超出几何实体范围会导致拓扑破坏报错。选项 c 错误，参数是数值驱动，必须配合几何约束才能确定空间相对关系；选项 d 错误，参数循环引用会导致求解器死循环报错。",
+    "grading": {
+      "choice_ids": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "id": "parameters-equations-4",
+    "type": "true_false",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "在参数化设计中，通过修改参数表中的主控参数能够自动测试模型在不同规格下的适应性，这一过程被称为验证设计意图（Design Intent）。",
+    "explanation": "参数化设计的核心正是将设计规则转化为参数与约束关系，通过修改主控参数测试模型能否按照预期规律正确重建而不发生几何错乱，即验证设计意图。",
+    "grading": {
+      "boolean": true
+    }
+  },
+  {
+    "id": "parameters-equations-5",
+    "type": "numeric",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "在分拣站定位底板的参数表中，底板总长初始定义为 base_length = 150 mm，固定边距参数 margin = 16 mm。两对称安装孔中心距由表达式 hole_pitch = base_length - 2 * margin 驱动。现为安装更长规格的被测工件，工程师将 base_length 参数修改为 180 mm，边距 margin 保持 16 mm 不变。更新后两安装孔中心距 hole_pitch 的数值是多少 mm？（填写整数数值）",
+    "explanation": "根据表达式 hole_pitch = base_length - 2 * margin，更新后 hole_pitch = 180 - 2 × 16 = 180 - 32 = 148 mm。",
+    "grading": {
+      "value": "148",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "sample-single",
+    "type": "single_choice",
+    "chapter": "参数表与设计变更",
+    "concepts": [
+      "parameters-equations"
+    ],
+    "stem": "希望把支架孔距从 30 mm 改为 36 mm，并让孔随尺寸一起移动，应先怎么建模？",
+    "options": [
+      {
+        "id": "a",
+        "text": "为孔中心间距建立尺寸约束"
+      },
+      {
+        "id": "b",
+        "text": "把模型截图放大"
+      },
+      {
+        "id": "c",
+        "text": "修改切片层高"
+      },
+      {
+        "id": "d",
+        "text": "增大支撑密度"
+      }
+    ],
+    "explanation": "尺寸约束直接定义两孔之间的距离，后续修改能更新模型。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  }
+]

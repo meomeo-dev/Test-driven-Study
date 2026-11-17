@@ -1,0 +1,128 @@
+package palace
+
+import (
+	"crypto/rand"
+	"encoding/json"
+	"log/slog"
+	"os"
+	"path/filepath"
+	"strings"
+
+	"github.com/zalando/go-keyring"
+)
+
+const credentialService = "test-driven-study.image-provider"
+
+// CredentialStore keeps the platform-specific API outside provider/job logic.
+type CredentialStore interface {
+	Get(account string) (string, error)
+	Set(account, value string) error
+	Delete(account string) error
+}
+
+type systemCredentials struct{}
+
+func (systemCredentials) Get(account string) (string, error) {
+	return keyring.Get(credentialService, account)
+}
+func (systemCredentials) Set(account, value string) error {
+	return keyring.Set(credentialService, account, value)
+}
+func (systemCredentials) Delete(account string) error {
+	return keyring.Delete(credentialService, account)
+}
+
+type savedProvider struct {
+	Version  int      `json:"version"`
+	Account  string   `json:"account"`
+	BaseURL  string   `json:"base_url"`
+	Models   []string `json:"models"`
+	ProxyURL string   `json:"proxy_url"`
+}
+
+func (s *Service) loadSavedProvider() {
+	payload, err := os.ReadFile(s.settingsFile)
+	if os.IsNotExist(err) {
+		return
+	}
+	var marker savedProvider
+	if err != nil || len(payload) > 8192 || json.Unmarshal(payload, &marker) != nil || marker.Version != 1 || !validAccount(marker.Account) {
+		s.config = Config{Message: "无法读取已保存的生图设置，请重新配置"}
+		return
+	}
+	s.credentialAccount = marker.Account
+	s.config = Config{BaseURL: marker.BaseURL, Models: marker.Models, ProxyURL: marker.ProxyURL,
+		Message: "无法读取系统凭据，请解锁钥匙串或重新输入密钥保存"}
+	value, err := s.credentials.Get(marker.Account)
+	var config Config
+	if err != nil || len(value) > 2300 || json.Unmarshal([]byte(value), &config) != nil {
+		return
+	}
+	config.Message = validateConfig(config)
+	s.config = config
+}
+
+func validAccount(value string) bool {
+	if !strings.HasPrefix(value, "image-") || len(value) < 32 || len(value) > 80 {
+		return false
+	}
+	for _, value := range strings.TrimPrefix(value, "image-") {
+		if (value < 'A' || value > 'Z') && (value < '2' || value > '7') {
+			return false
+		}
+	}
+	return true
+}
+
+func (s *Service) persistProvider(config Config) error {
+	payload, err := json.Marshal(config)
+	if err != nil || len(payload) > 2300 {
+		return &SettingsError{"配置内容超过系统凭据存储的长度限制"}
+	}
+	account := "image-" + rand.Text()
+	if err := s.credentials.Set(account, string(payload)); err != nil {
+		return &SettingsError{"无法保存到系统凭据存储，请检查钥匙串是否已解锁或允许访问"}
+	}
+	// Verify the saved item before publishing its reference. Failed writes never
+	// replace the last active account; a temporary orphan can safely be removed.
+	stored, err := s.credentials.Get(account)
+	if err != nil || stored != string(payload) {
+		s.credentials.Delete(account)
+		return &SettingsError{"未能验证系统凭据保存结果，原设置保持不变"}
+	}
+	marker := savedProvider{Version: 1, Account: account, BaseURL: config.BaseURL,
+		Models: config.Models, ProxyURL: safeProxy(config.ProxyURL)}
+	data, _ := json.MarshalIndent(marker, "", "  ")
+	if err := atomicSettingsFile(s.settingsFile, append(data, '\n')); err != nil {
+		s.credentials.Delete(account)
+		return &SettingsError{"无法保存生图设置索引，原设置保持不变"}
+	}
+	previous := s.credentialAccount
+	s.credentialAccount = account
+	if previous != "" {
+		if err := s.credentials.Delete(previous); err != nil {
+			slog.Warn("previous image-provider credential could not be removed")
+		}
+	}
+	return nil
+}
+
+func atomicSettingsFile(filename string, data []byte) error {
+	file, err := os.CreateTemp(filepath.Dir(filename), ".provider-*")
+	if err != nil {
+		return err
+	}
+	defer os.Remove(file.Name())
+	if _, err = file.Write(data); err != nil {
+		file.Close()
+		return err
+	}
+	if err = file.Sync(); err != nil {
+		file.Close()
+		return err
+	}
+	if err = file.Close(); err != nil {
+		return err
+	}
+	return os.Rename(file.Name(), filename)
+}

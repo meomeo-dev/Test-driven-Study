@@ -1,0 +1,34 @@
+import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
+import type { Detail } from '../../api/client';
+import type { DetailsTab } from './StudyDetails';
+
+type Props = {
+  detail: Detail;
+  onDetails: (tab: DetailsTab, trigger?: HTMLElement) => void;
+};
+
+export function QuestionExplanation({ detail, onDetails }: Props) {
+  const question = detail.question;
+  return <section className="question-analysis" aria-label="答案解析">
+    <header className="analysis-heading">
+      <h3 className="column-label"><FileText size={14} />答案解析</h3>
+      <button type="button" className="inline-action"
+        onClick={event => onDetails('analysis', event.currentTarget)}>完整解析</button>
+    </header>
+    <div key={question.question_id} className="question-explanation-body" role="region"
+      aria-label="解析正文" aria-keyshortcuts="ArrowUp ArrowDown" tabIndex={0}>
+      <p className="analysis-text">{question.analysis}</p>
+      {question.skill && <details className="memory-tip" open>
+        <summary><Lightbulb size={15} />记忆提示
+          <ChevronDown size={14} className="disclosure-chevron" />
+        </summary>
+        <p>{question.skill}</p>
+      </details>}
+    </div>
+    <div className="question-metadata-summary">
+      <span>难度 {question.difficulty}/5</span>
+      <button type="button" className="inline-action"
+        onClick={event => onDetails('metadata', event.currentTarget)}>题目信息</button>
+    </div>
+  </section>;
+}
