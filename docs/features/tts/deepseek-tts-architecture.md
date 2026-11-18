@@ -156,18 +156,20 @@ When options contain English phrases that require pronunciation:
   "stem": "工人向维修工汇报车间照明指示灯故障时，最地道的英文表达是：",
   "options": [
     { "id": "a", "text": "The light doesn't work.", "tts": { "voice": "stella" } },
-    { "id": "b", "text": "The light is dead person.", "tts": false },
-    { "id": "c", "text": "No light working now.", "tts": false },
-    { "id": "d", "text": "The light loses power heart.", "tts": false }
+    { "id": "b", "text": "The light is dead person.", "tts": { "voice": "stella" } },
+    { "id": "c", "text": "No light working now.", "tts": { "voice": "stella" } },
+    { "id": "d", "text": "The light loses power heart.", "tts": { "voice": "stella" } }
   ],
   "grading": { "choice_ids": ["a"] }
 }
 ```
-**UI Render Result**:
-- Option A displays the text `"The light doesn't work."` alongside play and regenerate
-  icons.
-- Options B, C, D (non-standard Chinglish distractors) do not have `tts: true`, so they
-  render cleanly as plain text without confusing audio.
+**UI Render Result & Anti-Leakage Uniformity Rule**:
+- **Anti-Leakage Invariant (防剧透一致性法则)**: If TTS is enabled for options, **ALL options
+  in that question (or blank) MUST uniformly have TTS enabled**. Enabling TTS exclusively
+  on the correct choice leaks the answer to learners before answering.
+- Every option uniformly renders its text alongside play (`<Volume2 />`) and regenerate
+  (`<RotateCcw />`) icon buttons, ensuring fair visual presentation and authentic listening
+  comparison across all choices.
 
 #### Case 3: Grammar Fill-in-the-Blank (No Audio by Definition)
 In grammar syntax questions containing blank lines:

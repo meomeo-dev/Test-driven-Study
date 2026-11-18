@@ -93,6 +93,14 @@ export interface CourseOption {
 }
 ```
 
+### 3.3 Option-Level Anti-Leakage Uniformity Rule (防剧透一致性法则)
+To prevent learner answer leakage ("spoiler"), option-level TTS must be applied uniformly:
+- **Rule**: If any option in a multiple-choice question or cloze blank specifies `tts`,
+  **ALL options in that question (or blank) MUST uniformly provide TTS**.
+- Enabling audio exclusively on the correct answer allows learners to determine the
+  correct choice simply by inspecting which option renders speaker buttons, destroying
+  pedagogical validity.
+
 ---
 
 ## 4. The 6 New Question Types: Data Contracts and Schemas
@@ -119,9 +127,9 @@ export interface CourseOption {
         "index": 1,
         "options": [
           {"id": "a", "text": "gear", "tts": true},
-          {"id": "b", "text": "books"},
-          {"id": "c", "text": "tickets"},
-          {"id": "d", "text": "watches"}
+          {"id": "b", "text": "books", "tts": true},
+          {"id": "c", "text": "tickets", "tts": true},
+          {"id": "d", "text": "watches", "tts": true}
         ],
         "grading": { "choice_ids": ["a"] },
         "explanation": "Protective gear (防护装备) is the standard industrial safety term."
@@ -129,10 +137,10 @@ export interface CourseOption {
       {
         "index": 2,
         "options": [
-          {"id": "a", "text": "up"},
-          {"id": "b", "text": "down"},
-          {"id": "c", "text": "off"},
-          {"id": "d", "text": "in"}
+          {"id": "a", "text": "up", "tts": true},
+          {"id": "b", "text": "down", "tts": true},
+          {"id": "c", "text": "off", "tts": true},
+          {"id": "d", "text": "in", "tts": true}
         ],
         "grading": { "choice_ids": ["b"] },
         "explanation": "Shut down (关闭设备/电源) is the correct phrasal verb."
@@ -428,12 +436,12 @@ Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_jso
     "stem": "工人向维修工汇报车间照明指示灯故障时，最地道规范的英文表达是：",
     "options": [
       { "id": "a", "text": "The light doesn't work.", "tts": { "voice": "stella" } },
-      { "id": "b", "text": "The light is dead person." },
-      { "id": "c", "text": "No light working now." },
-      { "id": "d", "text": "The light loses power heart." }
+      { "id": "b", "text": "The light is dead person.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "No light working now.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "The light loses power heart.", "tts": { "voice": "stella" } }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "'The light doesn't work' 是描述机器或灯具故障的标准口语表达。"
+    "explanation": "'The light doesn't work' 是描述机器或灯具故障的标准口语表达。全部选项统一提供 TTS，防止视觉差异泄露答案。"
   },
   {
     "id": "item-sue1-sc-grammar-003",
@@ -467,9 +475,9 @@ Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_jso
         "index": 1,
         "options": [
           {"id": "a", "text": "must", "tts": true},
-          {"id": "b", "text": "can't"},
-          {"id": "c", "text": "may not"},
-          {"id": "d", "text": "used to"}
+          {"id": "b", "text": "can't", "tts": true},
+          {"id": "c", "text": "may not", "tts": true},
+          {"id": "d", "text": "used to", "tts": true}
         ],
         "grading": { "choice_ids": ["a"] },
         "explanation": "'Must' expresses mandatory obligation in operating guidelines."
@@ -478,9 +486,9 @@ Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_jso
         "index": 2,
         "options": [
           {"id": "a", "text": "start", "tts": true},
-          {"id": "b", "text": "starting"},
-          {"id": "c", "text": "started"},
-          {"id": "d", "text": "starts"}
+          {"id": "b", "text": "starting", "tts": true},
+          {"id": "c", "text": "started", "tts": true},
+          {"id": "d", "text": "starts", "tts": true}
         ],
         "grading": { "choice_ids": ["a"] },
         "explanation": "After auxiliary verb 'do not', use the base verb form 'start'."
