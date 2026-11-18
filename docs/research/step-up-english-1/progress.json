@@ -19,5 +19,33 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_004": {
+    "lesson_number": 4,
+    "title": "国际音标与自然拼读规律：第 4 讲 集中双元音 /ɪə/, /eə/, /ʊə/ 与 r 音节",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_005": {
+    "lesson_number": 5,
+    "title": "国际音标与自然拼读规律：第 5 讲 爆破音 /p/, /b/, /t/, /d/, /k/, /g/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_006": {
+    "lesson_number": 6,
+    "title": "国际音标与自然拼读规律：第 6 讲 摩擦音 /f/, /v/, /θ/, /ð/, /s/, /z/, /ʃ/, /ʒ/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_007": {
+    "lesson_number": 7,
+    "title": "国际音标与自然拼读规律：第 7 讲 破擦音 /tʃ/, /dʒ/, /tr/, /dr/, /ts/, /dz/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
