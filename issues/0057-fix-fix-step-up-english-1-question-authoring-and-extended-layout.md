@@ -1,7 +1,8 @@
 ---
 id: 0057
 type: fix
-status: open
+status: closed
+closed-by: 6409ba71606f783f557e2355b3d4e6e73185e6ce
 labels: []
 branch: fix/0057-fix-step-up-english-1-question-authoring-and-extended-layout
 created: 2026-11-18
