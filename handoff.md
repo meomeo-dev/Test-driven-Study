@@ -16,12 +16,15 @@ Updated 2026-11-18 (America/New_York).
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
   scoring and optional AI feedback. The six examples ship in the single
-  综合题型练习 unit of `step-up-english-1@1.2.0`.
+  综合题型练习 unit of `step-up-english-1@1.2.1`.
 - Reading comprehension uses the existing study layout. Its passage,
   sub-questions, and choices declare inline TTS in the question bank.
-- Version `1.2.0` is active in the local learner database. Course validation
-  and the course, storage, and study tests passed. The live sidebar shows one
-  unit, and all six example question IDs and existing attempts were preserved.
+- Writing places requirements with the prompt, the sample in the answer
+  column, and the rubric in the explanation. Practice displays a live word
+  count and reveals the sample and rubric after submission.
+- Version `1.2.1` is active in the local learner database. Course validation,
+  type checking, course and study tests, and the writing browser test passed.
+  The upgrade preserved the example question IDs and existing attempts.
 
 ## Elementary Chinese pronunciation
 

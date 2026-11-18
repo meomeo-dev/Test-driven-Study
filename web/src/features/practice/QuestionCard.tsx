@@ -1,5 +1,6 @@
 import { ReadingPassage } from '../question-types/ReadingContent';
-import { readingQuestionType, creditLabel } from '../question-types/model';
+import { WritingRequirements, WritingSample, WritingReview } from '../question-types/WritingContent';
+import { readingQuestionType, writingQuestionType, creditLabel } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import { WrittenFeedback } from '../question-types/WrittenFeedback';
@@ -22,6 +23,9 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
   if (question.question_type === readingQuestionType && question.content) {
     return <ExtendedQuestion content={question.content} hidePassage
       readingReview={question.question_review} />;
+  }
+  if (question.question_type === writingQuestionType) {
+    return <WritingSample review={question.question_review} />;
   }
   if (question.content) {
     return <>
@@ -54,6 +58,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
   const detail = presentation.detail;
   const question = detail.question;
   const reading = question.question_type === readingQuestionType;
+  const writing = question.question_type === writingQuestionType;
   const review = result?.detail.question.question_review;
   const written = review?.type === 'writing' || review?.type === 'translation';
   const isNumeric = question.question_type === 4;
@@ -85,22 +90,27 @@ export function QuestionCard({ presentation, result, selected, position, total, 
             )}
           </h2>
           {reading && <ReadingPassage passage={question.content?.passage} />}
+          {writing && <WritingRequirements content={question.content} />}
           <QuestionAudio key={`audio-${question.question_id}`} question={question} />
           <QuestionImage key={`image-${presentation.id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
         </section>
-        <section className="question-answers" aria-label="作答选项">
-          <h3 className="column-label">{question.content ? '作答' : isNumeric ? '填写答案'
-            : question.question_type === 2 ? '可选择多项' : '选择答案'}</h3>
+        <section className="question-answers" aria-label={writing ? '作答' : '作答选项'}>
+          {!writing && <h3 className="column-label">{question.content ? '作答'
+            : isNumeric ? '填写答案'
+              : question.question_type === 2 ? '可选择多项' : '选择答案'}</h3>}
           {question.content ? <>
-            <ExtendedQuestion content={question.content} value={result?.attempt.response ?? draft}
-              disabled={pending || !!result} onChange={onDraft} hidePassage={reading}
-              readingReview={reading ? review : undefined} />
+            {(!writing || !result) && <ExtendedQuestion content={question.content}
+              value={result?.attempt.response ?? draft} disabled={pending || !!result}
+              onChange={onDraft} hidePassage={reading} hideWritingRequirements={writing}
+              readingReview={reading ? review : undefined} />}
             {reading && result?.attempt.score !== undefined && <p role="status">
               本题得分比例：{creditLabel(result.attempt.score)}
             </p>}
-            {!reading && review && result && <ExtendedReview item={review}
+            {writing && review && result && <WritingReview review={review}
               response={result.attempt.response} credit={result.attempt.score} />}
-            {written && <WrittenFeedback presentation={presentation.id} />}
+            {!writing && !reading && review && result && <ExtendedReview item={review}
+              response={result.attempt.response} credit={result.attempt.score} />}
+            {written && <WrittenFeedback presentation={presentation.id} writing={writing} />}
           </> : isNumeric ? <>
             <NumericAnswer value={numeric} onChange={onNumeric} disabled={pending || !!result} />
             {result && <p className="answer-option correct">正确答案：{result.attempt.correct_numeric}</p>}
@@ -129,7 +139,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           </button>
         </div>
       </footer>
-      {result && (reading || !review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
+      {result && (reading || writing || !review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
     </div>
   </article>;
 }

@@ -1,4 +1,5 @@
 import { ReadingExplanations } from '../question-types/ReadingContent';
+import { WritingCriteria } from '../question-types/WritingContent';
 import { RichContent } from '../../components/RichContent';
 import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
 import type { Detail } from '../../api/client';
@@ -23,6 +24,7 @@ export function QuestionExplanation({ detail, onDetails }: Props) {
       <p className="analysis-text"><RichContent content={question.analysis_content ?? question.analysis} />
         <ExplanationAudio segments={question.analysis_audio} /></p>
       <ReadingExplanations review={question.question_review} />
+      <WritingCriteria review={question.question_review} />
       {question.skill && <details className="memory-tip" open>
         <summary><Lightbulb size={15} />记忆提示
           <ChevronDown size={14} className="disclosure-chevron" />

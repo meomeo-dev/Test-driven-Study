@@ -17,7 +17,7 @@ async function demoUnit(request: APIRequestContext) {
   return { subject, id, link };
 }
 
-test('all five types can be answered and reviewed in practice', async ({ page, request }) => {
+test('cloze, reading, listening and translation can be answered and reviewed', async ({ page, request }) => {
   const demo = await demoUnit(request);
   const card = page.getByRole('article', { name: /./ });
   const submit = () => page.getByRole('button', { name: '提交答案' }).click();
@@ -46,20 +46,6 @@ test('all five types can be answered and reviewed in practice', async ({ page, r
   await submit();
   await expect(card.getByText('本题得分比例：100%')).toBeVisible();
 
-  const feedbackCalls: string[] = [];
-  page.on('request', r => { if (r.url().endsWith('/feedback')) feedbackCalls.push(r.url()); });
-  await page.goto(demo.link('writing'));
-  await expect(card.getByText('参考范文')).toHaveCount(0);
-  await page.getByRole('textbox', { name: '写作答案' })
-    .fill('The delivery has been moved to Friday.');
-  await submit();
-  await expect(card.getByText('词数：7')).toBeVisible();
-  await expect(card.getByText('参考范文')).toBeVisible();
-  expect(feedbackCalls).toEqual([]);
-  await page.getByRole('button', { name: '请求 AI 批改' }).click();
-  await expect(card.getByText(/表达清楚，符合通知语境/)).toBeVisible();
-  expect(feedbackCalls).toHaveLength(1);
-
   await page.goto(demo.link('translation'));
   await expect(card.getByText('参考译文', { exact: true })).toHaveCount(0);
   await page.getByRole('textbox', { name: '中文译文' }).fill('请将已签名的清单放在前台。');
@@ -72,6 +58,50 @@ test('all five types can be answered and reviewed in practice', async ({ page, r
   await page.goto(demo.link('translation', 'memorize'));
   await expect(page.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
   await expect(page.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
+});
+
+test('writing separates the requirements, sample and grading criteria', async ({ page, request }) => {
+  const demo = await demoUnit(request);
+  const feedbackCalls: string[] = [];
+  page.on('request', r => { if (r.url().endsWith('/feedback')) feedbackCalls.push(r.url()); });
+  const speech: string[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    speech.push(route.request().postDataJSON().text);
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
+
+  await page.goto(demo.link('writing', 'memorize'));
+  const card = page.locator('article.question-card');
+  const stem = card.getByRole('region', { name: '题干与图例' });
+  const reference = card.getByRole('region', { name: '参考答案' });
+  const analysis = card.getByRole('region', { name: '答案解析', exact: true });
+  await expect(stem.getByRole('region', { name: '写作要求' })
+    .getByText('至少 5 词，最多 20 词')).toBeVisible();
+  await expect(reference.getByText('The delivery has been moved to Friday.')).toBeVisible();
+  await expect(reference.getByText('评分细则')).toHaveCount(0);
+  await expect(analysis.getByText('has been moved to Friday', { exact: true })).toBeVisible();
+  await expect(analysis.getByText('任务完成度（50 分）')).toBeVisible();
+  await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
+  await stem.getByRole('button', { name: '播放发音', exact: true }).first().click();
+  await expect.poll(() => speech[0]).toBe('delivery');
+
+  await page.goto(demo.link('writing'));
+  await expect(stem.getByRole('region', { name: '写作要求' })).toBeVisible();
+  await expect(card.getByText('参考范文')).toHaveCount(0);
+  await expect(analysis).toHaveCount(0);
+  const editor = card.getByRole('textbox', { name: '写作答案' });
+  await editor.fill('Our delivery is now scheduled for Friday.');
+  await expect(card.getByText('词数：7')).toBeVisible();
+  await card.getByRole('button', { name: '提交答案' }).click();
+  await expect(editor).toHaveCount(0);
+  await expect(card.getByText('词数：7')).toBeVisible();
+  await expect(card.getByText('参考范文')).toBeVisible();
+  await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
+  expect(feedbackCalls).toEqual([]);
+  await card.getByRole('button', { name: '请求 AI 批改' }).click();
+  await expect(card.getByText(/表达清楚，符合通知语境/)).toBeVisible();
+  await expect(card.getByText(/任务完成度 50\/50/)).toBeVisible();
+  expect(feedbackCalls).toHaveLength(1);
 });
 
 test('reading separates the article, sub-questions and explanations', async ({ page, request }) => {

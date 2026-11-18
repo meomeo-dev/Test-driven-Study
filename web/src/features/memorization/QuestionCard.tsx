@@ -1,5 +1,6 @@
 import { ReadingPassage } from '../question-types/ReadingContent';
-import { readingQuestionType } from '../question-types/model';
+import { WritingRequirements, WritingSample } from '../question-types/WritingContent';
+import { readingQuestionType, writingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { Ref } from 'react';
 import { BookOpenCheck, Bookmark, ChevronLeft, ChevronRight, Expand, LoaderCircle, Undo2 } from 'lucide-react';
@@ -31,6 +32,9 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
     return <ExtendedQuestion content={question.content} hidePassage
       readingReview={question.question_review} />;
   }
+  if (question.question_type === writingQuestionType) {
+    return <WritingSample review={question.question_review} />;
+  }
   if (question.content) {
     return <>
       <ExtendedQuestion content={question.content} />
@@ -48,6 +52,7 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
   onDetails, onPrevious, onNext, onMark }: Props) {
   const question = detail.question;
   const reading = question.question_type === readingQuestionType;
+  const writing = question.question_type === writingQuestionType;
   const hint = (key: string) => shortcuts ? <kbd aria-hidden="true">{key}</kbd> : null;
   return <article className="question-card" aria-labelledby="question-title"
     aria-busy={pending}>
@@ -58,7 +63,7 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
       <button type="button" className="read-full" onClick={event => onDetails('question', event.currentTarget)} aria-keyshortcuts={shortcuts ? 'v' : undefined}>
         <Expand size={13} />完整题目{hint('v')}</button>
     </div>
-    <div className="question-stage" data-reading={reading || undefined}>
+    <div className="question-stage" data-reading={reading || undefined} data-writing={writing || undefined}>
       <section className="question-stem" aria-label="题干与图例">
         <header className="column-label question-stem-heading">
           <span className="source-line">题号 #{question.source_item_id ?? question.question_id}</span>
@@ -72,11 +77,12 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
           )}
         </h2>
         {reading && <ReadingPassage passage={question.content?.passage} />}
+        {writing && <WritingRequirements content={question.content} />}
         <QuestionAudio key={`audio-${question.question_id}`} question={question} />
         <QuestionImage key={`image-${question.question_id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
       </section>
       <section className="question-answers" aria-label="参考答案">
-        <h3 className="column-label">选项与答案</h3>
+        {!writing && <h3 className="column-label">选项与答案</h3>}
         <AnswerOptions question={question} />
       </section>
       <QuestionExplanation detail={detail} onDetails={onDetails} />

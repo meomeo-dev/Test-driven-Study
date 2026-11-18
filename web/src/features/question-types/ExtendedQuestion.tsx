@@ -6,6 +6,7 @@ import { AudioControls, ttsConfig } from '../../components/AudioControls';
 import { NumericAnswer } from '../../components/NumericAnswer';
 import { OptionAudio } from '../../components/OptionAudio';
 import { RichContent } from '../../components/RichContent';
+import { WritingRequirements } from './WritingContent';
 
 type Props = {
   content: QuestionContent;
@@ -14,10 +15,11 @@ type Props = {
   disabled?: boolean;
   readingReview?: CourseItemReview;
   hidePassage?: boolean;
+  hideWritingRequirements?: boolean;
 };
 
 export function ExtendedQuestion({ content, value, onChange, disabled, readingReview,
-  hidePassage }: Props) {
+  hidePassage, hideWritingRequirements }: Props) {
   const id = useId();
   const readOnly = disabled || !onChange;
   if (content.blanks) {
@@ -62,7 +64,8 @@ export function ExtendedQuestion({ content, value, onChange, disabled, readingRe
       </fieldset>)}
     </div>;
   }
-  return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled} />;
+  return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled}
+    hideWritingRequirements={hideWritingRequirements} />;
 }
 
 function SubQuestion({ sub, value, disabled, name, onChange, grading, studyRows,
@@ -152,28 +155,30 @@ function PartOptions({ options, name, selected, multiple, disabled, onChoose,
   </ul>;
 }
 
-function WrittenQuestion({ content, value, onChange, disabled }: Props) {
+function WrittenQuestion({ content, value, onChange, disabled, hideWritingRequirements }: Props) {
+  const countId = useId();
+  const writing = !!content.subtype;
   const label = content.direction === 'en_to_zh' ? '中文译文'
     : content.direction === 'zh_to_en' ? '英文译文' : '写作答案';
-  const subtype = content.subtype && ({
-    sentence_making: '造句', short_essay: '小作文', full_essay: '大作文',
-  })[content.subtype];
   const text = value?.text ?? value?.translation ?? '';
-  const range = content.min_words || content.max_words
-    ? [content.min_words && `至少 ${content.min_words} 词`,
-      content.max_words && `最多 ${content.max_words} 词`].filter(Boolean).join('，') : '';
-  return <div className="extended-question">
-    {subtype && <strong>{subtype}</strong>}
+  // Match the word boundaries used by the server when it grades writing.
+  const wordCount = writing ? text.match(/[\p{L}\p{N}\p{M}'’]+/gu)?.length ?? 0 : 0;
+  return <div className={writing ? 'extended-question writing-editor' : 'extended-question'}>
+    {writing && !hideWritingRequirements && <WritingRequirements content={content} />}
     {content.source_text && <div className="extended-passage">{content.source_text}</div>}
-    {!!content.requirements?.length && <ul className="extended-requirements">
+    {!writing && !!content.requirements?.length && <ul className="extended-requirements">
       {content.requirements.map(requirement => <li key={requirement}>{requirement}</li>)}
     </ul>}
-    {range && <p>{range}</p>}
-    {(onChange || text) && <label className="extended-writing">
-      {label}
-      <textarea rows={6} maxLength={12000} disabled={disabled || !onChange} value={text}
-        onChange={event => onChange?.(content.direction
-          ? { translation: event.currentTarget.value } : { text: event.currentTarget.value })} />
-    </label>}
+    {(onChange || text) && <>
+      <label className="extended-writing">
+        {label}
+        <textarea rows={content.subtype === 'sentence_making' ? 4 : 6} maxLength={12000}
+          disabled={disabled || !onChange} value={text} lang={writing ? 'en' : undefined}
+          aria-describedby={writing ? countId : undefined}
+          onChange={event => onChange?.(content.direction
+            ? { translation: event.currentTarget.value } : { text: event.currentTarget.value })} />
+      </label>
+      {writing && <p id={countId} className="muted writing-word-count">词数：{wordCount}</p>}
+    </>}
   </div>;
 }

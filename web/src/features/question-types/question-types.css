@@ -44,7 +44,7 @@
 .terminal-stem .extended-part { padding: 6px 10px; }
 .terminal-stem .extended-part legend { font-size: var(--font-size-label); }
 
-.question-stage[data-reading] > :is(.question-stem, .question-answers) {
+.question-stage:is([data-reading], [data-writing]) > :is(.question-stem, .question-answers) {
   overflow: auto;
   overscroll-behavior: contain;
 }
@@ -67,7 +67,17 @@
 .reading-options label:focus-within { outline: 2px solid var(--focus); outline-offset: -2px; }
 .reading-parts .extended-part > :is(.answer-option, .numeric-answer) { margin-top: 6px; }
 
+.writing-requirements, .writing-criteria { display: grid; gap: 6px; }
+.writing-criteria { margin-block-start: 10px; }
+.writing-editor textarea { border-radius: 6px; }
+.writing-word-count { text-align: end; }
+
 @media (max-width: 650px) {
-  .question-stage[data-reading] { grid-template-rows: auto auto; overflow-y: auto; }
-  .question-stage[data-reading] > :is(.question-stem, .question-answers) { overflow: visible; }
+  .question-stage:is([data-reading], [data-writing]) {
+    grid-template-rows: auto auto;
+    overflow-y: auto;
+  }
+  .question-stage:is([data-reading], [data-writing]) > :is(.question-stem, .question-answers) {
+    overflow: visible;
+  }
 }

@@ -1,4 +1,5 @@
 import { ReadingExplanations, ReadingPassage } from '../question-types/ReadingContent';
+import { WritingCriteria, WritingRequirements } from '../question-types/WritingContent';
 import { readingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import { ExplanationAudio } from '../../components/AudioControls';
@@ -40,6 +41,7 @@ export function FullExplanation({ detail }: { detail: Detail }) {
     <p><RichContent content={detail.question.analysis_content ?? detail.question.analysis} />
       <ExplanationAudio segments={detail.question.analysis_audio} /></p>
     <ReadingExplanations review={detail.question.question_review} />
+    <WritingCriteria review={detail.question.question_review} />
     {detail.question.skill && <><h3>记忆提示</h3><p>{detail.question.skill}</p></>}
   </section>;
 }
@@ -56,6 +58,7 @@ export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
       </h3>
         {detail.question.question_type === readingQuestionType &&
           <ReadingPassage passage={detail.question.content?.passage} />}
+        <WritingRequirements content={detail.question.content} />
         <QuestionAudio key={`audio-${detail.question.question_id}`} question={detail.question} />
         <QuestionImage key={`image-${detail.question.question_id}`} detail={detail} /><AnswerOptions question={detail.question} mode="full" /></div>}
       {tab === 'analysis' && <FullExplanation detail={detail} />}

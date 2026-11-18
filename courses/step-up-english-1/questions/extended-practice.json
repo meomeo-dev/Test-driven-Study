@@ -108,13 +108,28 @@
     "id": "sue1-extended-writing",
     "type": "writing",
     "subtype": "sentence_making",
-    "stem": "用 delivery 和 Friday 写一句通知，说明送货时间已改为星期五。",
+    "stem": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "delivery", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "Friday", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 写一句通知，说明送货时间已改为星期五。" }
+    ],
     "requirements": ["使用 delivery 和 Friday。", "写一个完整的英语句子。"],
     "keywords": ["delivery", "Friday"],
     "min_words": 5,
     "max_words": 20,
     "sample_response": "The delivery has been moved to Friday.",
-    "rubric": { "task_completion": 50, "language_accuracy": 50 }
+    "rubric": { "task_completion": 50, "language_accuracy": 50 },
+    "analysis": [
+      { "type": "text", "text": "以 The delivery 作主语，用 " },
+      {
+        "type": "text",
+        "text": "has been moved to Friday",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " 说明送货时间已经改为星期五。" }
+    ]
   },
   {
     "id": "sue1-extended-translation",
