@@ -6,7 +6,7 @@ import { TerminalCandidate } from './TerminalCandidate';
 import { TerminalImage } from './TerminalImage';
 import { TerminalFeedback } from './TerminalFeedback';
 import { TerminalDialogs } from './TerminalDialogs';
-import { questionType } from './terminalLabels';
+import { judgmentOptionAt, questionType } from './terminalLabels';
 import { useExamTerminal } from './useExamTerminal';
 import { useTerminalKeys } from './useTerminalKeys';
 
@@ -19,7 +19,11 @@ export function ExamWorkspace({ id, onBack, onSubject }: {
   const shortcuts = useShortcutPreference();
   useEffect(() => { if (session) onSubject(session.subject_id); }, [session?.subject_id, onSubject]);
   useTerminalKeys({ enabled: shortcuts.enabled,
-    choose: position => { const option = item?.detail.question.items[position]; if (option) choose(option.sign); },
+    choose: position => {
+      if (!item) return;
+      const option = judgmentOptionAt(item.detail.question, position);
+      if (option) choose(option.sign);
+    },
     next, previous: () => { void navigate(index - 1); },
     help: () => setDialog('help'), card: () => setDialog('navigation') });
   if (!session || !item) return <div className="terminal-state" role={query.error ? 'alert' : 'status'}>

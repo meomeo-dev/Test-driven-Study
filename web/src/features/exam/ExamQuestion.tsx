@@ -6,7 +6,7 @@ import { RichContent } from '../../components/RichContent';
 import { OptionAudio } from '../../components/OptionAudio';
 import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
 import { TranslationSource } from '../question-types/TranslationContent';
-import { answerSymbols, optionSymbol } from './terminalLabels';
+import { answerSymbols, hasDetailedJudgmentOptions, optionSymbol } from './terminalLabels';
 
 export function ExamQuestion({ examID, draft, onDraft, item, index, selected, busy, finished, onChoose, numeric, onNumeric }: {
   examID: string; draft?: ExtendedResponse; onDraft: (value: ExtendedResponse) => void;
@@ -15,6 +15,8 @@ export function ExamQuestion({ examID, draft, onDraft, item, index, selected, bu
   numeric: string; onNumeric: (value: string) => void;
 }) {
   const q = item.detail.question;
+  const showOptionText = q.question_type < 3 || hasDetailedJudgmentOptions(q);
+  const hasAnyTts = q.items.some(option => Boolean(option.tts));
   return <fieldset className="terminal-question" aria-label="考试题干">
     <legend>考试题目</legend>
     <div className="terminal-stem" tabIndex={0}>
@@ -25,10 +27,10 @@ export function ExamQuestion({ examID, draft, onDraft, item, index, selected, bu
       <TranslationSource content={q.content} />
       {q.content && <ExtendedQuestion content={q.content} value={draft} onChange={onDraft}
         disabled={busy || item.answered || finished} hideSourceText />}
-      {q.question_type < 3 && <ol className="terminal-option-text" aria-label="选项内容">
+      {showOptionText && <ol className="terminal-option-text" aria-label="选项内容">
         {q.items.map(option => <li key={option.sign}>
           {optionSymbol(q, option.sign)}. {option.item_title}
-          <OptionAudio option={option} allOptionsHaveTts={q.items.some(o => !!o.tts)} />
+          <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
         </li>)}
       </ol>}
     </div>

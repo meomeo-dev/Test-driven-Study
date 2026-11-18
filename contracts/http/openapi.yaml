@@ -185,9 +185,7 @@ paths:
           required: false
           schema:
             type: integer
-            enum:
-              - 1
-              - 4
+            minimum: 1
             default: 1
   /api/questions:
     get:
@@ -345,9 +343,7 @@ paths:
               properties:
                 subject_id:
                   type: integer
-                  enum:
-                    - 1
-                    - 4
+                  minimum: 1
                 question_id: *ref_3
               required:
                 - subject_id
@@ -392,9 +388,7 @@ paths:
           in: query
           schema:
             type: integer
-            enum:
-              - 1
-              - 4
+            minimum: 1
             default: 1
   /api/practice/questions:
     get:
@@ -573,10 +567,36 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/WrittenFeedback' }
-        '400': { description: The attempt is not a writing or translation response. }
-        '404': { description: Attempt not found. }
-        '502': { description: Feedback could not be completed. }
-        '503': { description: LLM is not configured. }
+        '400':
+          description: The attempt is not a writing or translation response.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Attempt not found.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '409':
+          description: Request conflicts with saved state.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '502':
+          description: Feedback could not be completed.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '503':
+          description: LLM is not configured.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
   /api/study/exposures:
     post:
       operationId: recordExposure
@@ -672,9 +692,7 @@ paths:
               properties:
                 subject_id:
                   type: integer
-                  enum:
-                    - 1
-                    - 4
+                  minimum: 1
                 question_id:
                   type: integer
                   minimum: 1
@@ -738,6 +756,14 @@ paths:
                 $ref: '#/components/schemas/ReviewBook'
         '400':
           description: Invalid subject
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
   /api/palaces/info:
     get:
       operationId: getPalaceInfo
@@ -834,9 +860,7 @@ paths:
           in: query
           schema:
             type: integer
-            enum:
-              - 1
-              - 4
+            minimum: 1
             default: 1
         - name: question
           in: query
@@ -1459,9 +1483,7 @@ paths:
           in: query
           schema:
             type: integer
-            enum:
-              - 1
-              - 4
+            minimum: 1
             default: 1
       responses:
         '200':
@@ -1570,7 +1592,7 @@ paths:
       parameters:
         - in: query
           name: subject
-          schema: { type: integer, enum: [1, 4], default: 1 }
+          schema: { type: integer, minimum: 1, default: 1 }
       responses:
         '200':
           description: Questions with saved conversations
@@ -2185,7 +2207,7 @@ paths:
           in: query
           schema:
             type: integer
-            enum: [1, 4]
+            minimum: 1
       responses:
         '200':
           description: Local examination response
@@ -2225,7 +2247,7 @@ paths:
           in: query
           schema:
             type: integer
-            enum: [1, 4]
+            minimum: 1
       responses:
         '200':
           description: Local examination response
@@ -2457,10 +2479,36 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/TTSSynthesizeResult' }
-        '400': { description: Invalid question or line. }
-        '404': { description: Exam not found. }
-        '502': { description: Synthesis unavailable. }
-        '503': { description: TTS is not configured. }
+        '400':
+          description: Invalid question or line.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Exam not found.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '409':
+          description: Exam state conflicts with request.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '502':
+          description: Synthesis unavailable.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '503':
+          description: TTS is not configured.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
   /api/exams/{exam}/cursor:
     put:
       operationId: moveExam
@@ -2862,6 +2910,7 @@ components:
         package_id: { type: string }
         package_version: { type: string }
         source_item_id: { type: string }
+        number_tolerance: { type: string }
         audio_url: { type: string }
         transcript_url: { type: string }
         question_id: *ref_3
@@ -3447,7 +3496,7 @@ components:
       type: object
       required: [subject_id, as_of_ms, items]
       properties:
-        subject_id: { type: integer, enum: [1, 4] }
+        subject_id: { type: integer, minimum: 1 }
         as_of_ms: { type: integer, format: int64 }
         items:
           type: array
@@ -4912,10 +4961,29 @@ components:
         id: { type: string }
         type: { type: string }
         stem: { $ref: '#/components/schemas/RichText' }
+        chapter: { type: string }
+        image: { type: string }
+        audio:
+          oneOf:
+            - { type: string }
+            - type: object
+              required: [mode]
+              properties:
+                mode: { type: string, enum: [dialogue, passage, recording] }
+                voice_male: { type: string, enum: [stella, tide] }
+                voice_female: { type: string, enum: [stella, tide] }
+                src: { type: string }
+        transcript:
+          oneOf:
+            - { type: string }
+            - { type: array, items: { $ref: '#/components/schemas/TranscriptLine' } }
         options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
         grading: { $ref: '#/components/schemas/CourseGrading' }
         analysis: { $ref: '#/components/schemas/RichText' }
         explanation: { type: string }
+        explanation_audio: { type: array, items: { $ref: '#/components/schemas/ContentSegment' } }
+        hint: { type: string }
+        passage: { $ref: '#/components/schemas/RichText' }
         blanks:
           type: array
           items:
@@ -4927,10 +4995,16 @@ components:
               grading: { $ref: '#/components/schemas/CourseGrading' }
               explanation: { $ref: '#/components/schemas/RichText' }
         sub_questions: { type: array, items: { $ref: '#/components/schemas/CourseItemReview' } }
+        subtype: { type: string, enum: [sentence_making, short_essay, full_essay] }
+        requirements: { type: array, items: { type: string } }
         keywords: { type: array, items: { type: string } }
+        min_words: { type: integer }
+        max_words: { type: integer }
         sample_response: { type: string }
         sample_response_tts: { $ref: '#/components/schemas/TTSConfig' }
         rubric: { type: object, additionalProperties: { type: integer } }
+        direction: { type: string, enum: [en_to_zh, zh_to_en] }
+        source_text: { type: string }
         reference_translation: { type: string }
         acceptable_alternates: { type: array, items: { type: string } }
         key_terms:

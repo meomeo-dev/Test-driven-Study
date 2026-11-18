@@ -10,7 +10,7 @@
 .practice-primary-action { width: 144px; flex: 0 0 144px; }
 .exposure-label { color: var(--muted); font-size: 10px; }
 .preview-options { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-.preview-options li { padding: 10px; border: 1px solid var(--border); border-radius: 6px; white-space: pre-line; }
+.preview-options li { display: flex; align-items: center; gap: 8px; justify-content: space-between; padding: 10px; border: 1px solid var(--border); border-radius: 6px; white-space: pre-line; }
 .practice-error { flex-shrink: 0; color: var(--danger); font-size: 12px; }
 .grid-question.correct, .navigation-legend i.correct { background: var(--success-bg); color: var(--success); }
 .grid-question.incorrect, .navigation-legend i.incorrect { background: var(--danger-bg); color: var(--danger); }

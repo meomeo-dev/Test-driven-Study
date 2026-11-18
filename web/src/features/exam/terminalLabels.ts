@@ -18,6 +18,22 @@ export const answerSymbols = (q: Question, selected: number[]) =>
   q.items.filter(option => selected.includes(option.sign))
     .map(option => optionSymbol(q, option.sign)).join('、');
 
+const defaultJudgmentLabels = new Set(['正确', '错误', '对', '错']);
+
+export function hasDetailedJudgmentOptions(q: Question) {
+  return q.question_type === 3 && q.items.some(option =>
+    Boolean(option.tts) || Boolean(option.pinyin?.length) ||
+    !defaultJudgmentLabels.has(option.item_title));
+}
+
+export function judgmentOptionAt(q: Question, position: number) {
+  if (q.question_type === 3 && (position === 0 || position === 1)) {
+    const matched = q.items.find(option => option.boolean_value === (position === 0));
+    if (matched) return matched;
+  }
+  return q.items[position];
+}
+
 export const examCounts = (session: ExamSession) => ({
   correct: session.items.filter(item => item.correct === true).length,
   incorrect: session.items.filter(item => item.answered && item.correct === false).length,

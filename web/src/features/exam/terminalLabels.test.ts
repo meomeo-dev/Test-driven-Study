@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { ExamItem } from '../../api/exams';
-import { answerSymbols, optionSymbol } from './terminalLabels';
+import {
+  answerSymbols, hasDetailedJudgmentOptions, judgmentOptionAt, optionSymbol,
+} from './terminalLabels';
 
 const question: ExamItem['detail']['question'] = {
   question_id: 1, subject_id: 1, question_type: 1, title: 'Example',
@@ -25,5 +27,18 @@ describe('terminal answer labels', () => {
     ] };
     expect(optionSymbol(judgment, 1)).toBe('√');
     expect(answerSymbols(judgment, [2])).toBe('×');
+    expect(hasDetailedJudgmentOptions(judgment)).toBe(false);
+    expect(judgmentOptionAt(judgment, 0)?.sign).toBe(1);
+  });
+  it('detects custom judgment options and maps 1/2 shortcuts by boolean_value', () => {
+    const custom = { ...question, question_type: 3, items: [
+      { sign: 1, item_title: '违反规定', boolean_value: false },
+      { sign: 2, item_title: '符合规定', boolean_value: true, tts: { voice: 'stella' as const } },
+    ] };
+    expect(hasDetailedJudgmentOptions(custom)).toBe(true);
+    expect(optionSymbol(custom, 1)).toBe('×');
+    expect(optionSymbol(custom, 2)).toBe('√');
+    expect(judgmentOptionAt(custom, 0)?.sign).toBe(2);
+    expect(judgmentOptionAt(custom, 1)?.sign).toBe(1);
   });
 });

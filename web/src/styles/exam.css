@@ -79,7 +79,7 @@
 .terminal-feedback-question ol { list-style: none; padding: 0; margin: 8px 0 0; }
 .terminal-feedback-image { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 0; }
 .terminal-feedback-image img { height: 100%; max-width: 100%; object-fit: contain; }
-.terminal-feedback-answer { background: #f8f9ef; flex-shrink: 0; padding: 12px 18px; font-size: 21px; text-align: center; }
+.terminal-feedback-answer { background: #f8f9ef; flex-shrink: 0; max-height: 55%; overflow: auto; padding: 12px 18px; font-size: 21px; text-align: center; }
 .terminal-feedback-answer p { text-align: left; margin: 0 0 5px; }
 .terminal-feedback-answer small { display: block; margin-top: 5px; font-size: 15px; color: #90978a; }
 .terminal-score { font-size: 1.15em; }

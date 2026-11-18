@@ -145,7 +145,9 @@ export function QuestionCard({ presentation, result, selected, position, total, 
       {result && (reading || writing || Boolean(review?.blanks?.length) ||
         Boolean(review?.sub_questions?.length) || !review ||
         Boolean(result.detail.question.analysis) ||
-        hasRichContent(result.detail.question.analysis_content)) &&
+        hasRichContent(result.detail.question.analysis_content) ||
+        Boolean(result.detail.question.analysis_audio?.length) ||
+        Boolean(result.detail.question.skill)) &&
         <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
     </div>
   </article>;

@@ -12,9 +12,11 @@ async function demoUnit(request: APIRequestContext) {
     await (await request.get(`/api/practice/questions?subject=${subject}`)).json();
   const id = (kind: string) => questions.find(q =>
     q.source_item_id === `sue1-extended-${kind}`)?.question_id;
+  const bySource = (sourceId: string) => questions.find(q =>
+    q.source_item_id === sourceId)?.question_id;
   const link = (kind: string, mode = 'practice') =>
     `/${mode}?subject=${subject}&question=${id(kind)}`;
-  return { subject, id, link };
+  return { subject, id, bySource, link };
 }
 
 test('cloze, reading, listening and translation can be answered and reviewed', async ({ page, request }) => {
@@ -285,4 +287,41 @@ test('a listening paper plays audio without exposing the active transcript', asy
   await expect(reviewDialog.getByText(/第二位说话者明确说了 on the second shelf/)).toBeVisible();
   await expect(reviewDialog.getByText(/before taking a pair/)).toBeVisible();
   await expect(reviewDialog.getByText('原题暂无解析。')).toHaveCount(0);
+});
+
+test('palace source and exam feedback render numeric answers, stimuli, and explanations', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  const source = page.getByRole('region', { name: '原题内容' });
+
+  await page.goto(`/palace?subject=${demo.subject}&question=${demo.bySource('numbers-5')}`);
+  await expect(source.getByText('正确答案：15')).toBeVisible();
+
+  await page.goto(demo.link('cloze', 'palace'));
+  await expect(source.getByText('空格 1: must')).toBeVisible();
+  await expect(source.getByRole('radio')).toHaveCount(0);
+  await source.getByText('原题解析').click();
+  await expect(source.getByText(/must 后接动词原形/)).toBeVisible();
+
+  await page.goto(demo.link('writing', 'palace'));
+  await expect(source.getByRole('textbox')).toHaveCount(0);
+  await expect(source.getByRole('heading', { name: '参考范文' })).toBeVisible();
+  await source.getByText('原题解析').click();
+  await expect(source.getByText('语言准确性（50 分）')).toBeVisible();
+
+  const id = randomUUID();
+  const created = await request.post('/api/exams', { data: { id, subject_id: demo.subject } });
+  expect(created.ok()).toBe(true);
+  const paper: ExamSession = await created.json();
+  const clozeIdx = paper.items.findIndex(row => row.detail.question.question_id === demo.id('cloze'));
+  expect(clozeIdx).toBeGreaterThanOrEqual(0);
+  expect((await request.put(`/api/exams/${id}/cursor`, { data: { index: clozeIdx } })).ok()).toBe(true);
+  await page.goto(`/exam?subject=${demo.subject}&exam=${id}`);
+  await page.getByRole('radio', { name: 'has', exact: true }).check();
+  await page.getByRole('button', { name: '交卷', exact: true }).click();
+  const feedback = page.getByRole('dialog', { name: '错题学习' });
+  await expect(feedback.getByText(/Every worker/)).toBeVisible();
+  await expect(feedback.getByText(/两处空格均考查情态动词 must/)).toBeVisible();
 });

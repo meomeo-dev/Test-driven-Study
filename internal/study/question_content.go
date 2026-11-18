@@ -70,6 +70,8 @@ func (q *Question) ProjectExtended(item course.Item) bool {
 		})
 	}
 	q.Content = content
-	q.QuestionReview = &item
+	review := item
+	review.Concepts = nil
+	q.QuestionReview = &review
 	return true
 }

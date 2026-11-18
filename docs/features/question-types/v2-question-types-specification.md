@@ -59,9 +59,10 @@ options:
    migrations** and leaves the 2,177 existing production items completely unaffected.
 3. **Graceful Workspace Projection**:
    The runtime projection layer maps legacy items to their existing presentation while
-   passing extended payloads (`sub_items`, `blanks`, `rubrics`, `content`) through to
-   modern React components (`RichContent`, `ClozeQuestionCard`, `ListeningQuestionCard`,
-   `WritingQuestionCard`, etc.).
+   passing extended payloads (`content`, containing `passage`, `blanks`, `sub_questions`,
+   `subtype`, `requirements`, `min_words`, `max_words`, `direction`, and `source_text`,
+   and review-only `question_review`) through to React components (`RichContent`,
+   `ExtendedQuestion`, `ExtendedReview`, `ClozeContent`, `TranslationContent`, etc.).
 
 ---
 
@@ -78,7 +79,9 @@ export interface TTSConfig {
 export interface ContentSegment {
   type: 'text' | 'speech' | 'blank';
   text?: string;
+  pinyin?: string[];
   tts?: boolean | TTSConfig;
+  tts_text?: string;
   index?: number;       // Used when type === 'blank'
 }
 
@@ -91,6 +94,7 @@ export interface CourseOption {
   id: string;
   text: string;
   value?: boolean;
+  pinyin?: string[];
   tts?: boolean | TTSConfig;
 }
 ```
@@ -167,8 +171,9 @@ To prevent learner answer leakage ("spoiler"), option-level TTS must be applied 
 
 ### 4.3 Listening Comprehension (听力题, `listening`)
 - **Structure**: Contains audio metadata, a structured multi-speaker transcript or passage,
-  and one or more sub-questions. Each line in the transcript declares its speaker and
-  voice config directly.
+  and one or more sub-questions. Each line in the transcript declares its `speaker` and
+  `text`, with optional `tts` voice config (falling back to `audio.voice_male` /
+  `audio.voice_female` via `Item.ListeningLines()` when omitted).
 - **Data Contract**:
   ```json
   {
@@ -331,16 +336,19 @@ content structures:
     "ContentSegment": {
       "type": "object",
       "required": ["type"],
+      "additionalProperties": false,
       "properties": {
         "type": { "type": "string", "enum": ["text", "speech", "blank"] },
         "text": { "type": "string" },
+        "pinyin": { "$ref": "../v1/items.schema.json#/$defs/pinyin" },
         "tts": {
           "oneOf": [
             { "type": "boolean" },
             { "$ref": "#/$defs/TTSConfig" }
           ]
         },
-        "index": { "type": "integer" }
+        "tts_text": { "type": "string", "minLength": 1 },
+        "index": { "type": "integer", "minimum": 1 }
       }
     },
     "TTSConfig": {
@@ -355,14 +363,15 @@ content structures:
       "type": "object",
       "required": ["index", "options", "grading"],
       "properties": {
-        "index": { "type": "integer", "minimum": 1 },
+        "index": { "type": "integer", "minimum": 1, "maximum": 999 },
         "options": {
           "type": "array",
           "minItems": 2,
+          "maxItems": 50,
           "items": { "$ref": "#/$defs/Option" }
         },
         "grading": { "$ref": "#/$defs/ChoiceGrading" },
-        "explanation": { "type": "string" }
+        "explanation": { "$ref": "#/$defs/RichContent" }
       }
     },
     "TranscriptLine": {
@@ -393,23 +402,30 @@ Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_jso
 - **Cloze**: `{ "blanks": { "1": ["a"], "2": ["b"] } }`
 - **True/False**: `{ "value": false }`
 - **Listening / Reading Sub-questions**: `{ "sub_answers": { "sq-1": ["b"], "sq-2": false } }`
-- **Writing**: `{ "text": "Dear Mr. Zhang,\nI am writing to inform you...", "word_count": 86 }`
+- **Writing**: `{ "text": "Dear Mr. Zhang,\nI am writing to inform you...", "word_count": 86 }` (`word_count` is computed by the server; client-supplied counts are ignored)
 - **Translation**: `{ "translation": "It is strictly prohibited to open the equipment maintenance door..." }`
 
-### 6.2 Go Grading Engine Specification (`internal/course/grading.go`)
-1. **Cloze Evaluation**: Iterates over all blanks. An attempt is fully correct if all
-   blanks match their respective `choice_ids`. Partial credit score is calculated as
-   `matched_blanks / total_blanks`.
-2. **True/False Evaluation**: Strict boolean equality between `attempt.Value` and
-   `grading.Value`.
-3. **Compound Questions (Listening & Reading)**: Evaluates each sub-question through its
-   standard type grader (`GradeSingleChoice`, `GradeTrueFalse`). Aggregates points
-   proportionally.
-4. **Writing & Translation Evaluation**:
-   - Validates word count constraints (`min_words <= words <= max_words`) and verifies
-     presence of required `key_terms` via normalized fuzzy string matching.
-   - When LLM service is enabled, dispatches the prompt, rubric, sample response, and
-     learner submission to the LLM evaluator for detailed rubric scoring.
+### 6.2 Go Grading Engine Specification (`internal/course/grading.go` & `internal/course/extended_grading.go`)
+1. **Cloze Evaluation (`Item.Evaluate` / `gradeBlanks`)**: Iterates over all blanks. An
+   attempt is fully correct if all blanks match their respective `choice_ids`. Partial
+   credit score is calculated as `matched_blanks / total_blanks`.
+2. **True/False Evaluation (`Item.Grade` + `internal/study/answers.go`)**: Strict boolean
+   equality between the submitted boolean (`{"value": bool}` or mapped option `selected`)
+   and `grading.Boolean`.
+3. **Compound Questions (Listening & Reading, `Item.Evaluate` / `gradeSubQuestions`)**:
+   Evaluates each sub-question through `Item.Grade` (`single_choice`, `multiple_choice`,
+   `true_false`, `numeric`). Aggregates points proportionally (`matched / total`).
+4. **Writing & Translation Evaluation (`gradeWriting` & `gradeTranslation`)**:
+   - **Writing**: Enforces `min_words <= word_count <= max_words` (when configured),
+     awards full credit for an exact normalized match against `sample_response`, and
+     otherwise scores normalized `keywords` coverage (`matched_keywords / len(keywords)`).
+   - **Translation**: Awards full credit for an exact normalized match against
+     `reference_translation` or `acceptable_alternates`, and otherwise awards up to `0.5`
+     credit for normalized `key_terms` / `variants` coverage (`hasTerm`).
+   - **Advisory AI Rubric Feedback**: When the LLM service is enabled, learners can
+     explicitly request rubric feedback for a saved writing or translation practice attempt
+     via `POST /api/practice/presentations/{presentation}/feedback` (`EvaluateWritten`),
+     without altering saved local scores or exam records.
 
 ---
 
@@ -584,7 +600,7 @@ Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_jso
       {"term": "main power", "variants": ["main power supply", "master power"]},
       {"term": "maintenance door", "variants": ["service door", "access panel"]}
     ],
-    "explanation": "'emergency stop button' 是工业设备标准术语，'make sure to check' 表达'务必检查'。"
+    "explanation": "'strictly prohibited' 是工业安全规范中表达'严禁'的常用搭配，'main power' 表示'主电源'，'maintenance door' 表示'设备检修门'。"
   }
 ]
 ```

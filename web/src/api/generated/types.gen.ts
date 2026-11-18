@@ -245,6 +245,7 @@ export type Question = {
     package_id?: string;
     package_version?: string;
     source_item_id?: string;
+    number_tolerance?: string;
     audio_url?: string;
     transcript_url?: string;
     question_id: number;
@@ -457,7 +458,7 @@ export type Analysis = {
 };
 
 export type ReviewBook = {
-    subject_id: 1 | 4;
+    subject_id: number;
     as_of_ms: number;
     items: Array<ReviewItem>;
 };
@@ -1138,10 +1139,22 @@ export type CourseItemReview = {
     id: string;
     type: string;
     stem: RichText;
+    chapter?: string;
+    image?: string;
+    audio?: string | {
+        mode: 'dialogue' | 'passage' | 'recording';
+        voice_male?: 'stella' | 'tide';
+        voice_female?: 'stella' | 'tide';
+        src?: string;
+    };
+    transcript?: string | Array<TranscriptLine>;
     options?: Array<CourseOption>;
     grading?: CourseGrading;
     analysis?: RichText;
     explanation?: string;
+    explanation_audio?: Array<ContentSegment>;
+    hint?: string;
+    passage?: RichText;
     blanks?: Array<{
         index: number;
         options: Array<CourseOption>;
@@ -1149,12 +1162,18 @@ export type CourseItemReview = {
         explanation?: RichText;
     }>;
     sub_questions?: Array<CourseItemReview>;
+    subtype?: 'sentence_making' | 'short_essay' | 'full_essay';
+    requirements?: Array<string>;
     keywords?: Array<string>;
+    min_words?: number;
+    max_words?: number;
     sample_response?: string;
     sample_response_tts?: TtsConfig;
     rubric?: {
         [key: string]: number;
     };
+    direction?: 'en_to_zh' | 'zh_to_en';
+    source_text?: string;
     reference_translation?: string;
     acceptable_alternates?: Array<string>;
     key_terms?: Array<{
@@ -1523,7 +1542,7 @@ export type GetOverviewData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/study/overview';
 };
@@ -1554,7 +1573,7 @@ export type ListQuestionsData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
         chapter?: number;
         state?: 'all' | 'unlearned' | 'review' | 'mastered';
         q?: string;
@@ -1652,7 +1671,7 @@ export type SetProgressResponse = SetProgressResponses[keyof SetProgressResponse
 
 export type SetCursorData = {
     body: {
-        subject_id: 1 | 4;
+        subject_id: number;
         question_id: number;
     };
     path?: never;
@@ -1688,7 +1707,7 @@ export type GetPracticeOverviewData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/practice/overview';
 };
@@ -1727,7 +1746,7 @@ export type ListPracticeQuestionsData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
         chapter?: number;
         state?: 'all' | 'unanswered' | 'correct' | 'incorrect' | 'review';
         q?: string;
@@ -1861,20 +1880,30 @@ export type EvaluateWrittenAttemptErrors = {
     /**
      * The attempt is not a writing or translation response.
      */
-    400: unknown;
+    400: Error;
     /**
      * Attempt not found.
      */
-    404: unknown;
+    404: Error;
+    /**
+     * Request conflicts with saved state.
+     */
+    409: Error;
+    /**
+     * Internal server error.
+     */
+    500: Error;
     /**
      * Feedback could not be completed.
      */
-    502: unknown;
+    502: Error;
     /**
      * LLM is not configured.
      */
-    503: unknown;
+    503: Error;
 };
+
+export type EvaluateWrittenAttemptError = EvaluateWrittenAttemptErrors[keyof EvaluateWrittenAttemptErrors];
 
 export type EvaluateWrittenAttemptResponses = {
     /**
@@ -1929,7 +1958,7 @@ export type RecordExposureResponse = RecordExposureResponses[keyof RecordExposur
 
 export type SetPracticeCursorData = {
     body: {
-        subject_id: 1 | 4;
+        subject_id: number;
         question_id: number;
     };
     path?: never;
@@ -1973,7 +2002,7 @@ export type GetAnalysisData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
         days?: 0 | 7 | 30 | 90;
     };
     url: '/api/analysis';
@@ -2013,7 +2042,7 @@ export type GetReviewBookData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/analysis/review-book';
 };
@@ -2022,8 +2051,14 @@ export type GetReviewBookErrors = {
     /**
      * Invalid subject
      */
-    400: unknown;
+    400: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
 };
+
+export type GetReviewBookError = GetReviewBookErrors[keyof GetReviewBookErrors];
 
 export type GetReviewBookResponses = {
     /**
@@ -2120,7 +2155,7 @@ export type ListPalaceJobsData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
         question?: number;
     };
     url: '/api/palaces/jobs';
@@ -2668,7 +2703,7 @@ export type GetPalaceCoverageData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/palaces/coverage';
 };
@@ -2789,7 +2824,7 @@ export type GetConversationCoverageData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/llm/conversations/coverage';
 };
@@ -3401,7 +3436,7 @@ export type ExamRulesData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/exams/rules';
 };
@@ -3440,7 +3475,7 @@ export type ListExamsData = {
     body?: never;
     path?: never;
     query?: {
-        subject?: 1 | 4;
+        subject?: number;
     };
     url: '/api/exams';
 };
@@ -3646,20 +3681,30 @@ export type PlayExamLineErrors = {
     /**
      * Invalid question or line.
      */
-    400: unknown;
+    400: Error;
     /**
      * Exam not found.
      */
-    404: unknown;
+    404: Error;
+    /**
+     * Exam state conflicts with request.
+     */
+    409: Error;
+    /**
+     * Internal server error.
+     */
+    500: Error;
     /**
      * Synthesis unavailable.
      */
-    502: unknown;
+    502: Error;
     /**
      * TTS is not configured.
      */
-    503: unknown;
+    503: Error;
 };
+
+export type PlayExamLineError = PlayExamLineErrors[keyof PlayExamLineErrors];
 
 export type PlayExamLineResponses = {
     /**

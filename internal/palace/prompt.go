@@ -57,6 +57,9 @@ func renderExtendedPrompt(template course.PalaceTemplate, item course.Item, addr
 ) {
 	// The preview appends the transcript separately as listening evidence.
 	item.Transcript = nil
+	if item.Type == course.Listening {
+		item.Passage = nil
+	}
 	content, err := json.MarshalIndent(item, "", "  ")
 	if err != nil {
 		return "", err

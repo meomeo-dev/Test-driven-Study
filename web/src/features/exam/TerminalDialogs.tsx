@@ -1,4 +1,5 @@
 import { ExtendedReview } from '../question-types/ExtendedReview';
+import { WritingCriteria, WritingReview, WritingSample } from '../question-types/WritingContent';
 import { hasReviewExplanation, hasRichContent } from '../question-types/model';
 import { RichContent } from '../../components/RichContent';
 import { Link } from 'react-router';
@@ -9,10 +10,14 @@ import { TerminalModal } from './TerminalModal';
 import { ExamNavigation } from './ExamNavigation';
 import { answerSymbols, examCounts } from './terminalLabels';
 
-function ReviewAnalysis({ review }: { review: NonNullable<ExamItem['review']> }) {
+export function ReviewAnalysis({ review, allowFallback = true }: {
+  review: NonNullable<ExamItem['review']>;
+  allowFallback?: boolean;
+}) {
   const hasAnalysis = hasRichContent(review.analysis_content) || Boolean(review.analysis);
   const hasAudio = Boolean(review.analysis_audio?.length);
-  const showFallback = !hasAnalysis && !hasAudio && !hasReviewExplanation(review.question_review);
+  const showFallback = allowFallback && !hasAnalysis && !hasAudio &&
+    !hasReviewExplanation(review.question_review);
   if (!hasAnalysis && !hasAudio && !showFallback) return null;
   return <p>
     <RichContent content={hasAnalysis ? (review.analysis_content ?? review.analysis) : '原题暂无解析。'} />
@@ -49,10 +54,21 @@ export function TerminalDialogs({ dialog, session, item, selected, busy, enabled
         <p>数字键 1–4 选择；判断题 1 为 √、2 为 ×。多选题按数字键切换。</p>
         <p>Enter 或 →：保存所选答案并下一题；←：保存并上一题；j/k：下一题／上一题。</p>
         <p>n：答题卡；?：帮助。输入框、组合输入和弹窗内不触发全局快捷键。</p></>}
-      {dialog === 'review' && item.review && <>{item.review.question_review ? <ExtendedReview item={item.review.question_review}
-        response={item.response} credit={item.credit} /> : <p>正确答案：{item.detail.question.question_type === 4 ? item.review.answer :
-        answerSymbols(item.detail.question, item.review.answer.split(',').map(Number))}</p>}
-        <ReviewAnalysis review={item.review} />
+      {dialog === 'review' && item.review && <>{item.review.question_review?.type === 'writing'
+        ? <>
+          <WritingReview response={item.response} credit={item.credit} />
+          <WritingSample review={item.review.question_review} />
+          <ReviewAnalysis review={item.review} />
+          <WritingCriteria review={item.review.question_review} />
+        </>
+        : <>
+          {item.review.question_review
+            ? <ExtendedReview item={item.review.question_review} response={item.response}
+              credit={item.credit} />
+            : <p>正确答案：{item.detail.question.question_type === 4 ? item.review.answer :
+              answerSymbols(item.detail.question, item.review.answer.split(',').map(Number))}</p>}
+          <ReviewAnalysis review={item.review} />
+        </>}
         {item.review.skill && <p>{item.review.skill}</p>}
         <Link to={`/practice?subject=${session.subject_id}&question=${item.review.question_id}`}>到答题模式练习</Link></>}
     </div>
