@@ -1,7 +1,8 @@
 ---
 id: 0059
 type: feat
-status: open
+status: closed
+closed-by: 8185fff075b70ec269db614f42ebd679133f43be
 labels: []
 branch: feat/0059-add-design-course-tts-repository-skill
 created: 2026-11-18
