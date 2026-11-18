@@ -1,7 +1,8 @@
 ---
 id: 0058
 type: fix
-status: open
+status: closed
+closed-by: 04f6a48fe1e78716bfaa0ffc904f0bd7ae3523bf
 labels: []
 branch: fix/0058-align-http-contracts-v2-docs-palace-prompts-and-study-ui
 created: 2026-11-18
