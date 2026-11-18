@@ -94,7 +94,11 @@ test('reading separates the article, sub-questions and explanations', async ({ p
     text: expect.stringMatching(/^WORKSHOP NOTICE\nThe workshop opens/), voice: 'stella',
   });
   await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案：8')).toBeVisible();
-  await expect(answers.getByRole('group', { name: '小题 2' }).getByText('Collect the badges.')).toBeVisible();
+  const reviewedChoices = answers.getByRole('group', { name: '小题 2' });
+  const reviewedRows = reviewedChoices.getByRole('listitem');
+  await expect(reviewedRows.locator('.option-letter')).toHaveText(['A', 'B', 'C']);
+  await expect(reviewedChoices.locator('.answer-option .tts-audio-controls')).toHaveCount(3);
+  await expect(reviewedChoices.getByText('Collect the badges.')).toBeVisible();
   await expect(analysis.getByText('8 a.m. 表示上午八点。')).toBeVisible();
   await expect(analysis.getByText(/回收访客证的是主管/)).toBeVisible();
 

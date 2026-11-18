@@ -1,9 +1,10 @@
 import { useId } from 'react';
-import { Check } from 'lucide-react';
-import type { CourseGrading, CourseItemReview, CourseOption, ExtendedResponse, QuestionContent, SubAnswers,
-  SubQuestionPrompt } from '../../api/generated/types.gen';
+import type { CourseGrading, CourseItemReview, CourseOption, ExtendedResponse, QuestionContent,
+  QuestionOption, SubAnswers, SubQuestionPrompt } from '../../api/generated/types.gen';
+import { AnswerOptionList } from '../../components/AnswerOptionList';
 import { AudioControls, ttsConfig } from '../../components/AudioControls';
 import { NumericAnswer } from '../../components/NumericAnswer';
+import { OptionAudio } from '../../components/OptionAudio';
 import { RichContent } from '../../components/RichContent';
 
 type Props = {
@@ -101,33 +102,48 @@ function SubQuestion({ sub, value, disabled, name, onChange, grading, studyRows,
   return <>
     <PartOptions options={options} name={name} selected={selected}
       multiple={multiple} disabled={disabled} onChoose={choose}
-      correct={correct} studyRows={studyRows} />
+      correct={correct} judgment={isBoolean} studyRows={studyRows} />
     {submitted && <p>你的答案：{submission.join('、') || '未作答'}</p>}
   </>;
 }
 
+function questionOption(option: CourseOption, index: number): QuestionOption {
+  return {
+    sign: index + 1,
+    item_title: option.text,
+    pinyin: option.pinyin,
+    tts: option.tts ? ttsConfig(option.tts) ?? {} : undefined,
+  };
+}
+
 function PartOptions({ options, name, selected, multiple, disabled, onChoose,
-  correct, studyRows }: {
+  correct, judgment, studyRows }: {
   options: CourseOption[]; name: string; selected: string[]; multiple?: boolean; disabled: boolean;
-  onChoose: (id: string) => void; correct?: string[]; studyRows?: boolean;
+  onChoose: (id: string) => void; correct?: string[]; judgment?: boolean; studyRows?: boolean;
 }) {
+  const studyOptions = studyRows ? options.map(questionOption) : [];
+  if (studyRows && correct) {
+    const signs = (ids: string[]) => new Set(options.flatMap((option, index) =>
+      ids.includes(option.id) ? [index + 1] : []));
+    return <AnswerOptionList options={studyOptions} correct={signs(correct)}
+      selected={signs(selected)} judgment={judgment} />;
+  }
+  const hasAnyTts = studyOptions.some(option => Boolean(option.tts));
   return <ul className={studyRows ? 'answer-options reading-options' : 'extended-options'}>
     {options.map((option, index) => {
       const config = ttsConfig(option.tts);
       const chosen = selected.includes(option.id);
-      const right = correct?.includes(option.id);
-      const row = `answer-option choice-option ${right ? 'correct' : chosen ? 'selected' : ''}`;
-      const text = <span className={studyRows ? 'option-text' : undefined}>{option.text}</span>;
+      const row = `answer-option choice-option ${chosen ? 'selected' : ''}`;
+      const studyOption = studyOptions[index];
       return <li key={option.id} className={studyRows ? 'choice-option-row' : undefined}>
-        {correct ? <div className={row}>{text}
-          {right && <span className="correct-label"><Check size={13} />正确答案</span>}
-        </div> : <label className={studyRows ? row : undefined}>
+        <label className={studyRows ? row : undefined}>
           <input id={index === 0 ? name : undefined} name={name}
             type={multiple ? 'checkbox' : 'radio'} disabled={disabled}
             checked={chosen} onChange={() => onChoose(option.id)} />
-          {text}
-        </label>}
-        {option.pinyin?.length
+          <span className={studyRows ? 'option-text' : undefined}>{option.text}</span>
+        </label>
+        {studyOption ? <OptionAudio option={studyOption} allOptionsHaveTts={hasAnyTts} />
+          : option.pinyin?.length
           ? <AudioControls text={option.text} pinyin={option.pinyin} />
           : option.tts && <AudioControls text={config?.text ?? option.text}
             voice={config?.voice} speed={config?.speed} />}

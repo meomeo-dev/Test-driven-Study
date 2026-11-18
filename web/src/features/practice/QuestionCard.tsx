@@ -4,7 +4,7 @@ import { QuestionAudio } from '../../components/QuestionAudio';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import { WrittenFeedback } from '../question-types/WrittenFeedback';
 import type { Ref } from 'react';
-import { Check, ChevronLeft, ChevronRight, Circle, CircleCheck, Expand, Send, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Expand, Send, RotateCcw } from 'lucide-react';
 import type { Question } from '../../api/client';
 import type { Presentation, AttemptResult } from '../../api/practice';
 import { answerSigns, questionType } from './model';
@@ -16,7 +16,7 @@ import { NumericAnswer } from '../../components/NumericAnswer';
 import { RichContent } from '../../components/RichContent';
 import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
 import { ExtendedReview } from '../question-types/ExtendedReview';
-import { OptionAudio } from '../../components/OptionAudio';
+import { AnswerOptionList } from '../../components/AnswerOptionList';
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
   if (question.question_type === readingQuestionType && question.content) {
@@ -32,21 +32,8 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
   if (question.question_type === 4) {
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
   }
-  const correct = answerSigns(question.answer);
-  const hasAnyTts = question.items.some(opt => Boolean(opt.tts));
-
-  return <div className={`answer-options ${mode === 'full' ? 'expanded-options' : ''}`} role="list" aria-label="选项与答案">
-    {question.items.map(option => {
-      return <div role="listitem" key={option.sign}
-        className={`answer-option ${correct.has(option.sign) ? 'correct' : ''}`}>
-        {question.question_type === 3 ? (correct.has(option.sign) ? <CircleCheck size={19} /> : <Circle size={19} />)
-          : <span className="option-letter">{String.fromCharCode(64 + option.sign)}</span>}
-        <span className="option-text">{option.item_title}</span>
-        <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
-        {correct.has(option.sign) && <span className="correct-label"><Check size={13} />正确答案</span>}
-      </div>;
-    })}
-  </div>;
+  return <AnswerOptionList options={question.items} correct={answerSigns(question.answer)}
+    judgment={question.question_type === 3} expanded={mode === 'full'} />;
 }
 
 
