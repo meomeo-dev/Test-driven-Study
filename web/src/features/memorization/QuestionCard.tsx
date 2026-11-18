@@ -1,10 +1,11 @@
 import { ReadingPassage } from '../question-types/ReadingContent';
-import { WritingRequirements, WritingSample } from '../question-types/WritingContent';
+import { WritingRequirements } from '../question-types/WritingContent';
 import { readingQuestionType, writingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
-import type { Ref } from 'react';
+import { useState, type Ref } from 'react';
 import { BookOpenCheck, Bookmark, ChevronLeft, ChevronRight, Expand, LoaderCircle, Undo2 } from 'lucide-react';
 import type { Detail, ProgressState, Question } from '../../api/client';
+import type { ExtendedResponse, QuestionContent } from '../../api/generated/types.gen';
 import { answerSigns, questionType, stateLabel } from './model';
 import { QuestionImage } from './QuestionImage';
 import { QuestionExplanation } from './QuestionExplanation';
@@ -32,9 +33,7 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
     return <ExtendedQuestion content={question.content} hidePassage
       readingReview={question.question_review} />;
   }
-  if (question.question_type === writingQuestionType) {
-    return <WritingSample review={question.question_review} />;
-  }
+  if (question.question_type === writingQuestionType) return null;
   if (question.content) {
     return <>
       <ExtendedQuestion content={question.content} />
@@ -46,6 +45,12 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
   }
   return <AnswerOptionList options={question.items} correct={answerSigns(question.answer)}
     judgment={question.question_type === 3} expanded={mode === 'full'} />;
+}
+
+function WritingDraft({ content }: { content: QuestionContent }) {
+  const [value, setValue] = useState<ExtendedResponse>();
+  return <ExtendedQuestion content={content} value={value} onChange={setValue}
+    hideWritingRequirements writingLabel="写作草稿" />;
 }
 
 export function QuestionCard({ detail, position, total, pending, shortcuts, imageRef,
@@ -81,9 +86,11 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
         <QuestionAudio key={`audio-${question.question_id}`} question={question} />
         <QuestionImage key={`image-${question.question_id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
       </section>
-      <section className="question-answers" aria-label="参考答案">
+      <section className="question-answers" aria-label={writing ? '作答' : '参考答案'}>
         {!writing && <h3 className="column-label">选项与答案</h3>}
-        <AnswerOptions question={question} />
+        {writing && question.content
+          ? <WritingDraft key={question.question_id} content={question.content} />
+          : <AnswerOptions question={question} />}
       </section>
       <QuestionExplanation detail={detail} onDetails={onDetails} />
     </div>

@@ -1,5 +1,5 @@
 import { ReadingExplanations } from '../question-types/ReadingContent';
-import { WritingCriteria } from '../question-types/WritingContent';
+import { WritingCriteria, WritingSample } from '../question-types/WritingContent';
 import { RichContent } from '../../components/RichContent';
 import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
 import type { Detail } from '../../api/client';
@@ -21,6 +21,7 @@ export function QuestionExplanation({ detail, onDetails }: Props) {
     </header>
     <div key={question.question_id} className="question-explanation-body" role="region"
       aria-label="解析正文" aria-keyshortcuts="ArrowUp ArrowDown" tabIndex={0}>
+      <WritingSample review={question.question_review} />
       <p className="analysis-text"><RichContent content={question.analysis_content ?? question.analysis} />
         <ExplanationAudio segments={question.analysis_audio} /></p>
       <ReadingExplanations review={question.question_review} />

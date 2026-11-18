@@ -67,7 +67,8 @@
 .reading-options label:focus-within { outline: 2px solid var(--focus); outline-offset: -2px; }
 .reading-parts .extended-part > :is(.answer-option, .numeric-answer) { margin-top: 6px; }
 
-.writing-requirements, .writing-criteria { display: grid; gap: 6px; }
+.writing-requirements, .writing-criteria, .writing-sample { display: grid; gap: 6px; }
+.writing-sample { margin-block-end: 10px; }
 .writing-criteria { margin-block-start: 10px; }
 .writing-editor textarea { border-radius: 6px; }
 .writing-word-count { text-align: end; }

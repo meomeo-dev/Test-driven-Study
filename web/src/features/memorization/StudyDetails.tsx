@@ -1,5 +1,6 @@
 import { ReadingExplanations, ReadingPassage } from '../question-types/ReadingContent';
-import { WritingCriteria, WritingRequirements } from '../question-types/WritingContent';
+import { WritingCriteria, WritingRequirements, WritingSample } from
+  '../question-types/WritingContent';
 import { readingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import { ExplanationAudio } from '../../components/AudioControls';
@@ -38,6 +39,7 @@ export function QuestionMetadata({ detail }: { detail: Detail }) {
 
 export function FullExplanation({ detail }: { detail: Detail }) {
   return <section className="full-explanation" aria-label="完整答案解析"><h3>答案解析</h3>
+    <WritingSample review={detail.question.question_review} />
     <p><RichContent content={detail.question.analysis_content ?? detail.question.analysis} />
       <ExplanationAudio segments={detail.question.analysis_audio} /></p>
     <ReadingExplanations review={detail.question.question_review} />

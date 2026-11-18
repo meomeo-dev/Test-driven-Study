@@ -1,7 +1,7 @@
 import type { CourseItemReview, ExtendedResponse } from '../../api/generated/types.gen';
 import { RichContent } from '../../components/RichContent';
 import { creditLabel } from './model';
-import { WritingCriteria, WritingReview } from './WritingContent';
+import { WritingCriteria, WritingReview, WritingSample } from './WritingContent';
 
 function subAnswer(item: CourseItemReview, value: boolean | string | string[] | undefined) {
   if (typeof value === 'boolean') {
@@ -18,7 +18,8 @@ export function ExtendedReview({ item, response, credit }: {
   credit?: number;
 }) {
   if (item.type === 'writing') return <>
-    <WritingReview review={item} response={response} credit={credit} />
+    <WritingReview response={response} credit={credit} />
+    <WritingSample review={item} />
     <WritingCriteria review={item} />
   </>;
   const translation = item.type === 'translation';

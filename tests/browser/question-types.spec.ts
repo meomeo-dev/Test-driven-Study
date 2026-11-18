@@ -60,10 +60,14 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   await expect(page.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
 });
 
-test('writing separates the requirements, sample and grading criteria', async ({ page, request }) => {
+test('writing drafts in memorization and submits in practice', async ({ page, request }) => {
   const demo = await demoUnit(request);
   const feedbackCalls: string[] = [];
-  page.on('request', r => { if (r.url().endsWith('/feedback')) feedbackCalls.push(r.url()); });
+  const practiceCalls: string[] = [];
+  page.on('request', r => {
+    if (r.url().includes('/api/practice/presentations')) practiceCalls.push(r.url());
+    if (r.url().endsWith('/feedback')) feedbackCalls.push(r.url());
+  });
   const speech: string[] = [];
   await page.route('**/api/tts/synthesize', async route => {
     speech.push(route.request().postDataJSON().text);
@@ -73,35 +77,50 @@ test('writing separates the requirements, sample and grading criteria', async ({
   await page.goto(demo.link('writing', 'memorize'));
   const card = page.locator('article.question-card');
   const stem = card.getByRole('region', { name: '题干与图例' });
-  const reference = card.getByRole('region', { name: '参考答案' });
+  const answer = card.getByRole('region', { name: '作答', exact: true });
   const analysis = card.getByRole('region', { name: '答案解析', exact: true });
+  const sample = 'The delivery has been moved to Friday.';
+  const response = 'Our delivery is now scheduled for Friday.';
   await expect(stem.getByRole('region', { name: '写作要求' })
     .getByText('至少 5 词，最多 20 词')).toBeVisible();
-  await expect(reference.getByText('The delivery has been moved to Friday.')).toBeVisible();
-  await expect(reference.getByText('评分细则')).toHaveCount(0);
+  const draft = answer.getByRole('textbox', { name: '写作草稿' });
+  await draft.fill(response);
+  await draft.press('Enter');
+  await expect(draft).toHaveValue(response + '\n');
+  await expect(answer.getByText('词数：7')).toBeVisible();
+  await expect(card.getByRole('button', { name: '提交答案' })).toHaveCount(0);
+  await expect(answer.getByText('参考范文')).toHaveCount(0);
+  await expect(analysis.getByText(sample, { exact: true })).toBeVisible();
   await expect(analysis.getByText('has been moved to Friday', { exact: true })).toBeVisible();
   await expect(analysis.getByText('任务完成度（50 分）')).toBeVisible();
   await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
   await stem.getByRole('button', { name: '播放发音', exact: true }).first().click();
   await expect.poll(() => speech[0]).toBe('delivery');
+  expect(practiceCalls).toEqual([]);
 
   await page.goto(demo.link('writing'));
   await expect(stem.getByRole('region', { name: '写作要求' })).toBeVisible();
   await expect(card.getByText('参考范文')).toHaveCount(0);
   await expect(analysis).toHaveCount(0);
-  const editor = card.getByRole('textbox', { name: '写作答案' });
-  await editor.fill('Our delivery is now scheduled for Friday.');
+  const editor = answer.getByRole('textbox', { name: '写作答案' });
+  await expect(editor).toHaveValue('');
+  await editor.fill(response);
   await expect(card.getByText('词数：7')).toBeVisible();
   await card.getByRole('button', { name: '提交答案' }).click();
   await expect(editor).toHaveCount(0);
-  await expect(card.getByText('词数：7')).toBeVisible();
-  await expect(card.getByText('参考范文')).toBeVisible();
+  await expect(answer.getByText('词数：7')).toBeVisible();
+  await expect(answer.getByText(response, { exact: true })).toBeVisible();
+  await expect(answer.getByText('参考范文')).toHaveCount(0);
+  await expect(analysis.getByText(sample, { exact: true })).toBeVisible();
   await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
   expect(feedbackCalls).toEqual([]);
   await card.getByRole('button', { name: '请求 AI 批改' }).click();
   await expect(card.getByText(/表达清楚，符合通知语境/)).toBeVisible();
   await expect(card.getByText(/任务完成度 50\/50/)).toBeVisible();
   expect(feedbackCalls).toHaveLength(1);
+  await page.setViewportSize({ width: 620, height: 900 });
+  await page.getByRole('button', { name: '查看解析' }).click();
+  await expect(page.getByRole('dialog').getByText(sample, { exact: true })).toBeVisible();
 });
 
 test('reading separates the article, sub-questions and explanations', async ({ page, request }) => {

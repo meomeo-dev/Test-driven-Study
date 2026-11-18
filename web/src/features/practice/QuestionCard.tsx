@@ -1,5 +1,5 @@
 import { ReadingPassage } from '../question-types/ReadingContent';
-import { WritingRequirements, WritingSample, WritingReview } from '../question-types/WritingContent';
+import { WritingRequirements, WritingReview } from '../question-types/WritingContent';
 import { readingQuestionType, writingQuestionType, creditLabel } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
@@ -24,9 +24,7 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
     return <ExtendedQuestion content={question.content} hidePassage
       readingReview={question.question_review} />;
   }
-  if (question.question_type === writingQuestionType) {
-    return <WritingSample review={question.question_review} />;
-  }
+  if (question.question_type === writingQuestionType) return null;
   if (question.content) {
     return <>
       <ExtendedQuestion content={question.content} />
@@ -106,7 +104,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
             {reading && result?.attempt.score !== undefined && <p role="status">
               本题得分比例：{creditLabel(result.attempt.score)}
             </p>}
-            {writing && review && result && <WritingReview review={review}
+            {writing && result && <WritingReview
               response={result.attempt.response} credit={result.attempt.score} />}
             {!writing && !reading && review && result && <ExtendedReview item={review}
               response={result.attempt.response} credit={result.attempt.score} />}

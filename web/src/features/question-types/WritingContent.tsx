@@ -37,14 +37,13 @@ export function WritingRequirements({ content }: { content?: QuestionContent }) 
 
 export function WritingSample({ review }: { review?: CourseItemReview }) {
   if (review?.type !== 'writing' || !review.sample_response) return null;
-  return <>
-    <h3 className="column-label">参考范文</h3>
+  return <section className="writing-sample" aria-label="参考范文">
+    <h4 className="column-label">参考范文</h4>
     <p className="analysis-text extended-passage" lang="en">{review.sample_response}</p>
-  </>;
+  </section>;
 }
 
-export function WritingReview({ review, response, credit }: {
-  review: CourseItemReview;
+export function WritingReview({ response, credit }: {
   response?: ExtendedResponse;
   credit?: number;
 }) {
@@ -58,7 +57,6 @@ export function WritingReview({ review, response, credit }: {
       <p className="analysis-text extended-passage" lang="en">{response.text}</p>
       {response.word_count !== undefined && <p>词数：{response.word_count}</p>}
     </>}
-    <WritingSample review={review} />
   </section>;
 }
 
