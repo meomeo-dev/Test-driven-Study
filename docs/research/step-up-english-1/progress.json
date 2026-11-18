@@ -173,5 +173,40 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_026": {
+    "lesson_number": 26,
+    "title": "一般现在时与动词基础形态：第 6 讲 表示客观真理与自然规律的一般现在时",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_027": {
+    "lesson_number": 27,
+    "title": "一般现在时与动词基础形态：第 7 讲 特殊疑问句（5W1H）在一般现在时中的构建",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_028": {
+    "lesson_number": 28,
+    "title": "一般现在时与动词基础形态：第 8 讲 动词 have/has 的用法与 have got 表达对比",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_029": {
+    "lesson_number": 29,
+    "title": "一般现在时与动词基础形态：第 9 讲 There be 句型表示存在的结构规范",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_030": {
+    "lesson_number": 30,
+    "title": "一般现在时与动词基础形态：第 10 讲 第一单元至第三单元综合语法诊断与自测",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
