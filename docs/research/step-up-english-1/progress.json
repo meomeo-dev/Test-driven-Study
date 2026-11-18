@@ -1,0 +1,23 @@
+{
+  "lesson_001": {
+    "lesson_number": 1,
+    "title": "国际音标与自然拼读规律：第 1 讲 音标概论与前元音 /iː/, /ɪ/, /e/, /æ/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_002": {
+    "lesson_number": 2,
+    "title": "国际音标与自然拼读规律：第 2 讲 中元音与后元音 /ɜː/, /ə/, /uː/, /ʊ/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_003": {
+    "lesson_number": 3,
+    "title": "国际音标与自然拼读规律：第 3 讲 开闭口双元音 /eɪ/, /aɪ/, /ɔɪ/, /aʊ/, /əʊ/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  }
+}

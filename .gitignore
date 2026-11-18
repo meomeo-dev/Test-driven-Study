@@ -17,8 +17,6 @@ coverage/
 
 # Task artifacts & scratch
 .todo_tasks/
-docs/research/
-review/
 pnpm-lock.yaml
 
 # IDE
