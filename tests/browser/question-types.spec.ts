@@ -60,7 +60,7 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   await expect(page.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
 });
 
-test('writing drafts in memorization and submits in practice', async ({ page, request }) => {
+test('writing shows a sample in memorization and an editor in practice', async ({ page, request }) => {
   const demo = await demoUnit(request);
   const feedbackCalls: string[] = [];
   const practiceCalls: string[] = [];
@@ -77,25 +77,28 @@ test('writing drafts in memorization and submits in practice', async ({ page, re
   await page.goto(demo.link('writing', 'memorize'));
   const card = page.locator('article.question-card');
   const stem = card.getByRole('region', { name: '题干与图例' });
+  const reference = card.getByRole('region', { name: '参考答案', exact: true });
   const answer = card.getByRole('region', { name: '作答', exact: true });
   const analysis = card.getByRole('region', { name: '答案解析', exact: true });
   const sample = 'The delivery has been moved to Friday.';
   const response = 'Our delivery is now scheduled for Friday.';
   await expect(stem.getByRole('region', { name: '写作要求' })
     .getByText('至少 5 词，最多 20 词')).toBeVisible();
-  const draft = answer.getByRole('textbox', { name: '写作草稿' });
-  await draft.fill(response);
-  await draft.press('Enter');
-  await expect(draft).toHaveValue(response + '\n');
-  await expect(answer.getByText('词数：7')).toBeVisible();
+  await expect(reference.getByRole('heading', { name: '参考范文' })).toBeVisible();
+  await expect(reference.getByText(sample, { exact: true })).toBeVisible();
+  await expect(card.getByRole('textbox')).toHaveCount(0);
   await expect(card.getByRole('button', { name: '提交答案' })).toHaveCount(0);
-  await expect(answer.getByText('参考范文')).toHaveCount(0);
-  await expect(analysis.getByText(sample, { exact: true })).toBeVisible();
+  await expect(analysis.getByText(sample, { exact: true })).toHaveCount(0);
   await expect(analysis.getByText('has been moved to Friday', { exact: true })).toBeVisible();
   await expect(analysis.getByText('任务完成度（50 分）')).toBeVisible();
   await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
   await stem.getByRole('button', { name: '播放发音', exact: true }).first().click();
   await expect.poll(() => speech[0]).toBe('delivery');
+  await card.getByRole('button', { name: '完整题目' }).click();
+  await expect(page.getByRole('dialog').getByText(sample, { exact: true })).toBeVisible();
+  await page.getByRole('tab', { name: '完整解析' }).click();
+  await expect(page.getByRole('dialog').getByText('语言准确性（50 分）')).toBeVisible();
+  await expect(page.getByRole('dialog').getByText(sample, { exact: true })).toHaveCount(0);
   expect(practiceCalls).toEqual([]);
 
   await page.goto(demo.link('writing'));

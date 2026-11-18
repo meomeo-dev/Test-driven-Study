@@ -16,11 +16,10 @@ type Props = {
   readingReview?: CourseItemReview;
   hidePassage?: boolean;
   hideWritingRequirements?: boolean;
-  writingLabel?: string;
 };
 
 export function ExtendedQuestion({ content, value, onChange, disabled, readingReview,
-  hidePassage, hideWritingRequirements, writingLabel }: Props) {
+  hidePassage, hideWritingRequirements }: Props) {
   const id = useId();
   const readOnly = disabled || !onChange;
   if (content.blanks) {
@@ -66,7 +65,7 @@ export function ExtendedQuestion({ content, value, onChange, disabled, readingRe
     </div>;
   }
   return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled}
-    hideWritingRequirements={hideWritingRequirements} writingLabel={writingLabel} />;
+    hideWritingRequirements={hideWritingRequirements} />;
 }
 
 function SubQuestion({ sub, value, disabled, name, onChange, grading, studyRows,
@@ -156,12 +155,11 @@ function PartOptions({ options, name, selected, multiple, disabled, onChoose,
   </ul>;
 }
 
-function WrittenQuestion({ content, value, onChange, disabled,
-  hideWritingRequirements, writingLabel }: Props) {
+function WrittenQuestion({ content, value, onChange, disabled, hideWritingRequirements }: Props) {
   const countId = useId();
   const writing = !!content.subtype;
   const label = content.direction === 'en_to_zh' ? '中文译文'
-    : content.direction === 'zh_to_en' ? '英文译文' : writingLabel ?? '写作答案';
+    : content.direction === 'zh_to_en' ? '英文译文' : '写作答案';
   const text = value?.text ?? value?.translation ?? '';
   // Match the word boundaries used by the server when it grades writing.
   const wordCount = writing ? text.match(/[\p{L}\p{N}\p{M}'’]+/gu)?.length ?? 0 : 0;

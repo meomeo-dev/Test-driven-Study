@@ -19,9 +19,9 @@ Updated 2026-11-18 (America/New_York).
   综合题型练习 unit of `step-up-english-1@1.2.1`.
 - Reading comprehension uses the existing study layout. Its passage,
   sub-questions, and choices declare inline TTS in the question bank.
-- Writing places requirements with the prompt and a temporary draft in the
-  middle column in memorization. The explanation contains the sample and
-  rubric. Practice records submissions and reveals the explanation afterward.
+- Memorization shows the writing prompt and requirements on the left, the
+  sample in the middle, and the explanation and rubric on the right.
+  Practice collects submissions and reveals the sample and rubric afterward.
 - Version `1.2.1` is active in the local learner database. Course validation,
   type checking, course and study tests, and the writing browser test passed.
   The upgrade preserved the example question IDs and existing attempts.
