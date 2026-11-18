@@ -27,18 +27,21 @@ relevant issue and feature documentation before changing behavior.
 | Location | Responsibility |
 | --- | --- |
 | `cmd/server/` | Server startup, service wiring and pipeline adapter. |
+| `internal/course/`, `courses/` | Course validation and versioned course packages. |
 | `internal/study/` | Questions, memorization, grading, analysis and mock exams. |
 | `internal/storage/` | SQLite opening, import, embedded migrations and generated bindings. |
 | `internal/httpapi/` | HTTP validation, endpoints and static frontend serving. |
 | `internal/llm/` | Responses planning, research, budgets, compaction and checkpoints. |
 | `internal/palace/` | Image provider, durable task queue, controls and saved images. |
+| `internal/tts/` | Speech synthesis, provider settings and voice-specific cache. |
 | `internal/tasktrace/` | Observed execution-event recording. |
 | `web/src/features/` | React pages and feature-specific presentation and hooks. |
 | `web/src/components/`, `web/src/styles/` | Shared controls and application styles. |
 | `web/src/api/` | Handwritten HTTP clients and generated API types. |
 | `tests/browser/`, `tests/startup/`, `tests/fixtures/` | Browser checks, process checks and local providers. |
-| `contracts/http/`, `db/` | OpenAPI contract and SQL query sources. |
+| `contracts/course/`, `contracts/http/`, `db/` | Course schemas, OpenAPI and SQL queries. |
 | `data/`, `assets/img/` | Original question exports and local question media. |
+| `assets/audio/pinyin/` | Bundled Pinyin recordings and source attribution. |
 | `issues/`, `docs/` | Requirements, frozen inputs, feature evidence and UI references. |
 
 Change the source of generated code:
@@ -61,14 +64,15 @@ root; server asset resolution depends on the working directory.
 
 | Command | Purpose |
 | --- | --- |
-| `npm ci` | Install dependencies from the committed lockfile. |
-| `npm run dev` | Start Vite on 43187 and the Go API on 43188. |
+| `npm install` | Install dependencies using the committed npm lockfile. |
+| `npm run dev` | Start Vite on 43387 and the Go API on 43388. |
 | `npm run dev:up` | Start development services in the background. |
 | `npm run dev:status` | Inspect background development services. |
 | `npm run dev:down` | Stop the background development services. |
 | `npm run build` | Typecheck, build `dist/` and compile the Go binary in `var/bin/`. |
-| `npm start` | Serve the built application on API port 43188. |
-| `npm run audit:exam-bank` | Read-only audit of question metadata and exam coverage. |
+| `npm start` | Serve the built application on API port 43388. |
+| `npm run course:check -- <directory>` | Validate one course package. |
+| `npm run course:install -- <directory>` | Install or activate a validated version. |
 
 Configuration examples are `.env.example`, `.env.gpt.example` and
 `.env.gpt-image2.example`. `STUDY_WEB_PORT`, `STUDY_API_PORT` and `STUDY_DATA_DIR`
@@ -80,8 +84,8 @@ inspect their state before restarting services or changing configuration.
 - Ordinary study works without an account, AI credential or external database.
   Question media are served locally.
 - Preserve question IDs, option signs, answers, and modular course exports.
-  The platform provides 18 modular engineering and science curriculum courses
-  packaged under `courses/` with structured units, lessons, and question banks.
+  New package content requires a new version. Update an installed course with
+  `course:install` so existing learner records keep their stable question IDs.
 - Default learner data are in `var/study.sqlite`, generated images in
   `var/palaces/`, and resumable LLM state in `var/llm-checkpoints/`. Respect a
   configured data directory. Back up these together while the service is stopped.
@@ -97,10 +101,14 @@ inspect their state before restarting services or changing configuration.
 - Keep the exam terminal independent of the learning sidebar, themes and unrelated
   shortcuts. Mock exams provide standard local simulations based on course question
   banks and unit configurations.
-- LLM and image services have independent settings and OS credential entries.
+- LLM, image, and TTS services have independent settings and OS credential entries.
   Never expose saved keys or proxy credentials in responses, logs or committed
   files. Remote AI calls and downloads require an explicit proxy, with no direct
   fallback; local test fixtures are the isolated development alternative.
+- Declare audio in course data. Use local recordings for Pinyin and TTS for Han
+  text in Elementary Chinese. Explicit TTS voices take precedence over the
+  saved default, and the selected voice determines the cache entry. Keep
+  playback controls consistent across options before grading.
 - Accepted palace jobs belong to the backend and survive page navigation.
   Preserve pause checkpoints, explicit continuation and image-only retry behavior.
   Uncertain paid requests must never be silently replayed. After restart, only

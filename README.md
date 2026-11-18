@@ -50,7 +50,7 @@ Each package is a sample course of about 30 study hours: seven or eight units
 with a lesson per unit, a concept graph, 124–159 reviewed items in all four
 graded question types and a self-check project. The course roadmap shows the
 prerequisites that each README names; Microcontrollers, for example, requires
-Circuits and C. Beginner English includes a recording and transcript.
+Circuits and C. Beginner English includes listening exercises with transcripts.
 
 ## Features
 
@@ -89,6 +89,9 @@ Circuits and C. Beginner English includes a recording and transcript.
 - **Reading controls:** practice follows a focused question-and-answer lane with
   review below the actions. Memorization uses three desktop columns. Full content
   is also available in dialogs.
+- **Question audio:** play marked passages and answer choices in supported
+  courses. Listening exercises provide a recording or synthesized dialogue
+  with an expandable transcript.
 - **Light and dark themes:** switch from the toolbar and retain your choice across pages.
 - **[Question assistant (学习助手)](docs/features/assistant/README.md):** click
   the practice toolbar button or the floating assistant in memorization and
@@ -168,9 +171,10 @@ and `install`. Reload the catalog after installation. Use
 
 A course update preserves the course ID and existing item IDs and uses a new
 package version. Startup installs only bundled courses that are missing, so an
-existing database receives a bundled patch version through `course:install`. An installed version stays readable for submitted and pending
-attempts. Reinstalling a validated version activates it again, so an earlier
-version can serve as a rollback.
+existing database receives a bundled patch version through `course:install`.
+An installed version stays readable for submitted and pending attempts.
+Reinstalling a validated version activates it again, so an earlier version can
+serve as a rollback.
 
 See the [course protocol](contracts/course/v1/README.md) for file layout,
 answer formats, validation, and offline behavior. See the
@@ -192,10 +196,20 @@ STUDY_DATA_DIR=var
 | Development frontend | http://127.0.0.1:43387 |
 | Go API and built application | http://127.0.0.1:43388 |
 | Browser acceptance frontend / API | Ports 43287 / 43288 |
+| Browser acceptance provider fixture | Port 43289 |
 
 Learning progress and answer history are stored in `var/study.sqlite`, or in
 `STUDY_DATA_DIR` when configured. Stop the application before copying the database
-for a backup. With the default settings, background-service logs are in `var/dev.log`.
+for a backup. Generated images, cached speech and resumable LLM state are also
+stored under the data directory. Background-service logs default to `var/dev.log`.
+
+### Optional text-to-speech
+
+Open **记忆宫殿 → 生图设置 → TTS · 语音服务** to configure the DeepSeek endpoint,
+dedicated API key, default voice and proxy. The API key is stored in the OS
+credential store. The application caches generated audio by voice and phrase
+under `var/audio/` or the configured data directory. See the
+[TTS feature reference](docs/features/tts/README.md).
 
 ### Optional AI image generation
 

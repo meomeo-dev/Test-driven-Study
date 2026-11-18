@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- DeepSeek text-to-speech with dedicated provider settings, inline playback,
+  and a local cache indexed by voice and phrase.
+- Pinyin recordings with [source attribution](assets/audio/pinyin/README.md).
+- Draft two-semester English courses, with the first 30 lessons authored in
+  semester one, and expanded syllabi for the sample courses.
+
+### Changed
+
+- Beginner English 1.4.1 adds listening units, question audio, and sequential
+  playback of authored dialogue lines. Listening transcripts are expandable.
+
 ## [0.1.0] - 2026-11-17
 
 ### Added

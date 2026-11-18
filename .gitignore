@@ -1,29 +1,35 @@
+# Dependencies and build outputs
 node_modules/
 dist/
+pnpm-lock.yaml
+
+# Local learner data, generated media, and service logs
 var/
+*.log
+
+# Local provider credentials and launcher settings
 .env
 .env.*
 !.env.example
 !.env.gpt-image2.example
 !.env.gpt.example
-.DS_Store
-playwright-report/
-test-results/
-coverage/
-*.log
-.claude/skills/
 .extension-env
 .extension-env.lock
 
-# Task artifacts & scratch
+# Local agent and asset import artifacts
+.claude/skills/
 .todo_tasks/
-pnpm-lock.yaml
+/.tmp_pinyin_repo/
 
-# IDE
+# Operating system and editor files
+.DS_Store
 .vscode/
 .idea/
 
-# Testing & coverage
+# Test reports and coverage
+playwright-report/
+test-results/
+coverage/
 *.test
 coverage.out
 
