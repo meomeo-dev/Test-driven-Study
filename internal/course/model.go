@@ -176,7 +176,7 @@ type TranscriptLine struct {
 
 type Transcript struct {
 	Text  string           `json:"-"`
-	Lines []TranscriptLine `json:"-"`
+	Lines []TranscriptLine `json:"transcript,omitempty"`
 }
 
 func (t *Transcript) String() string {

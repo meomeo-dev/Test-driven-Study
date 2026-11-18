@@ -136,6 +136,7 @@
             { "$ref": "#/$defs/ttsConfig" }
           ]
         },
+        "tts_text": { "type": "string", "minLength": 1 },
         "index": { "type": "integer", "minimum": 1 }
       }
     },

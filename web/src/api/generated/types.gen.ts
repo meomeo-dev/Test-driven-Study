@@ -1021,6 +1021,7 @@ export type ContentSegment = {
     type: 'text' | 'speech' | 'blank';
     text?: string;
     tts?: TtsConfig;
+    tts_text?: string;
     index?: number;
 };
 

@@ -4771,6 +4771,8 @@ components:
           type: string
         tts:
           $ref: '#/components/schemas/TTSConfig'
+        tts_text:
+          type: string
         index:
           type: integer
     TTSProviderSettings:

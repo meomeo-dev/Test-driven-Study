@@ -33,7 +33,10 @@
     "id": "pinyin-04-2-3",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。d___ yī fu",
+    "stem": [
+      {"type": "text", "text": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。"},
+      {"type": "blank", "text": "d___", "tts_text": "叠衣服"}
+    ],
     "image": "assets/folding-clothes.png",
     "options": [
       {"id": "a", "text": "ié"},
@@ -48,7 +51,10 @@
     "id": "pinyin-04-2-4",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。sh___ hú",
+    "stem": [
+      {"type": "text", "text": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。"},
+      {"type": "blank", "text": "sh___", "tts_text": "水壶"}
+    ],
     "image": "assets/watering-can.png",
     "options": [
       {"id": "a", "text": "iǔ"},
