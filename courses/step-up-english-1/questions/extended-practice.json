@@ -205,5 +205,160 @@
     ],
     "explanation": "eight 表示 8，seven 表示 7，零件总数为 8 + 7 = 15。因此正确答案是 15。",
     "grading": { "value": "15", "absolute_tolerance": "0" }
+  },
+  {
+    "id": "sue1-extended-writing-short",
+    "type": "writing",
+    "subtype": "short_essay",
+    "stem": "给收货同事写一封英文邮件。原定今天的送货因货车检修改期，请告知对方新的送货时间为星期五上午十点。",
+    "requirements": [
+      "写明送货改期的原因和新的时间。",
+      "请同事确认是否方便收货。",
+      "使用称呼和落款。"
+    ],
+    "keywords": ["truck", "Friday", "ten", "confirm"],
+    "min_words": 40,
+    "max_words": 65,
+    "sample_response": "Hi Mia,\n\nThe truck needs repairs, so today's delivery has been moved to Friday at ten in the morning. Please confirm that someone will be available to receive the boxes at that time. I'm sorry for the change and thank you for your help.\n\nBest,\nSam",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
+    "analysis": "先用 so 连接改期原因和新时间，再用 Please confirm 礼貌地请同事确认收货安排。称呼和落款让邮件格式完整。"
+  },
+  {
+    "id": "sue1-extended-writing-full",
+    "type": "writing",
+    "subtype": "full_essay",
+    "stem": "车间打算改用电子清单交班。写一篇英文短文，对比纸质与电子清单的优缺点，并提出你建议的交班做法。",
+    "requirements": [
+      "分别写出纸质清单和电子清单的一项优点与一项缺点。",
+      "说明你推荐哪一种作为日常交班工具，并给出理由。",
+      "说明设备无法使用时如何备份记录。"
+    ],
+    "keywords": ["paper checklist", "digital checklist", "handover", "backup"],
+    "min_words": 110,
+    "max_words": 160,
+    "sample_response": "A clear handover helps the next shift start work without guessing. Both paper and digital checklists can help, but they have different strengths.\n\nA paper checklist is easy to use when the network is down. However, a page can get lost, and handwriting may be hard to read. A digital checklist lets both shifts see the latest notes in one place. It is also easier to find old records. The main problem is that a tablet may run out of power.\n\nI would use the digital checklist every day and keep printed copies as a backup. If the tablet stops working, workers can write the date, time, and any unfinished tasks on paper. The shift lead can add those notes to the digital record later.",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": { "task_completion": 45, "language_accuracy": 30, "coherence": 25 },
+    "analysis": "第一段说明交班记录的目的，第二段用 However 转入缺点并比较两种清单，最后一段给出日常做法和设备故障时的备份流程。"
+  },
+  {
+    "id": "sue1-extended-translation-zh-to-en",
+    "type": "translation",
+    "direction": "zh_to_en",
+    "stem": "将下列交班指令翻译成英文。",
+    "source_text": "请把签字后的清单交给下一班，并在下午三点前把空箱放到装货门旁。",
+    "reference_translation": "Please hand the signed checklist to the next shift and put the empty boxes by the loading door before three p.m.",
+    "acceptable_alternates": [
+      "Please give the signed checklist to the next shift and leave the empty boxes next to the loading door before 3 p.m."
+    ],
+    "key_terms": [
+      { "term": "signed checklist" },
+      { "term": "next shift" },
+      { "term": "empty boxes" },
+      { "term": "loading door" }
+    ],
+    "analysis": "hand something to someone 表示把某物交给某人。before three p.m. 保留了原句“下午三点前”的时间限制。"
+  },
+  {
+    "id": "sue1-extended-listening-passage",
+    "type": "listening",
+    "stem": "听库房管理员的通知，再回答两个问题。",
+    "audio": { "mode": "passage", "voice_female": "stella" },
+    "passage": "The storeroom will close at four today. If you need new gloves, collect them before three thirty. The spare gloves are in the blue cabinet next to the door.",
+    "sub_questions": [
+      {
+        "id": "closing-hour",
+        "type": "numeric",
+        "stem": "At what hour will the storeroom close? Enter only the hour.",
+        "grading": { "value": "4", "absolute_tolerance": "0" },
+        "analysis": "第一句说库房四点关门。三点半是领取手套的截止时间。"
+      },
+      {
+        "id": "gloves-location",
+        "type": "single_choice",
+        "stem": "Where are the spare gloves?",
+        "options": [
+          { "id": "blue-cabinet", "text": "In the blue cabinet." },
+          { "id": "front-desk", "text": "At the front desk." },
+          { "id": "green-cabinet", "text": "In the green cabinet." }
+        ],
+        "grading": { "choice_ids": ["blue-cabinet"] },
+        "analysis": "最后一句说明备用手套在门旁的蓝色柜子里。"
+      }
+    ]
+  },
+  {
+    "id": "sue1-extended-listening-recording",
+    "type": "listening",
+    "stem": "听送货延迟的通知录音，再回答两个问题。",
+    "audio": { "mode": "recording", "src": "assets/audio/delivery-delay.mp3" },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "The morning delivery is running late. The driver will arrive at ten thirty. Please leave the empty boxes by the loading door."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "arrival-time",
+        "type": "single_choice",
+        "stem": "When will the driver arrive?",
+        "options": [
+          { "id": "ten", "text": "At 10:00 a.m." },
+          { "id": "ten-thirty", "text": "At 10:30 a.m." },
+          { "id": "eleven-thirty", "text": "At 11:30 a.m." }
+        ],
+        "grading": { "choice_ids": ["ten-thirty"] },
+        "analysis": "ten thirty 表示十点半。morning delivery 给出了上午的时间背景。"
+      },
+      {
+        "id": "boxes-location",
+        "type": "true_false",
+        "stem": "The empty boxes should be left by the loading door.",
+        "grading": { "value": true },
+        "analysis": "通知最后一句要求把空箱放在装货门旁。"
+      }
+    ]
+  },
+  {
+    "id": "sue1-extended-reading-single-choice",
+    "type": "reading_comprehension",
+    "stem": "阅读更衣室通知，选择正确的答案。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "LOCKER ROOM NOTICE\nThe main locker room will close at four p.m. on Friday for cleaning. After four, staff can use the small locker room next to the canteen. The main locker room will reopen on Monday morning.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "alternative-locker-room",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which locker room can staff use after four on Friday?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          { "id": "main", "text": "The main locker room.", "tts": { "voice": "stella" } },
+          {
+            "id": "by-canteen",
+            "text": "The small locker room next to the canteen.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "by-entrance",
+            "text": "The small locker room by the entrance.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "choice_ids": ["by-canteen"] },
+        "analysis": "第二句明确说四点后可以使用食堂旁的小更衣室。主更衣室要到周一早上才重新开放。"
+      }
+    ]
   }
 ]

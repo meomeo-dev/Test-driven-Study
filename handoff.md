@@ -16,17 +16,18 @@ Updated 2026-11-18 (America/New_York).
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
   scoring and optional AI feedback. The single 综合题型练习 unit in
-  `step-up-english-1@1.2.3` has one example of each of the nine question types.
-  The single-choice, multiple-choice, and numeric questions were copied from
-  the numbers unit of `beginner-english`.
+  `step-up-english-1@1.2.4` has 15 questions across all nine question types.
+  It covers all three writing subtypes, both translation directions, all
+  three listening modes, and three reading sub-question types. The recorded
+  listening example ships with a [local MP3](courses/step-up-english-1/assets/audio/README.md).
 - Reading comprehension uses the existing study layout. Its passage,
   sub-questions, and choices declare inline TTS in the question bank.
 - Memorization shows the writing prompt and requirements on the left, the
   sample in the middle, and the explanation and rubric on the right.
   Practice collects submissions and reveals the sample and rubric afterward.
-- The writing sample declares TTS for the full sentence. Version `1.2.3` is
-  active in the local learner database with the same six existing question IDs.
-  Course validation, course and study tests, and question-type browser tests passed.
+- The writing samples declare TTS. Version `1.2.4` is active in the local
+  learner database with the same nine existing question IDs. Course validation,
+  course and study tests, and live API checks of the new examples and MP3 passed.
 
 ## Elementary Chinese pronunciation
 

@@ -20,7 +20,7 @@ func TestV2PracticeUsesSavedAttemptAndHidesReview(t *testing.T) {
 	s, queries, subject := setupExtendedCourse(t)
 	ctx := context.Background()
 	rows, err := s.PracticeQuestions(ctx, study.Filter{SubjectID: subject, ChapterID: -1, State: "all"})
-	if err != nil || len(rows) != 9 {
+	if err != nil || len(rows) != 15 {
 		t.Fatalf("projected questions: %v, %v", rows, err)
 	}
 	presentationID := "saved-v2-written-attempt"
@@ -72,11 +72,11 @@ func TestV2ExamKeepsListeningAudioAndPartialCreditInSnapshot(t *testing.T) {
 	ctx := context.Background()
 	id := "a7990000-0000-4000-8000-000000000001"
 	paper, err := s.CreateExam(ctx, id, subject)
-	if err != nil || len(paper.Items) != 9 {
+	if err != nil || len(paper.Items) != 15 {
 		t.Fatalf("create exam: %+v, %v", paper, err)
 	}
 	listening := slices.IndexFunc(paper.Items, func(i study.ExamItem) bool {
-		return i.Detail.Question.QuestionType == study.ListeningQuestion
+		return i.Detail.Question.SourceItemID == "sue1-extended-listening"
 	})
 	cloze := slices.IndexFunc(paper.Items, func(i study.ExamItem) bool {
 		return i.Detail.Question.QuestionType == study.ClozeQuestion
@@ -111,8 +111,11 @@ func TestV2ExamKeepsListeningAudioAndPartialCreditInSnapshot(t *testing.T) {
 		len(q.TranscriptLines) != 0 || q.QuestionReview.Transcript != nil {
 		t.Fatalf("active review disclosed the transcript: %+v", q)
 	}
-	paper, err = s.AnswerExamResponse(ctx, id, cloze,
-		extendedInput(t, `{"blanks":{"1":["must"]}}`))
+	if _, err := s.AnswerExamResponse(ctx, id, cloze,
+		extendedInput(t, `{"blanks":{"1":["must"]}}`)); err != nil {
+		t.Fatal(err)
+	}
+	paper, err = s.FinishExam(ctx, id)
 	if err != nil || paper.Score == nil || *paper.Score != 1 || *paper.Items[cloze].Credit != .5 ||
 		len(paper.Items[listening].Detail.Question.TranscriptLines) != 2 {
 		t.Fatalf("partial credit or transcript reveal failed: %+v, %v", paper, err)

@@ -19,24 +19,10 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 		t.Fatal("the demo course must contain only the extended-practice unit")
 	}
 	items := pkg.Units["extended-practice"].Items
-	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 9 {
+	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 15 {
 		t.Fatalf("unexpected demo unit: version %d, %d items", pkg.Manifest.ProtocolVersion, len(items))
 	}
-	counts := make(map[string]int, len(items))
-	for _, item := range items {
-		counts[item.Type]++
-		if item.Type == Reading && len(item.ListeningLines()) > 0 {
-			t.Fatal("a reading passage must not project as a listening transcript")
-		}
-	}
-	for _, kind := range []string{
-		SingleChoice, MultipleChoice, TrueFalse, Numeric,
-		Cloze, Listening, Reading, Writing, Translation,
-	} {
-		if counts[kind] != 1 {
-			t.Errorf("expected one %s demonstration, got %d", kind, counts[kind])
-		}
-	}
+	checkDemoCoverage(t, items)
 	versions, err := loadSchemas()
 	if err != nil {
 		t.Fatal(err)
@@ -55,6 +41,42 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 	}
 	if _, err := Load(filepath.Join("..", "..", "courses", "basic-math")); err != nil {
 		t.Fatalf("v1 course no longer loads: %v", err)
+	}
+}
+
+func checkDemoCoverage(t *testing.T, items []Item) {
+	t.Helper()
+	demonstrated := make(map[string]bool)
+	for _, item := range items {
+		demonstrated[item.Type] = true
+		switch item.Type {
+		case Writing:
+			demonstrated[Writing+":"+item.Subtype] = true
+		case Translation:
+			demonstrated[Translation+":"+item.Direction] = true
+		case Listening:
+			if item.Listening != nil {
+				demonstrated[Listening+":"+item.Listening.Mode] = true
+			}
+		case Reading:
+			if len(item.ListeningLines()) > 0 {
+				t.Errorf("%s: a reading passage must not project as a listening transcript", item.ID)
+			}
+			for _, sub := range item.SubQuestions {
+				demonstrated[Reading+":"+sub.Type] = true
+			}
+		}
+	}
+	for _, kind := range []string{
+		SingleChoice, MultipleChoice, TrueFalse, Numeric, Cloze,
+		Listening + ":dialogue", Listening + ":passage", Listening + ":recording",
+		Reading + ":" + Numeric, Reading + ":" + MultipleChoice, Reading + ":" + SingleChoice,
+		Writing + ":sentence_making", Writing + ":short_essay", Writing + ":full_essay",
+		Translation + ":en_to_zh", Translation + ":zh_to_en",
+	} {
+		if !demonstrated[kind] {
+			t.Errorf("missing demo for %s", kind)
+		}
 	}
 }
 
@@ -99,6 +121,14 @@ func TestV2EvaluationUsesAuthoredIDsAndServerWordCount(t *testing.T) {
 		t.Fatal(err)
 	}
 	items := pkg.Units["extended-practice"].Items
+	for _, item := range items {
+		if response := item.ExpectedResponse(); response.HasAnswer() {
+			_, score, err := item.Evaluate(response)
+			if err != nil || score != 1 {
+				t.Errorf("%s: authored answer got %g, %v; want full credit", item.ID, score, err)
+			}
+		}
+	}
 	cases := []struct {
 		name     string
 		index    int
