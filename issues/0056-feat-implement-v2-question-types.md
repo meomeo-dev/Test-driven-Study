@@ -1,7 +1,8 @@
 ---
 id: 0056
 type: feat
-status: open
+status: closed
+closed-by: 0b96e4bc07e7ce52dc5826835a0c1a7bcf49e5c1
 labels: []
 branch: feat/0056-implement-v2-question-types
 created: 2026-11-18
@@ -37,3 +38,12 @@ Rewriting existing course items, migrating learner data, or using external AI fo
 ## 讨论
 
 Use JSON payloads and existing paper snapshots. Keep the exam score deterministic.
+
+
+## Verification
+
+- V1 and v2 package validation, versioned import and stable question/option IDs.
+- Go coverage verifies validation, response normalization, scoring, attempt
+  replay, review boundaries and protected listening sources.
+- Chromium covers all five question types, practice AI feedback through the
+  local provider fixture, and listening exam playback and recovery.

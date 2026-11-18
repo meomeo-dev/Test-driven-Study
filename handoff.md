@@ -4,10 +4,24 @@ Updated 2026-11-18 (America/New_York).
 
 ## Repository state
 
-- Implementation commit: `46d404a`.
-- Completed issue: [#55, elementary Chinese pronunciation](issues/0055-fix-restore-elementary-chinese-pronunciation-controls.md).
+- Implementation commit: `0b96e4b`.
+- Completed [#56, v2 question types](issues/0056-feat-implement-v2-question-types.md).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
+
+## V2 question types
+
+- Cloze, listening, reading comprehension, writing and translation now use
+  versioned course schemas, structured answers and shared practice, memorization
+  and exam controls. V1 courses remain supported with no database migration.
+- The [authoring guide](docs/features/question-types/README.md) documents
+  scoring and optional AI feedback. The six examples ship in
+  `step-up-english-1@1.1.0`. Use normal course import to activate the package;
+  verification installed it only in isolated data directories.
+- Generated bindings, course validation, TypeScript, Go and unit tests,
+  startup checks, and production builds passed. All eight earlier Chromium
+  cases passed; both new cases passed after tightening a text locator.
+  The course check reports the existing concept coverage warnings.
 
 ## Elementary Chinese pronunciation
 
@@ -19,15 +33,6 @@ Updated 2026-11-18 (America/New_York).
 - The upgrade preserved the 16 question IDs, learner records and 12 existing
   illustrations. The [recording library](assets/audio/pinyin/README.md) credits
   the source. The [TTS reference](docs/features/tts/README.md) covers the service.
-
-## Verification and next step
-
-- Generated bindings, course validation, TypeScript, unit and startup tests,
-  and production builds passed.
-- The Chromium suite passed seven cases, including Elementary Chinese speech
-  regeneration and all three listening turns in an English dialogue. The
-  roadmap case had an outdated concept count. Its corrected assertion,
-  route planning and saved progress passed a separate Chromium check.
 
 ## English curriculum
 
