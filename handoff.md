@@ -1,14 +1,14 @@
 # Development Handoff
 
-Updated 2026-11-17 (America/New_York).
+Updated 2026-11-18 (America/New_York).
 
 ## 1. Baseline Context & Repository State
 
 - **Repository**: `/Volumes/1TB-ZYJ/git/Test-driven-Study` (independent, standalone checkout).
-- **Active Branch**: `feat/0052-expand-sample-courses-to-180-hour-standard-curriculum`
-- **Baseline Commit**: `9135820` (`docs: enforce option-level TTS uniformity to prevent answer leakage`)
+- **Active Branch**: `main` (all feature branches merged and pruned).
+- **Baseline Commit**: `9ee2031` (`feat(course): upgrade beginner-english to v1.3.0 with rich content and uniform TTS`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Current Milestone**: Completed end-to-end implementation of DeepSeek TTS and Unified 3-Tab Settings (WU-001) with 100% passed automated test gates (typecheck, 11 Vitest unit tests, full Go suite, and all 18 course package validations).
+- **Current Milestone**: Completed end-to-end implementation of DeepSeek TTS and Unified 3-Tab Settings (WU-001), passed double-blind subagent audit (Backend Clean Pass, Frontend Clean Pass), and successfully upgraded and installed course `beginner-english@1.3.0` into the active workspace database.
 - **WU Status**: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json) (`completed`, phase: `close`).
 
 ---
@@ -37,11 +37,19 @@ Updated 2026-11-17 (America/New_York).
    - `web/src/components/RichContent.tsx`: Mixed layout supporting `text`, `speech` (with `AudioControls`), and `blank` (`___`).
    - `web/src/features/practice/QuestionCard.tsx` & `ChoiceOptions.tsx` & `web/src/features/memorization/QuestionCard.tsx`: Integrated `RichContent` for stem rendering, and enforced the **Anti-Leakage Uniformity Rule**: if any option has TTS enabled, all options uniformly render audio controls to prevent answer leakage.
 
-5. **Automated Verification Results**:
+5. **Curriculum Upgrade (`courses/beginner-english@1.3.0`)**:
+   - Upgraded all 8 question files (159 items preserved) with declarative rich content and uniform option TTS.
+   - 70 stem dialogue/prompt segments tagged with `tide` / `stella`.
+   - 19 declarative cloze blank segments (`{ "type": "blank", "index": 1 }`).
+   - 98 items with uniform option-level TTS across 392 options (100% Anti-Leakage Uniformity passed).
+   - Package installed and projected into `var/study.sqlite` via `go run ./cmd/course install courses/beginner-english`.
+
+6. **Automated Verification Results**:
    - `npm run typecheck`: 0 errors.
-   - `npm run test:unit`: 11 test files, 42 tests passed (including new `tts-navigation.test.ts`).
+   - `npm run test:unit`: 11 test files, 42 tests passed.
    - `npm run test:go`: 100% passed across all Go packages.
-   - `go run ./cmd/course check`: All 18 courses passed validation, including golden sample v2 question in `courses/step-up-english-1/questions/simple-present.json`.
+   - `npm run build`: Production client bundle and Go binary built cleanly.
+   - `go run ./cmd/course check`: All course packages validated with 0 errors.
 
 1. **TODO Document Created & Validated**:
    - JSON: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json)
