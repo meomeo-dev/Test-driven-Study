@@ -19,7 +19,7 @@ export function ExamNavigation({ session, index, selected, onSelect, busy }: {
             data-multiple={item.detail.question.question_type === 2}
             data-incorrect={item.correct === false && item.answered}
             disabled={busy} onClick={() => onSelect(position)}>
-            {item.numeric ?? answerSymbols(item.detail.question, value).replaceAll('、', '')}
+            {(item.response && item.detail.question.content ? '已答' : item.numeric) ?? answerSymbols(item.detail.question, value).replaceAll('、', '')}
           </button></td>;
         })}
       </tr>)}</tbody>

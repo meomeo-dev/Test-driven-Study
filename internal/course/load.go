@@ -3,6 +3,7 @@ package course
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/fs"
@@ -36,7 +37,7 @@ func Load(directory string) (Package, error) {
 	}
 	defer root.Close()
 	files := packageFiles{root: root, hashes: make(map[string]string)}
-	schemas, err := loadSchemas()
+	versions, err := loadSchemas()
 	if err != nil {
 		return Package{}, err
 	}
@@ -44,6 +45,16 @@ func Load(directory string) (Package, error) {
 	if err != nil {
 		return Package{}, err
 	}
+	var protocol struct {
+		Version int `json:"protocol_version"`
+	}
+	if err := json.Unmarshal(data, &protocol); err != nil {
+		return Package{}, fmt.Errorf("%s: %w", ManifestFile, err)
+	}
+	if protocol.Version < 1 || protocol.Version >= len(versions) {
+		return Package{}, fmt.Errorf("%s: unsupported protocol_version %d", ManifestFile, protocol.Version)
+	}
+	schemas := versions[protocol.Version]
 	manifest, err := decodeFile[Manifest](data, ManifestFile, schemas.manifest)
 	if err != nil {
 		return Package{}, err
@@ -57,7 +68,7 @@ func Load(directory string) (Package, error) {
 		if _, exists := result.Units[unit.ID]; exists {
 			return Package{}, fmt.Errorf("duplicate unit ID %q", unit.ID)
 		}
-		content, err := files.unit(unit, seenItems, schemas)
+		content, err := files.unit(unit, seenItems, schemas, protocol.Version)
 		if err != nil {
 			return Package{}, fmt.Errorf("unit %q: %w", unit.ID, err)
 		}
@@ -111,7 +122,7 @@ func (pkg Package) ReadAsset(root *os.Root, filename string) ([]byte, error) {
 }
 
 func (files packageFiles) unit(
-	unit Unit, seenItems map[string]bool, schemas v1Schemas,
+	unit Unit, seenItems map[string]bool, schemas packageSchemas, protocol int,
 ) (UnitContent, error) {
 	content := UnitContent{Lessons: make(map[string]string)}
 	for _, lesson := range unit.Lessons {
@@ -145,14 +156,14 @@ func (files packageFiles) unit(
 		return content, err
 	}
 	for _, item := range content.Items {
-		if err := files.validateItem(item, seenItems); err != nil {
+		if err := files.validateItem(item, seenItems, protocol); err != nil {
 			return content, fmt.Errorf("%s item %q: %w", unit.QuestionFile, item.ID, err)
 		}
 	}
 	return content, nil
 }
 
-func (files packageFiles) validateItem(item Item, seen map[string]bool) error {
+func (files packageFiles) validateItem(item Item, seen map[string]bool, protocol int) error {
 	if seen[item.ID] {
 		return fmt.Errorf("duplicate item ID")
 	}
@@ -160,11 +171,11 @@ func (files packageFiles) validateItem(item Item, seen map[string]bool) error {
 	if err := files.asset(item.Image); err != nil {
 		return err
 	}
-	if item.Audio != "" {
-		if !IsAudioPath(item.Audio) {
-			return fmt.Errorf("invalid audio asset path %q", item.Audio)
+	if audio := item.AudioPath(); audio != "" {
+		if !IsAudioPath(audio) {
+			return fmt.Errorf("invalid audio asset path %q", audio)
 		}
-		if err := files.hashAsset(item.Audio); err != nil {
+		if err := files.hashAsset(audio); err != nil {
 			return err
 		}
 	}
@@ -173,6 +184,15 @@ func (files packageFiles) validateItem(item Item, seen map[string]bool) error {
 			return err
 		}
 	}
+	if protocol == 2 {
+		if err := item.validateV2(); err != nil {
+			return err
+		}
+	}
+	return item.validateOptions()
+}
+
+func (item Item) validateOptions() error {
 	optionIDs := make(map[string]bool, len(item.Options))
 	for _, option := range item.Options {
 		if optionIDs[option.ID] {

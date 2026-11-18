@@ -1,8 +1,8 @@
+import { questionType as label } from '../question-types/model';
 import type { ExamItem, ExamSession } from '../../api/exams';
 
 type Question = ExamItem['detail']['question'];
-export const questionType = (q: Question) => q.question_type === 4 ? '数值题' : q.question_type === 3
-  ? '判断题' : q.question_type === 2 ? '多选题' : '单选题';
+export const questionType = (q: Question) => label(q.question_type);
 
 export function optionSymbol(q: Question, sign: number) {
   const index = q.items.findIndex(option => option.sign === sign);

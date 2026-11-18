@@ -1,5 +1,5 @@
 import { request, type Filters } from './client';
-import type { Presentation, AttemptResult, PracticeSummary, PracticeOverview, Analysis, ReviewBook } from './generated/types.gen';
+import type { AnswerInput, WrittenFeedback, Presentation, AttemptResult, PracticeSummary, PracticeOverview, Analysis, ReviewBook } from './generated/types.gen';
 export type { PracticeDetail as Detail, PracticeSummary as Summary,
   PracticeOverview as Overview, Presentation, AttemptResult, Attempt,
   PublicQuestion, Analysis, ChapterAnalysis, Rate, ReviewBook, ReviewItem } from './generated/types.gen';
@@ -18,8 +18,10 @@ export const overview = (subject: number, signal?: AbortSignal) =>
   request<PracticeOverview>(`/api/practice/overview?subject=${subject}`, { signal });
 export const presentation = (id: string, question: number, signal?: AbortSignal) =>
   request<Presentation>('/api/practice/presentations', { ...json({ id, question_id: question }), signal });
-export const answer = (id: string, selected: number[], numeric?: string) =>
-  request<AttemptResult>(`/api/practice/presentations/${id}/answer`, json({ selected, numeric }));
+export const answer = (id: string, response: AnswerInput) =>
+  request<AttemptResult>(`/api/practice/presentations/${id}/answer`, json(response));
+export const evaluateWritten = (id: string) =>
+  request<WrittenFeedback>(`/api/practice/presentations/${id}/feedback`, json({}));
 export const cursor = (subject: number, id: number, signal?: AbortSignal) =>
   request<{ saved: boolean }>('/api/practice/cursor', { ...json({ subject_id: subject, question_id: id }), method: 'PUT', signal });
 export const analysis = (subject: number, days: number, signal?: AbortSignal) =>

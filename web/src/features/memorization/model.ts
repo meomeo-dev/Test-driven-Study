@@ -18,7 +18,7 @@ export function activeQuestion(rows: Summary[], requested: string | null, last: 
   return rows[0]?.question_id ?? 0;
 }
 export function answerSigns(answer: string) { return new Set(answer.split(',').map(value => Number(value))); }
-export function questionType(type: number) { return ({ 1: '单选题', 2: '多选题', 3: '判断题', 4: '数值题' })[type] ?? '题目'; }
+export { questionType } from '../question-types/model';
 export function stateLabel(state: string) { return ({ mastered: '已记住', review: '待复习', unlearned: '未学习' })[state] ?? '未学习'; }
 export function nearbyQuestion(rows: Summary[], current: number, delta: number) {
   const index = rows.findIndex(row => row.question_id === current);

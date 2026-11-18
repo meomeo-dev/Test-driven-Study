@@ -1,14 +1,17 @@
 import type { ContentSegment } from '../api/generated/types.gen';
-import { AudioControls } from './AudioControls';
+import type { ReactNode } from 'react';
+import { AudioControls, ttsConfig } from './AudioControls';
 
 type RichContentProps = {
   content?: string | ContentSegment[];
   className?: string;
+  renderBlank?: (index: number) => ReactNode;
 };
 
 export function RichContent({
   content,
   className,
+  renderBlank,
 }: RichContentProps) {
   if (!content) return null;
 
@@ -21,12 +24,16 @@ export function RichContent({
       <span className={`rich-content-mixed ${className || ''}`}>
         {content.map((segment, index) => {
           const blank = segment.type === 'blank';
+          if (blank && segment.index !== undefined && renderBlank) {
+            return <span key={index}>{renderBlank(segment.index)}</span>;
+          }
           const text = segment.text || (blank ? '___' : '');
-          const textToSpeak = segment.tts_text || segment.tts?.text || (blank ? '' : text);
-          const audio = segment.pinyin?.length
+          const config = ttsConfig(segment.tts);
+          const textToSpeak = segment.tts_text || config?.text || text;
+          const audio = blank ? null : segment.pinyin?.length
             ? <AudioControls text={text} pinyin={segment.pinyin} />
             : (segment.tts || segment.tts_text) && textToSpeak
-              ? <AudioControls text={textToSpeak} voice={segment.tts?.voice} />
+              ? <AudioControls text={textToSpeak} voice={config?.voice} speed={config?.speed} />
               : null;
           if (!audio && !blank) {
             return (

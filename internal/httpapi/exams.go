@@ -7,6 +7,8 @@ import (
 	"test-driven-study/internal/study"
 )
 
+const answerBodyLimit = 160 << 10
+
 func (s *Server) examRules(w http.ResponseWriter, r *http.Request) {
 	subject, ok := s.subjectID(w, r)
 	if !ok {
@@ -67,7 +69,7 @@ func (s *Server) examAnswer(w http.ResponseWriter, r *http.Request) {
 		Index *int `json:"index"`
 		study.AnswerInput
 	}
-	if !decodeBody(w, r, &input) {
+	if !decodeBoundedBody(w, r, &input, answerBodyLimit) {
 		return
 	}
 	if input.Index == nil {
@@ -104,20 +106,19 @@ func (s *Server) examMove(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) examNavigate(w http.ResponseWriter, r *http.Request) {
 	var input struct {
-		From     *int     `json:"from_index"`
-		Target   *int     `json:"to_index"`
-		Selected *[]int64 `json:"selected"`
-		Numeric  *string  `json:"numeric,omitempty"`
+		From   *int `json:"from_index"`
+		Target *int `json:"to_index"`
+		study.AnswerInput
 	}
-	if !decodeBody(w, r, &input) {
+	if !decodeBoundedBody(w, r, &input, answerBodyLimit) {
 		return
 	}
-	if input.From == nil || input.Target == nil || input.Selected == nil {
-		problem(w, 400, "题目序号与选择不能为空")
+	if input.From == nil || input.Target == nil {
+		problem(w, 400, "题目序号不能为空")
 		return
 	}
 	value, err := s.study.NavigateExamResponse(r.Context(), r.PathValue("exam"),
-		*input.From, *input.Target, study.AnswerInput{Selected: *input.Selected, Numeric: input.Numeric})
+		*input.From, *input.Target, input.AnswerInput)
 	if err != nil {
 		examError(w, err)
 		return

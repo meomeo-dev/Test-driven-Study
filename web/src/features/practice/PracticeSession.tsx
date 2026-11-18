@@ -1,5 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import type { ExtendedResponse } from '../../api/generated/types.gen';
+import { readyResponse } from '../question-types/model';
 import * as api from '../../api/practice';
 import { QuestionCard } from './QuestionCard';
 import { QuestionPreview } from './QuestionPreview';
@@ -26,6 +28,8 @@ function AnswerRound({ id, position, total, shortcuts, commands, onPrevious, onN
   const client = useQueryClient();
   const [selected, setSelected] = useState<number[]>([]);
   const [numeric, setNumeric] = useState('');
+  const [draft, setDraft] = useState<ExtendedResponse>();
+  const response = readyResponse(draft);
   const [result, setResult] = useState<api.AttemptResult>();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
@@ -53,10 +57,10 @@ function AnswerRound({ id, position, total, shortcuts, commands, onPrevious, onN
   async function submit() {
     if (locked.current || result || !query.data) return;
     const number = query.data.detail.question.question_type === 4 ? numeric.trim() : undefined;
-    if (number === '' || (number === undefined && selected.length === 0)) return;
+    if (!response && (number === '' || (number === undefined && selected.length === 0))) return;
     locked.current = true; setPending(true); onPending(true); setError('');
     try {
-      const saved = await api.answer(presentationID, selected, number);
+      const saved = await api.answer(presentationID, response ?? { selected, numeric: number });
       setResult(saved); onRevealed(true); onResult(saved);
       await Promise.all([
         client.invalidateQueries({ queryKey: ['practice-overview'] }),
@@ -82,6 +86,7 @@ function AnswerRound({ id, position, total, shortcuts, commands, onPrevious, onN
   return <>
     <QuestionCard presentation={query.data} result={result} selected={selected}
       numeric={numeric} onNumeric={setNumeric}
+      draft={draft} onDraft={setDraft} canSubmitExtended={!!response}
       position={position} total={total} pending={pending} shortcuts={shortcuts}
       imageRef={image} onChoose={choose} onSubmit={() => { void submit(); }}
       onRetry={onRetry} onPrevious={onPrevious} onNext={onNext} onDetails={openDetails} />

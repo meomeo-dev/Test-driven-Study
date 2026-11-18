@@ -126,10 +126,13 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 	question := study.Question{SubjectID: unit, PackageID: row.CourseID,
 		PackageVersion: row.Version, SourceItemID: row.ItemID, Title: item.Stem.String(),
 		Analysis: item.Explanation, Skill: item.Hint, ChapterName: item.Chapter,
-		ImageURL: item.Image, AudioURL: item.Audio, TranscriptURL: transcriptURL,
+		ImageURL: item.Image, AudioURL: item.AudioPath(), TranscriptURL: transcriptURL,
 		Items: []study.Option{}}
-	if item.Transcript != nil && len(item.Transcript.Lines) > 0 {
-		question.TranscriptLines = item.Transcript.Lines
+	if lines := item.ListeningLines(); len(lines) > 0 {
+		question.TranscriptLines = lines
+	}
+	if item.Analysis != nil {
+		question.Analysis, question.AnalysisContent = item.Analysis.String(), item.Analysis
 	}
 	if len(item.Stem.Segments) > 0 {
 		question.RichContent = item.Stem.Segments
@@ -180,7 +183,9 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 		question.QuestionType = 4
 		question.Answer, question.NumberTolerance = item.Grading.Value, item.Grading.AbsoluteTolerance
 	default:
-		return study.Question{}, fmt.Errorf("unsupported question type %q", item.Type)
+		if !question.ProjectExtended(item) {
+			return study.Question{}, fmt.Errorf("unsupported question type %q", item.Type)
+		}
 	}
 	return question, nil
 }

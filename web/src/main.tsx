@@ -24,6 +24,7 @@ import './styles/guide.css';
 import './styles/trace.css';
 import './styles/provider-settings.css';
 import './styles/exam.css';
+import './features/question-types/question-types.css';
 import './features/learning/learning.css';
 
 const client = new QueryClient({

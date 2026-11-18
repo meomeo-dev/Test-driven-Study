@@ -1,13 +1,18 @@
 package study
 
+import "test-driven-study/internal/course"
+
 type ExamItem struct {
-	Detail   PracticeDetail `json:"detail"`
-	Selected []int64        `json:"selected"`
-	Numeric  *string        `json:"numeric,omitempty"`
-	Answered bool           `json:"answered"`
-	Flagged  bool           `json:"flagged"`
-	Correct  *bool          `json:"correct,omitempty"`
-	Review   *Question      `json:"review,omitempty"`
+	Response    *course.ExtendedResponse `json:"response,omitempty"`
+	Credit      *float64                 `json:"credit,omitempty"`
+	AudioSpeeds []float64                `json:"audio_speeds,omitempty"`
+	Detail      PracticeDetail           `json:"detail"`
+	Selected    []int64                  `json:"selected"`
+	Numeric     *string                  `json:"numeric,omitempty"`
+	Answered    bool                     `json:"answered"`
+	Flagged     bool                     `json:"flagged"`
+	Correct     *bool                    `json:"correct,omitempty"`
+	Review      *Question                `json:"review,omitempty"`
 }
 
 type ExamSession struct {
@@ -44,12 +49,11 @@ type examPaperItem struct {
 	Revision       string   `json:"revision,omitempty"`
 }
 type examAnswer struct {
-	Selected     []int64 `json:"selected"`
-	Numeric      *string `json:"numeric,omitempty"`
-	AnsweredAtMS int64   `json:"answered_at_ms"`
-	Flagged      bool    `json:"flagged"`
+	AnswerInput
+	AnsweredAtMS int64 `json:"answered_at_ms"`
+	Flagged      bool  `json:"flagged"`
 }
 
 func (answer examAnswer) input() AnswerInput {
-	return AnswerInput{Selected: answer.Selected, Numeric: answer.Numeric}
+	return answer.AnswerInput
 }

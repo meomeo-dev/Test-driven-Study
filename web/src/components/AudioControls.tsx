@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { LoaderCircle, RotateCcw, Volume2, VolumeX } from 'lucide-react';
-import type { ContentSegment } from '../api/generated/types.gen';
+import type { ContentSegment, TtsDeclaration } from '../api/generated/types.gen';
 import * as tts from '../api/tts';
 import { connectPinyinOutput } from './pinyinAudio';
 
@@ -31,22 +31,25 @@ export function registerGlobalAudio(audio: HTMLAudioElement, onStop: () => void)
 }
 
 type Voice = 'stella' | 'tide';
-type Track = { clip: string } | { text: string; voice?: Voice };
+export const ttsConfig = (tts?: TtsDeclaration) => typeof tts === 'object' ? tts : undefined;
+type Track = { clip: string } | { text: string; voice?: Voice; speed?: number };
 type AudioControlsProps =
-  | { text: string; voice?: Voice; pinyin?: never; sequence?: never }
-  | { text: string; pinyin: string[]; voice?: never; sequence?: never }
-  | { sequence: ContentSegment[]; text?: never; voice?: never; pinyin?: never };
+  | { text: string; voice?: Voice; speed?: number; pinyin?: never; sequence?: never }
+  | { text: string; pinyin: string[]; voice?: never; speed?: never; sequence?: never }
+  | { sequence: ContentSegment[]; text?: never; voice?: never; speed?: never; pinyin?: never };
 
-function audioTracks({ text, voice, pinyin, sequence }: AudioControlsProps): Track[] {
+function audioTracks({ text, voice, speed, pinyin, sequence }: AudioControlsProps): Track[] {
   if (sequence) {
     return sequence.flatMap((segment): Track[] => {
+      if (segment.type === 'blank') return [];
       if (segment.pinyin?.length) return segment.pinyin.map(clip => ({ clip }));
-      const speech = segment.tts?.text || segment.text;
-      return speech ? [{ text: speech, voice: segment.tts?.voice }] : [];
+      const config = ttsConfig(segment.tts);
+      const speech = segment.tts_text || config?.text || segment.text;
+      return speech ? [{ text: speech, voice: config?.voice, speed: config?.speed }] : [];
     });
   }
   if (pinyin) return pinyin.map(clip => ({ clip }));
-  return text ? [{ text, voice }] : [];
+  return text ? [{ text, voice, speed }] : [];
 }
 
 export function AudioControls(props: AudioControlsProps) {
@@ -103,6 +106,7 @@ export function AudioControls(props: AudioControlsProps) {
         output?.setClip(clip);
         audio.onerror = () => fail(clip ? '暂无这段拼音的本地录音' : '播放音频失败');
         audio.src = url;
+        audio.playbackRate = 'clip' in track ? 1 : track.speed ?? 1;
         await audio.play();
         if (active.current === audio) setStatus('playing');
       } catch (error) {

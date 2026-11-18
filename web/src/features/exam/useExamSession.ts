@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import type { AnswerInput } from '../../api/generated/types.gen';
 import * as api from '../../api/exams';
 type Action = {
     kind: 'navigate';
     from: number;
     target: number;
-    selected: number[];
-    numeric?: string;
+    response: AnswerInput;
 } | {
     kind: 'answer';
     index: number;
@@ -29,7 +29,7 @@ export function useExamSession(id: string) {
         onMutate: () => client.cancelQueries({ queryKey: ['exam', id] }),
         mutationFn: (input: Action) => {
             if (input.kind === 'navigate')
-                return api.navigate(id, input.from, input.target, input.selected, input.numeric);
+                return api.navigate(id, input.from, input.target, input.response);
             if (input.kind === 'answer')
                 return api.answer(id, input.index, input.selected);
             if (input.kind === 'move')

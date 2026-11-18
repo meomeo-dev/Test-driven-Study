@@ -7,6 +7,8 @@ import { QuestionImage } from './QuestionImage';
 import { QuestionExplanation } from './QuestionExplanation';
 import type { DetailsTab } from './StudyDetails';
 import { RichContent } from '../../components/RichContent';
+import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
+import { ExtendedReview } from '../question-types/ExtendedReview';
 import { OptionAudio } from '../../components/OptionAudio';
 
 type Props = {
@@ -23,6 +25,12 @@ type Props = {
 };
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
+  if (question.content) {
+    return <>
+      <ExtendedQuestion content={question.content} />
+      {question.question_review && <ExtendedReview item={question.question_review} />}
+    </>;
+  }
   if (question.question_type === 4) {
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
   }

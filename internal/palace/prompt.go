@@ -1,6 +1,7 @@
 package palace
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -12,6 +13,9 @@ import (
 var sharedTemplate = course.DefaultPalaceTemplate()
 
 func renderPrompt(template course.PalaceTemplate, q study.Question, address string) (string, error) {
+	if q.QuestionReview != nil {
+		return renderExtendedPrompt(template, *q.QuestionReview, address)
+	}
 	if q.QuestionType == study.NumericQuestion {
 		return strings.NewReplacer("{{QUESTION_TEXT}}", q.Title+"\n"+q.Analysis,
 			"{{REFERENCE_ANSWER}}", q.Answer, "{{PALACE_ADDRESS}}", address).Replace(template.Prompt), nil
@@ -46,6 +50,23 @@ func renderPrompt(template course.PalaceTemplate, q study.Question, address stri
 	return strings.NewReplacer("{{QUESTION_TEXT}}", question.String(),
 		"{{REFERENCE_ANSWER}}", strings.Join(answers, "；"),
 		"{{PALACE_ADDRESS}}", address).Replace(template.Prompt), nil
+}
+
+func renderExtendedPrompt(template course.PalaceTemplate, item course.Item, address string) (
+	string, error,
+) {
+	// The preview appends the transcript separately as listening evidence.
+	item.Transcript = nil
+	content, err := json.MarshalIndent(item, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	key, err := json.Marshal(item.ExpectedResponse())
+	if err != nil {
+		return "", err
+	}
+	return strings.NewReplacer("{{QUESTION_TEXT}}", string(content),
+		"{{REFERENCE_ANSWER}}", string(key), "{{PALACE_ADDRESS}}", address).Replace(template.Prompt), nil
 }
 
 func (s *Service) questionTemplate(q study.Question) course.PalaceTemplate {

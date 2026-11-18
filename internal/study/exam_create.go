@@ -57,8 +57,10 @@ func (s *Service) eligibleExamQuestions(ctx context.Context, subject int64) ([]e
 			if _, err := gradeNumeric(q, &q.Answer); err != nil {
 				continue
 			}
-		} else if _, err = originalAnswer(q); err != nil {
-			continue
+		} else if q.QuestionReview == nil {
+			if _, err = originalAnswer(q); err != nil {
+				continue
+			}
 		}
 		// A visual question without its local asset cannot support a fair exam.
 		available := s.questionImageAvailable(ctx, q)

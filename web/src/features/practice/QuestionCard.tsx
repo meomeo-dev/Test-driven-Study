@@ -1,4 +1,6 @@
 import { QuestionAudio } from '../../components/QuestionAudio';
+import type { ExtendedResponse } from '../../api/generated/types.gen';
+import { WrittenFeedback } from '../question-types/WrittenFeedback';
 import type { Ref } from 'react';
 import { Check, ChevronLeft, ChevronRight, Circle, CircleCheck, Expand, Send, RotateCcw } from 'lucide-react';
 import type { Question } from '../../api/client';
@@ -10,9 +12,17 @@ import { ChoiceOptions } from './ChoiceOptions';
 import type { DetailsTab } from './StudyDetails';
 import { NumericAnswer } from '../../components/NumericAnswer';
 import { RichContent } from '../../components/RichContent';
+import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
+import { ExtendedReview } from '../question-types/ExtendedReview';
 import { OptionAudio } from '../../components/OptionAudio';
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
+  if (question.content) {
+    return <>
+      <ExtendedQuestion content={question.content} />
+      {question.question_review && <ExtendedReview item={question.question_review} />}
+    </>;
+  }
   if (question.question_type === 4) {
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
   }
@@ -36,7 +46,8 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
 
 type Props = {
   presentation: Presentation; result?: AttemptResult; selected: number[];
-  numeric: string; onNumeric: (value: string) => void;
+  draft?: ExtendedResponse; onDraft: (draft: ExtendedResponse) => void;
+  canSubmitExtended: boolean; numeric: string; onNumeric: (value: string) => void;
   position: number; total: number; pending: boolean; shortcuts: boolean;
   imageRef: Ref<HTMLButtonElement>; onChoose: (sign: number) => void;
   onSubmit: () => void; onRetry: () => void;
@@ -45,10 +56,12 @@ type Props = {
 };
 
 export function QuestionCard({ presentation, result, selected, position, total, pending,
-  numeric, onNumeric, shortcuts, imageRef, onChoose, onSubmit, onRetry, onDetails, onPrevious,
+  draft, onDraft, canSubmitExtended, numeric, onNumeric, shortcuts, imageRef, onChoose, onSubmit, onRetry, onDetails, onPrevious,
   onNext }: Props) {
   const detail = presentation.detail;
   const question = detail.question;
+  const review = result?.detail.question.question_review;
+  const written = review?.type === 'writing' || review?.type === 'translation';
   const isNumeric = question.question_type === 4;
   const hint = (key: string) => shortcuts || key === 'Enter' ? <kbd aria-hidden="true">{key}</kbd> : null;
   return <article className="question-card" aria-labelledby="question-title" aria-busy={pending}>
@@ -66,7 +79,8 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           <header className="column-label question-stem-heading">
             <span className="source-line">题号 #{question.source_item_id ?? question.question_id}</span>
             <span role="status" className={`state-label ${result ? (result.attempt.correct ? 'correct' : 'incorrect') : ''}`}>
-              {result ? (result.attempt.correct ? '回答正确' : '回答错误') : '未作答'}</span>
+              {result ? (written ? '已完成本地检查' : result.attempt.correct ? '回答正确'
+                : result.attempt.score ? '部分正确' : '回答错误') : '未作答'}</span>
             {presentation.prior_exposure && <span className="exposure-label">已见过此题</span>}
           </header>
           <h2 id="question-title" className="question-text">
@@ -80,9 +94,15 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           <QuestionImage key={`image-${presentation.id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
         </section>
         <section className="question-answers" aria-label="作答选项">
-          <h3 className="column-label">{isNumeric ? '填写答案'
+          <h3 className="column-label">{question.content ? '作答' : isNumeric ? '填写答案'
             : question.question_type === 2 ? '可选择多项' : '选择答案'}</h3>
-          {isNumeric ? <>
+          {question.content ? <>
+            <ExtendedQuestion content={question.content} value={result?.attempt.response ?? draft}
+              disabled={pending || !!result} onChange={onDraft} />
+            {review && result && <ExtendedReview item={review}
+              response={result.attempt.response} credit={result.attempt.score} />}
+            {written && <WrittenFeedback presentation={presentation.id} />}
+          </> : isNumeric ? <>
             <NumericAnswer value={numeric} onChange={onNumeric} disabled={pending || !!result} />
             {result && <p className="answer-option correct">正确答案：{result.attempt.correct_numeric}</p>}
           </> : <ChoiceOptions question={question} selected={selected} result={result?.attempt}
@@ -104,13 +124,13 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           <button className="button primary practice-primary-action" data-practice-confirm="true"
             aria-keyshortcuts="Enter" onClick={result ? onNext : onSubmit}
             disabled={pending || (result ? position >= total :
-              isNumeric ? numeric.trim() === '' : selected.length === 0)}>
+              question.content ? !canSubmitExtended : isNumeric ? numeric.trim() === '' : selected.length === 0)}>
             {result ? <ChevronRight size={16} /> : <Send size={16} />}
             {pending ? '正在保存…' : result ? '下一题' : '提交答案'}{hint('Enter')}
           </button>
         </div>
       </footer>
-      {result && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
+      {result && (!review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
     </div>
   </article>;
 }

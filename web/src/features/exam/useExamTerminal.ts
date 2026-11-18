@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import type { ExtendedResponse } from '../../api/generated/types.gen';
+import { readyResponse } from '../question-types/model';
 import type { ExamItem } from '../../api/exams';
 import { useExamClock, useExamSession } from './useExamSession';
 
@@ -10,6 +12,7 @@ export function useExamTerminal(id: string) {
   const remaining = useExamClock(session);
   const [drafts, setDrafts] = useState<Record<number, number[]>>({});
   const [numbers, setNumbers] = useState<Record<number, string>>({});
+  const [extended, setExtended] = useState<Record<number, ExtendedResponse>>({});
   const [dialog, setDialog] = useState<TerminalDialog>(null);
   const [feedback, setFeedback] = useState<ExamItem | null>(null);
   const [working, setWorking] = useState(false);
@@ -23,6 +26,8 @@ export function useExamTerminal(id: string) {
   const selected = item?.answered ? item.selected : drafts[index] ?? [];
   const numeric = item?.answered ? item.numeric ?? '' : numbers[index] ?? '';
   const onNumeric = (value: string) => setNumbers(current => ({ ...current, [index]: value }));
+  const draft = item?.answered ? item.response : extended[index];
+  const onDraft = (value: ExtendedResponse) => setExtended(current => ({ ...current, [index]: value }));
   const busy = working || action.isPending;
 
   useEffect(() => {
@@ -54,8 +59,9 @@ export function useExamTerminal(id: string) {
         setDialog(null); return;
       }
       const response = await action.mutateAsync({ kind: 'navigate', from: index,
-        target, selected: item.answered ? [] : selected,
-        numeric: item.answered ? undefined : numeric.trim() || undefined });
+        target, response: item.answered ? {} : readyResponse(draft) ?? {
+          selected, numeric: numeric.trim() || undefined,
+        } });
       const committed = response.items[index];
       setDrafts(current => { const next = { ...current }; delete next[index]; return next; });
       if (!item.answered && committed?.answered && committed.correct === false) {
@@ -87,5 +93,5 @@ export function useExamTerminal(id: string) {
     finally { gate.current = false; setWorking(false); }
   }
   return { query, action, session, remaining, index, item, selected, busy,
-    finished, dialog, setDialog, feedback, closeFeedback, choose, numeric, onNumeric, navigate, next, submit };
+    finished, draft, onDraft, dialog, setDialog, feedback, closeFeedback, choose, numeric, onNumeric, navigate, next, submit };
 }

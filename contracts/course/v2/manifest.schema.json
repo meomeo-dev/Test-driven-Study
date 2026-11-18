@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://study.example/contracts/course/v2/manifest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "course_id", "version", "title", "language", "units"],
+  "properties": {
+    "protocol_version": {"const": 2},
+    "course_id": {"$ref": "../v1/manifest.schema.json#/properties/course_id"},
+    "version": {"$ref": "../v1/manifest.schema.json#/properties/version"},
+    "title": {"$ref": "../v1/manifest.schema.json#/properties/title"},
+    "language": {"$ref": "../v1/manifest.schema.json#/properties/language"},
+    "description": {"$ref": "../v1/manifest.schema.json#/properties/description"},
+    "logo": {"$ref": "../v1/manifest.schema.json#/properties/logo"},
+    "ai_profile": {"$ref": "../v1/manifest.schema.json#/properties/ai_profile"},
+    "roadmap": {"$ref": "../v1/manifest.schema.json#/properties/roadmap"},
+    "units": {"$ref": "../v1/manifest.schema.json#/properties/units"}
+  }
+}

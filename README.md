@@ -56,8 +56,8 @@ Circuits and C. Beginner English includes listening exercises with transcripts.
 
 - **Courses (所有课程):** select a package and open the shared learning
   workspace. Each course keeps its own progress, practice, exams and AI
-  history. The same controls support single choice, multiple choice,
-  true/false and decimal answers across packages.
+  history. They support single choice, multiple choice, true/false and decimal
+  answers, plus [five v2 question types](docs/features/question-types/README.md).
 
 - **Subject guide (科目指南):** read the selected unit's lessons in a
   full-width reading pane with study guidance.

@@ -38,6 +38,24 @@ createServer(async (req, res) => {
       instructions:body.instructions,
       has_gap:body.instructions?.includes('Unresolved evidence gap') });
     const format=body.text?.format;
+    if (format?.type === 'json_object') {
+      if (req.headers.authorization !== 'Bearer isolated-llm-fixture' || body.store !== false
+        || body.tools || body.stream || typeof body.input !== 'string') {
+        res.writeHead(400).end(); return;
+      }
+      const evidence = JSON.parse(body.input);
+      if (evidence.question?.type !== 'writing' || !evidence.submission?.text ||
+        evidence.question.sample_response !== 'The delivery has been moved to Friday.') {
+        res.writeHead(400).end(); return;
+      }
+      const criteria = Object.entries(evidence.rubric).map(([name, max_points]) =>
+        ({ name, max_points, points: max_points, comment: '满足评分要求。' }));
+      const text = JSON.stringify({ criteria, summary: '表达清楚，符合通知语境。' });
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ status: 'completed', output: [{ type: 'message', role: 'assistant',
+        status: 'completed', content: [{ type: 'output_text', text }] }] }));
+      return;
+    }
     if (req.headers.authorization !== 'Bearer isolated-llm-fixture' || body.store !== false
       || !['json_schema','text'].includes(format?.type) || (format.type==='json_schema' && format.strict !== true) || !Number.isInteger(body.max_output_tokens)
       || !Array.isArray(body.input)) {

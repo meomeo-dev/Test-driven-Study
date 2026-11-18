@@ -1,0 +1,131 @@
+import { useId } from 'react';
+import type { CourseOption, ExtendedResponse, QuestionContent, SubAnswers,
+  SubQuestionPrompt } from '../../api/generated/types.gen';
+import { AudioControls, ttsConfig } from '../../components/AudioControls';
+import { NumericAnswer } from '../../components/NumericAnswer';
+import { RichContent } from '../../components/RichContent';
+
+type Props = {
+  content: QuestionContent;
+  value?: ExtendedResponse;
+  onChange?: (value: ExtendedResponse) => void;
+  disabled?: boolean;
+};
+
+export function ExtendedQuestion({ content, value, onChange, disabled }: Props) {
+  const id = useId();
+  const readOnly = disabled || !onChange;
+  if (content.blanks) {
+    const { blanks } = content;
+    return <div className="extended-question">
+      <div className="extended-passage"><RichContent content={content.passage}
+        renderBlank={index => {
+          const blank = blanks.find(b => b.index === index);
+          const selected = blank?.options.find(o => value?.blanks?.[index]?.includes(o.id));
+          const label = selected?.text ?? `空格 ${index}`;
+          if (readOnly) return <span className="extended-blank">{label}</span>;
+          return <button type="button" className="extended-blank"
+            aria-label={`跳转到空格 ${index}`}
+            onClick={() => document.getElementById(`${id}-${index}`)?.focus()}>{label}</button>;
+        }} /></div>
+      {blanks.map(blank => <fieldset key={blank.index} className="extended-part">
+        <legend>空格 {blank.index}</legend>
+        <PartOptions options={blank.options} name={`${id}-${blank.index}`}
+          selected={value?.blanks?.[blank.index] ?? []} disabled={readOnly}
+          onChoose={choice => onChange?.({ blanks: {
+            ...value?.blanks, [blank.index]: [choice],
+          } })} />
+      </fieldset>)}
+    </div>;
+  }
+  if (content.sub_questions) {
+    return <div className="extended-question">
+      {content.passage && <div className="extended-passage"><RichContent content={content.passage} /></div>}
+      {content.sub_questions.map((sub, index) => <fieldset key={sub.id} className="extended-part">
+        <legend>小题 {index + 1}</legend>
+        <div><RichContent content={sub.stem} /></div>
+        <SubQuestion sub={sub} name={`${id}-${index}`} disabled={readOnly}
+          value={value?.sub_answers?.[sub.id]}
+          onChange={answer => onChange?.({ sub_answers: {
+            ...value?.sub_answers, [sub.id]: answer,
+          } })} />
+      </fieldset>)}
+    </div>;
+  }
+  return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled} />;
+}
+
+function SubQuestion({ sub, value, disabled, name, onChange }: {
+  sub: SubQuestionPrompt; value?: SubAnswers[string]; disabled: boolean; name: string;
+  onChange: (value: SubAnswers[string]) => void;
+}) {
+  if (sub.type === 'numeric') {
+    if (disabled && value === undefined) return null;
+    return <NumericAnswer value={typeof value === 'string' ? value : ''}
+      onChange={onChange} disabled={disabled} />;
+  }
+  const options = sub.options ?? [
+    { id: 'true', text: '正确', value: true }, { id: 'false', text: '错误', value: false },
+  ];
+  const isBoolean = sub.type === 'true_false';
+  const multiple = sub.type === 'multiple_choice';
+  const selected: string[] = Array.isArray(value) ? value
+    : typeof value === 'boolean' && isBoolean ? options.filter(o => o.value === value).map(o => o.id) : [];
+  function choose(id: string) {
+    if (isBoolean) {
+      const choice = options.find(o => o.id === id)?.value;
+      if (choice !== undefined) onChange(choice);
+    } else if (multiple) {
+      onChange(selected.includes(id) ? selected.filter(o => o !== id) : [...selected, id]);
+    } else onChange([id]);
+  }
+  return <PartOptions options={options} name={name} selected={selected}
+    multiple={multiple} disabled={disabled} onChoose={choose} />;
+}
+
+function PartOptions({ options, name, selected, multiple, disabled, onChoose }: {
+  options: CourseOption[]; name: string; selected: string[]; multiple?: boolean; disabled: boolean;
+  onChoose: (id: string) => void;
+}) {
+  return <ul className="extended-options">{options.map((option, index) => {
+    const config = ttsConfig(option.tts);
+    return <li key={option.id}>
+      <label>
+        <input id={index === 0 ? name : undefined} name={name}
+          type={multiple ? 'checkbox' : 'radio'} disabled={disabled}
+          checked={selected.includes(option.id)} onChange={() => onChoose(option.id)} />
+        <span>{option.text}</span>
+      </label>
+      {option.pinyin?.length
+        ? <AudioControls text={option.text} pinyin={option.pinyin} />
+        : option.tts && <AudioControls text={config?.text ?? option.text}
+          voice={config?.voice} speed={config?.speed} />}
+    </li>;
+  })}</ul>;
+}
+
+function WrittenQuestion({ content, value, onChange, disabled }: Props) {
+  const label = content.direction === 'en_to_zh' ? '中文译文'
+    : content.direction === 'zh_to_en' ? '英文译文' : '写作答案';
+  const subtype = content.subtype && ({
+    sentence_making: '造句', short_essay: '小作文', full_essay: '大作文',
+  })[content.subtype];
+  const text = value?.text ?? value?.translation ?? '';
+  const range = content.min_words || content.max_words
+    ? [content.min_words && `至少 ${content.min_words} 词`,
+      content.max_words && `最多 ${content.max_words} 词`].filter(Boolean).join('，') : '';
+  return <div className="extended-question">
+    {subtype && <strong>{subtype}</strong>}
+    {content.source_text && <div className="extended-passage">{content.source_text}</div>}
+    {!!content.requirements?.length && <ul className="extended-requirements">
+      {content.requirements.map(requirement => <li key={requirement}>{requirement}</li>)}
+    </ul>}
+    {range && <p>{range}</p>}
+    {(onChange || text) && <label className="extended-writing">
+      {label}
+      <textarea rows={6} maxLength={12000} disabled={disabled || !onChange} value={text}
+        onChange={event => onChange?.(content.direction
+          ? { translation: event.currentTarget.value } : { text: event.currentTarget.value })} />
+    </label>}
+  </div>;
+}

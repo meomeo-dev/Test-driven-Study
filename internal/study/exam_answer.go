@@ -25,35 +25,32 @@ func (r *examRecord) commitAnswer(ctx context.Context, q *storedb.Queries,
 	if r.row.Status != "in_progress" {
 		return ErrConflict
 	}
-	r.answers[index].Selected = answer.Selected
-	if answer.Numeric != nil {
+	r.answers[index].AnswerInput = answer
+	if answer.Selected == nil {
 		r.answers[index].Selected = []int64{}
 	}
-	r.answers[index].Numeric = answer.Numeric
 	r.answers[index].AnsweredAtMS = now
 	lost, err := r.lostPoints()
 	if err != nil {
 		return err
 	}
-	if r.rule.Count*r.rule.Points-lost < r.rule.PassScore {
+	if wholeExamPoints(float64(r.rule.Count*r.rule.Points)-lost) < int64(r.rule.PassScore) {
 		return r.finish(ctx, q, now, "failed_limit")
 	}
 	return nil
 }
 
-func (r *examRecord) lostPoints() (int, error) {
-	lost := 0
+func (r *examRecord) lostPoints() (float64, error) {
+	lost := 0.0
 	for i, answer := range r.answers {
 		if answer.AnsweredAtMS == 0 {
 			continue
 		}
-		correct, err := gradeAnswer(r.paper[i].Question, answer.input())
+		credit, err := scoreAnswer(r.paper[i].Question, answer.input())
 		if err != nil {
 			return 0, err
 		}
-		if !correct {
-			lost += r.rule.Points
-		}
+		lost += float64(r.rule.Points) * (1 - credit)
 	}
 	return lost, nil
 }

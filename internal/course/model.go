@@ -11,19 +11,24 @@ const (
 	MultipleChoice = "multiple_choice"
 	TrueFalse      = "true_false"
 	Numeric        = "numeric"
+	Cloze          = "cloze"
+	Listening      = "listening"
+	Reading        = "reading_comprehension"
+	Writing        = "writing"
+	Translation    = "translation"
 )
 
 type Manifest struct {
-	ProtocolVersion int                `json:"protocol_version"`
-	ID              string             `json:"course_id"`
-	Version         string             `json:"version"`
-	Title           string             `json:"title"`
-	Language        string             `json:"language"`
-	Description     string             `json:"description,omitempty"`
-	Logo            string             `json:"logo,omitempty"`
-	Units           []Unit             `json:"units"`
-	AIProfile       *AIProfileRef      `json:"ai_profile,omitempty"`
-	Roadmap         *Roadmap           `json:"roadmap,omitempty"`
+	ProtocolVersion int           `json:"protocol_version"`
+	ID              string        `json:"course_id"`
+	Version         string        `json:"version"`
+	Title           string        `json:"title"`
+	Language        string        `json:"language"`
+	Description     string        `json:"description,omitempty"`
+	Logo            string        `json:"logo,omitempty"`
+	Units           []Unit        `json:"units"`
+	AIProfile       *AIProfileRef `json:"ai_profile,omitempty"`
+	Roadmap         *Roadmap      `json:"roadmap,omitempty"`
 }
 
 // Prerequisite strengths record how firmly the course README states a
@@ -120,11 +125,12 @@ type Option struct {
 }
 
 type ContentSegment struct {
-	Type   string     `json:"type"`
-	Text   string     `json:"text,omitempty"`
-	TTS    *OptionTTS `json:"tts,omitempty"`
-	Index  *int       `json:"index,omitempty"`
-	Pinyin []string   `json:"pinyin,omitempty"`
+	Type    string     `json:"type"`
+	Text    string     `json:"text,omitempty"`
+	TTS     *OptionTTS `json:"tts,omitempty"`
+	Index   *int       `json:"index,omitempty"`
+	TTSText string     `json:"tts_text,omitempty"`
+	Pinyin  []string   `json:"pinyin,omitempty"`
 }
 
 type RichContent struct {
@@ -188,8 +194,10 @@ func (t *Transcript) String() string {
 			if i > 0 {
 				sb.WriteString("\n")
 			}
-			sb.WriteString(line.Speaker)
-			sb.WriteString(": ")
+			if line.Speaker != "" {
+				sb.WriteString(line.Speaker)
+				sb.WriteString(": ")
+			}
 			sb.WriteString(line.Text)
 		}
 		return sb.String()
@@ -236,17 +244,20 @@ type Grading struct {
 	Boolean           *bool    `json:"boolean,omitempty"`
 	Value             string   `json:"value,omitempty"`
 	AbsoluteTolerance string   `json:"absolute_tolerance,omitempty"`
+	booleanValueKey   bool
 }
 
 // Item is the authored question. Concept tags stay outside the learner-facing
 // Prompt so that they never reach the browser or AI prompts.
 type Item struct {
 	Prompt
+	ExtendedFields
+	Analysis         *RichContent     `json:"analysis,omitempty"`
 	Explanation      string           `json:"explanation,omitempty"`
 	ExplanationAudio []ContentSegment `json:"explanation_audio,omitempty"`
 	Hint             string           `json:"hint,omitempty"`
 	Concepts         []string         `json:"concepts,omitempty"`
-	Grading          Grading          `json:"grading"`
+	Grading          Grading          `json:"grading,omitzero"`
 }
 
 type Response struct {

@@ -74,6 +74,10 @@ func (s *Service) CourseAsset(ctx context.Context, id, version, filename string)
 }
 
 func (s *Service) QuestionTranscript(ctx context.Context, q Question) (string, error) {
+	if len(q.TranscriptLines) > 0 {
+		transcript := course.Transcript{Lines: q.TranscriptLines}
+		return transcript.String(), nil
+	}
 	if q.TranscriptURL == "" {
 		return "", nil
 	}

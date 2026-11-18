@@ -1,0 +1,123 @@
+[
+  {
+    "id": "sue1-extended-cloze",
+    "type": "cloze",
+    "stem": "阅读仓库交班提示，根据上下文选词填空。",
+    "passage": "Every worker {{1}} sign the checklist. Do not {{2}} the equipment without permission.",
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "must", "text": "must", "tts": true },
+          { "id": "has", "text": "has", "tts": true }
+        ],
+        "grading": { "choice_ids": ["must"] },
+        "explanation": "must 后接动词原形，表示必须遵守的要求。"
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "start", "text": "start", "tts": true },
+          { "id": "starting", "text": "starting", "tts": true }
+        ],
+        "grading": { "choice_ids": ["start"] },
+        "explanation": "do not 后接动词原形。"
+      }
+    ]
+  },
+  {
+    "id": "sue1-extended-listening",
+    "type": "listening",
+    "stem": "听库房里的对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      { "speaker": "M", "text": "Where are the gloves for the new shift?" },
+      {
+        "speaker": "W",
+        "text": "They are on the second shelf. Please sign the checklist before taking a pair.",
+        "tts": { "speed": 0.9 }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "location",
+        "type": "single_choice",
+        "stem": "Where are the gloves?",
+        "options": [
+          { "id": "second", "text": "On the second shelf." },
+          { "id": "desk", "text": "On the desk." }
+        ],
+        "grading": { "choice_ids": ["second"] },
+        "explanation": "第二位说话者明确说了 on the second shelf。"
+      },
+      {
+        "id": "checklist",
+        "type": "true_false",
+        "stem": "Workers can take the gloves without signing the checklist.",
+        "grading": { "value": false },
+        "analysis": "before taking a pair 表示领取之前要先在清单上签名。"
+      }
+    ]
+  },
+  {
+    "id": "sue1-extended-reading",
+    "type": "reading_comprehension",
+    "stem": "阅读车间通知，再回答两个问题。",
+    "passage": "WORKSHOP NOTICE\nThe workshop opens at 8 a.m. Visitors must sign in at the front desk and wear a visitor badge. The supervisor will collect the badges before visitors leave.",
+    "sub_questions": [
+      {
+        "id": "opening",
+        "type": "numeric",
+        "stem": "Write the opening hour as a number.",
+        "grading": { "value": "8", "absolute_tolerance": "0" },
+        "explanation": "8 a.m. 表示上午八点。"
+      },
+      {
+        "id": "visitors",
+        "type": "multiple_choice",
+        "stem": "What must visitors do?",
+        "options": [
+          { "id": "sign", "text": "Sign in at the front desk." },
+          { "id": "badge", "text": "Wear a visitor badge." },
+          { "id": "collect", "text": "Collect the badges." }
+        ],
+        "grading": { "choice_ids": ["sign", "badge"] },
+        "explanation": "访客须登记并佩戴访客证；回收访客证的是主管。"
+      }
+    ]
+  },
+  {
+    "id": "sue1-extended-writing",
+    "type": "writing",
+    "subtype": "sentence_making",
+    "stem": "用 delivery 和 Friday 写一句通知，说明送货时间已改为星期五。",
+    "requirements": ["使用 delivery 和 Friday。", "写一个完整的英语句子。"],
+    "keywords": ["delivery", "Friday"],
+    "min_words": 5,
+    "max_words": 20,
+    "sample_response": "The delivery has been moved to Friday.",
+    "rubric": { "task_completion": 50, "language_accuracy": 50 }
+  },
+  {
+    "id": "sue1-extended-translation",
+    "type": "translation",
+    "direction": "en_to_zh",
+    "stem": "将下列交班提示译成中文。",
+    "source_text": "Leave the signed checklist on the front desk.",
+    "reference_translation": "把已签字的清单留在前台。",
+    "acceptable_alternates": ["请将已签名的清单放在前台。"],
+    "key_terms": [
+      { "term": "签字", "variants": ["签名"] },
+      { "term": "清单" },
+      { "term": "前台" }
+    ],
+    "explanation": "signed 在这里修饰 checklist，表示清单已经签字。"
+  },
+  {
+    "id": "sue1-extended-judgment",
+    "type": "true_false",
+    "stem": "The word equipment normally takes the plural form equipments.",
+    "grading": { "value": false },
+    "analysis": "equipment 是不可数名词。要表达多件设备，可以说 pieces of equipment。"
+  }
+]

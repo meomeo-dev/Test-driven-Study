@@ -10,5 +10,5 @@ export function OptionAudio({ option, allOptionsHaveTts }: {
   }
   if (!allOptionsHaveTts) return null;
   return <AudioControls text={option.tts?.text || option.item_title}
-    voice={option.tts?.voice} />;
+    voice={option.tts?.voice} speed={option.tts?.speed} />;
 }

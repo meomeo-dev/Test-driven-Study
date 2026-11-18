@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://study.example/contracts/course/v2/items.schema.json",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "allOf": [{ "$ref": "#/$defs/prompt" }],
+    "unevaluatedProperties": false,
+    "properties": {
+      "chapter": { "$ref": "../v1/items.schema.json#/items/properties/chapter" },
+      "hint": { "$ref": "../v1/items.schema.json#/items/properties/hint" },
+      "concepts": { "$ref": "../v1/items.schema.json#/items/properties/concepts" },
+      "image": { "$ref": "../v1/items.schema.json#/items/properties/image" },
+      "explanation_audio": {
+        "$ref": "../v1/items.schema.json#/items/properties/explanation_audio"
+      }
+    },
+    "oneOf": [
+      {
+        "allOf": [{ "$ref": "#/$defs/objective" }],
+        "properties": {
+          "audio": { "$ref": "../v1/items.schema.json#/items/properties/audio" },
+          "transcript": { "$ref": "../v1/items.schema.json#/items/properties/transcript" }
+        }
+      },
+      {
+        "required": ["passage", "blanks"],
+        "properties": {
+          "type": { "const": "cloze" },
+          "passage": { "$ref": "#/$defs/rich" },
+          "blanks": {
+            "type": "array", "minItems": 1, "maxItems": 50,
+            "items": { "$ref": "#/$defs/blank" }
+          }
+        }
+      },
+      {
+        "required": ["sub_questions"],
+        "properties": {
+          "type": { "const": "listening" },
+          "passage": { "$ref": "#/$defs/rich" },
+          "audio": {
+            "oneOf": [
+              { "$ref": "../v1/items.schema.json#/items/properties/audio" },
+              { "$ref": "#/$defs/listeningAudio" }
+            ]
+          },
+          "transcript": { "$ref": "../v1/items.schema.json#/items/properties/transcript" },
+          "sub_questions": { "$ref": "#/$defs/subQuestions" }
+        }
+      },
+      {
+        "required": ["passage", "sub_questions"],
+        "properties": {
+          "type": { "const": "reading_comprehension" },
+          "passage": { "$ref": "#/$defs/rich" },
+          "sub_questions": { "$ref": "#/$defs/subQuestions" }
+        }
+      },
+      {
+        "required": ["subtype", "requirements", "sample_response", "rubric"],
+        "properties": {
+          "type": { "const": "writing" },
+          "subtype": { "enum": ["sentence_making", "short_essay", "full_essay"] },
+          "requirements": { "$ref": "#/$defs/textList" },
+          "keywords": { "$ref": "#/$defs/textList" },
+          "min_words": { "$ref": "#/$defs/wordLimit" },
+          "max_words": { "$ref": "#/$defs/wordLimit" },
+          "sample_response": { "$ref": "#/$defs/text" },
+          "rubric": {
+            "type": "object", "minProperties": 1, "maxProperties": 20,
+            "propertyNames": { "minLength": 1, "maxLength": 64 },
+            "additionalProperties": { "type": "integer", "minimum": 1, "maximum": 100 }
+          }
+        }
+      },
+      {
+        "required": ["direction", "source_text", "reference_translation"],
+        "properties": {
+          "type": { "const": "translation" },
+          "direction": { "enum": ["en_to_zh", "zh_to_en"] },
+          "source_text": { "$ref": "#/$defs/text" },
+          "reference_translation": { "$ref": "#/$defs/text" },
+          "acceptable_alternates": { "$ref": "#/$defs/textList" },
+          "key_terms": {
+            "type": "array", "minItems": 1, "maxItems": 50,
+            "items": {
+              "type": "object", "required": ["term"], "additionalProperties": false,
+              "properties": {
+                "term": { "$ref": "#/$defs/text" },
+                "variants": { "$ref": "#/$defs/textList" }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "$defs": {
+    "id": { "$ref": "../v1/items.schema.json#/$defs/id" },
+    "rich": { "$ref": "../v1/items.schema.json#/$defs/richContent" },
+    "text": { "$ref": "../v1/items.schema.json#/$defs/text" },
+    "textList": {
+      "type": "array", "minItems": 1, "maxItems": 50, "uniqueItems": true,
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "wordLimit": { "type": "integer", "minimum": 1, "maximum": 2000 },
+    "options": {
+      "allOf": [{ "$ref": "../v1/items.schema.json#/items/properties/options" }],
+      "maxItems": 50
+    },
+    "prompt": {
+      "required": ["id", "type", "stem"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "type": "string" },
+        "stem": { "$ref": "#/$defs/rich" },
+        "explanation": { "type": "string" },
+        "analysis": { "$ref": "#/$defs/rich" }
+      }
+    },
+    "objective": {
+      "required": ["grading"],
+      "oneOf": [
+        {
+          "required": ["options"],
+          "properties": {
+            "type": { "const": "single_choice" },
+            "options": { "$ref": "#/$defs/options" },
+            "grading": {
+              "allOf": [{ "$ref": "#/$defs/choices" }],
+              "properties": { "choice_ids": { "maxItems": 1 } }
+            }
+          }
+        },
+        {
+          "required": ["options"],
+          "properties": {
+            "type": { "const": "multiple_choice" },
+            "options": { "$ref": "#/$defs/options" },
+            "grading": {
+              "allOf": [{ "$ref": "#/$defs/choices" }],
+              "properties": { "choice_ids": { "minItems": 2 } }
+            }
+          }
+        },
+        {
+          "required": ["analysis"],
+          "properties": {
+            "type": { "const": "true_false" },
+            "options": {
+              "allOf": [{ "$ref": "#/$defs/options" }],
+              "maxItems": 2,
+              "items": { "required": ["value"] }
+            },
+            "grading": {
+              "type": "object", "required": ["value"], "additionalProperties": false,
+              "properties": { "value": { "type": "boolean" } }
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": { "const": "numeric" },
+            "grading": {
+              "allOf": [{ "$ref": "../v1/items.schema.json#/items/properties/grading" }],
+              "required": ["value", "absolute_tolerance"],
+              "maxProperties": 2
+            }
+          }
+        }
+      ]
+    },
+    "choices": {
+      "type": "object", "required": ["choice_ids"], "additionalProperties": false,
+      "properties": {
+        "choice_ids": {
+          "type": "array", "minItems": 1, "maxItems": 50, "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "blank": {
+      "type": "object", "required": ["index", "options", "grading"],
+      "additionalProperties": false,
+      "properties": {
+        "index": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "options": { "$ref": "#/$defs/options" },
+        "grading": {
+          "allOf": [{ "$ref": "#/$defs/choices" }],
+          "properties": { "choice_ids": { "maxItems": 1 } }
+        },
+        "explanation": { "$ref": "#/$defs/rich" }
+      }
+    },
+    "subQuestions": {
+      "type": "array", "minItems": 1, "maxItems": 50,
+      "items": {
+        "type": "object",
+        "allOf": [{ "$ref": "#/$defs/prompt" }, { "$ref": "#/$defs/objective" }],
+        "unevaluatedProperties": false
+      }
+    },
+    "listeningAudio": {
+      "type": "object", "required": ["mode"], "additionalProperties": false,
+      "properties": {
+        "mode": { "enum": ["dialogue", "passage", "recording"] },
+        "voice_male": { "enum": ["stella", "tide"] },
+        "voice_female": { "enum": ["stella", "tide"] },
+        "src": { "$ref": "../v1/items.schema.json#/items/properties/audio" }
+      }
+    }
+  }
+}

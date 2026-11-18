@@ -35,7 +35,7 @@ export function QuestionMetadata({ detail }: { detail: Detail }) {
 
 export function FullExplanation({ detail }: { detail: Detail }) {
   return <section className="full-explanation" aria-label="完整答案解析"><h3>答案解析</h3>
-    <p>{detail.question.analysis}
+    <p><RichContent content={detail.question.analysis_content ?? detail.question.analysis} />
       <ExplanationAudio segments={detail.question.analysis_audio} /></p>
     {detail.question.skill && <><h3>记忆提示</h3><p>{detail.question.skill}</p></>}
   </section>;

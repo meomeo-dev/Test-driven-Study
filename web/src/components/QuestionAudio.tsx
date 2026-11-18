@@ -1,30 +1,31 @@
-import { useEffect, useRef, useState, type MouseEvent, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { LoaderCircle, RotateCcw, Volume2, VolumeX } from 'lucide-react';
 import { courseAsset, readCourseTranscript } from '../api/courses';
 import * as tts from '../api/tts';
-import { AudioControls, registerGlobalAudio, stopGlobalAudio } from './AudioControls';
+import type { TranscriptLine } from '../api/generated/types.gen';
+import { AudioControls, registerGlobalAudio, stopGlobalAudio, ttsConfig } from './AudioControls';
 
 export interface DialogueLine {
   speaker?: string;
   text: string;
   voice?: 'stella' | 'tide';
+  speed?: number;
+  speech?: string;
 }
 
 export function parseDialogueLines(
   transcriptUrl?: string,
-  transcriptLinesRaw?: unknown,
+  transcriptLinesRaw?: TranscriptLine[],
 ): DialogueLine[] {
   if (Array.isArray(transcriptLinesRaw) && transcriptLinesRaw.length > 0) {
     return transcriptLinesRaw
       .map(raw => {
-        const item = raw as { speaker?: string; text?: string; tts?: { voice?: string } };
+        const item = raw;
+        const config = ttsConfig(item.tts);
         const speaker = item.speaker?.trim();
         const text = item.text?.trim() || '';
-        const voice: DialogueLine['voice'] =
-          item.tts?.voice === 'tide' || item.tts?.voice === 'stella'
-          ? item.tts.voice : undefined;
-        return { speaker, text, voice };
+        return { speaker, text, voice: config?.voice, speed: config?.speed, speech: config?.text };
       })
       .filter(l => Boolean(l.text));
   }
@@ -48,18 +49,24 @@ export function parseDialogueLines(
   return [];
 }
 
-export function QuestionAudio({ question }: {
+type ProtectedAudio = {
+  speeds: number[];
+  load: (index: number, force: boolean) => ReturnType<typeof tts.synthesize>;
+};
+
+export function QuestionAudio({ question, protectedAudio }: {
+  protectedAudio?: ProtectedAudio;
   question: {
     audio_url?: string;
     transcript_url?: string;
-    transcript_lines?: unknown;
+    transcript_lines?: TranscriptLine[];
     package_id?: string;
     package_version?: string;
   };
 }) {
   const { audio_url: audio, transcript_url: transcript, transcript_lines, package_id: course,
     package_version: version } = question;
-  if (!course || !version || (!audio && !transcript && !transcript_lines)) return null;
+  if (!course || !version || (!audio && !transcript && !transcript_lines && !protectedAudio?.speeds.length)) return null;
 
   const isPath = Boolean(transcript && (transcript.startsWith('assets/') || transcript.endsWith('.txt')));
   const src = audio ? courseAsset(course, version, audio) : undefined;
@@ -73,7 +80,14 @@ export function QuestionAudio({ question }: {
         <audio className="question-audio" aria-label="本题听力录音"
           src={src} controls preload="metadata" />
       ) : dialogueLines.length > 0 ? (
-        <DialoguePlayer lines={dialogueLines} />
+        <DialoguePlayer tracks={dialogueLines}
+          load={(index, force) => {
+            const line = dialogueLines[index]!;
+            return tts.synthesize({ text: line.speech || line.text, voice: line.voice, force });
+          }} />
+      ) : protectedAudio?.speeds.length ? (
+        <DialoguePlayer tracks={protectedAudio.speeds.map(speed => ({ speed }))}
+          load={protectedAudio.load} />
       ) : null}
       {(transcript || dialogueLines.length > 0) && (
         <ListeningTranscript
@@ -86,7 +100,10 @@ export function QuestionAudio({ question }: {
   );
 }
 
-function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
+function DialoguePlayer({ tracks, load }: {
+  tracks: Pick<DialogueLine, 'speaker' | 'speed'>[];
+  load: ProtectedAudio['load'];
+}) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'playing' | 'error'>('idle');
   const [activeLine, setActiveLine] = useState<number>(-1);
   const [activeVoice, setActiveVoice] = useState<DialogueLine['voice']>();
@@ -120,12 +137,12 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
     setErrorMessage('');
 
     try {
-      for (let i = 0; i < lines.length; i++) {
+      for (let i = 0; i < tracks.length; i++) {
         if (active.current !== audio) break;
-        const line = lines[i];
+        const line = tracks[i];
         if (!line) continue;
 
-        const result = await tts.synthesize({ text: line.text, voice: line.voice, force });
+        const result = await load(i, force);
         if (active.current !== audio) break;
         setActiveLine(i);
         setActiveVoice(result.voice);
@@ -135,12 +152,13 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
           audio.onended = () => resolve();
           audio.onerror = () => reject(new Error(`播放第 ${i + 1} 句音频失败`));
           audio.src = result.audio_url;
+          audio.playbackRate = line.speed ?? 1;
           audio.play().then(() => {
             if (active.current === audio) setStatus('playing');
           }).catch(reject);
         });
 
-        if (i < lines.length - 1 && active.current === audio) {
+        if (i < tracks.length - 1 && active.current === audio) {
           await new Promise(r => setTimeout(r, 350));
         }
       }
@@ -155,32 +173,31 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
     }
   }
 
-  function handlePlay(event: MouseEvent | KeyboardEvent) {
+  function handlePlay(event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
     void playSequence(false);
   }
 
-  function handleRegenerate(event: MouseEvent | KeyboardEvent) {
+  function handleRegenerate(event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
     void playSequence(true);
   }
 
-  const currentSpeaker = activeLine >= 0 && lines[activeLine]?.speaker;
+  const currentSpeaker = activeLine >= 0 && tracks[activeLine]?.speaker;
 
   return (
     <div className="question-listening-bar" role="region" aria-label="听力音频播放">
       <span className="listening-bar-label">听力录音</span>
       <span className="tts-audio-controls">
-        <span
-          role="button"
-          tabIndex={0}
+        <button
+          type="button"
           className="tts-btn tts-play-btn"
           data-playing={status === 'playing' ? 'true' : undefined}
           aria-label={status === 'playing' ? '停止发音' : '播放发音'}
           title={status === 'error' ? errorMessage || '语音合成失败' : status === 'playing' ? '停止发音' : '播放听力录音'}
-          aria-disabled={status === 'loading'}
+          disabled={status === 'loading'}
           onClick={handlePlay}
         >
           {status === 'loading' ? (
@@ -190,22 +207,21 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
           ) : (
             <Volume2 size={13} />
           )}
-        </span>
-        <span
-          role="button"
-          tabIndex={0}
+        </button>
+        <button
+          type="button"
           className="tts-btn tts-regen-btn"
           aria-label="重新生成发音"
           title="强制重新合成语音"
-          aria-disabled={status === 'loading'}
+          disabled={status === 'loading'}
           onClick={handleRegenerate}
         >
           <RotateCcw size={13} />
-        </span>
+        </button>
       </span>
-      {status === 'playing' && lines.length > 1 && (
+      {status === 'playing' && tracks.length > 1 && (
         <span className="listening-bar-progress" style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-          {activeLine + 1}/{lines.length} · {currentSpeaker ? `${currentSpeaker} (` : ''}
+          {activeLine + 1}/{tracks.length} · {currentSpeaker ? `${currentSpeaker} (` : ''}
           {activeVoice === 'tide' ? '男声' : '女声'}
           {currentSpeaker ? ')' : ''}
         </span>
@@ -259,7 +275,7 @@ function ListeningTranscript({
                   </span>
                 )}
                 <span style={{ flex: 1 }}>{line.text}</span>
-                <AudioControls text={line.text} voice={line.voice} />
+                <AudioControls text={line.speech || line.text} voice={line.voice} speed={line.speed} />
               </div>
             ))}
           </div>

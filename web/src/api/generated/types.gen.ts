@@ -238,6 +238,10 @@ export type QuestionOption = {
 };
 
 export type Question = {
+    content?: QuestionContent;
+    question_review?: CourseItemReview;
+    analysis_content?: RichText;
+    transcript_lines?: Array<TranscriptLine>;
     package_id?: string;
     package_version?: string;
     source_item_id?: string;
@@ -307,6 +311,8 @@ export type Error = {
 };
 
 export type PublicQuestion = {
+    content?: QuestionContent;
+    transcript_lines?: Array<TranscriptLine>;
     package_id?: string;
     package_version?: string;
     source_item_id?: string;
@@ -358,6 +364,8 @@ export type PracticeOverview = {
 };
 
 export type Attempt = {
+    response?: ExtendedResponse;
+    score?: number;
     numeric?: string;
     correct_numeric?: string;
     id: number;
@@ -948,13 +956,25 @@ export type ExamRule = {
 export type ExamNavigateInput = {
     from_index: number;
     to_index: number;
+    selected?: Array<number>;
+    numeric?: string;
+    value?: boolean;
+    blanks?: {
+        [key: string]: Array<string>;
+    };
+    sub_answers?: SubAnswers;
+    text?: string;
     /**
-     * Empty skips the current question; otherwise commits and locks it before moving.
+     * Server-computed word count.
      */
-    selected: Array<number>;
+    word_count?: number;
+    translation?: string;
 };
 
 export type ExamItem = {
+    response?: ExtendedResponse;
+    credit?: number;
+    audio_speeds?: Array<number>;
     numeric?: string;
     detail: PracticeDetail;
     selected: Array<number>;
@@ -1001,7 +1021,19 @@ export type ExamCreate = {
 
 export type ExamAnswerInput = {
     index: number;
-    selected: Array<number>;
+    selected?: Array<number>;
+    numeric?: string;
+    value?: boolean;
+    blanks?: {
+        [key: string]: Array<string>;
+    };
+    sub_answers?: SubAnswers;
+    text?: string;
+    /**
+     * Server-computed word count.
+     */
+    word_count?: number;
+    translation?: string;
 };
 
 export type ExamMoveInput = {
@@ -1011,6 +1043,133 @@ export type ExamMoveInput = {
 
 export type EmptyRequest = {
     [key: string]: never;
+};
+
+/**
+ * Submit one answer form matching the presented question type.
+ */
+export type AnswerInput = {
+    selected?: Array<number>;
+    numeric?: string;
+    value?: boolean;
+    blanks?: {
+        [key: string]: Array<string>;
+    };
+    sub_answers?: SubAnswers;
+    text?: string;
+    /**
+     * Server-computed word count.
+     */
+    word_count?: number;
+    translation?: string;
+};
+
+export type ExtendedResponse = {
+    value?: boolean;
+    blanks?: {
+        [key: string]: Array<string>;
+    };
+    sub_answers?: SubAnswers;
+    text?: string;
+    /**
+     * Server-computed word count.
+     */
+    word_count?: number;
+    translation?: string;
+};
+
+export type SubAnswers = {
+    [key: string]: Array<string> | boolean | string;
+};
+
+export type RichText = string | Array<ContentSegment>;
+
+export type TranscriptLine = {
+    speaker: string;
+    text: string;
+    tts?: TtsDeclaration;
+};
+
+export type TtsDeclaration = boolean | TtsConfig;
+
+export type CourseOption = {
+    id: string;
+    text: string;
+    value?: boolean;
+    tts?: TtsDeclaration;
+    pinyin?: PinyinClips;
+};
+
+export type BlankPrompt = {
+    index: number;
+    options: Array<CourseOption>;
+};
+
+export type SubQuestionPrompt = {
+    id: string;
+    type: 'single_choice' | 'multiple_choice' | 'true_false' | 'numeric';
+    stem: RichText;
+    options?: Array<CourseOption>;
+};
+
+export type QuestionContent = {
+    passage?: RichText;
+    blanks?: Array<BlankPrompt>;
+    sub_questions?: Array<SubQuestionPrompt>;
+    subtype?: 'sentence_making' | 'short_essay' | 'full_essay';
+    requirements?: Array<string>;
+    min_words?: number;
+    max_words?: number;
+    direction?: 'en_to_zh' | 'zh_to_en';
+    source_text?: string;
+};
+
+export type CourseGrading = {
+    choice_ids?: Array<string>;
+    boolean?: boolean;
+    value?: string | boolean;
+    absolute_tolerance?: string;
+};
+
+/**
+ * Authored item, including answer and explanation data. Returned only on review surfaces.
+ */
+export type CourseItemReview = {
+    id: string;
+    type: string;
+    stem: RichText;
+    options?: Array<CourseOption>;
+    grading?: CourseGrading;
+    analysis?: RichText;
+    explanation?: string;
+    blanks?: Array<{
+        index: number;
+        options: Array<CourseOption>;
+        grading: CourseGrading;
+        explanation?: RichText;
+    }>;
+    sub_questions?: Array<CourseItemReview>;
+    keywords?: Array<string>;
+    sample_response?: string;
+    rubric?: {
+        [key: string]: number;
+    };
+    reference_translation?: string;
+    acceptable_alternates?: Array<string>;
+    key_terms?: Array<{
+        term: string;
+        variants?: Array<string>;
+    }>;
+};
+
+export type WrittenFeedback = {
+    criteria: Array<{
+        name: string;
+        points: number;
+        max_points: number;
+        comment: string;
+    }>;
+    summary: string;
 };
 
 export type TtsConfig = {
@@ -1025,7 +1184,7 @@ export type ContentSegment = {
     type: 'text' | 'speech' | 'blank';
     text?: string;
     pinyin?: PinyinClips;
-    tts?: TtsConfig;
+    tts?: TtsDeclaration;
     tts_text?: string;
     index?: number;
 };
@@ -1650,10 +1809,7 @@ export type OpenPresentationResponses = {
 export type OpenPresentationResponse = OpenPresentationResponses[keyof OpenPresentationResponses];
 
 export type SubmitAnswerData = {
-    body: {
-        numeric?: string;
-        selected: Array<number>;
-    };
+    body: AnswerInput;
     path: {
         presentation: string;
     };
@@ -1690,6 +1846,43 @@ export type SubmitAnswerResponses = {
 };
 
 export type SubmitAnswerResponse = SubmitAnswerResponses[keyof SubmitAnswerResponses];
+
+export type EvaluateWrittenAttemptData = {
+    body?: never;
+    path: {
+        presentation: string;
+    };
+    query?: never;
+    url: '/api/practice/presentations/{presentation}/feedback';
+};
+
+export type EvaluateWrittenAttemptErrors = {
+    /**
+     * The attempt is not a writing or translation response.
+     */
+    400: unknown;
+    /**
+     * Attempt not found.
+     */
+    404: unknown;
+    /**
+     * Feedback could not be completed.
+     */
+    502: unknown;
+    /**
+     * LLM is not configured.
+     */
+    503: unknown;
+};
+
+export type EvaluateWrittenAttemptResponses = {
+    /**
+     * Advisory feedback. The saved local score is unchanged.
+     */
+    200: WrittenFeedback;
+};
+
+export type EvaluateWrittenAttemptResponse = EvaluateWrittenAttemptResponses[keyof EvaluateWrittenAttemptResponses];
 
 export type RecordExposureData = {
     body: {
@@ -3434,6 +3627,47 @@ export type NavigateExamResponses = {
 };
 
 export type NavigateExamResponse = NavigateExamResponses[keyof NavigateExamResponses];
+
+export type PlayExamLineData = {
+    body: {
+        index: number;
+        line: number;
+        force?: boolean;
+    };
+    path: {
+        exam: string;
+    };
+    query?: never;
+    url: '/api/exams/{exam}/audio';
+};
+
+export type PlayExamLineErrors = {
+    /**
+     * Invalid question or line.
+     */
+    400: unknown;
+    /**
+     * Exam not found.
+     */
+    404: unknown;
+    /**
+     * Synthesis unavailable.
+     */
+    502: unknown;
+    /**
+     * TTS is not configured.
+     */
+    503: unknown;
+};
+
+export type PlayExamLineResponses = {
+    /**
+     * Audio location
+     */
+    200: TtsSynthesizeResult;
+};
+
+export type PlayExamLineResponse = PlayExamLineResponses[keyof PlayExamLineResponses];
 
 export type MoveExamData = {
     body: ExamMoveInput;

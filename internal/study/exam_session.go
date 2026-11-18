@@ -54,22 +54,42 @@ func (r *examRecord) public(now int64) (ExamSession, error) {
 			public.TranscriptURL = ""
 			public.TranscriptLines = nil
 		}
-		value.Items[i] = ExamItem{Detail: PracticeDetail{public, item.ImageAvailable}, Selected: answer.Selected, Numeric: answer.Numeric,
-			Answered: answer.AnsweredAtMS != 0, Flagged: answer.Flagged}
-		// The recorded terminal gives feedback after commitment. Never expose
-		// the answer to an unanswered question while the paper is active.
-		if r.row.Status == "finished" || answer.AnsweredAtMS != 0 {
-			correct := false
-			if answer.AnsweredAtMS != 0 {
-				correct, err = gradeAnswer(item.Question, answer.input())
+		visible := ExamItem{Detail: PracticeDetail{public, item.ImageAvailable}, Selected: answer.Selected,
+			Numeric: answer.Numeric, Answered: answer.AnsweredAtMS != 0, Flagged: answer.Flagged}
+		if answer.ExtendedResponse.HasAnswer() {
+			visible.Response = &answer.ExtendedResponse
+		}
+		if r.row.Status != "finished" && item.Question.QuestionType == ListeningQuestion &&
+			item.Question.AudioURL == "" {
+			visible.AudioSpeeds = listeningSpeeds(item.Question)
+		}
+		// The terminal gives feedback after commitment. The transcript stays
+		// hidden until the entire paper is finished.
+		if r.row.Status == "finished" || visible.Answered {
+			var credit float64
+			if visible.Answered {
+				credit, err = scoreAnswer(item.Question, answer.input())
 				if err != nil {
 					return ExamSession{}, err
 				}
 			}
-			value.Items[i].Correct = &correct
-			q := item.Question
-			value.Items[i].Review = &q
+			correct := credit == 1
+			visible.Correct = &correct
+			if item.Question.QuestionReview != nil {
+				visible.Credit = &credit
+			}
+			review := item.Question
+			if r.row.Status != "finished" {
+				review.TranscriptURL, review.TranscriptLines = "", nil
+				if item.Question.QuestionType == ListeningQuestion {
+					key := *review.QuestionReview
+					key.Transcript, key.Passage = nil, nil
+					review.QuestionReview = &key
+				}
+			}
+			visible.Review = &review
 		}
+		value.Items[i] = visible
 	}
 	if r.row.Status == "finished" {
 		value.Score = &r.row.Score

@@ -77,6 +77,7 @@ func (s *Server) registerStudyRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /api/practice/questions", s.practiceQuestions)
 	mux.HandleFunc("POST /api/practice/presentations", s.openPresentation)
 	mux.HandleFunc("POST /api/practice/presentations/{presentation}/answer", s.answer)
+	mux.HandleFunc("POST /api/practice/presentations/{presentation}/feedback", s.writtenFeedback)
 	mux.HandleFunc("PUT /api/practice/cursor", s.practiceCursor)
 	mux.HandleFunc("POST /api/study/exposures", s.exposure)
 	mux.HandleFunc("GET /api/analysis", s.analysis)
@@ -92,6 +93,7 @@ func (s *Server) registerExamRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /api/exams/{exam}/navigate", s.examNavigate)
 	mux.HandleFunc("PUT /api/exams/{exam}/cursor", s.examMove)
 	mux.HandleFunc("POST /api/exams/{exam}/submit", s.examSubmit)
+	mux.HandleFunc("POST /api/exams/{exam}/audio", s.examAudio)
 }
 
 func (s *Server) registerLLMRoutes(mux *http.ServeMux) {
@@ -201,7 +203,11 @@ func respondError(w http.ResponseWriter, err error) {
 }
 
 func decodeBody(w http.ResponseWriter, r *http.Request, target any) bool {
-	decoder := json.NewDecoder(http.MaxBytesReader(w, r.Body, 4096))
+	return decodeBoundedBody(w, r, target, 4096)
+}
+
+func decodeBoundedBody(w http.ResponseWriter, r *http.Request, target any, limit int64) bool {
+	decoder := json.NewDecoder(http.MaxBytesReader(w, r.Body, limit))
 	decoder.DisallowUnknownFields()
 	if err := decoder.Decode(target); err != nil {
 		problem(w, 400, "请求内容无效")

@@ -10,6 +10,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"test-driven-study/internal/course"
 	"time"
 
 	"test-driven-study/internal/storage/storedb"
@@ -195,6 +196,16 @@ func attemptValue(row storedb.AnswerAttempt) (Attempt, error) {
 		Correct: row.IsCorrect == 1, FirstAttempt: row.IsFirstAttempt == 1,
 		PriorExposure: row.PriorExposure == 1, OpenedAtMS: row.OpenedAtMs, AnsweredAtMS: row.AnsweredAtMs}
 	if strings.HasPrefix(row.SelectedJson, "{") {
+		var response course.ExtendedResponse
+		if json.Unmarshal([]byte(row.SelectedJson), &response) == nil && response.HasAnswer() {
+			var key extendedAttemptKey
+			if err := json.Unmarshal([]byte(row.CorrectAnswerJson), &key); err != nil {
+				return Attempt{}, err
+			}
+			value.Selected, value.CorrectAnswer = []int64{}, []int64{}
+			value.Response, value.Score = &response, key.Score
+			return value, nil
+		}
 		var selected, expected struct {
 			Value *string `json:"value"`
 		}
@@ -280,16 +291,16 @@ func (s *Service) recordResponse(ctx context.Context, presentation storedb.Pract
 	if presentation.PriorExposure == 1 {
 		prior = 1
 	}
-	encodedChoices, encodedAnswer, err := encodeAttempt(detail.Question, answer)
+	score, err := scoreAnswer(detail.Question, answer)
 	if err != nil {
 		return AttemptResult{}, err
 	}
-	matches, err := gradeAnswer(detail.Question, answer)
+	encodedChoices, encodedAnswer, err := encodeAttempt(detail.Question, answer, score)
 	if err != nil {
 		return AttemptResult{}, err
 	}
 	correct := int64(0)
-	if matches {
+	if score == 1 {
 		correct = 1
 	}
 	id := presentation.ID
@@ -311,7 +322,18 @@ func (s *Service) recordResponse(ctx context.Context, presentation storedb.Pract
 	if err != nil {
 		return AttemptResult{}, err
 	}
-	if !sameAnswer(AnswerInput{Selected: attempt.Selected, Numeric: attempt.Numeric}, answer) {
+	if attempt.Response != nil && attempt.Response.Value != nil {
+		attempt.Selected = booleanSelection(detail.Question, *attempt.Response.Value)
+		attempt.CorrectAnswer, err = originalAnswer(detail.Question)
+		if err != nil {
+			return AttemptResult{}, err
+		}
+	}
+	savedAnswer := AnswerInput{Selected: attempt.Selected, Numeric: attempt.Numeric}
+	if attempt.Response != nil {
+		savedAnswer.ExtendedResponse = *attempt.Response
+	}
+	if !sameAnswer(savedAnswer, answer) {
 		return AttemptResult{}, ErrConflict
 	}
 	return AttemptResult{Attempt: attempt, Detail: detail}, nil

@@ -15,7 +15,7 @@ export function ExamWorkspace({ id, onBack, onSubject }: {
 }) {
   const terminal = useExamTerminal(id);
   const { query, action, session, item, index, selected, finished, remaining, busy,
-    dialog, setDialog, feedback, closeFeedback, choose, numeric, onNumeric, navigate, next, submit } = terminal;
+    dialog, setDialog, feedback, closeFeedback, choose, numeric, onNumeric, draft, onDraft, navigate, next, submit } = terminal;
   const shortcuts = useShortcutPreference();
   useEffect(() => { if (session) onSubject(session.subject_id); }, [session?.subject_id, onSubject]);
   useTerminalKeys({ enabled: shortcuts.enabled,
@@ -32,14 +32,14 @@ export function ExamWorkspace({ id, onBack, onSubject }: {
   return <section className="terminal-paper" aria-label="模拟考试终端">
     <div className="terminal-upper">
       <TerminalCandidate subject={session.subject_id} seconds={seconds} finished={finished}/>
-      <ExamQuestion key={`${id}-${index}`} item={item} index={index} selected={selected}
+      <ExamQuestion key={`${id}-${index}`} examID={id} item={item} draft={draft} onDraft={onDraft} index={index} selected={selected}
         busy={busy} finished={finished} onChoose={choose} numeric={numeric} onNumeric={onNumeric}/>
       <div className="terminal-table-region"><ExamNavigation session={session} index={index}
         selected={selected} onSelect={target => { void navigate(target); }} busy={busy}/></div>
     </div>
     <div className="terminal-operations">
       <div className="terminal-prompt"><strong>操作提示：{questionType(q)}</strong>
-        <p>{finished ? '考试已结束，可查看作答记录。' : q.question_type === 3
+        <p>{finished ? '考试已结束，可查看作答记录。' : q.content ? '作答后可切换题目并保存。' : q.question_type === 3
           ? '本题为判断题，请判断对错！' : q.question_type === 4 ? '请填写数值答案。' : q.question_type === 2
             ? '请选择所有正确答案，全部选对才得分！' : '请在备选答案中选择你认为正确的答案！'}</p></div>
       <div className="terminal-primary-actions">

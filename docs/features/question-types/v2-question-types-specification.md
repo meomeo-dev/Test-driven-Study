@@ -1,8 +1,10 @@
 # Curriculum Question Types Specification (v2)
 
+Implementation and authoring guidance: [V2 question types](README.md).
+
 This document specifies the data contracts, JSON schemas, grading mechanisms, and
-storage projection rules for extending curriculum question types from the existing 4
-basic types to a comprehensive 10-type system.
+storage projection rules for extending the four existing question types with
+five new types. The revised true/false contract keeps its original type ID.
 
 ---
 
@@ -103,7 +105,7 @@ To prevent learner answer leakage ("spoiler"), option-level TTS must be applied 
 
 ---
 
-## 4. The 6 New Question Types: Data Contracts and Schemas
+## 4. New Question Types and the Revised True/False Contract
 
 ### 4.1 Cloze (完形填空, `cloze`)
 - **Structure**: A passage defined as plain text with `{{1}}`, `{{2}}` markers or an array
@@ -310,7 +312,9 @@ To prevent learner answer leakage ("spoiler"), option-level TTS must be applied 
 
 ## 5. Formal JSON Schema Definitions
 
-The formal JSON Schema definitions extend `contracts/course/v1/items.schema.json`:
+The [v2 item schema](../../../contracts/course/v2/items.schema.json) reuses
+common definitions from v1. The following excerpt describes the shared
+content structures:
 
 ```json
 {

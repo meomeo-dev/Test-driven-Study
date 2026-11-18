@@ -2,6 +2,7 @@ package course
 
 import (
 	"bytes"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"sync"
@@ -9,37 +10,41 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 
 	coursev1 "test-driven-study/contracts/course/v1"
+	coursev2 "test-driven-study/contracts/course/v2"
 )
 
-type v1Schemas struct {
+type packageSchemas struct {
 	manifest *jsonschema.Schema
 	items    *jsonschema.Schema
 }
 
-var loadSchemas = sync.OnceValues(func() (v1Schemas, error) {
+var loadSchemas = sync.OnceValues(func() ([3]packageSchemas, error) {
 	compiler := jsonschema.NewCompiler()
 	compiler.DefaultDraft(jsonschema.Draft2020)
 	compiler.UseLoader(jsonschema.SchemeURLLoader{})
-	var schemas v1Schemas
-	for name, target := range map[string]**jsonschema.Schema{
-		"manifest.schema.json": &schemas.manifest,
-		"items.schema.json":    &schemas.items,
-	} {
-		data, err := coursev1.Files.ReadFile(name)
-		if err != nil {
-			return schemas, err
-		}
-		document, err := jsonschema.UnmarshalJSON(bytes.NewReader(data))
-		if err != nil {
-			return schemas, err
-		}
-		location := "https://study.example/contracts/course/v1/" + name
-		if err := compiler.AddResource(location, document); err != nil {
-			return schemas, err
-		}
-		*target, err = compiler.Compile(location)
-		if err != nil {
-			return schemas, err
+	var schemas [3]packageSchemas
+	for version, files := range []embed.FS{coursev1.Files, coursev2.Files} {
+		version++
+		for name, target := range map[string]**jsonschema.Schema{
+			"manifest.schema.json": &schemas[version].manifest,
+			"items.schema.json":    &schemas[version].items,
+		} {
+			data, err := files.ReadFile(name)
+			if err != nil {
+				return schemas, err
+			}
+			document, err := jsonschema.UnmarshalJSON(bytes.NewReader(data))
+			if err != nil {
+				return schemas, err
+			}
+			location := fmt.Sprintf("https://study.example/contracts/course/v%d/%s", version, name)
+			if err := compiler.AddResource(location, document); err != nil {
+				return schemas, err
+			}
+			*target, err = compiler.Compile(location)
+			if err != nil {
+				return schemas, err
+			}
 		}
 	}
 	return schemas, nil

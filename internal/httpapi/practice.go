@@ -77,7 +77,7 @@ func (s *Server) openPresentation(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) answer(w http.ResponseWriter, r *http.Request) {
 	var input study.AnswerInput
-	if !decodeBody(w, r, &input) {
+	if !decodeBoundedBody(w, r, &input, answerBodyLimit) {
 		return
 	}
 	value, err := s.study.SubmitResponse(r.Context(), r.PathValue("presentation"), input)

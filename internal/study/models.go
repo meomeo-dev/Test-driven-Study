@@ -1,6 +1,9 @@
 package study
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"test-driven-study/internal/course"
+)
 
 type OptionTTS struct {
 	Voice string   `json:"voice,omitempty"`
@@ -18,37 +21,40 @@ type Option struct {
 }
 
 type Question struct {
-	QuestionID      int64    `json:"question_id"`
-	QuestionType    int64    `json:"question_type"`
-	Title           string   `json:"title"`
-	RichContent     any      `json:"rich_content,omitempty"`
-	Items           []Option `json:"items"`
-	ImageURL        string   `json:"image_url"`
-	AudioURL        string   `json:"audio_url,omitempty"`
-	TranscriptURL   string   `json:"transcript_url,omitempty"`
-	TranscriptLines any      `json:"transcript_lines,omitempty"`
-	ImageType       int64    `json:"image_type"`
-	Answer          string   `json:"answer"`
-	Analysis        string   `json:"analysis"`
-	AnalysisAudio   any      `json:"analysis_audio,omitempty"`
-	Skill           string   `json:"skill"`
-	Difficulty      int64    `json:"difficulty"`
-	Tags            string   `json:"tags"`
-	LicenceID       int64    `json:"licence_id"`
-	SubjectID       int64    `json:"subject_id"`
-	ChapterID       int64    `json:"chapter_id"`
-	ChapterName     string   `json:"chapter_name"`
-	SubChapterID    int64    `json:"sub_chapter_id"`
-	SubChapterName  string   `json:"sub_chapter_name"`
-	CourseID        int64    `json:"course_id"`
-	CourseName      string   `json:"course_name"`
-	Sort            int64    `json:"sort"`
-	ProvinceID      int64    `json:"province_id"`
-	CityID          int64    `json:"city_id"`
-	PackageID       string   `json:"package_id,omitempty"`
-	PackageVersion  string   `json:"package_version,omitempty"`
-	SourceItemID    string   `json:"source_item_id,omitempty"`
-	NumberTolerance string   `json:"number_tolerance,omitempty"`
+	Content         *QuestionContent        `json:"content,omitempty"`
+	QuestionReview  *course.Item            `json:"question_review,omitempty"`
+	AnalysisContent *course.RichContent     `json:"analysis_content,omitempty"`
+	QuestionID      int64                   `json:"question_id"`
+	QuestionType    int64                   `json:"question_type"`
+	Title           string                  `json:"title"`
+	RichContent     any                     `json:"rich_content,omitempty"`
+	Items           []Option                `json:"items"`
+	ImageURL        string                  `json:"image_url"`
+	AudioURL        string                  `json:"audio_url,omitempty"`
+	TranscriptURL   string                  `json:"transcript_url,omitempty"`
+	TranscriptLines []course.TranscriptLine `json:"transcript_lines,omitempty"`
+	ImageType       int64                   `json:"image_type"`
+	Answer          string                  `json:"answer"`
+	Analysis        string                  `json:"analysis"`
+	AnalysisAudio   any                     `json:"analysis_audio,omitempty"`
+	Skill           string                  `json:"skill"`
+	Difficulty      int64                   `json:"difficulty"`
+	Tags            string                  `json:"tags"`
+	LicenceID       int64                   `json:"licence_id"`
+	SubjectID       int64                   `json:"subject_id"`
+	ChapterID       int64                   `json:"chapter_id"`
+	ChapterName     string                  `json:"chapter_name"`
+	SubChapterID    int64                   `json:"sub_chapter_id"`
+	SubChapterName  string                  `json:"sub_chapter_name"`
+	CourseID        int64                   `json:"course_id"`
+	CourseName      string                  `json:"course_name"`
+	Sort            int64                   `json:"sort"`
+	ProvinceID      int64                   `json:"province_id"`
+	CityID          int64                   `json:"city_id"`
+	PackageID       string                  `json:"package_id,omitempty"`
+	PackageVersion  string                  `json:"package_version,omitempty"`
+	SourceItemID    string                  `json:"source_item_id,omitempty"`
+	NumberTolerance string                  `json:"number_tolerance,omitempty"`
 }
 
 type Detail struct {
