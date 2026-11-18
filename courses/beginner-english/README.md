@@ -45,8 +45,7 @@
 [自我介绍讲义](lessons/intro.md)和[交接班讲义](lessons/past-reports.md)的自评清单
 录音自评后标记已会。
 
-“桌上有几个零件”一题使用合成语音。练习时可在播放器旁打开
-[逐字稿](assets/transcripts/workbench-count.txt) 对照。
+“桌上有几个零件”听力题使用 DeepSeek TTS 语音合成，练习时可点击题干中的发音按钮收听工位汇报，亦可展开逐字稿进行对照。
 
 ## 学习资料
 

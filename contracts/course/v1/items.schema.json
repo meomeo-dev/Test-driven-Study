@@ -67,7 +67,6 @@
         }
       }
     },
-    "dependentRequired": { "transcript": ["audio"] },
     "oneOf": [
       {
         "required": ["options"],

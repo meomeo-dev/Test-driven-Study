@@ -224,21 +224,20 @@
     "stem": [
       {
         "type": "text",
-        "text": "听录音。"
+        "text": "听工位汇报录音，回答后面的问题：\n"
       },
       {
         "type": "text",
-        "text": "How many parts are on the table?",
+        "text": "Hello. My name is Lina. There are three parts on the table. The button is on the left.",
         "tts": {
           "voice": "stella"
         }
       },
       {
         "type": "text",
-        "text": " 桌上有几个零件？请用数字作答。"
+        "text": "\nHow many parts are on the table?（桌上有几个零件？请用阿拉伯数字作答）"
       }
     ],
-    "audio": "assets/workbench-count.mp3",
     "transcript": [
       {
         "speaker": "Lina",
@@ -262,7 +261,7 @@
         }
       }
     ],
-    "explanation": "录音说 “There are three parts on the table.”。three 是 3。",
+    "explanation": "录音中 Lina 明确说明 “There are three parts on the table.”，因此零件数量为 3。",
     "grading": {
       "value": "3",
       "absolute_tolerance": "0"
