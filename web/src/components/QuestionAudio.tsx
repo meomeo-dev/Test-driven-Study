@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { courseAsset, readCourseTranscript } from '../api/courses';
+import { AudioControls } from './AudioControls';
+
+function speechTextFromTranscript(transcript: string): string {
+  return transcript
+    .split('\n')
+    .map(line => line.replace(/^[a-zA-Z0-9_\u4e00-\u9fa5]+:\s*/, '').trim())
+    .filter(Boolean)
+    .join(' ');
+}
 
 export function QuestionAudio({ question }: {
   question: {
@@ -14,10 +23,18 @@ export function QuestionAudio({ question }: {
   const src = audio ? courseAsset(course, version, audio) : undefined;
   const transcriptSrc = isPath ? courseAsset(course, version, transcript!) : undefined;
   const inlineTranscript = !isPath ? transcript : undefined;
+  const ttsText = inlineTranscript ? speechTextFromTranscript(inlineTranscript) : undefined;
 
   return <div className="question-listening">
-    {src && <audio className="question-audio" aria-label="本题听力录音"
-      src={src} controls preload="metadata" />}
+    {src ? (
+      <audio className="question-audio" aria-label="本题听力录音"
+        src={src} controls preload="metadata" />
+    ) : ttsText ? (
+      <div className="question-listening-bar" role="region" aria-label="听力音频播放">
+        <span className="listening-bar-label">听力录音</span>
+        <AudioControls text={ttsText} voice="stella" />
+      </div>
+    ) : null}
     {transcript && <ListeningTranscript url={transcriptSrc} inlineText={inlineTranscript} />}
   </div>;
 }

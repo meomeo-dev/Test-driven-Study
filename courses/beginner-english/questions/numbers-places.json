@@ -221,23 +221,7 @@
     "concepts": [
       "there-is-are"
     ],
-    "stem": [
-      {
-        "type": "text",
-        "text": "听工位汇报录音，回答后面的问题：\n"
-      },
-      {
-        "type": "text",
-        "text": "Hello. My name is Lina. There are three parts on the table. The button is on the left.",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "type": "text",
-        "text": "\nHow many parts are on the table?（桌上有几个零件？请用阿拉伯数字作答）"
-      }
-    ],
+    "stem": "听工位汇报录音，回答后面的问题：\nHow many parts are on the table?（桌上有几个零件？请用阿拉伯数字作答）",
     "transcript": [
       {
         "speaker": "Lina",
