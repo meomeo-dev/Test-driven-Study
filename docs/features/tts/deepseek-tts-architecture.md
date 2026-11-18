@@ -27,10 +27,9 @@ Language learning in curriculum modules (e.g., `step-up-english-1` and
   Extend `ProviderDialog` from 2 tabs (`image`, `llm`) to 3 tabs (`image`, `llm`, `tts`),
   allowing centralized configuration of speech synthesis alongside reasoning and image
   generation.
-- **Credential Reuse & Keyring Security**:
-  DeepSeek TTS credentials can be configured independently or toggle-reused from DeepSeek
-  LLM settings, stored securely in the host OS Keyring without exposing cleartext to the
-  client.
+- **Independent Credential & Keyring Security**:
+  DeepSeek TTS credentials are managed independently from LLM and Image keys, stored
+  securely in the host OS Keyring without exposing cleartext to the client.
 - **Deterministic Audio Caching**:
   Cache synthesized 24kHz WAV audio files in `var/audio/{voice_id}/{phrase_key}.wav`,
   using 64-bit FNV-1a phrase hashing and backend singleflight concurrency deduplication.
@@ -72,7 +71,7 @@ flowchart TD
 
     TabPanel --> Form["TTS Provider Form"]
     Form --> Endpoint["Base URL (https://api.deepseek.com/v1/tools/tts)"]
-    Form --> KeySection["API Key / Reuse LLM Key Toggle"]
+    Form --> KeySection["Dedicated TTS API Key (OS Keyring)"]
     Form --> VoiceSelect["Voice Selector (stella / tide)"]
     Form --> ProxyInput["Proxy URL (http:// / socks5://)"]
     Form --> TestSave["Test Connection & Save Buttons"]
@@ -81,15 +80,12 @@ flowchart TD
 ### 2.2 Form Fields for TTS Tab
 When `kind === 'tts'`, `ProviderForm` renders:
 - **Base URL**: Defaults to `https://api.deepseek.com/v1/tools/tts`.
+- **API Key**: Dedicated DeepSeek TTS API key input field. Like LLM and Image keys,
+  it is saved directly to the system keyring, never echoed to the client or written in
+  cleartext.
 - **Voice Selection**: Radio/select control for available voices:
   - `stella`: Professional female voice (default for standard British/American clarity).
   - `tide`: Resonant male voice (for dialogue differentiation).
-- **API Key & Reuse Option**:
-  - `reuse_llm_key` Checkbox: "复用 LLM 服务商密钥". When checked and the active LLM
-    provider is DeepSeek, the TTS service reuses the LLM credential directly, avoiding
-    redundant key entry.
-  - Standalone API Key input: When `reuse_llm_key` is false, accepts a dedicated
-    DeepSeek API key.
 - **Proxy URL**: Optional HTTP/HTTPS/SOCKS5 proxy, matching the repository's strict proxy
   invariant (no direct fallback when a proxy is configured).
 - **Connection Test Button**: Sends a lightweight dry-run synthesis request (e.g., text

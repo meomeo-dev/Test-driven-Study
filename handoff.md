@@ -22,7 +22,7 @@ The architectural specifications requested by the user are fully documented in:
    - **Key Architecture**:
      - **Declarative Rich Content / In-Line Mixed Layout**: Questions and options can be defined as structured arrays of segments (`ContentSegment[]`) or plain strings. Segments with `"tts"` render text plus play/regenerate audio buttons; segments without `"tts"` render as plain text. Zero heuristic string parsing.
      - **Unified 3-Tab Provider Dialog**: Expanded from 2 tabs to 3 tabs (`生图服务`, `LLM · Responses`, `TTS · 语音服务`).
-     - **Keyring & Credential Reuse**: Option to reuse DeepSeek LLM API key or configure a dedicated key, encrypted in OS Keyring.
+     - **Keyring & Independent Credential**: Dedicated DeepSeek TTS API key configured independently in its own tab and encrypted in OS Keyring.
      - **DeepSeek TTS Protocol**: Integrates `POST /v1/tools/tts` (24kHz raw PCM wrapped in 44-byte RIFF WAV headers, FNV-1a 64-bit phrase hashing).
      - **Local Disk Cache**: Persistent storage in `var/audio/{voice_id}/{phrase_key}.wav` with singleflight concurrency deduplication.
      - **UI Controls**: `<Volume2 />` play button and `<RotateCcw />` regenerate button with global single-instance audio coordination.
