@@ -76,6 +76,11 @@ test('all five types can be answered and reviewed in practice', async ({ page, r
 
 test('reading separates the article, sub-questions and explanations', async ({ page, request }) => {
   const demo = await demoUnit(request);
+  const speech: { text: string; voice: string }[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    speech.push(route.request().postDataJSON());
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
   await page.goto(demo.link('reading', 'memorize'));
   const card = page.locator('article.question-card');
   const stem = card.getByRole('region', { name: '题干与图例' });
@@ -84,6 +89,10 @@ test('reading separates the article, sub-questions and explanations', async ({ p
   await expect(stem.getByText(/WORKSHOP NOTICE/)).toBeVisible();
   await expect(stem.getByText('查看逐字稿')).toHaveCount(0);
   await expect(answers.getByText(/WORKSHOP NOTICE/)).toHaveCount(0);
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech[0]).toMatchObject({
+    text: expect.stringMatching(/^WORKSHOP NOTICE\nThe workshop opens/), voice: 'stella',
+  });
   await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案：8')).toBeVisible();
   await expect(answers.getByRole('group', { name: '小题 2' }).getByText('Collect the badges.')).toBeVisible();
   await expect(analysis.getByText('8 a.m. 表示上午八点。')).toBeVisible();
@@ -92,6 +101,16 @@ test('reading separates the article, sub-questions and explanations', async ({ p
   await page.goto(demo.link('reading'));
   await expect(card.getByRole('region', { name: '阅读材料' })).toBeVisible();
   await expect(card.getByRole('region', { name: '答案解析', exact: true })).toHaveCount(0);
+  const numericPart = card.getByRole('group', { name: '小题 1' });
+  await expect(numericPart.getByRole('button', { name: '播放发音', exact: true })).toHaveCount(1);
+  const choicePart = card.getByRole('group', { name: '小题 2' });
+  await expect(choicePart.getByRole('button', { name: '播放发音', exact: true })).toHaveCount(4);
+  const distractor = choicePart.getByRole('listitem')
+    .filter({ has: page.getByRole('checkbox', { name: 'Collect the badges.' }) });
+  await distractor.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech.at(-1)).toMatchObject({
+    text: 'Collect the badges.', voice: 'stella',
+  });
   await card.getByRole('textbox', { name: '数值答案' }).fill('8');
   await card.getByRole('checkbox', { name: 'Wear a visitor badge.' }).check();
   await card.getByRole('checkbox', { name: 'Sign in at the front desk.' }).check();

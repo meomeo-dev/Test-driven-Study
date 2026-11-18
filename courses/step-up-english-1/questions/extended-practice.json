@@ -63,23 +63,41 @@
     "id": "sue1-extended-reading",
     "type": "reading_comprehension",
     "stem": "阅读车间通知，再回答两个问题。",
-    "passage": "WORKSHOP NOTICE\nThe workshop opens at 8 a.m. Visitors must sign in at the front desk and wear a visitor badge. The supervisor will collect the badges before visitors leave.",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKSHOP NOTICE\nThe workshop opens at 8 a.m. Visitors must sign in at the front desk and wear a visitor badge. The supervisor will collect the badges before visitors leave.",
+        "tts": { "voice": "stella" }
+      }
+    ],
     "sub_questions": [
       {
         "id": "opening",
         "type": "numeric",
-        "stem": "Write the opening hour as a number.",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Write the opening hour as a number.",
+            "tts": { "voice": "stella" }
+          }
+        ],
         "grading": { "value": "8", "absolute_tolerance": "0" },
         "explanation": "8 a.m. 表示上午八点。"
       },
       {
         "id": "visitors",
         "type": "multiple_choice",
-        "stem": "What must visitors do?",
+        "stem": [
+          { "type": "text", "text": "What must visitors do?", "tts": { "voice": "stella" } }
+        ],
         "options": [
-          { "id": "sign", "text": "Sign in at the front desk." },
-          { "id": "badge", "text": "Wear a visitor badge." },
-          { "id": "collect", "text": "Collect the badges." }
+          {
+            "id": "sign",
+            "text": "Sign in at the front desk.",
+            "tts": { "voice": "stella" }
+          },
+          { "id": "badge", "text": "Wear a visitor badge.", "tts": { "voice": "stella" } },
+          { "id": "collect", "text": "Collect the badges.", "tts": { "voice": "stella" } }
         ],
         "grading": { "choice_ids": ["sign", "badge"] },
         "explanation": "访客须登记并佩戴访客证；回收访客证的是主管。"
