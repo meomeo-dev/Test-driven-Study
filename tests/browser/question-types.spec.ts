@@ -68,9 +68,9 @@ test('writing shows a sample in memorization and an editor in practice', async (
     if (r.url().includes('/api/practice/presentations')) practiceCalls.push(r.url());
     if (r.url().endsWith('/feedback')) feedbackCalls.push(r.url());
   });
-  const speech: string[] = [];
+  const speech: { text: string; voice: string }[] = [];
   await page.route('**/api/tts/synthesize', async route => {
-    speech.push(route.request().postDataJSON().text);
+    speech.push(route.request().postDataJSON());
     await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
   });
 
@@ -93,7 +93,9 @@ test('writing shows a sample in memorization and an editor in practice', async (
   await expect(analysis.getByText('任务完成度（50 分）')).toBeVisible();
   await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
   await stem.getByRole('button', { name: '播放发音', exact: true }).first().click();
-  await expect.poll(() => speech[0]).toBe('delivery');
+  await expect.poll(() => speech[0]).toMatchObject({ text: 'delivery', voice: 'stella' });
+  await reference.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech[1]).toMatchObject({ text: sample, voice: 'stella' });
   await card.getByRole('button', { name: '完整题目' }).click();
   await expect(page.getByRole('dialog').getByText(sample, { exact: true })).toBeVisible();
   await page.getByRole('tab', { name: '完整解析' }).click();
@@ -103,7 +105,8 @@ test('writing shows a sample in memorization and an editor in practice', async (
 
   await page.goto(demo.link('writing'));
   await expect(stem.getByRole('region', { name: '写作要求' })).toBeVisible();
-  await expect(card.getByText('参考范文')).toHaveCount(0);
+  const sampleRegion = card.getByRole('region', { name: '参考范文' });
+  await expect(sampleRegion).toHaveCount(0);
   await expect(analysis).toHaveCount(0);
   const editor = answer.getByRole('textbox', { name: '写作答案' });
   await expect(editor).toHaveValue('');
@@ -116,6 +119,8 @@ test('writing shows a sample in memorization and an editor in practice', async (
   await expect(answer.getByText('参考范文')).toHaveCount(0);
   await expect(analysis.getByText(sample, { exact: true })).toBeVisible();
   await expect(analysis.getByText('语言准确性（50 分）')).toBeVisible();
+  await sampleRegion.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech[2]).toMatchObject({ text: sample, voice: 'stella' });
   expect(feedbackCalls).toEqual([]);
   await card.getByRole('button', { name: '请求 AI 批改' }).click();
   await expect(card.getByText(/表达清楚，符合通知语境/)).toBeVisible();

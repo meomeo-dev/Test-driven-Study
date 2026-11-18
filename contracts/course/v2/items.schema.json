@@ -68,6 +68,7 @@
           "min_words": { "$ref": "#/$defs/wordLimit" },
           "max_words": { "$ref": "#/$defs/wordLimit" },
           "sample_response": { "$ref": "#/$defs/text" },
+          "sample_response_tts": { "$ref": "../v1/items.schema.json#/$defs/ttsConfig" },
           "rubric": {
             "type": "object", "minProperties": 1, "maxProperties": 20,
             "propertyNames": { "minLength": 1, "maxLength": 64 },

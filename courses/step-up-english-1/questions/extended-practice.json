@@ -120,6 +120,7 @@
     "min_words": 5,
     "max_words": 20,
     "sample_response": "The delivery has been moved to Friday.",
+    "sample_response_tts": { "voice": "stella" },
     "rubric": { "task_completion": 50, "language_accuracy": 50 },
     "analysis": [
       { "type": "text", "text": "以 The delivery 作主语，用 " },

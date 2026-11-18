@@ -34,8 +34,11 @@ to the integer score used by the terminal. Analysis still counts full-credit
 attempts as correct.
 
 Writing uses the server-computed word count and normalized keyword coverage;
-the sample can also match exactly after normalization. Translation awards full
-credit for a normalized reference or authored alternative. Key-term matching
+the sample can also match exactly after normalization. Set the optional
+`sample_response_tts` object to enable playback on writing review surfaces.
+It reads the full sample by default and accepts the shared `voice`, `text`,
+and `speed` settings. Translation awards full credit for a normalized
+reference or authored alternative. Key-term matching
 can earn up to half credit, since terms alone cannot establish meaning. These
 local checks do not assess fluency or fully judge an original answer. With
 the LLM configured, learners can explicitly request rubric feedback after a

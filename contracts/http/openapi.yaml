@@ -4929,6 +4929,7 @@ components:
         sub_questions: { type: array, items: { $ref: '#/components/schemas/CourseItemReview' } }
         keywords: { type: array, items: { type: string } }
         sample_response: { type: string }
+        sample_response_tts: { $ref: '#/components/schemas/TTSConfig' }
         rubric: { type: object, additionalProperties: { type: integer } }
         reference_translation: { type: string }
         acceptable_alternates: { type: array, items: { type: string } }

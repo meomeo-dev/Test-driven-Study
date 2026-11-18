@@ -1151,6 +1151,7 @@ export type CourseItemReview = {
     sub_questions?: Array<CourseItemReview>;
     keywords?: Array<string>;
     sample_response?: string;
+    sample_response_tts?: TtsConfig;
     rubric?: {
         [key: string]: number;
     };

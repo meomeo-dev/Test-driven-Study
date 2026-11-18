@@ -1,5 +1,6 @@
 import type { CourseItemReview, ExtendedResponse, QuestionContent } from
   '../../api/generated/types.gen';
+import { RichContent } from '../../components/RichContent';
 import { creditLabel } from './model';
 
 const writingSubtypes = {
@@ -37,9 +38,13 @@ export function WritingRequirements({ content }: { content?: QuestionContent }) 
 
 export function WritingSample({ review }: { review?: CourseItemReview }) {
   if (review?.type !== 'writing' || !review.sample_response) return null;
+  const sample = review.sample_response;
+  const content = review.sample_response_tts
+    ? [{ type: 'text' as const, text: sample, tts: review.sample_response_tts }]
+    : sample;
   return <section className="writing-sample" aria-label="参考范文">
     <h4 className="column-label">参考范文</h4>
-    <p className="analysis-text extended-passage" lang="en">{review.sample_response}</p>
+    <p className="analysis-text extended-passage" lang="en"><RichContent content={content} /></p>
   </section>;
 }
 

@@ -18,6 +18,7 @@ type ExtendedFields struct {
 	MinWords     int             `json:"min_words,omitempty"`
 	MaxWords     int             `json:"max_words,omitempty"`
 	Sample       string          `json:"sample_response,omitempty"`
+	SampleTTS    *TTSConfig      `json:"sample_response_tts,omitempty"`
 	Rubric       map[string]int  `json:"rubric,omitempty"`
 	Direction    string          `json:"direction,omitempty"`
 	Source       string          `json:"source_text,omitempty"`
