@@ -15,6 +15,9 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if len(pkg.Manifest.Units) != 1 || pkg.Manifest.Units[0].ID != "extended-practice" {
+		t.Fatal("the demo course must contain only the extended-practice unit")
+	}
 	items := pkg.Units["extended-practice"].Items
 	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 6 {
 		t.Fatalf("unexpected demo unit: version %d, %d items", pkg.Manifest.ProtocolVersion, len(items))

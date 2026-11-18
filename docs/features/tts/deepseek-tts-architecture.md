@@ -6,8 +6,8 @@ learning platform.
 
 ## 1. Overview and Design Principles
 
-Language learning in curriculum modules (e.g., `step-up-english-1` and
-`step-up-english-2`) requires auditory reinforcement alongside text. Learners need:
+Language learning in curriculum modules (e.g., `beginner-english` and the
+`step-up-english-1` demo) requires auditory reinforcement alongside text. Learners need:
 1. Native speech playback for English vocabulary, dialogue quotes, and listening
    transcripts.
 2. Immediate on-demand audio generation and regeneration controls in the question UI.
