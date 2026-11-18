@@ -138,5 +138,40 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_021": {
+    "lesson_number": 21,
+    "title": "一般现在时与动词基础形态：第 1 讲 be 动词（am/is/are）状态陈述与主谓一致",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_022": {
+    "lesson_number": 22,
+    "title": "一般现在时与动词基础形态：第 2 讲 be 动词否定句与一般疑问句构造",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_023": {
+    "lesson_number": 23,
+    "title": "一般现在时与动词基础形态：第 3 讲 实义动词（Action Verbs）第三人称单数变化",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_024": {
+    "lesson_number": 24,
+    "title": "一般现在时与动词基础形态：第 4 讲 助动词 do/does 在否定句与疑问句中的语法机制",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_025": {
+    "lesson_number": 25,
+    "title": "一般现在时与动词基础形态：第 5 讲 频度副词（always, usually, often, never）的位置",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
