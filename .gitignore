@@ -2,8 +2,9 @@
 node_modules/
 dist/
 pnpm-lock.yaml
+__pycache__/
 
-# Local learner data, generated media, and service logs
+# Learner data, generated audio and images, and service logs
 var/
 *.log
 

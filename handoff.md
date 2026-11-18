@@ -4,33 +4,30 @@ Updated 2026-11-18 (America/New_York).
 
 ## Repository state
 
-- Active branch: `fix/0055-restore-elementary-chinese-pronunciation-controls`.
-- Baseline before this documentation update: `0c245ac`.
-- Active issue: [#55, elementary Chinese pronunciation](issues/0055-fix-restore-elementary-chinese-pronunciation-controls.md).
+- Implementation commit: `46d404a`.
+- Completed issue: [#55, elementary Chinese pronunciation](issues/0055-fix-restore-elementary-chinese-pronunciation-controls.md).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 
 ## Elementary Chinese pronunciation
 
-- Committed course version: `elementary-chinese@1.0.1`. The local learner
-  database has `1.0.3` installed from the working tree.
-- The working tree adds local Pinyin playback, per-clip loudness normalization,
-  and speech for the pictured words in the fill-in questions. An unspecified
-  TTS voice uses the saved service default before the cache lookup.
+- `elementary-chinese@1.0.4` is committed and installed in the local learner database.
+- All seven fill-in prompts use local recordings. The complete `yīfu`
+  recording preserves the neutral tone in 叠衣服. All 16 explanations play
+  Han speech and local Pinyin in sequence. An unspecified TTS voice uses the
+  saved service default before the cache lookup.
 - The upgrade preserved the 16 question IDs, learner records and 12 existing
   illustrations. The [recording library](assets/audio/pinyin/README.md) credits
   the source. The [TTS reference](docs/features/tts/README.md) covers the service.
 
 ## Verification and next step
 
-- Course validation, TypeScript, frontend unit tests, Go tests and the focused
-  Elementary Chinese Chromium case passed during implementation. The browser
-  case used a local fixture for synthesis and played the local Pinyin files.
-- The earlier broader course-browser run had three failures at catalog or exam
-  navigation. The implementation and related verification remain open in
-  [issue #55](issues/0055-fix-restore-elementary-chinese-pronunciation-controls.md).
-- Review the pending application and fixture changes together, resolve the
-  browser failures, then close the issue with its implementation commit.
+- Generated bindings, course validation, TypeScript, unit and startup tests,
+  and production builds passed.
+- The Chromium suite passed seven cases, including Elementary Chinese speech
+  regeneration and all three listening turns in an English dialogue. The
+  roadmap case had an outdated concept count. Its corrected assertion,
+  route planning and saved progress passed a separate Chromium check.
 
 ## English curriculum
 

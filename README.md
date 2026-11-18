@@ -92,6 +92,10 @@ Circuits and C. Beginner English includes listening exercises with transcripts.
 - **Question audio:** play marked passages and answer choices in supported
   courses. Listening exercises provide a recording or synthesized dialogue
   with an expandable transcript.
+- **Elementary Chinese pronunciation:** play local Pinyin recordings in the
+  worksheet and read the answer explanations aloud after submitting in
+  practice mode. Explanation playback uses local recordings for Pinyin and
+  TTS for Han text.
 - **Light and dark themes:** switch from the toolbar and retain your choice across pages.
 - **[Question assistant (学习助手)](docs/features/assistant/README.md):** click
   the practice toolbar button or the floating assistant in memorization and
@@ -208,7 +212,9 @@ stored under the data directory. Background-service logs default to `var/dev.log
 Open **记忆宫殿 → 生图设置 → TTS · 语音服务** to configure the DeepSeek endpoint,
 dedicated API key, default voice and proxy. The API key is stored in the OS
 credential store. The application caches generated audio by voice and phrase
-under `var/audio/` or the configured data directory. See the
+under `var/audio/` or the configured data directory. The saved default applies
+when the course omits a voice. The regenerate control requests fresh speech
+for the selected content. See the
 [TTS feature reference](docs/features/tts/README.md).
 
 ### Optional AI image generation

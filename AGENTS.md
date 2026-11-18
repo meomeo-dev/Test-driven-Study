@@ -109,6 +109,9 @@ inspect their state before restarting services or changing configuration.
   text in Elementary Chinese. Explicit TTS voices take precedence over the
   saved default, and the selected voice determines the cache entry. Keep
   playback controls consistent across options before grading.
+- Keep explanation audio with the graded review payload. Regeneration applies
+  to synthesized speech. Record the source and license of bundled recordings
+  in the audio asset README.
 - Accepted palace jobs belong to the backend and survive page navigation.
   Preserve pause checkpoints, explicit continuation and image-only retry behavior.
   Uncertain paid requests must never be silently replayed. After restart, only
@@ -132,6 +135,9 @@ Follow [issues/README.md](issues/README.md) and the shared contract in
 5. Keep issue files in place. Closed issues require `closed-by`; use Conventional
    Commits such as `fix: description (closes #N)`. Normally open PRs from the
    primary repository. Inspect the actual remote configuration first.
+
+For authorized branch cleanup, confirm the branch tip is reachable from the
+target branch before removing its local or remote reference.
 
 Explicit user instructions can authorize a different workflow for a specific
 task; preserve that scope. The direct-on-main decisions recorded in issues #27

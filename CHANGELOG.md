@@ -11,7 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
-- Pinyin recordings with [source attribution](assets/audio/pinyin/README.md).
+- Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in
+  prompts and pronunciation controls for the choices. All 16 explanations
+  combine Han speech with local Pinyin and support speech regeneration.
+  See the [recording credits](assets/audio/pinyin/README.md).
 - Draft two-semester English courses, with the first 30 lessons authored in
   semester one, and expanded syllabi for the sample courses.
 
@@ -19,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Beginner English 1.4.1 adds listening units, question audio, and sequential
   playback of authored dialogue lines. Listening transcripts are expandable.
+
+### Fixed
+
+- Omitted TTS voices use the saved default before selecting cached audio.
+- Forced speech regeneration returns an updated audio URL. Sequential listening
+  retains the authored voices through the final turn.
 
 ## [0.1.0] - 2026-11-17
 

@@ -1,7 +1,8 @@
 ---
 id: 0055
 type: fix
-status: open
+status: closed
+closed-by: 46d404a94aafe88312f665cb3971696a128dfbb6
 labels: []
 branch: fix/0055-restore-elementary-chinese-pronunciation-controls
 created: 2026-11-18
