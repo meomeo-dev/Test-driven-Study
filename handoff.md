@@ -6,9 +6,9 @@ Updated 2026-11-18 (America/New_York).
 
 - **Repository**: `/Volumes/1TB-ZYJ/git/Test-driven-Study` (independent, standalone checkout).
 - **Active Branch**: `main` (all feature branches merged and pruned).
-- **Baseline Commit**: `bd7560b` (`docs: update handoff with listening audio separation milestone`)
+- **Baseline Commit**: `6ab007c` (`fix(listening): implement multi-speaker sequential dialogue playback with tide and stella voices`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Current Milestone**: Upgraded `courses/beginner-english` to v1.4.0 with 2 new units/lessons (`tools-equipment`, `workplace-dialogue`), expanding the curriculum to 10 units, 216 questions, and 41 concepts. Ensured 100% full question type coverage (Single Choice, Multiple Choice, True/False, Numeric, Cloze Blanks, and Dedicated Listening Comprehension with DeepSeek TTS) across all 10 units. Installed into SQLite workspace and passed all gates.
+- **Current Milestone**: Upgraded `beginner-english` to v1.4.1. Fixed listening audio speaker identification (multi-speaker playback now respects `tts.voice` or infers gender from speaker label as `tide`/`stella`), implemented sequential `DialoguePlayer` for structured transcript lines, and verified multi-speaker playback across all 10 units. Passed all gates.
 - **WU Status**: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json) (`completed`, phase: `close`).
 
 ---
