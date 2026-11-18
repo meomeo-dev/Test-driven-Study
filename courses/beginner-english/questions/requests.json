@@ -6,7 +6,23 @@
     "concepts": [
       "imperatives"
     ],
-    "stem": "在装配线工作时，机器突然发生故障，工友大声对你说：`Stop!` 此时你应该：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "在装配线工作时，机器突然发生故障，工友大声对你说："
+      },
+      {
+        "type": "text",
+        "text": "Stop!",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 此时你应该："
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -43,19 +59,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`Turn on the light.`"
+        "text": "Turn on the light.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "`Open the light.`"
+        "text": "Open the light.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "`Turn off the light.`"
+        "text": "Turn off the light.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "`Wait for the light.`"
+        "text": "Wait for the light.",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "`Turn off` 用于表示关掉电器或指示灯，因此关闭指示灯应说 `Turn off the light.`。",
@@ -76,19 +104,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`Don't touch.`"
+        "text": "Don't touch.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "`Press the button.`"
+        "text": "Press the button.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "`I am a worker.`"
+        "text": "I am a worker.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "`The box is blue.`"
+        "text": "The box is blue.",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "`Don't touch.`（不要碰）和 `Press the button.`（按按钮）都是祈使句，用于直接发出操作指令。",
@@ -106,7 +146,23 @@
     "concepts": [
       "imperatives"
     ],
-    "stem": "班长指着工作台上的托盘对你说：`Put it here.` 判断：这句话的意思是让你把物品放在这里。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "班长指着工作台上的托盘对你说："
+      },
+      {
+        "type": "text",
+        "text": "Put it here.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 判断：这句话的意思是让你把物品放在这里。"
+      }
+    ],
     "explanation": "`Put` 意为“放置”，`here` 意为“这里”，该句是祈使句，表示“把它放在这里”。",
     "grading": {
       "boolean": true
@@ -119,7 +175,23 @@
     "concepts": [
       "imperatives"
     ],
-    "stem": "师傅对你说：`Press the red button 3 times.` 请问师傅要求你按几次红色按钮？请用阿拉伯数字作答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "师傅对你说："
+      },
+      {
+        "type": "text",
+        "text": "Press the red button 3 times.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 请问师傅要求你按几次红色按钮？请用阿拉伯数字作答。"
+      }
+    ],
     "explanation": "句中 `3 times` 表示“3次”，因此需要按 3 次按钮。",
     "grading": {
       "value": "3",
@@ -133,23 +205,51 @@
     "concepts": [
       "yes-no-questions"
     ],
-    "stem": "质检员拿起工作台上的零件问你：`Is it ready?` 如果零件已经完成了，你应该回答：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检员拿起工作台上的零件问你："
+      },
+      {
+        "type": "text",
+        "text": "Is it ready?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 如果零件已经完成了，你应该回答："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "`No, it isn't.`"
+        "text": "No, it isn't.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "`Yes, it is.`"
+        "text": "Yes, it is.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "`Yes, I do.`"
+        "text": "Yes, I do.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "`No, I am not.`"
+        "text": "No, I am not.",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "问句是以 be 动词 `Is` 提问且主语为 `it` 的一般疑问句，肯定简短回答应为 `Yes, it is.`。",
@@ -166,23 +266,51 @@
     "concepts": [
       "yes-no-questions"
     ],
-    "stem": "工友在装配时问你：`Do you have a screwdriver?` 如果你手头没有螺丝刀，正确的简短回答是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工友在装配时问你："
+      },
+      {
+        "type": "text",
+        "text": "Do you have a screwdriver?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 如果你手头没有螺丝刀，正确的简短回答是："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "`No, I don't.`"
+        "text": "No, I don't.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "`No, I am not.`"
+        "text": "No, I am not.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "`Yes, it is.`"
+        "text": "Yes, it is.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "`No, it doesn't.`"
+        "text": "No, it doesn't.",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "以助动词 `Do` 提问且主语为 `you` 的一般疑问句，否定回答应使用 `No, I don't.`。",
@@ -203,19 +331,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`What time is it?`"
+        "text": "What time is it?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "`Turn off the machine.`"
+        "text": "Turn off the machine.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "`Are you ready?`"
+        "text": "Are you ready?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "`Does the machine work?`"
+        "text": "Does the machine work?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "`Are you ready?`（你准备好了吗？）和 `Does the machine work?`（机器运转正常吗？）均为一般疑问句。a 为特殊疑问句，b 为祈使句。",
@@ -233,7 +373,34 @@
     "concepts": [
       "yes-no-questions"
     ],
-    "stem": "班长巡视工位时问你：`Are you OK?` 你回答：`No, it isn't.` 判断：你的回答在语法和语意上是正确的。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "班长巡视工位时问你："
+      },
+      {
+        "type": "text",
+        "text": "Are you OK?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 你回答："
+      },
+      {
+        "type": "text",
+        "text": "No, it isn't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 判断：你的回答在语法和语意上是正确的。"
+      }
+    ],
     "explanation": "问句主语是 `you`，回答应当使用第一人称 `I`（如 `No, I'm not.`），不能用指代物品的 `it`。",
     "grading": {
       "boolean": false
@@ -246,23 +413,51 @@
     "concepts": [
       "yes-no-questions"
     ],
-    "stem": "师傅指着运行中的传送带问你：`Does it stop?` 如果机器并没有停下来，应该回答：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "师傅指着运行中的传送带问你："
+      },
+      {
+        "type": "text",
+        "text": "Does it stop?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 如果机器并没有停下来，应该回答："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "`Yes, it is.`"
+        "text": "Yes, it is.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "`No, I don't.`"
+        "text": "No, I don't.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "`Yes, I do.`"
+        "text": "Yes, I do.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "`No, it doesn't.`"
+        "text": "No, it doesn't.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "针对以助动词 `Does` 提问且主语为 `it` 的一般疑问句，否定回答应为 `No, it doesn't.`。",
@@ -283,19 +478,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`Could you help me?`"
+        "text": "Could you help me?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "`Where are you from?`"
+        "text": "Where are you from?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "`Nice to meet you.`"
+        "text": "Nice to meet you.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "`It is three o'clock.`"
+        "text": "It is three o'clock.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "`Could you help me?` 是向他人寻求帮助的标准礼貌用语，意为“你能帮帮我吗？”。",
@@ -312,23 +519,51 @@
     "concepts": [
       "polite-requests"
     ],
-    "stem": "工友问你：`Can you check the parts, please?` 你当前正忙于手头装配，想礼貌拒绝，最得体的回答是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工友问你："
+      },
+      {
+        "type": "text",
+        "text": "Can you check the parts, please?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 你当前正忙于手头装配，想礼貌拒绝，最得体的回答是："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "`Sure!`"
+        "text": "Sure!",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "`Yes, I am.`"
+        "text": "Yes, I am.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "`Thank you.`"
+        "text": "Thank you.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "`Sorry, I can't.`"
+        "text": "Sorry, I can't.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "`Sorry, I can't.` 表示“抱歉，我不能”，是礼貌婉拒他人请求的标准表达。",
@@ -349,19 +584,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`Don't touch the box.`"
+        "text": "Don't touch the box.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "`Please pass the box.`"
+        "text": "Please pass the box.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "`I am not a worker.`"
+        "text": "I am not a worker.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "`Can you wait here, please?`"
+        "text": "Can you wait here, please?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "`Please pass the box.`（请递一下箱子）与 `Can you wait here, please?`（请问你可以在这里等一下吗？）均包含礼貌词 `please`，属于礼貌请求句型。",
@@ -379,7 +626,34 @@
     "concepts": [
       "polite-requests"
     ],
-    "stem": "工友对你说：`Can you close the box, please?` 你回答：`Sure!` 判断：你的回答表示你欣然同意对方的请求。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工友对你说："
+      },
+      {
+        "type": "text",
+        "text": "Can you close the box, please?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 你回答："
+      },
+      {
+        "type": "text",
+        "text": "Sure!",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 判断：你的回答表示你欣然同意对方的请求。"
+      }
+    ],
     "explanation": "`Sure!` 意为“当然可以！”，用于积极爽快地答应对方的礼貌请求。",
     "grading": {
       "boolean": true
@@ -396,19 +670,31 @@
     "options": [
       {
         "id": "a",
-        "text": "`Open the door.`"
+        "text": "Open the door.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "`Please open the door.`"
+        "text": "Please open the door.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "`The door is open.`"
+        "text": "The door is open.",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "`Don't open the door.`"
+        "text": "Don't open the door.",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "在祈使句前加上 `Please` 可以使语气更加客气礼貌，意为“请打开门”。",

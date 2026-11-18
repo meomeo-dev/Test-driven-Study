@@ -6,23 +6,51 @@
     "concepts": [
       "numbers"
     ],
-    "stem": "工位班长询问你零件盒数量：\"How many boxes do you see?\" 你数出有 13 个，应该回答哪一句？",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工位班长询问你零件盒数量："
+      },
+      {
+        "type": "text",
+        "text": "How many boxes do you see?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 你数出有 13 个，应该回答哪一句？"
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "I see thirty boxes."
+        "text": "I see thirty boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "I see thirteen boxes."
+        "text": "I see thirteen boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "I see three boxes."
+        "text": "I see three boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "I see third boxes."
+        "text": "I see third boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "数字 13 的英文是 thirteen；thirty 是 30，three 是 3。因此正确答案是 b。",
@@ -43,19 +71,31 @@
     "options": [
       {
         "id": "a",
-        "text": "five"
+        "text": "five",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "fifteen"
+        "text": "fifteen",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "fifty"
+        "text": "fifty",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "fifth"
+        "text": "fifth",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "数字 50 的英文是 fifty；fifteen 是 15。因此正确答案是 c。",
@@ -72,7 +112,23 @@
     "concepts": [
       "numbers"
     ],
-    "stem": "车间质检员说：\"We need twenty-four clean trays.\" 句子中包含了哪些信息？请选择两项。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "车间质检员说："
+      },
+      {
+        "type": "text",
+        "text": "We need twenty-four clean trays.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 句子中包含了哪些信息？请选择两项。"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -106,7 +162,23 @@
     "concepts": [
       "numbers"
     ],
-    "stem": "同事在装配台前告诉你：\"I have zero screws in my hand.\"（判断：他的意思是他手里一个螺丝也没有。）",
+    "stem": [
+      {
+        "type": "text",
+        "text": "同事在装配台前告诉你："
+      },
+      {
+        "type": "text",
+        "text": "I have zero screws in my hand.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（判断：他的意思是他手里一个螺丝也没有。）"
+      }
+    ],
     "explanation": "zero 表示数字 0，句意为手里有 0 个螺丝，即一个螺丝都没有。因此该判断正确。",
     "grading": {
       "boolean": true
@@ -119,7 +191,23 @@
     "concepts": [
       "numbers"
     ],
-    "stem": "班长在工位清点零件时说：\"There are eight red parts and seven blue parts on the table.\" 工作台上一共有多少个零件？请用阿拉伯数字作答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "班长在工位清点零件时说："
+      },
+      {
+        "type": "text",
+        "text": "There are eight red parts and seven blue parts on the table.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。"
+      }
+    ],
     "explanation": "eight 表示 8，seven 表示 7，零件总数为 8 + 7 = 15。因此正确答案是 15。",
     "grading": {
       "value": "15",
@@ -133,9 +221,47 @@
     "concepts": [
       "there-is-are"
     ],
-    "stem": "听录音。How many parts are on the table? 桌上有几个零件？请用数字作答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "听录音。"
+      },
+      {
+        "type": "text",
+        "text": "How many parts are on the table?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 桌上有几个零件？请用数字作答。"
+      }
+    ],
     "audio": "assets/workbench-count.mp3",
-    "transcript": "assets/transcripts/workbench-count.txt",
+    "transcript": [
+      {
+        "speaker": "Lina",
+        "text": "Hello. My name is Lina.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "Lina",
+        "text": "There are three parts on the table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "Lina",
+        "text": "The button is on the left.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
     "explanation": "录音说 “There are three parts on the table.”。three 是 3。",
     "grading": {
       "value": "3",
@@ -153,19 +279,31 @@
     "options": [
       {
         "id": "a",
-        "text": "There is one scanner on the table."
+        "text": "There is one scanner on the table.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "There are one scanner on the table."
+        "text": "There are one scanner on the table.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "There is two scanners on the table."
+        "text": "There is two scanners on the table.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "There are one scanners on the table."
+        "text": "There are one scanners on the table.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "表示单数名词 one scanner 存在时，be 动词使用 is，即 There is。因此正确答案是 a。",
@@ -186,19 +324,31 @@
     "options": [
       {
         "id": "a",
-        "text": "Is there screws in the box?"
+        "text": "Is there screws in the box?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "There are screws in the box?"
+        "text": "There are screws in the box?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Are there screws in the box?"
+        "text": "Are there screws in the box?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "Are it screws in the box?"
+        "text": "Are it screws in the box?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "询问复数名词是否存在时，疑问句句型为 Are there ...?。因此正确答案是 c。",
@@ -219,19 +369,31 @@
     "options": [
       {
         "id": "a",
-        "text": "There are three workers at the bench."
+        "text": "There are three workers at the bench.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "There is five pens in the cup."
+        "text": "There is five pens in the cup.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "There are ten boxes near the door."
+        "text": "There are ten boxes near the door.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "There are one button on the panel."
+        "text": "There are one button on the panel.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "three workers 与 ten boxes 均为复数，搭配 There are；b 项 five pens 应用 are，d 项 one button 应用 is。因此正确选项是 a 和 c。",
@@ -249,7 +411,23 @@
     "concepts": [
       "there-is-are"
     ],
-    "stem": "师傅在工位上问你：\"Is there a wrench on the shelf?\"（判断：这是在询问架子上是否有扳手。）",
+    "stem": [
+      {
+        "type": "text",
+        "text": "师傅在工位上问你："
+      },
+      {
+        "type": "text",
+        "text": "Is there a wrench on the shelf?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（判断：这是在询问架子上是否有扳手。）"
+      }
+    ],
     "explanation": "Is there a ...? 用于询问单数物品是否存在，wrench 意为扳手，shelf 意为架子。因此该判断正确。",
     "grading": {
       "boolean": true
@@ -262,7 +440,23 @@
     "concepts": [
       "there-is-are"
     ],
-    "stem": "物料员核对料盒后说：\"There are five large bolts and nine small bolts in this tray.\" 托盘里一共有多少个螺栓（bolts）？请用阿拉伯数字作答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "物料员核对料盒后说："
+      },
+      {
+        "type": "text",
+        "text": "There are five large bolts and nine small bolts in this tray.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 托盘里一共有多少个螺栓（bolts）？请用阿拉伯数字作答。"
+      }
+    ],
     "explanation": "five 表示 5，nine 表示 9，螺栓总数为 5 + 9 = 14。因此正确答案是 14。",
     "grading": {
       "value": "14",
@@ -276,7 +470,23 @@
     "concepts": [
       "positions"
     ],
-    "stem": "阅读 “The button is on the left.”。判断：按钮在左边。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "阅读："
+      },
+      {
+        "type": "text",
+        "text": "The button is on the left.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 判断：按钮在左边。"
+      }
+    ],
     "explanation": "on the left 意为在左边。button 是按钮。",
     "grading": {
       "boolean": true
@@ -289,7 +499,23 @@
     "concepts": [
       "positions"
     ],
-    "stem": "师傅指着工位对你说：\"The blue tape is under the table.\" 你应该去哪里拿蓝色胶带？",
+    "stem": [
+      {
+        "type": "text",
+        "text": "师傅指着工位对你说："
+      },
+      {
+        "type": "text",
+        "text": "The blue tape is under the table.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 你应该去哪里拿蓝色胶带？"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -326,19 +552,31 @@
     "options": [
       {
         "id": "a",
-        "text": "The scissors are behind the two boxes."
+        "text": "The scissors are behind the two boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "The scissors are on the two boxes."
+        "text": "The scissors are on the two boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "The scissors are next to the two boxes."
+        "text": "The scissors are next to the two boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "The scissors are between the two boxes."
+        "text": "The scissors are between the two boxes.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "介词 between 表示“在两者之间”。因此正确答案是 d。",
@@ -355,7 +593,23 @@
     "concepts": [
       "positions"
     ],
-    "stem": "工位装配指引写道：\"Put the green bin on the left, and put the yellow bin on the right.\" 这条指引包含哪些摆放要求？请选择两项。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工位装配指引写道："
+      },
+      {
+        "type": "text",
+        "text": "Put the green bin on the left, and put the yellow bin on the right.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 这条指引包含哪些摆放要求？请选择两项。"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -389,7 +643,23 @@
     "concepts": [
       "positions"
     ],
-    "stem": "设备说明书标注：\"The power button is in front of the machine.\"（判断：这表示电源按钮在机器的背面或后方。）",
+    "stem": [
+      {
+        "type": "text",
+        "text": "设备说明书标注："
+      },
+      {
+        "type": "text",
+        "text": "The power button is in front of the machine.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（判断：这表示电源按钮在机器的背面或后方。）"
+      }
+    ],
     "explanation": "短语 in front of 表示“在……的前面”，机器后方应用 behind。因此该判断错误。",
     "grading": {
       "boolean": false
@@ -402,7 +672,23 @@
     "concepts": [
       "positions"
     ],
-    "stem": "同事在工作台前告诉你：\"The oil bottle is next to the motor.\" 这里的 `next to` 是什么意思？",
+    "stem": [
+      {
+        "type": "text",
+        "text": "同事在工作台前告诉你："
+      },
+      {
+        "type": "text",
+        "text": "The oil bottle is next to the motor.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 这里的 next to 是什么意思？"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -435,7 +721,23 @@
     "concepts": [
       "clock-time"
     ],
-    "stem": "班长看了一下手表并对大家说：\"It's half past eight. Time for work.\" 此时是几点几分？",
+    "stem": [
+      {
+        "type": "text",
+        "text": "班长看了一下手表并对大家说："
+      },
+      {
+        "type": "text",
+        "text": "It's half past eight. Time for work.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 此时是几点几分？"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -472,19 +774,31 @@
     "options": [
       {
         "id": "a",
-        "text": "What time is it?"
+        "text": "What time is it?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "How many hours are they?"
+        "text": "How many hours are they?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Where is the clock?"
+        "text": "Where is the clock?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "How much time is this?"
+        "text": "How much time is this?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "询问具体时间最标准的日常句型是 What time is it?。因此正确答案是 a。",
@@ -501,7 +815,23 @@
     "concepts": [
       "clock-time"
     ],
-    "stem": "车间排班通知写道：\"The shift starts at a quarter past nine in the morning.\" 通知中包含了哪些时间信息？请选择两项。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "车间排班通知写道："
+      },
+      {
+        "type": "text",
+        "text": "The shift starts at a quarter past nine in the morning.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 通知中包含了哪些时间信息？请选择两项。"
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -535,7 +865,23 @@
     "concepts": [
       "clock-time"
     ],
-    "stem": "车间广播通知：\"Please take a break at four o'clock in the afternoon.\"（判断：通知要求工人在下午 4 点整休息。）",
+    "stem": [
+      {
+        "type": "text",
+        "text": "车间广播通知："
+      },
+      {
+        "type": "text",
+        "text": "Please take a break at four o'clock in the afternoon.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（判断：通知要求工人在下午 4 点整休息。）"
+      }
+    ],
     "explanation": "four o'clock 表示 4 点整，in the afternoon 表示在下午。因此该判断正确。",
     "grading": {
       "boolean": true
@@ -548,7 +894,23 @@
     "concepts": [
       "clock-time"
     ],
-    "stem": "工段长指着倒计时牌说：\"The machine stops at two o'clock. It is now one o'clock.\" 距离机器停机还剩多少个小时？请用阿拉伯数字作答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "工段长指着倒计时牌说："
+      },
+      {
+        "type": "text",
+        "text": "The machine stops at two o'clock. It is now one o'clock.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 距离机器停机还剩多少个小时？请用阿拉伯数字作答。"
+      }
+    ],
     "explanation": "当前时间是 1 点（one o'clock），机器将在 2 点（two o'clock）停机，剩余时间为 2 - 1 = 1 个小时。因此正确答案是 1。",
     "grading": {
       "value": "1",

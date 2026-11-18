@@ -6,23 +6,48 @@
     "concepts": [
       "days-dates"
     ],
-    "stem": "在桌面质检分拣工位上，质检员记录传感器校准日程。若要表达“校准将在星期一进行”，下列介词填空正确的是：`The calibration is ____ Monday.`",
+    "stem": [
+      {
+        "type": "text",
+        "text": "在桌面质检分拣工位上，质检员记录传感器校准日程。若要表达“校准将在星期一进行”，下列介词填空正确的是：\nThe calibration is "
+      },
+      {
+        "type": "blank",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "text": " Monday."
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "at"
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "on"
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "in"
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "to"
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "在具体的星期（如 Monday）前必须使用时间介词 on。at 用于具体钟点时刻，in 用于月份或年份，to 表示方向或终点，均不符合时间介词规则。",
@@ -39,23 +64,51 @@
     "concepts": [
       "days-dates"
     ],
-    "stem": "电脑屏幕显示合格料盒中工件的生产日期标签为 `March 3rd`。质检员用英语向领班朗读该日期时，规范的读法是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "电脑屏幕显示合格料盒中工件的生产日期标签为 "
+      },
+      {
+        "type": "text",
+        "text": "March 3rd",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。质检员用英语向领班朗读该日期时，规范的读法是："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "March three"
+        "text": "March three",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "March three day"
+        "text": "March three day",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "the March three"
+        "text": "the March three",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "March the third"
+        "text": "March the third",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "英语中日期的序数词 3rd 规范朗读为 the third，整个日期读作 March the third（或 the third of March）。直接使用基数词 three 属于常见口误。",
@@ -76,19 +129,31 @@
     "options": [
       {
         "id": "a",
-        "text": "The new batch arrives in May."
+        "text": "The new batch arrives in May.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "The sensor test is in Friday."
+        "text": "The sensor test is in Friday.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "The maintenance is on May 12th."
+        "text": "The maintenance is on May 12th.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "The night shift starts on 2026."
+        "text": "The night shift starts on 2026.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "单独月份 May 前使用介词 in，表达正确；具体日期 May 12th 前使用介词 on，表达正确。选项 b 中星期 Friday 前应使用 on 而非 in；选项 d 中年份 2026 前应使用 in 而非 on。",
@@ -106,7 +171,34 @@
     "concepts": [
       "days-dates"
     ],
-    "stem": "判断下列关于工位英语书写的说法是否正确：在书写工位质检记录和交接班排班表时，星期（如 `Monday`）和月份（如 `July`）的首字母无论位于句首还是句中，都必须大写。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列关于工位英语书写的说法是否正确：在书写工位质检记录和交接班排班表时，星期（如 "
+      },
+      {
+        "type": "text",
+        "text": "Monday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）和月份（如 "
+      },
+      {
+        "type": "text",
+        "text": "July",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）的首字母无论位于句首还是句中，都必须大写。"
+      }
+    ],
     "explanation": "英文中的星期（Monday 至 Sunday）和月份（January 至 December）属于专有名词，首字母在句子的任何位置都必须大写。",
     "grading": {
       "boolean": true
@@ -119,23 +211,51 @@
     "concepts": [
       "days-dates"
     ],
-    "stem": "质检流水线上记录当月第 21 个检验批次，工位看板简写为 `21st batch`。单词 `21st` 的完整英文拼写是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检流水线上记录当月第 21 个检验批次，工位看板简写为 "
+      },
+      {
+        "type": "text",
+        "text": "21st batch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。单词 21st 的完整英文拼写是："
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "twenty-first"
+        "text": "twenty-first",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "twenty-one"
+        "text": "twenty-one",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "twentieth-one"
+        "text": "twentieth-one",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "twelfth"
+        "text": "twelfth",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "基数词 21（twenty-one）对应的序数词为 twenty-first，缩写为 21st。twenty-one 是基数词，twentieth-one 为错误拼写，twelfth 表示第十二。",
@@ -156,19 +276,31 @@
     "options": [
       {
         "id": "a",
-        "text": "Where the reject box is?"
+        "text": "Where the reject box is?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "What is the reject box?"
+        "text": "What is the reject box?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Where is the reject box?"
+        "text": "Where is the reject box?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "Where does the reject box?"
+        "text": "Where does the reject box?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "询问地点使用特殊疑问词 Where，含有 be 动词的疑问句语序为“疑问词 + be 动词 + 主语”，因此 Where is the reject box? 正确。选项 a 未倒装，选项 b 询问物品是什么，选项 d 缺少实义动词。",
@@ -189,19 +321,31 @@
     "options": [
       {
         "id": "a",
-        "text": "How many good parts are in the bin?"
+        "text": "How many good parts are in the bin?",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "b",
-        "text": "How much good parts are in the bin?"
+        "text": "How much good parts are in the bin?",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "c",
-        "text": "How many is the good parts in the bin?"
+        "text": "How many is the good parts in the bin?",
+        "tts": {
+          "voice": "tide"
+        }
       },
       {
         "id": "d",
-        "text": "What time are good parts in the bin?"
+        "text": "What time are good parts in the bin?",
+        "tts": {
+          "voice": "tide"
+        }
       }
     ],
     "explanation": "工件 parts 是可数名词复数，询问数量使用 How many 加复数名词，be 动词使用 are。How much 用于不可数名词，What time 询问时间，选项 c 主谓单复数不一致。",
@@ -222,19 +366,31 @@
     "options": [
       {
         "id": "a",
-        "text": "What time does the sorting start? —— Yes, it does."
+        "text": "What time does the sorting start? —— Yes, it does.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "Where is the camera? —— On the bracket."
+        "text": "Where is the camera? —— On the bracket.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Who is the technician today? —— In the workshop."
+        "text": "Who is the technician today? —— In the workshop.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "How many defective parts are there? —— Three parts."
+        "text": "How many defective parts are there? —— Three parts.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "选项 b 询问位置 Where，回答在支架上 On the bracket.，搭配合理；选项 d 询问数量 How many，直接回答数量 Three parts.，搭配合理。选项 a 为特殊疑问句，不能用 Yes/No 作答；选项 c 询问人员 Who，回答地点属于答非所问。",
@@ -252,7 +408,34 @@
     "concepts": [
       "wh-questions"
     ],
-    "stem": "判断下列关于工位交流对话的说法是否正确：当领班在工位前询问 `What do you check first?` 时，质检员可以用 `Yes, I do.` 简短回答。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列关于工位交流对话的说法是否正确：当领班在工位前询问 "
+      },
+      {
+        "type": "text",
+        "text": "What do you check first?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时，质检员可以用 "
+      },
+      {
+        "type": "text",
+        "text": "Yes, I do.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 简短回答。"
+      }
+    ],
     "explanation": "What 引导的是特殊疑问句，用于询问具体检查的物品或操作（如 The sensor.），不能用 Yes 或 No 回答；Yes, I do. 仅用于回答 Do you...? 引导的一般疑问句。",
     "grading": {
       "boolean": false
@@ -269,19 +452,31 @@
     "options": [
       {
         "id": "a",
-        "text": "When the servo flap moves?"
+        "text": "When the servo flap moves?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "When moves the servo flap?"
+        "text": "When moves the servo flap?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "When is the servo flap move?"
+        "text": "When is the servo flap move?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "When does the servo flap move?"
+        "text": "When does the servo flap move?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "含有实义动词的特殊疑问句语序为“疑问词 + 助动词 (do/does) + 主语 + 动词原形”。主语 the servo flap 是单数，助动词用 does，动词还原为 move。选项 a 缺少助动词，选项 b 语序错误，选项 c 混淆了 be 动词与助动词。",
@@ -302,19 +497,31 @@
     "options": [
       {
         "id": "a",
-        "text": "I check always the sensor."
+        "text": "I check always the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "I always check the sensor."
+        "text": "I always check the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Always I check the sensor."
+        "text": "Always I check the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "I am always check the sensor."
+        "text": "I am always check the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "频率副词修饰实义动词时应置于实义动词之前。check 为实义动词，因此 always 必须放在 check 之前，即 I always check...。选项 a 放在动词之后，选项 d 误加了 be 动词 am。",
@@ -335,19 +542,31 @@
     "options": [
       {
         "id": "a",
-        "text": "The servo flap never is stuck."
+        "text": "The servo flap never is stuck.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "Never the servo flap is stuck."
+        "text": "Never the servo flap is stuck.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "The servo flap is never stuck."
+        "text": "The servo flap is never stuck.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "The servo flap is stuck never."
+        "text": "The servo flap is stuck never.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "频率副词在含有 be 动词的句子中必须放在 be 动词之后。本句 be 动词为 is，因此 never 应紧跟在 is 之后构成 is never stuck。其余选项的副词位置均不符合语法规则。",
@@ -364,23 +583,51 @@
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": "领班询问工位维护频率：`How often do you clean the camera lens?` 下列回答在语法和含义上均正确的有哪两项？请选择两项。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "领班询问工位维护频率："
+      },
+      {
+        "type": "text",
+        "text": "How often do you clean the camera lens?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 下列回答在语法和含义上均正确的有哪两项？请选择两项。"
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "I clean it twice a week."
+        "text": "I clean it twice a week.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "I clean often it."
+        "text": "I clean often it.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "I clean it at Monday."
+        "text": "I clean it at Monday.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "I usually clean it every day."
+        "text": "I usually clean it every day.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "选项 a 中频次短语 twice a week（一周两次）放在句末，语法正确；选项 d 中 usually 位于实义动词 clean 之前，句末搭配 every day 表示通常每天清洁，语法正确。选项 b 中 often 错误地置于动词与宾语之间；选项 c 中星期 Monday 前应使用 on 而非 at。",
@@ -398,7 +645,34 @@
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": "判断下列关于频率副词词义的说法是否正确：在工位维护英语中，`never` 表示“从不发生”，而 `sometimes` 表示“有时发生”。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列关于频率副词词义的说法是否正确：在工位维护英语中，"
+      },
+      {
+        "type": "text",
+        "text": "never",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“从不发生”，而 "
+      },
+      {
+        "type": "text",
+        "text": "sometimes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“有时发生”。"
+      }
+    ],
     "explanation": "在频率副词的词义程度中，never 表示发生频度为零（从不），sometimes 表示发生频度较低（有时），说法完全符合词义定义。",
     "grading": {
       "boolean": true
@@ -411,23 +685,48 @@
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": "质检员想询问同事“你多久清空一次不合格品料盒？”，空缺处应填入的疑问短语是：`____ do you empty the reject box?`",
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检员想询问同事“你多久清空一次不合格品料盒？”，空缺处应填入的疑问短语是：\n"
+      },
+      {
+        "type": "blank",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "text": " do you empty the reject box?"
+      }
+    ],
     "options": [
       {
         "id": "a",
-        "text": "How often"
+        "text": "How often",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "How many"
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "How much"
+        "text": "How much",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "What time"
+        "text": "What time",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "询问动作发生的频率固定使用疑问词组 How often。How many 询问可数数量，How much 询问不可数数量或价格，What time 询问具体钟点时刻。",
@@ -448,19 +747,31 @@
     "options": [
       {
         "id": "a",
-        "text": "My shift start at 8:00 a.m."
+        "text": "My shift start at 8:00 a.m.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "My shift is start at 8:00 a.m."
+        "text": "My shift is start at 8:00 a.m.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "My shift starting on 8:00 a.m."
+        "text": "My shift starting on 8:00 a.m.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "My shift starts at 8:00 a.m."
+        "text": "My shift starts at 8:00 a.m.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "主语 My shift 是第三人称单数，一般现在时中实义动词 start 必须加 s 变为 starts，具体钟点前使用介词 at。选项 a 动词缺少词尾 s，选项 b 结构混乱，选项 c 缺少谓语动词且介词错误。",
@@ -481,19 +792,31 @@
     "options": [
       {
         "id": "a",
-        "text": "The break is between 12:00 to 12:30."
+        "text": "The break is between 12:00 to 12:30.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "The break is on 12:00 at 12:30."
+        "text": "The break is on 12:00 at 12:30.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "The break is from 12:00 to 12:30."
+        "text": "The break is from 12:00 to 12:30.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "The break starts in 12:00 to 12:30."
+        "text": "The break starts in 12:00 to 12:30.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "表达“从某时到某时”的时间区间固定搭配为 from ... to ...。选项 a 混淆了 between... and... 与 from... to...，选项 b 和 d 介词搭配完全错误。",
@@ -514,19 +837,31 @@
     "options": [
       {
         "id": "a",
-        "text": "I finish work on 4:00 p.m."
+        "text": "I finish work on 4:00 p.m.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "I am on the night shift this week."
+        "text": "I am on the night shift this week.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "The day shift finishes at 4:30 p.m."
+        "text": "The day shift finishes at 4:30 p.m.",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "My shift starts in Monday morning."
+        "text": "My shift starts in Monday morning.",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "选项 b 表达上夜班使用固定短语 on the night shift，表达正确；选项 c 表达白班在 4:30 结束，第三人称单数动词 finishes 与介词 at 均正确。选项 a 中具体钟点 4:00 p.m. 前应使用 at 而非 on；选项 d 中具体某一天的上午 Monday morning 前应使用介词 on 而非 in。",
@@ -544,7 +879,23 @@
     "concepts": [
       "shift-schedule"
     ],
-    "stem": "判断下列关于班次表达的说法是否正确：在车间英语中，表达“我本周上早班”应说成 `I am at the morning shift this week.`。",
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列关于班次表达的说法是否正确：在车间英语中，表达“我本周上早班”应说成 "
+      },
+      {
+        "type": "text",
+        "text": "I am at the morning shift this week.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "explanation": "表达在某个班次上工作，英语中规范使用介词 on，即 on the morning shift，不能搭配介词 at。",
     "grading": {
       "boolean": false
@@ -561,19 +912,31 @@
     "options": [
       {
         "id": "a",
-        "text": "What time your shift finish?"
+        "text": "What time your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
-        "text": "What time does your shift finish?"
+        "text": "What time does your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
-        "text": "Where does your shift finish?"
+        "text": "Where does your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
-        "text": "What time is your shift finish?"
+        "text": "What time is your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "explanation": "询问具体时间使用 What time，主语 your shift 为第三人称单数，实义动词 finish 的疑问句需要助动词 does，构成 What time does your shift finish?。选项 a 缺少助动词，选项 c 询问地点 Where，选项 d 助动词误用 be 动词 is。",
