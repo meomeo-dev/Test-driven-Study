@@ -6,9 +6,9 @@ Updated 2026-11-17 (America/New_York).
 
 - **Repository**: `/Volumes/1TB-ZYJ/git/Test-driven-Study` (independent, standalone checkout).
 - **Active Branch**: `feat/0052-expand-sample-courses-to-180-hour-standard-curriculum`
-- **Baseline Commit**: `bdc17fd` (`docs: update handoff with 30 lessons complete (Units 1-3) and paused for user testing`)
+- **Baseline Commit**: `7ec0b18` (`docs: document unified 3-tab TTS integration and v2 question types specification`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Current Milestone**: Design specifications for Unified 3-Tab Settings (TTS / LLM / Image), DeepSeek TTS Integration, and v2 Question Types Expansion formalized and committed into repository documentation.
+- **Current Milestone**: Architectural schema adjustment committed: Replaced heuristic string parsing with a declarative Rich Content (Array + Object) model for questions and options, supporting mixed inline text and TTS audio controls without fragile regex.
 
 ---
 
@@ -20,11 +20,11 @@ The architectural specifications requested by the user are fully documented in:
    - [docs/features/tts/deepseek-tts-architecture.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/docs/features/tts/deepseek-tts-architecture.md)
    - [docs/features/tts/README.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/docs/features/tts/README.md)
    - **Key Architecture**:
+     - **Declarative Rich Content / In-Line Mixed Layout**: Questions and options can be defined as structured arrays of segments (`ContentSegment[]`) or plain strings. Segments with `"tts"` render text plus play/regenerate audio buttons; segments without `"tts"` render as plain text. Zero heuristic string parsing.
      - **Unified 3-Tab Provider Dialog**: Expanded from 2 tabs to 3 tabs (`生图服务`, `LLM · Responses`, `TTS · 语音服务`).
      - **Keyring & Credential Reuse**: Option to reuse DeepSeek LLM API key or configure a dedicated key, encrypted in OS Keyring.
      - **DeepSeek TTS Protocol**: Integrates `POST /v1/tools/tts` (24kHz raw PCM wrapped in 44-byte RIFF WAV headers, FNV-1a 64-bit phrase hashing).
      - **Local Disk Cache**: Persistent storage in `var/audio/{voice_id}/{phrase_key}.wav` with singleflight concurrency deduplication.
-     - **Audio Extraction & Anti-Cloze Rules**: Synthesizes English options, dialogue quotes in question stems (`Stop!`), and listening transcripts; strictly excludes grammar fill-in-the-blank items (`___`, `(   )`).
      - **UI Controls**: `<Volume2 />` play button and `<RotateCcw />` regenerate button with global single-instance audio coordination.
 
 2. **Question Types Extension (v2 Specification)**:
@@ -32,9 +32,9 @@ The architectural specifications requested by the user are fully documented in:
    - [docs/features/question-types/README.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/docs/features/question-types/README.md)
    - **Key Architecture**:
      - Expanded from 4 basic types to 10 types: Cloze (`cloze`), True/False with Analysis (`true_false`), Listening Comprehension (`listening`), Reading Comprehension (`reading_comprehension`), Writing (`writing`: sentence making, short essay, full essay), and Translation (`translation`: EN->ZH, ZH->EN).
+     - Declarative array + object stems, passages, and options.
      - Zero-schema-breaking SQLite storage: leverages `payload_json` and `selected_json` text columns without database migrations.
-     - Comprehensive JSON schemas and grading rules for all new types.
-     - 10 production-grade golden samples for `step-up-english`.
+     - 10 production-grade golden samples for `step-up-english` demonstrating mixed text/TTS stems and options.
 
 ---
 

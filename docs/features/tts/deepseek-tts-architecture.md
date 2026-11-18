@@ -4,7 +4,7 @@ This document specifies the technical design, data contracts, security model, an
 interaction architecture for integrating DeepSeek Text-to-Speech (TTS) into the
 learning platform.
 
-## 1. Overview and Problem Statement
+## 1. Overview and Design Principles
 
 Language learning in curriculum modules (e.g., `step-up-english-1` and
 `step-up-english-2`) requires auditory reinforcement alongside text. Learners need:
@@ -16,22 +16,24 @@ Language learning in curriculum modules (e.g., `step-up-english-1` and
 4. Unified provider settings so the learner can configure Image, LLM, and TTS services
    in one centralized modal with shared credential options.
 
-### Key Functional Requirements
-- **Unified 3-Tab Settings Modal**: Extend the existing `ProviderDialog` from 2 tabs
-  (`image`, `llm`) to 3 tabs (`image`, `llm`, `tts`), allowing full configuration of
-  speech synthesis alongside reasoning and image generation.
-- **Credential Reuse & Keyring Security**: DeepSeek TTS credentials can be configured
-  independently or toggle-reused from DeepSeek LLM settings, stored securely in the host
-  OS Keyring without exposing cleartext to the client.
-- **Audio Extraction Rules**: Identify which text should receive speech synthesis
-  (e.g., English options, dialogue quotes in question stems like `"Stop!"`, listening
-  scripts) while strictly filtering out grammar fill-in-the-blank items (Anti-Cloze
-  guardrail).
-- **Audio Storage & Deduplication**: Cache synthesized 24kHz WAV audio files in
-  `var/audio/{voice_id}/{phrase_key}.wav`, using 64-bit FNV-1a phrase hashing and backend
-  singleflight concurrency deduplication.
-- **UI Playback & Generation Controls**: Render play (`<Volume2 />`) and regenerate
-  (`<RotateCcw />`) icon buttons on question items with global single-instance playback.
+### Key Architectural Decisions
+- **Declarative Rich Content Model (No Heuristic String Parsing)**:
+  Question stems, passages, and options are defined using a structured array of content
+  segments (`ContentSegment[]`) in the question JSON rather than opaque flat strings.
+  TTS capability is explicitly declared on the segment object. If a segment declares TTS,
+  the UI renders both the text and its audio play/regenerate controls; if omitted, only
+  plain text is rendered.
+- **Unified 3-Tab Settings Modal**:
+  Extend `ProviderDialog` from 2 tabs (`image`, `llm`) to 3 tabs (`image`, `llm`, `tts`),
+  allowing centralized configuration of speech synthesis alongside reasoning and image
+  generation.
+- **Credential Reuse & Keyring Security**:
+  DeepSeek TTS credentials can be configured independently or toggle-reused from DeepSeek
+  LLM settings, stored securely in the host OS Keyring without exposing cleartext to the
+  client.
+- **Deterministic Audio Caching**:
+  Cache synthesized 24kHz WAV audio files in `var/audio/{voice_id}/{phrase_key}.wav`,
+  using 64-bit FNV-1a phrase hashing and backend singleflight concurrency deduplication.
 
 ---
 
@@ -56,7 +58,7 @@ The tab bar renders three tabs with ARIA accessibility roles and keyboard naviga
 
 ```mermaid
 flowchart TD
-    subgraph ProviderDialog ["ProviderDialog (Modal: LLM / AI 服务设置)"]
+    subgraph ProviderDialog ["ProviderDialog (Modal: AI 服务设置)"]
         TabBar["Tab Bar (3 Tabs)"]
         Tab1["[生图服务] (image)"]
         Tab2["[LLM · Responses] (llm)"]
@@ -79,9 +81,9 @@ flowchart TD
 ### 2.2 Form Fields for TTS Tab
 When `kind === 'tts'`, `ProviderForm` renders:
 - **Base URL**: Defaults to `https://api.deepseek.com/v1/tools/tts`.
-- **Voice Selection**: Dropdown or radio selector for available voices:
+- **Voice Selection**: Radio/select control for available voices:
   - `stella`: Professional female voice (default for standard British/American clarity).
-  - `tide`: Resonant male voice (for dialogue distinction).
+  - `tide`: Resonant male voice (for dialogue differentiation).
 - **API Key & Reuse Option**:
   - `reuse_llm_key` Checkbox: "复用 LLM 服务商密钥". When checked and the active LLM
     provider is DeepSeek, the TTS service reuses the LLM credential directly, avoiding
@@ -95,9 +97,168 @@ When `kind === 'tts'`, `ProviderForm` renders:
 
 ---
 
-## 3. DeepSeek TTS API Specification and Audio Processing
+## 3. Declarative Rich Content & In-line TTS Mixed Layout
 
-### 3.1 DeepSeek TTS API Protocol
+Rather than relying on heuristic string parsing or regular expressions (which risk
+accidental reads of blanks like `___`), TTS capability is explicitly declared in the
+course item JSON. Question stems, options, and passages can be structured as either a
+simple string (for backward compatibility) or an array of content segments.
+
+### 3.1 Content Segment Data Contract
+```typescript
+export interface TTSConfig {
+  voice?: 'stella' | 'tide';
+  text?: string;        // Optional alternate text to speak (e.g., spoken form of symbols)
+  speed?: number;       // Optional playback rate factor (default 1.0)
+}
+
+export interface ContentSegment {
+  type: 'text' | 'speech' | 'blank';
+  text?: string;
+  tts?: boolean | TTSConfig;
+  index?: number;       // For 'blank' segment in Cloze questions
+}
+
+export type RichContent = string | ContentSegment[];
+```
+
+### 3.2 Canonical Concrete Examples
+
+#### Case 1: Mixed In-line Stem Dialogue (`Stop!`)
+When a sentence contains an spoken exclamation or dialogue segment within narrative text:
+```json
+{
+  "id": "item-sue1-sc-012",
+  "type": "single_choice",
+  "stem": [
+    { "type": "text", "text": "在装配线工作时，机器突然发生故障，工友大声对你说：" },
+    { "type": "text", "text": "Stop!", "tts": { "voice": "tide" } },
+    { "type": "text", "text": " 此时你应该：" }
+  ],
+  "options": [
+    { "id": "a", "text": "立即按下红色急停按钮并停止操作" },
+    { "id": "b", "text": "继续操作并等待班长到来" },
+    { "id": "c", "text": "关掉车间总照明灯" },
+    { "id": "d", "text": "大声向工友回复无需惊慌" }
+  ],
+  "grading": { "choice_ids": ["a"] }
+}
+```
+**UI Render Result**:
+- The introductory text `"在装配线工作时，机器突然发生故障，工友大声对你说："` displays as text.
+- `"Stop!"` displays in high-contrast code/tag style immediately followed by inline
+  `<Volume2 />` (play) and `<RotateCcw />` (regenerate) icons.
+- The trailing text `" 此时你应该："` displays as text.
+- Zero heuristic parsing required.
+
+#### Case 2: Options with English Speech (`The light doesn't work.`)
+When options contain English phrases that require pronunciation:
+```json
+{
+  "id": "item-sue1-sc-013",
+  "type": "single_choice",
+  "stem": "工人向维修工汇报车间照明指示灯故障时，最地道的英文表达是：",
+  "options": [
+    { "id": "a", "text": "The light doesn't work.", "tts": { "voice": "stella" } },
+    { "id": "b", "text": "The light is dead person.", "tts": false },
+    { "id": "c", "text": "No light working now.", "tts": false },
+    { "id": "d", "text": "The light loses power heart.", "tts": false }
+  ],
+  "grading": { "choice_ids": ["a"] }
+}
+```
+**UI Render Result**:
+- Option A displays the text `"The light doesn't work."` alongside play and regenerate
+  icons.
+- Options B, C, D (non-standard Chinglish distractors) do not have `tts: true`, so they
+  render cleanly as plain text without confusing audio.
+
+#### Case 3: Grammar Fill-in-the-Blank (No Audio by Definition)
+In grammar syntax questions containing blank lines:
+```json
+{
+  "id": "item-sue1-sc-014",
+  "type": "single_choice",
+  "stem": [
+    { "type": "text", "text": "在车间向同事介绍自己的家乡时，想表达“我来自云南”，横线处应填入哪个介词？\n" },
+    { "type": "text", "text": "I am ___ Yunnan." }
+  ],
+  "options": [
+    { "id": "a", "text": "from" },
+    { "id": "b", "text": "at" },
+    { "id": "c", "text": "in" },
+    { "id": "d", "text": "on" }
+  ],
+  "grading": { "choice_ids": ["a"] }
+}
+```
+**UI Render Result**:
+- Neither the stem segments nor the options declare `tts`.
+- Both the instruction and `"I am ___ Yunnan."` render strictly as text.
+- No TTS controls appear, eliminating any possibility of speech engines attempting to
+  read out underscores or placeholder symbols.
+
+#### Case 4: Listening Multi-Speaker Dialogue
+Dialogue listening scripts define speaker tags and explicit voices per line:
+```json
+{
+  "id": "item-sue1-list-003",
+  "type": "listening",
+  "stem": "Listen to the conversation and answer the question.",
+  "transcript": [
+    { "speaker": "M", "text": "Excuse me, where is the emergency valve?", "tts": { "voice": "tide" } },
+    { "speaker": "W", "text": "It is right next to the main transformer.", "tts": { "voice": "stella" } }
+  ]
+}
+```
+**UI Render Result**:
+- Line 1 renders `M:` badge, line text, and controls invoking `voice: "tide"`.
+- Line 2 renders `W:` badge, line text, and controls invoking `voice: "stella"`.
+
+---
+
+## 4. Frontend Rendering Architecture: `RichContent` Component
+
+To support mixed inline rendering effortlessly across all question views, a shared
+component `RichContent` is introduced in `web/src/components/RichContent.tsx`:
+
+```tsx
+import { AudioControls } from './AudioControls';
+import type { RichContent as RichContentType, ContentSegment } from '../api/course';
+
+export function RichContent({ content, defaultVoice = 'stella' }: {
+  content: RichContentType;
+  defaultVoice?: 'stella' | 'tide';
+}) {
+  if (typeof content === 'string') {
+    return <span className="rich-content-text">{content}</span>;
+  }
+  return (
+    <span className="rich-content-mixed">
+      {content.map((segment, index) => {
+        if (!segment.tts) {
+          return <span key={index} className="rich-segment-text">{segment.text}</span>;
+        }
+        const ttsConfig = typeof segment.tts === 'object' ? segment.tts : {};
+        const voice = ttsConfig.voice || defaultVoice;
+        const textToSpeak = ttsConfig.text || segment.text || '';
+        return (
+          <span key={index} className="rich-segment-speech">
+            <span className="rich-speech-text">{segment.text}</span>
+            <AudioControls text={textToSpeak} voice={voice} />
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+```
+
+---
+
+## 5. DeepSeek TTS API Specification and Audio Processing
+
+### 5.1 DeepSeek TTS API Protocol
 - **Endpoint**: `POST https://api.deepseek.com/v1/tools/tts`
 - **Headers**:
   - `Content-Type: application/json`
@@ -117,7 +278,7 @@ When `kind === 'tts'`, `ProviderForm` renders:
   - Channels: 1 (Mono)
   - Bitrate: 384 kbps uncompressed PCM
 
-### 3.2 24kHz PCM to RIFF WAV Container Synthesis
+### 5.2 24kHz PCM to RIFF WAV Container Packaging
 Browsers cannot reliably stream raw headerless PCM through the standard HTML5 `<audio>`
 element. The backend Go service encapsulates incoming PCM bytes with a standard 44-byte
 RIFF WAV header prior to writing to disk and serving:
@@ -139,7 +300,7 @@ RIFF WAV header prior to writing to disk and serving:
 44-..: Raw PCM Audio Bytes
 ```
 
-### 3.3 Phrase Key Hashing Algorithm (FNV-1a 64-bit)
+### 5.3 Phrase Key Hashing Algorithm (FNV-1a 64-bit)
 To maintain 100% interoperability with `.agents/skills/maintain-deepseek-tts-audio`, the
 cache key for any synthesized phrase is computed using 64-bit FNV-1a on the normalized
 text (trimmed whitespace, normalized Unicode):
@@ -154,50 +315,13 @@ For each byte b in normalized UTF-8 string:
 Result: 16-character lowercase hex string: fmt.Sprintf("%016x", hash)
 ```
 
-Example: `"The light doesn't work."` -> `var/audio/stella/9a3f2b8014e5c8a2.wav`.
+Example: `"Stop!"` -> `var/audio/tide/17f8a3d1004bca91.wav`.
 
 ---
 
-## 4. Text Audio Extraction Rules: What to Synthesize vs What to Exclude
+## 6. Storage, Caching, and Concurrency Architecture
 
-Audio generation must be contextually appropriate. Unconditional synthesis of all text
-damages the pedagogical experience (e.g., reading grammar blanks aloud confuses learners).
-
-### 4.1 Audio Eligible Content (Synthesize)
-1. **Target Language in Options**:
-   - Pure English option text in vocabulary and sentence completion exercises.
-   - Example: Option A: `"The light doesn't work."` -> Synthesize option text.
-2. **Key Dialogue & Exclamations in Stems**:
-   - When a stem presents a spoken phrase or dialogue prompt enclosed in quotation marks
-     or backticks.
-   - Example: Stem: `在装配线工作时，机器突然发生故障，工友大声对你说：Stop! 此时你应该：`
-   - Extracted speech target: `"Stop!"`.
-3. **Listening Comprehension Scripts (`transcript`)**:
-   - **Dialogue format**: Alternating speaker lines prefixed by roles, e.g.:
-     - `M: Excuse me, where is the safety switch?` -> Voice: `tide`
-     - `W: It is right next to the emergency valve.` -> Voice: `stella`
-   - **Passage reading**: Monologue/lecture text read continuously by standard voice.
-
-### 4.2 Audio Ineligible Content (Strictly Excluded)
-1. **Grammar Fill-in-the-Blank Stems (Anti-Cloze Filter)**:
-   - When a stem or sentence contains blank placeholders (`___`, `(   )`, `{{1}}`, `[ ]`),
-     it is testing syntactic choice rather than listening comprehension.
-   - Example: `在车间向同事介绍自己的家乡时，想表达“我来自云南”，横线处应填入哪个介词？I am ___ Yunnan.`
-   - Filter rule: Matches `CLOZE_BLANK_PATTERN`:
-     ```regexp
-     _{2,}|\([ _\t]*\)|\{\{\d+\}\}|\[[ _\t]*\]
-     ```
-   - Action: **Suppress automatic speech extraction**. Only explicit options or confirmed
-     complete sentences are eligible.
-2. **Chinese Instruction Metatext**:
-   - System prompts such as `请根据短文内容选择最佳答案` or `下列说法中正确的是` are UI instructions
-     and must not be sent to English TTS.
-
----
-
-## 5. Storage, Caching, and Concurrency Architecture
-
-### 5.1 Storage Directory Structure
+### 6.1 Storage Directory Structure
 All synthesized audio is persisted on disk under the application data directory:
 ```
 var/
@@ -206,11 +330,11 @@ var/
     │   ├── 9a3f2b8014e5c8a2.wav
     │   └── e01c89f538a719bd.wav
     └── tide/
-        ├── 14a8bd90ef256c71.wav
+        ├── 17f8a3d1004bca91.wav
         └── c3b910a267ef8401.wav
 ```
 
-### 5.2 Singleflight Concurrency Deduplication
+### 6.2 Singleflight Concurrency Deduplication
 When multiple UI clients or components request synthesis for the same text and voice
 simultaneously, the backend wraps the synthesis call in a `singleflight.Group`:
 1. Request 1 arrives -> initiates API call to DeepSeek.
@@ -218,7 +342,7 @@ simultaneously, the backend wraps the synthesis call in a `singleflight.Group`:
 3. API returns -> both requests receive the cached result simultaneously; only 1 API call
    is billed.
 
-### 5.3 Cache Invalidation and Regeneration
+### 6.3 Cache Invalidation and Regeneration
 - Normal Play (`GET /api/audio/:voice/:key.wav` or `POST /api/tts/synthesize`):
   Checks disk first. On cache hit, streams file with `Content-Type: audio/wav` and
   `Cache-Control: public, max-age=31536000, immutable`.
@@ -228,78 +352,36 @@ simultaneously, the backend wraps the synthesis call in a `singleflight.Group`:
 
 ---
 
-## 6. Frontend UI Components and Interaction Flow
+## 7. Frontend UI Controls & Global Playback Manager
 
-### 6.1 Audio Control Buttons on Question Items
-Each eligible audio segment renders an `AudioControls` container with two buttons:
+### 7.1 Interactive Audio Controls (`AudioControls`)
+Each speech-enabled segment renders:
 1. **Play Button (`<Volume2 />`)**:
-   - Default State: Outline icon with tooltip "播放发音".
-   - Loading State: Animated spinner (`<LoaderCircle className="spin" />`).
-   - Playing State: High-contrast speaker icon with sound waves (`<Volume2 className="active" />`).
-   - Action: If audio is cached, plays immediately. If not cached, triggers background
-     synthesis, caches the audio, and begins playback.
-2. **Generate / Regenerate Button (`<RotateCcw />` / `<Sparkles />`)**:
-   - Renders as a small secondary icon button with tooltip "重新生成发音".
-   - Action: Invokes `POST /api/tts/synthesize` with `force: true`, bypassing cache.
+   - Default: Outline speaker icon with tooltip "播放发音".
+   - Loading: Animated spinner (`<LoaderCircle className="spin" />`).
+   - Playing: Active high-contrast speaker icon.
+   - Click: If cached, plays immediately; if uncached, triggers synthesis, caches on
+     disk, and starts playback.
+2. **Generate / Regenerate Button (`<RotateCcw />`)**:
+   - Small secondary icon button with tooltip "重新生成发音".
+   - Click: Forces re-synthesis via `POST /api/tts/synthesize` with `force: true`.
 
-### 6.2 Global Single-Instance Audio Manager (`globalAudio`)
-To prevent acoustic chaos from overlapping audio streams, the frontend maintains a
-singleton `HTMLAudioElement`:
-- Starting playback on any button immediately calls `globalAudio.pause()` and resets the
-  playback state of previously active buttons.
-- Supports native keyboard shortcuts: Space bar to pause/resume currently active audio.
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Learner as Learner
-    participant UI as QuestionCard (Web UI)
-    participant AudioMgr as GlobalAudioManager
-    participant API as Backend (Go HTTP API)
-    participant Cache as Disk Cache (var/audio/)
-    participant DeepSeek as DeepSeek TTS API
-
-    Learner->>UI: Clicks Play Icon (Volume2)
-    UI->>AudioMgr: playAudio(voice, text)
-    AudioMgr->>AudioMgr: Stop existing audio stream
-    AudioMgr->>API: POST /api/tts/synthesize {voice, text}
-    API->>API: Compute FNV-1a 64-bit Phrase Key
-    API->>Cache: Check var/audio/{voice}/{key}.wav
-    alt Cache Hit
-        Cache-->>API: Read WAV File
-        API-->>AudioMgr: Return WAV Audio Stream
-    else Cache Miss
-        API->>DeepSeek: POST /v1/tools/tts {text, voice, format: "pcm"}
-        DeepSeek-->>API: Return 24kHz Raw PCM
-        API->>API: Wrap 44-byte RIFF WAV Header
-        API->>Cache: Save var/audio/{voice}/{key}.wav
-        API-->>AudioMgr: Return WAV Audio Stream
-    end
-    AudioMgr->>AudioMgr: HTML5 Audio play()
-    AudioMgr-->>UI: Update Button to Playing State
-    Learner->>UI: Clicks Regenerate Icon (RotateCcw)
-    UI->>API: POST /api/tts/synthesize {voice, text, force: true}
-    API->>DeepSeek: Force Call /v1/tools/tts
-    DeepSeek-->>API: Fresh 24kHz Raw PCM
-    API->>Cache: Overwrite var/audio/{voice}/{key}.wav
-    API-->>AudioMgr: Return Fresh WAV Stream
-    AudioMgr->>AudioMgr: Replay audio
-```
+### 7.2 Global Single-Instance Audio Manager (`globalAudio`)
+The frontend maintains a singleton audio player to prevent acoustic overlap:
+- Triggering any play action immediately halts the active audio track and resets its
+  button state.
+- Supports keyboard spacebar toggle for pause/resume of the active track.
 
 ---
 
-## 7. HTTP API Contracts
+## 8. HTTP API Contracts
 
-### 7.1 Stream Audio (`GET /api/audio/:voice/:key.wav`)
-- **Query / Path Parameters**:
-  - `voice`: `stella` | `tide`
-  - `key`: 16-character hex phrase key
-- **Responses**:
-  - `200 OK`: Binary `audio/wav` stream with caching headers.
-  - `404 Not Found`: Audio file has not been synthesized yet.
+### 8.1 Audio Stream Retrieval (`GET /api/audio/:voice/:key.wav`)
+- Path parameters: `voice` (`stella` | `tide`), `key` (16-char hex).
+- Returns: `audio/wav` binary stream.
 
-### 7.2 Synthesize Audio (`POST /api/tts/synthesize`)
-- **Request Body**:
+### 8.2 Synthesize / Regenerate (`POST /api/tts/synthesize`)
+- Request Body:
   ```json
   {
     "text": "The light doesn't work.",
@@ -307,24 +389,13 @@ sequenceDiagram
     "force": false
   }
   ```
-- **Responses**:
-  - `200 OK`:
-    ```json
-    {
-      "key": "9a3f2b8014e5c8a2",
-      "voice": "stella",
-      "audio_url": "/api/audio/stella/9a3f2b8014e5c8a2.wav",
-      "cached": true,
-      "duration_ms": 1420
-    }
-    ```
-  - `400 Bad Request`: Text exceeds 10,000 characters or invalid voice ID.
-  - `401 / 403`: TTS API key missing or invalid.
-  - `502 Bad Gateway`: Upstream DeepSeek TTS API error.
-
-### 7.3 TTS Settings Management
-- `GET /api/tts/settings`: Returns current configuration (base URL, voice, storage type,
-  `key_configured`, `reuse_llm_key`).
-- `PUT /api/tts/settings`: Updates base URL, voice, proxy, and saves new API key to OS
-  Keyring.
-- `POST /api/tts/test`: Dry-run synthesis with test phrase to verify configuration.
+- Response:
+  ```json
+  {
+    "key": "9a3f2b8014e5c8a2",
+    "voice": "stella",
+    "audio_url": "/api/audio/stella/9a3f2b8014e5c8a2.wav",
+    "cached": true,
+    "duration_ms": 1420
+  }
+  ```

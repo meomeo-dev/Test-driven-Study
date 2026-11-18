@@ -24,6 +24,11 @@ The platform's current question system is defined by three tightly coupled compo
 Vocational and academic English curricula (such as `step-up-english-1` and `step-up-english-2`)
 require complex evaluation formats that cannot be modeled by simple isolated multiple-choice
 options:
+- **Declarative Rich Content / Mixed Inline TTS**: Stems and options can be defined as
+  arrays of structured segment objects (`ContentSegment[]`) or simple strings. Any
+  segment or option declaring `"tts"` renders playback controls; segments without `"tts"`
+  render as plain text. This eliminates fragile regex parsing and prevents reading out
+  blanks.
 - **Cloze (完形填空)**: Contextual passages with multiple embedded blanks requiring independent
   lexical or grammatical selection.
 - **True/False with Analysis (判断题)**: Statements requiring a boolean judgment coupled with
@@ -42,37 +47,78 @@ options:
 
 ## 2. Design Principles and Non-Breaking Storage Architecture
 
-1. **Declarative JSON Schema Source of Truth**:
-   The schema extension adheres to JSON Schema Draft 2020-12, enabling compile-time and
-   pre-commit verification via `go run ./cmd/course check`.
+1. **Declarative Rich Content (Array + Object Schema)**:
+   Any textual content (`stem`, `passage`, `analysis`) supports polymorphic typing:
+   `string | ContentSegment[]`. When defined as an array of objects, content segments
+   explicitly declare TTS capability, styling, or blank placeholders.
 2. **Zero-Schema Breaking SQLite Persistence**:
    Both `course_items.payload_json` and `answer_attempts.selected_json` are SQLite `TEXT`
    fields storing serialized JSON. Introducing new payload attributes requires **zero DDL
    migrations** and leaves the 2,177 existing production items completely unaffected.
 3. **Graceful Workspace Projection**:
    The runtime projection layer maps legacy items to their existing presentation while
-   passing extended payloads (`sub_items`, `blanks`, `rubrics`) through to modern React
-   components (`ClozeQuestionCard`, `ListeningQuestionCard`, `WritingQuestionCard`, etc.).
+   passing extended payloads (`sub_items`, `blanks`, `rubrics`, `content`) through to
+   modern React components (`RichContent`, `ClozeQuestionCard`, `ListeningQuestionCard`,
+   `WritingQuestionCard`, etc.).
 
 ---
 
-## 3. The 6 New Question Types: Data Contracts and Schemas
+## 3. Rich Content Data Contract and In-Line TTS Architecture
 
-### 3.1 Cloze (完形填空, `cloze`)
-- **Structure**: A passage containing numbered placeholders formatted as `{{1}}`, `{{2}}`.
-  Each placeholder references a blank entry with isolated options and grading.
+### 3.1 Content Segment Schema
+```typescript
+export interface TTSConfig {
+  voice?: 'stella' | 'tide';
+  text?: string;        // Spoken text override (if different from visual text)
+  speed?: number;       // Playback rate factor (default 1.0)
+}
+
+export interface ContentSegment {
+  type: 'text' | 'speech' | 'blank';
+  text?: string;
+  tts?: boolean | TTSConfig;
+  index?: number;       // Used when type === 'blank'
+}
+
+export type RichContent = string | ContentSegment[];
+```
+
+### 3.2 Option Data Contract with Speech Support
+```typescript
+export interface CourseOption {
+  id: string;
+  text: string;
+  value?: boolean;
+  tts?: boolean | TTSConfig;
+}
+```
+
+---
+
+## 4. The 6 New Question Types: Data Contracts and Schemas
+
+### 4.1 Cloze (完形填空, `cloze`)
+- **Structure**: A passage defined as plain text with `{{1}}`, `{{2}}` markers or an array
+  of segments mixing text and blank objects (`{ "type": "blank", "index": 1 }`).
+  Each blank references an entry with isolated options, answer grading, and explanation.
 - **Data Contract**:
   ```json
   {
     "id": "item-eng-cloze-001",
     "type": "cloze",
     "stem": "Read the factory safety memo and choose the best word for each blank.",
-    "passage": "All technicians must wear protective {{1}} before entering the workshop. If an alarm sounds, immediately shut {{2}} the main power.",
+    "passage": [
+      { "type": "text", "text": "All technicians must wear protective " },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": " before entering the workshop. If an alarm sounds, immediately shut " },
+      { "type": "blank", "index": 2 },
+      { "type": "text", "text": " the main power." }
+    ],
     "blanks": [
       {
         "index": 1,
         "options": [
-          {"id": "a", "text": "gear"},
+          {"id": "a", "text": "gear", "tts": true},
           {"id": "b", "text": "books"},
           {"id": "c", "text": "tickets"},
           {"id": "d", "text": "watches"}
@@ -95,9 +141,9 @@ options:
   }
   ```
 
-### 3.2 True/False with Analysis (判断题, `true_false`)
-- **Structure**: A single factual or interpretive statement evaluated as true or false,
-  accompanied by mandatory linguistic or technical analysis.
+### 4.2 True/False with Analysis (判断题, `true_false`)
+- **Structure**: A statement evaluated as true or false, accompanied by mandatory
+  linguistic or technical rationale.
 - **Data Contract**:
   ```json
   {
@@ -109,9 +155,10 @@ options:
   }
   ```
 
-### 3.3 Listening Comprehension (听力题, `listening`)
-- **Structure**: Contains an audio source (or TTS-synthesizable script), a structured
-  transcript with optional speaker tags (`M:`, `W:`), and one or more sub-questions.
+### 4.3 Listening Comprehension (听力题, `listening`)
+- **Structure**: Contains audio metadata, a structured multi-speaker transcript or passage,
+  and one or more sub-questions. Each line in the transcript declares its speaker and
+  voice config directly.
 - **Data Contract**:
   ```json
   {
@@ -121,14 +168,29 @@ options:
     "audio": {
       "mode": "dialogue",
       "voice_male": "tide",
-      "voice_female": "stella",
-      "track_url": "/api/audio/dialogues/item-eng-list-001.wav"
+      "voice_female": "stella"
     },
     "transcript": [
-      {"speaker": "M", "text": "Excuse me, where can I find the replacement fuses for Machine 4?"},
-      {"speaker": "W", "text": "They are stored in Cabinet B on the second shelf, right next to the multimeter."},
-      {"speaker": "M", "text": "Thanks! Do I need a supervisor sign-off before taking one?"},
-      {"speaker": "W", "text": "No sign-off is needed for standard fuses, but remember to log it on the clipboard."}
+      {
+        "speaker": "M",
+        "text": "Excuse me, where can I find the replacement fuses for Machine 4?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "They are stored in Cabinet B on the second shelf, right next to the multimeter.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "Thanks! Do I need a supervisor sign-off before taking one?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "No sign-off is needed for standard fuses, but remember to log it on the clipboard.",
+        "tts": { "voice": "stella" }
+      }
     ],
     "sub_questions": [
       {
@@ -155,9 +217,8 @@ options:
   }
   ```
 
-### 3.4 Reading Comprehension (阅读理解, `reading_comprehension`)
-- **Structure**: A long passage providing technical documentation, operating procedures,
-  or professional correspondence, accompanied by multiple sub-questions.
+### 4.4 Reading Comprehension (阅读理解, `reading_comprehension`)
+- **Structure**: A technical passage or authentic document paired with multiple sub-questions.
 - **Data Contract**:
   ```json
   {
@@ -183,15 +244,10 @@ options:
   }
   ```
 
-### 3.5 Writing (写作题, `writing`)
-- **Structure**: Divided into three distinct task scopes:
-  1. `sentence_making`: Constructing a grammatically sound sentence using specified prompt
-     words or syntactic patterns.
-  2. `short_essay`: Composing an 80–120 word workplace note, notification, or email.
-  3. `full_essay`: Composing a 150–200 word structured technical report or argumentative essay.
-- **Evaluation Mechanism**: Graded against explicit rubric dimensions (task fulfillment,
-  lexical range, grammatical accuracy, coherence) paired with reference sample texts and
-  required keyword checkpoints.
+### 4.5 Writing (写作题, `writing`)
+- **Structure**: Divided into `sentence_making` (造句), `short_essay` (小作文), and
+  `full_essay` (大作文). Graded against rubric dimensions, reference sample responses,
+  and keyword checkpoints.
 - **Data Contract**:
   ```json
   {
@@ -216,11 +272,10 @@ options:
   }
   ```
 
-### 3.6 Translation (翻译题, `translation`)
-- **Structure**: Bidirectional translation (`en_to_zh` or `zh_to_en`) of authentic workplace
-  statements or technical directives.
-- **Evaluation Mechanism**: Evaluated against reference translations, acceptable variant
-  renderings, and required technical terminology.
+### 4.6 Translation (翻译题, `translation`)
+- **Structure**: Bidirectional translation (`en_to_zh` or `zh_to_en`) of workplace
+  statements or technical directives. Includes reference translation, acceptable variant
+  renderings, and key terms.
 - **Data Contract**:
   ```json
   {
@@ -245,14 +300,45 @@ options:
 
 ---
 
-## 4. Formal JSON Schema Definitions
+## 5. Formal JSON Schema Definitions
 
-The schema additions are incorporated into `contracts/course/v1/items.schema.json`. Below
-are the definitive definitions for the new types:
+The formal JSON Schema definitions extend `contracts/course/v1/items.schema.json`:
 
 ```json
 {
   "$defs": {
+    "RichContent": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ContentSegment" }
+        }
+      ]
+    },
+    "ContentSegment": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["text", "speech", "blank"] },
+        "text": { "type": "string" },
+        "tts": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "$ref": "#/$defs/TTSConfig" }
+          ]
+        },
+        "index": { "type": "integer" }
+      }
+    },
+    "TTSConfig": {
+      "type": "object",
+      "properties": {
+        "voice": { "type": "string", "enum": ["stella", "tide"] },
+        "text": { "type": "string" },
+        "speed": { "type": "number", "minimum": 0.5, "maximum": 2.0 }
+      }
+    },
     "ClozeBlank": {
       "type": "object",
       "required": ["index", "options", "grading"],
@@ -267,27 +353,18 @@ are the definitive definitions for the new types:
         "explanation": { "type": "string" }
       }
     },
-    "DialogueLine": {
+    "TranscriptLine": {
       "type": "object",
       "required": ["speaker", "text"],
       "properties": {
-        "speaker": { "type": "string", "enum": ["M", "W", "Narrator"] },
-        "text": { "type": "string", "minLength": 1 }
-      }
-    },
-    "SubQuestion": {
-      "type": "object",
-      "required": ["id", "type", "stem", "grading"],
-      "properties": {
-        "id": { "type": "string" },
-        "type": { "type": "string", "enum": ["single_choice", "multiple_choice", "true_false", "numeric"] },
-        "stem": { "type": "string" },
-        "options": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/Option" }
-        },
-        "grading": { "type": "object" },
-        "explanation": { "type": "string" }
+        "speaker": { "type": "string" },
+        "text": { "type": "string" },
+        "tts": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "$ref": "#/$defs/TTSConfig" }
+          ]
+        }
       }
     }
   }
@@ -296,34 +373,18 @@ are the definitive definitions for the new types:
 
 ---
 
-## 5. Grading Engine and Attempt Payload Contracts
+## 6. Grading Engine and Attempt Payload Contracts
 
-### 5.1 Answer Attempt Payload (`selected_json`)
-To store learner responses across the 6 new question types, `selected_json` in the
-`answer_attempts` table is extended with polymorphic JSON payloads:
+### 6.1 Answer Attempt Payload (`selected_json`)
+Polymorphic attempt structures persisted in SQLite `answer_attempts.selected_json`:
 
-- **Cloze**:
-  ```json
-  { "blanks": { "1": ["a"], "2": ["b"] } }
-  ```
-- **True/False**:
-  ```json
-  { "value": false }
-  ```
-- **Listening / Reading Sub-questions**:
-  ```json
-  { "sub_answers": { "sq-1": ["b"], "sq-2": false } }
-  ```
-- **Writing**:
-  ```json
-  { "text": "Dear Mr. Zhang,\nI am writing to inform you...", "word_count": 86 }
-  ```
-- **Translation**:
-  ```json
-  { "translation": "It is strictly prohibited to open the equipment maintenance door before disconnecting the main power." }
-  ```
+- **Cloze**: `{ "blanks": { "1": ["a"], "2": ["b"] } }`
+- **True/False**: `{ "value": false }`
+- **Listening / Reading Sub-questions**: `{ "sub_answers": { "sq-1": ["b"], "sq-2": false } }`
+- **Writing**: `{ "text": "Dear Mr. Zhang,\nI am writing to inform you...", "word_count": 86 }`
+- **Translation**: `{ "translation": "It is strictly prohibited to open the equipment maintenance door..." }`
 
-### 5.2 Go Grading Engine Specification (`internal/course/grading.go`)
+### 6.2 Go Grading Engine Specification (`internal/course/grading.go`)
 1. **Cloze Evaluation**: Iterates over all blanks. An attempt is fully correct if all
    blanks match their respective `choice_ids`. Partial credit score is calculated as
    `matched_blanks / total_blanks`.
@@ -333,30 +394,79 @@ To store learner responses across the 6 new question types, `selected_json` in t
    standard type grader (`GradeSingleChoice`, `GradeTrueFalse`). Aggregates points
    proportionally.
 4. **Writing & Translation Evaluation**:
-   - **Automated Check**: Validates word count constraints (`min_words <= words <= max_words`)
-     and verifies presence of required `key_terms` via normalized fuzzy string matching.
-   - **Model-Assisted Grading**: When LLM service is enabled, dispatches the prompt,
-     rubric, sample response, and learner submission to the LLM evaluator for detailed
-     rubric scoring.
+   - Validates word count constraints (`min_words <= words <= max_words`) and verifies
+     presence of required `key_terms` via normalized fuzzy string matching.
+   - When LLM service is enabled, dispatches the prompt, rubric, sample response, and
+     learner submission to the LLM evaluator for detailed rubric scoring.
 
 ---
 
-## 6. Ten Golden Sample Items for `step-up-english`
-
-Below are 10 production-ready sample items demonstrating the 6 new question types:
+## 7. Ten Production-Grade Golden Samples for `step-up-english`
 
 ```json
 [
   {
+    "id": "item-sue1-sc-mixed-001",
+    "type": "single_choice",
+    "stem": [
+      { "type": "text", "text": "在装配线工作时，机器突然发生故障，工友大声对你说：" },
+      { "type": "text", "text": "Stop!", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 此时你应该：" }
+    ],
+    "options": [
+      { "id": "a", "text": "立即按下红色急停按钮并停止操作" },
+      { "id": "b", "text": "继续操作并等待班长到来" },
+      { "id": "c", "text": "关掉车间总照明灯" },
+      { "id": "d", "text": "大声向工友回复无需惊慌" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'Stop!' 是最高优先级的紧急指令，应立即按下急停按钮。"
+  },
+  {
+    "id": "item-sue1-sc-tts-opt-002",
+    "type": "single_choice",
+    "stem": "工人向维修工汇报车间照明指示灯故障时，最地道规范的英文表达是：",
+    "options": [
+      { "id": "a", "text": "The light doesn't work.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "The light is dead person." },
+      { "id": "c", "text": "No light working now." },
+      { "id": "d", "text": "The light loses power heart." }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'The light doesn't work' 是描述机器或灯具故障的标准口语表达。"
+  },
+  {
+    "id": "item-sue1-sc-grammar-003",
+    "type": "single_choice",
+    "stem": [
+      { "type": "text", "text": "在车间向同事介绍自己的家乡时，想表达“我来自云南”，横线处应填入哪个介词？\n" },
+      { "type": "text", "text": "I am ___ Yunnan." }
+    ],
+    "options": [
+      { "id": "a", "text": "from" },
+      { "id": "b", "text": "at" },
+      { "id": "c", "text": "in" },
+      { "id": "d", "text": "on" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'be from + 地名' 表示'来自某地'。此处无 TTS 声明，纯文本展示。"
+  },
+  {
     "id": "item-sue1-cloze-001",
     "type": "cloze",
     "stem": "Complete the warehouse inventory guideline.",
-    "passage": "Before operating the electric forklift, every worker {{1}} inspect the tire pressure and battery level. If you discover any defect, do not {{2}} the machine.",
+    "passage": [
+      { "type": "text", "text": "Before operating the electric forklift, every worker " },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": " inspect the tire pressure and battery level. If you discover any defect, do not " },
+      { "type": "blank", "index": 2 },
+      { "type": "text", "text": " the machine." }
+    ],
     "blanks": [
       {
         "index": 1,
         "options": [
-          {"id": "a", "text": "must"},
+          {"id": "a", "text": "must", "tts": true},
           {"id": "b", "text": "can't"},
           {"id": "c", "text": "may not"},
           {"id": "d", "text": "used to"}
@@ -367,43 +477,13 @@ Below are 10 production-ready sample items demonstrating the 6 new question type
       {
         "index": 2,
         "options": [
-          {"id": "a", "text": "start"},
+          {"id": "a", "text": "start", "tts": true},
           {"id": "b", "text": "starting"},
           {"id": "c", "text": "started"},
           {"id": "d", "text": "starts"}
         ],
         "grading": { "choice_ids": ["a"] },
         "explanation": "After auxiliary verb 'do not', use the base verb form 'start'."
-      }
-    ]
-  },
-  {
-    "id": "item-sue1-cloze-002",
-    "type": "cloze",
-    "stem": "Complete the email regarding maintenance schedule.",
-    "passage": "Please note that the regular maintenance will take place {{1}} Wednesday afternoon. The main power will be off {{2}} two hours.",
-    "blanks": [
-      {
-        "index": 1,
-        "options": [
-          {"id": "a", "text": "on"},
-          {"id": "b", "text": "in"},
-          {"id": "c", "text": "at"},
-          {"id": "d", "text": "for"}
-        ],
-        "grading": { "choice_ids": ["a"] },
-        "explanation": "Use preposition 'on' before specific days of the week."
-      },
-      {
-        "index": 2,
-        "options": [
-          {"id": "a", "text": "for"},
-          {"id": "b", "text": "since"},
-          {"id": "c", "text": "during"},
-          {"id": "d", "text": "at"}
-        ],
-        "grading": { "choice_ids": ["a"] },
-        "explanation": "'For' indicates a duration of time (for two hours)."
       }
     ]
   },
@@ -424,35 +504,10 @@ Below are 10 production-ready sample items demonstrating the 6 new question type
   {
     "id": "item-sue1-list-001",
     "type": "listening",
-    "stem": "Listen to the supervisor's instruction and answer the question.",
-    "audio": { "mode": "monologue", "voice": "tide" },
+    "stem": "Listen to the shift handover dialogue and answer the question.",
     "transcript": [
-      {"speaker": "Narrator", "text": "Attention all assembly line workers: please ensure your protective goggles are fastened before testing the soldering unit."}
-    ],
-    "sub_questions": [
-      {
-        "id": "sq-1",
-        "type": "single_choice",
-        "stem": "What equipment must workers fasten before testing?",
-        "options": [
-          {"id": "a", "text": "Protective goggles"},
-          {"id": "b", "text": "Safety gloves"},
-          {"id": "c", "text": "Earplugs"},
-          {"id": "d", "text": "Hard hats"}
-        ],
-        "grading": { "choice_ids": ["a"] },
-        "explanation": "The instruction specifically mandates 'protective goggles'."
-      }
-    ]
-  },
-  {
-    "id": "item-sue1-list-002",
-    "type": "listening",
-    "stem": "Listen to the shift handover dialogue and answer the questions.",
-    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
-    "transcript": [
-      {"speaker": "W", "text": "Has Batch 204 passed the tolerance check?"},
-      {"speaker": "M", "text": "Yes, all 50 units met the 0.02 mm specification. They are ready for packaging."}
+      { "speaker": "W", "text": "Has Batch 204 passed the tolerance check?", "tts": { "voice": "stella" } },
+      { "speaker": "M", "text": "Yes, all 50 units met the 0.02 mm specification. They are ready for packaging.", "tts": { "voice": "tide" } }
     ],
     "sub_questions": [
       {
@@ -502,31 +557,20 @@ Below are 10 production-ready sample items demonstrating the 6 new question type
     "rubric": { "grammar": 50, "keyword_usage": 50 }
   },
   {
-    "id": "item-sue1-write-002",
-    "type": "writing",
-    "subtype": "short_essay",
-    "stem": "Write a 50-80 word notification informing the team that Workshop Room 3 will be closed for floor maintenance this Friday.",
-    "requirements": ["Mention Workshop Room 3.", "Mention the closing reason (floor maintenance).", "State the date (this Friday)."],
-    "keywords": ["Workshop Room 3", "closed", "maintenance", "Friday"],
-    "min_words": 50,
-    "max_words": 80,
-    "sample_response": "Notice to All Staff:\nPlease be advised that Workshop Room 3 will be closed all day this Friday for routine floor maintenance. All scheduled calibration sessions have been relocated to Room 5. Please ensure all personal tools are cleared from the area by Thursday evening.\n\nThank you for your cooperation.",
-    "rubric": { "task_completion": 40, "clarity": 30, "grammar": 30 }
-  },
-  {
     "id": "item-sue1-trans-001",
     "type": "translation",
     "direction": "zh_to_en",
     "stem": "请将下列操作规范翻译为英文：",
-    "source_text": "在开始工作之前，请务必检查急停按钮是否灵敏。",
-    "reference_translation": "Before starting work, make sure to check whether the emergency stop button is responsive.",
+    "source_text": "在未切断主电源之前，严禁打开设备检修门。",
+    "reference_translation": "It is strictly prohibited to open the equipment maintenance door before turning off the main power.",
     "acceptable_alternates": [
-      "Always check if the emergency stop button is working properly before beginning operation.",
-      "Be sure to inspect the emergency stop button for responsiveness before starting work."
+      "Do not open the machine maintenance door until the main power supply has been shut off.",
+      "Opening the service door is strictly forbidden before disconnecting the main power."
     ],
     "key_terms": [
-      {"term": "emergency stop button", "variants": ["E-stop button", "emergency stop"]},
-      {"term": "responsive", "variants": ["working properly", "functional", "sensitive"]}
+      {"term": "strictly prohibited", "variants": ["strictly forbidden", "not allowed"]},
+      {"term": "main power", "variants": ["main power supply", "master power"]},
+      {"term": "maintenance door", "variants": ["service door", "access panel"]}
     ],
     "explanation": "'emergency stop button' 是工业设备标准术语，'make sure to check' 表达'务必检查'。"
   }
