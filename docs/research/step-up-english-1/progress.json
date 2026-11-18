@@ -68,5 +68,40 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_011": {
+    "lesson_number": 11,
+    "title": "名词与代词系统精讲：第 1 讲 名词可数性与规则复数变化规范",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_012": {
+    "lesson_number": 12,
+    "title": "名词与代词系统精讲：第 2 讲 不规则名词复数与单复数同形",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_013": {
+    "lesson_number": 13,
+    "title": "名词与代词系统精讲：第 3 讲 不可数名词与度量量词（Partitives）搭配",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_014": {
+    "lesson_number": 14,
+    "title": "名词与代词系统精讲：第 4 讲 专有名词、复合名词与缩略语规范",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_015": {
+    "lesson_number": 15,
+    "title": "名词与代词系统精讲：第 5 讲 名词所有格（'s 与 of 格）的严谨使用",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
