@@ -47,5 +47,26 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_008": {
+    "lesson_number": 8,
+    "title": "国际音标与自然拼读规律：第 8 讲 鼻音、边音与半元音 /m/, /n/, /ŋ/, /l/, /w/, /j/",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_009": {
+    "lesson_number": 9,
+    "title": "国际音标与自然拼读规律：第 9 讲 单词重音、音节划分与重音移动规律",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_010": {
+    "lesson_number": 10,
+    "title": "国际音标与自然拼读规律：第 10 讲 语调、弱读与连读（Linking Sound）规则",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
