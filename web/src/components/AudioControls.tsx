@@ -22,6 +22,12 @@ export function stopGlobalAudio() {
   }
 }
 
+export function registerGlobalAudio(audio: HTMLAudioElement, onStop: () => void) {
+  stopGlobalAudio();
+  currentAudio = audio;
+  currentStopCallback = onStop;
+}
+
 type AudioControlsProps = {
   text: string;
   voice?: 'stella' | 'tide';

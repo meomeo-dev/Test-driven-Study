@@ -25,6 +25,7 @@ type Question struct {
 	ImageURL        string   `json:"image_url"`
 	AudioURL        string   `json:"audio_url,omitempty"`
 	TranscriptURL   string   `json:"transcript_url,omitempty"`
+	TranscriptLines any      `json:"transcript_lines,omitempty"`
 	ImageType       int64    `json:"image_type"`
 	Answer          string   `json:"answer"`
 	Analysis        string   `json:"analysis"`

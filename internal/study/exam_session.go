@@ -52,6 +52,7 @@ func (r *examRecord) public(now int64) (ExamSession, error) {
 		answer := r.answers[i]
 		if r.row.Status != "finished" {
 			public.TranscriptURL = ""
+			public.TranscriptLines = nil
 		}
 		value.Items[i] = ExamItem{Detail: PracticeDetail{public, item.ImageAvailable}, Selected: answer.Selected, Numeric: answer.Numeric,
 			Answered: answer.AnsweredAtMS != 0, Flagged: answer.Flagged}

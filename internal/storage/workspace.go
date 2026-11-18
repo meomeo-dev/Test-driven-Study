@@ -128,6 +128,9 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 		Analysis: item.Explanation, Skill: item.Hint, ChapterName: item.Chapter,
 		ImageURL: item.Image, AudioURL: item.Audio, TranscriptURL: transcriptURL,
 		Items: []study.Option{}}
+	if item.Transcript != nil && len(item.Transcript.Lines) > 0 {
+		question.TranscriptLines = item.Transcript.Lines
+	}
 	if len(item.Stem.Segments) > 0 {
 		question.RichContent = item.Stem.Segments
 	}
