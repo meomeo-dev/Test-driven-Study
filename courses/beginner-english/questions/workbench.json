@@ -814,5 +814,59 @@
         "d"
       ]
     }
+  },
+  {
+    "id": "workbench-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "听工位动作复合指令录音，选择操作顺序：",
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "First, pick up the red bolt. Second, tighten it with the wrench. Third, place the part in Box 2.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "拿起红螺栓 -> 用扳手紧固 -> 放入2号盒",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "拿起蓝螺栓 -> 用螺丝刀拧紧 -> 放入1号盒",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "用扳手拆卸 -> 放入2号盒 -> 擦拭零件",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "直接将螺栓丢弃在地面",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "录音中的三步顺序是：pick up the red bolt, tighten it with the wrench, place the part in Box 2。"
   }
 ]

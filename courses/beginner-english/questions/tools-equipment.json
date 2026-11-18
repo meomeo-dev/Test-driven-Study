@@ -1,0 +1,299 @@
+[
+  {
+    "id": "te-sc-01",
+    "type": "single_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": "在工位装配中，用于拧紧十字槽螺丝的工具英文是：",
+    "options": [
+      { "id": "a", "text": "Phillips screwdriver" },
+      { "id": "b", "text": "flathead screwdriver" },
+      { "id": "c", "text": "claw hammer" },
+      { "id": "d", "text": "adjustable wrench" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "十字螺丝刀的标准英文是 Phillips screwdriver，一字螺丝刀是 flathead screwdriver。"
+  },
+  {
+    "id": "te-sc-02",
+    "type": "single_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": [
+      { "type": "text", "text": "工友在工位装配线上对你说：" },
+      { "type": "text", "text": "Pass me the wrench, please.", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 他想要的是什么工具？" }
+    ],
+    "options": [
+      { "id": "a", "text": "扳手" },
+      { "id": "b", "text": "螺丝刀" },
+      { "id": "c", "text": "手电钻" },
+      { "id": "d", "text": "钳子" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "wrench 表示扳手；screwdriver 为螺丝刀；pliers 为钳子；electric drill 为手电钻。"
+  },
+  {
+    "id": "te-sc-03",
+    "type": "single_choice",
+    "chapter": "检测量具与读数",
+    "concepts": ["measuring-gauges"],
+    "stem": [
+      { "type": "text", "text": "在装配前，必须使用数显卡尺测量轴的外径。请选择横线处最合适的词汇填空：\nMeasure the outer diameter with a digital " },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": "." }
+    ],
+    "options": [
+      { "id": "a", "text": "caliper" },
+      { "id": "b", "text": "hammer" },
+      { "id": "c", "text": "wrench" },
+      { "id": "d", "text": "cutter" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "digital caliper 是数显游标卡尺；hammer 为锤子；wrench 为扳手。"
+  },
+  {
+    "id": "te-sc-04",
+    "type": "single_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": "装配时若需要紧固法兰盘上的螺栓，工人最规范的地道英文表述是：",
+    "options": [
+      { "id": "a", "text": "Tighten the bolt with a wrench.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "Open the bolt with a wrench.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "Cut the bolt with a wrench.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "Drop the bolt with a wrench.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "tighten 表示'拧紧/紧固'，搭配 with a wrench 表示用扳手紧固螺栓。全部选项统一提供 TTS。"
+  },
+  {
+    "id": "te-sc-05",
+    "type": "single_choice",
+    "chapter": "检测量具与读数",
+    "concepts": ["measuring-gauges"],
+    "stem": "听工位质检录音，选择对话中提到的测量公差要求：",
+    "transcript": [
+      { "speaker": "M", "text": "What is the tolerance requirement for this cylinder bore?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "The tolerance must be kept within 0.05 mm.", "tts": { "voice": "stella" } }
+    ],
+    "options": [
+      { "id": "a", "text": "within 0.01 mm" },
+      { "id": "b", "text": "within 0.05 mm" },
+      { "id": "c", "text": "within 0.5 mm" },
+      { "id": "d", "text": "within 1.0 mm" }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "explanation": "录音中女声明确回答 'The tolerance must be kept within 0.05 mm'。"
+  },
+  {
+    "id": "te-sc-06",
+    "type": "single_choice",
+    "chapter": "设备安全规程与指令",
+    "concepts": ["equipment-safety-rules"],
+    "stem": "根据车间安全规程，操作角磨机进行焊缝打磨时必须佩戴：",
+    "options": [
+      { "id": "a", "text": "safety goggles", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "sandals", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "paper hat", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "wool scarf", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "safety goggles（安全护目镜）是打磨作业必须佩戴的眼部防护用具。"
+  },
+  {
+    "id": "te-sc-07",
+    "type": "single_choice",
+    "chapter": "设备安全规程与指令",
+    "concepts": ["equipment-safety-rules"],
+    "stem": [
+      { "type": "text", "text": "设备处于通电旋转状态时，严禁触碰传动部件。请选择正确的否定情态动词填空：\nYou " },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": " touch the rotating parts during operation." }
+    ],
+    "options": [
+      { "id": "a", "text": "must not" },
+      { "id": "b", "text": "can" },
+      { "id": "c", "text": "should" },
+      { "id": "d", "text": "may" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "must not 表示'绝不能、严禁'，用于表达强制性安全禁令。"
+  },
+  {
+    "id": "te-sc-08",
+    "type": "single_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": [
+      { "type": "text", "text": "班长指着工具柜对你叮嘱：" },
+      { "type": "text", "text": "Always return the torque wrench to the rack after use.", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 这句话要求你：" }
+    ],
+    "options": [
+      { "id": "a", "text": "用完扭力扳手后务必放回工具架" },
+      { "id": "b", "text": "将扭力扳手带回家中使用" },
+      { "id": "c", "text": "用扭力扳手用力敲击零件" },
+      { "id": "d", "text": "把扭力扳手直接扔进垃圾桶" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "return ... to the rack 表示'归还/放回架子'，torque wrench 为扭力扳手。"
+  },
+  {
+    "id": "te-mc-01",
+    "type": "multiple_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": "下列选项中，哪些属于车间常见的手动工具（hand tools）？（多选）",
+    "options": [
+      { "id": "a", "text": "screwdriver (螺丝刀)" },
+      { "id": "b", "text": "wrench (扳手)" },
+      { "id": "c", "text": "pliers (钳子)" },
+      { "id": "d", "text": "air compressor (空气压缩机)" }
+    ],
+    "grading": { "choice_ids": ["a", "b", "c"] },
+    "explanation": "screwdriver、wrench 和 pliers 均属于手动工具；air compressor 属于大型动力辅助设备。"
+  },
+  {
+    "id": "te-mc-02",
+    "type": "multiple_choice",
+    "chapter": "设备安全规程与指令",
+    "concepts": ["equipment-safety-rules"],
+    "stem": "哪些英文短语表达了正确的车间安全操作规程？（多选）",
+    "options": [
+      { "id": "a", "text": "Wear safety goggles.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "Press the emergency stop in danger.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "Do not touch moving gears.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "Leave running machines unattended.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "choice_ids": ["a", "b", "c"] },
+    "explanation": "佩戴护目镜、遇到危险按急停、严禁触摸运转齿轮均为规范规程；离开运转中的设备无人照看是违规行为。"
+  },
+  {
+    "id": "te-mc-03",
+    "type": "multiple_choice",
+    "chapter": "工具点检与维护听力",
+    "concepts": ["tool-inspection-listen"],
+    "stem": "听质检主管与领料员的录音，选出主管要求拿取到4号工位的仪器工具：（多选）",
+    "transcript": [
+      { "speaker": "W", "text": "Please bring the digital caliper and the torque wrench to Station 4.", "tts": { "voice": "stella" } },
+      { "speaker": "M", "text": "Understood. Do you also need the multimeter?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "No, just the caliper and the torque wrench.", "tts": { "voice": "stella" } }
+    ],
+    "options": [
+      { "id": "a", "text": "digital caliper (数显卡尺)" },
+      { "id": "b", "text": "torque wrench (扭力扳手)" },
+      { "id": "c", "text": "multimeter (万用表)" },
+      { "id": "d", "text": "angle grinder (角磨机)" }
+    ],
+    "grading": { "choice_ids": ["a", "b"] },
+    "explanation": "对话中主管要求带 digital caliper 和 torque wrench，明确不需要 multimeter。"
+  },
+  {
+    "id": "te-mc-04",
+    "type": "multiple_choice",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": [
+      { "type": "text", "text": "维修工对学徒说：" },
+      { "type": "text", "text": "We need these two tools: a screwdriver and a pair of pliers.", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 学徒需要准备哪两样工具？（多选）" }
+    ],
+    "options": [
+      { "id": "a", "text": "螺丝刀 (screwdriver)" },
+      { "id": "b", "text": "钳子 (pliers)" },
+      { "id": "c", "text": "手电锯 (hand saw)" },
+      { "id": "d", "text": "铁锤 (hammer)" }
+    ],
+    "grading": { "choice_ids": ["a", "b"] },
+    "explanation": "screwdriver 为螺丝刀，a pair of pliers 为钳子。"
+  },
+  {
+    "id": "te-tf-01",
+    "type": "true_false",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": "英文单词 'pliers'（钳子）在表达单数一把钳子时，可以直接写作 'a pliers'。",
+    "grading": { "boolean": false },
+    "explanation": "pliers 属于对称双叶工具复数名词，表达单数一把钳子时应使用量词短语 'a pair of pliers'。"
+  },
+  {
+    "id": "te-tf-02",
+    "type": "true_false",
+    "chapter": "检测量具与读数",
+    "concepts": ["measuring-gauges"],
+    "stem": "公制长度单位换算中，1 cm 等于 100 mm。",
+    "grading": { "boolean": false },
+    "explanation": "1 cm = 10 mm，1 m = 100 cm = 1000 mm。"
+  },
+  {
+    "id": "te-tf-03",
+    "type": "true_false",
+    "chapter": "设备安全规程与指令",
+    "concepts": ["equipment-safety-rules"],
+    "stem": [
+      { "type": "text", "text": "车间设备安全规程写道：" },
+      { "type": "text", "text": "You must turn off the main power before maintaining the equipment.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 判定：检修设备前切断主电源是强制性安全要求。" }
+    ],
+    "grading": { "boolean": true },
+    "explanation": "'must + 动词原形' 表达强制性安全义务，表明检修前切断主电源是必须遵守的安全要求。"
+  },
+  {
+    "id": "te-tf-04",
+    "type": "true_false",
+    "chapter": "工具点检与维护听力",
+    "concepts": ["tool-inspection-listen"],
+    "stem": "听录音对话，判断给出的说法是否符合对话内容：",
+    "transcript": [
+      { "speaker": "M", "text": "Can we use this electric drill right now?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "No, the power cable is damaged. Do not use it until it is repaired.", "tts": { "voice": "stella" } }
+    ],
+    "explanation": "录音中女声明确说明电缆损坏，在修复好前严禁使用，因此说法'该电钻因电缆损坏目前严禁使用'完全正确。",
+    "options": [
+      { "id": "t", "text": "正确：该电钻因电缆损坏目前严禁使用", "value": true },
+      { "id": "f", "text": "错误：该电钻完好无损可以立即使用", "value": false }
+    ],
+    "grading": { "boolean": true }
+  },
+  {
+    "id": "te-num-01",
+    "type": "numeric",
+    "chapter": "检测量具与读数",
+    "concepts": ["measuring-gauges"],
+    "stem": "数显卡尺主尺刻度为 24 mm，副尺示数为 0.35 mm。请问总测量值为多少毫米？（请填入具体数值）",
+    "grading": { "value": "24.35", "absolute_tolerance": "0.01" },
+    "explanation": "总读数 = 24 + 0.35 = 24.35 mm。"
+  },
+  {
+    "id": "te-num-02",
+    "type": "numeric",
+    "chapter": "常用动力与手工具",
+    "concepts": ["power-tools"],
+    "stem": "1号工具箱内有 8 把开口扳手，2号工具箱内有 7 把梅花扳手。两个工具箱内共有多少把扳手？",
+    "grading": { "value": "15", "absolute_tolerance": "0" },
+    "explanation": "8 + 7 = 15 把扳手。"
+  },
+  {
+    "id": "te-num-03",
+    "type": "numeric",
+    "chapter": "工具点检与维护听力",
+    "concepts": ["tool-inspection-listen"],
+    "stem": "听工位工具点检录音，回答后面的问题：\nHow many digital calipers are in Cabinet A?（A柜中有几把数显卡尺？请用阿拉伯数字作答）",
+    "transcript": [
+      { "speaker": "M", "text": "Let us check Cabinet A. How many digital calipers do we have here?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "There are six digital calipers in Cabinet A.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "value": "6", "absolute_tolerance": "0" },
+    "explanation": "录音中女声清楚说明 'There are six digital calipers in Cabinet A'，故数值答案为 6。"
+  },
+  {
+    "id": "te-num-04",
+    "type": "numeric",
+    "chapter": "检测量具与读数",
+    "concepts": ["measuring-gauges"],
+    "stem": "螺栓标准紧固扭力设定值为 40 N·m，允许最大上限为 45 N·m。请问允许的最大扭力上浮差值是多少 N·m？",
+    "grading": { "value": "5", "absolute_tolerance": "0" },
+    "explanation": "45 - 40 = 5 N·m。"
+  }
+]

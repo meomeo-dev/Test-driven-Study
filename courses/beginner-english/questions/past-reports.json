@@ -937,5 +937,110 @@
         "a"
       ]
     }
+  },
+  {
+    "id": "past-reports-num-1",
+    "type": "numeric",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "早班计划装配 60 台工件，实际装配完成 54 台（We assembled 54 units yesterday）。请问未完成的台数是多少？",
+    "grading": {
+      "value": "6",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "60 - 54 = 6 台。"
+  },
+  {
+    "id": "past-reports-num-2",
+    "type": "numeric",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "听交接班汇报录音，回答后面的问题：\nHow many defective parts were found yesterday?（昨天一共发现了多少个不良品零件？请用阿拉伯数字作答）",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "How many defective parts did the night shift find yesterday?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "We found seven defective parts during the visual inspection.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "value": "7",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "录音中女声说明 \"We found seven defective parts\"，故数值答案为 7。"
+  },
+  {
+    "id": "past-reports-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "听交接班问答录音，选择白班是否完成了最终质检：",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Did your team finish the final inspection before handover?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Yes, we finished the final inspection at 5:00 PM.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, they finished at 5:00 PM.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "No, they did not finish.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "They forgot the inspection.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "They will inspect tomorrow.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "录音中明确肯定回答 \"Yes, we finished the final inspection at 5:00 PM\"。"
   }
 ]

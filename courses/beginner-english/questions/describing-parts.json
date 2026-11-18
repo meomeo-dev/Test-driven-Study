@@ -838,5 +838,168 @@
         "d"
       ]
     }
+  },
+  {
+    "id": "describing-parts-num-1",
+    "type": "numeric",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "stem": "抽检 100 件零件，其中合格品为 96 件。请问不合格（defective）零件有多少件？",
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "100 - 96 = 4 件不良品。"
+  },
+  {
+    "id": "describing-parts-num-2",
+    "type": "numeric",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "stem": "听质检对比录音，回答后面的问题：\nHow many millimeters longer is Part A than Part B?（零件A比零件B长多少毫米？请用阿拉伯数字作答）",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Part A is 35 mm long, and Part B is 30 mm long.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "So Part A is 5 mm longer than Part B.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "value": "5",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "35 - 30 = 5 mm。"
+  },
+  {
+    "id": "describing-parts-cloze-1",
+    "type": "single_choice",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检对比两根金属轴，想表达\"这根轴比那根更重\"，横线处应填入哪个形容词比较级？\nThis shaft is "
+      },
+      {
+        "type": "blank",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "text": " than that one."
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "heavier",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "heavy",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "heaviest",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "more heavy",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "heavy 以辅音字母加 y 结尾，比较级变 y 为 i 加 -er，即 heavier。"
+  },
+  {
+    "id": "describing-parts-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "颜色与形状",
+    "concepts": [
+      "colors-shapes"
+    ],
+    "stem": "听外观质检录音，选择有划痕缺陷的托盘颜色：",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Inspector, which tray has the scratched parts?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "The red tray has five scratched parts. Please separate them.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "The blue tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "The red tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "The green tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "The yellow tray",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
+    "explanation": "录音中明确指出 \"The red tray has five scratched parts\"。"
   }
 ]

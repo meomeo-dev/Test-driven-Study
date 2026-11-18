@@ -851,5 +851,110 @@
         "b"
       ]
     }
+  },
+  {
+    "id": "safety-num-1",
+    "type": "numeric",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "车间规定操作区环境噪音超过 85 分贝必须佩戴耳塞。当前噪音监测读数为 92 分贝，超过强制防护阈值多少分贝？",
+    "grading": {
+      "value": "7",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "92 - 85 = 7 分贝。"
+  },
+  {
+    "id": "safety-num-2",
+    "type": "numeric",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "听故障排查录音，回答后面的问题：\nHow many emergency stop buttons are installed on Line 1?（1号流水线安装了几个急停按钮？请用阿拉伯数字作答）",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Safety officer, how many emergency stop buttons are on Line 1?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "There are four emergency stop buttons along Line 1.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "value": "4",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "录音中女声清楚说明 \"There are four emergency stop buttons along Line 1\"，故答案为 4。"
+  },
+  {
+    "id": "safety-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "听车间广播安全警报录音，选择紧急撤离集合点：",
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Attention all workers: Evacuate Sector 2 immediately and gather at Assembly Point B.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Copy that. All workers to Assembly Point B now.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "Assembly Point A",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "Assembly Point B",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "The cafeteria",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "The warehouse roof",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
+    "explanation": "广播明确要求集合在 \"Assembly Point B\"。"
   }
 ]

@@ -1,7 +1,7 @@
 {
   "protocol_version": 1,
   "course_id": "beginner-english",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "title": "零基础英语（听说与基础语法）",
   "language": "zh-CN",
   "description": "从自我介绍、数字和简短指令开始，逐步衔接工程英语。",
@@ -550,6 +550,151 @@
                 "past-irregular",
                 "did-questions",
                 "reporting-problems"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tools-equipment",
+      "title": "常用工具与设备操作",
+      "question_file": "questions/tools-equipment.json",
+      "lessons": [
+        {
+          "id": "tools-equipment",
+          "title": "常用工具与设备操作",
+          "file": "lessons/tools-equipment.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "power-tools",
+          "title": "常用动力与手工具",
+          "summary": "掌握电钻、角磨机、活动扳手、十字螺丝刀、钳子等工具的英文名称与工序用途。",
+          "estimated_minutes": 50,
+          "lesson": "tools-equipment",
+          "prerequisites": [
+            {
+              "all_of": [
+                "tools-parts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "measuring-gauges",
+          "title": "检测量具与读数",
+          "summary": "熟练认读数显卡尺、千分尺、扭力扳手、气压表等检测仪器的英文术语与测量公差数值表达。",
+          "estimated_minutes": 60,
+          "lesson": "tools-equipment",
+          "prerequisites": [
+            {
+              "all_of": [
+                "power-tools",
+                "measurement-units"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "equipment-safety-rules",
+          "title": "设备安全规程与指令",
+          "summary": "运用祈使句和情态动词 must、can、should 及否定形式规范表达设备操作与劳保防护安全要求。",
+          "estimated_minutes": 50,
+          "lesson": "tools-equipment",
+          "prerequisites": [
+            {
+              "all_of": [
+                "modal-must",
+                "imperatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tool-inspection-listen",
+          "title": "工具点检与维护听力",
+          "summary": "听懂班前班后工具借调、点检与维护交接录音对话，准确提取关键工具名称、规格与状态。",
+          "estimated_minutes": 60,
+          "lesson": "tools-equipment",
+          "prerequisites": [
+            {
+              "all_of": [
+                "measuring-gauges",
+                "equipment-safety-rules"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "workplace-dialogue",
+      "title": "车间日常沟通与协作",
+      "question_file": "questions/workplace-dialogue.json",
+      "lessons": [
+        {
+          "id": "workplace-dialogue",
+          "title": "车间日常沟通与协作",
+          "file": "lessons/workplace-dialogue.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "asking-assistance",
+          "title": "工位求助与礼貌应答",
+          "summary": "运用 Could you please、Would you mind 等礼貌句型提出工序求助，掌握规范响应与谢辞。",
+          "estimated_minutes": 50,
+          "lesson": "workplace-dialogue",
+          "prerequisites": [
+            {
+              "all_of": [
+                "polite-requests"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "present-continuous-actions",
+          "title": "现在进行时描述工位状态",
+          "summary": "掌握 be + doing 结构准确描述正在进行的工位操作、装配步骤或设备测试过程。",
+          "estimated_minutes": 60,
+          "lesson": "workplace-dialogue",
+          "prerequisites": [
+            {
+              "all_of": [
+                "workbench-actions",
+                "be-verb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "radio-calls",
+          "title": "通信与对讲机规范",
+          "summary": "掌握车间对讲机与内部电话呼叫、确认与结束用语（This is...、Copy that、Over、Stand by）。",
+          "estimated_minutes": 50,
+          "lesson": "workplace-dialogue",
+          "prerequisites": [
+            {
+              "all_of": [
+                "asking-assistance"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "schedule-coordination",
+          "title": "调度协调与交接听力",
+          "summary": "听懂物料调配、交货进度、工序交接电话与广播录音，精准抓取数量、工位号与时间关键要素。",
+          "estimated_minutes": 60,
+          "lesson": "workplace-dialogue",
+          "prerequisites": [
+            {
+              "all_of": [
+                "present-continuous-actions",
+                "radio-calls"
               ]
             }
           ]

@@ -6,9 +6,9 @@ Updated 2026-11-18 (America/New_York).
 
 - **Repository**: `/Volumes/1TB-ZYJ/git/Test-driven-Study` (independent, standalone checkout).
 - **Active Branch**: `main` (all feature branches merged and pruned).
-- **Baseline Commit**: `def9b05` (`fix(listening): separate listening audio from transcript and hide transcript text by default`)
+- **Baseline Commit**: `bd7560b` (`docs: update handoff with listening audio separation milestone`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Current Milestone**: Completed end-to-end implementation of DeepSeek TTS and Unified 3-Tab Settings (WU-001), passed double-blind subagent audit (Backend Clean Pass, Frontend Clean Pass), upgraded course to `beginner-english@1.3.3`, separated listening audio playback from transcript text, and removed legacy static audio assets.
+- **Current Milestone**: Upgraded `courses/beginner-english` to v1.4.0 with 2 new units/lessons (`tools-equipment`, `workplace-dialogue`), expanding the curriculum to 10 units, 216 questions, and 41 concepts. Ensured 100% full question type coverage (Single Choice, Multiple Choice, True/False, Numeric, Cloze Blanks, and Dedicated Listening Comprehension with DeepSeek TTS) across all 10 units. Installed into SQLite workspace and passed all gates.
 - **WU Status**: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json) (`completed`, phase: `close`).
 
 ---

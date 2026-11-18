@@ -945,5 +945,110 @@
         "b"
       ]
     }
+  },
+  {
+    "id": "daily-routine-num-1",
+    "type": "numeric",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "stem": "早班工作时间为上午 8:00 到下午 16:30，扣除中午休息 1.5 小时。请问实际工作工时是多少小时？",
+    "grading": {
+      "value": "7",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "8:00 到 16:30 共 8.5 小时，减去午休 1.5 小时，实际工时为 7 小时。"
+  },
+  {
+    "id": "daily-routine-num-2",
+    "type": "numeric",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "stem": "听班次安排通知录音，回答后面的问题：\nHow many night shifts does Li have this week?（小李本周有几个夜班？请用阿拉伯数字作答）",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Supervisor, how many night shifts do I have this week?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Li, you have two night shifts this week, on Thursday and Friday.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "value": "2",
+      "absolute_tolerance": "0"
+    },
+    "explanation": "录音中女声清楚回答 \"you have two night shifts this week\"，答案为 2。"
+  },
+  {
+    "id": "daily-routine-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "stem": "听班组早会通知录音，选择早会开始的准确时间：",
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Team, please remember that tomorrow morning meeting begins at 7:45 AM.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Got it. 7:45 AM at the briefing board.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "7:15 AM",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "7:45 AM",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "8:00 AM",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "8:30 AM",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
+    "explanation": "录音中明确说明 \"morning meeting begins at 7:45 AM\"。"
   }
 ]

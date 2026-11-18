@@ -1009,5 +1009,66 @@
         "b"
       ]
     }
+  },
+  {
+    "id": "intro-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "stem": "听新同事自我介绍录音，选择新同事的名字与部门：",
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Hello everyone. My name is David, and I am from the Assembly Department.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Welcome to the team, David!",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "David, 装配部 (Assembly Department)",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "Tom, 质检部 (Quality Department)",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "Jack, 仓储部 (Warehouse Department)",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "Mike, 维修部 (Maintenance Department)",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "录音中男声介绍：\"My name is David, and I am from the Assembly Department\"。"
   }
 ]

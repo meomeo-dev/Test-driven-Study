@@ -1,0 +1,294 @@
+[
+  {
+    "id": "wd-sc-01",
+    "type": "single_choice",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "在流水线上需要工友协助扶住支架时，最礼貌得体的英文表达是：",
+    "options": [
+      { "id": "a", "text": "Could you please hold this bracket for a moment?" },
+      { "id": "b", "text": "Hold this now!" },
+      { "id": "c", "text": "You must touch this bracket." },
+      { "id": "d", "text": "Give me bracket quickly." }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'Could you please + 动词原形' 是车间最通用的礼貌求助句型。"
+  },
+  {
+    "id": "wd-sc-02",
+    "type": "single_choice",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": [
+      { "type": "text", "text": "工友对你的热心协助表示感谢说：" },
+      { "type": "text", "text": "Thank you very much for your help!", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 你最得体的英文回应是：" }
+    ],
+    "options": [
+      { "id": "a", "text": "You are welcome!" },
+      { "id": "b", "text": "No help." },
+      { "id": "c", "text": "Never do this." },
+      { "id": "d", "text": "Goodbye now." }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "You are welcome!（不客气 / 别客气）是回应他人感谢的标准礼貌用语。"
+  },
+  {
+    "id": "wd-sc-03",
+    "type": "single_choice",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": [
+      { "type": "text", "text": "车间质检员正在检测轴承表面光洁度。请选择符合现在进行时语法的形式填空：\nThe QA inspector is " },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": " the bearing surface." }
+    ],
+    "options": [
+      { "id": "a", "text": "inspecting" },
+      { "id": "b", "text": "inspected" },
+      { "id": "c", "text": "inspects" },
+      { "id": "d", "text": "inspect" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "现在进行时结构为 be + doing，动词 inspect 的现在分词形式为 inspecting。"
+  },
+  {
+    "id": "wd-sc-04",
+    "type": "single_choice",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "班长走来询问当前工序，你想表达'我正在用扭力扳手紧固螺栓'，最准确地道的表达是：",
+    "options": [
+      { "id": "a", "text": "I am tightening the bolts with a torque wrench.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "I tighten bolt with wrench yesterday.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "I have no wrench now.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "The bolt is tightening me.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'I am tightening...' 准确运用现在进行时表达当前正在执行的紧固工序。全部选项统一提供 TTS。"
+  },
+  {
+    "id": "wd-sc-05",
+    "type": "single_choice",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": "对讲机通话中，确认收到对方信息并表示'完全收到，声音清晰'的标准术语是：",
+    "options": [
+      { "id": "a", "text": "Copy that. Loud and clear." },
+      { "id": "b", "text": "I see your voice." },
+      { "id": "c", "text": "Speak more loud." },
+      { "id": "d", "text": "Stop the radio." }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "'Copy that. Loud and clear' 是无线电通信中标准的收到并确认信号良好的规范用语。"
+  },
+  {
+    "id": "wd-sc-06",
+    "type": "single_choice",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": [
+      { "type": "text", "text": "在无线电对讲通话中，当你的一段发言完毕、等待对方回复时，句末应说：" },
+      { "type": "blank", "index": 1 },
+      { "type": "text", "text": "。" }
+    ],
+    "options": [
+      { "id": "a", "text": "Over" },
+      { "id": "b", "text": "Wait" },
+      { "id": "c", "text": "Hello" },
+      { "id": "d", "text": "Finish" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "在无线电通话规则中，'Over' 表示本轮发言完毕，等待对方讲话；'Over and out' 则表示通话完全结束切断。"
+  },
+  {
+    "id": "wd-sc-07",
+    "type": "single_choice",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "听车间调度电话录音，选择零件预计送达时间：",
+    "transcript": [
+      { "speaker": "W", "text": "Warehouse, when will the replacement sensors arrive at Line 2?", "tts": { "voice": "stella" } },
+      { "speaker": "M", "text": "They are packed and will arrive at 3:30 PM.", "tts": { "voice": "tide" } }
+    ],
+    "options": [
+      { "id": "a", "text": "at 2:00 PM" },
+      { "id": "b", "text": "at 3:30 PM" },
+      { "id": "c", "text": "at 4:15 PM" },
+      { "id": "d", "text": "tomorrow morning" }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "explanation": "录音中男声明确回复 'They are packed and will arrive at 3:30 PM'。"
+  },
+  {
+    "id": "wd-sc-08",
+    "type": "single_choice",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": [
+      { "type": "text", "text": "你正在校准仪器，工友前来寻求协助，你想礼貌表示'我正在校准，两分钟后帮你行吗'，工友听到你说：" },
+      { "type": "text", "text": "Can I help you in two minutes? I am calibrating this sensor right now.", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 这句话的核心含义是：" }
+    ],
+    "options": [
+      { "id": "a", "text": "正在校准传感器，两分钟后立即协助" },
+      { "id": "b", "text": "坚决拒绝提供任何协助" },
+      { "id": "c", "text": "传感器已经彻底损坏无法使用" },
+      { "id": "d", "text": "要求工友两小时后再来" }
+    ],
+    "grading": { "choice_ids": ["a"] },
+    "explanation": "in two minutes 表示两分钟后，I am calibrating 表示正在校准，属于非常专业委婉的职场推迟并承诺协助。"
+  },
+  {
+    "id": "wd-mc-01",
+    "type": "multiple_choice",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "下列选项中，哪些属于在车间提出协助请求的得体英文句型？（多选）",
+    "options": [
+      { "id": "a", "text": "Could you please help me lift this casing?" },
+      { "id": "b", "text": "Would you mind checking this reading for me?" },
+      { "id": "c", "text": "Could you pass me the Allen key on the table?" },
+      { "id": "d", "text": "Hey you, work for me right now!" }
+    ],
+    "grading": { "choice_ids": ["a", "b", "c"] },
+    "explanation": "前三项运用 Could you please 与 Would you mind，符合职场礼貌规范；最后一项极度粗暴不合规。"
+  },
+  {
+    "id": "wd-mc-02",
+    "type": "multiple_choice",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "哪些句子正确使用了现在进行时来描述车间工位状态？（多选）",
+    "options": [
+      { "id": "a", "text": "We are assembling the control panels.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "He is cleaning the workbench.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "The technician is checking the hydraulic pressure.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "They is assemble the motor.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "choice_ids": ["a", "b", "c"] },
+    "explanation": "前三项主谓一致且采用 be + doing 规范结构；最后一项 They 后面应接 are 且动词需变为 assembling。"
+  },
+  {
+    "id": "wd-mc-03",
+    "type": "multiple_choice",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "听生产调度录音，选出录音中确认分配到B工位的物料清单：（多选）",
+    "transcript": [
+      { "speaker": "M", "text": "What materials are dispatched to Station B today?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "We dispatched twenty cooling fans and forty wiring harnesses to Station B.", "tts": { "voice": "stella" } }
+    ],
+    "options": [
+      { "id": "a", "text": "twenty cooling fans (20个散热风扇)" },
+      { "id": "b", "text": "forty wiring harnesses (40套线束)" },
+      { "id": "c", "text": "ten emergency stop buttons (10个急停按钮)" },
+      { "id": "d", "text": "five digital calipers (5把数显卡尺)" }
+    ],
+    "grading": { "choice_ids": ["a", "b"] },
+    "explanation": "录音中女声明确列出 twenty cooling fans 和 forty wiring harnesses。"
+  },
+  {
+    "id": "wd-mc-04",
+    "type": "multiple_choice",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": "车间对讲机规范通话中，下列哪些用语是标准通信指令？（多选）",
+    "options": [
+      { "id": "a", "text": "Do you copy? (听得到吗/收到吗？)" },
+      { "id": "b", "text": "Copy that. (收到。)" },
+      { "id": "c", "text": "Stand by. (请保持守候/稍等。)" },
+      { "id": "d", "text": "Sing a song for me. (给我唱首歌。)" }
+    ],
+    "grading": { "choice_ids": ["a", "b", "c"] },
+    "explanation": "前三项为工业及专业无线电通话标准术语。"
+  },
+  {
+    "id": "wd-tf-01",
+    "type": "true_false",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "在句型 'Would you mind...' 后面，动词可以直接接动词原形，如 'Would you mind pass me the wrench?'。",
+    "grading": { "boolean": false },
+    "explanation": "'Would you mind' 后面必须接动名词形式（V-ing），正确表达应为 'Would you mind passing me the wrench?'。"
+  },
+  {
+    "id": "wd-tf-02",
+    "type": "true_false",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "现在分词变化规则中，以不发音字母 e 结尾的动词在加 -ing 时，通常先去掉 e 再加 -ing（如 operate -> operating）。",
+    "grading": { "boolean": true },
+    "explanation": "以不发音字母 e 结尾的动词加 -ing 规则是去 e 加 -ing，如 operating、measuring、calibrating。"
+  },
+  {
+    "id": "wd-tf-03",
+    "type": "true_false",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": [
+      { "type": "text", "text": "对讲机通话中听到班长说：" },
+      { "type": "text", "text": "Line 2 Supervisor, please stand by.", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 判定：班长要求2号线主管立即切断对讲机并不再联系。" }
+    ],
+    "grading": { "boolean": false },
+    "explanation": "'Stand by' 在对讲机术语中表示'稍等 / 保持守候等待进一步指令'，绝不是切断离开。"
+  },
+  {
+    "id": "wd-tf-04",
+    "type": "true_false",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "听对讲机通话录音，判断说法是否正确：",
+    "transcript": [
+      { "speaker": "W", "text": "Warehouse, we need fifty brackets immediately.", "tts": { "voice": "stella" } },
+      { "speaker": "M", "text": "Copy that. We only have thirty in stock right now.", "tts": { "voice": "tide" } }
+    ],
+    "explanation": "录音中男声回复 'We only have thirty in stock right now'，说明目前仓库只有30个支架库存，因此说法'仓库目前有50个支架现货'是错误的。",
+    "options": [
+      { "id": "t", "text": "正确：仓库目前有50个支架现货库存", "value": true },
+      { "id": "f", "text": "错误：仓库目前现货仅有30个支架", "value": false }
+    ],
+    "grading": { "boolean": false }
+  },
+  {
+    "id": "wd-num-01",
+    "type": "numeric",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "产线需要 50 套线束，上午仓库发放了 28 套。请问还需要发放多少套线束才能满足生产？",
+    "grading": { "value": "22", "absolute_tolerance": "0" },
+    "explanation": "50 - 28 = 22 套。"
+  },
+  {
+    "id": "wd-num-02",
+    "type": "numeric",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "装配工位有 4 个工位组，每个组正在装配 5 台控制器。全车间正在装配的控制器总共有多少台？",
+    "grading": { "value": "20", "absolute_tolerance": "0" },
+    "explanation": "4 × 5 = 20 台。"
+  },
+  {
+    "id": "wd-num-03",
+    "type": "numeric",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "听车间调度交接录音，回答后面的问题：\nHow many cooling fans are dispatched to Line 3?（3号线分配到了几个散热风扇？请用阿拉伯数字作答）",
+    "transcript": [
+      { "speaker": "M", "text": "Dispatcher, how many cooling fans are we sending to Line 3?", "tts": { "voice": "tide" } },
+      { "speaker": "W", "text": "We are dispatching eight cooling fans to Line 3.", "tts": { "voice": "stella" } }
+    ],
+    "grading": { "value": "8", "absolute_tolerance": "0" },
+    "explanation": "录音中女声明确说明 'We are dispatching eight cooling fans to Line 3'，因此答案数值为 8。"
+  },
+  {
+    "id": "wd-num-04",
+    "type": "numeric",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "小李完成单件工件检测需 15 分钟，在工友协助下每件提速了 3 分钟。协助后检测单件工件需要多少分钟？",
+    "grading": { "value": "12", "absolute_tolerance": "0" },
+    "explanation": "15 - 3 = 12 分钟。"
+  }
+]

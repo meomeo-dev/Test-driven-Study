@@ -703,5 +703,124 @@
         "b"
       ]
     }
+  },
+  {
+    "id": "requests-listen-sc-1",
+    "type": "single_choice",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "stem": "听工位求助录音，选择工友请求拿取的物品：",
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Could you please pass me the blue folder on the table?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Sure, here you are.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "The blue folder",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "The red pen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "The steel ruler",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "The safety glasses",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "录音中女声请求 \"Could you please pass me the blue folder on the table?\"。"
+  },
+  {
+    "id": "requests-cloze-1",
+    "type": "single_choice",
+    "chapter": "祈使句指令",
+    "concepts": [
+      "imperatives"
+    ],
+    "stem": [
+      {
+        "type": "text",
+        "text": "离开工位时，请按规范关闭工位照明灯。请选择祈使句正确的动词短语填空：\nPlease "
+      },
+      {
+        "type": "blank",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "text": " the lights before leaving the workbench."
+      }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "turn off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "b",
+        "text": "turn on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "c",
+        "text": "turning off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "id": "d",
+        "text": "turned off",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    },
+    "explanation": "Please 后面接动词原形构成祈使句，turn off the lights 表示关灯。"
   }
 ]
