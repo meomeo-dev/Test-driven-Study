@@ -13,7 +13,10 @@
           { "id": "has", "text": "has", "tts": { "voice": "stella" } }
         ],
         "grading": { "choice_ids": ["must"] },
-        "explanation": "must 后接动词原形，表示必须遵守的要求。"
+        "explanation": [
+          { "type": "text", "text": "must", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 后接动词原形，表示必须遵守的要求。" }
+        ]
       },
       {
         "index": 2,
@@ -22,10 +25,19 @@
           { "id": "starting", "text": "starting", "tts": { "voice": "stella" } }
         ],
         "grading": { "choice_ids": ["start"] },
-        "explanation": "do not 后接动词原形。"
+        "explanation": [
+          { "type": "text", "text": "do not", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 后接动词原形。" }
+        ]
       }
     ],
-    "analysis": "两处空格均考查情态动词 must 与否定祈使句 Do not 后接动词原形的用法，作答时注意排除第三人称单数或现在分词形式。"
+    "analysis": [
+      { "type": "text", "text": "两处空格均考查情态动词 " },
+      { "type": "text", "text": "must", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与否定祈使句 " },
+      { "type": "text", "text": "Do not", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 后接动词原形的用法，作答时注意排除第三人称单数或现在分词形式。" }
+    ]
   },
   {
     "id": "sue1-extended-listening",
@@ -45,23 +57,44 @@
       {
         "id": "location",
         "type": "single_choice",
-        "stem": "Where are the gloves?",
+        "stem": [
+          { "type": "text", "text": "Where are the gloves?", "tts": { "voice": "stella" } }
+        ],
         "options": [
-          { "id": "second", "text": "On the second shelf." },
-          { "id": "desk", "text": "On the desk." }
+          { "id": "second", "text": "On the second shelf.", "tts": { "voice": "stella" } },
+          { "id": "desk", "text": "On the desk.", "tts": { "voice": "stella" } }
         ],
         "grading": { "choice_ids": ["second"] },
-        "analysis": "第二位说话者明确说了 on the second shelf。"
+        "analysis": [
+          { "type": "text", "text": "第二位说话者明确说了 " },
+          { "type": "text", "text": "on the second shelf", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
       },
       {
         "id": "checklist",
         "type": "true_false",
-        "stem": "Workers can take the gloves without signing the checklist.",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Workers can take the gloves without signing the checklist.",
+            "tts": { "voice": "stella" }
+          }
+        ],
         "grading": { "value": false },
-        "analysis": "before taking a pair 表示领取之前要先在清单上签名。"
+        "analysis": [
+          { "type": "text", "text": "before taking a pair", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 表示领取之前要先在清单上签名。" }
+        ]
       }
     ],
-    "analysis": "本段对话围绕新手套的存放位置与领用条件展开，听音时需抓住方位短语 on the second shelf 以及时间先后词 before。"
+    "analysis": [
+      { "type": "text", "text": "本段对话围绕新手套的存放位置与领用条件展开，听音时需抓住方位短语 " },
+      { "type": "text", "text": "on the second shelf", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 以及时间先后词 " },
+      { "type": "text", "text": "before", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "sue1-extended-reading",
@@ -69,9 +102,19 @@
     "chapter": "车间通知阅读",
     "stem": "阅读车间通知，再回答两个问题。",
     "passage": [
+      { "type": "text", "text": "WORKSHOP NOTICE", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "\n" },
+      { "type": "text", "text": "The workshop opens at 8 a.m.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " " },
       {
         "type": "text",
-        "text": "WORKSHOP NOTICE\nThe workshop opens at 8 a.m. Visitors must sign in at the front desk and wear a visitor badge. The supervisor will collect the badges before visitors leave.",
+        "text": "Visitors must sign in at the front desk and wear a visitor badge.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "The supervisor will collect the badges before visitors leave.",
         "tts": { "voice": "stella" }
       }
     ],
@@ -87,7 +130,10 @@
           }
         ],
         "grading": { "value": "8", "absolute_tolerance": "0" },
-        "analysis": "8 a.m. 表示上午八点。"
+        "analysis": [
+          { "type": "text", "text": "8 a.m.", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 表示上午八点。" }
+        ]
       },
       {
         "id": "visitors",
@@ -130,7 +176,9 @@
     "sample_response_tts": { "voice": "stella" },
     "rubric": { "task_completion": 50, "language_accuracy": 50 },
     "analysis": [
-      { "type": "text", "text": "以 The delivery 作主语，用 " },
+      { "type": "text", "text": "以 " },
+      { "type": "text", "text": "The delivery", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 作主语，用 " },
       {
         "type": "text",
         "text": "has been moved to Friday",
@@ -153,15 +201,29 @@
       { "term": "清单" },
       { "term": "前台" }
     ],
-    "analysis": "signed 在这里修饰 checklist，表示清单已经签字。"
+    "analysis": [
+      { "type": "text", "text": "signed", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 在这里修饰 " },
+      { "type": "text", "text": "checklist", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，表示清单已经签字。" }
+    ]
   },
   {
     "id": "sue1-extended-judgment",
     "type": "true_false",
     "chapter": "名词单复数判断",
-    "stem": "判断下列英语语法说法是否正确：\nThe word equipment normally takes the plural form equipments.",
+    "stem": [
+      { "type": "text", "text": "判断下列英语语法说法是否正确：\nThe word " },
+      { "type": "text", "text": "equipment", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " normally takes the plural form equipments." }
+    ],
     "grading": { "value": false },
-    "analysis": "equipment 是不可数名词。要表达多件设备，可以说 pieces of equipment。"
+    "analysis": [
+      { "type": "text", "text": "equipment", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 是不可数名词。要表达多件设备，可以说 " },
+      { "type": "text", "text": "pieces of equipment", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "numbers-1",
@@ -178,7 +240,19 @@
       { "id": "c", "text": "I see three boxes.", "tts": { "voice": "stella" } },
       { "id": "d", "text": "I see third boxes.", "tts": { "voice": "stella" } }
     ],
-    "analysis": "数字 13 的英文是 thirteen；thirty 是 30，three 是 3，third 表示“第三”。因此正确答案是“I see thirteen boxes.”。",
+    "analysis": [
+      { "type": "text", "text": "数字 13 的英文是 " },
+      { "type": "text", "text": "thirteen", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；" },
+      { "type": "text", "text": "thirty", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 是 30，" },
+      { "type": "text", "text": "three", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 是 3，" },
+      { "type": "text", "text": "third", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示“第三”。因此正确答案是“" },
+      { "type": "text", "text": "I see thirteen boxes.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "”。" }
+    ],
     "grading": { "choice_ids": ["b"] }
   },
   {
@@ -196,7 +270,14 @@
       { "id": "c", "text": "需要的物品是托盘（trays）" },
       { "id": "d", "text": "需要的物品是螺丝（screws）" }
     ],
-    "analysis": "twenty-four 表示数字 24，trays 表示托盘。因此正确选项是“需要的数量是 24”和“需要的物品是托盘（trays）”。",
+    "analysis": [
+      { "type": "text", "text": "twenty-four", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示数字 24，" },
+      { "type": "text", "text": "trays", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示托盘。因此正确选项是“需要的数量是 24”和“需要的物品是托盘（" },
+      { "type": "text", "text": "trays", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）”。" }
+    ],
     "grading": { "choice_ids": ["a", "c"] }
   },
   {
@@ -212,7 +293,12 @@
       },
       { "type": "text", "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。" }
     ],
-    "analysis": "eight 表示 8，seven 表示 7，零件总数为 8 + 7 = 15。",
+    "analysis": [
+      { "type": "text", "text": "eight", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示 8，" },
+      { "type": "text", "text": "seven", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示 7，零件总数为 8 + 7 = 15。" }
+    ],
     "grading": { "value": "15", "absolute_tolerance": "0" }
   },
   {
@@ -232,7 +318,13 @@
     "sample_response": "Hi Mia,\n\nThe truck needs repairs, so today's delivery has been moved to Friday at ten in the morning. Please confirm that someone will be available to receive the boxes at that time. I'm sorry for the change and thank you for your help.\n\nBest,\nSam",
     "sample_response_tts": { "voice": "stella" },
     "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
-    "analysis": "先用 so 连接改期原因和新时间，再用 Please confirm 礼貌地请同事确认收货安排。称呼和落款让邮件格式完整。"
+    "analysis": [
+      { "type": "text", "text": "先用 " },
+      { "type": "text", "text": "so", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 连接改期原因和新时间，再用 " },
+      { "type": "text", "text": "Please confirm", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 礼貌地请同事确认收货安排。称呼和落款让邮件格式完整。" }
+    ]
   },
   {
     "id": "sue1-extended-writing-full",
@@ -251,7 +343,11 @@
     "sample_response": "A clear handover helps the next shift start work without guessing. Both paper and digital checklists can help, but they have different strengths.\n\nA paper checklist is easy to use when the network is down. However, a page can get lost, and handwriting may be hard to read. A digital checklist lets both shifts see the latest notes in one place. It is also easier to find old records. The main problem is that a tablet may run out of power.\n\nI would use the digital checklist every day and keep printed copies as a backup. If the tablet stops working, workers can write the date, time, and any unfinished tasks on paper. The shift lead can add those notes to the digital record later.",
     "sample_response_tts": { "voice": "stella" },
     "rubric": { "task_completion": 45, "language_accuracy": 30, "coherence": 25 },
-    "analysis": "第一段说明交班记录的目的，第二段用 However 转入缺点并比较两种清单，最后一段给出日常做法和设备故障时的备份流程。"
+    "analysis": [
+      { "type": "text", "text": "第一段说明交班记录的目的，第二段用 " },
+      { "type": "text", "text": "However", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 转入缺点并比较两种清单，最后一段给出日常做法和设备故障时的备份流程。" }
+    ]
   },
   {
     "id": "sue1-extended-translation-zh-to-en",
@@ -270,7 +366,12 @@
       { "term": "empty boxes" },
       { "term": "loading door" }
     ],
-    "analysis": "hand something to someone 表示把某物交给某人。before three p.m. 保留了原句“下午三点前”的时间限制。"
+    "analysis": [
+      { "type": "text", "text": "hand something to someone", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示把某物交给某人。" },
+      { "type": "text", "text": "before three p.m.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 保留了原句“下午三点前”的时间限制。" }
+    ]
   },
   {
     "id": "sue1-extended-listening-passage",
@@ -283,24 +384,40 @@
       {
         "id": "closing-hour",
         "type": "numeric",
-        "stem": "At what hour will the storeroom close? Enter only the hour.",
+        "stem": [
+          {
+            "type": "text",
+            "text": "At what hour will the storeroom close?",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": " " },
+          { "type": "text", "text": "Enter only the hour.", "tts": { "voice": "stella" } }
+        ],
         "grading": { "value": "4", "absolute_tolerance": "0" },
         "analysis": "第一句说库房四点关门。三点半是领取手套的截止时间。"
       },
       {
         "id": "gloves-location",
         "type": "single_choice",
-        "stem": "Where are the spare gloves?",
+        "stem": [
+          { "type": "text", "text": "Where are the spare gloves?", "tts": { "voice": "stella" } }
+        ],
         "options": [
-          { "id": "blue-cabinet", "text": "In the blue cabinet." },
-          { "id": "front-desk", "text": "At the front desk." },
-          { "id": "green-cabinet", "text": "In the green cabinet." }
+          { "id": "blue-cabinet", "text": "In the blue cabinet.", "tts": { "voice": "stella" } },
+          { "id": "front-desk", "text": "At the front desk.", "tts": { "voice": "stella" } },
+          { "id": "green-cabinet", "text": "In the green cabinet.", "tts": { "voice": "stella" } }
         ],
         "grading": { "choice_ids": ["blue-cabinet"] },
         "analysis": "最后一句说明备用手套在门旁的蓝色柜子里。"
       }
     ],
-    "analysis": "本则库房通知包含关门时间、领取截止时间及备用手套存放位置，听音时注意区分 four（关门）与 three thirty（领取截止）并捕捉方位信息。"
+    "analysis": [
+      { "type": "text", "text": "本则库房通知包含关门时间、领取截止时间及备用手套存放位置，听音时注意区分 " },
+      { "type": "text", "text": "four", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（关门）与 " },
+      { "type": "text", "text": "three thirty", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（领取截止）并捕捉方位信息。" }
+    ]
   },
   {
     "id": "sue1-extended-listening-recording",
@@ -318,24 +435,55 @@
       {
         "id": "arrival-time",
         "type": "single_choice",
-        "stem": "When will the driver arrive?",
+        "stem": [
+          { "type": "text", "text": "When will the driver arrive?", "tts": { "voice": "stella" } }
+        ],
         "options": [
-          { "id": "ten", "text": "At 10:00 a.m." },
-          { "id": "ten-thirty", "text": "At 10:30 a.m." },
-          { "id": "eleven-thirty", "text": "At 11:30 a.m." }
+          {
+            "id": "ten",
+            "text": "At 10:00 a.m.",
+            "tts": { "voice": "stella", "text": "At ten a.m." }
+          },
+          {
+            "id": "ten-thirty",
+            "text": "At 10:30 a.m.",
+            "tts": { "voice": "stella", "text": "At ten thirty a.m." }
+          },
+          {
+            "id": "eleven-thirty",
+            "text": "At 11:30 a.m.",
+            "tts": { "voice": "stella", "text": "At eleven thirty a.m." }
+          }
         ],
         "grading": { "choice_ids": ["ten-thirty"] },
-        "analysis": "ten thirty 表示十点半。morning delivery 给出了上午的时间背景。"
+        "analysis": [
+          { "type": "text", "text": "ten thirty", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 表示十点半。" },
+          { "type": "text", "text": "morning delivery", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 给出了上午的时间背景。" }
+        ]
       },
       {
         "id": "boxes-location",
         "type": "true_false",
-        "stem": "The empty boxes should be left by the loading door.",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The empty boxes should be left by the loading door.",
+            "tts": { "voice": "stella" }
+          }
+        ],
         "grading": { "value": true },
         "analysis": "通知最后一句要求把空箱放在装货门旁。"
       }
     ],
-    "analysis": "本段录音说明早间送货延迟后的到达时间与空箱放置地点，听音时需结合 morning 语境辨别具体时刻，并记录方位要求 by the loading door。"
+    "analysis": [
+      { "type": "text", "text": "本段录音说明早间送货延迟后的到达时间与空箱放置地点，听音时需结合 " },
+      { "type": "text", "text": "morning", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 语境辨别具体时刻，并记录方位要求 " },
+      { "type": "text", "text": "by the loading door", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "sue1-extended-reading-single-choice",
@@ -343,9 +491,23 @@
     "chapter": "车间通知阅读",
     "stem": "阅读更衣室清洁通知，再回答两个问题。",
     "passage": [
+      { "type": "text", "text": "LOCKER ROOM NOTICE", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "\n" },
       {
         "type": "text",
-        "text": "LOCKER ROOM NOTICE\nThe main locker room will close at four p.m. on Friday for cleaning. After four, staff can use the small locker room next to the canteen. The main locker room will reopen on Monday morning.",
+        "text": "The main locker room will close at four p.m. on Friday for cleaning.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "After four, staff can use the small locker room next to the canteen.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "The main locker room will reopen on Monday morning.",
         "tts": { "voice": "stella" }
       }
     ],
@@ -404,7 +566,11 @@
           }
         ],
         "grading": { "choice_ids": ["monday-morning"] },
-        "analysis": "通知最后一句明确说明主更衣室将在周一上午（Monday morning）重新开放。"
+        "analysis": [
+          { "type": "text", "text": "通知最后一句明确说明主更衣室将在周一上午（" },
+          { "type": "text", "text": "Monday morning", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）重新开放。" }
+        ]
       }
     ],
     "analysis": "本则更衣室清洁通知说明了主更衣室关闭原因与时间、四点后的临时替代更衣室位置以及主更衣室的重新开放时间，作答时需对应排查地点与时间节点。"

@@ -204,9 +204,15 @@ test('reading separates the article, sub-questions and explanations', async ({ p
   await expect(stem.getByText(/WORKSHOP NOTICE/)).toBeVisible();
   await expect(stem.getByText('查看逐字稿')).toHaveCount(0);
   await expect(answers.getByText(/WORKSHOP NOTICE/)).toHaveCount(0);
-  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  const passageSpeech = stem.getByRole('button', { name: '播放发音', exact: true });
+  await expect(passageSpeech).toHaveCount(4);
+  await passageSpeech.first().click();
   await expect.poll(() => speech[0]).toMatchObject({
-    text: expect.stringMatching(/^WORKSHOP NOTICE\nThe workshop opens/), voice: 'stella',
+    text: 'WORKSHOP NOTICE', voice: 'stella',
+  });
+  await passageSpeech.nth(1).click();
+  await expect.poll(() => speech[1]).toMatchObject({
+    text: 'The workshop opens at 8 a.m.', voice: 'stella',
   });
   await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案：8')).toBeVisible();
   const reviewedChoices = answers.getByRole('group', { name: '小题 2' });
@@ -264,7 +270,8 @@ test('a listening paper plays audio without exposing the active transcript', asy
   });
   await page.goto(`/exam?subject=${demo.subject}&exam=${id}`);
   await expect(page.getByText('查看逐字稿')).toHaveCount(0);
-  await page.getByRole('button', { name: '播放发音' }).click();
+  await page.getByRole('region', { name: '听力音频播放' })
+    .getByRole('button', { name: '播放发音' }).click();
   await expect.poll(() => lines).toEqual([0, 1]);
 
   await page.getByRole('radio', { name: 'On the second shelf.' }).check();
