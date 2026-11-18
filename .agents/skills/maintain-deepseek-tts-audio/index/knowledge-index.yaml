@@ -1,0 +1,82 @@
+schema_version: 1
+skill: maintain-deepseek-tts-audio
+entries:
+  - id: deepseek-tts-api
+    title: DeepSeek 语音合成整段接口
+    path: references/deepseek-tts-api.md
+    kind: reference
+    summary: 接口地址、Bearer 鉴权、请求体字段与取值、单次上限、PCM 回包与中途断开的处理；本 Skill 的请求模块按此实现。
+    source: >-
+      https://api-docs.deepseek.com/zh-cn/guides/tts（页面未标注更新日期）；session-evidence（2026-11-17 实测 4 次合成与 1 次试听，PCM 为 24 kHz、16 位、单声道）
+    verified_at: '2026-11-17'
+    status: active
+    aliases:
+      - 接口
+      - endpoint
+      - 鉴权
+      - Authorization
+      - Bearer
+      - 请求体
+      - filter_markdown
+      - pcm
+      - wav
+    review_after_days: 90
+  - id: voices-billing-limits
+    title: 音色、计费与并发限制
+    path: references/voices-billing-limits.md
+    kind: reference
+    summary: 两个音色 stella 与 tide、自动识别的语种、按计费字符收费的口径与价格（含限时折扣）、账号并发上限；价格与折扣会漂移，以当次查阅为准。
+    source: >-
+      https://api-docs.deepseek.com/zh-cn/guides/tts（音色、计费、限速，页面未标注更新日期）；https://api-docs.deepseek.com/zh-cn/quick_start/pricing（语音价格）；https://api-docs.deepseek.com/zh-cn/quick_start/rate_limit（并发按账号计）
+    verified_at: '2026-11-17'
+    status: active
+    aliases:
+      - 音色
+      - voice_id
+      - stella
+      - tide
+      - 计费
+      - 价格
+      - 折扣
+      - 并发
+      - 限流
+    review_after_days: 30
+  - id: error-handling
+    title: 合成报错的类别与处理
+    path: references/error-handling.md
+    kind: reference
+    summary: HTTP 状态到错误类别的对照、工具遇到各类别时的行为（重试、停止派发、停该音色）与处理方法；含官方未公开、按假设判定的项。
+    source: >-
+      https://api-docs.deepseek.com/zh-cn/guides/tts（400、429、503、504 与中途断开）；https://api-docs.deepseek.com/zh-cn/quick_start/error_codes（401、402、413、422、500）；session-evidence（2026-11-17 实测音色不存在与没有可朗读文本均为 HTTP 400）
+    verified_at: '2026-11-17'
+    status: active
+    aliases:
+      - 报错
+      - 错误码
+      - '401'
+      - '402'
+      - '429'
+      - 余额不足
+      - 限流
+      - 重试
+      - 中途断开
+    review_after_days: 90
+  - id: project-config
+    title: 项目配置、句库与音频清单格式
+    path: references/project-config.md
+    kind: reference
+    summary: 使用者项目的配置文件字段、句库文件格式、路径模板与分组、文件格式与处理设置、文件名键算法（FNV-1a 64）与音频清单记录。
+    source: local
+    verified_at: '2026-11-17'
+    status: active
+    aliases:
+      - 配置
+      - config
+      - 句库
+      - phrases
+      - manifest
+      - 清单
+      - 文件名
+      - key
+      - 格式
+    review_after_days: 180

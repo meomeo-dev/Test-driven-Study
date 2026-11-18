@@ -119,11 +119,18 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 	if err := json.Unmarshal([]byte(row.PayloadJson), &item); err != nil {
 		return study.Question{}, err
 	}
+	transcriptURL := ""
+	if item.Transcript != nil {
+		transcriptURL = item.Transcript.String()
+	}
 	question := study.Question{SubjectID: unit, PackageID: row.CourseID,
-		PackageVersion: row.Version, SourceItemID: row.ItemID, Title: item.Stem,
+		PackageVersion: row.Version, SourceItemID: row.ItemID, Title: item.Stem.String(),
 		Analysis: item.Explanation, Skill: item.Hint, ChapterName: item.Chapter,
-		ImageURL: item.Image, AudioURL: item.Audio, TranscriptURL: item.Transcript,
+		ImageURL: item.Image, AudioURL: item.Audio, TranscriptURL: transcriptURL,
 		Items: []study.Option{}}
+	if len(item.Stem.Segments) > 0 {
+		question.RichContent = item.Stem.Segments
+	}
 	if item.Image != "" {
 		question.ImageType = 1
 		if strings.EqualFold(path.Ext(item.Image), ".gif") {
@@ -145,9 +152,21 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 		}
 		for i, option := range item.Options {
 			sign := int64(i + 1)
-			question.Items = append(question.Items, study.Option{
+			opt := study.Option{
 				Sign: sign, ItemTitle: option.Text, BooleanValue: option.Value,
-			})
+			}
+			if option.TTS != nil && option.TTS.Enabled {
+				voice := option.TTS.Config.Voice
+				if voice == "" {
+					voice = "stella"
+				}
+				text := option.TTS.Config.Text
+				if text == "" {
+					text = option.Text
+				}
+				opt.TTS = &study.OptionTTS{Voice: voice, Text: text, Speed: option.TTS.Config.Speed}
+			}
+			question.Items = append(question.Items, opt)
 			if *option.Value == *item.Grading.Boolean {
 				question.Answer = strconv.FormatInt(sign, 10)
 			}
@@ -166,7 +185,19 @@ func projectChoices(question *study.Question, item course.Item) string {
 	for i, option := range item.Options {
 		sign := int64(i + 1)
 		signs[option.ID] = strconv.FormatInt(sign, 10)
-		question.Items = append(question.Items, study.Option{Sign: sign, ItemTitle: option.Text})
+		opt := study.Option{Sign: sign, ItemTitle: option.Text}
+		if option.TTS != nil && option.TTS.Enabled {
+			voice := option.TTS.Config.Voice
+			if voice == "" {
+				voice = "stella"
+			}
+			text := option.TTS.Config.Text
+			if text == "" {
+				text = option.Text
+			}
+			opt.TTS = &study.OptionTTS{Voice: voice, Text: text, Speed: option.TTS.Config.Speed}
+		}
+		question.Items = append(question.Items, opt)
 	}
 	answers := make([]string, 0, len(item.Grading.ChoiceIDs))
 	for _, id := range item.Grading.ChoiceIDs {

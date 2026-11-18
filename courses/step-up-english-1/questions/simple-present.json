@@ -31,5 +31,46 @@
         "a"
       ]
     }
+  },
+  {
+    "id": "simple-present-q02",
+    "type": "single_choice",
+    "chapter": "一般现在时与动词基础形态",
+    "concepts": [
+      "simple-present-core"
+    ],
+    "stem": [
+      { "type": "text", "text": "工人向维修工汇报车间照明指示灯故障时，最地道的英文表达是：" },
+      { "type": "text", "text": "Stop!", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 请选出对应选项：" }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "The light doesn't work.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "The light is dead person.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "No light working now.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "The light loses power heart.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "explanation": "在英语中，机械或设备故障最常用的地道表达是 doesn't work。",
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
   }
 ]

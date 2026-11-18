@@ -1,5 +1,6 @@
 import { Check, Circle, CircleCheck } from 'lucide-react';
 import type { Attempt, PublicQuestion } from '../../api/practice';
+import { AudioControls } from '../../components/AudioControls';
 
 type Props = {
   question: PublicQuestion;
@@ -12,11 +13,15 @@ type Props = {
 
 export function ChoiceOptions({ question, selected, result, pending, shortcuts, onChoose }: Props) {
   const correct = new Set(result?.correct_answer ?? []);
+  const hasAnyTts = question.items.some(opt => Boolean(opt.tts));
+
   return <div className="answer-options" role="group" aria-label="选择答案">
     {question.items.map(option => {
       const chosen = selected.includes(option.sign);
       const right = !!result && correct.has(option.sign);
       const wrong = !!result && chosen && !right;
+      const optionTts = option.tts || (hasAnyTts ? { voice: 'stella' } : undefined);
+
       return <button type="button" key={option.sign}
         className={`answer-option choice-option ${chosen ? 'selected' : ''} ${right ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}
         data-sign={option.sign} aria-label={`选项${option.sign}：${option.item_title}`} aria-pressed={chosen}
@@ -25,6 +30,7 @@ export function ChoiceOptions({ question, selected, result, pending, shortcuts, 
         <span className="option-letter">{option.sign}</span>
         {question.question_type === 2 && (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
         <span className="option-text">{option.item_title}</span>
+        {optionTts && <AudioControls text={optionTts.text || option.item_title} voice={optionTts.voice || 'stella'} />}
         {right && <span className="correct-label"><Check size={13} />正确答案</span>}
         {wrong && <span className="wrong-label">你的选择</span>}
       </button>;

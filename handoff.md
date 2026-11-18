@@ -8,11 +8,40 @@ Updated 2026-11-17 (America/New_York).
 - **Active Branch**: `feat/0052-expand-sample-courses-to-180-hour-standard-curriculum`
 - **Baseline Commit**: `9135820` (`docs: enforce option-level TTS uniformity to prevent answer leakage`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Current Milestone**: Created work unit execution TODO [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json) and completed dual subagent architectural & contract alignment reviews with 100% schema check pass.
+- **Current Milestone**: Completed end-to-end implementation of DeepSeek TTS and Unified 3-Tab Settings (WU-001) with 100% passed automated test gates (typecheck, 11 Vitest unit tests, full Go suite, and all 18 course package validations).
+- **WU Status**: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json) (`completed`, phase: `close`).
 
 ---
 
-## 2. Work Unit TODO & Dual Subagent Review Outcomes
+## 2. Implementation Milestones Completed (WU-001)
+
+1. **Contracts & Schema Extension**:
+   - `contracts/course/v1/items.schema.json`: Added polymorphic `$defs/richContent`, `$defs/contentSegment`, `$defs/ttsConfig`, and allowed `tts` in `options.items`.
+   - `contracts/http/openapi.yaml`: Added paths `/api/audio/{voice}/{key}.wav`, `/api/tts/synthesize`, `/api/tts/settings`, `/api/tts/settings/test`. Added schemas `TTSConfig`, `ContentSegment`, `TTSProviderSettings`, `TTSProviderUpdate`, `TTSSynthesizeInput`, `TTSSynthesizeResult`. Added `rich_content` to `Question` and `PublicQuestion`.
+   - Generated TypeScript bindings: `web/src/api/generated/types.gen.ts`. Passed `npm run check:generated` drift gate.
+
+2. **Backend Go TTS Service & Keyring**:
+   - `internal/tts/`: Implemented DeepSeek `/v1/tools/tts` client, 24kHz raw PCM to 44-byte RIFF WAV header synthesis, FNV-1a 64-bit normalized phrase key hashing (`0xcbf29ce484222325`, `0x100000001b3`), local disk cache at `var/audio/{voice}/{key}.wav` with `singleflight.Group` deduplication, and dedicated OS Keyring service (`test-driven-study.tts-provider`, zero credential reuse).
+   - `internal/httpapi/tts.go`: Handlers for audio streaming with `Cache-Control: public, max-age=31536000, immutable`, synthesis endpoint with `force?: boolean`, settings GET/PUT with `X-Settings-Token`, and connectivity test endpoint.
+   - `internal/course/model.go` & `internal/study/models.go`: Polymorphic `RichContent`, `OptionTTS`, `Transcript` with custom JSON marshalling.
+   - Wired in `cmd/server/main.go` and `internal/httpapi/server.go`.
+
+3. **Frontend API & 3-Tab Provider Dialog**:
+   - `web/src/api/tts.ts`: Handwritten client with `settings`, `save`, `test`, `synthesize`, and `audioUrl`.
+   - `web/src/features/palace/ProviderDialog.tsx`: Expanded from 2 tabs to 3 tabs (`生图服务`, `LLM · Responses`, `TTS · 语音服务`) with ARIA tabs and 3-way circular keyboard navigation (`Home`, `End`, `ArrowLeft`, `ArrowRight`).
+   - `web/src/features/palace/ProviderForm.tsx`: Dynamic form adapting to `kind === 'tts'`. Hides models/reasoning fields, exposes voice selector radio group (`stella` / `tide`), proxy configuration, dedicated API key entry, and test/save mutations.
+   - `web/src/styles/provider-settings.css`: Added styles for voice selector fieldset and radio controls.
+
+4. **RichContent Component & Anti-Leakage Option Audio**:
+   - `web/src/components/AudioControls.tsx`: Play button (`Volume2`), loading spinner (`LoaderCircle`), regenerate button (`RotateCcw` with `force: true`), and global single-instance audio player (`globalAudio`) with playback mutex (starting audio stops any active playback) and keyboard accessibility (`Enter`/`Space`).
+   - `web/src/components/RichContent.tsx`: Mixed layout supporting `text`, `speech` (with `AudioControls`), and `blank` (`___`).
+   - `web/src/features/practice/QuestionCard.tsx` & `ChoiceOptions.tsx` & `web/src/features/memorization/QuestionCard.tsx`: Integrated `RichContent` for stem rendering, and enforced the **Anti-Leakage Uniformity Rule**: if any option has TTS enabled, all options uniformly render audio controls to prevent answer leakage.
+
+5. **Automated Verification Results**:
+   - `npm run typecheck`: 0 errors.
+   - `npm run test:unit`: 11 test files, 42 tests passed (including new `tts-navigation.test.ts`).
+   - `npm run test:go`: 100% passed across all Go packages.
+   - `go run ./cmd/course check`: All 18 courses passed validation, including golden sample v2 question in `courses/step-up-english-1/questions/simple-present.json`.
 
 1. **TODO Document Created & Validated**:
    - JSON: [.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/.todo_tasks/20261117_agents-system_deepseek-tts-implementation_WU-001.json)

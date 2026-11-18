@@ -3,11 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import { Check, Settings2 } from 'lucide-react';
 import * as api from '../../api/palace';
 import * as llm from '../../api/llm';
+import * as tts from '../../api/tts';
 import { Modal } from '../../components/Modal';
 import { ProviderForm } from './ProviderForm';
 
-type Kind = 'image' | 'llm';
-const kinds: Kind[] = ['image', 'llm'];
+export type Kind = 'image' | 'llm' | 'tts';
+const kinds: Kind[] = ['image', 'llm', 'tts'];
+
 export function ProviderDialog({ initialKind = 'image' }: { initialKind?: Kind }) {
   const [open, setOpen] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -15,23 +17,41 @@ export function ProviderDialog({ initialKind = 'image' }: { initialKind?: Kind }
   const [busy, setBusy] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const id = useId();
+
   function navigate(event: KeyboardEvent<HTMLButtonElement>) {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key) || busy) return;
     event.preventDefault();
-    const next = event.key === 'Home' ? 'image' : event.key === 'End' ? 'llm' : tab === 'image' ? 'llm' : 'image';
-    setTab(next); document.getElementById(`${id}-${next}-tab`)?.focus();
+    const idx = kinds.indexOf(tab);
+    let next: Kind;
+    if (event.key === 'Home') {
+      next = kinds[0] ?? 'image';
+    } else if (event.key === 'End') {
+      next = kinds[kinds.length - 1] ?? 'tts';
+    } else if (event.key === 'ArrowRight') {
+      next = kinds[(idx + 1) % kinds.length] ?? 'image';
+    } else {
+      next = kinds[(idx - 1 + kinds.length) % kinds.length] ?? 'image';
+    }
+    setTab(next);
+    document.getElementById(`${id}-${next}-tab`)?.focus();
   }
+
+  const triggerLabel = initialKind === 'llm' ? 'LLM 设置' : initialKind === 'tts' ? 'TTS 设置' : '生图设置';
+  const modalTitle = initialKind === 'llm' ? 'LLM 服务设置' : initialKind === 'tts' ? 'TTS 语音设置' : '生图服务设置';
+
   return <>
-    <button ref={trigger} className="button secondary provider-settings-trigger" aria-label={initialKind === 'llm' ? 'LLM 设置' : '生图设置'}
+    <button ref={trigger} className="button secondary provider-settings-trigger" aria-label={triggerLabel}
       onClick={() => { setSaved(false); setOpen(true); }}>
-      {saved ? <Check size={15} /> : <Settings2 size={15} />}<span>{saved ? '已保存' : initialKind === 'llm' ? 'LLM 设置' : '生图设置'}</span>
+      {saved ? <Check size={15} /> : <Settings2 size={15} />}<span>{saved ? '已保存' : triggerLabel}</span>
     </button>
-    <Modal open={open} onOpenChange={setOpen} title={initialKind === 'llm' ? 'LLM 服务设置' : '生图服务设置'} returnFocus={trigger}>
+    <Modal open={open} onOpenChange={setOpen} title={modalTitle} returnFocus={trigger}>
       <div className="provider-tabs" role="tablist" aria-label="AI 服务类型">
         {kinds.map(kind => <button key={kind} id={`${id}-${kind}-tab`} type="button" role="tab"
           aria-selected={tab === kind} aria-controls={`${id}-${kind}-panel`}
           tabIndex={tab === kind ? 0 : -1} disabled={busy}
-          onKeyDown={navigate} onClick={() => setTab(kind)}>{kind === 'image' ? '生图服务' : 'LLM · Responses'}</button>)}
+          onKeyDown={navigate} onClick={() => setTab(kind)}>
+          {kind === 'image' ? '生图服务' : kind === 'llm' ? 'LLM · Responses' : 'TTS · 语音服务'}
+        </button>)}
       </div>
       <div role="tabpanel" id={`${id}-${tab}-panel`} aria-labelledby={`${id}-${tab}-tab`}>
         {open && <ProviderLoader key={tab} kind={tab} onBusy={setBusy}
@@ -40,12 +60,20 @@ export function ProviderDialog({ initialKind = 'image' }: { initialKind?: Kind }
     </Modal>
   </>;
 }
+
 function ProviderLoader({ kind, onSaved, onBusy }: {
   kind: Kind; onSaved: () => void; onBusy: (busy: boolean) => void;
 }) {
-  const query = useQuery<api.ProviderSettings | llm.LlmProviderSettings>({ queryKey: ['provider-settings', kind],
-    queryFn: ({ signal }) => kind === 'llm' ? llm.settings(signal) : api.providerSettings(signal),
-    staleTime: 0, gcTime: 0, retry: false });
+  const query = useQuery<api.ProviderSettings | llm.LlmProviderSettings | tts.TtsProviderSettings>({
+    queryKey: ['provider-settings', kind],
+    queryFn: ({ signal }) => kind === 'tts'
+      ? tts.settings(signal)
+      : kind === 'llm'
+      ? llm.settings(signal)
+      : api.providerSettings(signal),
+    staleTime: 0, gcTime: 0, retry: false,
+  });
+
   if (query.error) return <div role="alert"><p>{query.error.message}</p>
     <button className="button outline" onClick={() => { void query.refetch(); }}>重新读取设置</button></div>;
   if (!query.data) return <p role="status">正在读取设置…</p>;

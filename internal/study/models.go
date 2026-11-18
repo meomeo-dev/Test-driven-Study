@@ -2,17 +2,25 @@ package study
 
 import "encoding/json"
 
+type OptionTTS struct {
+	Voice string   `json:"voice,omitempty"`
+	Text  string   `json:"text,omitempty"`
+	Speed *float64 `json:"speed,omitempty"`
+}
+
 type Option struct {
 	Sign         int64           `json:"sign"`
 	ItemTitle    string          `json:"item_title"`
 	Title        json.RawMessage `json:"title,omitempty"`
 	BooleanValue *bool           `json:"boolean_value,omitempty"`
+	TTS          *OptionTTS      `json:"tts,omitempty"`
 }
 
 type Question struct {
 	QuestionID      int64    `json:"question_id"`
 	QuestionType    int64    `json:"question_type"`
 	Title           string   `json:"title"`
+	RichContent     any      `json:"rich_content,omitempty"`
 	Items           []Option `json:"items"`
 	ImageURL        string   `json:"image_url"`
 	AudioURL        string   `json:"audio_url,omitempty"`

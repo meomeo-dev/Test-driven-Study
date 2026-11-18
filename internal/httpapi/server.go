@@ -14,20 +14,27 @@ import (
 	"test-driven-study/internal/llm"
 	"test-driven-study/internal/palace"
 	"test-driven-study/internal/study"
+	"test-driven-study/internal/tts"
 )
 
 type Server struct {
 	study          *study.Service
 	palaces        *palace.Service
 	llm            *llm.Service
+	tts            *tts.Service
 	root           string
 	allowedOrigins map[string]bool
 }
 
-func New(service *study.Service, palaces *palace.Service, root, apiPort, webPort string, planners ...*llm.Service) http.Handler {
+func New(service *study.Service, palaces *palace.Service, root, apiPort, webPort string, extraServices ...any) http.Handler {
 	server := &Server{study: service, palaces: palaces, root: root, allowedOrigins: map[string]bool{}}
-	if len(planners) > 0 {
-		server.llm = planners[0]
+	for _, extra := range extraServices {
+		switch s := extra.(type) {
+		case *llm.Service:
+			server.llm = s
+		case *tts.Service:
+			server.tts = s
+		}
 	}
 	for _, host := range []string{"127.0.0.1", "localhost"} {
 		for _, port := range []string{apiPort, webPort} {
@@ -50,6 +57,9 @@ func New(service *study.Service, palaces *palace.Service, root, apiPort, webPort
 	}
 	if server.palaces != nil {
 		server.registerPalaceRoutes(mux)
+	}
+	if server.tts != nil {
+		server.registerTTSRoutes(mux)
 	}
 	mux.HandleFunc("/api/", func(w http.ResponseWriter, r *http.Request) { problem(w, 404, "接口不存在") })
 	mux.HandleFunc("/", server.frontend)

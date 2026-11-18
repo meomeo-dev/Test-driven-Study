@@ -1838,6 +1838,159 @@ paths:
           required: true
           schema:
             type: string
+  /api/tts/settings:
+    get:
+      operationId: getTTSSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TTSProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      operationId: saveTTSSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TTSProviderSettings'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TTSProviderUpdate'
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+  /api/tts/settings/test:
+    post:
+      operationId: testTTSSettings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderConnection'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TTSProviderUpdate'
+      parameters:
+        - name: X-Settings-Token
+          in: header
+          required: true
+          schema:
+            type: string
+  /api/tts/synthesize:
+    post:
+      operationId: synthesizeSpeech
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TTSSynthesizeResult'
+        '400':
+          description: Request error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TTSSynthesizeInput'
+  /api/audio/{voice}/{key}.wav:
+    get:
+      operationId: getAudioStream
+      parameters:
+        - name: voice
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [stella, tide]
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-f0-9]{16}$'
+      responses:
+        '200':
+          description: WAV audio stream
+          content:
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Audio not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /api/llm/plans:
     post:
       operationId: createLLMPlan
@@ -2637,6 +2790,8 @@ components:
         item_title: *ref_6
         boolean_value: { type: boolean }
         title: {}
+        tts:
+          $ref: '#/components/schemas/TTSConfig'
       required:
         - sign
         - item_title
@@ -2651,6 +2806,10 @@ components:
         question_id: *ref_3
         question_type: *ref_3
         title: *ref_6
+        rich_content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentSegment'
         items:
           type: array
           items:
@@ -2801,6 +2960,10 @@ components:
           format: int64
         title:
           type: string
+        rich_content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentSegment'
         items:
           type: array
           items:
@@ -4585,3 +4748,111 @@ components:
     EmptyRequest:
       type: object
       additionalProperties: false
+    TTSConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        voice:
+          type: string
+          enum: [stella, tide]
+        text:
+          type: string
+        speed:
+          type: number
+    ContentSegment:
+      type: object
+      required: [type]
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum: [text, speech, blank]
+        text:
+          type: string
+        tts:
+          $ref: '#/components/schemas/TTSConfig'
+        index:
+          type: integer
+    TTSProviderSettings:
+      type: object
+      additionalProperties: false
+      required:
+        - base_url
+        - voices
+        - default_voice
+        - proxy_url
+        - proxy_auth_configured
+        - key_configured
+        - storage
+        - write_token
+        - ready
+      properties:
+        base_url:
+          type: string
+        voices:
+          type: array
+          items:
+            type: string
+            enum: [stella, tide]
+        default_voice:
+          type: string
+          enum: [stella, tide]
+        proxy_url:
+          type: string
+        proxy_auth_configured:
+          type: boolean
+        key_configured:
+          type: boolean
+        storage:
+          type: string
+        write_token:
+          type: string
+        ready:
+          type: boolean
+    TTSProviderUpdate:
+      type: object
+      additionalProperties: false
+      required:
+        - base_url
+        - default_voice
+      properties:
+        base_url:
+          type: string
+        default_voice:
+          type: string
+          enum: [stella, tide]
+        api_key:
+          type: string
+        clear_key:
+          type: boolean
+        proxy_url:
+          type: string
+    TTSSynthesizeInput:
+      type: object
+      required: [text, voice]
+      additionalProperties: false
+      properties:
+        text:
+          type: string
+          maxLength: 10000
+        voice:
+          type: string
+          enum: [stella, tide]
+        force:
+          type: boolean
+    TTSSynthesizeResult:
+      type: object
+      required: [key, voice, audio_url, cached, duration_ms]
+      additionalProperties: false
+      properties:
+        key:
+          type: string
+        voice:
+          type: string
+          enum: [stella, tide]
+        audio_url:
+          type: string
+        cached:
+          type: boolean
+        duration_ms:
+          type: integer

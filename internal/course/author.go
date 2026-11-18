@@ -28,7 +28,7 @@ func Scaffold(parent, id, title, language string) (string, error) {
 					File: "lessons/intro.md"}},
 			}}}
 		items := []Item{{
-			Prompt:      Prompt{ID: "1", Type: Numeric, Stem: "What is 1 divided by 4?"},
+			Prompt:      Prompt{ID: "1", Type: Numeric, Stem: RichContent{Text: "What is 1 divided by 4?"}},
 			Grading:     Grading{Value: "0.25", AbsoluteTolerance: "0"},
 			Explanation: "Dividing one by four gives one quarter.",
 		}}

@@ -1,0 +1,8 @@
+interface:
+  display_name: "DeepSeek 语音预生成音频维护"
+  short_description: >-
+    用 DeepSeek 语音合成为静态句库预先生成多套音色的音频：比对、只补缺失与过期、清理、核对、
+    试听换音色、排查 Key 与合成报错
+  default_prompt: >-
+    使用 $maintain-deepseek-tts-audio 让这个项目的语音文件与句库一致：先核对配置与 Key，比对要合成的
+    条目与费用，合成缺失和过期的音频，清理不在句库中的文件，最后核对是否齐全。

@@ -168,8 +168,8 @@ func (files packageFiles) validateItem(item Item, seen map[string]bool) error {
 			return err
 		}
 	}
-	if item.Transcript != "" {
-		if err := files.transcript(item.Transcript); err != nil {
+	if item.Transcript != nil && len(item.Transcript.Lines) == 0 && item.Transcript.Text != "" {
+		if err := files.transcript(item.Transcript.Text); err != nil {
 			return err
 		}
 	}

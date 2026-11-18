@@ -233,6 +233,7 @@ export type QuestionOption = {
     item_title: string;
     boolean_value?: boolean;
     title?: unknown;
+    tts?: TtsConfig;
 };
 
 export type Question = {
@@ -244,6 +245,7 @@ export type Question = {
     question_id: number;
     question_type: number;
     title: string;
+    rich_content?: Array<ContentSegment>;
     items: Array<QuestionOption>;
     image_url: string;
     image_type: number;
@@ -311,6 +313,7 @@ export type PublicQuestion = {
     question_id: number;
     question_type: number;
     title: string;
+    rich_content?: Array<ContentSegment>;
     items: Array<QuestionOption>;
     image_url: string;
     image_type: number;
@@ -1006,6 +1009,53 @@ export type ExamMoveInput = {
 
 export type EmptyRequest = {
     [key: string]: never;
+};
+
+export type TtsConfig = {
+    voice?: 'stella' | 'tide';
+    text?: string;
+    speed?: number;
+};
+
+export type ContentSegment = {
+    type: 'text' | 'speech' | 'blank';
+    text?: string;
+    tts?: TtsConfig;
+    index?: number;
+};
+
+export type TtsProviderSettings = {
+    base_url: string;
+    voices: Array<'stella' | 'tide'>;
+    default_voice: 'stella' | 'tide';
+    proxy_url: string;
+    proxy_auth_configured: boolean;
+    key_configured: boolean;
+    storage: string;
+    write_token: string;
+    ready: boolean;
+};
+
+export type TtsProviderUpdate = {
+    base_url: string;
+    default_voice: 'stella' | 'tide';
+    api_key?: string;
+    clear_key?: boolean;
+    proxy_url?: string;
+};
+
+export type TtsSynthesizeInput = {
+    text: string;
+    voice: 'stella' | 'tide';
+    force?: boolean;
+};
+
+export type TtsSynthesizeResult = {
+    key: string;
+    voice: 'stella' | 'tide';
+    audio_url: string;
+    cached: boolean;
+    duration_ms: number;
 };
 
 export type ListCoursesData = {
@@ -2807,6 +2857,160 @@ export type TestLlmSettingsResponses = {
 };
 
 export type TestLlmSettingsResponse = TestLlmSettingsResponses[keyof TestLlmSettingsResponses];
+
+export type GetTtsSettingsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/tts/settings';
+};
+
+export type GetTtsSettingsErrors = {
+    /**
+     * Request error
+     */
+    400: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
+};
+
+export type GetTtsSettingsError = GetTtsSettingsErrors[keyof GetTtsSettingsErrors];
+
+export type GetTtsSettingsResponses = {
+    /**
+     * Successful response
+     */
+    200: TtsProviderSettings;
+};
+
+export type GetTtsSettingsResponse = GetTtsSettingsResponses[keyof GetTtsSettingsResponses];
+
+export type SaveTtsSettingsData = {
+    body: TtsProviderUpdate;
+    headers: {
+        'X-Settings-Token': string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/tts/settings';
+};
+
+export type SaveTtsSettingsErrors = {
+    /**
+     * Request error
+     */
+    400: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
+};
+
+export type SaveTtsSettingsError = SaveTtsSettingsErrors[keyof SaveTtsSettingsErrors];
+
+export type SaveTtsSettingsResponses = {
+    /**
+     * Successful response
+     */
+    200: TtsProviderSettings;
+};
+
+export type SaveTtsSettingsResponse = SaveTtsSettingsResponses[keyof SaveTtsSettingsResponses];
+
+export type TestTtsSettingsData = {
+    body: TtsProviderUpdate;
+    headers: {
+        'X-Settings-Token': string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/tts/settings/test';
+};
+
+export type TestTtsSettingsErrors = {
+    /**
+     * Request error
+     */
+    400: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
+};
+
+export type TestTtsSettingsError = TestTtsSettingsErrors[keyof TestTtsSettingsErrors];
+
+export type TestTtsSettingsResponses = {
+    /**
+     * Successful response
+     */
+    200: ProviderConnection;
+};
+
+export type TestTtsSettingsResponse = TestTtsSettingsResponses[keyof TestTtsSettingsResponses];
+
+export type SynthesizeSpeechData = {
+    body: TtsSynthesizeInput;
+    path?: never;
+    query?: never;
+    url: '/api/tts/synthesize';
+};
+
+export type SynthesizeSpeechErrors = {
+    /**
+     * Request error
+     */
+    400: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
+};
+
+export type SynthesizeSpeechError = SynthesizeSpeechErrors[keyof SynthesizeSpeechErrors];
+
+export type SynthesizeSpeechResponses = {
+    /**
+     * Successful response
+     */
+    200: TtsSynthesizeResult;
+};
+
+export type SynthesizeSpeechResponse = SynthesizeSpeechResponses[keyof SynthesizeSpeechResponses];
+
+export type GetAudioStreamData = {
+    body?: never;
+    path: {
+        voice: 'stella' | 'tide';
+        key: string;
+    };
+    query?: never;
+    url: '/api/audio/{voice}/{key}.wav';
+};
+
+export type GetAudioStreamErrors = {
+    /**
+     * Audio not found
+     */
+    404: Error;
+    /**
+     * Internal server error
+     */
+    500: Error;
+};
+
+export type GetAudioStreamError = GetAudioStreamErrors[keyof GetAudioStreamErrors];
+
+export type GetAudioStreamResponses = {
+    /**
+     * WAV audio stream
+     */
+    200: Blob | File;
+};
+
+export type GetAudioStreamResponse = GetAudioStreamResponses[keyof GetAudioStreamResponses];
 
 export type CreateLlmPlanData = {
     body: LlmPlanInput;

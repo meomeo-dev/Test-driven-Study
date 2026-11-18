@@ -69,3 +69,15 @@
   width: min(100%, 240px); padding: 8px 10px; border-radius: 6px;
   border: 1px solid var(--border); background: var(--surface); color: var(--text);
 }
+
+/* TTS Audio & RichContent */
+.tts-audio-controls { display: inline-flex; align-items: center; gap: 3px; vertical-align: middle; margin-left: 6px; }
+.tts-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary); cursor: pointer; padding: 0; transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
+.tts-btn:hover:not(:disabled) { color: var(--primary); border-color: var(--primary); background: var(--surface-muted); }
+.tts-btn[data-playing="true"] { color: var(--primary); border-color: var(--primary); background: var(--primary-soft); }
+.tts-btn:disabled, .tts-btn[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+.rich-segment-speech { display: inline-flex; align-items: center; gap: 2px; }
+.rich-speech-text { font-weight: 500; }
+.rich-segment-blank { display: inline-block; min-width: 32px; border-bottom: 2px solid var(--text-secondary); margin: 0 4px; text-align: center; }
+.choice-option .tts-audio-controls { margin-left: auto; }
+

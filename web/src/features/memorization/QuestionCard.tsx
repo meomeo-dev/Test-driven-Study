@@ -6,6 +6,8 @@ import { answerSigns, questionType, stateLabel } from './model';
 import { QuestionImage } from './QuestionImage';
 import { QuestionExplanation } from './QuestionExplanation';
 import type { DetailsTab } from './StudyDetails';
+import { RichContent } from '../../components/RichContent';
+import { AudioControls } from '../../components/AudioControls';
 
 type Props = {
   detail: Detail;
@@ -25,14 +27,20 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
   }
   const correct = answerSigns(question.answer);
+  const hasAnyTts = question.items.some(opt => Boolean(opt.tts));
+
   return <div className={`answer-options ${mode === 'full' ? 'expanded-options' : ''}`} role="list" aria-label="选项与答案">
-    {question.items.map(option => <div role="listitem" key={option.sign}
-      className={`answer-option ${correct.has(option.sign) ? 'correct' : ''}`}>
-      {question.question_type === 3 ? (correct.has(option.sign) ? <CircleCheck size={19} /> : <Circle size={19} />)
-        : <span className="option-letter">{String.fromCharCode(64 + option.sign)}</span>}
-      <span className="option-text">{option.item_title}</span>
-      {correct.has(option.sign) && <span className="correct-label"><Check size={13} />正确答案</span>}
-    </div>)}
+    {question.items.map(option => {
+      const optionTts = option.tts || (hasAnyTts ? { voice: 'stella' } : undefined);
+      return <div role="listitem" key={option.sign}
+        className={`answer-option ${correct.has(option.sign) ? 'correct' : ''}`}>
+        {question.question_type === 3 ? (correct.has(option.sign) ? <CircleCheck size={19} /> : <Circle size={19} />)
+          : <span className="option-letter">{String.fromCharCode(64 + option.sign)}</span>}
+        <span className="option-text">{option.item_title}</span>
+        {optionTts && <AudioControls text={optionTts.text || option.item_title} voice={optionTts.voice || 'stella'} />}
+        {correct.has(option.sign) && <span className="correct-label"><Check size={13} />正确答案</span>}
+      </div>;
+    })}
   </div>;
 }
 
@@ -55,7 +63,13 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
           <span className="source-line">题号 #{question.source_item_id ?? question.question_id}</span>
           <span className={`state-label ${detail.state}`}>{stateLabel(detail.state)}</span>
         </header>
-        <h2 id="question-title" className="question-text">{question.title}</h2>
+        <h2 id="question-title" className="question-text">
+          {question.rich_content && question.rich_content.length > 0 ? (
+            <RichContent content={question.rich_content} />
+          ) : (
+            question.title
+          )}
+        </h2>
           <QuestionAudio key={question.question_id} question={question} />
         <QuestionImage key={question.question_id} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
       </section>

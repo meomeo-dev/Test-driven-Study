@@ -19,6 +19,7 @@ import (
 	"test-driven-study/internal/palace"
 	"test-driven-study/internal/storage"
 	"test-driven-study/internal/study"
+	"test-driven-study/internal/tts"
 )
 
 func main() {
@@ -74,8 +75,9 @@ func run() error {
 		defer planner.Close()
 		defer palaces.Close()
 	}
+	ttsService := tts.New(root, dataDirectory)
 	server := &http.Server{Addr: "127.0.0.1:" + apiPort,
-		Handler:           httpapi.New(studyService, palaces, root, apiPort, webPort, planner),
+		Handler:           httpapi.New(studyService, palaces, root, apiPort, webPort, planner, ttsService),
 		ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
 	return serve(ctx, server)
 }

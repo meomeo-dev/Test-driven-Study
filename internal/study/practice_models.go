@@ -4,6 +4,7 @@ type PublicQuestion struct {
 	QuestionID     int64    `json:"question_id"`
 	QuestionType   int64    `json:"question_type"`
 	Title          string   `json:"title"`
+	RichContent    any      `json:"rich_content,omitempty"`
 	Items          []Option `json:"items"`
 	ImageURL       string   `json:"image_url"`
 	AudioURL       string   `json:"audio_url,omitempty"`
