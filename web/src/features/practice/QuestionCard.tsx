@@ -1,3 +1,5 @@
+import { ReadingPassage } from '../question-types/ReadingContent';
+import { readingQuestionType, creditLabel } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import { WrittenFeedback } from '../question-types/WrittenFeedback';
@@ -17,6 +19,10 @@ import { ExtendedReview } from '../question-types/ExtendedReview';
 import { OptionAudio } from '../../components/OptionAudio';
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
+  if (question.question_type === readingQuestionType && question.content) {
+    return <ExtendedQuestion content={question.content} hidePassage
+      readingReview={question.question_review} />;
+  }
   if (question.content) {
     return <>
       <ExtendedQuestion content={question.content} />
@@ -60,6 +66,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
   onNext }: Props) {
   const detail = presentation.detail;
   const question = detail.question;
+  const reading = question.question_type === readingQuestionType;
   const review = result?.detail.question.question_review;
   const written = review?.type === 'writing' || review?.type === 'translation';
   const isNumeric = question.question_type === 4;
@@ -90,6 +97,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
               question.title
             )}
           </h2>
+          {reading && <ReadingPassage passage={question.content?.passage} />}
           <QuestionAudio key={`audio-${question.question_id}`} question={question} />
           <QuestionImage key={`image-${presentation.id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
         </section>
@@ -98,8 +106,12 @@ export function QuestionCard({ presentation, result, selected, position, total, 
             : question.question_type === 2 ? '可选择多项' : '选择答案'}</h3>
           {question.content ? <>
             <ExtendedQuestion content={question.content} value={result?.attempt.response ?? draft}
-              disabled={pending || !!result} onChange={onDraft} />
-            {review && result && <ExtendedReview item={review}
+              disabled={pending || !!result} onChange={onDraft} hidePassage={reading}
+              readingReview={reading ? review : undefined} />
+            {reading && result?.attempt.score !== undefined && <p role="status">
+              本题得分比例：{creditLabel(result.attempt.score)}
+            </p>}
+            {!reading && review && result && <ExtendedReview item={review}
               response={result.attempt.response} credit={result.attempt.score} />}
             {written && <WrittenFeedback presentation={presentation.id} />}
           </> : isNumeric ? <>
@@ -130,7 +142,7 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           </button>
         </div>
       </footer>
-      {result && (!review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
+      {result && (reading || !review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
     </div>
   </article>;
 }

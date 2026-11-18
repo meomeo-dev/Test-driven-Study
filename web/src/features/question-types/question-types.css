@@ -43,3 +43,31 @@
 
 .terminal-stem .extended-part { padding: 6px 10px; }
 .terminal-stem .extended-part legend { font-size: var(--font-size-label); }
+
+.question-stage[data-reading] > :is(.question-stem, .question-answers) {
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.reading-parts .extended-part {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+.reading-parts .extended-part > legend {
+  color: var(--muted);
+  padding: 0;
+}
+.reading-options {
+  margin-top: 6px;
+  padding: 0;
+  list-style: none;
+}
+.reading-options .answer-option { flex: 1; }
+.reading-options label { cursor: pointer; }
+.reading-options label:focus-within { outline: 2px solid var(--focus); outline-offset: -2px; }
+.reading-parts .extended-part > :is(.answer-option, .numeric-answer) { margin-top: 6px; }
+
+@media (max-width: 650px) {
+  .question-stage[data-reading] { grid-template-rows: auto auto; overflow-y: auto; }
+  .question-stage[data-reading] > :is(.question-stem, .question-answers) { overflow: visible; }
+}

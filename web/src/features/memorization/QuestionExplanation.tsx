@@ -1,3 +1,4 @@
+import { ReadingExplanations } from '../question-types/ReadingContent';
 import { RichContent } from '../../components/RichContent';
 import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
 import type { Detail } from '../../api/client';
@@ -21,6 +22,7 @@ export function QuestionExplanation({ detail, onDetails }: Props) {
       aria-label="解析正文" aria-keyshortcuts="ArrowUp ArrowDown" tabIndex={0}>
       <p className="analysis-text"><RichContent content={question.analysis_content ?? question.analysis} />
         <ExplanationAudio segments={question.analysis_audio} /></p>
+      <ReadingExplanations review={question.question_review} />
       {question.skill && <details className="memory-tip" open>
         <summary><Lightbulb size={15} />记忆提示
           <ChevronDown size={14} className="disclosure-chevron" />

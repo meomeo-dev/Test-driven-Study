@@ -19,6 +19,11 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 6 {
 		t.Fatalf("unexpected demo unit: version %d, %d items", pkg.Manifest.ProtocolVersion, len(items))
 	}
+	for _, item := range items {
+		if item.Type == Reading && len(item.ListeningLines()) > 0 {
+			t.Fatal("a reading passage must not project as a listening transcript")
+		}
+	}
 	versions, err := loadSchemas()
 	if err != nil {
 		t.Fatal(err)

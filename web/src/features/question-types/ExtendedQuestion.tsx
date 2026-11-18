@@ -1,5 +1,6 @@
 import { useId } from 'react';
-import type { CourseOption, ExtendedResponse, QuestionContent, SubAnswers,
+import { Check } from 'lucide-react';
+import type { CourseGrading, CourseItemReview, CourseOption, ExtendedResponse, QuestionContent, SubAnswers,
   SubQuestionPrompt } from '../../api/generated/types.gen';
 import { AudioControls, ttsConfig } from '../../components/AudioControls';
 import { NumericAnswer } from '../../components/NumericAnswer';
@@ -10,9 +11,12 @@ type Props = {
   value?: ExtendedResponse;
   onChange?: (value: ExtendedResponse) => void;
   disabled?: boolean;
+  readingReview?: CourseItemReview;
+  hidePassage?: boolean;
 };
 
-export function ExtendedQuestion({ content, value, onChange, disabled }: Props) {
+export function ExtendedQuestion({ content, value, onChange, disabled, readingReview,
+  hidePassage }: Props) {
   const id = useId();
   const readOnly = disabled || !onChange;
   if (content.blanks) {
@@ -39,13 +43,18 @@ export function ExtendedQuestion({ content, value, onChange, disabled }: Props) 
     </div>;
   }
   if (content.sub_questions) {
-    return <div className="extended-question">
-      {content.passage && <div className="extended-passage"><RichContent content={content.passage} /></div>}
+    const reading = !!content.passage;
+    return <div className={reading ? 'extended-question reading-parts' : 'extended-question'}>
+      {content.passage && !hidePassage && <div className="extended-passage">
+        <RichContent content={content.passage} />
+      </div>}
       {content.sub_questions.map((sub, index) => <fieldset key={sub.id} className="extended-part">
         <legend>小题 {index + 1}</legend>
         <div><RichContent content={sub.stem} /></div>
         <SubQuestion sub={sub} name={`${id}-${index}`} disabled={readOnly}
+          studyRows={reading} submitted={!!value && !!readingReview}
           value={value?.sub_answers?.[sub.id]}
+          grading={readingReview?.sub_questions?.find(item => item.id === sub.id)?.grading}
           onChange={answer => onChange?.({ sub_answers: {
             ...value?.sub_answers, [sub.id]: answer,
           } })} />
@@ -55,11 +64,17 @@ export function ExtendedQuestion({ content, value, onChange, disabled }: Props) 
   return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled} />;
 }
 
-function SubQuestion({ sub, value, disabled, name, onChange }: {
+function SubQuestion({ sub, value, disabled, name, onChange, grading, studyRows,
+  submitted }: {
   sub: SubQuestionPrompt; value?: SubAnswers[string]; disabled: boolean; name: string;
   onChange: (value: SubAnswers[string]) => void;
+  grading?: CourseGrading; studyRows: boolean; submitted: boolean;
 }) {
   if (sub.type === 'numeric') {
+    if (grading) return <>
+      <div className="answer-option correct">正确答案：{grading.value}</div>
+      {submitted && <p>你的答案：{value ?? '未作答'}</p>}
+    </>;
     if (disabled && value === undefined) return null;
     return <NumericAnswer value={typeof value === 'string' ? value : ''}
       onChange={onChange} disabled={disabled} />;
@@ -79,29 +94,46 @@ function SubQuestion({ sub, value, disabled, name, onChange }: {
       onChange(selected.includes(id) ? selected.filter(o => o !== id) : [...selected, id]);
     } else onChange([id]);
   }
-  return <PartOptions options={options} name={name} selected={selected}
-    multiple={multiple} disabled={disabled} onChoose={choose} />;
+  const expected = grading?.boolean ?? grading?.value;
+  const correct = typeof expected === 'boolean'
+    ? options.filter(o => o.value === expected).map(o => o.id) : grading?.choice_ids;
+  const submission = options.filter(o => selected.includes(o.id)).map(o => o.text);
+  return <>
+    <PartOptions options={options} name={name} selected={selected}
+      multiple={multiple} disabled={disabled} onChoose={choose}
+      correct={correct} studyRows={studyRows} />
+    {submitted && <p>你的答案：{submission.join('、') || '未作答'}</p>}
+  </>;
 }
 
-function PartOptions({ options, name, selected, multiple, disabled, onChoose }: {
+function PartOptions({ options, name, selected, multiple, disabled, onChoose,
+  correct, studyRows }: {
   options: CourseOption[]; name: string; selected: string[]; multiple?: boolean; disabled: boolean;
-  onChoose: (id: string) => void;
+  onChoose: (id: string) => void; correct?: string[]; studyRows?: boolean;
 }) {
-  return <ul className="extended-options">{options.map((option, index) => {
-    const config = ttsConfig(option.tts);
-    return <li key={option.id}>
-      <label>
-        <input id={index === 0 ? name : undefined} name={name}
-          type={multiple ? 'checkbox' : 'radio'} disabled={disabled}
-          checked={selected.includes(option.id)} onChange={() => onChoose(option.id)} />
-        <span>{option.text}</span>
-      </label>
-      {option.pinyin?.length
-        ? <AudioControls text={option.text} pinyin={option.pinyin} />
-        : option.tts && <AudioControls text={config?.text ?? option.text}
-          voice={config?.voice} speed={config?.speed} />}
-    </li>;
-  })}</ul>;
+  return <ul className={studyRows ? 'answer-options reading-options' : 'extended-options'}>
+    {options.map((option, index) => {
+      const config = ttsConfig(option.tts);
+      const chosen = selected.includes(option.id);
+      const right = correct?.includes(option.id);
+      const row = `answer-option choice-option ${right ? 'correct' : chosen ? 'selected' : ''}`;
+      const text = <span className={studyRows ? 'option-text' : undefined}>{option.text}</span>;
+      return <li key={option.id} className={studyRows ? 'choice-option-row' : undefined}>
+        {correct ? <div className={row}>{text}
+          {right && <span className="correct-label"><Check size={13} />正确答案</span>}
+        </div> : <label className={studyRows ? row : undefined}>
+          <input id={index === 0 ? name : undefined} name={name}
+            type={multiple ? 'checkbox' : 'radio'} disabled={disabled}
+            checked={chosen} onChange={() => onChoose(option.id)} />
+          {text}
+        </label>}
+        {option.pinyin?.length
+          ? <AudioControls text={option.text} pinyin={option.pinyin} />
+          : option.tts && <AudioControls text={config?.text ?? option.text}
+            voice={config?.voice} speed={config?.speed} />}
+      </li>;
+    })}
+  </ul>;
 }
 
 function WrittenQuestion({ content, value, onChange, disabled }: Props) {

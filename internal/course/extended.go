@@ -126,7 +126,7 @@ func (item Item) ListeningLines() []TranscriptLine {
 	if item.Transcript != nil {
 		lines = item.Transcript.Lines
 	}
-	if len(lines) == 0 && item.Passage != nil {
+	if len(lines) == 0 && item.Passage != nil && item.Type != Reading {
 		lines = []TranscriptLine{{Text: item.Passage.String()}}
 	}
 	if item.Listening == nil {

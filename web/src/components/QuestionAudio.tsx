@@ -1,3 +1,4 @@
+import { readingQuestionType } from '../features/question-types/model';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { LoaderCircle, RotateCcw, Volume2, VolumeX } from 'lucide-react';
@@ -57,6 +58,7 @@ type ProtectedAudio = {
 export function QuestionAudio({ question, protectedAudio }: {
   protectedAudio?: ProtectedAudio;
   question: {
+    question_type?: number;
     audio_url?: string;
     transcript_url?: string;
     transcript_lines?: TranscriptLine[];
@@ -64,6 +66,8 @@ export function QuestionAudio({ question, protectedAudio }: {
     package_version?: string;
   };
 }) {
+  // Existing reading snapshots may still contain a transcript synthesized from the passage.
+  if (question.question_type === readingQuestionType) return null;
   const { audio_url: audio, transcript_url: transcript, transcript_lines, package_id: course,
     package_version: version } = question;
   if (!course || !version || (!audio && !transcript && !transcript_lines && !protectedAudio?.speeds.length)) return null;

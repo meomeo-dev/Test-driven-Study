@@ -74,6 +74,33 @@ test('all five types can be answered and reviewed in practice', async ({ page, r
   await expect(page.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
 });
 
+test('reading separates the article, sub-questions and explanations', async ({ page, request }) => {
+  const demo = await demoUnit(request);
+  await page.goto(demo.link('reading', 'memorize'));
+  const card = page.locator('article.question-card');
+  const stem = card.getByRole('region', { name: '题干与图例' });
+  const answers = card.getByRole('region', { name: '参考答案' });
+  const analysis = card.getByRole('region', { name: '答案解析', exact: true });
+  await expect(stem.getByText(/WORKSHOP NOTICE/)).toBeVisible();
+  await expect(stem.getByText('查看逐字稿')).toHaveCount(0);
+  await expect(answers.getByText(/WORKSHOP NOTICE/)).toHaveCount(0);
+  await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案：8')).toBeVisible();
+  await expect(answers.getByRole('group', { name: '小题 2' }).getByText('Collect the badges.')).toBeVisible();
+  await expect(analysis.getByText('8 a.m. 表示上午八点。')).toBeVisible();
+  await expect(analysis.getByText(/回收访客证的是主管/)).toBeVisible();
+
+  await page.goto(demo.link('reading'));
+  await expect(card.getByRole('region', { name: '阅读材料' })).toBeVisible();
+  await expect(card.getByRole('region', { name: '答案解析', exact: true })).toHaveCount(0);
+  await card.getByRole('textbox', { name: '数值答案' }).fill('8');
+  await card.getByRole('checkbox', { name: 'Wear a visitor badge.' }).check();
+  await card.getByRole('checkbox', { name: 'Sign in at the front desk.' }).check();
+  await card.getByRole('button', { name: '提交答案' }).click();
+  await expect(card.getByText('本题得分比例：100%')).toBeVisible();
+  await expect(card.getByRole('region', { name: '答案解析', exact: true })
+    .getByText(/回收访客证的是主管/)).toBeVisible();
+});
+
 test('a listening paper plays audio without exposing the active transcript', async ({ page, request }) => {
   const demo = await demoUnit(request);
   const id = randomUUID();

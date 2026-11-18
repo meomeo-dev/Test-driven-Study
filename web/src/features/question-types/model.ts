@@ -1,5 +1,7 @@
 import type { ExtendedResponse, SubAnswers } from '../../api/generated/types.gen';
 
+export const readingQuestionType = 7;
+
 export const questionType = (type: number) => ({
   1: '单选题', 2: '多选题', 3: '判断题', 4: '数值题', 5: '完形填空',
   6: '听力题', 7: '阅读理解', 8: '写作题', 9: '翻译题',
