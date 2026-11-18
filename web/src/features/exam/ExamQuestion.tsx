@@ -5,6 +5,7 @@ import type { ExtendedResponse } from '../../api/generated/types.gen';
 import { RichContent } from '../../components/RichContent';
 import { OptionAudio } from '../../components/OptionAudio';
 import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
+import { TranslationSource } from '../question-types/TranslationContent';
 import { answerSymbols, optionSymbol } from './terminalLabels';
 
 export function ExamQuestion({ examID, draft, onDraft, item, index, selected, busy, finished, onChoose, numeric, onNumeric }: {
@@ -21,8 +22,9 @@ export function ExamQuestion({ examID, draft, onDraft, item, index, selected, bu
       <QuestionAudio key={`audio-${q.question_id}`} question={q}
         protectedAudio={item.audio_speeds && { speeds: item.audio_speeds,
           load: (line, force) => playLine(examID, index, line, force) }} />
+      <TranslationSource content={q.content} />
       {q.content && <ExtendedQuestion content={q.content} value={draft} onChange={onDraft}
-        disabled={busy || item.answered || finished} />}
+        disabled={busy || item.answered || finished} hideSourceText />}
       {q.question_type < 3 && <ol className="terminal-option-text" aria-label="选项内容">
         {q.items.map(option => <li key={option.sign}>
           {optionSymbol(q, option.sign)}. {option.item_title}

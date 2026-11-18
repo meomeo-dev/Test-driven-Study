@@ -1,5 +1,6 @@
-import { ReadingExplanations } from '../question-types/ReadingContent';
+import { ExtendedExplanations } from '../question-types/ExtendedExplanations';
 import { WritingCriteria, WritingSample } from '../question-types/WritingContent';
+import { hasRichContent } from '../question-types/model';
 import { RichContent } from '../../components/RichContent';
 import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
 import type { Detail } from '../../api/client';
@@ -13,6 +14,7 @@ type Props = {
 
 export function QuestionExplanation({ detail, onDetails }: Props) {
   const question = detail.question;
+  const hasAnalysis = hasRichContent(question.analysis_content) || Boolean(question.analysis);
   return <section className="question-analysis" aria-label="答案解析">
     <header className="analysis-heading">
       <h3 className="column-label"><FileText size={14} />答案解析</h3>
@@ -22,9 +24,11 @@ export function QuestionExplanation({ detail, onDetails }: Props) {
     <div key={question.question_id} className="question-explanation-body" role="region"
       aria-label="解析正文" aria-keyshortcuts="ArrowUp ArrowDown" tabIndex={0}>
       <WritingSample review={question.question_review} />
-      <p className="analysis-text"><RichContent content={question.analysis_content ?? question.analysis} />
-        <ExplanationAudio segments={question.analysis_audio} /></p>
-      <ReadingExplanations review={question.question_review} />
+      {(hasAnalysis || Boolean(question.analysis_audio?.length)) && (
+        <p className="analysis-text"><RichContent content={question.analysis_content ?? question.analysis} />
+          <ExplanationAudio segments={question.analysis_audio} /></p>
+      )}
+      <ExtendedExplanations review={question.question_review} />
       <WritingCriteria review={question.question_review} />
       {question.skill && <details className="memory-tip" open>
         <summary><Lightbulb size={15} />记忆提示

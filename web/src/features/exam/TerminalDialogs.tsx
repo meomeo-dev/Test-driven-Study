@@ -1,4 +1,5 @@
 import { ExtendedReview } from '../question-types/ExtendedReview';
+import { hasReviewExplanation, hasRichContent } from '../question-types/model';
 import { RichContent } from '../../components/RichContent';
 import { Link } from 'react-router';
 import type { ExamItem, ExamSession } from '../../api/exams';
@@ -7,6 +8,17 @@ import type { TerminalDialog } from './useExamTerminal';
 import { TerminalModal } from './TerminalModal';
 import { ExamNavigation } from './ExamNavigation';
 import { answerSymbols, examCounts } from './terminalLabels';
+
+function ReviewAnalysis({ review }: { review: NonNullable<ExamItem['review']> }) {
+  const hasAnalysis = hasRichContent(review.analysis_content) || Boolean(review.analysis);
+  const hasAudio = Boolean(review.analysis_audio?.length);
+  const showFallback = !hasAnalysis && !hasAudio && !hasReviewExplanation(review.question_review);
+  if (!hasAnalysis && !hasAudio && !showFallback) return null;
+  return <p>
+    <RichContent content={hasAnalysis ? (review.analysis_content ?? review.analysis) : '原题暂无解析。'} />
+    <ExplanationAudio segments={review.analysis_audio} />
+  </p>;
+}
 
 export function TerminalDialogs({ dialog, session, item, selected, busy, enabled,
   onClose, onSubmit, onMove, onPreference, onBack }: {
@@ -40,8 +52,7 @@ export function TerminalDialogs({ dialog, session, item, selected, busy, enabled
       {dialog === 'review' && item.review && <>{item.review.question_review ? <ExtendedReview item={item.review.question_review}
         response={item.response} credit={item.credit} /> : <p>正确答案：{item.detail.question.question_type === 4 ? item.review.answer :
         answerSymbols(item.detail.question, item.review.answer.split(',').map(Number))}</p>}
-        <p><RichContent content={item.review.analysis_content ?? (item.review.analysis || '原题暂无解析。')} />
-          <ExplanationAudio segments={item.review.analysis_audio} /></p>
+        <ReviewAnalysis review={item.review} />
         {item.review.skill && <p>{item.review.skill}</p>}
         <Link to={`/practice?subject=${session.subject_id}&question=${item.review.question_id}`}>到答题模式练习</Link></>}
     </div>

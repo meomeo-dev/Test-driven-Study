@@ -6,6 +6,7 @@ import { AudioControls, ttsConfig } from '../../components/AudioControls';
 import { NumericAnswer } from '../../components/NumericAnswer';
 import { OptionAudio } from '../../components/OptionAudio';
 import { RichContent } from '../../components/RichContent';
+import { ClozePassage } from './ClozeContent';
 import { WritingRequirements } from './WritingContent';
 
 type Props = {
@@ -13,41 +14,42 @@ type Props = {
   value?: ExtendedResponse;
   onChange?: (value: ExtendedResponse) => void;
   disabled?: boolean;
-  readingReview?: CourseItemReview;
+  review?: CourseItemReview;
+  partIdPrefix?: string;
   hidePassage?: boolean;
   hideWritingRequirements?: boolean;
+  hideSourceText?: boolean;
 };
 
-export function ExtendedQuestion({ content, value, onChange, disabled, readingReview,
-  hidePassage, hideWritingRequirements }: Props) {
-  const id = useId();
+export function ExtendedQuestion({ content, value, onChange, disabled, review,
+  partIdPrefix, hidePassage, hideWritingRequirements, hideSourceText }: Props) {
+  const fallbackId = useId();
+  const id = partIdPrefix ?? fallbackId;
   const readOnly = disabled || !onChange;
   if (content.blanks) {
     const { blanks } = content;
-    return <div className="extended-question">
-      <div className="extended-passage"><RichContent content={content.passage}
-        renderBlank={index => {
-          const blank = blanks.find(b => b.index === index);
-          const selected = blank?.options.find(o => value?.blanks?.[index]?.includes(o.id));
-          const label = selected?.text ?? `空格 ${index}`;
-          if (readOnly) return <span className="extended-blank">{label}</span>;
-          return <button type="button" className="extended-blank"
-            aria-label={`跳转到空格 ${index}`}
-            onClick={() => document.getElementById(`${id}-${index}`)?.focus()}>{label}</button>;
-        }} /></div>
-      {blanks.map(blank => <fieldset key={blank.index} className="extended-part">
-        <legend>空格 {blank.index}</legend>
-        <PartOptions options={blank.options} name={`${id}-${blank.index}`}
-          selected={value?.blanks?.[blank.index] ?? []} disabled={readOnly}
-          onChoose={choice => onChange?.({ blanks: {
-            ...value?.blanks, [blank.index]: [choice],
-          } })} />
-      </fieldset>)}
+    const studyRows = !!review;
+    return <div className={studyRows ? 'extended-question reading-parts' : 'extended-question'}>
+      {!hidePassage && <ClozePassage passage={content.passage} blanks={blanks}
+        value={value} onJump={readOnly ? undefined : index =>
+          document.getElementById(`${id}-${index}`)?.focus()} />}
+      {blanks.map(blank => {
+        const expected = review?.blanks?.find(item => item.index === blank.index)?.grading.choice_ids;
+        return <fieldset key={blank.index} className="extended-part">
+          <legend>空格 {blank.index}</legend>
+          <PartOptions options={blank.options} name={`${id}-${blank.index}`}
+            selected={value?.blanks?.[blank.index] ?? []} disabled={readOnly}
+            correct={expected} studyRows={studyRows}
+            onChoose={choice => onChange?.({ blanks: {
+              ...value?.blanks, [blank.index]: [choice],
+            } })} />
+        </fieldset>;
+      })}
     </div>;
   }
   if (content.sub_questions) {
-    const reading = !!content.passage;
-    return <div className={reading ? 'extended-question reading-parts' : 'extended-question'}>
+    const studyRows = !!content.passage || !!review;
+    return <div className={studyRows ? 'extended-question reading-parts' : 'extended-question'}>
       {content.passage && !hidePassage && <div className="extended-passage">
         <RichContent content={content.passage} />
       </div>}
@@ -55,9 +57,9 @@ export function ExtendedQuestion({ content, value, onChange, disabled, readingRe
         <legend>小题 {index + 1}</legend>
         <div><RichContent content={sub.stem} /></div>
         <SubQuestion sub={sub} name={`${id}-${index}`} disabled={readOnly}
-          studyRows={reading} submitted={!!value && !!readingReview}
+          studyRows={studyRows} submitted={!!value && !!review}
           value={value?.sub_answers?.[sub.id]}
-          grading={readingReview?.sub_questions?.find(item => item.id === sub.id)?.grading}
+          grading={review?.sub_questions?.find(item => item.id === sub.id)?.grading}
           onChange={answer => onChange?.({ sub_answers: {
             ...value?.sub_answers, [sub.id]: answer,
           } })} />
@@ -65,7 +67,7 @@ export function ExtendedQuestion({ content, value, onChange, disabled, readingRe
     </div>;
   }
   return <WrittenQuestion content={content} value={value} onChange={onChange} disabled={disabled}
-    hideWritingRequirements={hideWritingRequirements} />;
+    hideWritingRequirements={hideWritingRequirements} hideSourceText={hideSourceText} />;
 }
 
 function SubQuestion({ sub, value, disabled, name, onChange, grading, studyRows,
@@ -155,19 +157,23 @@ function PartOptions({ options, name, selected, multiple, disabled, onChoose,
   </ul>;
 }
 
-function WrittenQuestion({ content, value, onChange, disabled, hideWritingRequirements }: Props) {
+function WrittenQuestion({ content, value, onChange, disabled, hideWritingRequirements,
+  hideSourceText }: Props) {
   const countId = useId();
   const writing = !!content.subtype;
+  const showSource = Boolean(content.source_text) && !hideSourceText;
+  const showRequirements = !writing && !!content.requirements?.length;
   const label = content.direction === 'en_to_zh' ? '中文译文'
     : content.direction === 'zh_to_en' ? '英文译文' : '写作答案';
   const text = value?.text ?? value?.translation ?? '';
+  if (!writing && !showSource && !showRequirements && !onChange && !text) return null;
   // Match the word boundaries used by the server when it grades writing.
   const wordCount = writing ? text.match(/[\p{L}\p{N}\p{M}'’]+/gu)?.length ?? 0 : 0;
   return <div className={writing ? 'extended-question writing-editor' : 'extended-question'}>
     {writing && !hideWritingRequirements && <WritingRequirements content={content} />}
-    {content.source_text && <div className="extended-passage">{content.source_text}</div>}
-    {!writing && !!content.requirements?.length && <ul className="extended-requirements">
-      {content.requirements.map(requirement => <li key={requirement}>{requirement}</li>)}
+    {showSource && <div className="extended-passage">{content.source_text}</div>}
+    {showRequirements && <ul className="extended-requirements">
+      {content.requirements!.map(requirement => <li key={requirement}>{requirement}</li>)}
     </ul>}
     {(onChange || text) && <>
       <label className="extended-writing">

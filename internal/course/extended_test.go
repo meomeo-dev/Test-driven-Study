@@ -23,6 +23,7 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 		t.Fatalf("unexpected demo unit: version %d, %d items", pkg.Manifest.ProtocolVersion, len(items))
 	}
 	checkDemoCoverage(t, items)
+	checkDemoAuthoring(t, items)
 	versions, err := loadSchemas()
 	if err != nil {
 		t.Fatal(err)
@@ -76,6 +77,36 @@ func checkDemoCoverage(t *testing.T, items []Item) {
 	} {
 		if !demonstrated[kind] {
 			t.Errorf("missing demo for %s", kind)
+		}
+	}
+}
+
+func checkDemoAuthoring(t *testing.T, items []Item) {
+	t.Helper()
+	banned := []string{"是 a", "是 b", "是 c", "是 d", "a 和 c"}
+	for _, item := range items {
+		if strings.TrimSpace(item.Chapter) == "" {
+			t.Errorf("%s: missing chapter", item.ID)
+		}
+		if item.Explanation != "" {
+			t.Errorf("%s: use analysis instead of legacy explanation", item.ID)
+		}
+		if item.Analysis == nil || strings.TrimSpace(item.Analysis.String()) == "" {
+			t.Errorf("%s: missing parent analysis", item.ID)
+		} else {
+			for _, label := range banned {
+				if strings.Contains(item.Analysis.String(), label) {
+					t.Errorf("%s: analysis contains hardcoded option label %q", item.ID, label)
+				}
+			}
+		}
+		if item.ID == "sue1-extended-reading-single-choice" && len(item.SubQuestions) != 2 {
+			t.Errorf("%s: want 2 sub-questions, got %d", item.ID, len(item.SubQuestions))
+		}
+		for _, sub := range item.SubQuestions {
+			if sub.Explanation != "" || sub.Analysis == nil || strings.TrimSpace(sub.Analysis.String()) == "" {
+				t.Errorf("%s/%s: sub-question must use non-empty analysis", item.ID, sub.ID)
+			}
 		}
 	}
 }

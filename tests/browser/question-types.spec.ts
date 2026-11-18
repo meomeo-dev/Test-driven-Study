@@ -20,16 +20,25 @@ async function demoUnit(request: APIRequestContext) {
 test('cloze, reading, listening and translation can be answered and reviewed', async ({ page, request }) => {
   const demo = await demoUnit(request);
   const card = page.getByRole('article', { name: /./ });
+  const stem = card.getByRole('region', { name: '题干与图例' });
+  const answer = card.getByRole('region', { name: '作答选项' });
+  const analysis = card.getByRole('region', { name: '答案解析', exact: true });
   const submit = () => page.getByRole('button', { name: '提交答案' }).click();
   await page.goto(demo.link('cloze'));
-  await page.getByRole('button', { name: '跳转到空格 1' }).click();
-  await expect(page.getByRole('radio', { name: 'must', exact: true })).toBeFocused();
-  await page.getByRole('radio', { name: 'must', exact: true }).check();
-  await expect(page.getByRole('button', { name: '跳转到空格 1' })).toHaveText('must');
+  await expect(stem.getByText(/Every worker/)).toBeVisible();
+  await expect(answer.getByText(/Every worker/)).toHaveCount(0);
+  await stem.getByRole('button', { name: '跳转到空格 1' }).click();
+  await expect(answer.getByRole('radio', { name: 'must', exact: true })).toBeFocused();
+  await answer.getByRole('radio', { name: 'must', exact: true }).check();
+  await expect(stem.getByRole('button', { name: '跳转到空格 1' })).toHaveText('must');
   await expect(card.getByText('本题得分比例：50%')).toHaveCount(0);
   await submit();
-  await expect(card.getByText('本题得分比例：50%')).toBeVisible();
-  await expect(card.getByText('你的答案：未作答')).toBeVisible();
+  await expect(answer.getByText(/Every worker/)).toHaveCount(0);
+  await expect(answer.getByText('本题得分比例：50%')).toBeVisible();
+  await expect(answer.getByText('你的答案：未作答')).toBeVisible();
+  await expect(answer.getByText(/must 后接动词原形/)).toHaveCount(0);
+  await expect(analysis.getByText(/must 后接动词原形/)).toBeVisible();
+  await expect(analysis.getByText(/do not 后接动词原形/)).toBeVisible();
 
   await page.goto(demo.link('reading'));
   await expect(card.getByText(/WORKSHOP NOTICE/)).toBeVisible();
@@ -44,20 +53,67 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   await page.getByRole('radio', { name: 'On the second shelf.' }).check();
   await page.getByRole('radio', { name: '错误' }).check();
   await submit();
-  await expect(card.getByText('本题得分比例：100%')).toBeVisible();
+  await expect(answer.getByText('本题得分比例：100%')).toBeVisible();
+  await expect(answer.getByText(/第二位说话者明确说了 on the second shelf/)).toHaveCount(0);
+  await expect(analysis.getByText(/第二位说话者明确说了 on the second shelf/)).toBeVisible();
+  await expect(analysis.getByText(/before taking a pair/)).toBeVisible();
 
   await page.goto(demo.link('translation'));
+  await expect(stem.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
+  await expect(answer.getByText('Leave the signed checklist on the front desk.')).toHaveCount(0);
   await expect(card.getByText('参考译文', { exact: true })).toHaveCount(0);
-  await page.getByRole('textbox', { name: '中文译文' }).fill('请将已签名的清单放在前台。');
+  const translationInput = page.getByRole('textbox', { name: '中文译文' });
+  await translationInput.fill('请将已签名的清单放在前台。');
   const grading = page.waitForResponse(r => r.url().endsWith('/answer') && r.ok());
   await submit();
   const result: AttemptResult = await (await grading).json();
   expect(result.attempt.correct).toBe(true);
-  await expect(card.getByText('参考译文', { exact: true })).toBeVisible();
+  await expect(translationInput).toHaveCount(0);
+  await expect(answer.getByText('参考译文', { exact: true })).toBeVisible();
+  await expect(analysis.getByText(/signed 在这里修饰 checklist/)).toBeVisible();
+});
+
+test('cloze, listening and translation separate stem, answers and explanations in memorization', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  const card = page.locator('article.question-card');
+  const stem = card.getByRole('region', { name: '题干与图例' });
+  const answers = card.getByRole('region', { name: '参考答案' });
+  const analysis = card.getByRole('region', { name: '答案解析', exact: true });
 
   await page.goto(demo.link('translation', 'memorize'));
-  await expect(page.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
-  await expect(page.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
+  await expect(stem.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
+  await expect(answers.getByText('Leave the signed checklist on the front desk.')).toHaveCount(0);
+  await expect(answers.getByRole('heading', { name: '参考译文' })).toBeVisible();
+  await expect(answers.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
+  await expect(answers.getByText('请将已签名的清单放在前台。')).toBeVisible();
+  await expect(answers.getByText(/关键术语：/)).toBeVisible();
+  await expect(card.getByRole('textbox')).toHaveCount(0);
+  await expect(analysis.getByText(/signed 在这里修饰 checklist/)).toBeVisible();
+
+  await page.goto(demo.link('cloze', 'memorize'));
+  await expect(stem.getByText(/Every worker/)).toBeVisible();
+  await expect(stem.getByText('空格 1: must')).toBeVisible();
+  await expect(stem.getByText('空格 2: start')).toBeVisible();
+  await expect(answers.getByText(/Every worker/)).toHaveCount(0);
+  await expect(answers.getByRole('radio')).toHaveCount(0);
+  await expect(answers.getByRole('group', { name: '空格 1' }).getByText('正确答案')).toBeVisible();
+  await expect(answers.getByRole('group', { name: '空格 2' }).getByText('正确答案')).toBeVisible();
+  await expect(answers.getByText(/must 后接动词原形/)).toHaveCount(0);
+  await expect(analysis.getByText(/must 后接动词原形/)).toBeVisible();
+  await expect(analysis.getByText(/do not 后接动词原形/)).toBeVisible();
+
+  await page.goto(demo.link('listening', 'memorize'));
+  await expect(stem.getByRole('region', { name: '听力音频播放' })).toBeVisible();
+  await expect(answers.getByRole('radio')).toHaveCount(0);
+  await expect(answers.getByRole('group', { name: '小题 1' }).getByText('On the second shelf.')).toBeVisible();
+  await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案')).toBeVisible();
+  await expect(answers.getByRole('group', { name: '小题 2' }).getByText('正确答案')).toBeVisible();
+  await expect(answers.getByText(/第二位说话者明确说了 on the second shelf/)).toHaveCount(0);
+  await expect(analysis.getByText(/第二位说话者明确说了 on the second shelf/)).toBeVisible();
+  await expect(analysis.getByText(/before taking a pair/)).toBeVisible();
 });
 
 test('writing shows a sample in memorization and an editor in practice', async ({ page, request }) => {
@@ -220,4 +276,13 @@ test('a listening paper plays audio without exposing the active transcript', asy
   await page.reload();
   await expect(page.getByRole('radio', { name: '错误' })).toBeChecked();
   await expect(page.getByRole('radio', { name: '错误' })).toBeDisabled();
+
+  await page.getByRole('button', { name: '交卷', exact: true }).click();
+  await page.getByRole('button', { name: '确认交卷' }).click();
+  await page.getByRole('button', { name: '关闭' }).click();
+  await page.getByRole('button', { name: '查看解析' }).click();
+  const reviewDialog = page.getByRole('dialog');
+  await expect(reviewDialog.getByText(/第二位说话者明确说了 on the second shelf/)).toBeVisible();
+  await expect(reviewDialog.getByText(/before taking a pair/)).toBeVisible();
+  await expect(reviewDialog.getByText('原题暂无解析。')).toHaveCount(0);
 });

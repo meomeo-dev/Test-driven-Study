@@ -1,7 +1,24 @@
-import type { ExtendedResponse, SubAnswers } from '../../api/generated/types.gen';
+import type { CourseItemReview, ExtendedResponse, RichText, SubAnswers } from
+  '../../api/generated/types.gen';
 
+export const clozeQuestionType = 5;
+export const listeningQuestionType = 6;
 export const readingQuestionType = 7;
 export const writingQuestionType = 8;
+export const translationQuestionType = 9;
+
+export function hasRichContent(content?: RichText): boolean {
+  if (!content) return false;
+  return Array.isArray(content) ? content.length > 0 : content.trim().length > 0;
+}
+
+export function hasReviewExplanation(review?: CourseItemReview): boolean {
+  if (!review) return false;
+  if (hasRichContent(review.analysis) || Boolean(review.explanation?.trim())) return true;
+  if (review.blanks?.some(blank => hasRichContent(blank.explanation))) return true;
+  return Boolean(review.sub_questions?.some(sub =>
+    hasRichContent(sub.analysis) || Boolean(sub.explanation?.trim())));
+}
 
 export const questionType = (type: number) => ({
   1: '单选题', 2: '多选题', 3: '判断题', 4: '数值题', 5: '完形填空',

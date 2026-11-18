@@ -1,6 +1,10 @@
+import { ClozePassage } from '../question-types/ClozeContent';
+import { ExtendedReference } from '../question-types/ExtendedReference';
 import { ReadingPassage } from '../question-types/ReadingContent';
-import { WritingRequirements, WritingSample } from '../question-types/WritingContent';
-import { readingQuestionType, writingQuestionType } from '../question-types/model';
+import { TranslationSource } from '../question-types/TranslationContent';
+import { WritingRequirements } from '../question-types/WritingContent';
+import { clozeQuestionType, readingQuestionType, translationQuestionType,
+  writingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { Ref } from 'react';
 import { BookOpenCheck, Bookmark, ChevronLeft, ChevronRight, Expand, LoaderCircle, Undo2 } from 'lucide-react';
@@ -10,8 +14,6 @@ import { QuestionImage } from './QuestionImage';
 import { QuestionExplanation } from './QuestionExplanation';
 import type { DetailsTab } from './StudyDetails';
 import { RichContent } from '../../components/RichContent';
-import { ExtendedQuestion } from '../question-types/ExtendedQuestion';
-import { ExtendedReview } from '../question-types/ExtendedReview';
 import { AnswerOptionList } from '../../components/AnswerOptionList';
 
 type Props = {
@@ -28,18 +30,9 @@ type Props = {
 };
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
-  if (question.question_type === readingQuestionType && question.content) {
-    return <ExtendedQuestion content={question.content} hidePassage
-      readingReview={question.question_review} />;
-  }
-  if (question.question_type === writingQuestionType) {
-    return <WritingSample review={question.question_review} />;
-  }
-  if (question.content) {
-    return <>
-      <ExtendedQuestion content={question.content} />
-      {question.question_review && <ExtendedReview item={question.question_review} />}
-    </>;
+  if (question.content || question.question_type === writingQuestionType ||
+    question.question_type === translationQuestionType) {
+    return <ExtendedReference question={question} />;
   }
   if (question.question_type === 4) {
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
@@ -51,6 +44,7 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
 export function QuestionCard({ detail, position, total, pending, shortcuts, imageRef,
   onDetails, onPrevious, onNext, onMark }: Props) {
   const question = detail.question;
+  const cloze = question.question_type === clozeQuestionType;
   const reading = question.question_type === readingQuestionType;
   const writing = question.question_type === writingQuestionType;
   const hint = (key: string) => shortcuts ? <kbd aria-hidden="true">{key}</kbd> : null;
@@ -63,7 +57,8 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
       <button type="button" className="read-full" onClick={event => onDetails('question', event.currentTarget)} aria-keyshortcuts={shortcuts ? 'v' : undefined}>
         <Expand size={13} />完整题目{hint('v')}</button>
     </div>
-    <div className="question-stage" data-reading={reading || undefined} data-writing={writing || undefined}>
+    <div className="question-stage" data-reading={reading || undefined}
+      data-writing={writing || undefined} data-extended={Boolean(question.content) || undefined}>
       <section className="question-stem" aria-label="题干与图例">
         <header className="column-label question-stem-heading">
           <span className="source-line">题号 #{question.source_item_id ?? question.question_id}</span>
@@ -76,8 +71,10 @@ export function QuestionCard({ detail, position, total, pending, shortcuts, imag
             question.title
           )}
         </h2>
+        {cloze && <ClozePassage passage={question.content?.passage} review={question.question_review} />}
         {reading && <ReadingPassage passage={question.content?.passage} />}
         {writing && <WritingRequirements content={question.content} />}
+        <TranslationSource content={question.content} />
         <QuestionAudio key={`audio-${question.question_id}`} question={question} />
         <QuestionImage key={`image-${question.question_id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
       </section>

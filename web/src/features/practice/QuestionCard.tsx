@@ -1,10 +1,14 @@
+import { ClozePassage } from '../question-types/ClozeContent';
+import { ExtendedReference } from '../question-types/ExtendedReference';
 import { ReadingPassage } from '../question-types/ReadingContent';
+import { TranslationSource } from '../question-types/TranslationContent';
 import { WritingRequirements, WritingReview } from '../question-types/WritingContent';
-import { readingQuestionType, writingQuestionType, creditLabel } from '../question-types/model';
+import { clozeQuestionType, creditLabel, hasRichContent, readingQuestionType,
+  translationQuestionType, writingQuestionType } from '../question-types/model';
 import { QuestionAudio } from '../../components/QuestionAudio';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import { WrittenFeedback } from '../question-types/WrittenFeedback';
-import type { Ref } from 'react';
+import { useId, type Ref } from 'react';
 import { ChevronLeft, ChevronRight, Expand, Send, RotateCcw } from 'lucide-react';
 import type { Question } from '../../api/client';
 import type { Presentation, AttemptResult } from '../../api/practice';
@@ -20,16 +24,9 @@ import { ExtendedReview } from '../question-types/ExtendedReview';
 import { AnswerOptionList } from '../../components/AnswerOptionList';
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
-  if (question.question_type === readingQuestionType && question.content) {
-    return <ExtendedQuestion content={question.content} hidePassage
-      readingReview={question.question_review} />;
-  }
-  if (question.question_type === writingQuestionType) return null;
-  if (question.content) {
-    return <>
-      <ExtendedQuestion content={question.content} />
-      {question.question_review && <ExtendedReview item={question.question_review} />}
-    </>;
+  if (question.content || question.question_type === writingQuestionType ||
+    question.question_type === translationQuestionType) {
+    return <ExtendedReference question={question} includeWritingSample={false} />;
   }
   if (question.question_type === 4) {
     return <p className="answer-option correct">正确答案：{question.answer}</p>;
@@ -55,6 +52,8 @@ export function QuestionCard({ presentation, result, selected, position, total, 
   onNext }: Props) {
   const detail = presentation.detail;
   const question = detail.question;
+  const clozeId = useId();
+  const cloze = question.question_type === clozeQuestionType;
   const reading = question.question_type === readingQuestionType;
   const writing = question.question_type === writingQuestionType;
   const review = result?.detail.question.question_review;
@@ -87,8 +86,13 @@ export function QuestionCard({ presentation, result, selected, position, total, 
               question.title
             )}
           </h2>
+          {cloze && <ClozePassage passage={question.content?.passage}
+            blanks={question.content?.blanks} value={result?.attempt.response ?? draft}
+            onJump={pending || result ? undefined : index =>
+              document.getElementById(`${clozeId}-${index}`)?.focus()} />}
           {reading && <ReadingPassage passage={question.content?.passage} />}
           {writing && <WritingRequirements content={question.content} />}
+          <TranslationSource content={question.content} />
           <QuestionAudio key={`audio-${question.question_id}`} question={question} />
           <QuestionImage key={`image-${presentation.id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
         </section>
@@ -97,17 +101,18 @@ export function QuestionCard({ presentation, result, selected, position, total, 
             : isNumeric ? '填写答案'
               : question.question_type === 2 ? '可选择多项' : '选择答案'}</h3>}
           {question.content ? <>
-            {(!writing || !result) && <ExtendedQuestion content={question.content}
+            {(!written || !result) && <ExtendedQuestion content={question.content}
               value={result?.attempt.response ?? draft} disabled={pending || !!result}
-              onChange={onDraft} hidePassage={reading} hideWritingRequirements={writing}
-              readingReview={reading ? review : undefined} />}
+              onChange={onDraft} partIdPrefix={cloze ? clozeId : undefined}
+              hidePassage={reading || cloze} hideWritingRequirements={writing}
+              hideSourceText review={reading ? review : undefined} />}
             {reading && result?.attempt.score !== undefined && <p role="status">
               本题得分比例：{creditLabel(result.attempt.score)}
             </p>}
             {writing && result && <WritingReview
               response={result.attempt.response} credit={result.attempt.score} />}
             {!writing && !reading && review && result && <ExtendedReview item={review}
-              response={result.attempt.response} credit={result.attempt.score} />}
+              response={result.attempt.response} credit={result.attempt.score} hideExplanations />}
             {written && <WrittenFeedback presentation={presentation.id} writing={writing} />}
           </> : isNumeric ? <>
             <NumericAnswer value={numeric} onChange={onNumeric} disabled={pending || !!result} />
@@ -137,7 +142,11 @@ export function QuestionCard({ presentation, result, selected, position, total, 
           </button>
         </div>
       </footer>
-      {result && (reading || writing || !review || result.detail.question.analysis) && <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
+      {result && (reading || writing || Boolean(review?.blanks?.length) ||
+        Boolean(review?.sub_questions?.length) || !review ||
+        Boolean(result.detail.question.analysis) ||
+        hasRichContent(result.detail.question.analysis_content)) &&
+        <QuestionExplanation detail={result.detail} onDetails={onDetails} />}
     </div>
   </article>;
 }
