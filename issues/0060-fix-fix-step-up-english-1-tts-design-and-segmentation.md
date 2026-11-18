@@ -1,7 +1,8 @@
 ---
 id: 0060
 type: fix
-status: open
+status: closed
+closed-by: ae89c9524e2fc57e468dd8b12fcb3003d2f64c0b
 labels: []
 branch: fix/0060-fix-step-up-english-1-tts-design-and-segmentation
 created: 2026-11-18
