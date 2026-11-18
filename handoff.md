@@ -6,95 +6,53 @@ Updated 2026-11-17 (America/New_York).
 
 - **Repository**: `/Volumes/1TB-ZYJ/git/Test-driven-Study` (independent, standalone checkout).
 - **Active Branch**: `feat/0052-expand-sample-courses-to-180-hour-standard-curriculum`
-- **Baseline Commit**: `e89b5e3` (`feat: scaffold 180-hour curriculum batch workflow and syllabi for 16 courses`)
+- **Baseline Commit**: `94994eb` (`feat: complete research and review for step-up-english-1 lessons 8-10 (Unit 1 Complete)`)
 - **Active Issue**: [issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
-- **Primary Objective**: Expand the 16 active engineering/science curriculum courses to 180 instructional hours (180 lessons = 10,800 minutes each) with full web-grounded research notes and two-stage peer reviews.
-
-### Excluded Courses (Out of Scope)
-- `courses/basic-math`
-- `courses/starter`
-- `courses/ielts`
-- `courses/yunnan-driving`
-- `courses/elementary-chinese`
+- **Primary Objective**: Focus exclusively on the new 180-hour Step-up Practical English curriculum (`step-up-english-1` & `step-up-english-2`), executing per-lesson 5-agent pipelines (3 research + 2 review).
 
 ---
 
-## 2. Architecture: Workflow Definition & Execution Engine
+## 2. English Curriculum Packages (180h Total)
 
-### Where is the Workflow Defined?
-The workflow is **NOT** a standalone packaged skill. It is implemented as a **repository-resident script driven by the Antigravity system engine**:
-- **Workflow Source Script**: [scripts/curriculum_batch_workflow.py](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/scripts/curriculum_batch_workflow.py).
-- **Execution Driver**: Antigravity built-in `run_workflow` tool (which provides runtime primitives: `agent()`, `parallel()`, `phase()`, `log()`, and `args`).
-- **Curriculum Master Data**: `courses/<course_id>/syllabus_180h.json` across all 16 target courses (18 units × 10 lessons each = 180 lessons).
-- **State & Idempotency Tracker**: `docs/research/<course_id>/progress.json`.
+Following the zero-schema-change architecture, the 180-hour curriculum is split into two 90-hour semester course packages:
 
-### Per-Lesson Cadence (Strict 4-Phase Protocol)
-For every single lesson (1 课时 = 60 minutes):
-1. **Phase 1: 3 Parallel Research Subagents**
-   - Subagent 1 (`topic_1`): National/international standards (GB/T, ISO, IEEE, ASME) and governing mathematical/physical equations $\to$ `docs/research/<course>/lesson_NNN/topic_1__subagent_1/research_notes.md`
-   - Subagent 2 (`topic_2`): Industrial parameters, standard operating procedures, and configuration tables $\to$ `docs/research/<course>/lesson_NNN/topic_2__subagent_2/research_notes.md`
-   - Subagent 3 (`topic_3`): Common pitfalls, hardware/code failure modes, and diagnostic quizzes $\to$ `docs/research/<course>/lesson_NNN/topic_3__subagent_3/research_notes.md`
-2. **Phase 2: Coordinator Draft Synthesis**
-   - Main coordinator verifies citations and aggregates notes into `docs/research/<course>/lesson_NNN/lesson_draft.md`.
-3. **Phase 3: 2 Parallel Review Subagents**
-   - Reviewer 1 (Factual Accuracy): Web-verifies every claim, formula, and standard number $\to$ `review/<course>/lesson_NNN/fact_check__subagent_1/review_report.md`
-   - Reviewer 2 (Linguistic Precision): Audits terminology, eliminates hallucinated terms, empty jargon, and pseudo-scientific analogies $\to$ `review/<course>/lesson_NNN/language_precision__subagent_2/review_report.md`
-4. **Phase 4: Coordinator Finalization**
-   - Integrates review recommendations into `docs/research/<course>/lesson_NNN/lesson_final.md`.
-   - Marks lesson status as `COMPLETED` in `docs/research/<course>/progress.json`.
+1. **Semester 1**: [courses/step-up-english-1](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/courses/step-up-english-1) ——《零基础阶梯进阶英语（一）》
+   - **Progress**: **10 / 90 Lessons COMPLETED (Unit 1 100% Complete & Committed)**
+   - **Unit 1**: 国际音标与自然拼读规律（Lessons 1–10: 元音、辅音、破擦音、边音、重音规律与连读语调）—— **DONE**
+   - **Unit 2**: 名词与代词系统精讲（Lessons 11–20）—— **NEXT**
+   - **Units 3–9**: 一般现在时、形容词副词、现在进行时与介词、一般过去时、情态动词、日常工作交际、综合复习与自测
+
+2. **Semester 2**: [courses/step-up-english-2](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/courses/step-up-english-2) ——《零基础阶梯进阶英语（二）》
+   - **Progress**: 0 / 90 Lessons (Syllabus initialized)
+   - **Units 1–9**: 一般将来时、现在完成时、复杂过去时序、被动语态、状语从句、定语从句、名词性从句、职场邮件与技术读写、终结测评
 
 ---
 
-## 3. Recommended Subagent Model & Quota Safety
+## 3. Workflow & Orchestration Primitives
 
-- Use `flash_lite` or `gemini-3.8-flash-high` for subagent tasks (`agent(..., model="flash_lite")`).
-- Subagent tasks are strictly bounded to single topics/lessons to prevent context blowup and ensure completion within the 273k context limit.
-- Run lessons in small incremental chunks (e.g. 3 to 5 lessons per invocation) to prevent timeout and facilitate incremental git commits.
-
----
-
-## 4. Course Batching Roadmap
-
-Processing proceeds 3 courses in parallel, with lessons serial within each course:
-
-| Batch | Target Courses | Status |
-| :--- | :--- | :--- |
-| **Batch 1** | `cad-fdm-printing`, `circuit-fundamentals`, `c-programming` | Syllabi initialized; ready for lesson execution |
-| **Batch 2** | `embedded-mcu`, `python-programming`, `machine-vision` | Syllabi initialized |
-| **Batch 3** | `tolerances-metrology`, `applied-machine-learning`, `industrial-automation` | Syllabi initialized |
-| **Batch 4** | `pcb-design`, `algebra-geometry`, `engineering-calculus` | Syllabi initialized |
-| **Batch 5** | `linear-algebra`, `probability-statistics`, `automatic-control` | Syllabi initialized |
-| **Batch 6** | `beginner-english` | Syllabi initialized |
+- **Source Script**: [scripts/curriculum_batch_workflow.py](file:///Volumes/1TB-ZYJ/git/Test-driven-Study/scripts/curriculum_batch_workflow.py)
+- **Execution Driver**: Native Antigravity `run_workflow`
+- **Model**: Subagents use `flash_lite` (or `gemini-3.8-flash-high`) for single-lesson bounded contexts.
+- **Cadence**: 3 research agents (R1 standards, R2 industrial params, R3 failure modes) $\to$ coordinator draft $\to$ 2 review agents (factual correctness, language precision) $\to$ final integration.
 
 ---
 
-## 5. Instructions for Successor Agent
+## 4. Next Concrete Steps
 
-To start or resume execution in `/Volumes/1TB-ZYJ/git/Test-driven-Study`:
-
-1. **Verify Checkout & Branch**:
-   Ensure you are working in `/Volumes/1TB-ZYJ/git/Test-driven-Study` on branch `feat/0052-expand-sample-courses-to-180-hour-standard-curriculum`.
-
-2. **Trigger Workflow Chunk**:
-   Invoke `run_workflow` passing `ScriptPath`, `Cwd`, and `Args`:
-   ```python
-   run_workflow(
-       ScriptPath="/Volumes/1TB-ZYJ/git/Test-driven-Study/scripts/curriculum_batch_workflow.py",
-       Cwd="/Volumes/1TB-ZYJ/git/Test-driven-Study",
-       Args={
-           "courses": ["cad-fdm-printing", "circuit-fundamentals", "c-programming"],
-           "start_lesson": 1,
-           "end_lesson": 5
-       }
-   )
-   ```
-
-3. **Post-Chunk Verification & Atomic Commit**:
-   After the workflow finishes:
-   ```bash
-   git add docs/research/ review/
-   git commit -m "feat: complete research and review for lessons X-Y in batch N"
-   ```
-
-4. **Update Handoff & Repeat**:
-   Update this document with verified lesson counts before handing off or proceeding to the next batch.
+To proceed with Unit 2 (Lessons 11 to 20):
+```python
+run_workflow(
+    ScriptPath="/Volumes/1TB-ZYJ/git/Test-driven-Study/scripts/curriculum_batch_workflow.py",
+    Cwd="/Volumes/1TB-ZYJ/git/Test-driven-Study",
+    Args={
+        "courses": ["step-up-english-1"],
+        "start_lesson": 11,
+        "end_lesson": 15
+    }
+)
+```
+Followed by atomic commit:
+```bash
+git add docs/research/step-up-english-1/ review/step-up-english-1/ docs/research/step-up-english-1/progress.json
+git commit -m "feat: complete research and review for step-up-english-1 lessons 11-15"
+```
