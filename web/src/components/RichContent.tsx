@@ -3,13 +3,11 @@ import { AudioControls } from './AudioControls';
 
 type RichContentProps = {
   content?: string | ContentSegment[];
-  defaultVoice?: 'stella' | 'tide';
   className?: string;
 };
 
 export function RichContent({
   content,
-  defaultVoice = 'stella',
   className,
 }: RichContentProps) {
   if (!content) return null;
@@ -22,42 +20,26 @@ export function RichContent({
     return (
       <span className={`rich-content-mixed ${className || ''}`}>
         {content.map((segment, index) => {
-          if (segment.type === 'blank') {
-            const hasTts = Boolean(segment.tts) || Boolean(segment.tts_text);
-            const ttsConfig = typeof segment.tts === 'object' && segment.tts !== null ? segment.tts : {};
-            const voice = ttsConfig.voice || defaultVoice;
-            const textToSpeak = segment.tts_text || ttsConfig.text || '';
-
-            return (
-              <span
-                key={index}
-                className={`rich-segment-blank ${hasTts ? 'rich-segment-speech' : ''}`}
-                aria-label={`填空${segment.index ?? ''}`}
-              >
-                <span>___</span>
-                {hasTts && <AudioControls text={textToSpeak} voice={voice} />}
-              </span>
-            );
-          }
-
-          const hasTts = Boolean(segment.tts) || Boolean(segment.tts_text);
-          if (!hasTts) {
+          const blank = segment.type === 'blank';
+          const text = segment.text || (blank ? '___' : '');
+          const textToSpeak = segment.tts_text || segment.tts?.text || (blank ? '' : text);
+          const audio = segment.pinyin?.length
+            ? <AudioControls text={text} pinyin={segment.pinyin} />
+            : (segment.tts || segment.tts_text) && textToSpeak
+              ? <AudioControls text={textToSpeak} voice={segment.tts?.voice} />
+              : null;
+          if (!audio && !blank) {
             return (
               <span key={index} className="rich-segment-text">
-                {segment.text}
+                {text}
               </span>
             );
           }
-
-          const ttsConfig =
-            typeof segment.tts === 'object' && segment.tts !== null ? segment.tts : {};
-          const voice = ttsConfig.voice || defaultVoice;
-          const textToSpeak = segment.tts_text || ttsConfig.text || segment.text || '';
 
           return (
             <span key={index} className="rich-segment-speech">
-              <span className="rich-speech-text">{segment.text}</span>
-              <AudioControls text={textToSpeak} voice={voice} />
+              <span className={blank ? 'rich-segment-blank' : 'rich-speech-text'}>{text}</span>
+              {audio}
             </span>
           );
         })}

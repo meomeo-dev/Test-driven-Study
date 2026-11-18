@@ -1,6 +1,8 @@
-import { useEffect, useState, type MouseEvent, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { LoaderCircle, RotateCcw, Volume2, VolumeX } from 'lucide-react';
+import type { ContentSegment } from '../api/generated/types.gen';
 import * as tts from '../api/tts';
+import { connectPinyinOutput } from './pinyinAudio';
 
 let currentAudio: HTMLAudioElement | null = null;
 let currentStopCallback: (() => void) | null = null;
@@ -28,99 +30,117 @@ export function registerGlobalAudio(audio: HTMLAudioElement, onStop: () => void)
   currentStopCallback = onStop;
 }
 
-type AudioControlsProps = {
-  text: string;
-  voice?: 'stella' | 'tide';
-  className?: string;
-};
+type Voice = 'stella' | 'tide';
+type Track = { clip: string } | { text: string; voice?: Voice };
+type AudioControlsProps =
+  | { text: string; voice?: Voice; pinyin?: never; sequence?: never }
+  | { text: string; pinyin: string[]; voice?: never; sequence?: never }
+  | { sequence: ContentSegment[]; text?: never; voice?: never; pinyin?: never };
 
-export function AudioControls({ text, voice = 'stella', className }: AudioControlsProps) {
+function audioTracks({ text, voice, pinyin, sequence }: AudioControlsProps): Track[] {
+  if (sequence) {
+    return sequence.flatMap((segment): Track[] => {
+      if (segment.pinyin?.length) return segment.pinyin.map(clip => ({ clip }));
+      const speech = segment.tts?.text || segment.text;
+      return speech ? [{ text: speech, voice: segment.tts?.voice }] : [];
+    });
+  }
+  if (pinyin) return pinyin.map(clip => ({ clip }));
+  return text ? [{ text, voice }] : [];
+}
+
+export function AudioControls(props: AudioControlsProps) {
+  const { text, pinyin, sequence } = props;
   const [status, setStatus] = useState<'idle' | 'loading' | 'playing' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const active = useRef<HTMLAudioElement | null>(null);
+  const tracks = audioTracks(props);
+  const hasSpeech = tracks.some(track => 'text' in track);
+  const trackKey = JSON.stringify(tracks);
 
-  useEffect(() => {
-    return () => {
-      // Clean up when unmounting if this instance was playing
-      if (status === 'playing') {
-        stopGlobalAudio();
-      }
-    };
-  }, [status]);
+  useEffect(() => () => {
+    if (active.current && active.current === currentAudio) stopGlobalAudio();
+  }, [trackKey]);
 
   async function playAudio(force = false) {
-    if (status === 'playing' && !force) {
+    if (active.current && !force) {
       stopGlobalAudio();
       return;
     }
-    stopGlobalAudio();
+    const audio = new Audio();
+    let output: ReturnType<typeof connectPinyinOutput>;
+    registerGlobalAudio(audio, () => {
+      audio.onended = null;
+      audio.onerror = null;
+      output?.disconnect();
+      active.current = null;
+      setStatus('idle');
+    });
+    active.current = audio;
     setStatus('loading');
     setErrorMessage('');
 
-    try {
-      const result = await tts.synthesize({ text, voice, force });
-      const audio = new Audio(result.audio_url);
-      currentAudio = audio;
-      currentStopCallback = () => {
-        setStatus('idle');
-      };
-
-      audio.onended = () => {
-        stopGlobalAudio();
-      };
-      audio.onerror = () => {
-        stopGlobalAudio();
-        setStatus('error');
-        setErrorMessage('播放音频失败');
-      };
-
-      await audio.play();
-      setStatus('playing');
-    } catch (err) {
+    function fail(message: string) {
+      if (active.current !== audio) return;
       stopGlobalAudio();
       setStatus('error');
-      setErrorMessage(err instanceof Error ? err.message : '语音合成失败');
+      setErrorMessage(message);
+    }
+
+    let index = 0;
+    async function playNext() {
+      const track = tracks[index++];
+      if (!track) {
+        stopGlobalAudio();
+        return;
+      }
+      const clip = 'clip' in track ? track.clip : undefined;
+      try {
+        const url = 'clip' in track
+          ? `/api/audio/pinyin/${encodeURIComponent(track.clip)}.mp3`
+          : (await tts.synthesize({ text: track.text, voice: track.voice, force })).audio_url;
+        if (active.current !== audio) return;
+        output?.setClip(clip);
+        audio.onerror = () => fail(clip ? '暂无这段拼音的本地录音' : '播放音频失败');
+        audio.src = url;
+        await audio.play();
+        if (active.current === audio) setStatus('playing');
+      } catch (error) {
+        fail(clip ? '暂无这段拼音的本地录音'
+          : error instanceof Error ? error.message : '语音播放失败');
+      }
+    }
+
+    try {
+      if (tracks.some(track => 'clip' in track)) {
+        output = connectPinyinOutput(audio);
+        void output?.ready.catch(() => fail('无法启用拼音音频输出'));
+      }
+      audio.onended = () => { void playNext(); };
+      await playNext();
+    } catch (error) {
+      fail(error instanceof Error ? error.message : '语音合成失败');
     }
   }
 
-  function handlePlay(event: MouseEvent | KeyboardEvent) {
+  function handleClick(event: MouseEvent, force = false) {
     event.stopPropagation();
-    event.preventDefault();
-    void playAudio(false);
+    void playAudio(force);
   }
 
-  function handleRegenerate(event: MouseEvent | KeyboardEvent) {
-    event.stopPropagation();
-    event.preventDefault();
-    void playAudio(true);
-  }
-
-  function handlePlayKeyDown(event: KeyboardEvent) {
-    if (event.key === ' ' || event.key === 'Enter') {
-      handlePlay(event);
-    }
-  }
-
-  function handleRegenKeyDown(event: KeyboardEvent) {
-    if (event.key === ' ' || event.key === 'Enter') {
-      handleRegenerate(event);
-    }
-  }
-
+  const playing = status === 'playing';
+  const label = sequence ? (playing ? '停止解析' : '播放解析')
+    : playing ? '停止发音' : pinyin ? `播放拼音：${text}` : '播放发音';
   return (
-    <span
-      className={`tts-audio-controls ${className || ''}`}
-      onClick={event => event.stopPropagation()}
-    >
-      <span
-        role="button"
-        tabIndex={0}
-        className="tts-btn tts-play-btn"
-        data-playing={status === 'playing' ? 'true' : undefined}
-        aria-label={status === 'playing' ? '停止发音' : '播放发音'}
-        title={status === 'error' ? errorMessage || '语音合成失败' : status === 'playing' ? '停止发音' : `播放发音 (${voice})`}
-        aria-disabled={status === 'loading'}
-        onClick={handlePlay}
-        onKeyDown={handlePlayKeyDown}
+    <span className="tts-audio-controls">
+      <button
+        type="button"
+        className={`tts-btn tts-play-btn${sequence ? ' tts-explanation-btn' : ''}`}
+        data-playing={playing ? 'true' : undefined}
+        aria-label={label}
+        title={errorMessage || label}
+        disabled={status === 'loading'}
+        onClick={handleClick}
       >
         {status === 'loading' ? (
           <LoaderCircle className="spin" size={13} />
@@ -129,19 +149,23 @@ export function AudioControls({ text, voice = 'stella', className }: AudioContro
         ) : (
           <Volume2 size={13} />
         )}
-      </span>
-      <span
-        role="button"
-        tabIndex={0}
+        {sequence && label}
+      </button>
+      {hasSpeech && <button
+        type="button"
         className="tts-btn tts-regen-btn"
-        aria-label="重新生成发音"
-        title="强制重新合成语音"
-        aria-disabled={status === 'loading'}
-        onClick={handleRegenerate}
-        onKeyDown={handleRegenKeyDown}
+        aria-label={sequence ? '重新生成解析语音' : '重新生成发音'}
+        title={sequence ? '强制重新合成解析语音' : '强制重新合成语音'}
+        disabled={status === 'loading'}
+        onClick={event => handleClick(event, true)}
       >
         <RotateCcw size={11} />
-      </span>
+      </button>}
+      {(pinyin || sequence) && errorMessage && <span role="status">{errorMessage}</span>}
     </span>
   );
+}
+
+export function ExplanationAudio({ segments }: { segments?: ContentSegment[] }) {
+  return segments?.length ? <AudioControls sequence={segments} /> : null;
 }

@@ -8,15 +8,7 @@ import { AudioControls, registerGlobalAudio, stopGlobalAudio } from './AudioCont
 export interface DialogueLine {
   speaker?: string;
   text: string;
-  voice: 'stella' | 'tide';
-}
-
-function isMaleSpeaker(speaker: string): boolean {
-  const s = speaker.toUpperCase();
-  if (s === 'M' || s === 'MAN' || s === 'MALE' || s === 'BOY' || s === 'HE') return true;
-  const lower = speaker.toLowerCase();
-  const maleNames = ['david', 'tom', 'mike', 'jack', 'peter', 'john', 'bob', 'technician', 'supervisor', 'engineer'];
-  return maleNames.includes(lower);
+  voice?: 'stella' | 'tide';
 }
 
 export function parseDialogueLines(
@@ -29,12 +21,9 @@ export function parseDialogueLines(
         const item = raw as { speaker?: string; text?: string; tts?: { voice?: string } };
         const speaker = item.speaker?.trim();
         const text = item.text?.trim() || '';
-        let voice: 'stella' | 'tide' = 'stella';
-        if (item.tts?.voice === 'tide' || item.tts?.voice === 'stella') {
-          voice = item.tts.voice;
-        } else if (speaker) {
-          voice = isMaleSpeaker(speaker) ? 'tide' : 'stella';
-        }
+        const voice: DialogueLine['voice'] =
+          item.tts?.voice === 'tide' || item.tts?.voice === 'stella'
+          ? item.tts.voice : undefined;
         return { speaker, text, voice };
       })
       .filter(l => Boolean(l.text));
@@ -50,10 +39,9 @@ export function parseDialogueLines(
         if (match && match[1] && match[2]) {
           const speaker = match[1].trim();
           const text = match[2].trim();
-          const voice: 'stella' | 'tide' = isMaleSpeaker(speaker) ? 'tide' : 'stella';
-          return { speaker, text, voice };
+          return { speaker, text };
         }
-        return { text: line, voice: 'stella' as const };
+        return { text: line };
       });
   }
 
@@ -101,69 +89,69 @@ export function QuestionAudio({ question }: {
 function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'playing' | 'error'>('idle');
   const [activeLine, setActiveLine] = useState<number>(-1);
+  const [activeVoice, setActiveVoice] = useState<DialogueLine['voice']>();
   const [errorMessage, setErrorMessage] = useState('');
-  const cancelledRef = useRef(false);
+  const active = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     return () => {
-      cancelledRef.current = true;
-      stopGlobalAudio();
+      if (active.current) stopGlobalAudio();
     };
   }, []);
 
   async function playSequence(force = false) {
-    if (status === 'playing' && !force) {
-      cancelledRef.current = true;
+    if (active.current && !force) {
       stopGlobalAudio();
-      setStatus('idle');
-      setActiveLine(-1);
       return;
     }
 
-    stopGlobalAudio();
-    cancelledRef.current = false;
+    const audio = new Audio();
+    let finishLine: (() => void) | undefined;
+    registerGlobalAudio(audio, () => {
+      active.current = null;
+      audio.onended = null;
+      audio.onerror = null;
+      finishLine?.();
+      setStatus('idle');
+      setActiveLine(-1);
+    });
+    active.current = audio;
     setStatus('loading');
     setErrorMessage('');
 
     try {
       for (let i = 0; i < lines.length; i++) {
-        if (cancelledRef.current) break;
+        if (active.current !== audio) break;
         const line = lines[i];
         if (!line) continue;
-        setActiveLine(i);
 
         const result = await tts.synthesize({ text: line.text, voice: line.voice, force });
-        if (cancelledRef.current) break;
+        if (active.current !== audio) break;
+        setActiveLine(i);
+        setActiveVoice(result.voice);
 
         await new Promise<void>((resolve, reject) => {
-          const audio = new Audio(result.audio_url);
-          registerGlobalAudio(audio, () => {
-            cancelledRef.current = true;
-            resolve();
-          });
-
+          finishLine = resolve;
           audio.onended = () => resolve();
           audio.onerror = () => reject(new Error(`播放第 ${i + 1} 句音频失败`));
-
+          audio.src = result.audio_url;
           audio.play().then(() => {
-            setStatus('playing');
+            if (active.current === audio) setStatus('playing');
           }).catch(reject);
         });
 
-        if (i < lines.length - 1 && !cancelledRef.current) {
+        if (i < lines.length - 1 && active.current === audio) {
           await new Promise(r => setTimeout(r, 350));
         }
       }
     } catch (err) {
-      if (!cancelledRef.current) {
+      if (active.current === audio) {
+        stopGlobalAudio();
         setStatus('error');
         setErrorMessage(err instanceof Error ? err.message : '语音播放失败');
       }
     } finally {
-      if (!cancelledRef.current) {
-        setStatus('idle');
-        setActiveLine(-1);
-      }
+      if (active.current === audio) stopGlobalAudio();
     }
   }
 
@@ -180,7 +168,6 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
   }
 
   const currentSpeaker = activeLine >= 0 && lines[activeLine]?.speaker;
-  const currentVoice = activeLine >= 0 ? lines[activeLine]?.voice : undefined;
 
   return (
     <div className="question-listening-bar" role="region" aria-label="听力音频播放">
@@ -219,7 +206,7 @@ function DialoguePlayer({ lines }: { lines: DialogueLine[] }) {
       {status === 'playing' && lines.length > 1 && (
         <span className="listening-bar-progress" style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
           {activeLine + 1}/{lines.length} · {currentSpeaker ? `${currentSpeaker} (` : ''}
-          {currentVoice === 'tide' ? '男声' : '女声'}
+          {activeVoice === 'tide' ? '男声' : '女声'}
           {currentSpeaker ? ')' : ''}
         </span>
       )}

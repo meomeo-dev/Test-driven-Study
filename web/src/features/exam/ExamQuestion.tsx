@@ -13,7 +13,7 @@ export function ExamQuestion({ item, index, selected, busy, finished, onChoose, 
     <legend>考试题目</legend>
     <div className="terminal-stem" tabIndex={0}>
       <h2 className="question-text">{index + 1}. {q.title}</h2>
-      <QuestionAudio question={q} />
+      <QuestionAudio key={`audio-${q.question_id}`} question={q} />
       {q.question_type < 3 && <ol className="terminal-option-text" aria-label="选项内容">
         {q.items.map(option => <li key={option.sign}>
           {optionSymbol(q, option.sign)}. {option.item_title}

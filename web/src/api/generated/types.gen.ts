@@ -233,6 +233,7 @@ export type QuestionOption = {
     item_title: string;
     boolean_value?: boolean;
     title?: unknown;
+    pinyin?: PinyinClips;
     tts?: TtsConfig;
 };
 
@@ -251,6 +252,7 @@ export type Question = {
     image_type: number;
     answer: string;
     analysis: string;
+    analysis_audio?: Array<ContentSegment>;
     skill: string;
     difficulty: number;
     tags: string;
@@ -1017,9 +1019,12 @@ export type TtsConfig = {
     speed?: number;
 };
 
+export type PinyinClips = Array<string>;
+
 export type ContentSegment = {
     type: 'text' | 'speech' | 'blank';
     text?: string;
+    pinyin?: PinyinClips;
     tts?: TtsConfig;
     tts_text?: string;
     index?: number;
@@ -1047,7 +1052,10 @@ export type TtsProviderUpdate = {
 
 export type TtsSynthesizeInput = {
     text: string;
-    voice: 'stella' | 'tide';
+    /**
+     * Uses the configured default voice when omitted.
+     */
+    voice?: 'stella' | 'tide';
     force?: boolean;
 };
 
@@ -2980,6 +2988,31 @@ export type SynthesizeSpeechResponses = {
 };
 
 export type SynthesizeSpeechResponse = SynthesizeSpeechResponses[keyof SynthesizeSpeechResponses];
+
+export type GetPinyinAudioData = {
+    body?: never;
+    path: {
+        file: string;
+    };
+    query?: never;
+    url: '/api/audio/pinyin/{file}';
+};
+
+export type GetPinyinAudioErrors = {
+    /**
+     * Recording unavailable
+     */
+    404: unknown;
+};
+
+export type GetPinyinAudioResponses = {
+    /**
+     * Local Pinyin recording
+     */
+    200: Blob | File;
+};
+
+export type GetPinyinAudioResponse = GetPinyinAudioResponses[keyof GetPinyinAudioResponses];
 
 export type GetAudioStreamData = {
     body?: never;

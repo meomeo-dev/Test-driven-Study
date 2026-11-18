@@ -46,6 +46,7 @@ func New(service *study.Service, palaces *palace.Service, root, apiPort, webPort
 		writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
 	})
 	mux.HandleFunc("GET /api/courses/{course}/versions/{version}/assets/{asset...}", server.courseAsset)
+	mux.HandleFunc("GET /api/audio/pinyin/{file}", server.pinyinAudio)
 	mux.HandleFunc("GET /api/courses", server.courses)
 	mux.HandleFunc("GET /api/guide", server.guide)
 	server.registerStudyRoutes(mux)

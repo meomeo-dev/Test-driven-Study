@@ -10,7 +10,7 @@ import { ChoiceOptions } from './ChoiceOptions';
 import type { DetailsTab } from './StudyDetails';
 import { NumericAnswer } from '../../components/NumericAnswer';
 import { RichContent } from '../../components/RichContent';
-import { AudioControls } from '../../components/AudioControls';
+import { OptionAudio } from '../../components/OptionAudio';
 
 export function AnswerOptions({ question, mode = 'compact' }: { question: Question; mode?: 'compact' | 'full' }) {
   if (question.question_type === 4) {
@@ -21,13 +21,12 @@ export function AnswerOptions({ question, mode = 'compact' }: { question: Questi
 
   return <div className={`answer-options ${mode === 'full' ? 'expanded-options' : ''}`} role="list" aria-label="选项与答案">
     {question.items.map(option => {
-      const optionTts = option.tts || (hasAnyTts ? { voice: 'stella' } : undefined);
       return <div role="listitem" key={option.sign}
         className={`answer-option ${correct.has(option.sign) ? 'correct' : ''}`}>
         {question.question_type === 3 ? (correct.has(option.sign) ? <CircleCheck size={19} /> : <Circle size={19} />)
           : <span className="option-letter">{String.fromCharCode(64 + option.sign)}</span>}
         <span className="option-text">{option.item_title}</span>
-        {optionTts && <AudioControls text={optionTts.text || option.item_title} voice={optionTts.voice || 'stella'} />}
+        <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
         {correct.has(option.sign) && <span className="correct-label"><Check size={13} />正确答案</span>}
       </div>;
     })}
@@ -77,8 +76,8 @@ export function QuestionCard({ presentation, result, selected, position, total, 
               question.title
             )}
           </h2>
-          <QuestionAudio key={question.question_id} question={question} />
-          <QuestionImage key={presentation.id} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
+          <QuestionAudio key={`audio-${question.question_id}`} question={question} />
+          <QuestionImage key={`image-${presentation.id}`} detail={detail} buttonRef={imageRef} shortcuts={shortcuts} />
         </section>
         <section className="question-answers" aria-label="作答选项">
           <h3 className="column-label">{isNumeric ? '填写答案'

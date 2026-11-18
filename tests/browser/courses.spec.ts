@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { ExamSession } from '../../web/src/api/exams';
+import type { CourseSummary, QuestionSummary } from '../../web/src/api/generated/types.gen';
 
 test('both bundled courses use the existing workspace and keep their own practice history', async ({ page }) => {
   await page.goto('/courses');
@@ -26,13 +27,116 @@ test('both bundled courses use the existing workspace and keep their own practic
   await page.getByRole('link', { name: /小学语文/ }).click();
   await expect(page.getByRole('link', { name: '小学语文首页' })).toBeVisible();
   const diagram = page.getByRole('button', { name: '放大题目图片' }).getByRole('img');
-  await expect(diagram).toHaveAttribute('src', /elementary-chinese\/versions\/1\.0\.1\/assets\/textbook/);
+  await expect(diagram).toHaveAttribute('src',
+    /elementary-chinese\/versions\/1\.0\.4\/assets\/textbook/);
   await expect.poll(() => diagram.evaluate(image =>
     (image as HTMLImageElement).naturalWidth)).toBe(1024);
   for (const mode of modes) await expect(navigation.getByRole('link', { name: mode })).toBeVisible();
   await expect(page.getByText(/1 ÷ 4/)).toHaveCount(0);
   await page.goto('/memorize?subject=1');
   await expect(page).toHaveURL(/\/courses$/);
+});
+
+test('elementary Chinese plays local Pinyin and sends only Han text to TTS', async ({ page }) => {
+  const synthesized: string[] = [];
+  const forceSynthesis: boolean[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    const input = route.request().postDataJSON();
+    expect(input).not.toHaveProperty('voice');
+    synthesized.push(input.text);
+    forceSynthesis.push(input.force);
+    await route.fulfill({
+      json: { audio_url: '/api/audio/pinyin/ri4.mp3' },
+    });
+  });
+  await page.goto('/courses/elementary-chinese');
+  const stem = page.getByRole('region', { name: '题干与图例' });
+  await expect(stem).toContainText('l___ yǔ');
+  for (const [final, clip] of [['ie', 'ye1'], ['ei', 'ei1']]) {
+    const playback = page.waitForResponse(r => r.url().endsWith(`/api/audio/pinyin/${clip}.mp3`));
+    await stem.getByRole('button', { name: `播放拼音：${final}`, exact: true }).click();
+    expect((await playback).ok()).toBe(true);
+  }
+  const lei = page.waitForResponse(r => r.url().endsWith('/api/audio/pinyin/lei2.mp3'));
+  const yu = page.waitForResponse(r => r.url().endsWith('/api/audio/pinyin/yu3.mp3'));
+  await stem.getByRole('button', { name: /播放拼音：\s*l___ yǔ/ }).click();
+  expect((await lei).ok()).toBe(true);
+  expect((await yu).ok()).toBe(true);
+  expect((await page.request.get('/api/audio/pinyin/yi1fu5.mp3')).ok()).toBe(true);
+  await expect(stem.getByRole('button', { name: '重新生成发音' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '播放解析' })).toBeVisible();
+  expect(synthesized).toEqual([]);
+
+  const presented = page.waitForResponse(r =>
+    r.url().endsWith('/api/practice/presentations') && r.ok());
+  await page.getByRole('navigation', { name: '主导航' })
+    .getByRole('link', { name: '答题模式' }).click();
+  const presentation = await (await presented).json();
+  expect(presentation.detail.question).not.toHaveProperty('analysis_audio');
+  await expect(page.getByRole('button', { name: '播放解析' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '重新生成解析语音' })).toHaveCount(0);
+  const choices = page.getByRole('group', { name: '选择答案' });
+  await expect(choices.getByRole('button', { name: /^播放拼音：/ })).toHaveCount(4);
+  const localClip = page.waitForResponse(r => r.url().endsWith('/api/audio/pinyin/ye2.mp3'));
+  await choices.getByRole('button', { name: '播放拼音：ié', exact: true }).click();
+  expect((await localClip).headers()['content-type']).toBe('audio/mpeg');
+  await expect(choices.getByRole('button', { name: '停止发音', exact: true })).toBeVisible();
+  await expect(choices.getByRole('button', { name: '选项1：ié', exact: true }))
+    .toHaveAttribute('aria-pressed', 'false');
+  expect(synthesized).toEqual([]);
+
+  await choices.getByRole('button', { name: '选项3：éi', exact: true }).click();
+  await page.getByRole('button', { name: '提交答案', exact: true }).click();
+  await page.getByRole('button', { name: '播放解析', exact: true }).click();
+  const explanation = [
+    '雷雨读。',
+    '雷是第二声，声调标在这个字母上。',
+  ];
+  await expect.poll(() => synthesized).toEqual(explanation);
+  expect(forceSynthesis).toEqual([false, false]);
+
+  await page.getByRole('button', { name: '重新生成解析语音' }).click();
+  await expect.poll(() => synthesized).toEqual([...explanation, ...explanation]);
+  expect(forceSynthesis).toEqual([false, false, true, true]);
+
+  const url = new URL(page.url());
+  const subject = url.searchParams.get('subject');
+  const list = await (await page.request.get(`/api/practice/questions?subject=${subject}`)).json();
+  const butterfly = list.find((row: { source_item_id: string }) =>
+    row.source_item_id === 'pinyin-04-4-2');
+  url.searchParams.set('question', String(butterfly.question_id));
+  await page.goto(url.href);
+  const first = page.waitForResponse(r => r.url().endsWith('/api/audio/pinyin/hu2.mp3'));
+  const next = page.waitForResponse(r => r.url().endsWith('/api/audio/pinyin/die2.mp3'));
+  await choices.getByRole('button', { name: '播放拼音：hú dié', exact: true }).click();
+  expect((await first).ok()).toBe(true);
+  expect((await next).ok()).toBe(true);
+  expect(synthesized).toHaveLength(4);
+});
+
+test('English dialogue plays all three turns in the authored voices', async ({ page, request }) => {
+  const courses: CourseSummary[] = await (await request.get('/api/courses')).json();
+  const subject = courses.find(course => course.id === 'beginner-english')
+    ?.units.find(unit => unit.id === 'tools-equipment')?.subject_id;
+  expect(subject).toBeDefined();
+  const questions: QuestionSummary[] =
+    await (await request.get(`/api/questions?subject=${subject}`)).json();
+  const question = questions.find(item => item.source_item_id === 'te-mc-03');
+  expect(question).toBeDefined();
+
+  const voices: string[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    voices.push(route.request().postDataJSON().voice);
+    await route.fulfill({
+      json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: voices.at(-1) },
+    });
+  });
+  await page.goto(`/memorize?subject=${subject}&question=${question?.question_id}`);
+  const listening = page.getByRole('region', { name: '听力音频播放' });
+  await listening.getByRole('button', { name: '播放发音' }).click();
+  await expect.poll(() => voices, { timeout: 10_000 })
+    .toEqual(['stella', 'tide', 'stella']);
+  await expect(listening.getByRole('button', { name: '播放发音' })).toBeVisible();
 });
 
 test('math uses the shared guide, exam terminal, assistant and memory palace', async ({ page, request }) => {
@@ -42,7 +146,7 @@ test('math uses the shared guide, exam terminal, assistant and memory palace', a
   await expect(page.getByRole('heading', { name: '科目指南', exact: true })).toBeVisible();
   await expect(page.getByText('四分之一', { exact: true })).toBeVisible();
   await navigation.getByRole('link', { name: '模拟考试' }).click();
-  await expect(page.getByRole('heading', { name: '分数与小数考试系统' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '分数与小数模拟考试系统' })).toBeVisible();
   const creating = page.waitForResponse(r =>
     r.url().endsWith('/api/exams') && r.request().method() === 'POST');
   await page.getByRole('button', { name: '开始考试', exact: true }).click();
@@ -114,7 +218,7 @@ test('a question-only package joins the shared workspace after installation', as
   await navigation.getByRole('link', { name: '科目指南' }).click();
   await expect(page.getByText('模拟考试从本单元题库抽题。', { exact: true })).toBeVisible();
   await navigation.getByRole('link', { name: '模拟考试' }).click();
-  await expect(page.getByRole('heading', { name: '三角形考试系统' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '三角形模拟考试系统' })).toBeVisible();
   await expect(page.getByText('1 题 · 5 分钟 · 满分 1 分 · 1 分合格')).toBeVisible();
   const rows = await (await request.get(`/api/analysis?subject=${subject}&days=0`)).json();
   expect(rows.overall.attempts).toBe(1);

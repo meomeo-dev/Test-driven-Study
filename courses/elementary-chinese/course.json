@@ -1,7 +1,7 @@
 {
   "protocol_version": 1,
   "course_id": "elementary-chinese",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "title": "小学语文",
   "language": "zh-CN",
   "description": "一年级第一学期拼音练习。描写音节、选韵母和声调、辨认整体认读音节、看图选音节。",

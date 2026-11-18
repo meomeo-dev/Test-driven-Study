@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import type { ExamItem, ExamSession } from '../../api/exams';
+import { ExplanationAudio } from '../../components/AudioControls';
 import type { TerminalDialog } from './useExamTerminal';
 import { TerminalModal } from './TerminalModal';
 import { ExamNavigation } from './ExamNavigation';
@@ -35,7 +36,9 @@ export function TerminalDialogs({ dialog, session, item, selected, busy, enabled
         <p>Enter 或 →：保存所选答案并下一题；←：保存并上一题；j/k：下一题／上一题。</p>
         <p>n：答题卡；?：帮助。输入框、组合输入和弹窗内不触发全局快捷键。</p></>}
       {dialog === 'review' && item.review && <><p>正确答案：{item.detail.question.question_type === 4 ? item.review.answer :
-        answerSymbols(item.detail.question, item.review.answer.split(',').map(Number))}</p><p>{item.review.analysis || '原题暂无解析。'}</p>
+        answerSymbols(item.detail.question, item.review.answer.split(',').map(Number))}</p>
+        <p>{item.review.analysis || '原题暂无解析。'}
+          <ExplanationAudio segments={item.review.analysis_audio} /></p>
         {item.review.skill && <p>{item.review.skill}</p>}
         <Link to={`/practice?subject=${session.subject_id}&question=${item.review.question_id}`}>到答题模式练习</Link></>}
     </div>

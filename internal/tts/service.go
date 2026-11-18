@@ -326,6 +326,19 @@ func (s *Service) GetAudioFilePath(voice, key string) (string, error) {
 	return cleanPath, nil
 }
 
+type synthOutcome struct {
+	durationMs int
+	version    int64
+}
+
+func audioURL(voice, key string, version int64) string {
+	base := fmt.Sprintf("/api/audio/%s/%s.wav", voice, key)
+	if version > 0 {
+		return fmt.Sprintf("%s?v=%d", base, version)
+	}
+	return base
+}
+
 func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool) (*SynthesizeResult, error) {
 	text = strings.TrimSpace(text)
 	if text == "" {
@@ -334,13 +347,20 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 	if len(text) > 10000 {
 		return nil, errors.New("发音文本长度不能超过 10,000 字符")
 	}
+
+	s.mu.RLock()
+	config := s.config
+	s.mu.RUnlock()
+
 	if voice != "stella" && voice != "tide" {
-		voice = "stella"
+		voice = config.DefaultVoice
+		if voice != "tide" {
+			voice = "stella"
+		}
 	}
 
 	key := PhraseKey(text)
 	audioPath := filepath.Join(s.audioDir, voice, key+".wav")
-	audioURL := fmt.Sprintf("/api/audio/%s/%s.wav", voice, key)
 
 	if !force {
 		if fi, err := os.Stat(audioPath); err == nil && fi.Size() > 44 {
@@ -350,66 +370,68 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 			return &SynthesizeResult{
 				Key:        key,
 				Voice:      voice,
-				AudioURL:   audioURL,
+				AudioURL:   audioURL(voice, key, fi.ModTime().UnixNano()),
 				Cached:     true,
 				DurationMS: durationMs,
 			}, nil
 		}
 	}
 
-	s.mu.RLock()
-	apiKey := s.config.APIKey
-	baseURL := s.config.BaseURL
-	proxyURL := s.config.ProxyURL
-	s.mu.RUnlock()
-
-	if apiKey == "" {
+	if config.APIKey == "" {
 		return nil, errors.New("TTS 服务尚未配置 API Key，请在「服务设置」中配置")
 	}
 
-	sfKey := fmt.Sprintf("%s:%s", voice, key)
+	sfKey := fmt.Sprintf("%s:%s:%t", voice, key, force)
 	val, err, _ := s.sf.Do(sfKey, func() (any, error) {
 		if !force {
 			if fi, err := os.Stat(audioPath); err == nil && fi.Size() > 44 {
 				pcmBytes := fi.Size() - 44
-				return int((pcmBytes * 1000) / 48000), nil
+				return synthOutcome{
+					durationMs: int((pcmBytes * 1000) / 48000),
+					version:    fi.ModTime().UnixNano(),
+				}, nil
 			}
 		}
 
-		client := s.httpClient(proxyURL)
-		reqPayload, err := json.Marshal(map[string]string{
-			"text":   text,
-			"voice":  voice,
-			"format": "pcm",
-		})
-		if err != nil {
-			return 0, err
+		var prevMod int64
+		if fi, err := os.Stat(audioPath); err == nil {
+			prevMod = fi.ModTime().UnixNano()
 		}
 
-		req, err := http.NewRequestWithContext(ctx, http.MethodPost, baseURL, bytes.NewReader(reqPayload))
+		client := s.httpClient(config.ProxyURL)
+		reqPayload, err := json.Marshal(map[string]string{
+			"text":     text,
+			"voice_id": voice,
+			"format":   "pcm",
+		})
 		if err != nil {
-			return 0, err
+			return synthOutcome{}, err
+		}
+
+		req, err := http.NewRequestWithContext(ctx, http.MethodPost, config.BaseURL, bytes.NewReader(reqPayload))
+		if err != nil {
+			return synthOutcome{}, err
 		}
 		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("Authorization", "Bearer "+apiKey)
+		req.Header.Set("Authorization", "Bearer "+config.APIKey)
 
 		resp, err := client.Do(req)
 		if err != nil {
-			return 0, fmt.Errorf("请求 DeepSeek TTS 失败: %w", err)
+			return synthOutcome{}, fmt.Errorf("请求 DeepSeek TTS 失败: %w", err)
 		}
 		defer resp.Body.Close()
 
 		if resp.StatusCode != http.StatusOK {
 			body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
-			return 0, fmt.Errorf("DeepSeek TTS 接口错误 (状态码 %d): %s", resp.StatusCode, string(body))
+			return synthOutcome{}, fmt.Errorf("DeepSeek TTS 接口错误 (状态码 %d): %s", resp.StatusCode, string(body))
 		}
 
 		pcmData, err := io.ReadAll(io.LimitReader(resp.Body, 20*1024*1024))
 		if err != nil {
-			return 0, fmt.Errorf("读取音频数据流失败: %w", err)
+			return synthOutcome{}, fmt.Errorf("读取音频数据流失败: %w", err)
 		}
 		if len(pcmData) == 0 {
-			return 0, errors.New("TTS 接口返回了空音频数据")
+			return synthOutcome{}, errors.New("TTS 接口返回了空音频数据")
 		}
 
 		wavBytes := WrapPCM24kToWAV(pcmData)
@@ -419,27 +441,44 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 
 		tmpPath := filepath.Join(voiceDir, fmt.Sprintf(".tmp_%s_%d.wav", key, time.Now().UnixNano()))
 		if err := os.WriteFile(tmpPath, wavBytes, 0644); err != nil {
-			return 0, fmt.Errorf("写入临时音频缓存失败: %w", err)
+			return synthOutcome{}, fmt.Errorf("写入临时音频缓存失败: %w", err)
 		}
 		if err := os.Rename(tmpPath, audioPath); err != nil {
 			_ = os.Remove(tmpPath)
-			return 0, fmt.Errorf("保存音频缓存失败: %w", err)
+			return synthOutcome{}, fmt.Errorf("保存音频缓存失败: %w", err)
+		}
+
+		version := time.Now().UnixNano()
+		if fi, err := os.Stat(audioPath); err == nil {
+			version = fi.ModTime().UnixNano()
+		}
+		// Ensure forced regeneration advances the version even within the same clock tick.
+		if prevMod > 0 && version <= prevMod {
+			bumped := time.Unix(0, prevMod+int64(time.Millisecond))
+			if err := os.Chtimes(audioPath, bumped, bumped); err == nil {
+				version = bumped.UnixNano()
+			} else {
+				version = prevMod + int64(time.Millisecond)
+			}
 		}
 
 		durationMs := int((int64(len(pcmData)) * 1000) / 48000)
-		return durationMs, nil
+		return synthOutcome{
+			durationMs: durationMs,
+			version:    version,
+		}, nil
 	})
 
 	if err != nil {
 		return nil, err
 	}
 
-	durationMs := val.(int)
+	outcome := val.(synthOutcome)
 	return &SynthesizeResult{
 		Key:        key,
 		Voice:      voice,
-		AudioURL:   audioURL,
+		AudioURL:   audioURL(voice, key, outcome.version),
 		Cached:     false,
-		DurationMS: durationMs,
+		DurationMS: outcome.durationMs,
 	}, nil
 }

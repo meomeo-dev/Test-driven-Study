@@ -1,4 +1,12 @@
 import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+
+const englishManifest: { units: { concepts?: unknown[] }[] } = JSON.parse(
+  readFileSync(new URL('../../courses/beginner-english/course.json', import.meta.url), 'utf8'),
+);
+const englishConceptCount = englishManifest.units.reduce(
+  (total, unit) => total + (unit.concepts?.length ?? 0), 0,
+);
 
 test('the catalog roadmap shows README relations and plans an advisory route', async ({ page }) => {
   await page.goto('/courses');
@@ -18,7 +26,7 @@ test('the catalog roadmap shows README relations and plans an advisory route', a
     .toContainText('建议并行参数化建模与 3D 打印');
   await page.getByRole('button', { name: /^零基础英语/ }).click();
   const english = page.getByRole('complementary', { name: /^零基础英语.*详情$/ });
-  await expect(english).toContainText('学完全部知识点即完成：已完成 0/33');
+  await expect(english).toContainText(`学完全部知识点即完成：已完成 0/${englishConceptCount}`);
   await expect(english.getByRole('link', { name: '学习路径' })).toBeVisible();
   await expect(english.getByRole('button', { name: '标记已学完' })).toHaveCount(0);
 

@@ -112,17 +112,19 @@ func (o OptionTTS) MarshalJSON() ([]byte, error) {
 }
 
 type Option struct {
-	ID    string     `json:"id"`
-	Text  string     `json:"text"`
-	Value *bool      `json:"value,omitempty"`
-	TTS   *OptionTTS `json:"tts,omitempty"`
+	ID     string     `json:"id"`
+	Text   string     `json:"text"`
+	Value  *bool      `json:"value,omitempty"`
+	TTS    *OptionTTS `json:"tts,omitempty"`
+	Pinyin []string   `json:"pinyin,omitempty"`
 }
 
 type ContentSegment struct {
-	Type  string     `json:"type"`
-	Text  string     `json:"text,omitempty"`
-	TTS   *OptionTTS `json:"tts,omitempty"`
-	Index *int       `json:"index,omitempty"`
+	Type   string     `json:"type"`
+	Text   string     `json:"text,omitempty"`
+	TTS    *OptionTTS `json:"tts,omitempty"`
+	Index  *int       `json:"index,omitempty"`
+	Pinyin []string   `json:"pinyin,omitempty"`
 }
 
 type RichContent struct {
@@ -240,10 +242,11 @@ type Grading struct {
 // Prompt so that they never reach the browser or AI prompts.
 type Item struct {
 	Prompt
-	Explanation string   `json:"explanation,omitempty"`
-	Hint        string   `json:"hint,omitempty"`
-	Concepts    []string `json:"concepts,omitempty"`
-	Grading     Grading  `json:"grading"`
+	Explanation      string           `json:"explanation,omitempty"`
+	ExplanationAudio []ContentSegment `json:"explanation_audio,omitempty"`
+	Hint             string           `json:"hint,omitempty"`
+	Concepts         []string         `json:"concepts,omitempty"`
+	Grading          Grading          `json:"grading"`
 }
 
 type Response struct {

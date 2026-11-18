@@ -43,7 +43,11 @@ func (s *Server) streamAudio(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "audio/wav")
-	w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+	if r.URL.Query().Get("v") != "" {
+		w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+	} else {
+		w.Header().Set("Cache-Control", "no-cache")
+	}
 	http.ServeFile(w, r, filePath)
 }
 

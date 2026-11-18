@@ -3,231 +3,388 @@
     "id": "pinyin-04-2-1",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。l___ yǔ",
-    "image": "assets/thunderstorm.png",
+    "stem": [
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "ie", "pinyin": ["ye1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ei", "pinyin": ["ei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " l___ yǔ", "pinyin": ["lei2", "yu3"]}
+    ],
+    "image": "assets/textbook/thunderstorm.jpg",
     "options": [
-      {"id": "a", "text": "ié"},
-      {"id": "b", "text": "iě"},
-      {"id": "c", "text": "éi"},
-      {"id": "d", "text": "ěi"}
+      {"id": "a", "text": "ié", "pinyin": ["ye2"]},
+      {"id": "b", "text": "iě", "pinyin": ["ye3"]},
+      {"id": "c", "text": "éi", "pinyin": ["ei2"]},
+      {"id": "d", "text": "ěi", "pinyin": ["ei3"]}
     ],
     "grading": {"choice_ids": ["c"]},
-    "explanation": "雷雨读 léi yǔ。雷是第二声，声调标在 e 上。"
+    "explanation": "雷雨读 léi yǔ。雷是第二声，声调标在 e 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "雷雨读。"},
+      {"type": "speech", "pinyin": ["lei2", "yu3"]},
+      {"type": "speech", "text": "雷是第二声，声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["e1"]}
+    ]
   },
   {
     "id": "pinyin-04-2-2",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。w___ jīn",
-    "image": "assets/scarf.png",
+    "stem": [
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "ie", "pinyin": ["ye1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ei", "pinyin": ["ei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " w___ jīn", "pinyin": ["wei2", "jin1"]}
+    ],
+    "image": "assets/textbook/scarf.jpg",
     "options": [
-      {"id": "a", "text": "iè"},
-      {"id": "b", "text": "éi"},
-      {"id": "c", "text": "èi"},
-      {"id": "d", "text": "ié"}
+      {"id": "a", "text": "iè", "pinyin": ["ye4"]},
+      {"id": "b", "text": "éi", "pinyin": ["ei2"]},
+      {"id": "c", "text": "èi", "pinyin": ["ei4"]},
+      {"id": "d", "text": "ié", "pinyin": ["ye2"]}
     ],
     "grading": {"choice_ids": ["b"]},
-    "explanation": "围巾读 wéi jīn。围是第二声，声调标在 e 上。"
+    "explanation": "围巾读 wéi jīn。围是第二声，声调标在 e 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "围巾读。"},
+      {"type": "speech", "pinyin": ["wei2", "jin1"]},
+      {"type": "speech", "text": "围是第二声，声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["e1"]}
+    ]
   },
   {
     "id": "pinyin-04-2-3",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
     "stem": [
-      {"type": "text", "text": "看图，从「ie」和「ei」中选择合适的韵母，并加上声调。"},
-      {"type": "blank", "text": "d___", "tts_text": "叠衣服"}
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "ie", "pinyin": ["ye1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ei", "pinyin": ["ei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " d___ yī fu", "pinyin": ["die2", "yi1fu5"]}
     ],
-    "image": "assets/folding-clothes.png",
+    "image": "assets/textbook/folding-clothes.jpg",
     "options": [
-      {"id": "a", "text": "ié"},
-      {"id": "b", "text": "iè"},
-      {"id": "c", "text": "éi"},
-      {"id": "d", "text": "èi"}
+      {"id": "a", "text": "ié", "pinyin": ["ye2"]},
+      {"id": "b", "text": "iè", "pinyin": ["ye4"]},
+      {"id": "c", "text": "éi", "pinyin": ["ei2"]},
+      {"id": "d", "text": "èi", "pinyin": ["ei4"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "叠衣服读 dié yī fu。叠是第二声，声调标在 e 上。"
+    "explanation": "叠衣服读 dié yī fu。叠是第二声，声调标在 e 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "叠衣服读。"},
+      {"type": "speech", "pinyin": ["die2", "yi1fu5"]},
+      {"type": "speech", "text": "叠是第二声，声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["e1"]},
+      {"type": "speech", "text": "衣服的服读轻声。"}
+    ]
   },
   {
     "id": "pinyin-04-2-4",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
     "stem": [
-      {"type": "text", "text": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。"},
-      {"type": "blank", "text": "sh___", "tts_text": "水壶"}
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "iu", "pinyin": ["you1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ui", "pinyin": ["wei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " sh___ hú", "pinyin": ["shui3", "hu2"]}
     ],
-    "image": "assets/watering-can.png",
+    "image": "assets/textbook/watering-can.jpg",
     "options": [
-      {"id": "a", "text": "iǔ"},
-      {"id": "b", "text": "uí"},
-      {"id": "c", "text": "iú"},
-      {"id": "d", "text": "uǐ"}
+      {"id": "a", "text": "iǔ", "pinyin": ["you3"]},
+      {"id": "b", "text": "uí", "pinyin": ["wei2"]},
+      {"id": "c", "text": "iú", "pinyin": ["you2"]},
+      {"id": "d", "text": "uǐ", "pinyin": ["wei3"]}
     ],
     "grading": {"choice_ids": ["d"]},
-    "explanation": "水壶读 shuǐ hú。水是第三声，ui 的声调标在 i 上。"
+    "explanation": "水壶读 shuǐ hú。水是第三声，ui 的声调标在 i 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "水壶读。"},
+      {"type": "speech", "pinyin": ["shui3", "hu2"]},
+      {"type": "speech", "text": "水是第三声。听一听这个韵母。"},
+      {"type": "speech", "pinyin": ["wei1"]},
+      {"type": "speech", "text": "它的声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["yi1"]}
+    ]
   },
   {
     "id": "pinyin-04-2-5",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。l___ shù",
-    "image": "assets/willow.png",
+    "stem": [
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "iu", "pinyin": ["you1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ui", "pinyin": ["wei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " l___ shù", "pinyin": ["liu3", "shu4"]}
+    ],
+    "image": "assets/textbook/willow.jpg",
     "options": [
-      {"id": "a", "text": "uǐ"},
-      {"id": "b", "text": "iǔ"},
-      {"id": "c", "text": "iù"},
-      {"id": "d", "text": "uì"}
+      {"id": "a", "text": "uǐ", "pinyin": ["wei3"]},
+      {"id": "b", "text": "iǔ", "pinyin": ["you3"]},
+      {"id": "c", "text": "iù", "pinyin": ["you4"]},
+      {"id": "d", "text": "uì", "pinyin": ["wei4"]}
     ],
     "grading": {"choice_ids": ["b"]},
-    "explanation": "柳树读 liǔ shù。柳是第三声，iu 的声调标在 u 上。"
+    "explanation": "柳树读 liǔ shù。柳是第三声，iu 的声调标在 u 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "柳树读。"},
+      {"type": "speech", "pinyin": ["liu3", "shu4"]},
+      {"type": "speech", "text": "柳是第三声。听一听这个韵母。"},
+      {"type": "speech", "pinyin": ["you1"]},
+      {"type": "speech", "text": "它的声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["wu1"]}
+    ]
   },
   {
     "id": "pinyin-04-2-6",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。ch___ qì q___（第一个空）",
-    "image": "assets/blowing-balloon.png",
+    "stem": [
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "iu", "pinyin": ["you1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ui", "pinyin": ["wei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " ch___ qì q___（第一个空）", "pinyin": ["chui1", "qi4", "qiu2"]}
+    ],
+    "image": "assets/textbook/blowing-balloon.jpg",
     "options": [
-      {"id": "a", "text": "iū"},
-      {"id": "b", "text": "iú"},
-      {"id": "c", "text": "uī"},
-      {"id": "d", "text": "uí"}
+      {"id": "a", "text": "iū", "pinyin": ["you1"]},
+      {"id": "b", "text": "iú", "pinyin": ["you2"]},
+      {"id": "c", "text": "uī", "pinyin": ["wei1"]},
+      {"id": "d", "text": "uí", "pinyin": ["wei2"]}
     ],
     "grading": {"choice_ids": ["c"]},
-    "explanation": "吹气球读 chuī qì qiú。吹是第一声，ui 的声调标在 i 上。"
+    "explanation": "吹气球读 chuī qì qiú。吹是第一声，ui 的声调标在 i 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "吹气球读。"},
+      {"type": "speech", "pinyin": ["chui1", "qi4", "qiu2"]},
+      {"type": "speech", "text": "吹是第一声。听一听这个韵母。"},
+      {"type": "speech", "pinyin": ["wei1"]},
+      {"type": "speech", "text": "它的声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["yi1"]}
+    ]
   },
   {
     "id": "pinyin-04-2-7",
     "type": "single_choice",
     "chapter": "二、选择韵母并标声调",
-    "stem": "看图，从「iu」和「ui」中选择合适的韵母，并加上声调。ch___ qì q___（第二个空）",
-    "image": "assets/blowing-balloon.png",
+    "stem": [
+      {"type": "text", "text": "看图，从「"},
+      {"type": "speech", "text": "iu", "pinyin": ["you1"]},
+      {"type": "text", "text": "」和「"},
+      {"type": "speech", "text": "ui", "pinyin": ["wei1"]},
+      {"type": "text", "text": "」中选择合适的韵母，并加上声调。"},
+      {"type": "speech", "text": " ch___ qì q___（第二个空）", "pinyin": ["chui1", "qi4", "qiu2"]}
+    ],
+    "image": "assets/textbook/blowing-balloon.jpg",
     "options": [
-      {"id": "a", "text": "iú"},
-      {"id": "b", "text": "iù"},
-      {"id": "c", "text": "uí"},
-      {"id": "d", "text": "uì"}
+      {"id": "a", "text": "iú", "pinyin": ["you2"]},
+      {"id": "b", "text": "iù", "pinyin": ["you4"]},
+      {"id": "c", "text": "uí", "pinyin": ["wei2"]},
+      {"id": "d", "text": "uì", "pinyin": ["wei4"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "吹气球读 chuī qì qiú。球是第二声，iu 的声调标在 u 上。"
+    "explanation": "吹气球读 chuī qì qiú。球是第二声，iu 的声调标在 u 上。",
+    "explanation_audio": [
+      {"type": "speech", "text": "吹气球读。"},
+      {"type": "speech", "pinyin": ["chui1", "qi4", "qiu2"]},
+      {"type": "speech", "text": "球是第二声。听一听这个韵母。"},
+      {"type": "speech", "pinyin": ["you1"]},
+      {"type": "speech", "text": "它的声调标在这个字母上。"},
+      {"type": "speech", "pinyin": ["wu1"]}
+    ]
   },
   {
     "id": "pinyin-04-3-1",
     "type": "multiple_choice",
     "chapter": "三、整体认读音节",
-    "stem": "圈出第 1 行的整体认读音节。请选择所有符合的音节。",
+    "stem": [
+      {"type": "speech", "text": "圈出第 1 行的整体认读音节。请选择所有符合的音节。", "tts": {"text": "圈出第一行的整体认读音节。请选择所有符合的音节。"}}
+    ],
     "options": [
-      {"id": "a", "text": "ài"},
-      {"id": "b", "text": "yuán"},
-      {"id": "c", "text": "dǐng"},
-      {"id": "d", "text": "zì"}
+      {"id": "a", "text": "ài", "pinyin": ["ai4"]},
+      {"id": "b", "text": "yuán", "pinyin": ["yuan2"]},
+      {"id": "c", "text": "dǐng", "pinyin": ["ding3"]},
+      {"id": "d", "text": "zì", "pinyin": ["zi4"]}
     ],
     "grading": {"choice_ids": ["b", "d"]},
-    "explanation": "yuán 和 zì 都是整体认读音节。"
+    "explanation": "yuán 和 zì 都是整体认读音节。",
+    "explanation_audio": [
+      {"type": "speech", "text": "这两个音节都是整体认读音节。"},
+      {"type": "speech", "pinyin": ["yuan2", "zi4"]}
+    ]
   },
   {
     "id": "pinyin-04-3-2",
     "type": "multiple_choice",
     "chapter": "三、整体认读音节",
-    "stem": "圈出第 2 行的整体认读音节。请选择所有符合的音节。",
+    "stem": [
+      {"type": "speech", "text": "圈出第 2 行的整体认读音节。请选择所有符合的音节。", "tts": {"text": "圈出第二行的整体认读音节。请选择所有符合的音节。"}}
+    ],
     "options": [
-      {"id": "a", "text": "xí"},
-      {"id": "b", "text": "yín"},
-      {"id": "c", "text": "yán"},
-      {"id": "d", "text": "yě"}
+      {"id": "a", "text": "xí", "pinyin": ["xi2"]},
+      {"id": "b", "text": "yín", "pinyin": ["yin2"]},
+      {"id": "c", "text": "yán", "pinyin": ["yan2"]},
+      {"id": "d", "text": "yě", "pinyin": ["ye3"]}
     ],
     "grading": {"choice_ids": ["b", "d"]},
-    "explanation": "yín 和 yě 都是整体认读音节。yán 要拼读。"
+    "explanation": "yín 和 yě 都是整体认读音节。yán 要拼读。",
+    "explanation_audio": [
+      {"type": "speech", "text": "这两个音节都是整体认读音节。"},
+      {"type": "speech", "pinyin": ["yin2", "ye3"]},
+      {"type": "speech", "text": "下面这个音节要拼读。"},
+      {"type": "speech", "pinyin": ["yan2"]}
+    ]
   },
   {
     "id": "pinyin-04-3-3",
     "type": "multiple_choice",
     "chapter": "三、整体认读音节",
-    "stem": "圈出第 3 行的整体认读音节。请选择所有符合的音节。",
+    "stem": [
+      {"type": "speech", "text": "圈出第 3 行的整体认读音节。请选择所有符合的音节。", "tts": {"text": "圈出第三行的整体认读音节。请选择所有符合的音节。"}}
+    ],
     "options": [
-      {"id": "a", "text": "shū"},
-      {"id": "b", "text": "yuè"},
-      {"id": "c", "text": "tóng"},
-      {"id": "d", "text": "rì"}
+      {"id": "a", "text": "shū", "pinyin": ["shu1"]},
+      {"id": "b", "text": "yuè", "pinyin": ["yue4"]},
+      {"id": "c", "text": "tóng", "pinyin": ["tong2"]},
+      {"id": "d", "text": "rì", "pinyin": ["ri4"]}
     ],
     "grading": {"choice_ids": ["b", "d"]},
-    "explanation": "yuè 和 rì 都是整体认读音节。"
+    "explanation": "yuè 和 rì 都是整体认读音节。",
+    "explanation_audio": [
+      {"type": "speech", "text": "这两个音节都是整体认读音节。"},
+      {"type": "speech", "pinyin": ["yue4", "ri4"]}
+    ]
   },
   {
     "id": "pinyin-04-4-1",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/door.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/door.jpg",
     "options": [
-      {"id": "a", "text": "méng"},
-      {"id": "b", "text": "mén"}
+      {"id": "a", "text": "méng", "pinyin": ["meng2"]},
+      {"id": "b", "text": "mén", "pinyin": ["men2"]}
     ],
     "grading": {"choice_ids": ["b"]},
-    "explanation": "图中是门，读 mén，韵母是 en。"
+    "explanation": "图中是门，读 mén，韵母是 en。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中是门，读。"},
+      {"type": "speech", "pinyin": ["men2"]},
+      {"type": "speech", "text": "听一听它的韵母，这是前鼻音。"},
+      {"type": "speech", "pinyin": ["en1"]}
+    ]
   },
   {
     "id": "pinyin-04-4-2",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/butterfly.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/butterfly.jpg",
     "options": [
-      {"id": "a", "text": "hú déi"},
-      {"id": "b", "text": "hú dié"}
+      {"id": "a", "text": "hú déi", "pinyin": ["hu2", "dei2"]},
+      {"id": "b", "text": "hú dié", "pinyin": ["hu2", "die2"]}
     ],
     "grading": {"choice_ids": ["b"]},
-    "explanation": "图中是蝴蝶，读 hú dié，蝶的韵母是 ie。"
+    "explanation": "图中是蝴蝶，读 hú dié，蝶的韵母是 ie。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中是蝴蝶，读。"},
+      {"type": "speech", "pinyin": ["hu2", "die2"]},
+      {"type": "speech", "text": "听一听蝶的韵母。"},
+      {"type": "speech", "pinyin": ["ye1"]}
+    ]
   },
   {
     "id": "pinyin-04-4-3",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/scissors.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/scissors.jpg",
     "options": [
-      {"id": "a", "text": "jiǎn dāo"},
-      {"id": "b", "text": "juǎn dāo"}
+      {"id": "a", "text": "jiǎn dāo", "pinyin": ["jian3", "dao1"]},
+      {"id": "b", "text": "juǎn dāo", "pinyin": ["juan3", "dao1"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "图中是剪刀，读 jiǎn dāo。"
+    "explanation": "图中是剪刀，读 jiǎn dāo。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中是剪刀，读。"},
+      {"type": "speech", "pinyin": ["jian3", "dao1"]}
+    ]
   },
   {
     "id": "pinyin-04-4-4",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/bed.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/bed.jpg",
     "options": [
-      {"id": "a", "text": "chuáng"},
-      {"id": "b", "text": "chuán"}
+      {"id": "a", "text": "chuáng", "pinyin": ["chuang2"]},
+      {"id": "b", "text": "chuán", "pinyin": ["chuan2"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "图中是床，读 chuáng，韵母带后鼻音。"
+    "explanation": "图中是床，读 chuáng，韵母带后鼻音。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中是床，读。"},
+      {"type": "speech", "pinyin": ["chuang2"]},
+      {"type": "speech", "text": "它的韵母带后鼻音。"}
+    ]
   },
   {
     "id": "pinyin-04-4-5",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/spring-festival.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/spring-festival.jpg",
     "options": [
-      {"id": "a", "text": "chūn jié"},
-      {"id": "b", "text": "chūn jéi"}
+      {"id": "a", "text": "chūn jié", "pinyin": ["chun1", "jie2"]},
+      {"id": "b", "text": "chūn jéi", "pinyin": ["chun1", "jei2"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "图中表示春节，读 chūn jié。"
+    "explanation": "图中表示春节，读 chūn jié。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中表示春节，读。"},
+      {"type": "speech", "pinyin": ["chun1", "jie2"]}
+    ]
   },
   {
     "id": "pinyin-04-4-6",
     "type": "single_choice",
     "chapter": "四、看图选音节",
-    "stem": "看图，在正确的音节后面打“√”。",
-    "image": "assets/dancing.png",
+    "stem": [
+      {"type": "speech", "text": "看图，在正确的音节后面打“√”。", "tts": {"text": "看图，在正确的音节后面打勾。"}}
+    ],
+    "image": "assets/textbook/dancing.jpg",
     "options": [
-      {"id": "a", "text": "tiào wǔ"},
-      {"id": "b", "text": "tào wǔ"}
+      {"id": "a", "text": "tiào wǔ", "pinyin": ["tiao4", "wu3"]},
+      {"id": "b", "text": "tào wǔ", "pinyin": ["tao4", "wu3"]}
     ],
     "grading": {"choice_ids": ["a"]},
-    "explanation": "图中是跳舞，读 tiào wǔ，跳的韵母是 iao。"
+    "explanation": "图中是跳舞，读 tiào wǔ，跳的韵母是 iao。",
+    "explanation_audio": [
+      {"type": "speech", "text": "图中是跳舞，读。"},
+      {"type": "speech", "pinyin": ["tiao4", "wu3"]},
+      {"type": "speech", "text": "听一听跳的韵母。"},
+      {"type": "speech", "pinyin": ["yao1"]}
+    ]
   }
 ]

@@ -14,6 +14,7 @@ type Option struct {
 	Title        json.RawMessage `json:"title,omitempty"`
 	BooleanValue *bool           `json:"boolean_value,omitempty"`
 	TTS          *OptionTTS      `json:"tts,omitempty"`
+	Pinyin       []string        `json:"pinyin,omitempty"`
 }
 
 type Question struct {
@@ -29,6 +30,7 @@ type Question struct {
 	ImageType       int64    `json:"image_type"`
 	Answer          string   `json:"answer"`
 	Analysis        string   `json:"analysis"`
+	AnalysisAudio   any      `json:"analysis_audio,omitempty"`
 	Skill           string   `json:"skill"`
 	Difficulty      int64    `json:"difficulty"`
 	Tags            string   `json:"tags"`

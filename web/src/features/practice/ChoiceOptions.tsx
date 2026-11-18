@@ -1,6 +1,6 @@
 import { Check, Circle, CircleCheck } from 'lucide-react';
 import type { Attempt, PublicQuestion } from '../../api/practice';
-import { AudioControls } from '../../components/AudioControls';
+import { OptionAudio } from '../../components/OptionAudio';
 
 type Props = {
   question: PublicQuestion;
@@ -20,20 +20,21 @@ export function ChoiceOptions({ question, selected, result, pending, shortcuts, 
       const chosen = selected.includes(option.sign);
       const right = !!result && correct.has(option.sign);
       const wrong = !!result && chosen && !right;
-      const optionTts = option.tts || (hasAnyTts ? { voice: 'stella' } : undefined);
-
-      return <button type="button" key={option.sign}
-        className={`answer-option choice-option ${chosen ? 'selected' : ''} ${right ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}
-        data-sign={option.sign} aria-label={`选项${option.sign}：${option.item_title}`} aria-pressed={chosen}
-        aria-keyshortcuts={shortcuts ? String(option.sign) : undefined}
-        disabled={pending || !!result} onClick={() => onChoose(option.sign)}>
-        <span className="option-letter">{option.sign}</span>
-        {question.question_type === 2 && (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
-        <span className="option-text">{option.item_title}</span>
-        {optionTts && <AudioControls text={optionTts.text || option.item_title} voice={optionTts.voice || 'stella'} />}
-        {right && <span className="correct-label"><Check size={13} />正确答案</span>}
-        {wrong && <span className="wrong-label">你的选择</span>}
-      </button>;
+      return <div className="choice-option-row" key={option.sign}>
+        <button type="button"
+          className={`answer-option choice-option ${chosen ? 'selected' : ''} ${right ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}
+          data-sign={option.sign} aria-label={`选项${option.sign}：${option.item_title}`}
+          aria-pressed={chosen} aria-keyshortcuts={shortcuts ? String(option.sign) : undefined}
+          disabled={pending || !!result} onClick={() => onChoose(option.sign)}>
+          <span className="option-letter">{option.sign}</span>
+          {question.question_type === 2 &&
+            (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
+          <span className="option-text">{option.item_title}</span>
+          {right && <span className="correct-label"><Check size={13} />正确答案</span>}
+          {wrong && <span className="wrong-label">你的选择</span>}
+        </button>
+        <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
+      </div>;
     })}
   </div>;
 }

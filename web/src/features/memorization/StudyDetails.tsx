@@ -1,4 +1,6 @@
 import { QuestionAudio } from '../../components/QuestionAudio';
+import { ExplanationAudio } from '../../components/AudioControls';
+import { RichContent } from '../../components/RichContent';
 import type { RefObject } from 'react';
 import { useWorkspace } from '../../app/workspace';
 import { Modal } from '../../components/Modal';
@@ -33,7 +35,9 @@ export function QuestionMetadata({ detail }: { detail: Detail }) {
 
 export function FullExplanation({ detail }: { detail: Detail }) {
   return <section className="full-explanation" aria-label="完整答案解析"><h3>答案解析</h3>
-    <p>{detail.question.analysis}</p>{detail.question.skill && <><h3>记忆提示</h3><p>{detail.question.skill}</p></>}
+    <p>{detail.question.analysis}
+      <ExplanationAudio segments={detail.question.analysis_audio} /></p>
+    {detail.question.skill && <><h3>记忆提示</h3><p>{detail.question.skill}</p></>}
   </section>;
 }
 
@@ -44,9 +48,11 @@ export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
     <Tabs prefix="details" label="题目详情内容" items={tabs} value={tab ?? 'question'} onChange={value => onTab(value as DetailsTab)} />
     <section role="tabpanel" tabIndex={0} id={`details-panel-${tab ?? 'question'}`}
       aria-labelledby={`details-tab-${tab ?? 'question'}`}>
-      {tab === 'question' && <div className="full-question"><h3 className="question-text">{detail.question.title}</h3>
-        <QuestionAudio question={detail.question} />
-        <QuestionImage detail={detail} /><AnswerOptions question={detail.question} mode="full" /></div>}
+      {tab === 'question' && <div className="full-question"><h3 className="question-text">
+        <RichContent content={detail.question.rich_content ?? detail.question.title} />
+      </h3>
+        <QuestionAudio key={`audio-${detail.question.question_id}`} question={detail.question} />
+        <QuestionImage key={`image-${detail.question.question_id}`} detail={detail} /><AnswerOptions question={detail.question} mode="full" /></div>}
       {tab === 'analysis' && <FullExplanation detail={detail} />}
       {tab === 'metadata' && <QuestionMetadata detail={detail} />}
     </section>

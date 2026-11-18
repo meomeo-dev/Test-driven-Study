@@ -59,7 +59,7 @@ test('background startup survives launcher exit, reuses its PID, and stops both 
   const base = `http://127.0.0.1:${app.webPort}`;
   const courses = await (await fetch(`${base}/api/courses`)).json();
   const chinese = courses.find(course => course.id === 'elementary-chinese');
-  assert.equal(chinese.version, '1.0.1');
+  assert.equal(chinese.version, '1.0.4');
   const subject = chinese.units[0].subject_id;
   const data = await (await fetch(`${base}/api/study/overview?subject=${subject}`)).json();
   assert.equal(data.total, 16);

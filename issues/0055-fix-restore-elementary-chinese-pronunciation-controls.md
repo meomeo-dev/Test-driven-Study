@@ -16,8 +16,9 @@ for Han text.
 
 ## 关键功能清单（Key Feature List，KFL）
 
-- Play Han instructions and visible Pinyin in question stems.
+- Play Han instructions and the illustrated words in fill-in prompts.
 - Play Pinyin choices from local recordings, including multisyllable options.
+- Read explanations using Han TTS and local Pinyin in the authored order.
 
 ## 改造面
 
@@ -25,13 +26,15 @@ Course question content, course and HTTP contracts, and shared study controls.
 
 ## 非目标
 
-Changes to the worksheet's answers, question order, or exam terminal.
+Changes to the worksheet's answers, question order, or exam grading and
+answer-reveal rules.
 
 ## 验收标准（Acceptance Criteria，AC）
 
 - Practice and memorization show playback controls for the worksheet.
 - Pinyin playback uses local MP3 files and makes no synthesis requests.
-- Han instructions send Han text to the existing TTS API.
+- Han instructions and explanations send only Han text to the TTS API.
+- Active unanswered questions keep explanation audio hidden.
 - Hidden worksheet blanks and stored learning history are preserved.
 
 ## 讨论

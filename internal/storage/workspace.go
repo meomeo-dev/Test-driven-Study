@@ -134,6 +134,9 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 	if len(item.Stem.Segments) > 0 {
 		question.RichContent = item.Stem.Segments
 	}
+	if len(item.ExplanationAudio) > 0 {
+		question.AnalysisAudio = item.ExplanationAudio
+	}
 	if item.Image != "" {
 		question.ImageType = 1
 		if strings.EqualFold(path.Ext(item.Image), ".gif") {
@@ -157,17 +160,16 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 			sign := int64(i + 1)
 			opt := study.Option{
 				Sign: sign, ItemTitle: option.Text, BooleanValue: option.Value,
+				Pinyin: option.Pinyin,
 			}
 			if option.TTS != nil && option.TTS.Enabled {
-				voice := option.TTS.Config.Voice
-				if voice == "" {
-					voice = "stella"
-				}
 				text := option.TTS.Config.Text
 				if text == "" {
 					text = option.Text
 				}
-				opt.TTS = &study.OptionTTS{Voice: voice, Text: text, Speed: option.TTS.Config.Speed}
+				opt.TTS = &study.OptionTTS{
+					Voice: option.TTS.Config.Voice, Text: text, Speed: option.TTS.Config.Speed,
+				}
 			}
 			question.Items = append(question.Items, opt)
 			if *option.Value == *item.Grading.Boolean {
@@ -188,17 +190,15 @@ func projectChoices(question *study.Question, item course.Item) string {
 	for i, option := range item.Options {
 		sign := int64(i + 1)
 		signs[option.ID] = strconv.FormatInt(sign, 10)
-		opt := study.Option{Sign: sign, ItemTitle: option.Text}
+		opt := study.Option{Sign: sign, ItemTitle: option.Text, Pinyin: option.Pinyin}
 		if option.TTS != nil && option.TTS.Enabled {
-			voice := option.TTS.Config.Voice
-			if voice == "" {
-				voice = "stella"
-			}
 			text := option.TTS.Config.Text
 			if text == "" {
 				text = option.Text
 			}
-			opt.TTS = &study.OptionTTS{Voice: voice, Text: text, Speed: option.TTS.Config.Speed}
+			opt.TTS = &study.OptionTTS{
+				Voice: option.TTS.Config.Voice, Text: text, Speed: option.TTS.Config.Speed,
+			}
 		}
 		question.Items = append(question.Items, opt)
 	}

@@ -6,11 +6,25 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
 	"test-driven-study/internal/course"
 )
+
+var pinyinFilename = regexp.MustCompile(`^(?:[a-z]{1,8}[1-5]){1,3}\.mp3$`)
+
+func (s *Server) pinyinAudio(w http.ResponseWriter, r *http.Request) {
+	filename := r.PathValue("file")
+	if !pinyinFilename.MatchString(filename) {
+		http.NotFound(w, r)
+		return
+	}
+	directory := filepath.Join(s.root, "assets", "audio", "pinyin")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	http.ServeFileFS(w, r, os.DirFS(directory), filename)
+}
 
 func (s *Server) courseAsset(w http.ResponseWriter, r *http.Request) {
 	filename := "assets/" + r.PathValue("asset")

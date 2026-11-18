@@ -81,5 +81,8 @@
 .rich-segment-speech { display: inline-flex; align-items: center; gap: 2px; }
 .rich-speech-text { font-weight: 500; }
 .rich-segment-blank { display: inline-block; min-width: 32px; border-bottom: 2px solid var(--text-secondary); margin: 0 4px; text-align: center; }
-.choice-option .tts-audio-controls { margin-left: auto; }
+.choice-option-row { display: flex; align-items: center; gap: 6px; }
+.choice-option-row .choice-option { flex: 1; }
+.choice-option-row .tts-audio-controls { margin-left: 0; }
+.tts-explanation-btn { width: auto; gap: 4px; padding-inline: 6px; font-size: 12px; }
 

@@ -3,9 +3,11 @@ package tts
 import (
 	"context"
 	"encoding/binary"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -132,6 +134,9 @@ func TestTTSServiceSynthesizeMockServer(t *testing.T) {
 	if res.Cached {
 		t.Fatalf("expected first synthesis to not be cached")
 	}
+	if !strings.Contains(res.AudioURL, "?v=") {
+		t.Fatalf("expected versioned audio URL, got %q", res.AudioURL)
+	}
 
 	filePath, err := svc.GetAudioFilePath("stella", res.Key)
 	if err != nil {
@@ -142,7 +147,7 @@ func TestTTSServiceSynthesizeMockServer(t *testing.T) {
 		t.Fatalf("unexpected audio file size: %v", fi.Size())
 	}
 
-	// Second call should hit cache
+	// Second call should hit cache and preserve the same versioned URL
 	res2, err := svc.Synthesize(context.Background(), "Hello world", "stella", false)
 	if err != nil {
 		t.Fatalf("second call failed: %v", err)
@@ -150,13 +155,84 @@ func TestTTSServiceSynthesizeMockServer(t *testing.T) {
 	if !res2.Cached {
 		t.Fatalf("expected second synthesis to be cached")
 	}
+	if res2.AudioURL != res.AudioURL {
+		t.Fatalf("expected cached URL %q to match %q", res2.AudioURL, res.AudioURL)
+	}
 
-	// Force call should bypass cache
+	// Force call should bypass cache and issue a new versioned URL
 	res3, err := svc.Synthesize(context.Background(), "Hello world", "stella", true)
 	if err != nil {
 		t.Fatalf("force call failed: %v", err)
 	}
 	if res3.Cached {
 		t.Fatalf("expected forced call to not be cached")
+	}
+	if res3.AudioURL == res2.AudioURL {
+		t.Fatalf("expected forced regeneration to change audio URL, still got %q", res3.AudioURL)
+	}
+
+	// Subsequent cached call should return the newly regenerated versioned URL
+	res4, err := svc.Synthesize(context.Background(), "Hello world", "stella", false)
+	if err != nil {
+		t.Fatalf("fourth call failed: %v", err)
+	}
+	if !res4.Cached || res4.AudioURL != res3.AudioURL {
+		t.Fatalf("expected cached call after force to return %q, got %q (cached=%v)", res3.AudioURL, res4.AudioURL, res4.Cached)
+	}
+}
+
+func TestSynthesizeUsesConfiguredVoiceWhenOmitted(t *testing.T) {
+	providerVoices := make(chan string, 4)
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var input struct {
+			Voice string `json:"voice_id"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
+			http.Error(w, "invalid request", http.StatusBadRequest)
+			return
+		}
+		providerVoices <- input.Voice
+		_, _ = w.Write(make([]byte, 480))
+	}))
+	defer server.Close()
+
+	directory := t.TempDir()
+	service := NewWithCredentials(directory, directory, newMemoryCredentials())
+	key := "mock-key"
+	for _, check := range []struct {
+		name, defaultVoice, requested, want string
+		cached                              bool
+	}{
+		{"default tide", "tide", "", "tide", false},
+		{"explicit stella", "tide", "stella", "stella", false},
+		{"changed default", "stella", "", "stella", true},
+		{"explicit tide", "stella", "tide", "tide", true},
+	} {
+		t.Run(check.name, func(t *testing.T) {
+			err := service.Save(ProviderUpdate{
+				BaseURL: server.URL, DefaultVoice: check.defaultVoice, APIKey: &key,
+			}, service.Settings().WriteToken)
+			if err != nil {
+				t.Fatal(err)
+			}
+			result, err := service.Synthesize(t.Context(), "雷雨", check.requested, false)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if result.Voice != check.want || result.Cached != check.cached ||
+				!strings.HasPrefix(result.AudioURL, "/api/audio/"+check.want+"/") {
+				t.Fatalf("unexpected audio selection: %+v", result)
+			}
+			select {
+			case voice := <-providerVoices:
+				if voice != check.want || check.cached {
+					t.Fatalf("unexpected upstream voice_id %q", voice)
+				}
+			default:
+				if !check.cached {
+					t.Fatal("missing upstream synthesis request")
+				}
+			}
+		})
 	}
 }
