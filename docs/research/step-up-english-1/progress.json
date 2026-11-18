@@ -103,5 +103,40 @@
     "status": "COMPLETED",
     "fact_review": "REVIEWED",
     "lang_review": "AUDITED"
+  },
+  "lesson_016": {
+    "lesson_number": 16,
+    "title": "名词与代词系统精讲：第 6 讲 人称代词主格与宾格的格位一致性",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_017": {
+    "lesson_number": 17,
+    "title": "名词与代词系统精讲：第 7 讲 物主代词（形容词性与名词性）对比",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_018": {
+    "lesson_number": 18,
+    "title": "名词与代词系统精讲：第 8 讲 反身代词用法与强调结构",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_019": {
+    "lesson_number": 19,
+    "title": "名词与代词系统精讲：第 9 讲 指示代词 this/that/these/those 空间与逻辑指代",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
+  },
+  "lesson_020": {
+    "lesson_number": 20,
+    "title": "名词与代词系统精讲：第 10 讲 不定代词 some/any/no/every 及其复合代词",
+    "status": "COMPLETED",
+    "fact_review": "REVIEWED",
+    "lang_review": "AUDITED"
   }
 }
