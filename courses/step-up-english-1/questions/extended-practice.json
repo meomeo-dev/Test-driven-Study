@@ -153,5 +153,57 @@
     "stem": "The word equipment normally takes the plural form equipments.",
     "grading": { "value": false },
     "analysis": "equipment 是不可数名词。要表达多件设备，可以说 pieces of equipment。"
+  },
+  {
+    "id": "numbers-1",
+    "type": "single_choice",
+    "chapter": "数字 0–100",
+    "stem": [
+      { "type": "text", "text": "工位班长询问你零件盒数量：" },
+      { "type": "text", "text": "How many boxes do you see?", "tts": { "voice": "tide" } },
+      { "type": "text", "text": " 你数出有 13 个，应该回答哪一句？" }
+    ],
+    "options": [
+      { "id": "a", "text": "I see thirty boxes.", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "I see thirteen boxes.", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "I see three boxes.", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "I see third boxes.", "tts": { "voice": "stella" } }
+    ],
+    "explanation": "数字 13 的英文是 thirteen；thirty 是 30，three 是 3。因此正确答案是 b。",
+    "grading": { "choice_ids": ["b"] }
+  },
+  {
+    "id": "numbers-3",
+    "type": "multiple_choice",
+    "chapter": "数字 0–100",
+    "stem": [
+      { "type": "text", "text": "车间质检员说：" },
+      { "type": "text", "text": "We need twenty-four clean trays.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 句子中包含了哪些信息？请选择两项。" }
+    ],
+    "options": [
+      { "id": "a", "text": "需要的数量是 24" },
+      { "id": "b", "text": "需要的数量是 42" },
+      { "id": "c", "text": "需要的物品是托盘（trays）" },
+      { "id": "d", "text": "需要的物品是螺丝（screws）" }
+    ],
+    "explanation": "twenty-four 表示数字 24，trays 表示托盘。因此正确选项是 a 和 c。",
+    "grading": { "choice_ids": ["a", "c"] }
+  },
+  {
+    "id": "numbers-5",
+    "type": "numeric",
+    "chapter": "数字 0–100",
+    "stem": [
+      { "type": "text", "text": "班长在工位清点零件时说：" },
+      {
+        "type": "text",
+        "text": "There are eight red parts and seven blue parts on the table.",
+        "tts": { "voice": "tide" }
+      },
+      { "type": "text", "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。" }
+    ],
+    "explanation": "eight 表示 8，seven 表示 7，零件总数为 8 + 7 = 15。因此正确答案是 15。",
+    "grading": { "value": "15", "absolute_tolerance": "0" }
   }
 ]

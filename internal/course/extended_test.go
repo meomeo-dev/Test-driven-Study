@@ -19,12 +19,22 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 		t.Fatal("the demo course must contain only the extended-practice unit")
 	}
 	items := pkg.Units["extended-practice"].Items
-	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 6 {
+	if pkg.Manifest.ProtocolVersion != 2 || len(items) != 9 {
 		t.Fatalf("unexpected demo unit: version %d, %d items", pkg.Manifest.ProtocolVersion, len(items))
 	}
+	counts := make(map[string]int, len(items))
 	for _, item := range items {
+		counts[item.Type]++
 		if item.Type == Reading && len(item.ListeningLines()) > 0 {
 			t.Fatal("a reading passage must not project as a listening transcript")
+		}
+	}
+	for _, kind := range []string{
+		SingleChoice, MultipleChoice, TrueFalse, Numeric,
+		Cloze, Listening, Reading, Writing, Translation,
+	} {
+		if counts[kind] != 1 {
+			t.Errorf("expected one %s demonstration, got %d", kind, counts[kind])
 		}
 	}
 	versions, err := loadSchemas()

@@ -2,7 +2,9 @@
 
 The v2 course contract adds five types. The existing four types remain
 available. [The sample unit](../../../courses/step-up-english-1/questions/extended-practice.json)
-contains an example of each new type and a v2 true/false item.
+contains one example of each of the nine types. Its single-choice,
+multiple-choice, and numeric examples come from the
+[numbers unit](../../../courses/beginner-english/questions/numbers-places.json).
 
 | Type | Authored content | Submitted answer |
 | --- | --- | --- |

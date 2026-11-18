@@ -20,7 +20,7 @@ func TestV2PracticeUsesSavedAttemptAndHidesReview(t *testing.T) {
 	s, queries, subject := setupExtendedCourse(t)
 	ctx := context.Background()
 	rows, err := s.PracticeQuestions(ctx, study.Filter{SubjectID: subject, ChapterID: -1, State: "all"})
-	if err != nil || len(rows) != 6 {
+	if err != nil || len(rows) != 9 {
 		t.Fatalf("projected questions: %v, %v", rows, err)
 	}
 	presentationID := "saved-v2-written-attempt"
@@ -72,7 +72,7 @@ func TestV2ExamKeepsListeningAudioAndPartialCreditInSnapshot(t *testing.T) {
 	ctx := context.Background()
 	id := "a7990000-0000-4000-8000-000000000001"
 	paper, err := s.CreateExam(ctx, id, subject)
-	if err != nil || len(paper.Items) != 6 {
+	if err != nil || len(paper.Items) != 9 {
 		t.Fatalf("create exam: %+v, %v", paper, err)
 	}
 	listening := slices.IndexFunc(paper.Items, func(i study.ExamItem) bool {

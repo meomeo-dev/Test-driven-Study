@@ -15,16 +15,18 @@ Updated 2026-11-18 (America/New_York).
   versioned course schemas, structured answers and shared practice, memorization
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
-  scoring and optional AI feedback. The six examples ship in the single
-  综合题型练习 unit of `step-up-english-1@1.2.2`.
+  scoring and optional AI feedback. The single 综合题型练习 unit in
+  `step-up-english-1@1.2.3` has one example of each of the nine question types.
+  The single-choice, multiple-choice, and numeric questions were copied from
+  the numbers unit of `beginner-english`.
 - Reading comprehension uses the existing study layout. Its passage,
   sub-questions, and choices declare inline TTS in the question bank.
 - Memorization shows the writing prompt and requirements on the left, the
   sample in the middle, and the explanation and rubric on the right.
   Practice collects submissions and reveals the sample and rubric afterward.
-- The writing sample declares TTS for the full sentence. Version `1.2.2` is
-  active in the local learner database. Course validation, type checking,
-  course and study tests, and the writing browser test passed.
+- The writing sample declares TTS for the full sentence. Version `1.2.3` is
+  active in the local learner database with the same six existing question IDs.
+  Course validation, course and study tests, and question-type browser tests passed.
 
 ## Elementary Chinese pronunciation
 
