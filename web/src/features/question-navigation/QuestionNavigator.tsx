@@ -1,20 +1,34 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { LocateFixed, Image, MessageCircle } from 'lucide-react';
-import type { Summary } from '../../api/practice';
-import { stateLabel } from './model';
-import { blockedKeyEvent } from './shortcuts';
+import { blockedKeyEvent } from '../../components/keyboardEvent';
 
 const indexStep = 100;
 const gridColumns = 6;
-type Props = {
-  rows: Summary[];
+
+type NavigationRow = {
+  question_id: number;
+  source_item_id?: string;
+  title: string;
+  state: string;
+};
+
+export type QuestionNavigationStatus = {
+  legend: readonly string[];
+  label: (state: string) => string;
+};
+
+export type QuestionNavigatorProps = {
+  rows: readonly NavigationRow[];
   current: number;
+  status: QuestionNavigationStatus;
   onSelect: (id: number) => void;
   palaces?: ReadonlySet<number>;
   conversations?: ReadonlySet<number>;
 };
 
-export function QuestionNavigator({ rows, current, onSelect, palaces, conversations }: Props) {
+export function QuestionNavigator({
+  rows, current, status, onSelect, palaces, conversations,
+}: QuestionNavigatorProps) {
   const viewport = useRef<HTMLDivElement>(null);
   const buttons = useRef(new Map<number, HTMLButtonElement>());
   const [focused, setFocused] = useState(current);
@@ -77,41 +91,55 @@ export function QuestionNavigator({ rows, current, onSelect, palaces, conversati
     <div className="navigation-legend">
       {palaces && <span><Image size={12} />有记忆画面</span>}
       {conversations && <span><MessageCircle size={12} />有对话记录</span>}
-      <span><i />未作答</span><span><i className="correct" />最近答对</span>
-      <span><i className="incorrect" />最近答错</span>
+      {status.legend.map(state => <span key={state}>
+        <i className={state} />{status.label(state)}
+      </span>)}
     </div>
     <div className="navigation-browser">
       <div ref={viewport} className="question-waterfall" aria-label="连续题号列表">
         <div className="question-grid" id={gridId}>
-          {rows.map((row, index) => <button type="button" key={row.question_id}
-            ref={button => {
-              if (button) buttons.current.set(row.question_id, button);
-              else buttons.current.delete(row.question_id);
-            }}
-            data-question-id={row.question_id} data-position={index + 1}
-            tabIndex={focused === row.question_id ? 0 : -1}
-            onFocus={() => setFocused(row.question_id)}
-            onKeyDown={event => {
-              if (blockedKeyEvent(event.nativeEvent)) return;
-              if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
-                event.preventDefault();
-                moveFocus(event.key, index);
-              }
-            }}
-            data-has-conversation={conversations?.has(row.question_id) ? 'true' : undefined}
-            data-has-palace={palaces?.has(row.question_id) ? 'true' : undefined}
-            className={`grid-question ${palaces?.has(row.question_id) ? 'has-palace' : ''} ${conversations?.has(row.question_id) ? 'has-conversation' : ''} ${row.state} ${row.question_id === current ? 'current' : ''}`}
-            aria-label={`第${index + 1}题，原题号${row.source_item_id || row.question_id}，${stateLabel(row.state)}${palaces?.has(row.question_id) ? '，有记忆画面' : ''}${conversations?.has(row.question_id) ? '，有对话记录' : ''}`}
-            aria-current={row.question_id === current ? 'true' : undefined}
-            title={`#${row.source_item_id || row.question_id} ${row.title}`}
-            onClick={() => onSelect(row.question_id)}>
-            <span className="grid-position">{index + 1}</span>
-            <small className="grid-original-id">#{row.source_item_id || row.question_id}</small>
-            <span className="grid-resource-indicators" aria-hidden="true">
-              {palaces?.has(row.question_id) && <Image className="grid-palace-indicator" size={11} />}
-              {conversations?.has(row.question_id) && <MessageCircle className="grid-conversation-indicator" size={11} />}
-            </span>
-          </button>)}
+          {rows.map((row, index) => {
+            const id = row.question_id;
+            const originalID = row.source_item_id || id;
+            const isCurrent = id === current;
+            const hasPalace = palaces?.has(id);
+            const hasConversation = conversations?.has(id);
+            const classes = ['grid-question', row.state, isCurrent && 'current',
+              hasPalace && 'has-palace', hasConversation && 'has-conversation'];
+            const label = `第${index + 1}题，原题号${originalID}，${status.label(row.state)}`
+              + (hasPalace ? '，有记忆画面' : '') + (hasConversation ? '，有对话记录' : '');
+            return <button type="button" key={id}
+              ref={button => {
+                if (button) buttons.current.set(id, button);
+                else buttons.current.delete(id);
+              }}
+              data-question-id={id} data-position={index + 1}
+              tabIndex={focused === id ? 0 : -1}
+              onFocus={() => setFocused(id)}
+              onKeyDown={event => {
+                if (blockedKeyEvent(event.nativeEvent)) return;
+                if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End']
+                  .includes(event.key)) {
+                  event.preventDefault();
+                  moveFocus(event.key, index);
+                }
+              }}
+              data-has-conversation={hasConversation ? 'true' : undefined}
+              data-has-palace={hasPalace ? 'true' : undefined}
+              className={classes.filter(Boolean).join(' ')}
+              aria-label={label}
+              aria-current={isCurrent ? 'true' : undefined}
+              title={`#${originalID} ${row.title}`}
+              onClick={() => onSelect(id)}>
+              <span className="grid-position">{index + 1}</span>
+              <small className="grid-original-id">#{originalID}</small>
+              <span className="grid-resource-indicators" aria-hidden="true">
+                {hasPalace && <Image className="grid-palace-indicator" size={11} />}
+                {hasConversation && <MessageCircle
+                  className="grid-conversation-indicator" size={11} />}
+              </span>
+            </button>;
+          })}
         </div>
         {rows.length === 0 && <p className="empty-navigation">没有符合条件的题目</p>}
       </div>

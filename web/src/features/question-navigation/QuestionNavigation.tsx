@@ -1,20 +1,14 @@
 import { useRef, useState, type Ref } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { PanelRightClose, PanelRightOpen, X } from 'lucide-react';
-import type { Summary } from '../../api/client';
-import { QuestionNavigator } from './QuestionNavigator';
+import { QuestionNavigator, type QuestionNavigatorProps } from './QuestionNavigator';
 
-type Props = {
-  rows: Summary[];
-  current: number;
+type Props = QuestionNavigatorProps & {
   shortcuts: boolean;
   triggerRef: Ref<HTMLButtonElement>;
-  onSelect: (id: number) => void;
-  palaces?: ReadonlySet<number>;
-  conversations?: ReadonlySet<number>;
 };
 
-export function QuestionNavigation({ rows, current, shortcuts, triggerRef, onSelect, palaces, conversations }: Props) {
+export function QuestionNavigation({ shortcuts, triggerRef, onSelect, ...navigatorProps }: Props) {
   const [open, setOpen] = useState(false);
   const content = useRef<HTMLDivElement>(null);
   return <Dialog.Root modal={false} open={open} onOpenChange={setOpen}>
@@ -45,8 +39,7 @@ export function QuestionNavigation({ rows, current, shortcuts, triggerRef, onSel
           百题索引用于滚动列表；定位当前题会居中并聚焦，选择题号后切题。
           使用方向键浏览题号，Enter 选择，Esc 收起导航。
         </Dialog.Description>
-        <QuestionNavigator rows={rows} current={current} palaces={palaces}
-          conversations={conversations} onSelect={id => {
+        <QuestionNavigator {...navigatorProps} onSelect={id => {
           onSelect(id);
           setOpen(false);
         }} />

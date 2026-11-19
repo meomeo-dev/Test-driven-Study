@@ -1,3 +1,5 @@
+export { blockedKeyEvent, type ShortcutEvent } from '../../components/keyboardEvent';
+
 export const SHORTCUTS = [
   { action: 'next', keys: ['j', 'ArrowRight'], label: '下一题', group: 'Vim 风格导航', repeat: true },
   { action: 'previous', keys: ['k', 'ArrowLeft'], label: '上一题', group: 'Vim 风格导航', repeat: true },
@@ -14,18 +16,11 @@ export const SHORTCUTS = [
 ] as const;
 export type ShortcutAction = typeof SHORTCUTS[number]['action'];
 export type ShortcutActions = Record<ShortcutAction, () => void>;
-export type ShortcutEvent = Pick<KeyboardEvent,
-  'defaultPrevented' | 'ctrlKey' | 'metaKey' | 'altKey' | 'isComposing' | 'keyCode'>;
-
 export function shortcutCommand(
   key: string, pendingG: boolean,
 ): ShortcutAction | 'prefix' | undefined {
   if (key === 'g') return pendingG ? 'first' : 'prefix';
   return SHORTCUTS.find(item => item.keys.some(binding => binding === key))?.action;
-}
-export function blockedKeyEvent(event: ShortcutEvent) {
-  if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return true;
-  return event.isComposing || event.keyCode === 229;
 }
 export function keyLabel(key: string) {
   const labels: Record<string, string> = { ArrowRight: '→', ArrowLeft: '←', gg: 'g g' };

@@ -166,7 +166,8 @@ test('math uses the shared guide, exam terminal, assistant and memory palace', a
   expect(resumed.deadline_at_ms).toBe(exam.deadline_at_ms);
   expect(resumed.items[index]?.numeric).toBe('0.250');
 
-  await page.goto(`/memorize?subject=${exam.subject_id}&question=${exam.items[index]!.detail.question.question_id}`);
+  const markedQuestion = exam.items[index]!.detail.question.question_id;
+  await page.goto(`/memorize?subject=${exam.subject_id}&question=${markedQuestion}`);
   await page.getByRole('button', { name: '询问本题 · 学习助手' }).click();
   const tutor = page.getByRole('dialog', { name: '学习助手 AI' });
   await tutor.getByRole('textbox', { name: '向学习助手提问' }).fill('请解释这个分数');
@@ -201,6 +202,57 @@ test('math uses the shared guide, exam terminal, assistant and memory palace', a
   expect(JSON.parse(image.source).prompt).toBe(job.snapshot.prompt);
   expect(job.snapshot.prompt).toContain('四个同宽格的条带');
   expect(job.snapshot.prompt).toContain('1/4 = 0.25');
+
+  await test.step('the question drawer preserves each study mode', async () => {
+    const nextQuestion = exam.items.find(item =>
+      item.detail.question.source_item_id === '5')!.detail.question.question_id;
+    const trigger = page.getByRole('button', { name: '题目导航', exact: true });
+    const drawer = page.getByRole('dialog', { name: '题目导航', exact: true });
+    const marked = drawer.getByRole('button', { name: /^第1题，原题号4，/ });
+    const next = drawer.getByRole('button', { name: /^第2题，原题号5，/ });
+
+    for (const mode of ['memorize', 'practice', 'palace']) {
+      const practice = mode === 'practice';
+      const params = new URLSearchParams({
+        subject: String(exam.subject_id), question: String(markedQuestion),
+      });
+      if (practice) params.set('q', '等于');
+      await page.goto(`/${mode}?${params}`);
+      if (mode === 'memorize') {
+        await expect(page.getByRole('heading', { name: /1 ÷ 4/ })).toBeVisible();
+      }
+      await trigger.click();
+      const states = practice ? ['未作答', '最近答对', '最近答错'] : ['未学习', '已记住', '待复习'];
+      for (const state of states) {
+        await expect(drawer.getByText(state, { exact: true })).toBeVisible();
+      }
+      await expect(drawer.getByRole('button', { name: /^第\d+题，原题号/ }))
+        .toHaveCount(practice ? 3 : 4);
+      await expect(marked).toHaveAttribute('aria-current', 'true');
+      await expect(marked.getByText('#4', { exact: true })).toBeVisible();
+      await expect(marked).toHaveAccessibleName(/有记忆画面/);
+      await expect(marked).toHaveAccessibleName(/有对话记录/);
+
+      if (mode === 'memorize') {
+        await expect(marked).toBeFocused();
+        await page.keyboard.press('ArrowRight');
+        await expect(next).toBeFocused();
+        await drawer.getByRole('button', { name: '定位当前题' }).click();
+        await expect(marked).toBeFocused();
+        await page.keyboard.press('Escape');
+        await expect(drawer).toBeHidden();
+        await expect(trigger).toBeFocused();
+        await page.keyboard.press('n');
+        await expect(marked).toBeFocused();
+      }
+      await next.click();
+      await expect(drawer).toBeHidden();
+      await expect(page).toHaveURL(url => url.pathname === `/${mode}`
+        && url.searchParams.get('subject') === params.get('subject')
+        && url.searchParams.get('question') === String(nextQuestion)
+        && url.searchParams.get('q') === params.get('q'));
+    }
+  });
 });
 
 test('a question-only package joins the shared workspace after installation', async ({ page, request }) => {

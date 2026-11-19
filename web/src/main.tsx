@@ -14,7 +14,7 @@ import { ThemeProvider } from './components/ThemeToggle';
 import './styles/tokens.css';
 import './styles/layout.css';
 import './styles/study.css';
-import './styles/navigation.css';
+import './features/question-navigation/question-navigation.css';
 import './styles/practice.css';
 import './styles/analysis.css';
 import './styles/responsive.css';

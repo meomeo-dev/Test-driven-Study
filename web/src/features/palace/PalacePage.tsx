@@ -8,8 +8,8 @@ import * as api from '../../api/palace';
 import { detail, overview, questions } from '../../api/client';
 import { Sidebar } from '../../components/Sidebar';
 import { ThemeToggle } from '../../components/ThemeToggle';
-import { QuestionNavigation } from '../memorization/QuestionNavigation';
-import { activeQuestion } from '../memorization/model';
+import { QuestionNavigation } from '../question-navigation';
+import { activeQuestion, navigationStatus } from '../memorization/model';
 import { useMemorizationExposure } from '../memorization/hooks';
 import { PalaceWorkspace } from './PalaceWorkspace';
 import { ProviderDialog } from './ProviderDialog';
@@ -47,8 +47,10 @@ export function PalacePage() {
       <header className="palace-toolbar"><h1><Map size={20} />记忆宫殿</h1>
         <span className="palace-subtitle">一题一画面，记住关键规则</span>
         <div className="palace-action-spacer" /><TaskManager subject={subject} /><ProviderDialog /><ThemeToggle />
-        <QuestionNavigation rows={rows} current={id} shortcuts={false} triggerRef={navigation}
-          palaces={savedImages.marked} conversations={conversations} onSelect={id => go(id, savedImages.entries.get(id)?.latest_job_id)} />
+        <QuestionNavigation rows={rows} current={id} status={navigationStatus}
+          shortcuts={false} triggerRef={navigation}
+          palaces={savedImages.marked} conversations={conversations}
+          onSelect={id => go(id, savedImages.entries.get(id)?.latest_job_id)} />
       </header>
       {error ? <div className="page-state" role="alert"><h2>暂时无法读取记忆宫殿</h2><p>{error.message}</p>
         <button className="button outline" onClick={() => {

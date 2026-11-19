@@ -6,13 +6,13 @@ import { useSearchParams } from 'react-router';
 import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
 import type { ProgressState } from '../../api/client';
 import { Sidebar } from '../../components/Sidebar';
+import { QuestionNavigation } from '../question-navigation';
 import { PageHeader } from './PageHeader';
 import { Filters } from './Filters';
 import { QuestionCard } from './QuestionCard';
-import { QuestionNavigation } from './QuestionNavigation';
 import { StudyDetails, type DetailsTab } from './StudyDetails';
 import { KeyboardHelp } from './KeyboardHelp';
-import { activeQuestion, nearbyQuestion, readFilters } from './model';
+import { activeQuestion, navigationStatus, nearbyQuestion, readFilters } from './model';
 import { useMemorizationExposure, useProgressMutation, useQuestionQuery, useSavedCursor, useStudyQueries } from './hooks';
 import { useShortcutPreference, useStudyShortcuts } from './useStudyShortcuts';
 
@@ -101,8 +101,8 @@ export function MemorizationPage() {
     <main id="study-main" className="workspace">
       <PageHeader overview={overview.data} shortcuts={shortcuts.enabled}
         onHelp={openHelp} onAnalysis={trigger => openDetails('analysis', trigger)}
-        navigation={<QuestionNavigation rows={rows} current={id} palaces={palaceImages.marked}
-          conversations={conversations} onSelect={go}
+        navigation={<QuestionNavigation rows={rows} current={id} status={navigationStatus}
+          palaces={palaceImages.marked} conversations={conversations} onSelect={go}
           shortcuts={shortcuts.enabled} triggerRef={navigation} />} />
       <div className="study-layout">
         <section ref={reading} tabIndex={-1} className="reading-panel" aria-label="背题阅读区">

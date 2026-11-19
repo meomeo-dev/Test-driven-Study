@@ -61,7 +61,6 @@
   .workspace-tools .theme-toggle > span { display: none; }
   .workspace-tools .navigation-trigger { font-size: 10px; }
   .workspace-tools .navigation-trigger kbd, .workspace-tools .analysis-trigger > span { display: none; }
-  .navigation-drawer { top: 46px; right: 8px; bottom: 8px; }
   .reading-panel { padding: 8px; gap: 8px; }
   .filter-toolbar { flex-wrap: wrap; gap: 6px; flex-basis: 66px; }
   .filter-toolbar select, .filter-toolbar select:first-child { width: auto; max-width: none; flex: 1; height: 30px; min-width: 0; font-size: 11px; }

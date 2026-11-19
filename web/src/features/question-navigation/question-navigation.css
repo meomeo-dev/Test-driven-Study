@@ -57,6 +57,12 @@
   border: 2px solid var(--primary); background: var(--primary-soft);
   color: var(--link); font-weight: 650;
 }
+.grid-question.correct, .navigation-legend i.correct {
+  background: var(--success-bg); color: var(--success);
+}
+.grid-question.incorrect, .navigation-legend i.incorrect {
+  background: var(--danger-bg); color: var(--danger);
+}
 .question-index {
   position: relative; display: flex; flex-direction: column;
   justify-content: space-between; min-height: 0;
@@ -88,3 +94,6 @@
   gap: 4px; min-height: 11px; color: var(--link);
 }
 .grid-resource-indicators svg { flex-shrink: 0; }
+@media (max-width: 650px) {
+  .navigation-drawer { top: 46px; right: 8px; bottom: 8px; }
+}

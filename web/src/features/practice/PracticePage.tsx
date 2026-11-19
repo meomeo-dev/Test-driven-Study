@@ -5,12 +5,12 @@ import { Link, useSearchParams } from 'react-router';
 import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
 import type { Summary, AttemptResult } from '../../api/practice';
 import { Sidebar } from '../../components/Sidebar';
+import { QuestionNavigation } from '../question-navigation';
 import { PageHeader } from './PageHeader';
 import { Filters } from './Filters';
 import { PracticeSession, type SessionCommands } from './PracticeSession';
-import { QuestionNavigation } from './QuestionNavigation';
 import { KeyboardHelp } from './KeyboardHelp';
-import { activeQuestion, nearbyQuestion, readFilters } from './model';
+import { activeQuestion, navigationStatus, nearbyQuestion, readFilters } from './model';
 import { useSavedCursor, useStudyQueries } from './hooks';
 import { useShortcutPreference, useStudyShortcuts } from './useStudyShortcuts';
 import { useWorkspace } from '../../app/workspace';
@@ -98,8 +98,8 @@ export function PracticePage() {
     <main id="study-main" className="workspace">
       <PageHeader overview={overview.data} questionID={id} shortcuts={shortcuts.enabled} analysisAvailable={hasResult}
         onHelp={openHelp} onAnalysis={trigger => session.current?.analysis(trigger)}
-        navigation={<QuestionNavigation rows={rows} current={id} palaces={palaceImages.marked}
-          conversations={conversations} onSelect={go}
+        navigation={<QuestionNavigation rows={rows} current={id} status={navigationStatus}
+          palaces={palaceImages.marked} conversations={conversations} onSelect={go}
           shortcuts={shortcuts.enabled} triggerRef={navigation} />} />
       <div className="study-layout">
         <section ref={reading} tabIndex={-1} className="reading-panel" aria-label="答题阅读区">
