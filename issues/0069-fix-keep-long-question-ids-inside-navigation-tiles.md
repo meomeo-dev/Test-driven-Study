@@ -1,7 +1,8 @@
 ---
 id: 0069
 type: fix
-status: open
+status: closed
+closed-by: ba02542
 labels: [frontend, navigation]
 branch: fix/0069-keep-long-question-ids-inside-navigation-tiles
 created: 2026-11-19
@@ -39,3 +40,9 @@ Changes to question IDs, selection, state colors, or the six-column grid.
 
 Use a minimum row height for short labels and allow longer labels to wrap
 inside the available width.
+
+### Verification
+
+Type checking and all six course browser tests passed. The overflow regression
+checked every tile in the Beginner English introduction unit at viewport widths
+of 1280 and 375 pixels, including locating the current question after resize.

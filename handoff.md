@@ -58,6 +58,10 @@ Updated 2026-11-19 (America/New_York).
   resource markers, selection, focus, and filter retention.
 - Type checking, all 57 frontend unit tests, Go tests, and all 15 browser tests
   passed on the combined changes.
+- [#69](issues/0069-fix-keep-long-question-ids-inside-navigation-tiles.md), based
+  on `ef3513c`, wraps original IDs within their tiles and sizes rows to fit the
+  content. Type checking and all six course browser tests passed, including
+  the layout regression at 1280 and 375 pixels.
 
 ## Elementary Chinese pronunciation
 
