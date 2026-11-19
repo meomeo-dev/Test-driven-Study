@@ -145,7 +145,7 @@ func historicalWorkspaceQuestion(
 }
 
 func historicalAnswers(q study.Question, old oldCoursePresentation) (string, string, error) {
-	if q.QuestionType == 4 {
+	if q.QuestionType == course.Numeric {
 		encoded, err := json.Marshal(course.Response{Value: &q.Answer})
 		return old.response.String, string(encoded), err
 	}
@@ -158,7 +158,7 @@ func historicalAnswers(q study.Question, old oldCoursePresentation) (string, str
 		return "", "", err
 	}
 	var selected []int64
-	if q.QuestionType == 3 {
+	if q.QuestionType == course.TrueFalse {
 		answer, err := strconv.ParseInt(q.Answer, 10, 64)
 		if err != nil {
 			return "", "", err

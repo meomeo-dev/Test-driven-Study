@@ -1,9 +1,10 @@
 import { Check, Circle, CircleCheck } from 'lucide-react';
-import type { Attempt, PublicQuestion } from '../../api/practice';
+import type { Attempt } from '../../api/practice';
 import { OptionAudio } from '../../components/OptionAudio';
+import type { PublicQuestionOf } from '../question-types/registry';
 
 type Props = {
-  question: PublicQuestion;
+  question: PublicQuestionOf<'single_choice' | 'multiple_choice' | 'true_false'>;
   selected: number[];
   result?: Pick<Attempt, 'correct_answer'>;
   pending: boolean;
@@ -11,30 +12,53 @@ type Props = {
   onChoose: (sign: number) => void;
 };
 
-export function ChoiceOptions({ question, selected, result, pending, shortcuts, onChoose }: Props) {
+export function ChoiceOptions({
+  question,
+  selected,
+  result,
+  pending,
+  shortcuts,
+  onChoose,
+}: Props) {
   const correct = new Set(result?.correct_answer ?? []);
   const hasAnyTts = question.items.some(opt => Boolean(opt.tts));
 
-  return <div className="answer-options" role="group" aria-label="选择答案">
-    {question.items.map(option => {
-      const chosen = selected.includes(option.sign);
-      const right = !!result && correct.has(option.sign);
-      const wrong = !!result && chosen && !right;
-      return <div className="choice-option-row" key={option.sign}>
-        <button type="button"
-          className={`answer-option choice-option ${chosen ? 'selected' : ''} ${right ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}
-          data-sign={option.sign} aria-label={`选项${option.sign}：${option.item_title}`}
-          aria-pressed={chosen} aria-keyshortcuts={shortcuts ? String(option.sign) : undefined}
-          disabled={pending || !!result} onClick={() => onChoose(option.sign)}>
-          <span className="option-letter">{option.sign}</span>
-          {question.question_type === 2 &&
-            (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
-          <span className="option-text">{option.item_title}</span>
-          {right && <span className="correct-label"><Check size={13} />正确答案</span>}
-          {wrong && <span className="wrong-label">你的选择</span>}
-        </button>
-        <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
-      </div>;
-    })}
-  </div>;
+  return (
+    <div className="answer-options" role="group" aria-label="选择答案">
+      {question.items.map(option => {
+        const chosen = selected.includes(option.sign);
+        const right = !!result && correct.has(option.sign);
+        const wrong = !!result && chosen && !right;
+        return (
+          <div className="choice-option-row" key={option.sign}>
+            <button
+              type="button"
+              className={`answer-option choice-option ${chosen ? 'selected' : ''} ${
+                right ? 'correct' : ''
+              } ${wrong ? 'wrong' : ''}`}
+              data-sign={option.sign}
+              aria-label={`选项${option.sign}：${option.item_title}`}
+              aria-pressed={chosen}
+              aria-keyshortcuts={shortcuts ? String(option.sign) : undefined}
+              disabled={pending || !!result}
+              onClick={() => onChoose(option.sign)}
+            >
+              <span className="option-letter">{option.sign}</span>
+              {question.question_type === 'multiple_choice' &&
+                (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
+              <span className="option-text">{option.item_title}</span>
+              {right && (
+                <span className="correct-label">
+                  <Check size={13} />
+                  正确答案
+                </span>
+              )}
+              {wrong && <span className="wrong-label">你的选择</span>}
+            </button>
+            <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
+          </div>
+        );
+      })}
+    </div>
+  );
 }

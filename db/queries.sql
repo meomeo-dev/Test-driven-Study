@@ -124,10 +124,17 @@ VALUES (sqlc.arg(presentation_id), sqlc.arg(question_id), sqlc.arg(subject_id),
 ON CONFLICT(presentation_id) DO NOTHING;
 
 -- name: GetAttempt :one
-SELECT * FROM answer_attempts WHERE presentation_id = ?;
+SELECT a.*, q.question_type
+FROM answer_attempts a
+JOIN questions q ON q.question_id = a.question_id
+WHERE a.presentation_id = ?;
 
 -- name: ListAttempts :many
-SELECT * FROM answer_attempts WHERE subject_id = ? ORDER BY answered_at_ms, id;
+SELECT a.*, q.question_type
+FROM answer_attempts a
+JOIN questions q ON q.question_id = a.question_id
+WHERE a.subject_id = ?
+ORDER BY a.answered_at_ms, a.id;
 
 -- name: RecordExposure :exec
 INSERT INTO memorization_exposures (id, question_id, viewed_at_ms)
@@ -148,22 +155,23 @@ WITH latest AS (
     SELECT question_id, is_correct,
         ROW_NUMBER() OVER (PARTITION BY question_id ORDER BY answered_at_ms DESC, id DESC) AS rn
     FROM answer_attempts
-), items AS (
-    SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
-        q.difficulty, q.source_order, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
-        CAST(CASE WHEN a.is_correct = 1 THEN 'correct'
-            WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END AS TEXT) AS state
-    FROM questions q LEFT JOIN latest a ON a.question_id = q.question_id AND a.rn = 1
-    LEFT JOIN question_keys k ON k.question_id = q.question_id
-    WHERE q.subject_id = sqlc.arg(subject_id)
-      AND (CAST(sqlc.arg(chapter_id) AS INTEGER) = -1 OR q.chapter_id = sqlc.arg(chapter_id))
-      AND (CAST(sqlc.arg(search) AS TEXT) = '' OR instr(q.title, CAST(sqlc.arg(search) AS TEXT)) > 0
-          OR CAST(q.question_id AS TEXT) = CAST(sqlc.arg(search) AS TEXT)
-          OR k.item_id = CAST(sqlc.arg(search) AS TEXT))
 )
-SELECT question_id, title, question_type, chapter_id, chapter_name, difficulty, source_item_id, state
-FROM items WHERE CAST(sqlc.arg(state) AS TEXT) = 'all' OR state = CAST(sqlc.arg(state) AS TEXT)
-ORDER BY source_order;
+SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
+    q.difficulty, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
+    CAST(CASE WHEN a.is_correct = 1 THEN 'correct'
+        WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END AS TEXT) AS state
+FROM questions q
+LEFT JOIN latest a ON a.question_id = q.question_id AND a.rn = 1
+LEFT JOIN question_keys k ON k.question_id = q.question_id
+WHERE q.subject_id = sqlc.arg(subject_id)
+  AND (CAST(sqlc.arg(chapter_id) AS INTEGER) = -1 OR q.chapter_id = sqlc.arg(chapter_id))
+  AND (CAST(sqlc.arg(search) AS TEXT) = '' OR instr(q.title, CAST(sqlc.arg(search) AS TEXT)) > 0
+      OR CAST(q.question_id AS TEXT) = CAST(sqlc.arg(search) AS TEXT)
+      OR k.item_id = CAST(sqlc.arg(search) AS TEXT))
+  AND (CAST(sqlc.arg(state) AS TEXT) = 'all'
+    OR CASE WHEN a.is_correct = 1 THEN 'correct'
+        WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END = CAST(sqlc.arg(state) AS TEXT))
+ORDER BY q.source_order;
 
 -- name: GetLLMPlan :one
 SELECT record_json FROM llm_plans WHERE id = ?;

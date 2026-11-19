@@ -11,6 +11,7 @@ import (
 	"sync"
 	"testing"
 
+	"test-driven-study/internal/course"
 	"test-driven-study/internal/testsupport"
 	"time"
 
@@ -48,7 +49,7 @@ func TestExamPaperPrivacyScoringAndIdempotentAnalysis(t *testing.T) {
 		t.Fatal("invalid initial rules or exposed score")
 	}
 	seen := map[int64]bool{}
-	counts := map[int64]int{}
+	counts := map[course.QuestionType]int{}
 	for _, item := range started.Items {
 		counts[item.Detail.Question.QuestionType]++
 		qid := item.Detail.Question.QuestionID
@@ -57,7 +58,7 @@ func TestExamPaperPrivacyScoringAndIdempotentAnalysis(t *testing.T) {
 		}
 		seen[qid] = true
 	}
-	if counts[3] != 40 || counts[1] != 60 || counts[2] != 0 {
+	if counts[course.TrueFalse] != 40 || counts[course.SingleChoice] != 60 || counts[course.MultipleChoice] != 0 {
 		t.Fatal("subject one type quotas not applied to stored paper", counts)
 	}
 	payload, _ := json.Marshal(started)
@@ -142,15 +143,15 @@ func TestExamMultipleChoiceExpiryAndGuards(t *testing.T) {
 		t.Fatal("wrong subject four rule")
 	}
 	for i, item := range value.Items {
-		if (item.Detail.Question.QuestionType == 2) != (i >= 40) {
+		if (item.Detail.Question.QuestionType == course.MultipleChoice) != (i >= 40) {
 			t.Fatal("subject four composition/order changed")
 		}
 	}
-	counts := map[int64]int{}
+	counts := map[course.QuestionType]int{}
 	for _, item := range value.Items {
 		counts[item.Detail.Question.QuestionType]++
 	}
-	if counts[3] != 20 || counts[1] != 20 || counts[2] != 10 {
+	if counts[course.TrueFalse] != 20 || counts[course.SingleChoice] != 20 || counts[course.MultipleChoice] != 10 {
 		t.Fatal("subject four type quotas not applied to stored paper", counts)
 	}
 	for _, index := range []int{-1, 50} {

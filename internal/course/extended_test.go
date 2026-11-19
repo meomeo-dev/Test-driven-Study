@@ -49,31 +49,31 @@ func checkDemoCoverage(t *testing.T, items []Item) {
 	t.Helper()
 	demonstrated := make(map[string]bool)
 	for _, item := range items {
-		demonstrated[item.Type] = true
+		demonstrated[string(item.Type)] = true
 		switch item.Type {
 		case Writing:
-			demonstrated[Writing+":"+item.Subtype] = true
+			demonstrated[string(Writing)+":"+item.Subtype] = true
 		case Translation:
-			demonstrated[Translation+":"+item.Direction] = true
+			demonstrated[string(Translation)+":"+item.Direction] = true
 		case Listening:
 			if item.Listening != nil {
-				demonstrated[Listening+":"+item.Listening.Mode] = true
+				demonstrated[string(Listening)+":"+item.Listening.Mode] = true
 			}
 		case Reading:
 			if len(item.ListeningLines()) > 0 {
 				t.Errorf("%s: a reading passage must not project as a listening transcript", item.ID)
 			}
 			for _, sub := range item.SubQuestions {
-				demonstrated[Reading+":"+sub.Type] = true
+				demonstrated[string(Reading)+":"+string(sub.Type)] = true
 			}
 		}
 	}
 	for _, kind := range []string{
-		SingleChoice, MultipleChoice, TrueFalse, Numeric, Cloze,
-		Listening + ":dialogue", Listening + ":passage", Listening + ":recording",
-		Reading + ":" + Numeric, Reading + ":" + MultipleChoice, Reading + ":" + SingleChoice,
-		Writing + ":sentence_making", Writing + ":short_essay", Writing + ":full_essay",
-		Translation + ":en_to_zh", Translation + ":zh_to_en",
+		string(SingleChoice), string(MultipleChoice), string(TrueFalse), string(Numeric), string(Cloze),
+		string(Listening) + ":dialogue", string(Listening) + ":passage", string(Listening) + ":recording",
+		string(Reading) + ":" + string(Numeric), string(Reading) + ":" + string(MultipleChoice), string(Reading) + ":" + string(SingleChoice),
+		string(Writing) + ":sentence_making", string(Writing) + ":short_essay", string(Writing) + ":full_essay",
+		string(Translation) + ":en_to_zh", string(Translation) + ":zh_to_en",
 	} {
 		if !demonstrated[kind] {
 			t.Errorf("missing demo for %s", kind)
@@ -120,17 +120,17 @@ func TestV2RejectsInvalidQuestionDefinitions(t *testing.T) {
 	cloze := items[0]
 	original := cloze.Blanks[0].Options[1].TTS
 	cloze.Blanks[0].Options[1].TTS = nil
-	if err := cloze.validateV2(); err == nil || !strings.Contains(err.Error(), "option TTS") {
+	if err := cloze.validate(2); err == nil || !strings.Contains(err.Error(), "option TTS") {
 		t.Fatalf("mixed TTS accepted: %v", err)
 	}
 	cloze.Blanks[0].Options[1].TTS = original
 	cloze.Passage = &RichContent{Text: "Choose {{1}}, then {{1}} again."}
-	if err := cloze.validateV2(); err == nil {
+	if err := cloze.validate(2); err == nil {
 		t.Fatal("duplicate placeholder accepted")
 	}
 	listening := items[1]
 	listening.SubQuestions[1].ID = listening.SubQuestions[0].ID
-	if err := listening.validateV2(); err == nil || !strings.Contains(err.Error(), "duplicate") {
+	if err := listening.validate(2); err == nil || !strings.Contains(err.Error(), "duplicate") {
 		t.Fatalf("duplicate sub-question accepted: %v", err)
 	}
 	versions, _ := loadSchemas()

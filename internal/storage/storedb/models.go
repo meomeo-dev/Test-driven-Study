@@ -6,6 +6,8 @@ package storedb
 
 import (
 	"database/sql"
+
+	course "test-driven-study/internal/course"
 )
 
 type ActiveCourse struct {
@@ -220,15 +222,15 @@ type PracticeQuestionSnapshot struct {
 }
 
 type Question struct {
-	QuestionID   int64  `json:"question_id"`
-	SubjectID    int64  `json:"subject_id"`
-	ChapterID    int64  `json:"chapter_id"`
-	ChapterName  string `json:"chapter_name"`
-	QuestionType int64  `json:"question_type"`
-	Difficulty   int64  `json:"difficulty"`
-	Title        string `json:"title"`
-	PayloadJson  string `json:"payload_json"`
-	SourceOrder  int64  `json:"source_order"`
+	QuestionID   int64               `json:"question_id"`
+	SubjectID    int64               `json:"subject_id"`
+	ChapterID    int64               `json:"chapter_id"`
+	ChapterName  string              `json:"chapter_name"`
+	QuestionType course.QuestionType `json:"question_type"`
+	Difficulty   int64               `json:"difficulty"`
+	Title        string              `json:"title"`
+	PayloadJson  string              `json:"payload_json"`
+	SourceOrder  int64               `json:"source_order"`
 }
 
 type QuestionKey struct {

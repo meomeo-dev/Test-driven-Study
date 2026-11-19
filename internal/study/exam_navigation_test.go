@@ -5,6 +5,7 @@ import (
 	"errors"
 	"testing"
 
+	"test-driven-study/internal/course"
 	"test-driven-study/internal/testsupport"
 
 	"test-driven-study/internal/study"
@@ -64,7 +65,7 @@ func TestExamShuffledOptionsKeepSourceRevisionAndStableAnswerSigns(t *testing.T)
 		t.Fatal(err)
 	}
 	item := paper.Items[40]
-	if item.Detail.Question.QuestionType != 1 {
+	if item.Detail.Question.QuestionType != course.SingleChoice {
 		t.Fatal("recorded terminal section order changed")
 	}
 	source, _ := s.Detail(ctx, item.Detail.Question.QuestionID)

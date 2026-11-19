@@ -40,33 +40,30 @@ func (r *examRecord) public(now int64) (ExamSession, error) {
 	value := ExamSession{ID: r.row.ID, SubjectID: r.row.SubjectID, Status: r.row.Status, Rule: r.rule,
 		StartedAtMS: r.row.StartedAtMs, DeadlineAtMS: r.row.DeadlineAtMs, FinishedAtMS: r.row.FinishedAtMs,
 		Reason: r.row.Reason, CurrentIndex: r.row.CurrentIndex, ServerNowMS: now, Items: make([]ExamItem, len(r.paper))}
+	vis := VisibilityActiveExam
+	if r.row.Status == "finished" {
+		vis = VisibilityFinishedExam
+	}
 	for i, item := range r.paper {
-		payload, err := json.Marshal(item.Question)
-		if err != nil {
-			return ExamSession{}, err
+		h, ok := TypeHandlerFor(item.Question.QuestionType)
+		if !ok {
+			return ExamSession{}, ErrConflict
 		}
-		var public PublicQuestion
-		if err = json.Unmarshal(payload, &public); err != nil {
-			return ExamSession{}, err
-		}
+		public := h.ToPublic(item.Question, vis)
 		answer := r.answers[i]
-		if r.row.Status != "finished" {
-			public.TranscriptURL = ""
-			public.TranscriptLines = nil
-		}
 		visible := ExamItem{Detail: PracticeDetail{public, item.ImageAvailable}, Selected: answer.Selected,
 			Numeric: answer.Numeric, Answered: answer.AnsweredAtMS != 0, Flagged: answer.Flagged}
 		if answer.ExtendedResponse.HasAnswer() {
 			visible.Response = &answer.ExtendedResponse
 		}
-		if r.row.Status != "finished" && item.Question.QuestionType == ListeningQuestion &&
-			item.Question.AudioURL == "" {
-			visible.AudioSpeeds = listeningSpeeds(item.Question)
+		if r.row.Status != "finished" {
+			visible.AudioSpeeds = h.ExamAudioSpeeds(item.Question)
 		}
 		// The terminal gives feedback after commitment. The transcript stays
 		// hidden until the entire paper is finished.
 		if r.row.Status == "finished" || visible.Answered {
 			var credit float64
+			var err error
 			if visible.Answered {
 				credit, err = scoreAnswer(item.Question, answer.input())
 				if err != nil {
@@ -78,15 +75,7 @@ func (r *examRecord) public(now int64) (ExamSession, error) {
 			if item.Question.QuestionReview != nil {
 				visible.Credit = &credit
 			}
-			review := item.Question
-			if r.row.Status != "finished" {
-				review.TranscriptURL, review.TranscriptLines = "", nil
-				if item.Question.QuestionType == ListeningQuestion {
-					key := *review.QuestionReview
-					key.Transcript, key.Passage = nil, nil
-					review.QuestionReview = &key
-				}
-			}
+			review := h.ExamReview(item.Question, r.row.Status == "finished")
 			visible.Review = &review
 		}
 		value.Items[i] = visible

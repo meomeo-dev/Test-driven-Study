@@ -25,10 +25,10 @@ type Question struct {
 	QuestionReview  *course.Item            `json:"question_review,omitempty"`
 	AnalysisContent *course.RichContent     `json:"analysis_content,omitempty"`
 	QuestionID      int64                   `json:"question_id"`
-	QuestionType    int64                   `json:"question_type"`
+	QuestionType    course.QuestionType     `json:"question_type"`
 	Title           string                  `json:"title"`
 	RichContent     any                     `json:"rich_content,omitempty"`
-	Items           []Option                `json:"items"`
+	Items           []Option                `json:"items,omitempty"`
 	ImageURL        string                  `json:"image_url"`
 	AudioURL        string                  `json:"audio_url,omitempty"`
 	TranscriptURL   string                  `json:"transcript_url,omitempty"`
@@ -55,6 +55,34 @@ type Question struct {
 	PackageVersion  string                  `json:"package_version,omitempty"`
 	SourceItemID    string                  `json:"source_item_id,omitempty"`
 	NumberTolerance string                  `json:"number_tolerance,omitempty"`
+}
+
+// UnmarshalJSON decodes both canonical string and legacy integer question_type
+// snapshots and strips stale media/transcript fields on non-media types.
+func (q *Question) UnmarshalJSON(data []byte) error {
+	type plain Question
+	*q = Question{}
+	if err := json.Unmarshal(data, (*plain)(q)); err != nil {
+		return err
+	}
+	q.sanitizeMedia()
+	return nil
+}
+
+func (q *Question) sanitizeMedia() {
+	if q.QuestionType.IsMediaCapable() {
+		return
+	}
+	q.AudioURL = ""
+	q.TranscriptURL = ""
+	q.TranscriptLines = nil
+	if q.QuestionReview != nil {
+		review := *q.QuestionReview
+		review.Audio = ""
+		review.Listening = nil
+		review.Transcript = nil
+		q.QuestionReview = &review
+	}
 }
 
 type Detail struct {

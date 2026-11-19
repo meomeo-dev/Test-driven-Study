@@ -120,52 +120,22 @@ func (g Grading) MarshalJSON() ([]byte, error) {
 	return json.Marshal(plain(g))
 }
 
-// ListeningLines resolves voice defaults once, so the stored paper can play
-// the same lines without sending the transcript to an active exam client.
+// ListeningLines resolves listening transcript lines strictly for media-capable
+// types (Listening or items with an explicit Transcript). Non-media types return nil.
 func (item Item) ListeningLines() []TranscriptLine {
-	var lines []TranscriptLine
-	if item.Transcript != nil {
-		lines = item.Transcript.Lines
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.ListeningLines == nil {
+		return nil
 	}
-	if len(lines) == 0 && item.Passage != nil && item.Type != Reading {
-		lines = []TranscriptLine{{Text: item.Passage.String()}}
-	}
-	if item.Listening == nil {
-		return lines
-	}
-	resolved := make([]TranscriptLine, len(lines))
-	for i, line := range lines {
-		cfg := TTSConfig{}
-		if line.TTS != nil {
-			cfg = line.TTS.Config
-		}
-		if cfg.Voice == "" {
-			cfg.Voice = item.Listening.VoiceFemale
-			if strings.EqualFold(line.Speaker, "M") {
-				cfg.Voice = item.Listening.VoiceMale
-			}
-		}
-		line.TTS = &OptionTTS{Enabled: true, Config: cfg}
-		resolved[i] = line
-	}
-	return resolved
+	return kind.ListeningLines(item)
 }
 
-func (item Item) validateV2() error {
-	if err := uniformOptionAudio(item.Options); err != nil {
-		return err
+func (item Item) validate(protocol int) error {
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.Validate == nil {
+		return fmt.Errorf("unsupported question type %q", item.Type)
 	}
-	switch item.Type {
-	case Cloze:
-		return item.validateBlanks()
-	case Listening, Reading:
-		return item.validateComposite()
-	case Writing:
-		if item.MaxWords != 0 && item.MinWords > item.MaxWords {
-			return fmt.Errorf("min_words exceeds max_words")
-		}
-	}
-	return nil
+	return kind.Validate(item, protocol)
 }
 
 func uniformOptionAudio(options []Option) error {
@@ -182,7 +152,12 @@ func uniformOptionAudio(options []Option) error {
 }
 
 func (item Item) validateComposite() error {
-	if item.Type == Listening && item.AudioPath() == "" && len(item.ListeningLines()) == 0 {
+	if item.Type == Reading {
+		if item.Listening != nil || item.Audio != "" || item.Transcript != nil {
+			return fmt.Errorf("reading_comprehension forbids audio and transcript")
+		}
+	}
+	if item.Type == Listening && item.AudioPath() == "" && len(resolveListeningLines(item)) == 0 {
 		return fmt.Errorf("listening requires a recording, transcript lines, or spoken passage")
 	}
 	if item.Listening != nil {
@@ -191,13 +166,22 @@ func (item Item) validateComposite() error {
 			if item.AudioPath() == "" {
 				return fmt.Errorf("recording mode requires an audio asset")
 			}
+			if item.Passage != nil {
+				return fmt.Errorf("recording mode forbids passage")
+			}
 		case "dialogue":
 			if item.Transcript == nil || len(item.Transcript.Lines) == 0 {
 				return fmt.Errorf("dialogue mode requires transcript lines")
 			}
+			if item.Passage != nil {
+				return fmt.Errorf("dialogue mode forbids passage")
+			}
 		case "passage":
 			if item.Passage == nil || strings.TrimSpace(item.Passage.String()) == "" {
 				return fmt.Errorf("passage mode requires spoken passage text")
+			}
+			if item.Transcript != nil {
+				return fmt.Errorf("passage mode forbids transcript")
 			}
 		}
 	}
@@ -207,10 +191,7 @@ func (item Item) validateComposite() error {
 			return fmt.Errorf("duplicate sub-question %q", sub.ID)
 		}
 		ids[sub.ID] = true
-		if err := sub.validateV2(); err != nil {
-			return fmt.Errorf("sub-question %q: %w", sub.ID, err)
-		}
-		if err := sub.validateOptions(); err != nil {
+		if err := sub.validate(2); err != nil {
 			return fmt.Errorf("sub-question %q: %w", sub.ID, err)
 		}
 	}
@@ -224,10 +205,7 @@ func (item Item) validateBlanks() error {
 			return fmt.Errorf("duplicate blank index %d", blank.Index)
 		}
 		seen[blank.Index] = true
-		if err := uniformOptionAudio(blank.Options); err != nil {
-			return fmt.Errorf("blank %d: %w", blank.Index, err)
-		}
-		if err := blank.item().validateOptions(); err != nil {
+		if err := blank.item().validate(2); err != nil {
 			return fmt.Errorf("blank %d: %w", blank.Index, err)
 		}
 	}

@@ -9,6 +9,7 @@ import (
 	"math/big"
 	"time"
 
+	"test-driven-study/internal/course"
 	"test-driven-study/internal/storage/storedb"
 )
 
@@ -53,14 +54,9 @@ func (s *Service) eligibleExamQuestions(ctx context.Context, subject int64) ([]e
 		if err = json.Unmarshal([]byte(payload), &q); err != nil {
 			return nil, err
 		}
-		if q.QuestionType == NumericQuestion {
-			if _, err := gradeNumeric(q, &q.Answer); err != nil {
-				continue
-			}
-		} else if q.QuestionReview == nil {
-			if _, err = originalAnswer(q); err != nil {
-				continue
-			}
+		h, ok := TypeHandlerFor(q.QuestionType)
+		if !ok || !h.IsEligibleExam(q) {
+			continue
 		}
 		// A visual question without its local asset cannot support a fair exam.
 		available := s.questionImageAvailable(ctx, q)
@@ -82,7 +78,7 @@ func selectExamPaper(values []examPaperItem, rule ExamRule) ([]examPaperItem, er
 		}
 		return values[:rule.Count], nil
 	}
-	byType := map[int64][]examPaperItem{}
+	byType := map[course.QuestionType][]examPaperItem{}
 	seen := map[int64]bool{}
 	for _, item := range values {
 		q := item.Question
@@ -100,7 +96,8 @@ func selectExamPaper(values []examPaperItem, rule ExamRule) ([]examPaperItem, er
 		if err := shuffledQuestions(pool); err != nil {
 			return nil, err
 		}
-		if quota.QuestionType == 2 {
+		h, ok := TypeHandlerFor(quota.QuestionType)
+		if ok && h.ExamSectionOrder > 0 {
 			multiple = append(multiple, pool[:quota.Count]...)
 		} else {
 			singleResponse = append(singleResponse, pool[:quota.Count]...)
@@ -123,10 +120,13 @@ func (s *Service) examPaper(ctx context.Context, rule ExamRule) ([]examPaperItem
 	for i := range values {
 		// Option presentation order is not a revision of the source question.
 		values[i].Revision = questionRevision(values[i].Question)
-		if values[i].Question.QuestionType != 3 {
-			if err = shuffleExamOptions(values[i].Question.Items); err != nil {
-				return nil, err
-			}
+		h, ok := TypeHandlerFor(values[i].Question.QuestionType)
+		if !ok {
+			return nil, ErrConflict
+		}
+		values[i].Question, err = h.PrepareExamItem(values[i].Question)
+		if err != nil {
+			return nil, err
 		}
 		values[i].PriorExposure, err = s.queries.PriorExposure(ctx, values[i].Question.QuestionID)
 		if err != nil {

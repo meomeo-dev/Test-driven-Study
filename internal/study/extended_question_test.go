@@ -79,7 +79,7 @@ func TestV2ExamKeepsListeningAudioAndPartialCreditInSnapshot(t *testing.T) {
 		return i.Detail.Question.SourceItemID == "sue1-extended-listening"
 	})
 	cloze := slices.IndexFunc(paper.Items, func(i study.ExamItem) bool {
-		return i.Detail.Question.QuestionType == study.ClozeQuestion
+		return i.Detail.Question.QuestionType == course.Cloze
 	})
 	if listening < 0 || cloze < 0 {
 		t.Fatalf("new types are missing from the paper: %+v", paper.Items)

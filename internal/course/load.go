@@ -184,15 +184,15 @@ func (files packageFiles) validateItem(item Item, seen map[string]bool, protocol
 			return err
 		}
 	}
+	return item.validate(protocol)
+}
+
+func (item Item) validateCommonOptions(protocol int) error {
 	if protocol == 2 {
-		if err := item.validateV2(); err != nil {
+		if err := uniformOptionAudio(item.Options); err != nil {
 			return err
 		}
 	}
-	return item.validateOptions()
-}
-
-func (item Item) validateOptions() error {
 	optionIDs := make(map[string]bool, len(item.Options))
 	for _, option := range item.Options {
 		if optionIDs[option.ID] {
@@ -208,15 +208,31 @@ func (item Item) validateOptions() error {
 			return fmt.Errorf("answer references unknown option %q", id)
 		}
 	}
-	if item.Type == TrueFalse && len(item.Options) == 2 &&
+	return nil
+}
+
+func validateObjectiveItem(item Item, protocol int) error {
+	return item.validateCommonOptions(protocol)
+}
+
+func validateTrueFalseItem(item Item, protocol int) error {
+	if err := item.validateCommonOptions(protocol); err != nil {
+		return err
+	}
+	if len(item.Options) == 2 && item.Options[0].Value != nil && item.Options[1].Value != nil &&
 		*item.Options[0].Value == *item.Options[1].Value {
 		return fmt.Errorf("true_false options must have distinct Boolean values")
 	}
-	if item.Type == Numeric {
-		tolerance, ok := decimal(item.Grading.AbsoluteTolerance)
-		if !ok || tolerance.Sign() < 0 {
-			return fmt.Errorf("absolute tolerance must be nonnegative")
-		}
+	return nil
+}
+
+func validateNumericItem(item Item, protocol int) error {
+	if err := item.validateCommonOptions(protocol); err != nil {
+		return err
+	}
+	tolerance, ok := decimal(item.Grading.AbsoluteTolerance)
+	if !ok || tolerance.Sign() < 0 {
+		return fmt.Errorf("absolute tolerance must be nonnegative")
 	}
 	return nil
 }

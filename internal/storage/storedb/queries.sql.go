@@ -8,6 +8,8 @@ package storedb
 import (
 	"context"
 	"database/sql"
+
+	course "test-driven-study/internal/course"
 )
 
 const activateCourseVersion = `-- name: ActivateCourseVersion :exec
@@ -518,12 +520,34 @@ func (q *Queries) GetActiveLearningPath(ctx context.Context, courseID string) (L
 }
 
 const getAttempt = `-- name: GetAttempt :one
-SELECT id, presentation_id, question_id, subject_id, chapter_id, chapter_name, question_title, question_revision, selected_json, correct_answer_json, is_correct, is_first_attempt, prior_exposure, opened_at_ms, answered_at_ms FROM answer_attempts WHERE presentation_id = ?
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id, a.chapter_name, a.question_title, a.question_revision, a.selected_json, a.correct_answer_json, a.is_correct, a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms, q.question_type
+FROM answer_attempts a
+JOIN questions q ON q.question_id = a.question_id
+WHERE a.presentation_id = ?
 `
 
-func (q *Queries) GetAttempt(ctx context.Context, presentationID string) (AnswerAttempt, error) {
+type GetAttemptRow struct {
+	ID                int64               `json:"id"`
+	PresentationID    string              `json:"presentation_id"`
+	QuestionID        int64               `json:"question_id"`
+	SubjectID         int64               `json:"subject_id"`
+	ChapterID         int64               `json:"chapter_id"`
+	ChapterName       string              `json:"chapter_name"`
+	QuestionTitle     string              `json:"question_title"`
+	QuestionRevision  string              `json:"question_revision"`
+	SelectedJson      string              `json:"selected_json"`
+	CorrectAnswerJson string              `json:"correct_answer_json"`
+	IsCorrect         int64               `json:"is_correct"`
+	IsFirstAttempt    int64               `json:"is_first_attempt"`
+	PriorExposure     int64               `json:"prior_exposure"`
+	OpenedAtMs        int64               `json:"opened_at_ms"`
+	AnsweredAtMs      int64               `json:"answered_at_ms"`
+	QuestionType      course.QuestionType `json:"question_type"`
+}
+
+func (q *Queries) GetAttempt(ctx context.Context, presentationID string) (GetAttemptRow, error) {
 	row := q.db.QueryRowContext(ctx, getAttempt, presentationID)
-	var i AnswerAttempt
+	var i GetAttemptRow
 	err := row.Scan(
 		&i.ID,
 		&i.PresentationID,
@@ -540,6 +564,7 @@ func (q *Queries) GetAttempt(ctx context.Context, presentationID string) (Answer
 		&i.PriorExposure,
 		&i.OpenedAtMs,
 		&i.AnsweredAtMs,
+		&i.QuestionType,
 	)
 	return i, err
 }
@@ -1081,18 +1106,41 @@ func (q *Queries) ListActiveCourses(ctx context.Context) ([]CourseVersion, error
 }
 
 const listAttempts = `-- name: ListAttempts :many
-SELECT id, presentation_id, question_id, subject_id, chapter_id, chapter_name, question_title, question_revision, selected_json, correct_answer_json, is_correct, is_first_attempt, prior_exposure, opened_at_ms, answered_at_ms FROM answer_attempts WHERE subject_id = ? ORDER BY answered_at_ms, id
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id, a.chapter_name, a.question_title, a.question_revision, a.selected_json, a.correct_answer_json, a.is_correct, a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms, q.question_type
+FROM answer_attempts a
+JOIN questions q ON q.question_id = a.question_id
+WHERE a.subject_id = ?
+ORDER BY a.answered_at_ms, a.id
 `
 
-func (q *Queries) ListAttempts(ctx context.Context, subjectID int64) ([]AnswerAttempt, error) {
+type ListAttemptsRow struct {
+	ID                int64               `json:"id"`
+	PresentationID    string              `json:"presentation_id"`
+	QuestionID        int64               `json:"question_id"`
+	SubjectID         int64               `json:"subject_id"`
+	ChapterID         int64               `json:"chapter_id"`
+	ChapterName       string              `json:"chapter_name"`
+	QuestionTitle     string              `json:"question_title"`
+	QuestionRevision  string              `json:"question_revision"`
+	SelectedJson      string              `json:"selected_json"`
+	CorrectAnswerJson string              `json:"correct_answer_json"`
+	IsCorrect         int64               `json:"is_correct"`
+	IsFirstAttempt    int64               `json:"is_first_attempt"`
+	PriorExposure     int64               `json:"prior_exposure"`
+	OpenedAtMs        int64               `json:"opened_at_ms"`
+	AnsweredAtMs      int64               `json:"answered_at_ms"`
+	QuestionType      course.QuestionType `json:"question_type"`
+}
+
+func (q *Queries) ListAttempts(ctx context.Context, subjectID int64) ([]ListAttemptsRow, error) {
 	rows, err := q.db.QueryContext(ctx, listAttempts, subjectID)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	items := []AnswerAttempt{}
+	items := []ListAttemptsRow{}
 	for rows.Next() {
-		var i AnswerAttempt
+		var i ListAttemptsRow
 		if err := rows.Scan(
 			&i.ID,
 			&i.PresentationID,
@@ -1109,6 +1157,7 @@ func (q *Queries) ListAttempts(ctx context.Context, subjectID int64) ([]AnswerAt
 			&i.PriorExposure,
 			&i.OpenedAtMs,
 			&i.AnsweredAtMs,
+			&i.QuestionType,
 		); err != nil {
 			return nil, err
 		}
@@ -1503,48 +1552,49 @@ WITH latest AS (
     SELECT question_id, is_correct,
         ROW_NUMBER() OVER (PARTITION BY question_id ORDER BY answered_at_ms DESC, id DESC) AS rn
     FROM answer_attempts
-), items AS (
-    SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
-        q.difficulty, q.source_order, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
-        CAST(CASE WHEN a.is_correct = 1 THEN 'correct'
-            WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END AS TEXT) AS state
-    FROM questions q LEFT JOIN latest a ON a.question_id = q.question_id AND a.rn = 1
-    LEFT JOIN question_keys k ON k.question_id = q.question_id
-    WHERE q.subject_id = ?2
-      AND (CAST(?3 AS INTEGER) = -1 OR q.chapter_id = ?3)
-      AND (CAST(?4 AS TEXT) = '' OR instr(q.title, CAST(?4 AS TEXT)) > 0
-          OR CAST(q.question_id AS TEXT) = CAST(?4 AS TEXT)
-          OR k.item_id = CAST(?4 AS TEXT))
 )
-SELECT question_id, title, question_type, chapter_id, chapter_name, difficulty, source_item_id, state
-FROM items WHERE CAST(?1 AS TEXT) = 'all' OR state = CAST(?1 AS TEXT)
-ORDER BY source_order
+SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
+    q.difficulty, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
+    CAST(CASE WHEN a.is_correct = 1 THEN 'correct'
+        WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END AS TEXT) AS state
+FROM questions q
+LEFT JOIN latest a ON a.question_id = q.question_id AND a.rn = 1
+LEFT JOIN question_keys k ON k.question_id = q.question_id
+WHERE q.subject_id = ?1
+  AND (CAST(?2 AS INTEGER) = -1 OR q.chapter_id = ?2)
+  AND (CAST(?3 AS TEXT) = '' OR instr(q.title, CAST(?3 AS TEXT)) > 0
+      OR CAST(q.question_id AS TEXT) = CAST(?3 AS TEXT)
+      OR k.item_id = CAST(?3 AS TEXT))
+  AND (CAST(?4 AS TEXT) = 'all'
+    OR CASE WHEN a.is_correct = 1 THEN 'correct'
+        WHEN a.is_correct = 0 THEN 'incorrect' ELSE 'unanswered' END = CAST(?4 AS TEXT))
+ORDER BY q.source_order
 `
 
 type ListPracticeQuestionsParams struct {
-	State     string `json:"state"`
 	SubjectID int64  `json:"subject_id"`
 	ChapterID int64  `json:"chapter_id"`
 	Search    string `json:"search"`
+	State     string `json:"state"`
 }
 
 type ListPracticeQuestionsRow struct {
-	QuestionID   int64  `json:"question_id"`
-	Title        string `json:"title"`
-	QuestionType int64  `json:"question_type"`
-	ChapterID    int64  `json:"chapter_id"`
-	ChapterName  string `json:"chapter_name"`
-	Difficulty   int64  `json:"difficulty"`
-	SourceItemID string `json:"source_item_id"`
-	State        string `json:"state"`
+	QuestionID   int64               `json:"question_id"`
+	Title        string              `json:"title"`
+	QuestionType course.QuestionType `json:"question_type"`
+	ChapterID    int64               `json:"chapter_id"`
+	ChapterName  string              `json:"chapter_name"`
+	Difficulty   int64               `json:"difficulty"`
+	SourceItemID string              `json:"source_item_id"`
+	State        string              `json:"state"`
 }
 
 func (q *Queries) ListPracticeQuestions(ctx context.Context, arg ListPracticeQuestionsParams) ([]ListPracticeQuestionsRow, error) {
 	rows, err := q.db.QueryContext(ctx, listPracticeQuestions,
-		arg.State,
 		arg.SubjectID,
 		arg.ChapterID,
 		arg.Search,
+		arg.State,
 	)
 	if err != nil {
 		return nil, err
@@ -1602,14 +1652,14 @@ type ListQuestionsParams struct {
 }
 
 type ListQuestionsRow struct {
-	QuestionID   int64  `json:"question_id"`
-	Title        string `json:"title"`
-	QuestionType int64  `json:"question_type"`
-	ChapterID    int64  `json:"chapter_id"`
-	ChapterName  string `json:"chapter_name"`
-	Difficulty   int64  `json:"difficulty"`
-	SourceItemID string `json:"source_item_id"`
-	State        string `json:"state"`
+	QuestionID   int64               `json:"question_id"`
+	Title        string              `json:"title"`
+	QuestionType course.QuestionType `json:"question_type"`
+	ChapterID    int64               `json:"chapter_id"`
+	ChapterName  string              `json:"chapter_name"`
+	Difficulty   int64               `json:"difficulty"`
+	SourceItemID string              `json:"source_item_id"`
+	State        string              `json:"state"`
 }
 
 func (q *Queries) ListQuestions(ctx context.Context, arg ListQuestionsParams) ([]ListQuestionsRow, error) {

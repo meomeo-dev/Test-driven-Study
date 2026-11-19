@@ -1,14 +1,18 @@
 package study
 
-import "test-driven-study/internal/course"
+import (
+	"encoding/json"
+
+	"test-driven-study/internal/course"
+)
 
 type PublicQuestion struct {
 	Content         *QuestionContent        `json:"content,omitempty"`
 	QuestionID      int64                   `json:"question_id"`
-	QuestionType    int64                   `json:"question_type"`
+	QuestionType    course.QuestionType     `json:"question_type"`
 	Title           string                  `json:"title"`
 	RichContent     any                     `json:"rich_content,omitempty"`
-	Items           []Option                `json:"items"`
+	Items           []Option                `json:"items,omitempty"`
 	ImageURL        string                  `json:"image_url"`
 	AudioURL        string                  `json:"audio_url,omitempty"`
 	TranscriptURL   string                  `json:"transcript_url,omitempty"`
@@ -30,6 +34,22 @@ type PublicQuestion struct {
 	PackageID       string                  `json:"package_id,omitempty"`
 	PackageVersion  string                  `json:"package_version,omitempty"`
 	SourceItemID    string                  `json:"source_item_id,omitempty"`
+}
+
+// UnmarshalJSON decodes both canonical string and legacy integer question_type
+// snapshots and strips stale media/transcript fields on non-media types.
+func (p *PublicQuestion) UnmarshalJSON(data []byte) error {
+	type plain PublicQuestion
+	*p = PublicQuestion{}
+	if err := json.Unmarshal(data, (*plain)(p)); err != nil {
+		return err
+	}
+	if !p.QuestionType.IsMediaCapable() {
+		p.AudioURL = ""
+		p.TranscriptURL = ""
+		p.TranscriptLines = nil
+	}
+	return nil
 }
 
 type PracticeDetail struct {
@@ -61,6 +81,7 @@ type Attempt struct {
 	ID               int64                    `json:"id"`
 	PresentationID   string                   `json:"presentation_id"`
 	QuestionID       int64                    `json:"question_id"`
+	QuestionType     course.QuestionType      `json:"question_type"`
 	SubjectID        int64                    `json:"subject_id"`
 	ChapterID        int64                    `json:"chapter_id"`
 	ChapterName      string                   `json:"chapter_name"`

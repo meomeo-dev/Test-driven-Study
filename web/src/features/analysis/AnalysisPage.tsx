@@ -10,6 +10,7 @@ import { ThemeToggle } from '../../components/ThemeToggle';
 import { Tabs } from '../../components/Tabs';
 import { ReviewBookPanel } from './ReviewBookPanel';
 import { AnalysisMetrics, ChapterDistribution, DailyTrend, RateLine } from './AnalysisPanels';
+import { questionType } from '../question-types/model';
 import { attemptSummary } from './model';
 
 const tabs = [{ id: 'overview', label: '学习概览' }, { id: 'review', label: '错题本' }];
@@ -84,7 +85,7 @@ export function AnalysisPage() {
           {!data?.recent_attempts.length ? <p>当前时间窗口没有答题记录。</p>
             : <div className="history-records">{data.recent_attempts.map(attempt => <article key={attempt.id}>
               <header><b className={attempt.correct ? 'correct' : 'incorrect'}>{attempt.correct ? '正确' : '错误'}</b>
-                <span>#{attempt.question_id} · {localTime(attempt.answered_at_ms)}</span></header>
+                <span>#{attempt.question_id} · {questionType(attempt.question_type)} · {localTime(attempt.answered_at_ms)}</span></header>
               <p>{attempt.question_title}</p><small>{attemptSummary(attempt)}
                 {' · '}{attempt.first_attempt ? '首次作答' : '重复练习'}{attempt.prior_exposure ? ' · 此前已见题' : ''}</small>
             </article>)}</div>}</>

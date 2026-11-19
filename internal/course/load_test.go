@@ -75,4 +75,3 @@ func TestRejectInvalidItemReferences(t *testing.T) {
 		t.Fatalf("expected schema rejection, got %v", err)
 	}
 }
-

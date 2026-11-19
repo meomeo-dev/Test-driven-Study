@@ -115,12 +115,7 @@ func (s *Service) OpenPresentation(ctx context.Context, id string, questionID in
 	if err != nil {
 		return Presentation{}, err
 	}
-	// The public type has no answer, analysis, or skill fields to serialize.
-	payload, _ := json.Marshal(detail.Question)
-	var public PublicQuestion
-	if err := json.Unmarshal(payload, &public); err != nil {
-		return Presentation{}, err
-	}
+	public := ToPublic(detail.Question, VisibilityPractice)
 	return Presentation{ID: id, Detail: PracticeDetail{public, detail.ImageAvailable},
 		OpenedAtMS: row.OpenedAtMs, PriorAttempts: count, PriorExposure: row.PriorExposure == 1}, nil
 }
@@ -160,7 +155,8 @@ func (s *Service) savePresentation(ctx context.Context, id string, question Ques
 }
 
 func normalizeSelection(q Question, selected []int64) ([]int64, error) {
-	if len(selected) == 0 || len(selected) > len(q.Items) || (q.QuestionType != 2 && len(selected) != 1) {
+	if len(selected) == 0 || len(selected) > len(q.Items) ||
+		(q.QuestionType != course.MultipleChoice && len(selected) != 1) {
 		return nil, ErrInvalid
 	}
 	valid := make(map[int64]bool)
@@ -189,9 +185,10 @@ func originalAnswer(q Question) ([]int64, error) {
 	return normalizeSelection(q, values)
 }
 
-func attemptValue(row storedb.AnswerAttempt) (Attempt, error) {
+func attemptValue(row storedb.GetAttemptRow) (Attempt, error) {
 	value := Attempt{ID: row.ID, PresentationID: row.PresentationID, QuestionID: row.QuestionID,
-		SubjectID: row.SubjectID, ChapterID: row.ChapterID, ChapterName: row.ChapterName,
+		QuestionType: row.QuestionType,
+		SubjectID:    row.SubjectID, ChapterID: row.ChapterID, ChapterName: row.ChapterName,
 		QuestionTitle: row.QuestionTitle, QuestionRevision: row.QuestionRevision,
 		Correct: row.IsCorrect == 1, FirstAttempt: row.IsFirstAttempt == 1,
 		PriorExposure: row.PriorExposure == 1, OpenedAtMS: row.OpenedAtMs, AnsweredAtMS: row.AnsweredAtMs}

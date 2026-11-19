@@ -205,14 +205,14 @@ test('reading separates the article, sub-questions and explanations', async ({ p
   await expect(stem.getByText('查看逐字稿')).toHaveCount(0);
   await expect(answers.getByText(/WORKSHOP NOTICE/)).toHaveCount(0);
   const passageSpeech = stem.getByRole('button', { name: '播放发音', exact: true });
-  await expect(passageSpeech).toHaveCount(4);
+  await expect(passageSpeech).toHaveCount(3);
   await passageSpeech.first().click();
   await expect.poll(() => speech[0]).toMatchObject({
-    text: 'WORKSHOP NOTICE', voice: 'stella',
+    text: 'The workshop opens at 8 a.m.', voice: 'stella',
   });
   await passageSpeech.nth(1).click();
   await expect.poll(() => speech[1]).toMatchObject({
-    text: 'The workshop opens at 8 a.m.', voice: 'stella',
+    text: 'Visitors must sign in at the front desk and wear a visitor badge.', voice: 'stella',
   });
   await expect(answers.getByRole('group', { name: '小题 1' }).getByText('正确答案：8')).toBeVisible();
   const reviewedChoices = answers.getByRole('group', { name: '小题 2' });
@@ -331,4 +331,96 @@ test('palace source and exam feedback render numeric answers, stimuli, and expla
   const feedback = page.getByRole('dialog', { name: '错题学习' });
   await expect(feedback.getByText(/Every worker/)).toBeVisible();
   await expect(feedback.getByText(/两处空格均考查情态动词 must/)).toBeVisible();
+});
+
+test('all 9 question types render cleanly and non-media types isolate audio in practice, memorization, and exam', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  const items: PracticeSummary[] =
+    await (await request.get(`/api/practice/questions?subject=${demo.subject}`)).json();
+
+  const expectedTypes: Array<[string, PracticeSummary['question_type'], string]> = [
+    ['numbers-1', 'single_choice', '单选题'],
+    ['numbers-3', 'multiple_choice', '多选题'],
+    ['sue1-extended-judgment', 'true_false', '判断题'],
+    ['numbers-5', 'numeric', '数值题'],
+    ['sue1-extended-cloze', 'cloze', '完形填空'],
+    ['sue1-extended-listening', 'listening', '听力题'],
+    ['sue1-extended-reading', 'reading_comprehension', '阅读理解'],
+    ['sue1-extended-writing', 'writing', '写作题'],
+    ['sue1-extended-translation', 'translation', '翻译题'],
+  ];
+
+  const nonMediaTypes = new Set<PracticeSummary['question_type']>([
+    'cloze',
+    'reading_comprehension',
+    'writing',
+    'translation',
+  ]);
+
+  for (const [sourceId, expectedType, label] of expectedTypes) {
+    const summary = items.find(row => row.source_item_id === sourceId);
+    expect(summary?.question_type).toBe(expectedType);
+
+    for (const mode of ['practice', 'memorize'] as const) {
+      await page.goto(`/${mode}?subject=${demo.subject}&question=${summary!.question_id}`);
+      const card = page.locator('article.question-card');
+      await expect(card.locator('.type-badge')).toHaveText(label);
+
+      if (nonMediaTypes.has(expectedType)) {
+        await expect(card.getByRole('region', { name: '听力音频播放' })).toHaveCount(0);
+        await expect(card.getByText('查看逐字稿')).toHaveCount(0);
+        await expect(card.locator('audio.question-audio')).toHaveCount(0);
+      }
+    }
+  }
+
+  // Positive listening check in practice & memorization.
+  await page.goto(demo.link('listening'));
+  await expect(page.getByRole('region', { name: '听力音频播放' })).toBeVisible();
+  await expect(page.getByText('查看逐字稿')).toBeVisible();
+
+  // Negative cross-type isolation & 9-type prompt verification in Exam.
+  const existingExams: { id: string; status: string }[] =
+    await (await request.get(`/api/exams?subject=${demo.subject}`)).json();
+  for (const active of existingExams.filter(e => e.status === 'in_progress')) {
+    await request.post(`/api/exams/${active.id}/submit`, { data: {} });
+  }
+  const examId = randomUUID();
+  const created = await request.post('/api/exams', {
+    data: { id: examId, subject_id: demo.subject },
+  });
+  expect(created.ok()).toBe(true);
+  const paper: ExamSession = await created.json();
+
+  for (const [sourceId, expectedType, label] of expectedTypes) {
+    const qid = demo.bySource(sourceId);
+    const idx = paper.items.findIndex(row => row.detail.question.question_id === qid);
+    expect(idx).toBeGreaterThanOrEqual(0);
+    const examQuestion = paper.items[idx]!.detail.question;
+    expect(examQuestion.question_type).toBe(expectedType);
+
+    if (nonMediaTypes.has(expectedType)) {
+      expect(examQuestion).not.toHaveProperty('audio_url');
+      expect(examQuestion).not.toHaveProperty('transcript_url');
+      expect(examQuestion).not.toHaveProperty('transcript_lines');
+    }
+
+    const moved = await request.put(`/api/exams/${examId}/cursor`, { data: { index: idx } });
+    expect(moved.ok()).toBe(true);
+    await page.goto(`/exam?subject=${demo.subject}&exam=${examId}`);
+    await expect(page.getByText(`操作提示：${label}`)).toBeVisible();
+
+    if (nonMediaTypes.has(expectedType)) {
+      await expect(page.getByRole('region', { name: '听力音频播放' })).toHaveCount(0);
+      await expect(page.getByText('查看逐字稿')).toHaveCount(0);
+      await expect(page.locator('audio.question-audio')).toHaveCount(0);
+    } else if (expectedType === 'listening') {
+      await expect(page.getByRole('region', { name: '听力音频播放' })).toBeVisible();
+      await expect(page.getByText('查看逐字稿')).toHaveCount(0);
+    }
+  }
+  await request.post(`/api/exams/${examId}/submit`, { data: {} });
 });

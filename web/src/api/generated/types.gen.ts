@@ -228,7 +228,19 @@ export type CourseUnitSummary = {
 
 export type ProgressState = 'unlearned' | 'review' | 'mastered';
 
+export type QuestionType = 'single_choice' | 'multiple_choice' | 'true_false' | 'numeric' | 'cloze' | 'listening' | 'reading_comprehension' | 'writing' | 'translation';
+
+export type ExamQuotaQuestionType = 'single_choice' | 'multiple_choice' | 'true_false';
+
 export type QuestionOption = {
+    sign: number;
+    item_title: string;
+    title?: unknown;
+    pinyin?: PinyinClips;
+    tts?: TtsConfig;
+};
+
+export type TrueFalseOption = {
     sign: number;
     item_title: string;
     boolean_value?: boolean;
@@ -237,22 +249,20 @@ export type QuestionOption = {
     tts?: TtsConfig;
 };
 
-export type Question = {
-    content?: QuestionContent;
-    question_review?: CourseItemReview;
-    analysis_content?: RichText;
+export type QuestionMediaFields = {
+    audio_url?: string;
+    transcript_url?: string;
     transcript_lines?: Array<TranscriptLine>;
+};
+
+export type QuestionBase = {
+    analysis_content?: RichText;
     package_id?: string;
     package_version?: string;
     source_item_id?: string;
-    number_tolerance?: string;
-    audio_url?: string;
-    transcript_url?: string;
     question_id: number;
-    question_type: number;
     title: string;
     rich_content?: Array<ContentSegment>;
-    items: Array<QuestionOption>;
     image_url: string;
     image_type: number;
     answer: string;
@@ -274,6 +284,76 @@ export type Question = {
     city_id: number;
 };
 
+export type SingleChoiceQuestion = QuestionBase & QuestionMediaFields & {
+    question_type: 'single_choice';
+    items: Array<QuestionOption>;
+};
+
+export type MultipleChoiceQuestion = QuestionBase & QuestionMediaFields & {
+    question_type: 'multiple_choice';
+    items: Array<QuestionOption>;
+};
+
+export type TrueFalseQuestion = QuestionBase & QuestionMediaFields & {
+    question_type: 'true_false';
+    items: Array<TrueFalseOption>;
+};
+
+export type NumericQuestion = QuestionBase & QuestionMediaFields & {
+    question_type: 'numeric';
+    number_tolerance?: string;
+};
+
+export type ClozeQuestion = QuestionBase & {
+    question_type: 'cloze';
+    content: ClozeContent;
+    question_review?: ClozeItemReview;
+};
+
+export type ListeningQuestion = QuestionBase & QuestionMediaFields & {
+    question_type: 'listening';
+    content: ListeningContent;
+    question_review?: ListeningItemReview;
+};
+
+export type ReadingQuestion = QuestionBase & {
+    question_type: 'reading_comprehension';
+    content: ReadingContent;
+    question_review?: ReadingItemReview;
+};
+
+export type WritingQuestion = QuestionBase & {
+    question_type: 'writing';
+    content: WritingContent;
+    question_review?: WritingItemReview;
+};
+
+export type TranslationQuestion = QuestionBase & {
+    question_type: 'translation';
+    content: TranslationContent;
+    question_review?: TranslationItemReview;
+};
+
+export type Question = ({
+    question_type: 'single_choice';
+} & SingleChoiceQuestion) | ({
+    question_type: 'multiple_choice';
+} & MultipleChoiceQuestion) | ({
+    question_type: 'true_false';
+} & TrueFalseQuestion) | ({
+    question_type: 'numeric';
+} & NumericQuestion) | ({
+    question_type: 'cloze';
+} & ClozeQuestion) | ({
+    question_type: 'listening';
+} & ListeningQuestion) | ({
+    question_type: 'reading_comprehension';
+} & ReadingQuestion) | ({
+    question_type: 'writing';
+} & WritingQuestion) | ({
+    question_type: 'translation';
+} & TranslationQuestion);
+
 export type QuestionDetail = {
     question: Question;
     state: 'unlearned' | 'review' | 'mastered';
@@ -284,7 +364,7 @@ export type QuestionSummary = {
     question_id: number;
     source_item_id?: string;
     title: string;
-    question_type: number;
+    question_type: QuestionType;
     chapter_id: number;
     chapter_name: string;
     difficulty: number;
@@ -311,19 +391,13 @@ export type Error = {
     error: string;
 };
 
-export type PublicQuestion = {
-    content?: QuestionContent;
-    transcript_lines?: Array<TranscriptLine>;
+export type PublicQuestionBase = {
     package_id?: string;
     package_version?: string;
     source_item_id?: string;
-    audio_url?: string;
-    transcript_url?: string;
     question_id: number;
-    question_type: number;
     title: string;
     rich_content?: Array<ContentSegment>;
-    items: Array<QuestionOption>;
     image_url: string;
     image_type: number;
     difficulty: number;
@@ -340,6 +414,70 @@ export type PublicQuestion = {
     province_id: number;
     city_id: number;
 };
+
+export type SingleChoicePublicQuestion = PublicQuestionBase & QuestionMediaFields & {
+    question_type: 'single_choice';
+    items: Array<QuestionOption>;
+};
+
+export type MultipleChoicePublicQuestion = PublicQuestionBase & QuestionMediaFields & {
+    question_type: 'multiple_choice';
+    items: Array<QuestionOption>;
+};
+
+export type TrueFalsePublicQuestion = PublicQuestionBase & QuestionMediaFields & {
+    question_type: 'true_false';
+    items: Array<TrueFalseOption>;
+};
+
+export type NumericPublicQuestion = PublicQuestionBase & QuestionMediaFields & {
+    question_type: 'numeric';
+};
+
+export type ClozePublicQuestion = PublicQuestionBase & {
+    question_type: 'cloze';
+    content: ClozeContent;
+};
+
+export type ListeningPublicQuestion = PublicQuestionBase & QuestionMediaFields & {
+    question_type: 'listening';
+    content: ListeningContent;
+};
+
+export type ReadingPublicQuestion = PublicQuestionBase & {
+    question_type: 'reading_comprehension';
+    content: ReadingContent;
+};
+
+export type WritingPublicQuestion = PublicQuestionBase & {
+    question_type: 'writing';
+    content: WritingContent;
+};
+
+export type TranslationPublicQuestion = PublicQuestionBase & {
+    question_type: 'translation';
+    content: TranslationContent;
+};
+
+export type PublicQuestion = ({
+    question_type: 'single_choice';
+} & SingleChoicePublicQuestion) | ({
+    question_type: 'multiple_choice';
+} & MultipleChoicePublicQuestion) | ({
+    question_type: 'true_false';
+} & TrueFalsePublicQuestion) | ({
+    question_type: 'numeric';
+} & NumericPublicQuestion) | ({
+    question_type: 'cloze';
+} & ClozePublicQuestion) | ({
+    question_type: 'listening';
+} & ListeningPublicQuestion) | ({
+    question_type: 'reading_comprehension';
+} & ReadingPublicQuestion) | ({
+    question_type: 'writing';
+} & WritingPublicQuestion) | ({
+    question_type: 'translation';
+} & TranslationPublicQuestion);
 
 export type PracticeDetail = {
     question: PublicQuestion;
@@ -372,6 +510,7 @@ export type Attempt = {
     id: number;
     presentation_id: string;
     question_id: number;
+    question_type: QuestionType;
     subject_id: number;
     chapter_id: number;
     chapter_name: string;
@@ -484,7 +623,7 @@ export type PracticeSummary = {
     question_id: number;
     source_item_id?: string;
     title: string;
-    question_type: number;
+    question_type: QuestionType;
     chapter_id: number;
     chapter_name: string;
     difficulty: number;
@@ -915,7 +1054,7 @@ export type ImageRetryInput = {
 };
 
 export type ExamTypeQuota = {
-    question_type: 1 | 2 | 3;
+    question_type: ExamQuotaQuestionType;
     name: string;
     count: number;
 };
@@ -1113,17 +1252,33 @@ export type SubQuestionPrompt = {
     options?: Array<CourseOption>;
 };
 
-export type QuestionContent = {
-    passage?: RichText;
-    blanks?: Array<BlankPrompt>;
-    sub_questions?: Array<SubQuestionPrompt>;
-    subtype?: 'sentence_making' | 'short_essay' | 'full_essay';
-    requirements?: Array<string>;
+export type ClozeContent = {
+    passage: RichText;
+    blanks: Array<BlankPrompt>;
+};
+
+export type ListeningContent = {
+    sub_questions: Array<SubQuestionPrompt>;
+};
+
+export type ReadingContent = {
+    passage: RichText;
+    sub_questions: Array<SubQuestionPrompt>;
+};
+
+export type WritingContent = {
+    subtype: 'sentence_making' | 'short_essay' | 'full_essay';
+    requirements: Array<string>;
     min_words?: number;
     max_words?: number;
-    direction?: 'en_to_zh' | 'zh_to_en';
-    source_text?: string;
 };
+
+export type TranslationContent = {
+    direction: 'en_to_zh' | 'zh_to_en';
+    source_text: string;
+};
+
+export type QuestionContent = ClozeContent | ListeningContent | ReadingContent | WritingContent | TranslationContent;
 
 export type CourseGrading = {
     choice_ids?: Array<string>;
@@ -1132,15 +1287,18 @@ export type CourseGrading = {
     absolute_tolerance?: string;
 };
 
-/**
- * Authored item, including answer and explanation data. Returned only on review surfaces.
- */
-export type CourseItemReview = {
+export type CourseItemReviewBase = {
     id: string;
-    type: string;
     stem: RichText;
     chapter?: string;
     image?: string;
+    analysis?: RichText;
+    explanation?: string;
+    explanation_audio?: Array<ContentSegment>;
+    hint?: string;
+};
+
+export type CourseItemMediaFields = {
     audio?: string | {
         mode: 'dialogue' | 'passage' | 'recording';
         voice_male?: 'stella' | 'tide';
@@ -1148,22 +1306,68 @@ export type CourseItemReview = {
         src?: string;
     };
     transcript?: string | Array<TranscriptLine>;
+};
+
+export type SingleChoiceItemReview = CourseItemReviewBase & CourseItemMediaFields & {
+    type: 'single_choice';
+    options: Array<CourseOption>;
+    grading: CourseGrading;
+};
+
+export type MultipleChoiceItemReview = CourseItemReviewBase & CourseItemMediaFields & {
+    type: 'multiple_choice';
+    options: Array<CourseOption>;
+    grading: CourseGrading;
+};
+
+export type TrueFalseItemReview = CourseItemReviewBase & CourseItemMediaFields & {
+    type: 'true_false';
     options?: Array<CourseOption>;
-    grading?: CourseGrading;
-    analysis?: RichText;
-    explanation?: string;
-    explanation_audio?: Array<ContentSegment>;
-    hint?: string;
-    passage?: RichText;
-    blanks?: Array<{
+    grading: CourseGrading;
+};
+
+export type NumericItemReview = CourseItemReviewBase & CourseItemMediaFields & {
+    type: 'numeric';
+    grading: CourseGrading;
+};
+
+export type SubQuestionReview = ({
+    type: 'single_choice';
+} & SingleChoiceItemReview) | ({
+    type: 'multiple_choice';
+} & MultipleChoiceItemReview) | ({
+    type: 'true_false';
+} & TrueFalseItemReview) | ({
+    type: 'numeric';
+} & NumericItemReview);
+
+export type ClozeItemReview = CourseItemReviewBase & {
+    type: 'cloze';
+    passage: RichText;
+    blanks: Array<{
         index: number;
         options: Array<CourseOption>;
         grading: CourseGrading;
         explanation?: RichText;
     }>;
-    sub_questions?: Array<CourseItemReview>;
-    subtype?: 'sentence_making' | 'short_essay' | 'full_essay';
-    requirements?: Array<string>;
+};
+
+export type ListeningItemReview = CourseItemReviewBase & CourseItemMediaFields & {
+    type: 'listening';
+    passage?: RichText;
+    sub_questions: Array<SubQuestionReview>;
+};
+
+export type ReadingItemReview = CourseItemReviewBase & {
+    type: 'reading_comprehension';
+    passage: RichText;
+    sub_questions: Array<SubQuestionReview>;
+};
+
+export type WritingItemReview = CourseItemReviewBase & {
+    type: 'writing';
+    subtype: 'sentence_making' | 'short_essay' | 'full_essay';
+    requirements: Array<string>;
     keywords?: Array<string>;
     min_words?: number;
     max_words?: number;
@@ -1172,8 +1376,12 @@ export type CourseItemReview = {
     rubric?: {
         [key: string]: number;
     };
-    direction?: 'en_to_zh' | 'zh_to_en';
-    source_text?: string;
+};
+
+export type TranslationItemReview = CourseItemReviewBase & {
+    type: 'translation';
+    direction: 'en_to_zh' | 'zh_to_en';
+    source_text: string;
     reference_translation?: string;
     acceptable_alternates?: Array<string>;
     key_terms?: Array<{
@@ -1181,6 +1389,29 @@ export type CourseItemReview = {
         variants?: Array<string>;
     }>;
 };
+
+/**
+ * Authored item, including answer and explanation data. Returned only on review surfaces.
+ */
+export type CourseItemReview = ({
+    type: 'single_choice';
+} & SingleChoiceItemReview) | ({
+    type: 'multiple_choice';
+} & MultipleChoiceItemReview) | ({
+    type: 'true_false';
+} & TrueFalseItemReview) | ({
+    type: 'numeric';
+} & NumericItemReview) | ({
+    type: 'cloze';
+} & ClozeItemReview) | ({
+    type: 'listening';
+} & ListeningItemReview) | ({
+    type: 'reading_comprehension';
+} & ReadingItemReview) | ({
+    type: 'writing';
+} & WritingItemReview) | ({
+    type: 'translation';
+} & TranslationItemReview);
 
 export type WrittenFeedback = {
     criteria: Array<{

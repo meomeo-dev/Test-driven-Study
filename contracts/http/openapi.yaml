@@ -2886,7 +2886,38 @@ components:
         title: { type: string }
         has_practice: { type: boolean }
     ProgressState: *ref_2
+    QuestionType:
+      type: string
+      enum:
+        - single_choice
+        - multiple_choice
+        - true_false
+        - numeric
+        - cloze
+        - listening
+        - reading_comprehension
+        - writing
+        - translation
+    ExamQuotaQuestionType:
+      type: string
+      enum:
+        - single_choice
+        - multiple_choice
+        - true_false
     QuestionOption:
+      type: object
+      properties:
+        sign: *ref_3
+        item_title: *ref_6
+        title: {}
+        pinyin:
+          $ref: '#/components/schemas/PinyinClips'
+        tts:
+          $ref: '#/components/schemas/TTSConfig'
+      required:
+        - sign
+        - item_title
+    TrueFalseOption:
       type: object
       properties:
         sign: *ref_3
@@ -2900,30 +2931,25 @@ components:
       required:
         - sign
         - item_title
-    Question:
+    QuestionMediaFields:
       type: object
       properties:
-        content: { $ref: '#/components/schemas/QuestionContent' }
-        question_review: { $ref: '#/components/schemas/CourseItemReview' }
-        analysis_content: { $ref: '#/components/schemas/RichText' }
+        audio_url: { type: string }
+        transcript_url: { type: string }
         transcript_lines: { type: array, items: { $ref: '#/components/schemas/TranscriptLine' } }
+    QuestionBase:
+      type: object
+      properties:
+        analysis_content: { $ref: '#/components/schemas/RichText' }
         package_id: { type: string }
         package_version: { type: string }
         source_item_id: { type: string }
-        number_tolerance: { type: string }
-        audio_url: { type: string }
-        transcript_url: { type: string }
         question_id: *ref_3
-        question_type: *ref_3
         title: *ref_6
         rich_content:
           type: array
           items:
             $ref: '#/components/schemas/ContentSegment'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuestionOption'
         image_url: *ref_6
         image_type: *ref_3
         answer: *ref_6
@@ -2948,9 +2974,7 @@ components:
         city_id: *ref_3
       required:
         - question_id
-        - question_type
         - title
-        - items
         - image_url
         - image_type
         - answer
@@ -2969,6 +2993,111 @@ components:
         - sort
         - province_id
         - city_id
+    SingleChoiceQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [single_choice] }
+            items: { type: array, items: { $ref: '#/components/schemas/QuestionOption' } }
+    MultipleChoiceQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [multiple_choice] }
+            items: { type: array, items: { $ref: '#/components/schemas/QuestionOption' } }
+    TrueFalseQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [true_false] }
+            items: { type: array, items: { $ref: '#/components/schemas/TrueFalseOption' } }
+    NumericQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type]
+          properties:
+            question_type: { type: string, enum: [numeric] }
+            number_tolerance: { type: string }
+    ClozeQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [cloze] }
+            content: { $ref: '#/components/schemas/ClozeContent' }
+            question_review: { $ref: '#/components/schemas/ClozeItemReview' }
+    ListeningQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [listening] }
+            content: { $ref: '#/components/schemas/ListeningContent' }
+            question_review: { $ref: '#/components/schemas/ListeningItemReview' }
+    ReadingQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [reading_comprehension] }
+            content: { $ref: '#/components/schemas/ReadingContent' }
+            question_review: { $ref: '#/components/schemas/ReadingItemReview' }
+    WritingQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [writing] }
+            content: { $ref: '#/components/schemas/WritingContent' }
+            question_review: { $ref: '#/components/schemas/WritingItemReview' }
+    TranslationQuestion:
+      allOf:
+        - $ref: '#/components/schemas/QuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [translation] }
+            content: { $ref: '#/components/schemas/TranslationContent' }
+            question_review: { $ref: '#/components/schemas/TranslationItemReview' }
+    Question:
+      oneOf:
+        - $ref: '#/components/schemas/SingleChoiceQuestion'
+        - $ref: '#/components/schemas/MultipleChoiceQuestion'
+        - $ref: '#/components/schemas/TrueFalseQuestion'
+        - $ref: '#/components/schemas/NumericQuestion'
+        - $ref: '#/components/schemas/ClozeQuestion'
+        - $ref: '#/components/schemas/ListeningQuestion'
+        - $ref: '#/components/schemas/ReadingQuestion'
+        - $ref: '#/components/schemas/WritingQuestion'
+        - $ref: '#/components/schemas/TranslationQuestion'
+      discriminator:
+        propertyName: question_type
+        mapping:
+          single_choice: '#/components/schemas/SingleChoiceQuestion'
+          multiple_choice: '#/components/schemas/MultipleChoiceQuestion'
+          true_false: '#/components/schemas/TrueFalseQuestion'
+          numeric: '#/components/schemas/NumericQuestion'
+          cloze: '#/components/schemas/ClozeQuestion'
+          listening: '#/components/schemas/ListeningQuestion'
+          reading_comprehension: '#/components/schemas/ReadingQuestion'
+          writing: '#/components/schemas/WritingQuestion'
+          translation: '#/components/schemas/TranslationQuestion'
     QuestionDetail:
       type: object
       properties:
@@ -2987,7 +3116,8 @@ components:
         question_id: *ref_3
         source_item_id: { type: string }
         title: *ref_6
-        question_type: *ref_3
+        question_type:
+          $ref: '#/components/schemas/QuestionType'
         chapter_id: *ref_3
         chapter_name: *ref_6
         difficulty: *ref_3
@@ -3037,14 +3167,11 @@ components:
         error: *ref_6
       required:
         - error
-    PublicQuestion:
+    PublicQuestionBase:
       type: object
-      additionalProperties: false
       required:
         - question_id
-        - question_type
         - title
-        - items
         - image_url
         - image_type
         - difficulty
@@ -3061,17 +3188,10 @@ components:
         - province_id
         - city_id
       properties:
-        content: { $ref: '#/components/schemas/QuestionContent' }
-        transcript_lines: { type: array, items: { $ref: '#/components/schemas/TranscriptLine' } }
         package_id: { type: string }
         package_version: { type: string }
         source_item_id: { type: string }
-        audio_url: { type: string }
-        transcript_url: { type: string }
         question_id:
-          type: integer
-          format: int64
-        question_type:
           type: integer
           format: int64
         title:
@@ -3080,10 +3200,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ContentSegment'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuestionOption'
         image_url:
           type: string
         image_type:
@@ -3124,6 +3240,105 @@ components:
         city_id:
           type: integer
           format: int64
+    SingleChoicePublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [single_choice] }
+            items: { type: array, items: { $ref: '#/components/schemas/QuestionOption' } }
+    MultipleChoicePublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [multiple_choice] }
+            items: { type: array, items: { $ref: '#/components/schemas/QuestionOption' } }
+    TrueFalsePublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, items]
+          properties:
+            question_type: { type: string, enum: [true_false] }
+            items: { type: array, items: { $ref: '#/components/schemas/TrueFalseOption' } }
+    NumericPublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type]
+          properties:
+            question_type: { type: string, enum: [numeric] }
+    ClozePublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [cloze] }
+            content: { $ref: '#/components/schemas/ClozeContent' }
+    ListeningPublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - $ref: '#/components/schemas/QuestionMediaFields'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [listening] }
+            content: { $ref: '#/components/schemas/ListeningContent' }
+    ReadingPublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [reading_comprehension] }
+            content: { $ref: '#/components/schemas/ReadingContent' }
+    WritingPublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [writing] }
+            content: { $ref: '#/components/schemas/WritingContent' }
+    TranslationPublicQuestion:
+      allOf:
+        - $ref: '#/components/schemas/PublicQuestionBase'
+        - type: object
+          required: [question_type, content]
+          properties:
+            question_type: { type: string, enum: [translation] }
+            content: { $ref: '#/components/schemas/TranslationContent' }
+    PublicQuestion:
+      oneOf:
+        - $ref: '#/components/schemas/SingleChoicePublicQuestion'
+        - $ref: '#/components/schemas/MultipleChoicePublicQuestion'
+        - $ref: '#/components/schemas/TrueFalsePublicQuestion'
+        - $ref: '#/components/schemas/NumericPublicQuestion'
+        - $ref: '#/components/schemas/ClozePublicQuestion'
+        - $ref: '#/components/schemas/ListeningPublicQuestion'
+        - $ref: '#/components/schemas/ReadingPublicQuestion'
+        - $ref: '#/components/schemas/WritingPublicQuestion'
+        - $ref: '#/components/schemas/TranslationPublicQuestion'
+      discriminator:
+        propertyName: question_type
+        mapping:
+          single_choice: '#/components/schemas/SingleChoicePublicQuestion'
+          multiple_choice: '#/components/schemas/MultipleChoicePublicQuestion'
+          true_false: '#/components/schemas/TrueFalsePublicQuestion'
+          numeric: '#/components/schemas/NumericPublicQuestion'
+          cloze: '#/components/schemas/ClozePublicQuestion'
+          listening: '#/components/schemas/ListeningPublicQuestion'
+          reading_comprehension: '#/components/schemas/ReadingPublicQuestion'
+          writing: '#/components/schemas/WritingPublicQuestion'
+          translation: '#/components/schemas/TranslationPublicQuestion'
     PracticeDetail:
       type: object
       additionalProperties: false
@@ -3198,6 +3413,7 @@ components:
         - id
         - presentation_id
         - question_id
+        - question_type
         - subject_id
         - chapter_id
         - chapter_name
@@ -3223,6 +3439,8 @@ components:
         question_id:
           type: integer
           format: int64
+        question_type:
+          $ref: '#/components/schemas/QuestionType'
         subject_id:
           type: integer
           format: int64
@@ -3533,7 +3751,8 @@ components:
         source_item_id: { type: string }
         title: &ref_8
           type: string
-        question_type: *ref_7
+        question_type:
+          $ref: '#/components/schemas/QuestionType'
         chapter_id: *ref_7
         chapter_name: *ref_8
         difficulty: *ref_7
@@ -4660,8 +4879,7 @@ components:
       required: [question_type, name, count]
       properties:
         question_type:
-          type: integer
-          enum: [1, 2, 3]
+          $ref: '#/components/schemas/ExamQuotaQuestionType'
         name:
           type: string
         count:
@@ -4934,18 +5152,44 @@ components:
         type: { type: string, enum: [single_choice, multiple_choice, true_false, numeric] }
         stem: { $ref: '#/components/schemas/RichText' }
         options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
-    QuestionContent:
+    ClozeContent:
       type: object
+      required: [passage, blanks]
       properties:
         passage: { $ref: '#/components/schemas/RichText' }
         blanks: { type: array, items: { $ref: '#/components/schemas/BlankPrompt' } }
+    ListeningContent:
+      type: object
+      required: [sub_questions]
+      properties:
         sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionPrompt' } }
+    ReadingContent:
+      type: object
+      required: [passage, sub_questions]
+      properties:
+        passage: { $ref: '#/components/schemas/RichText' }
+        sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionPrompt' } }
+    WritingContent:
+      type: object
+      required: [subtype, requirements]
+      properties:
         subtype: { type: string, enum: [sentence_making, short_essay, full_essay] }
         requirements: { type: array, items: { type: string } }
         min_words: { type: integer }
         max_words: { type: integer }
+    TranslationContent:
+      type: object
+      required: [direction, source_text]
+      properties:
         direction: { type: string, enum: [en_to_zh, zh_to_en] }
         source_text: { type: string }
+    QuestionContent:
+      oneOf:
+        - $ref: '#/components/schemas/ClozeContent'
+        - $ref: '#/components/schemas/ListeningContent'
+        - $ref: '#/components/schemas/ReadingContent'
+        - $ref: '#/components/schemas/WritingContent'
+        - $ref: '#/components/schemas/TranslationContent'
     CourseGrading:
       type: object
       properties:
@@ -4953,16 +5197,21 @@ components:
         boolean: { type: boolean }
         value: { type: [string, boolean] }
         absolute_tolerance: { type: string }
-    CourseItemReview:
+    CourseItemReviewBase:
       type: object
-      required: [id, type, stem]
-      description: Authored item, including answer and explanation data. Returned only on review surfaces.
+      required: [id, stem]
       properties:
         id: { type: string }
-        type: { type: string }
         stem: { $ref: '#/components/schemas/RichText' }
         chapter: { type: string }
         image: { type: string }
+        analysis: { $ref: '#/components/schemas/RichText' }
+        explanation: { type: string }
+        explanation_audio: { type: array, items: { $ref: '#/components/schemas/ContentSegment' } }
+        hint: { type: string }
+    CourseItemMediaFields:
+      type: object
+      properties:
         audio:
           oneOf:
             - { type: string }
@@ -4977,44 +5226,153 @@ components:
           oneOf:
             - { type: string }
             - { type: array, items: { $ref: '#/components/schemas/TranscriptLine' } }
-        options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
-        grading: { $ref: '#/components/schemas/CourseGrading' }
-        analysis: { $ref: '#/components/schemas/RichText' }
-        explanation: { type: string }
-        explanation_audio: { type: array, items: { $ref: '#/components/schemas/ContentSegment' } }
-        hint: { type: string }
-        passage: { $ref: '#/components/schemas/RichText' }
-        blanks:
-          type: array
-          items:
-            type: object
-            required: [index, options, grading]
-            properties:
-              index: { type: integer }
-              options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
-              grading: { $ref: '#/components/schemas/CourseGrading' }
-              explanation: { $ref: '#/components/schemas/RichText' }
-        sub_questions: { type: array, items: { $ref: '#/components/schemas/CourseItemReview' } }
-        subtype: { type: string, enum: [sentence_making, short_essay, full_essay] }
-        requirements: { type: array, items: { type: string } }
-        keywords: { type: array, items: { type: string } }
-        min_words: { type: integer }
-        max_words: { type: integer }
-        sample_response: { type: string }
-        sample_response_tts: { $ref: '#/components/schemas/TTSConfig' }
-        rubric: { type: object, additionalProperties: { type: integer } }
-        direction: { type: string, enum: [en_to_zh, zh_to_en] }
-        source_text: { type: string }
-        reference_translation: { type: string }
-        acceptable_alternates: { type: array, items: { type: string } }
-        key_terms:
-          type: array
-          items:
-            type: object
-            required: [term]
-            properties:
-              term: { type: string }
-              variants: { type: array, items: { type: string } }
+    SingleChoiceItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - $ref: '#/components/schemas/CourseItemMediaFields'
+        - type: object
+          required: [type, options, grading]
+          properties:
+            type: { type: string, enum: [single_choice] }
+            options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
+            grading: { $ref: '#/components/schemas/CourseGrading' }
+    MultipleChoiceItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - $ref: '#/components/schemas/CourseItemMediaFields'
+        - type: object
+          required: [type, options, grading]
+          properties:
+            type: { type: string, enum: [multiple_choice] }
+            options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
+            grading: { $ref: '#/components/schemas/CourseGrading' }
+    TrueFalseItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - $ref: '#/components/schemas/CourseItemMediaFields'
+        - type: object
+          required: [type, grading]
+          properties:
+            type: { type: string, enum: [true_false] }
+            options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
+            grading: { $ref: '#/components/schemas/CourseGrading' }
+    NumericItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - $ref: '#/components/schemas/CourseItemMediaFields'
+        - type: object
+          required: [type, grading]
+          properties:
+            type: { type: string, enum: [numeric] }
+            grading: { $ref: '#/components/schemas/CourseGrading' }
+    SubQuestionReview:
+      oneOf:
+        - $ref: '#/components/schemas/SingleChoiceItemReview'
+        - $ref: '#/components/schemas/MultipleChoiceItemReview'
+        - $ref: '#/components/schemas/TrueFalseItemReview'
+        - $ref: '#/components/schemas/NumericItemReview'
+      discriminator:
+        propertyName: type
+        mapping:
+          single_choice: '#/components/schemas/SingleChoiceItemReview'
+          multiple_choice: '#/components/schemas/MultipleChoiceItemReview'
+          true_false: '#/components/schemas/TrueFalseItemReview'
+          numeric: '#/components/schemas/NumericItemReview'
+    ClozeItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - type: object
+          required: [type, passage, blanks]
+          properties:
+            type: { type: string, enum: [cloze] }
+            passage: { $ref: '#/components/schemas/RichText' }
+            blanks:
+              type: array
+              items:
+                type: object
+                required: [index, options, grading]
+                properties:
+                  index: { type: integer }
+                  options: { type: array, items: { $ref: '#/components/schemas/CourseOption' } }
+                  grading: { $ref: '#/components/schemas/CourseGrading' }
+                  explanation: { $ref: '#/components/schemas/RichText' }
+    ListeningItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - $ref: '#/components/schemas/CourseItemMediaFields'
+        - type: object
+          required: [type, sub_questions]
+          properties:
+            type: { type: string, enum: [listening] }
+            passage: { $ref: '#/components/schemas/RichText' }
+            sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
+    ReadingItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - type: object
+          required: [type, passage, sub_questions]
+          properties:
+            type: { type: string, enum: [reading_comprehension] }
+            passage: { $ref: '#/components/schemas/RichText' }
+            sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
+    WritingItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - type: object
+          required: [type, subtype, requirements]
+          properties:
+            type: { type: string, enum: [writing] }
+            subtype: { type: string, enum: [sentence_making, short_essay, full_essay] }
+            requirements: { type: array, items: { type: string } }
+            keywords: { type: array, items: { type: string } }
+            min_words: { type: integer }
+            max_words: { type: integer }
+            sample_response: { type: string }
+            sample_response_tts: { $ref: '#/components/schemas/TTSConfig' }
+            rubric: { type: object, additionalProperties: { type: integer } }
+    TranslationItemReview:
+      allOf:
+        - $ref: '#/components/schemas/CourseItemReviewBase'
+        - type: object
+          required: [type, direction, source_text]
+          properties:
+            type: { type: string, enum: [translation] }
+            direction: { type: string, enum: [en_to_zh, zh_to_en] }
+            source_text: { type: string }
+            reference_translation: { type: string }
+            acceptable_alternates: { type: array, items: { type: string } }
+            key_terms:
+              type: array
+              items:
+                type: object
+                required: [term]
+                properties:
+                  term: { type: string }
+                  variants: { type: array, items: { type: string } }
+    CourseItemReview:
+      description: Authored item, including answer and explanation data. Returned only on review surfaces.
+      oneOf:
+        - $ref: '#/components/schemas/SingleChoiceItemReview'
+        - $ref: '#/components/schemas/MultipleChoiceItemReview'
+        - $ref: '#/components/schemas/TrueFalseItemReview'
+        - $ref: '#/components/schemas/NumericItemReview'
+        - $ref: '#/components/schemas/ClozeItemReview'
+        - $ref: '#/components/schemas/ListeningItemReview'
+        - $ref: '#/components/schemas/ReadingItemReview'
+        - $ref: '#/components/schemas/WritingItemReview'
+        - $ref: '#/components/schemas/TranslationItemReview'
+      discriminator:
+        propertyName: type
+        mapping:
+          single_choice: '#/components/schemas/SingleChoiceItemReview'
+          multiple_choice: '#/components/schemas/MultipleChoiceItemReview'
+          true_false: '#/components/schemas/TrueFalseItemReview'
+          numeric: '#/components/schemas/NumericItemReview'
+          cloze: '#/components/schemas/ClozeItemReview'
+          listening: '#/components/schemas/ListeningItemReview'
+          reading_comprehension: '#/components/schemas/ReadingItemReview'
+          writing: '#/components/schemas/WritingItemReview'
+          translation: '#/components/schemas/TranslationItemReview'
     WrittenFeedback:
       type: object
       required: [criteria, summary]

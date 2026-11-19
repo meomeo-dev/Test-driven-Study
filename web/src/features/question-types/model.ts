@@ -1,11 +1,11 @@
-import type { CourseItemReview, ExtendedResponse, RichText, SubAnswers } from
-  '../../api/generated/types.gen';
-
-export const clozeQuestionType = 5;
-export const listeningQuestionType = 6;
-export const readingQuestionType = 7;
-export const writingQuestionType = 8;
-export const translationQuestionType = 9;
+import type {
+  CourseItemReview,
+  ExtendedResponse,
+  QuestionType,
+  RichText,
+  SubAnswers,
+} from '../../api/generated/types.gen';
+import { assertNever, QUESTION_TYPE_REGISTRY } from './registry';
 
 export function hasRichContent(content?: RichText): boolean {
   if (!content) return false;
@@ -15,15 +15,28 @@ export function hasRichContent(content?: RichText): boolean {
 export function hasReviewExplanation(review?: CourseItemReview): boolean {
   if (!review) return false;
   if (hasRichContent(review.analysis) || Boolean(review.explanation?.trim())) return true;
-  if (review.blanks?.some(blank => hasRichContent(blank.explanation))) return true;
-  return Boolean(review.sub_questions?.some(sub =>
-    hasRichContent(sub.analysis) || Boolean(sub.explanation?.trim())));
+  switch (review.type) {
+    case 'cloze':
+      return review.blanks.some(blank => hasRichContent(blank.explanation));
+    case 'listening':
+    case 'reading_comprehension':
+      return review.sub_questions.some(
+        sub => hasRichContent(sub.analysis) || Boolean(sub.explanation?.trim()),
+      );
+    case 'single_choice':
+    case 'multiple_choice':
+    case 'true_false':
+    case 'numeric':
+    case 'writing':
+    case 'translation':
+      return false;
+    default:
+      return assertNever(review);
+  }
 }
 
-export const questionType = (type: number) => ({
-  1: '单选题', 2: '多选题', 3: '判断题', 4: '数值题', 5: '完形填空',
-  6: '听力题', 7: '阅读理解', 8: '写作题', 9: '翻译题',
-})[type] ?? '题目';
+export const questionType = (type: QuestionType): string =>
+  QUESTION_TYPE_REGISTRY[type]?.label ?? '题目';
 
 export function readyResponse(draft?: ExtendedResponse): ExtendedResponse | undefined {
   if (!draft) return;
@@ -43,4 +56,6 @@ export function readyResponse(draft?: ExtendedResponse): ExtendedResponse | unde
 }
 
 export const creditLabel = (credit: number) =>
-  new Intl.NumberFormat('zh-CN', { style: 'percent', maximumFractionDigits: 1 }).format(credit);
+  new Intl.NumberFormat('zh-CN', { style: 'percent', maximumFractionDigits: 1 }).format(
+    credit,
+  );

@@ -6,6 +6,8 @@ import (
 	"math"
 	"sort"
 	"time"
+
+	"test-driven-study/internal/storage/storedb"
 )
 
 const recencyHalfLifeDays = 14
@@ -41,7 +43,7 @@ func (s *Service) Analysis(ctx context.Context, subject int64, days int) (Analys
 	}
 	attempts := make([]Attempt, 0, len(records))
 	for _, record := range records {
-		attempt, err := attemptValue(record)
+		attempt, err := attemptValue(storedb.GetAttemptRow(record))
 		if err != nil {
 			return Analysis{}, err
 		}

@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"path"
-	"strconv"
 	"strings"
 
 	"test-driven-study/internal/course"
@@ -119,99 +118,33 @@ func projectQuestion(row storedb.CourseItem, unit int64) (study.Question, error)
 	if err := json.Unmarshal([]byte(row.PayloadJson), &item); err != nil {
 		return study.Question{}, err
 	}
-	transcriptURL := ""
-	if item.Transcript != nil {
-		transcriptURL = item.Transcript.String()
-	}
-	question := study.Question{SubjectID: unit, PackageID: row.CourseID,
-		PackageVersion: row.Version, SourceItemID: row.ItemID, Title: item.Stem.String(),
-		Analysis: item.Explanation, Skill: item.Hint, ChapterName: item.Chapter,
-		ImageURL: item.Image, AudioURL: item.AudioPath(), TranscriptURL: transcriptURL,
-		Items: []study.Option{}}
-	if lines := item.ListeningLines(); len(lines) > 0 {
-		question.TranscriptLines = lines
+	base := study.Question{
+		SubjectID:      unit,
+		PackageID:      row.CourseID,
+		PackageVersion: row.Version,
+		SourceItemID:   row.ItemID,
+		Title:          item.Stem.String(),
+		Analysis:       item.Explanation,
+		Skill:          item.Hint,
+		ChapterName:    item.Chapter,
+		ImageURL:       item.Image,
 	}
 	if item.Analysis != nil {
-		question.Analysis, question.AnalysisContent = item.Analysis.String(), item.Analysis
+		base.Analysis, base.AnalysisContent = item.Analysis.String(), item.Analysis
 	}
 	if len(item.Stem.Segments) > 0 {
-		question.RichContent = item.Stem.Segments
+		base.RichContent = item.Stem.Segments
 	}
 	if len(item.ExplanationAudio) > 0 {
-		question.AnalysisAudio = item.ExplanationAudio
+		base.AnalysisAudio = item.ExplanationAudio
 	}
 	if item.Image != "" {
-		question.ImageType = 1
+		base.ImageType = 1
 		if strings.EqualFold(path.Ext(item.Image), ".gif") {
-			question.ImageType = 2
+			base.ImageType = 2
 		}
 	}
-	switch item.Type {
-	case course.SingleChoice, course.MultipleChoice:
-		question.QuestionType = 1
-		if item.Type == course.MultipleChoice {
-			question.QuestionType = 2
-		}
-		question.Answer = projectChoices(&question, item)
-	case course.TrueFalse:
-		question.QuestionType = 3
-		if len(item.Options) == 0 {
-			yes, no := true, false
-			item.Options = []course.Option{{Text: "正确", Value: &yes}, {Text: "错误", Value: &no}}
-		}
-		for i, option := range item.Options {
-			sign := int64(i + 1)
-			opt := study.Option{
-				Sign: sign, ItemTitle: option.Text, BooleanValue: option.Value,
-				Pinyin: option.Pinyin,
-			}
-			if option.TTS != nil && option.TTS.Enabled {
-				text := option.TTS.Config.Text
-				if text == "" {
-					text = option.Text
-				}
-				opt.TTS = &study.OptionTTS{
-					Voice: option.TTS.Config.Voice, Text: text, Speed: option.TTS.Config.Speed,
-				}
-			}
-			question.Items = append(question.Items, opt)
-			if *option.Value == *item.Grading.Boolean {
-				question.Answer = strconv.FormatInt(sign, 10)
-			}
-		}
-	case course.Numeric:
-		question.QuestionType = 4
-		question.Answer, question.NumberTolerance = item.Grading.Value, item.Grading.AbsoluteTolerance
-	default:
-		if !question.ProjectExtended(item) {
-			return study.Question{}, fmt.Errorf("unsupported question type %q", item.Type)
-		}
-	}
-	return question, nil
-}
-
-func projectChoices(question *study.Question, item course.Item) string {
-	signs := make(map[string]string, len(item.Options))
-	for i, option := range item.Options {
-		sign := int64(i + 1)
-		signs[option.ID] = strconv.FormatInt(sign, 10)
-		opt := study.Option{Sign: sign, ItemTitle: option.Text, Pinyin: option.Pinyin}
-		if option.TTS != nil && option.TTS.Enabled {
-			text := option.TTS.Config.Text
-			if text == "" {
-				text = option.Text
-			}
-			opt.TTS = &study.OptionTTS{
-				Voice: option.TTS.Config.Voice, Text: text, Speed: option.TTS.Config.Speed,
-			}
-		}
-		question.Items = append(question.Items, opt)
-	}
-	answers := make([]string, 0, len(item.Grading.ChoiceIDs))
-	for _, id := range item.Grading.ChoiceIDs {
-		answers = append(answers, signs[id])
-	}
-	return strings.Join(answers, ",")
+	return study.ProjectQuestion(base, item)
 }
 
 func saveProjectedQuestion(ctx context.Context, tx *sql.Tx, q *study.Question, position int64) error {

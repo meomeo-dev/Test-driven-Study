@@ -11,9 +11,9 @@ type ExamRule struct {
 }
 
 type ExamTypeQuota struct {
-	QuestionType int64  `json:"question_type"`
-	Name         string `json:"name"`
-	Count        int    `json:"count"`
+	QuestionType QuestionType `json:"question_type"`
+	Name         string       `json:"name"`
+	Count        int          `json:"count"`
 }
 
 type ExamTopicQuota struct {

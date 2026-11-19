@@ -4,15 +4,16 @@ import (
 	"errors"
 	"testing"
 
+	"test-driven-study/internal/course"
 	"test-driven-study/internal/testsupport"
 )
 
 func quotaPool() []examPaperItem {
 	var pool []examPaperItem
-	for _, kind := range []int64{1, 2, 3} {
+	for idx, kind := range []course.QuestionType{course.SingleChoice, course.MultipleChoice, course.TrueFalse} {
 		for i := int64(1); i <= 120; i++ {
 			pool = append(pool, examPaperItem{Question: Question{
-				QuestionID: kind*1000 + i, QuestionType: kind,
+				QuestionID: int64(idx+1)*1000 + i, QuestionType: kind,
 			}})
 		}
 	}
@@ -33,7 +34,7 @@ func TestNewExamPapersEnforceTypeQuotas(t *testing.T) {
 			if err != nil || len(paper) != rule.Count {
 				t.Fatal("incorrect paper size", err)
 			}
-			counts, seen := map[int64]int{}, map[int64]bool{}
+			counts, seen := map[course.QuestionType]int{}, map[int64]bool{}
 			for _, item := range paper {
 				q := item.Question
 				if seen[q.QuestionID] {
@@ -44,7 +45,7 @@ func TestNewExamPapersEnforceTypeQuotas(t *testing.T) {
 			}
 			for _, quota := range rule.Blueprint.Types {
 				if counts[quota.QuestionType] != quota.Count {
-					t.Fatalf("subject %d: type %d got %d, want %d",
+					t.Fatalf("subject %d: type %s got %d, want %d",
 						subject, quota.QuestionType, counts[quota.QuestionType], quota.Count)
 				}
 			}
@@ -57,7 +58,7 @@ func TestExamPaperRejectsInsufficientTypeInsteadOfSubstituting(t *testing.T) {
 	rule, _ := New(nil, "../..").ExamRules(1)
 	var pool []examPaperItem
 	for _, item := range quotaPool() {
-		if item.Question.QuestionType != 3 {
+		if item.Question.QuestionType != course.TrueFalse {
 			pool = append(pool, item)
 		}
 	}

@@ -19,32 +19,39 @@ func decimal(value string) (*big.Rat, bool) {
 }
 
 func (item Item) Grade(response Response) (bool, error) {
-	switch item.Type {
-	case SingleChoice, MultipleChoice:
-		if response.Boolean != nil || response.Value != nil || len(response.ChoiceIDs) == 0 ||
-			(item.Type == SingleChoice && len(response.ChoiceIDs) != 1) {
-			return false, ErrResponse
-		}
-		ids, err := normalizeChoices(item.Options, response.ChoiceIDs)
-		if err != nil {
-			return false, err
-		}
-		expected := slices.Clone(item.Grading.ChoiceIDs)
-		slices.Sort(expected)
-		return slices.Equal(ids, expected), nil
-	case TrueFalse:
-		if response.Boolean == nil || response.ChoiceIDs != nil || response.Value != nil {
-			return false, ErrResponse
-		}
-		return *response.Boolean == *item.Grading.Boolean, nil
-	case Numeric:
-		if response.Value == nil || response.ChoiceIDs != nil || response.Boolean != nil {
-			return false, ErrResponse
-		}
-		return item.gradeNumber(*response.Value)
-	default:
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.Grade == nil {
 		return false, ErrResponse
 	}
+	return kind.Grade(item, response)
+}
+
+func gradeChoice(item Item, response Response) (bool, error) {
+	if response.Boolean != nil || response.Value != nil || len(response.ChoiceIDs) == 0 ||
+		(item.Type == SingleChoice && len(response.ChoiceIDs) != 1) {
+		return false, ErrResponse
+	}
+	ids, err := normalizeChoices(item.Options, response.ChoiceIDs)
+	if err != nil {
+		return false, err
+	}
+	expected := slices.Clone(item.Grading.ChoiceIDs)
+	slices.Sort(expected)
+	return slices.Equal(ids, expected), nil
+}
+
+func gradeTrueFalse(item Item, response Response) (bool, error) {
+	if response.Boolean == nil || response.ChoiceIDs != nil || response.Value != nil {
+		return false, ErrResponse
+	}
+	return *response.Boolean == *item.Grading.Boolean, nil
+}
+
+func gradeNumericItem(item Item, response Response) (bool, error) {
+	if response.Value == nil || response.ChoiceIDs != nil || response.Boolean != nil {
+		return false, ErrResponse
+	}
+	return item.gradeNumber(*response.Value)
 }
 
 func (item Item) gradeNumber(value string) (bool, error) {

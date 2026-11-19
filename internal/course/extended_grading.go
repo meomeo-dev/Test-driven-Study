@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"slices"
-	"strconv"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -45,27 +44,11 @@ func (item Item) Evaluate(r ExtendedResponse) (ExtendedResponse, float64, error)
 	if r.kindCount() != 1 || (r.WordCount != nil && r.Text == nil) {
 		return ExtendedResponse{}, 0, ErrResponse
 	}
-	switch item.Type {
-	case Cloze:
-		score, err := item.gradeBlanks(r.Blanks)
-		return ExtendedResponse{Blanks: r.Blanks}, score, err
-	case Listening, Reading:
-		answers, score, err := item.gradeSubQuestions(r.SubAnswers)
-		return ExtendedResponse{SubAnswers: answers}, score, err
-	case Writing:
-		text, ok := written(r.Text)
-		if ok {
-			wordCount := len(strings.FieldsFunc(text, wordSeparator))
-			return ExtendedResponse{Text: &text, WordCount: &wordCount},
-				item.gradeWriting(text, wordCount), nil
-		}
-	case Translation:
-		text, ok := written(r.Translation)
-		if ok {
-			return ExtendedResponse{Translation: &text}, item.gradeTranslation(text), nil
-		}
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.Evaluate == nil {
+		return ExtendedResponse{}, 0, ErrResponse
 	}
-	return ExtendedResponse{}, 0, ErrResponse
+	return kind.Evaluate(item, r)
 }
 
 func (item Item) gradeBlanks(answers map[int][]string) (float64, error) {
@@ -128,53 +111,22 @@ func (item Item) gradeSubQuestions(answers map[string]json.RawMessage) (
 func (item Item) parseSubAnswer(raw json.RawMessage) (
 	Response, json.RawMessage, error,
 ) {
-	var answer Response
-	var target any
-	switch item.Type {
-	case SingleChoice, MultipleChoice:
-		target = &answer.ChoiceIDs
-	case TrueFalse:
-		target = &answer.Boolean
-	case Numeric:
-		target = &answer.Value
-	default:
-		return answer, nil, ErrResponse
+	if bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
+		return Response{}, nil, ErrResponse
 	}
-	if bytes.Equal(bytes.TrimSpace(raw), []byte("null")) || json.Unmarshal(raw, target) != nil {
-		return answer, nil, ErrResponse
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.ParseSubAnswer == nil {
+		return Response{}, nil, ErrResponse
 	}
-	slices.Sort(answer.ChoiceIDs)
-	normalized, err := json.Marshal(target)
-	return answer, normalized, err
+	return kind.ParseSubAnswer(raw)
 }
 
 func (item Item) ExpectedResponse() ExtendedResponse {
-	switch item.Type {
-	case Cloze:
-		answers := make(map[int][]string, len(item.Blanks))
-		for _, blank := range item.Blanks {
-			answers[blank.Index] = blank.Grading.ChoiceIDs
-		}
-		return ExtendedResponse{Blanks: answers}
-	case Listening, Reading:
-		answers := make(map[string]json.RawMessage, len(item.SubQuestions))
-		for _, sub := range item.SubQuestions {
-			switch sub.Type {
-			case TrueFalse:
-				answers[sub.ID] = json.RawMessage(strconv.FormatBool(*sub.Grading.Boolean))
-			case Numeric:
-				answers[sub.ID], _ = json.Marshal(sub.Grading.Value)
-			default:
-				answers[sub.ID], _ = json.Marshal(sub.Grading.ChoiceIDs)
-			}
-		}
-		return ExtendedResponse{SubAnswers: answers}
-	case Writing:
-		return ExtendedResponse{Text: &item.Sample}
-	case Translation:
-		return ExtendedResponse{Translation: &item.Reference}
+	kind, ok := itemKinds[item.Type]
+	if !ok || kind.ExpectedResponse == nil {
+		return ExtendedResponse{}
 	}
-	return ExtendedResponse{}
+	return kind.ExpectedResponse(item)
 }
 
 func written(value *string) (string, bool) {

@@ -1,30 +1,57 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
-import { readyResponse } from '../question-types/model';
 import * as api from '../../api/practice';
+import { readyResponse } from '../question-types/model';
+import { assertNever } from '../question-types/registry';
 import { QuestionCard } from './QuestionCard';
 import { QuestionPreview } from './QuestionPreview';
 import { StudyDetails, type DetailsTab } from './StudyDetails';
 
 export type SessionCommands = {
-  choose: (sign: number) => void; confirm: () => void; retry: () => void;
-  image: () => void; details: () => void; analysis: (trigger?: HTMLElement) => void;
+  choose: (sign: number) => void;
+  confirm: () => void;
+  retry: () => void;
+  image: () => void;
+  details: () => void;
+  analysis: (trigger?: HTMLElement) => void;
 };
-type Props = { id: number; position: number; total: number; shortcuts: boolean;
-  commands: Ref<SessionCommands>; onPrevious: () => void; onNext: () => void;
-  onPending: (pending: boolean) => void; onRevealed: (value: boolean) => void; onResult: (result: api.AttemptResult) => void };
+type Props = {
+  id: number;
+  position: number;
+  total: number;
+  shortcuts: boolean;
+  commands: Ref<SessionCommands>;
+  onPrevious: () => void;
+  onNext: () => void;
+  onPending: (pending: boolean) => void;
+  onRevealed: (value: boolean) => void;
+  onResult: (result: api.AttemptResult) => void;
+};
 
 export function PracticeSession(props: Props) {
   const [round, setRound] = useState(0);
   return <AnswerRound key={round} {...props} onRetry={() => setRound(value => value + 1)} />;
 }
 
-function AnswerRound({ id, position, total, shortcuts, commands, onPrevious, onNext,
-  onPending, onResult, onRetry, onRevealed }: Props & { onRetry: () => void }) {
+function AnswerRound({
+  id,
+  position,
+  total,
+  shortcuts,
+  commands,
+  onPrevious,
+  onNext,
+  onPending,
+  onResult,
+  onRetry,
+  onRevealed,
+}: Props & { onRetry: () => void }) {
   const [presentationID] = useState(() => crypto.randomUUID());
-  const query = useQuery({ queryKey: ['presentation', presentationID],
-    queryFn: ({ signal }) => api.presentation(presentationID, id, signal) });
+  const query = useQuery({
+    queryKey: ['presentation', presentationID],
+    queryFn: ({ signal }) => api.presentation(presentationID, id, signal),
+  });
   const client = useQueryClient();
   const [selected, setSelected] = useState<number[]>([]);
   const [numeric, setNumeric] = useState('');
@@ -42,56 +69,128 @@ function AnswerRound({ id, position, total, shortcuts, commands, onPrevious, onN
   useEffect(() => onRevealed(false), [onRevealed]);
 
   function choose(sign: number) {
-    if (locked.current || result || !query.data?.detail.question.items.some(item => item.sign === sign)) return;
-    setSelected(current => query.data!.detail.question.question_type === 2
-      ? current.includes(sign) ? current.filter(value => value !== sign) : [...current, sign]
-      : [sign]);
-    document.querySelector<HTMLButtonElement>(`.practice-shell .choice-option[data-sign="${sign}"]`)
-      ?.focus();
+    const q = query.data?.detail.question;
+    if (locked.current || result || !q) return;
+    switch (q.question_type) {
+      case 'single_choice':
+      case 'multiple_choice':
+      case 'true_false': {
+        if (!q.items.some(item => item.sign === sign)) return;
+        setSelected(current =>
+          q.question_type === 'multiple_choice'
+            ? current.includes(sign)
+              ? current.filter(value => value !== sign)
+              : [...current, sign]
+            : [sign],
+        );
+        document
+          .querySelector<HTMLButtonElement>(`.practice-shell .choice-option[data-sign="${sign}"]`)
+          ?.focus();
+        return;
+      }
+      case 'numeric':
+      case 'cloze':
+      case 'listening':
+      case 'reading_comprehension':
+      case 'writing':
+      case 'translation':
+        return;
+      default:
+        assertNever(q);
+    }
   }
   function openDetails(next: DetailsTab, trigger?: HTMLElement) {
-    returnFocus.current = trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    returnFocus.current =
+      trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     if (result) setTab(next);
     else if (next === 'question') setPreview(true);
   }
   async function submit() {
     if (locked.current || result || !query.data) return;
-    const number = query.data.detail.question.question_type === 4 ? numeric.trim() : undefined;
+    const q = query.data.detail.question;
+    const number = q.question_type === 'numeric' ? numeric.trim() : undefined;
     if (!response && (number === '' || (number === undefined && selected.length === 0))) return;
-    locked.current = true; setPending(true); onPending(true); setError('');
+    locked.current = true;
+    setPending(true);
+    onPending(true);
+    setError('');
     try {
       const saved = await api.answer(presentationID, response ?? { selected, numeric: number });
-      setResult(saved); onRevealed(true); onResult(saved);
+      setResult(saved);
+      onRevealed(true);
+      onResult(saved);
       await Promise.all([
         client.invalidateQueries({ queryKey: ['practice-overview'] }),
         client.invalidateQueries({ queryKey: ['practice-questions'] }),
         client.invalidateQueries({ queryKey: ['analysis'] }),
       ]);
-    } catch (failure) { setError(failure instanceof Error ? failure.message : '保存失败，请重试。'); }
-    finally { locked.current = false; setPending(false); onPending(false); }
+    } catch (failure) {
+      setError(failure instanceof Error ? failure.message : '保存失败，请重试。');
+    } finally {
+      locked.current = false;
+      setPending(false);
+      onPending(false);
+    }
   }
   function confirm() {
     if (locked.current) return;
     if (result) onNext();
     else void submit();
   }
-  useImperativeHandle(commands, () => ({ choose, confirm,
-    retry: () => { if (result && !locked.current) onRetry(); },
-    image: () => image.current?.click(), details: () => openDetails('question'),
-    analysis: trigger => { if (result) openDetails('analysis', trigger); },
+  useImperativeHandle(commands, () => ({
+    choose,
+    confirm,
+    retry: () => {
+      if (result && !locked.current) onRetry();
+    },
+    image: () => image.current?.click(),
+    details: () => openDetails('question'),
+    analysis: trigger => {
+      if (result) openDetails('analysis', trigger);
+    },
   }));
-  if (query.error) return <div className="page-state" role="alert"><p>{query.error.message}</p>
-    <button className="button outline" onClick={() => { void query.refetch(); }}>重新读取</button></div>;
+  if (query.error) {
+    return (
+      <div className="page-state" role="alert">
+        <p>{query.error.message}</p>
+        <button className="button outline" onClick={() => void query.refetch()}>
+          重新读取
+        </button>
+      </div>
+    );
+  }
   if (!query.data) return <div className="page-state" role="status">正在载入答题…</div>;
-  return <>
-    <QuestionCard presentation={query.data} result={result} selected={selected}
-      numeric={numeric} onNumeric={setNumeric}
-      draft={draft} onDraft={setDraft} canSubmitExtended={!!response}
-      position={position} total={total} pending={pending} shortcuts={shortcuts}
-      imageRef={image} onChoose={choose} onSubmit={() => { void submit(); }}
-      onRetry={onRetry} onPrevious={onPrevious} onNext={onNext} onDetails={openDetails} />
-    {error && <div className="practice-error" role="alert">{error}</div>}
-    <QuestionPreview detail={query.data.detail} open={preview} onOpenChange={setPreview} returnFocus={returnFocus} />
-    <StudyDetails detail={result?.detail} tab={tab} onTab={setTab} returnFocus={returnFocus} />
-  </>;
+  return (
+    <>
+      <QuestionCard
+        presentation={query.data}
+        result={result}
+        selected={selected}
+        numeric={numeric}
+        onNumeric={setNumeric}
+        draft={draft}
+        onDraft={setDraft}
+        canSubmitExtended={!!response}
+        position={position}
+        total={total}
+        pending={pending}
+        shortcuts={shortcuts}
+        imageRef={image}
+        onChoose={choose}
+        onSubmit={() => void submit()}
+        onRetry={onRetry}
+        onPrevious={onPrevious}
+        onNext={onNext}
+        onDetails={openDetails}
+      />
+      {error && <div className="practice-error" role="alert">{error}</div>}
+      <QuestionPreview
+        detail={query.data.detail}
+        open={preview}
+        onOpenChange={setPreview}
+        returnFocus={returnFocus}
+      />
+      <StudyDetails detail={result?.detail} tab={tab} onTab={setTab} returnFocus={returnFocus} />
+    </>
+  );
 }

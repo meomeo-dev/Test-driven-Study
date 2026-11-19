@@ -102,7 +102,7 @@
     "chapter": "车间通知阅读",
     "stem": "阅读车间通知，再回答两个问题。",
     "passage": [
-      { "type": "text", "text": "WORKSHOP NOTICE", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "WORKSHOP NOTICE" },
       { "type": "text", "text": "\n" },
       { "type": "text", "text": "The workshop opens at 8 a.m.", "tts": { "voice": "stella" } },
       { "type": "text", "text": " " },

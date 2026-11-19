@@ -37,9 +37,9 @@ func (s *Service) ExamSpeech(ctx context.Context, id string, index, line int) (
 		return course.TranscriptLine{}, ErrInvalid
 	}
 	q := record.paper[index].Question
-	if q.QuestionType != ListeningQuestion || q.AudioURL != "" ||
-		line < 0 || line >= len(q.TranscriptLines) {
+	h, ok := TypeHandlerFor(q.QuestionType)
+	if !ok {
 		return course.TranscriptLine{}, ErrInvalid
 	}
-	return q.TranscriptLines[line], nil
+	return h.ExamSpeechLine(q, line)
 }

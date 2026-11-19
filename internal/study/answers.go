@@ -1,14 +1,11 @@
 package study
 
 import (
-	"encoding/json"
 	"reflect"
 	"slices"
 
 	"test-driven-study/internal/course"
 )
-
-const NumericQuestion = 4
 
 type AnswerInput struct {
 	course.ExtendedResponse
@@ -21,50 +18,11 @@ func (input AnswerInput) HasAnswer() bool {
 }
 
 func normalizeAnswer(q Question, input AnswerInput) (AnswerInput, error) {
-	if q.QuestionReview != nil {
-		if input.Numeric != nil || len(input.Selected) != 0 {
-			return AnswerInput{}, ErrInvalid
-		}
-		normalized, _, err := q.QuestionReview.Evaluate(input.ExtendedResponse)
-		if err != nil {
-			return AnswerInput{}, ErrInvalid
-		}
-		return AnswerInput{ExtendedResponse: normalized}, nil
-	}
-	if input.ExtendedResponse.HasAnswer() {
-		if q.QuestionType != 3 || input.Value == nil || input.Numeric != nil ||
-			len(input.Selected) != 0 ||
-			!reflect.DeepEqual(input.ExtendedResponse, course.ExtendedResponse{Value: input.Value}) {
-			return AnswerInput{}, ErrInvalid
-		}
-		input.Selected = booleanSelection(q, *input.Value)
-	}
-
-	if q.QuestionType == NumericQuestion {
-		if input.Numeric == nil || len(input.Selected) != 0 {
-			return AnswerInput{}, ErrInvalid
-		}
-		if _, err := gradeNumeric(q, input.Numeric); err != nil {
-			return AnswerInput{}, err
-		}
-		return AnswerInput{Numeric: input.Numeric}, nil
-	}
-	if input.Numeric != nil {
+	h, ok := TypeHandlerFor(q.QuestionType)
+	if !ok {
 		return AnswerInput{}, ErrInvalid
 	}
-	choices, err := normalizeSelection(q, input.Selected)
-	if err != nil {
-		return AnswerInput{}, err
-	}
-	answer := AnswerInput{Selected: choices}
-	if q.QuestionType == 3 && q.AnalysisContent != nil {
-		for _, option := range q.Items {
-			if option.Sign == choices[0] {
-				answer.Value = option.BooleanValue
-			}
-		}
-	}
-	return answer, nil
+	return h.NormalizeInput(q, input)
 }
 
 func gradeNumeric(q Question, value *string) (bool, error) {
@@ -89,23 +47,11 @@ func booleanSelection(q Question, value bool) []int64 {
 }
 
 func scoreAnswer(q Question, answer AnswerInput) (float64, error) {
-	if q.QuestionReview != nil {
-		_, score, err := q.QuestionReview.Evaluate(answer.ExtendedResponse)
-		return score, err
+	h, ok := TypeHandlerFor(q.QuestionType)
+	if !ok {
+		return 0, ErrInvalid
 	}
-	var correct bool
-	var err error
-	if q.QuestionType == NumericQuestion {
-		correct, err = gradeNumeric(q, answer.Numeric)
-	} else {
-		var expected []int64
-		expected, err = originalAnswer(q)
-		correct = slices.Equal(answer.Selected, expected)
-	}
-	if correct {
-		return 1, err
-	}
-	return 0, err
+	return h.Score(q, answer)
 }
 
 func sameAnswer(a, b AnswerInput) bool {
@@ -120,41 +66,9 @@ type extendedAttemptKey struct {
 }
 
 func encodeAttempt(q Question, answer AnswerInput, score float64) (string, string, error) {
-	if q.QuestionReview != nil || answer.Value != nil {
-		var key course.ExtendedResponse
-		if q.QuestionReview != nil {
-			key = q.QuestionReview.ExpectedResponse()
-		} else {
-			expected, err := originalAnswer(q)
-			if err != nil {
-				return "", "", err
-			}
-			for _, option := range q.Items {
-				if option.Sign == expected[0] {
-					key.Value = option.BooleanValue
-				}
-			}
-		}
-		actual, err := json.Marshal(answer.ExtendedResponse)
-		if err != nil {
-			return "", "", err
-		}
-		review, err := json.Marshal(extendedAttemptKey{ExtendedResponse: key, Score: &score})
-		return string(actual), string(review), err
+	h, ok := TypeHandlerFor(q.QuestionType)
+	if !ok {
+		return "", "", ErrInvalid
 	}
-	if q.QuestionType == NumericQuestion {
-		selected, err := json.Marshal(course.Response{Value: answer.Numeric})
-		if err != nil {
-			return "", "", err
-		}
-		expected, err := json.Marshal(course.Response{Value: &q.Answer})
-		return string(selected), string(expected), err
-	}
-	expected, err := originalAnswer(q)
-	if err != nil {
-		return "", "", err
-	}
-	selectedJSON, _ := json.Marshal(answer.Selected)
-	expectedJSON, _ := json.Marshal(expected)
-	return string(selectedJSON), string(expectedJSON), nil
+	return h.EncodeAttempt(q, answer, score)
 }

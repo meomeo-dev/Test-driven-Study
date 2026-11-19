@@ -1,33 +1,53 @@
 import type { Question } from '../../api/client';
 import { ExtendedQuestion } from './ExtendedQuestion';
-import { ExtendedReview } from './ExtendedReview';
+import { assertNever } from './registry';
 import { TranslationReference } from './TranslationContent';
 import { WritingSample } from './WritingContent';
-import { clozeQuestionType, listeningQuestionType, readingQuestionType,
-  translationQuestionType, writingQuestionType } from './model';
 
-export function ExtendedReference({ question, includeWritingSample = true }: {
+export function ExtendedReference({
+  question,
+  includeWritingSample = true,
+}: {
   question: Question;
   includeWritingSample?: boolean;
 }) {
-  if (question.question_type === writingQuestionType) {
-    return includeWritingSample ? <WritingSample review={question.question_review} /> : null;
+  switch (question.question_type) {
+    case 'writing':
+      return includeWritingSample ? <WritingSample review={question.question_review} /> : null;
+    case 'translation':
+      return <TranslationReference review={question.question_review} />;
+    case 'cloze':
+      return (
+        <ExtendedQuestion
+          kind="cloze"
+          content={question.content}
+          hidePassage
+          review={question.question_review}
+        />
+      );
+    case 'listening':
+      return (
+        <ExtendedQuestion
+          kind="listening"
+          content={question.content}
+          review={question.question_review}
+        />
+      );
+    case 'reading_comprehension':
+      return (
+        <ExtendedQuestion
+          kind="reading_comprehension"
+          content={question.content}
+          hidePassage
+          review={question.question_review}
+        />
+      );
+    case 'single_choice':
+    case 'multiple_choice':
+    case 'true_false':
+    case 'numeric':
+      return null;
+    default:
+      return assertNever(question);
   }
-  if (question.question_type === translationQuestionType) {
-    return <TranslationReference review={question.question_review} />;
-  }
-  if ((question.question_type === clozeQuestionType ||
-    question.question_type === listeningQuestionType ||
-    question.question_type === readingQuestionType) && question.content) {
-    return <ExtendedQuestion content={question.content}
-      hidePassage={question.question_type !== listeningQuestionType}
-      review={question.question_review} />;
-  }
-  if (question.content) {
-    return <>
-      <ExtendedQuestion content={question.content} />
-      {question.question_review && <ExtendedReview item={question.question_review} />}
-    </>;
-  }
-  return null;
 }

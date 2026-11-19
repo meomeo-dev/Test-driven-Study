@@ -6,18 +6,6 @@ import (
 	"strings"
 )
 
-const (
-	SingleChoice   = "single_choice"
-	MultipleChoice = "multiple_choice"
-	TrueFalse      = "true_false"
-	Numeric        = "numeric"
-	Cloze          = "cloze"
-	Listening      = "listening"
-	Reading        = "reading_comprehension"
-	Writing        = "writing"
-	Translation    = "translation"
-)
-
 type Manifest struct {
 	ProtocolVersion int           `json:"protocol_version"`
 	ID              string        `json:"course_id"`
@@ -229,14 +217,14 @@ func (t Transcript) MarshalJSON() ([]byte, error) {
 }
 
 type Prompt struct {
-	ID         string      `json:"id"`
-	Type       string      `json:"type"`
-	Stem       RichContent `json:"stem"`
-	Chapter    string      `json:"chapter,omitempty"`
-	Image      string      `json:"image,omitempty"`
-	Audio      string      `json:"audio,omitempty"`
-	Transcript *Transcript `json:"transcript,omitempty"`
-	Options    []Option    `json:"options,omitempty"`
+	ID         string       `json:"id"`
+	Type       QuestionType `json:"type"`
+	Stem       RichContent  `json:"stem"`
+	Chapter    string       `json:"chapter,omitempty"`
+	Image      string       `json:"image,omitempty"`
+	Audio      string       `json:"audio,omitempty"`
+	Transcript *Transcript  `json:"transcript,omitempty"`
+	Options    []Option     `json:"options,omitempty"`
 }
 
 type Grading struct {

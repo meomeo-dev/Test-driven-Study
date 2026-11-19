@@ -12,6 +12,7 @@ import (
 	"sync"
 	"testing"
 
+	"test-driven-study/internal/course"
 	"test-driven-study/internal/testsupport"
 
 	"test-driven-study/internal/storage"
@@ -120,7 +121,7 @@ func TestExactMultipleChoiceAndConcurrentRetry(t *testing.T) {
 	rows, _ := service.PracticeQuestions(ctx, study.Filter{SubjectID: 4, ChapterID: -1, State: "all"})
 	var question study.Question
 	for _, row := range rows {
-		if row.QuestionType == 2 {
+		if row.QuestionType == course.MultipleChoice {
 			detail, _ := service.Detail(ctx, row.QuestionID)
 			question = detail.Question
 			break

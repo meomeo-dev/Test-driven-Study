@@ -48,7 +48,35 @@
           },
           "transcript": { "$ref": "../v1/items.schema.json#/items/properties/transcript" },
           "sub_questions": { "$ref": "#/$defs/subQuestions" }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": ["audio"],
+              "properties": {
+                "audio": {
+                  "type": "object",
+                  "required": ["mode"],
+                  "properties": { "mode": { "enum": ["dialogue", "recording"] } }
+                }
+              }
+            },
+            "then": { "not": { "required": ["passage"] } }
+          },
+          {
+            "if": {
+              "required": ["audio"],
+              "properties": {
+                "audio": {
+                  "type": "object",
+                  "required": ["mode"],
+                  "properties": { "mode": { "const": "passage" } }
+                }
+              }
+            },
+            "then": { "not": { "required": ["transcript"] } }
+          }
+        ]
       },
       {
         "required": ["passage", "sub_questions"],
