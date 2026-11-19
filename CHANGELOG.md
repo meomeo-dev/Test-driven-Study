@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Five v2 course question types (`cloze`, `listening`, `reading_comprehension`,
+  `writing`, `translation`) with schema validation, structured evaluation,
+  optional AI feedback, and the installable v2 showcase package
+  `step-up-english-1@1.2.8` (**标准课程模板 → 题型展示**).
+- Polymorphic discriminated-union HTTP contracts and Go projections
+  (`PublicQuestion`, `Question`, `QuestionContent`, `CourseItemReview`) enforcing
+  media vs. non-media boundaries per question type.
+- Declarative TTS support for `translation` (`source_text_tts` and review-only
+  `reference_translation_tts`), `cloze` review-only completed sentences
+  (`passage_tts`), and multi-paragraph `writing.sample_response` arrays.
+- Repository skill `design-course-tts` (`audit-course-tts.mjs`) for automated
+  TTS segmentation, Pinyin placement, and all-caps override auditing.
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
 - Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in
@@ -20,11 +32,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Modularized frontend `web/src/features/question-types/` into 9 independent
+  question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
+  typed registry and facade components.
 - Beginner English 1.4.1 adds listening units, question audio, and sequential
   playback of authored dialogue lines. Listening transcripts are expandable.
 
 ### Fixed
 
+- Unified `cloze`, `listening`, `reading_comprehension`, `writing`, and
+  `translation` layout boundaries across memorization, practice, exam review,
+  and memory palace reference views.
+- Updated `sue1-extended-judgment` to full-sentence stem TTS and added lowercase
+  `tts.text` overrides for all-caps headings (`LOCKER ROOM NOTICE`).
 - Omitted TTS voices use the saved default before selecting cached audio.
 - Forced speech regeneration returns an updated audio URL. Sequential listening
   retains the authored voices through the final turn.

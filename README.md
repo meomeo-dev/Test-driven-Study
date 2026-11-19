@@ -14,8 +14,10 @@
 </p>
 
 A local course study application with a Go backend, React and TypeScript
-frontend, and SQLite storage. It ships with 18 courses, including Basic Math and
-[Elementary Chinese](courses/elementary-chinese/course.json).
+frontend, and SQLite storage. It bundles 18 default courses (including Basic Math
+and [Elementary Chinese](courses/elementary-chinese/course.json)) alongside an
+installable v2 template course ([标准课程模板](courses/step-up-english-1/README.md))
+demonstrating all nine question types.
 
 The interface is in Chinese. Studying does not require an account, API key,
 or external database.
@@ -163,6 +165,9 @@ npm run course:new -- --id my-course --title "My Course" --language en
 npm run course:check -- courses/my-course
 npm run course:install -- courses/my-course
 ```
+
+When using `pnpm run` instead of `npm run`, omit the standalone `--` separator
+before script arguments (`pnpm run course:check courses/my-course`).
 
 Edit the generated `course.json` and sample question before installing. The
 scaffold also supplies editable research, scene planning and image prompts

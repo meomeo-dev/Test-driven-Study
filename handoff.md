@@ -4,12 +4,17 @@ Updated 2026-11-18 (America/New_York).
 
 ## Repository state
 
-- Recent completed issues: [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
-  (polymorphic Go/OpenAPI/TS question-type contracts),
-  [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
-  (frontend `question-types` 5-layer DAG package), and
-  [#63](issues/0063-fix-add-tts-playback-to-translation-source-text-and-reference.md)
-  (translation, cloze, multi-paragraph writing sample, all-caps override, and judgment TTS fixes).
+- `main` integrates all closed issues through `#64`:
+  - [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
+    (`4d2c69a`): polymorphic Go/OpenAPI/TS question-type contracts.
+  - [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
+    (`e2edccf`): frontend `question-types/` 9-module 5-layer DAG package.
+  - [#63](issues/0063-fix-add-tts-playback-to-translation-source-text-and-reference.md)
+    (`e5084eb`): translation, review-only cloze, paragraph writing, all-caps override,
+    and judgment TTS fixes.
+  - [#64](issues/0064-chore-rename-step-up-english-1-demo-course-and-unit-titles.md)
+    (`1b49fe8` / `8fc3ee9`): renamed `step-up-english-1` display titles to
+    **标准课程模板 → 题型展示** (`1.2.8`).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 

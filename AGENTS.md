@@ -35,7 +35,7 @@ relevant issue and feature documentation before changing behavior.
 | `internal/palace/` | Image provider, durable task queue, controls and saved images. |
 | `internal/tts/` | Speech synthesis, provider settings and voice-specific cache. |
 | `internal/tasktrace/` | Observed execution-event recording. |
-| `web/src/features/` | React pages and feature-specific presentation and hooks. |
+| `web/src/features/` | React pages, mode hooks, and the 9-type `question-types/` L0–L5 package (`registry.test.ts` enforces zero `types/` cross-imports and `<= 300` lines/file). |
 | `web/src/components/`, `web/src/styles/` | Shared controls and application styles. |
 | `web/src/api/` | Handwritten HTTP clients and generated API types. |
 | `tests/browser/`, `tests/startup/`, `tests/fixtures/` | Browser checks, process checks and local providers. |
@@ -71,8 +71,8 @@ root; server asset resolution depends on the working directory.
 | `npm run dev:down` | Stop the background development services. |
 | `npm run build` | Typecheck, build `dist/` and compile the Go binary in `var/bin/`. |
 | `npm start` | Serve the built application on API port 43388. |
-| `npm run course:check -- <directory>` | Validate one course package. |
-| `npm run course:install -- <directory>` | Install or activate a validated version. |
+| `npm run course:check -- <directory>` | Validate one course package (`pnpm run course:check <directory>` without `--`). |
+| `npm run course:install -- <directory>` | Install or activate a validated version (`pnpm run course:install <directory>` without `--`). |
 
 Configuration examples are `.env.example`, `.env.gpt.example` and
 `.env.gpt-image2.example`. `STUDY_WEB_PORT`, `STUDY_API_PORT` and `STUDY_DATA_DIR`
@@ -108,10 +108,13 @@ inspect their state before restarting services or changing configuration.
 - Declare audio in course data. Use local recordings for Pinyin and TTS for Han
   text in Elementary Chinese. Explicit TTS voices take precedence over the
   saved default, and the selected voice determines the cache entry. Keep
-  playback controls consistent across options before grading.
-- Keep explanation audio with the graded review payload. Regeneration applies
-  to synthesized speech. Record the source and license of bundled recordings
-  in the audio asset README.
+  playback controls consistent across options before grading. Use
+  `design-course-tts` to audit course audio segmentation and all-caps overrides.
+- Keep explanation audio, `cloze.passage_tts`, `writing.sample_response` /
+  `sample_response_tts`, and `translation.reference_translation_tts` restricted to
+  graded review and memorization payloads; never expose them in active unanswered
+  exam or pre-submit practice payloads. Regeneration applies to synthesized speech.
+  Record the source and license of bundled recordings in the audio asset README.
 - Accepted palace jobs belong to the backend and survive page navigation.
   Preserve pause checkpoints, explicit continuation and image-only retry behavior.
   Uncertain paid requests must never be silently replayed. After restart, only
