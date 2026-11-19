@@ -1,7 +1,8 @@
 ---
 id: 0071
 type: feat
-status: open
+status: closed
+closed-by: e8bbfab
 labels: [course, learning-path]
 branch: feat/0071-demonstrate-learning-paths-in-the-golden-course-template
 created: 2026-11-19
@@ -46,3 +47,12 @@ Learning planner rules, sidebar gating, question text, answers, and audio.
 
 The existing learning path is enabled by course data. The template uses the
 same manifest and item fields as ordinary v2 courses.
+
+### Verification
+
+- Course validation reported five concepts, four prerequisite groups, and
+  fifteen tagged questions. Comparing the item records before and after
+  confirmed that only their concept tags changed.
+- Type checking, Go tests, and all eighteen browser tests passed.
+- The local catalog serves version 1.1.0. The existing unit and all fifteen
+  runtime question IDs were verified across activation.

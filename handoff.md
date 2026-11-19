@@ -4,7 +4,7 @@ Updated 2026-11-19 (America/New_York).
 
 ## Repository state
 
-- `main` integrates the course and study navigation changes through `#70`:
+- `main` integrates the course and study navigation changes through `#71`:
   - [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
     (`4d2c69a`): polymorphic Go/OpenAPI/TS question-type contracts.
   - [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
@@ -34,7 +34,7 @@ Updated 2026-11-19 (America/New_York).
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
   scoring and optional AI feedback. The single 题型展示 unit in
-  `golden-course-template@1.0.0` (titled `黄金标准课程模板`) has 15 questions across all
+  `golden-course-template@1.1.0` (titled `黄金标准课程模板`) has 15 questions across all
   nine question types.
   It covers all three writing subtypes, both translation directions, all
   three listening modes, and three reading sub-question types. The recorded
@@ -47,9 +47,12 @@ Updated 2026-11-19 (America/New_York).
 - `writing` samples support either single-string `sample_response_tts` or
   per-paragraph `ContentSegment[]` arrays; `translation` supports `source_text_tts`
   and `reference_translation_tts`; `cloze` supports review-only `passage_tts`
-  without leaking unanswered blanks. Version `1.0.0` of `golden-course-template`
-  is active in the local learner database. Course validation, TTS audit, and full
-  checks passed.
+  without leaking unanswered blanks.
+- [#71](issues/0071-feat-demonstrate-learning-paths-in-the-golden-course-template.md),
+  based on `58ceeb1`, adds a five-node learning path example with AND/OR
+  prerequisites, tagged practice, and a handover lesson. Version `1.1.0` is active
+  in the local learner database with all fifteen question IDs preserved. Course
+  validation, type checking, Go tests, and eighteen browser tests passed.
 
 ## Shared question navigation
 
