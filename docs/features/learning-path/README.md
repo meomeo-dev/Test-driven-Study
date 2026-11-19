@@ -21,11 +21,11 @@ Alternative groups express any monotone AND/OR rule in disjunctive normal form.
 
 ## Package data
 
-Protocol v1 gains two optional fields, added to `manifest.schema.json`,
-`items.schema.json`, the Go model and the protocol README. Packages without
-them load unchanged. The digest hashes file bytes, so untouched packages keep
-their digests. A package that uses the fields needs an application release
-that understands them.
+Protocols v1 and v2 support optional unit concepts and item tags. The v2
+[golden course template](../../../courses/golden-course-template/README.md)
+provides a worked example with lesson links, prerequisite groups, tagged
+practice, and a manual self-check. The digest hashes file bytes, so untouched
+packages keep their digests.
 
 ```json
 {

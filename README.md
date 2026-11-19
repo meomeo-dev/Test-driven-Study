@@ -78,7 +78,7 @@ Circuits and C. Beginner English includes listening exercises with transcripts.
   that declare a concept graph get a path page and a graph view. Choose the whole
   course or chosen concepts and daily minutes; the plan follows AND/OR
   prerequisites, skips mastered or self-marked concepts, and links each step to
-  filtered practice. Beginner English is the reference graph.
+  filtered practice. The golden course template includes a compact authoring example.
 - **[Course roadmap (学习路线)](docs/features/course-roadmap/README.md):** the
   catalog's 学习路线 tab shows prerequisite relations between installed courses,
   taken only from the course READMEs, and plans a saved route to chosen courses.

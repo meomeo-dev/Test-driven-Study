@@ -75,6 +75,42 @@ test('a learner plans, practices, marks and replans a concept path', async ({ pa
   await expect(steps).toHaveCount(4);
 });
 
+test('the golden course template demonstrates learning paths and tagged practice', async ({
+  page, request,
+}) => {
+  const subject = await subjectOf(request, 'golden-course-template', 'extended-practice');
+  await page.goto('/courses/golden-course-template');
+  const navigation = page.getByRole('navigation', { name: '主导航' });
+  await navigation.getByRole('link', { name: '学习路径', exact: true }).click();
+  await page.getByRole('tab', { name: '知识图谱' }).click();
+  await page.getByRole('button', { name: '交班复述（自评），未解锁' }).click();
+  const details = page.getByRole('complementary', { name: '交班复述（自评）详情' });
+  await expect(details).toContainText('读懂车间通知；或 撰写交班信息');
+  await expect(details).toContainText('完成后可标记为已会');
+  await expect(details.getByRole('link', { name: '指南' })).toBeVisible();
+
+  await page.getByRole('tab', { name: '学习路径' }).click();
+  const goal = page.getByRole('form', { name: '学习目标' });
+  await goal.getByLabel(/选择知识点/).check();
+  await goal.getByLabel('读懂车间通知').check();
+  await goal.getByRole('button', { name: '生成学习路径' }).click();
+  const steps = page.locator('.path-step');
+  await expect(steps).toHaveCount(3);
+  await expect(steps.nth(0)).toContainText('车间数字与数量');
+  await expect(steps.nth(1)).toContainText('交班指令与用语');
+  await expect(steps.nth(2)).toContainText('先修：车间数字与数量 + 交班指令与用语');
+  await steps.nth(2).getByRole('link', { name: '练习本知识点' }).click();
+  await expect(page.getByRole('button', { name: '取消知识点筛选：读懂车间通知' }))
+    .toBeVisible();
+
+  const rows: PracticeSummary[] = await (await request.get(
+    `/api/practice/questions?subject=${subject}&concept=workplace-notices`)).json();
+  expect(rows.map(row => row.source_item_id).sort()).toEqual([
+    'sue1-extended-listening-passage', 'sue1-extended-listening-recording',
+    'sue1-extended-reading', 'sue1-extended-reading-single-choice',
+  ]);
+});
+
 test('courses without concepts show no learning path entry and an empty state', async ({ page, request }) => {
   const subject = await subjectOf(request, 'basic-math', 'intro');
   await page.goto(`/practice?subject=${subject}&course=basic-math`);

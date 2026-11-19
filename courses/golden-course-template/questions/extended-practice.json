@@ -2,6 +2,7 @@
   {
     "id": "sue1-extended-cloze",
     "type": "cloze",
+    "concepts": ["workplace-instructions"],
     "chapter": "交班规范完形",
     "stem": "阅读仓库交班提示，根据上下文选词填空。",
     "passage": "Every worker {{1}} sign the checklist. Do not {{2}} the equipment without permission.",
@@ -46,6 +47,7 @@
   {
     "id": "sue1-extended-listening",
     "type": "listening",
+    "concepts": ["workplace-instructions"],
     "chapter": "库房与送货听力",
     "stem": "听库房里的对话，再回答两个问题。",
     "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
@@ -103,6 +105,7 @@
   {
     "id": "sue1-extended-reading",
     "type": "reading_comprehension",
+    "concepts": ["workplace-instructions", "workplace-notices"],
     "chapter": "车间通知阅读",
     "stem": "阅读车间通知，再回答两个问题。",
     "passage": [
@@ -163,6 +166,7 @@
   {
     "id": "sue1-extended-writing",
     "type": "writing",
+    "concepts": ["handover-writing"],
     "chapter": "交班与通知写作",
     "subtype": "sentence_making",
     "stem": [
@@ -194,6 +198,7 @@
   {
     "id": "sue1-extended-translation",
     "type": "translation",
+    "concepts": ["workplace-instructions"],
     "chapter": "交班指令翻译",
     "direction": "en_to_zh",
     "stem": "将下列交班提示译成中文。",
@@ -216,6 +221,7 @@
   {
     "id": "sue1-extended-judgment",
     "type": "true_false",
+    "concepts": ["workplace-instructions"],
     "chapter": "名词单复数判断",
     "stem": [
       { "type": "text", "text": "判断下列英语语法说法是否正确：\n" },
@@ -236,6 +242,7 @@
   {
     "id": "numbers-1",
     "type": "single_choice",
+    "concepts": ["workplace-quantities"],
     "chapter": "数字 0–100",
     "stem": [
       { "type": "text", "text": "工位班长询问你零件盒数量：" },
@@ -266,6 +273,7 @@
   {
     "id": "numbers-3",
     "type": "multiple_choice",
+    "concepts": ["workplace-quantities"],
     "chapter": "数字 0–100",
     "stem": [
       { "type": "text", "text": "车间质检员说：" },
@@ -291,6 +299,7 @@
   {
     "id": "numbers-5",
     "type": "numeric",
+    "concepts": ["workplace-quantities"],
     "chapter": "数字 0–100",
     "stem": [
       { "type": "text", "text": "班长在工位清点零件时说：" },
@@ -312,6 +321,7 @@
   {
     "id": "sue1-extended-writing-short",
     "type": "writing",
+    "concepts": ["handover-writing"],
     "chapter": "交班与通知写作",
     "subtype": "short_essay",
     "stem": "给收货同事写一封英文邮件。原定今天的送货因货车检修改期，请告知对方新的送货时间为星期五上午十点。",
@@ -350,6 +360,7 @@
   {
     "id": "sue1-extended-writing-full",
     "type": "writing",
+    "concepts": ["handover-writing"],
     "chapter": "交班与通知写作",
     "subtype": "full_essay",
     "stem": "车间打算改用电子清单交班。写一篇英文短文，对比纸质与电子清单的优缺点，并提出你建议的交班做法。",
@@ -390,6 +401,7 @@
   {
     "id": "sue1-extended-translation-zh-to-en",
     "type": "translation",
+    "concepts": ["workplace-instructions"],
     "chapter": "交班指令翻译",
     "direction": "zh_to_en",
     "stem": "将下列交班指令翻译成英文。",
@@ -415,6 +427,7 @@
   {
     "id": "sue1-extended-listening-passage",
     "type": "listening",
+    "concepts": ["workplace-notices"],
     "chapter": "库房与送货听力",
     "stem": "听库房管理员的通知，再回答两个问题。",
     "audio": { "mode": "passage", "voice_female": "stella" },
@@ -461,6 +474,7 @@
   {
     "id": "sue1-extended-listening-recording",
     "type": "listening",
+    "concepts": ["workplace-notices"],
     "chapter": "库房与送货听力",
     "stem": "听送货延迟的通知录音，再回答两个问题。",
     "audio": { "mode": "recording", "src": "assets/audio/delivery-delay.mp3" },
@@ -527,6 +541,7 @@
   {
     "id": "sue1-extended-reading-single-choice",
     "type": "reading_comprehension",
+    "concepts": ["workplace-notices"],
     "chapter": "车间通知阅读",
     "stem": "阅读更衣室清洁通知，再回答两个问题。",
     "passage": [

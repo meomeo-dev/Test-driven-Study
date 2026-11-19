@@ -33,6 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `golden-course-template@1.1.0` adds a five-concept learning graph, a handover
+  lesson, and practice tags for all 15 existing items.
 - Modularized frontend `web/src/features/question-types/` into 9 independent
   question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
   typed registry and facade components.

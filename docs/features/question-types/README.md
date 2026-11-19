@@ -57,7 +57,8 @@ written practice submission. Feedback does not change practice history or
 exam scores.
 
 Install or upgrade the example course through the normal versioned import.
-The questions appear under **黄金标准课程模板 → 题型展示**:
+The questions appear under **黄金标准课程模板 → 题型展示**. The template also
+includes a [working learning path example](../../../courses/golden-course-template/README.md#学习路径示例).
 
 ```sh
 npm run course:check -- courses/golden-course-template

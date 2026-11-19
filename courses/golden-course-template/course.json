@@ -1,15 +1,65 @@
 {
   "protocol_version": 2,
   "course_id": "golden-course-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "黄金标准课程模板",
   "language": "zh-CN",
-  "description": "黄金标准课程包模板，包含「题型展示」单元，覆盖全部 9 类题型与交互组件示例。",
+  "description": "黄金标准课程包模板，展示全部 9 类题型，以及知识图谱、学习路径与按知识点练习。",
   "units": [
     {
       "id": "extended-practice",
       "title": "题型展示",
-      "question_file": "questions/extended-practice.json"
+      "question_file": "questions/extended-practice.json",
+      "lessons": [
+        {
+          "id": "workplace-handover",
+          "title": "车间交班英语",
+          "file": "lessons/workplace-handover.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "workplace-quantities",
+          "title": "车间数字与数量",
+          "summary": "听懂并复述零件、托盘和箱子的数量。",
+          "estimated_minutes": 10,
+          "lesson": "workplace-handover"
+        },
+        {
+          "id": "workplace-instructions",
+          "title": "交班指令与用语",
+          "summary": "用 must、do not 和祈使句理解交班要求，并辨认清单、设备等常用词。",
+          "estimated_minutes": 15,
+          "lesson": "workplace-handover"
+        },
+        {
+          "id": "workplace-notices",
+          "title": "读懂车间通知",
+          "summary": "从书面或口头通知中提取时间、地点和接班任务。",
+          "estimated_minutes": 15,
+          "lesson": "workplace-handover",
+          "prerequisites": [{ "all_of": ["workplace-quantities", "workplace-instructions"] }]
+        },
+        {
+          "id": "handover-writing",
+          "title": "撰写交班信息",
+          "summary": "写清变更、后续行动和确认要求，并说明清单备份方式。",
+          "estimated_minutes": 20,
+          "lesson": "workplace-handover",
+          "prerequisites": [{ "all_of": ["workplace-instructions"] }]
+        },
+        {
+          "id": "handover-self-check",
+          "title": "交班复述（自评）",
+          "summary": "选一条车间通知或自己的交班稿，向下一班复述时间、地点和待办事项。",
+          "estimated_minutes": 5,
+          "lesson": "workplace-handover",
+          "prerequisites": [
+            { "all_of": ["workplace-notices"] },
+            { "all_of": ["handover-writing"] }
+          ]
+        }
+      ]
     }
   ]
 }
