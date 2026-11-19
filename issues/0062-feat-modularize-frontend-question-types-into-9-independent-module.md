@@ -1,7 +1,8 @@
 ---
 id: 0062
 type: feat
-status: open
+status: closed
+closed-by: e2edccf05af517fec8a0d8d68c498de39e3be4f3
 labels: []
 branch: feat/0062-modularize-frontend-question-types-into-9-independent-module
 created: 2026-11-18
