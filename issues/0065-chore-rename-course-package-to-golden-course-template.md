@@ -1,7 +1,8 @@
 ---
 id: 0065
 type: chore
-status: open
+status: closed
+closed-by: d7974b2d02f461d946593385cd8d04b365c1774b
 labels: []
 branch: chore/0065-rename-course-package-to-golden-course-template
 created: 2026-11-19
