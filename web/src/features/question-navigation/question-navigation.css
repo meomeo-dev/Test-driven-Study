@@ -41,16 +41,19 @@
 }
 .question-grid {
   display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-auto-rows: 44px; gap: 6px; padding-bottom: 2px;
+  grid-auto-rows: minmax(44px, auto); gap: 6px; padding-bottom: 2px;
 }
 .grid-question {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   gap: 2px; line-height: 1.1;
-  height: 44px; min-width: 0; background: var(--surface-muted);
+  min-width: 0; background: var(--surface-muted);
   border: 1px solid var(--border); color: var(--muted); border-radius: 5px;
-  padding: 0 2px; font-size: 12px; font-variant-numeric: tabular-nums;
+  padding: 2px; font-size: 12px; font-variant-numeric: tabular-nums;
 }
-.grid-original-id { color: var(--muted); font-size: 9px; line-height: 1; }
+.grid-original-id {
+  max-inline-size: 100%; overflow-wrap: anywhere;
+  color: var(--muted); font-size: 9px; line-height: 1;
+}
 .grid-question.mastered { background: var(--success-bg); color: var(--success); }
 .grid-question.review { background: var(--warning-bg); color: var(--warning); }
 .grid-question.current {
@@ -91,7 +94,7 @@
 .grid-question.has-palace, .grid-question.has-conversation { border-color: var(--primary); }
 .grid-resource-indicators {
   display: flex; align-items: center; justify-content: center;
-  gap: 4px; min-height: 11px; color: var(--link);
+  gap: 4px; min-height: 11px; margin-top: auto; color: var(--link);
 }
 .grid-resource-indicators svg { flex-shrink: 0; }
 @media (max-width: 650px) {

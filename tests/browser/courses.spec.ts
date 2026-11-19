@@ -139,6 +139,43 @@ test('English dialogue plays all three turns in the authored voices', async ({ p
   await expect(listening.getByRole('button', { name: '播放发音' })).toBeVisible();
 });
 
+test('long original question IDs stay inside navigation tiles', async ({ page, request }) => {
+  const courses: CourseSummary[] = await (await request.get('/api/courses')).json();
+  const subject = courses.find(course => course.id === 'beginner-english')
+    ?.units.find(unit => unit.id === 'intro')?.subject_id;
+  expect(subject).toBeDefined();
+  const questions: QuestionSummary[] =
+    await (await request.get(`/api/questions?subject=${subject}`)).json();
+  const originalID = 'self-introduction-5';
+  const question = questions.find(item => item.source_item_id === originalID);
+  expect(question).toBeDefined();
+
+  await page.goto(`/practice?subject=${subject}&question=${question?.question_id}`);
+  await page.getByRole('button', { name: '题目导航', exact: true }).click();
+  const drawer = page.getByRole('dialog', { name: '题目导航', exact: true });
+  const tiles = drawer.getByRole('button', { name: /^第\d+题，原题号/ });
+  const current = drawer.getByRole('button', { name: /原题号self-introduction-5，/ });
+  await expect(tiles).toHaveCount(questions.length);
+  await expect(current).toHaveAttribute('aria-current', 'true');
+  await expect(current.getByText(`#${originalID}`, { exact: true })).toBeVisible();
+
+  for (const width of [1280, 375]) {
+    await page.setViewportSize({ width, height: 800 });
+    await drawer.getByRole('button', { name: '定位当前题' }).click();
+    await expect(current).toBeInViewport({ ratio: 1 });
+    await expect(current).toBeFocused();
+    const overflowing = await tiles.evaluateAll(buttons => buttons.filter(button => {
+      const bounds = button.getBoundingClientRect();
+      const content = document.createRange();
+      content.selectNodeContents(button);
+      return Array.from(content.getClientRects()).some(rect =>
+        rect.left < bounds.left || rect.right > bounds.right ||
+        rect.top < bounds.top || rect.bottom > bounds.bottom);
+    }).map(button => button.getAttribute('aria-label')));
+    expect(overflowing, `tile content at viewport width ${width}`).toEqual([]);
+  }
+});
+
 test('math uses the shared guide, exam terminal, assistant and memory palace', async ({ page, request }) => {
   await page.goto('/courses/basic-math');
   const navigation = page.getByRole('navigation', { name: '主导航' });
