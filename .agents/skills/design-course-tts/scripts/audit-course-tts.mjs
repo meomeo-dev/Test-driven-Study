@@ -19,10 +19,20 @@ const HELP = `audit-course-tts: 审计课程题库 JSON 的声明式 TTS 与本�
   -h, --help      显示本帮助
 
 检查项:
-- error: uniformOptionAudio（同组选项全有/全无）、禁止 tts: true 简写、blank 与 TTS 共存、
-  听力题干泄露 TTS、TTS 切片首尾空白/外围引号、英文缺 voice、中英混排、不可直读符号与
-  writing 缺 sample_response_tts。
-- warning: 过长或含换行的粗粒度 TTS 切片、未配语音的纯英文题干/小题/选项与解析英文漏配。
+- error: UNIFORM_OPTION_AUDIO（同组选项全有/全无）、TTS_BOOLEAN_SHORTHAND（禁止 tts: true）、
+  BLANK_TTS_COOCCURRENCE（blank 与 TTS 共存 / cloze.passage 挂 TTS）、
+  LISTENING_STEM_TTS_LEAK（听力题干泄露 TTS）、LISTENING_PASSAGE_INLINE_TTS / READING_FORBIDS_MEDIA、
+  SEGMENT_WHITESPACE_BOUNDARY / SEGMENT_QUOTE_BOUNDARY（切片首尾空白与外围引号）、
+  ENGLISH_TTS_MISSING_VOICE（英文缺 voice，含非 M/W 说话人、缺 voice_female 或非听力 transcript）、
+  MIXED_ZH_EN_TTS（中英混排）、ALL_CAPS_TTS_WITHOUT_OVERRIDE（4+ 字母纯大写缺改写）、
+  NON_SPEAKABLE_IN_TTS（不可直读符号/算符/下划线/IPA/单字母/中文内数字）、
+  SPEECH_TYPE_WITHOUT_AUDIO、TRANSCRIPT_TTS_DISABLED、CLOZE_PASSAGE_TTS_INCOMPLETE、
+  WRITING_MISSING_SAMPLE_TTS、TRANSLATION_MISSING_SOURCE_TTS / TRANSLATION_MISSING_REFERENCE_TTS。
+- warning: COARSE_TTS_SEGMENT（过长或含换行粗粒度切片 / writing 多段未拆分）、
+  UNVOICED_ENGLISH_SENTENCE / UNVOICED_ENGLISH_SUBQUESTION / UNVOICED_ENGLISH_OPTIONS、
+  PARTIAL_PASSAGE_TTS / PARTIAL_ANALYSIS_TTS（短文或解析英文漏配）、
+  PINYIN_TTS_CONFLICT（pinyin 与 tts 重叠）、WRITING_REDUNDANT_SAMPLE_TTS /
+  WRITING_UNNORMALIZED_NEWLINE、TRANSLATION_OFF_DIRECTION_TTS。
 不联网、不写文件。
 
 退出码: 0 无设计问题；1 发现 error 或 warning；2 用法错误；3 路径或 JSON 读取失败。
