@@ -57,7 +57,7 @@ written practice submission. Feedback does not change practice history or
 exam scores.
 
 Install or upgrade the example course through the normal versioned import.
-The questions appear under **零基础阶梯进阶英语（一）→ 综合题型练习**:
+The questions appear under **标准课程模板 → 题型展示**:
 
 ```sh
 npm run course:check -- courses/step-up-english-1

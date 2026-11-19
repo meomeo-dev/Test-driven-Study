@@ -19,8 +19,9 @@ Updated 2026-11-18 (America/New_York).
   versioned course schemas, structured answers and shared practice, memorization
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
-  scoring and optional AI feedback. The single 综合题型练习 unit in
-  `step-up-english-1@1.2.7` has 15 questions across all nine question types.
+  scoring and optional AI feedback. The single 题型展示 unit in
+  `step-up-english-1@1.2.8` (titled `标准课程模板`) has 15 questions across all
+  nine question types.
   It covers all three writing subtypes, both translation directions, all
   three listening modes, and three reading sub-question types. The recorded
   listening example ships with a [local MP3](courses/step-up-english-1/assets/audio/README.md).
@@ -32,9 +33,9 @@ Updated 2026-11-18 (America/New_York).
 - `writing` samples support either single-string `sample_response_tts` or
   per-paragraph `ContentSegment[]` arrays; `translation` supports `source_text_tts`
   and `reference_translation_tts`; `cloze` supports review-only `passage_tts`
-  without leaking unanswered blanks. Version `1.2.7` is active in the local
+  without leaking unanswered blanks. Version `1.2.8` is active in the local
   learner database with the existing question IDs. Course validation, TTS audit,
-  and full `check` (unit, Go, startup, build, Playwright e2e) passed.
+  and full checks passed.
 
 ## Elementary Chinese pronunciation
 

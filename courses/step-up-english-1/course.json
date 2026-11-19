@@ -1,14 +1,14 @@
 {
   "protocol_version": 2,
   "course_id": "step-up-english-1",
-  "version": "1.2.7",
-  "title": "零基础阶梯进阶英语（一）",
+  "version": "1.2.8",
+  "title": "标准课程模板",
   "language": "zh-CN",
-  "description": "题型演示课程，包含「综合题型练习」单元。",
+  "description": "标准课程包模板，包含「题型展示」单元，覆盖全部 9 类题型与交互组件示例。",
   "units": [
     {
       "id": "extended-practice",
-      "title": "综合题型练习",
+      "title": "题型展示",
       "question_file": "questions/extended-practice.json"
     }
   ]
