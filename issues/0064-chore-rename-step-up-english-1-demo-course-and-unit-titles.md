@@ -1,7 +1,8 @@
 ---
 id: 0064
 type: chore
-status: open
+status: closed
+closed-by: 1b49fe8d98ef5e0c374dfa6b8a971404735af6ea
 labels: []
 branch: chore/0064-rename-step-up-english-1-demo-course-and-unit-titles
 created: 2026-11-19
