@@ -41,7 +41,19 @@
         "text": "打开安全门"
       }
     ],
-    "explanation": "`Stop!` 是祈使句，意为“停止！”，要求对方立刻中止当前动作。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Stop!",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是祈使句，意为“停止！”，要求对方立刻中止当前动作。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -86,7 +98,30 @@
         }
       }
     ],
-    "explanation": "`Turn off` 用于表示关掉电器或指示灯，因此关闭指示灯应说 `Turn off the light.`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Turn off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用于表示关掉电器或指示灯，因此关闭指示灯应说 "
+      },
+      {
+        "type": "text",
+        "text": "Turn off the light.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -131,7 +166,30 @@
         }
       }
     ],
-    "explanation": "`Don't touch.`（不要碰）和 `Press the button.`（按按钮）都是祈使句，用于直接发出操作指令。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Don't touch.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（不要碰）和 "
+      },
+      {
+        "type": "text",
+        "text": "Press the button.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（按按钮）都是祈使句，用于直接发出操作指令。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -163,9 +221,32 @@
         "text": " 判断：这句话的意思是让你把物品放在这里。"
       }
     ],
-    "explanation": "`Put` 意为“放置”，`here` 意为“这里”，该句是祈使句，表示“把它放在这里”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“放置”，"
+      },
+      {
+        "type": "text",
+        "text": "here",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“这里”，该句是祈使句，表示“把它放在这里”。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -184,7 +265,8 @@
         "type": "text",
         "text": "Press the red button 3 times.",
         "tts": {
-          "voice": "tide"
+          "voice": "tide",
+          "text": "Press the red button three times."
         }
       },
       {
@@ -192,7 +274,24 @@
         "text": " 请问师傅要求你按几次红色按钮？请用阿拉伯数字作答。"
       }
     ],
-    "explanation": "句中 `3 times` 表示“3次”，因此需要按 3 次按钮。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "句中 "
+      },
+      {
+        "type": "text",
+        "text": "3 times",
+        "tts": {
+          "voice": "stella",
+          "text": "three times"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“3 次”，因此需要按 3 次按钮。"
+      }
+    ],
     "grading": {
       "value": "3",
       "absolute_tolerance": "0"
@@ -252,7 +351,56 @@
         }
       }
     ],
-    "explanation": "问句是以 be 动词 `Is` 提问且主语为 `it` 的一般疑问句，肯定简短回答应为 `Yes, it is.`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "问句是以 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "Is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问且主语为 "
+      },
+      {
+        "type": "text",
+        "text": "it",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的一般疑问句，肯定简短回答应为 "
+      },
+      {
+        "type": "text",
+        "text": "Yes, it is.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -313,7 +461,45 @@
         }
       }
     ],
-    "explanation": "以助动词 `Do` 提问且主语为 `you` 的一般疑问句，否定回答应使用 `No, I don't.`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "以助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Do",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问且主语为 "
+      },
+      {
+        "type": "text",
+        "text": "you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的一般疑问句，否定回答应使用 "
+      },
+      {
+        "type": "text",
+        "text": "No, I don't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -358,7 +544,52 @@
         }
       }
     ],
-    "explanation": "`Are you ready?`（你准备好了吗？）和 `Does the machine work?`（机器运转正常吗？）均为一般疑问句。a 为特殊疑问句，b 为祈使句。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Are you ready?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（你准备好了吗？）和 "
+      },
+      {
+        "type": "text",
+        "text": "Does the machine work?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（机器运转正常吗？）均为一般疑问句。"
+      },
+      {
+        "type": "text",
+        "text": "What time is it?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为特殊疑问句，"
+      },
+      {
+        "type": "text",
+        "text": "Turn off the machine.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为祈使句。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c",
@@ -401,9 +632,58 @@
         "text": " 判断：你的回答在语法和语意上是正确的。"
       }
     ],
-    "explanation": "问句主语是 `you`，回答应当使用第一人称 `I`（如 `No, I'm not.`），不能用指代物品的 `it`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "问句主语是 "
+      },
+      {
+        "type": "text",
+        "text": "you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，回答应当使用第一人称 "
+      },
+      {
+        "type": "text",
+        "text": "I",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（如 "
+      },
+      {
+        "type": "text",
+        "text": "No, I'm not.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），不能用指代物品的 "
+      },
+      {
+        "type": "text",
+        "text": "it",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -460,7 +740,45 @@
         }
       }
     ],
-    "explanation": "针对以助动词 `Does` 提问且主语为 `it` 的一般疑问句，否定回答应为 `No, it doesn't.`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "针对以助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问且主语为 "
+      },
+      {
+        "type": "text",
+        "text": "it",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的一般疑问句，否定回答应为 "
+      },
+      {
+        "type": "text",
+        "text": "No, it doesn't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -505,7 +823,19 @@
         }
       }
     ],
-    "explanation": "`Could you help me?` 是向他人寻求帮助的标准礼貌用语，意为“你能帮帮我吗？”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Could you help me?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是向他人寻求帮助的标准礼貌用语，意为“你能帮帮我吗？”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -566,7 +896,19 @@
         }
       }
     ],
-    "explanation": "`Sorry, I can't.` 表示“抱歉，我不能”，是礼貌婉拒他人请求的标准表达。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Sorry, I can't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“抱歉，我不能”，是礼貌婉拒他人请求的标准表达。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -611,7 +953,41 @@
         }
       }
     ],
-    "explanation": "`Please pass the box.`（请递一下箱子）与 `Can you wait here, please?`（请问你可以在这里等一下吗？）均包含礼貌词 `please`，属于礼貌请求句型。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Please pass the box.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（请递一下箱子）与 "
+      },
+      {
+        "type": "text",
+        "text": "Can you wait here, please?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（请问你可以在这里等一下吗？）均包含礼貌词 "
+      },
+      {
+        "type": "text",
+        "text": "please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，属于礼貌请求句型。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -654,9 +1030,21 @@
         "text": " 判断：你的回答表示你欣然同意对方的请求。"
       }
     ],
-    "explanation": "`Sure!` 意为“当然可以！”，用于积极爽快地答应对方的礼貌请求。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Sure!",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“当然可以！”，用于积极爽快地答应对方的礼貌请求。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -697,7 +1085,23 @@
         }
       }
     ],
-    "explanation": "在祈使句前加上 `Please` 可以使语气更加客气礼貌，意为“请打开门”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "在祈使句前加上 "
+      },
+      {
+        "type": "text",
+        "text": "Please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 可以使语气更加客气礼貌，意为“请打开门”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -706,12 +1110,17 @@
   },
   {
     "id": "requests-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "礼貌请求",
     "concepts": [
       "polite-requests"
     ],
-    "stem": "听工位求助录音，选择工友请求拿取的物品：",
+    "stem": "听工位求助录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "W",
@@ -728,99 +1137,232 @@
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "The blue folder",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "b",
-        "text": "The red pen",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "c",
-        "text": "The steel ruler",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "The safety glasses",
-        "tts": {
-          "voice": "stella"
-        }
+        "id": "requested-item",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What does the coworker ask for?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（工友请求拿取哪件物品？）"
+          }
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The blue folder",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "The red pen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "The steel ruler",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "The safety glasses",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中女声请求 "
+          },
+          {
+            "type": "text",
+            "text": "Could you please pass me the blue folder on the table?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，可知请求拿取的是 "
+          },
+          {
+            "type": "text",
+            "text": "The blue folder",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    },
-    "explanation": "录音中女声请求 \"Could you please pass me the blue folder on the table?\"。"
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话围绕工位求助递物品展开，听音时注意抓住礼貌请求句中的物品名称 "
+      },
+      {
+        "type": "text",
+        "text": "the blue folder",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及应答语 "
+      },
+      {
+        "type": "text",
+        "text": "Sure, here you are.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   },
   {
     "id": "requests-cloze-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "祈使句指令",
     "concepts": [
       "imperatives"
     ],
-    "stem": [
+    "stem": "离开工位时，请按规范关闭工位照明灯。请选择祈使句正确的动词短语填空。",
+    "passage": "Please {{1}} the lights before leaving the workbench.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Please turn off the lights before leaving the workbench."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "离开工位时，请按规范关闭工位照明灯。请选择祈使句正确的动词短语填空：\nPlease "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " the lights before leaving the workbench."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "turn off",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "turn on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "turning off",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "turned off",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "Please",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 后面接动词原形构成祈使句，"
+          },
+          {
+            "type": "text",
+            "text": "turn off the lights",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示关灯。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "礼貌祈使句 "
+      },
+      {
+        "type": "text",
+        "text": "Please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后须接动词原形。结合“关闭照明灯”的语境应选 "
+      },
+      {
+        "type": "text",
         "text": "turn off",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "，而非表示打开的 "
+      },
+      {
+        "type": "text",
         "text": "turn on",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
-        "text": "turning off",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "turned off",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 或非原形变化。"
       }
-    ],
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    },
-    "explanation": "Please 后面接动词原形构成祈使句，turn off the lights 表示关灯。"
+    ]
   }
 ]

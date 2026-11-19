@@ -36,8 +36,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modularized frontend `web/src/features/question-types/` into 9 independent
   question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
   typed registry and facade components.
-- Beginner English 1.4.1 adds listening units, question audio, and sequential
-  playback of authored dialogue lines. Listening transcripts are expandable.
+- Beginner English 2.0.0 (`protocol_version: 2`, upgraded from `1.4.1`) migrates
+  all 10 units (41 concepts, 216 items) to v2 contracts: converts all 20
+  listening items to `type: "listening"` (enabling mock-exam audio and voiced
+  sub-question stems), 27 fill-in/orthographic items (25 blank prompts plus
+  `spelling-2` and `past-regular-1`) to `type: "cloze"` with `passage_tts`,
+  all 216 explanations to segmented `analysis` (`RichContent`) without
+  hardcoded option letters, and resolves all `design-course-tts` findings
+  (`audit-course-tts` 0 errors, 0 warnings).
 
 ### Fixed
 

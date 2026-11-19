@@ -53,7 +53,67 @@
         }
       }
     ],
-    "explanation": "数字 13 的英文是 thirteen；thirty 是 30，three 是 3。因此正确答案是 b。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "数字 13 的英文是 "
+      },
+      {
+        "type": "text",
+        "text": "thirteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "thirty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 30，"
+      },
+      {
+        "type": "text",
+        "text": "three",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 3，"
+      },
+      {
+        "type": "text",
+        "text": "third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“第三”。因此正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "I see thirteen boxes.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -98,7 +158,67 @@
         }
       }
     ],
-    "explanation": "数字 50 的英文是 fifty；fifteen 是 15。因此正确答案是 c。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "数字 50 的英文是 "
+      },
+      {
+        "type": "text",
+        "text": "fifty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "fifteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 15，"
+      },
+      {
+        "type": "text",
+        "text": "five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 5，"
+      },
+      {
+        "type": "text",
+        "text": "fifth",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“第五”。因此正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "fifty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -147,7 +267,41 @@
         "text": "需要的物品是螺丝（screws）"
       }
     ],
-    "explanation": "twenty-four 表示数字 24，trays 表示托盘。因此正确选项是 a 和 c。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "twenty-four",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示数字 24，"
+      },
+      {
+        "type": "text",
+        "text": "trays",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示托盘。因此正确选项是“需要的数量是 24”和“需要的物品是托盘（"
+      },
+      {
+        "type": "text",
+        "text": "trays",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -179,9 +333,21 @@
         "text": "（判断：他的意思是他手里一个螺丝也没有。）"
       }
     ],
-    "explanation": "zero 表示数字 0，句意为手里有 0 个螺丝，即一个螺丝都没有。因此该判断正确。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "zero",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示数字 0，句意为手里有 0 个螺丝，即一个螺丝都没有。因此该判断正确。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -208,7 +374,30 @@
         "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。"
       }
     ],
-    "explanation": "eight 表示 8，seven 表示 7，零件总数为 8 + 7 = 15。因此正确答案是 15。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "eight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 8，"
+      },
+      {
+        "type": "text",
+        "text": "seven",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 7，零件总数为 8 + 7 = 15。"
+      }
+    ],
     "grading": {
       "value": "15",
       "absolute_tolerance": "0"
@@ -216,12 +405,16 @@
   },
   {
     "id": "sample-numeric",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "There is / There are",
     "concepts": [
       "there-is-are"
     ],
-    "stem": "听工位汇报录音，回答后面的问题：\nHow many parts are on the table?（桌上有几个零件？请用阿拉伯数字作答）",
+    "stem": "听工位汇报录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "Lina",
@@ -245,11 +438,63 @@
         }
       }
     ],
-    "explanation": "录音中 Lina 明确说明 “There are three parts on the table.”，因此零件数量为 3。",
-    "grading": {
-      "value": "3",
-      "absolute_tolerance": "0"
-    }
+    "sub_questions": [
+      {
+        "id": "part-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many parts are on the table?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（桌上有几个零件？请用阿拉伯数字作答）"
+          }
+        ],
+        "grading": {
+          "value": "3",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中说 "
+          },
+          {
+            "type": "text",
+            "text": "There are three parts on the table.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，因此零件数量为 3。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听工位汇报录音时注意区分零件数量与按钮位置。句子 "
+      },
+      {
+        "type": "text",
+        "text": "There are three parts on the table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 直接说明桌上有 3 个零件。"
+      }
+    ]
   },
   {
     "id": "there-is-are-1",
@@ -289,7 +534,67 @@
         }
       }
     ],
-    "explanation": "表示单数名词 one scanner 存在时，be 动词使用 is，即 There is。因此正确答案是 a。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表示单数名词 "
+      },
+      {
+        "type": "text",
+        "text": "one scanner",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 存在时，"
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词使用 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，即 "
+      },
+      {
+        "type": "text",
+        "text": "There is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。因此正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "There is one scanner on the table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -334,7 +639,34 @@
         }
       }
     ],
-    "explanation": "询问复数名词是否存在时，疑问句句型为 Are there ...?。因此正确答案是 c。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问复数名词是否存在时，疑问句句型为 "
+      },
+      {
+        "type": "text",
+        "text": "Are there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头。因此正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "Are there screws in the box?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -379,7 +711,107 @@
         }
       }
     ],
-    "explanation": "three workers 与 ten boxes 均为复数，搭配 There are；b 项 five pens 应用 are，d 项 one button 应用 is。因此正确选项是 a 和 c。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "three workers",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "ten boxes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均为复数，搭配 "
+      },
+      {
+        "type": "text",
+        "text": "There are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "five pens",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 也应搭配 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，而 "
+      },
+      {
+        "type": "text",
+        "text": "one button",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为单数应搭配 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。因此正确选项是“"
+      },
+      {
+        "type": "text",
+        "text": "There are three workers at the bench.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”和“"
+      },
+      {
+        "type": "text",
+        "text": "There are ten boxes near the door.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -411,9 +843,43 @@
         "text": "（判断：这是在询问架子上是否有扳手。）"
       }
     ],
-    "explanation": "Is there a ...? 用于询问单数物品是否存在，wrench 意为扳手，shelf 意为架子。因此该判断正确。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Is there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用于询问单数物品是否存在，"
+      },
+      {
+        "type": "text",
+        "text": "wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为扳手，"
+      },
+      {
+        "type": "text",
+        "text": "shelf",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为架子。因此该判断正确。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -440,7 +906,30 @@
         "text": " 托盘里一共有多少个螺栓（bolts）？请用阿拉伯数字作答。"
       }
     ],
-    "explanation": "five 表示 5，nine 表示 9，螺栓总数为 5 + 9 = 14。因此正确答案是 14。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 5，"
+      },
+      {
+        "type": "text",
+        "text": "nine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 9，螺栓总数为 5 + 9 = 14。"
+      }
+    ],
     "grading": {
       "value": "14",
       "absolute_tolerance": "0"
@@ -470,9 +959,32 @@
         "text": " 判断：按钮在左边。"
       }
     ],
-    "explanation": "on the left 意为在左边。button 是按钮。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为在左边，"
+      },
+      {
+        "type": "text",
+        "text": "button",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是按钮。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -517,7 +1029,23 @@
         "text": "在工作台后面"
       }
     ],
-    "explanation": "介词 under 表示“在……下方或下面”。因此正确答案是 b。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "介词 "
+      },
+      {
+        "type": "text",
+        "text": "under",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“在……下方或下面”。因此正确答案是“在工作台下面”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -562,7 +1090,34 @@
         }
       }
     ],
-    "explanation": "介词 between 表示“在两者之间”。因此正确答案是 d。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "介词 "
+      },
+      {
+        "type": "text",
+        "text": "between",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“在两者之间”。因此正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "The scissors are between the two boxes.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -611,7 +1166,52 @@
         "text": "黄色料盒放在右边"
       }
     ],
-    "explanation": "on the left 表示在左边，对应 green bin；on the right 表示在右边，对应 yellow bin。因此正确选项是 b 和 d。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示在左边，对应 "
+      },
+      {
+        "type": "text",
+        "text": "green bin",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示在右边，对应 "
+      },
+      {
+        "type": "text",
+        "text": "yellow bin",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。因此正确选项是“绿色料盒放在左边”和“黄色料盒放在右边”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -643,9 +1243,36 @@
         "text": "（判断：这表示电源按钮在机器的背面或后方。）"
       }
     ],
-    "explanation": "短语 in front of 表示“在……的前面”，机器后方应用 behind。因此该判断错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "短语 "
+      },
+      {
+        "type": "text",
+        "text": "in front of",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“在……的前面”，机器后方应用 "
+      },
+      {
+        "type": "text",
+        "text": "behind",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。因此该判断错误。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -690,7 +1317,23 @@
         "text": "在底下"
       }
     ],
-    "explanation": "短语 next to 表示“紧挨着”或“在……旁边”。因此正确答案是 a。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "短语 "
+      },
+      {
+        "type": "text",
+        "text": "next to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“紧挨着”或“在……旁边”。因此正确答案是“紧挨着 / 在旁边”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -739,7 +1382,30 @@
         "text": "8点45分"
       }
     ],
-    "explanation": "half past 表示“半点 / 过了30分钟”，half past eight 即 8 点 30 分。因此正确答案是 b。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "half past",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“半点 / 过了 30 分钟”，"
+      },
+      {
+        "type": "text",
+        "text": "half past eight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 即 8 点 30 分。因此正确答案是“8点30分”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -784,7 +1450,23 @@
         }
       }
     ],
-    "explanation": "询问具体时间最标准的日常句型是 What time is it?。因此正确答案是 a。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问具体时间最标准的日常句型是 "
+      },
+      {
+        "type": "text",
+        "text": "What time is it?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -833,7 +1515,41 @@
         "text": "具体开工时间是 9:45"
       }
     ],
-    "explanation": "morning 表示上午；a quarter past nine 表示 9 点过一刻，即 9:15。因此正确选项是 a 和 b。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示上午；"
+      },
+      {
+        "type": "text",
+        "text": "a quarter past nine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 9 点过一刻，即 9:15。因此正确选项是“班次是在上午（"
+      },
+      {
+        "type": "text",
+        "text": "morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）”和“具体开工时间是 9:15”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -865,9 +1581,32 @@
         "text": "（判断：通知要求工人在下午 4 点整休息。）"
       }
     ],
-    "explanation": "four o'clock 表示 4 点整，in the afternoon 表示在下午。因此该判断正确。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "four o'clock",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示 4 点整，"
+      },
+      {
+        "type": "text",
+        "text": "in the afternoon",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示在下午。因此该判断正确。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -894,7 +1633,34 @@
         "text": " 距离机器停机还剩多少个小时？请用阿拉伯数字作答。"
       }
     ],
-    "explanation": "当前时间是 1 点（one o'clock），机器将在 2 点（two o'clock）停机，剩余时间为 2 - 1 = 1 个小时。因此正确答案是 1。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "当前时间是 1 点（"
+      },
+      {
+        "type": "text",
+        "text": "one o'clock",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），机器将在 2 点（"
+      },
+      {
+        "type": "text",
+        "text": "two o'clock",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）停机，剩余时间为 2 - 1 = 1 个小时。"
+      }
+    ],
     "grading": {
       "value": "1",
       "absolute_tolerance": "0"

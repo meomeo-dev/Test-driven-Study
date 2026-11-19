@@ -37,7 +37,144 @@
         }
       }
     ],
-    "explanation": "选项 a 语法正确且符合特征，主语 The cap 为单数，搭配 be 动词 is，并用 and 连接颜色 red 与形状 round。选项 b 缺失 be 动词；选项 c 中 square（正方形）与工件形状不符；选项 d 主谓数不一致，单数主语不能搭配 are。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "The cap is red and round.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。主语 "
+      },
+      {
+        "type": "text",
+        "text": "The cap",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为单数，搭配 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，并用 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接颜色 "
+      },
+      {
+        "type": "text",
+        "text": "red",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与形状 "
+      },
+      {
+        "type": "text",
+        "text": "round",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "The cap red and round.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”缺失 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词；"
+      },
+      {
+        "type": "text",
+        "text": "square",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（正方形）与工件形状不符；“"
+      },
+      {
+        "type": "text",
+        "text": "The cap are red and round.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”主谓数不一致，单数主语不能搭配 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -82,7 +219,133 @@
         }
       }
     ],
-    "explanation": "选项 c 正确，主语 The washers 是复数名词，be 动词使用 are，flat（扁平的）与 gray（灰色的）准确对应提示。选项 a 错误使用了单数 be 动词 is；选项 b 颜色 green（绿色）错误；选项 d 形状 round（圆形）与扁平要求不符。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "The washers are flat and gray.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。主语 "
+      },
+      {
+        "type": "text",
+        "text": "The washers",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是复数名词，"
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词使用 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，"
+      },
+      {
+        "type": "text",
+        "text": "flat",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（扁平的）与 "
+      },
+      {
+        "type": "text",
+        "text": "gray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（灰色的）准确对应提示。“"
+      },
+      {
+        "type": "text",
+        "text": "The washers is flat and gray.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误使用了单数 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "green",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（绿色）颜色错误；"
+      },
+      {
+        "type": "text",
+        "text": "round",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（圆形）与扁平要求不符。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -127,7 +390,56 @@
         }
       }
     ],
-    "explanation": "选项 a（square，正方形的）和选项 c（short，短的）均属于描述几何形状或尺寸外观的形容词，因此正确。选项 b（blue，蓝色）和选项 d（yellow，黄色）属于颜色形容词，不符合题目要求。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "square",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（正方形的）和 "
+      },
+      {
+        "type": "text",
+        "text": "short",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（短的），两者均属于描述几何形状或尺寸外观的形容词。"
+      },
+      {
+        "type": "text",
+        "text": "blue",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（蓝色）和 "
+      },
+      {
+        "type": "text",
+        "text": "yellow",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（黄色）属于颜色形容词，不符合题目要求。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -159,9 +471,47 @@
         "text": " 中，形容词 blue 和 square 位于 be 动词 is 之后，在句中作表语说明主语的外观特征，这种语法结构是完全正确的。判断：该表述是否正确？"
       }
     ],
-    "explanation": "该陈述正确。在英语中，形容词置于 be 动词之后作表语，用来说明主语 The sensor box 的颜色和形状特征，两个形容词用 and 连接，结构规范标准。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "该陈述正确。在英语中，形容词置于 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词之后作表语，用来说明主语 "
+      },
+      {
+        "type": "text",
+        "text": "The sensor box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的颜色和形状特征，两个形容词用 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接，结构规范标准。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -206,7 +556,67 @@
         "text": "扁平的黑色线缆"
       }
     ],
-    "explanation": "选项 b 正确，英语词汇 long 表示“长的”，black 表示“黑色的”，wire 是线缆，因此组合含义为“长的黑色线缆”。选项 a 将 long 误理解为短；选项 c 将 black 误理解为白色；选项 d 误加入了“扁平”含义。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“长的黑色线缆”。英语词汇 "
+      },
+      {
+        "type": "text",
+        "text": "long",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“长的”，"
+      },
+      {
+        "type": "text",
+        "text": "black",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“黑色的”，"
+      },
+      {
+        "type": "text",
+        "text": "wire",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是线缆，因此组合含义为“长的黑色线缆”。“短的黑色线缆”将 "
+      },
+      {
+        "type": "text",
+        "text": "long",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 误理解为短；“长的白色线缆”将 "
+      },
+      {
+        "type": "text",
+        "text": "black",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 误理解为白色；“扁平的黑色线缆”误加入了“扁平”含义。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -251,7 +661,67 @@
         }
       }
     ],
-    "explanation": "选项 d 正确，单数单个形容词作前置定语修饰名词时，规范语序为“不定冠词 a + 形容词 + 名词”，即 a bent part。选项 a 语序颠倒；选项 b 为完整主谓句子而非名词短语；选项 c 冠词位置错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "a bent part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。单个形容词作前置定语修饰单数可数名词时，规范语序为“不定冠词 "
+      },
+      {
+        "type": "text",
+        "text": "a",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 形容词 + 名词”。"
+      },
+      {
+        "type": "text",
+        "text": "a part bent",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 语序颠倒；"
+      },
+      {
+        "type": "text",
+        "text": "a part is bent",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为完整主谓句子而非名词短语；"
+      },
+      {
+        "type": "text",
+        "text": "bent a part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 冠词位置错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -296,7 +766,100 @@
         }
       }
     ],
-    "explanation": "选项 a 正确，形容词 cracked（有裂纹的）置于 be 动词 is 之后作表语，准确表达工件存在裂纹缺陷。选项 b 中 clean（清洁的）与缺陷不符；选项 c 中 loose（松动的）描述装配状态而非表面裂纹；选项 d 把名词/动词原形 crack 当作表语，形式错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "The part is cracked.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。形容词 "
+      },
+      {
+        "type": "text",
+        "text": "cracked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（有裂纹的）置于 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之后作表语，准确表达工件存在裂纹缺陷。"
+      },
+      {
+        "type": "text",
+        "text": "clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（清洁的）与缺陷不符；"
+      },
+      {
+        "type": "text",
+        "text": "loose",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（松动的）描述装配状态而非表面裂纹；“"
+      },
+      {
+        "type": "text",
+        "text": "The part is crack.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”把名词或动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "crack",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 当作表语，形式错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -341,7 +904,56 @@
         }
       }
     ],
-    "explanation": "选项 b（broken，破损的）与选项 d（scratched，有刮痕的）均属于描述零件物理损伤缺陷的不良品形容词，符合题意。选项 a（tight，紧的）是装配配合状态词，不是表面物理损伤；选项 c（clean，干净的）是良品清洁特征词。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "broken",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（破损的）和 "
+      },
+      {
+        "type": "text",
+        "text": "scratched",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（有刮痕的），两者均用于描述零件物理损伤缺陷。"
+      },
+      {
+        "type": "text",
+        "text": "tight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（紧的）描述装配配合状态，不属于物理损伤；"
+      },
+      {
+        "type": "text",
+        "text": "clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（干净的）是良品清洁特征词。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -373,9 +985,47 @@
         "text": "；如果改为定语修饰，短语写成 loose the screws 同样符合英语语法规则。判断：该说法是否正确？"
       }
     ],
-    "explanation": "该陈述错误。The screws are loose. 是正确的表语结构；但在定语修饰中，形容词应置于定语位置修饰名词，正确语序为 the loose screws，而不能写成动宾结构的 loose the screws。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "该陈述错误。“"
+      },
+      {
+        "type": "text",
+        "text": "The screws are loose.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”是正确的表语结构；但在定语修饰中，形容词应置于名词之前修饰名词，正确语序为 "
+      },
+      {
+        "type": "text",
+        "text": "the loose screws",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，而不能写成动宾结构的 "
+      },
+      {
+        "type": "text",
+        "text": "loose the screws",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -404,7 +1054,67 @@
         "text": "外壳破裂损坏"
       }
     ],
-    "explanation": "选项 c 正确，英文形容词 dirty 意为“脏污的、有污垢的”，与代码 ERR_DIRTY 完全对应。选项 a 是尺寸问题（如 big）；选项 b 是配合状态（tight）；选项 d 是破裂（broken 或 cracked）。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“外壳表面脏污”。英文形容词 "
+      },
+      {
+        "type": "text",
+        "text": "dirty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“脏污的、有污垢的”，与报警代码 `ERR_DIRTY` 完全对应。“外壳尺寸偏大”对应 "
+      },
+      {
+        "type": "text",
+        "text": "big",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 等尺寸词；“外壳装配过紧”对应 "
+      },
+      {
+        "type": "text",
+        "text": "tight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“外壳破裂损坏”对应 "
+      },
+      {
+        "type": "text",
+        "text": "broken",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "cracked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -449,7 +1159,155 @@
         }
       }
     ],
-    "explanation": "选项 b 正确，近处复数使用指示代词 these，后接复数名词 parts，谓语动词搭配复数 are。选项 a 中单数指示代词 this 不能修饰复数名词 parts；选项 c 中 those 修饰复数主语却误用了单数动词 is；选项 d 中单数 that 不能修饰复数 parts。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "These parts are OK.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。近处复数使用指示代词 "
+      },
+      {
+        "type": "text",
+        "text": "these",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，后接复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，谓语动词搭配复数 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "This parts are OK.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中单数指示代词 "
+      },
+      {
+        "type": "text",
+        "text": "this",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不能修饰复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "Those parts is OK.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰复数主语却误用了单数动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "That parts are OK.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中单数 "
+      },
+      {
+        "type": "text",
+        "text": "that",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不能修饰复数 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -494,7 +1352,166 @@
         }
       }
     ],
-    "explanation": "选项 d 正确，询问远处单个箱子（远指单数），指示代词选用 that，名词 box 为单数，一般疑问句使用单数 be 动词 Is 开头。选项 a 中 these 为近指复数且与单数 box 冲突；选项 b 中 this 属于近指代词；选项 c 中 those 是复数代词且动词误用 Are 搭配单数 box。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "Is that box full?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。询问远处单个箱子（远指单数），指示代词选用 "
+      },
+      {
+        "type": "text",
+        "text": "that",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，名词 "
+      },
+      {
+        "type": "text",
+        "text": "box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为单数，一般疑问句使用单数 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "Is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头。“"
+      },
+      {
+        "type": "text",
+        "text": "Are these box full?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "these",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为近指复数且与单数 "
+      },
+      {
+        "type": "text",
+        "text": "box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 冲突；“"
+      },
+      {
+        "type": "text",
+        "text": "Is this box full?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "this",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于近指代词；“"
+      },
+      {
+        "type": "text",
+        "text": "Are those box full?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是复数代词且动词误用 "
+      },
+      {
+        "type": "text",
+        "text": "Are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配单数 "
+      },
+      {
+        "type": "text",
+        "text": "box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -539,7 +1556,166 @@
         }
       }
     ],
-    "explanation": "选项 a（This bolt is tight.）单数代词 This 修饰单数名词 bolt 并搭配单数 is，语法正确；选项 d（Those bins are clean.）远指复数代词 Those 修饰复数名词 bins 并搭配复数 are，语法正确。选项 b 中 These 应搭配复数名词和 are；选项 c 中 That 不能修饰复数 parts。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "This bolt is tight.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”和“"
+      },
+      {
+        "type": "text",
+        "text": "Those bins are clean.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。单数代词 "
+      },
+      {
+        "type": "text",
+        "text": "This",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰单数名词 "
+      },
+      {
+        "type": "text",
+        "text": "bolt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 并搭配单数 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；远指复数代词 "
+      },
+      {
+        "type": "text",
+        "text": "Those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "bins",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 并搭配复数 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "These bolt is loose.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "These",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 应搭配复数名词和 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "That parts are broken.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "That",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不能修饰复数 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -571,9 +1747,58 @@
         "text": "。判断：该说法是否正确？"
       }
     ],
-    "explanation": "该陈述错误。手里拿着两件近处工件属于“近指复数”，指示代词必须使用 These，因此正确表达应为 These parts are cracked.；That 是单数远指代词，不仅空间指向错误，而且不能修饰复数名词 parts。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "该陈述错误。手里拿着两件近处工件属于“近指复数”，指示代词必须使用 "
+      },
+      {
+        "type": "text",
+        "text": "These",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此正确表达应为“"
+      },
+      {
+        "type": "text",
+        "text": "These parts are cracked.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      },
+      {
+        "type": "text",
+        "text": "That",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是单数远指代词，不仅空间指向错误，而且不能修饰复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -618,7 +1843,67 @@
         "text": "远处料架上的那一个物料箱"
       }
     ],
-    "explanation": "选项 a 正确，those 表示“远指复数”（那些），修饰复数名词 boxes，因此指的是远处料架上的多个物料箱。选项 b 对应 this box；选项 c 对应 these boxes；选项 d 对应 that box。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“远处料架上的那几个物料箱”。"
+      },
+      {
+        "type": "text",
+        "text": "those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“远指复数”（那些），修饰复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "boxes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此指的是远处料架上的多个物料箱。“手边近处的这一个物料箱”对应 "
+      },
+      {
+        "type": "text",
+        "text": "this box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“手边近处的这几个物料箱”对应 "
+      },
+      {
+        "type": "text",
+        "text": "these boxes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“远处料架上的那一个物料箱”对应 "
+      },
+      {
+        "type": "text",
+        "text": "that box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -638,32 +1923,167 @@
         "id": "a",
         "text": "This bolt is longer 2 mm than that one.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "This bolt is longer two millimeters than that one."
         }
       },
       {
         "id": "b",
         "text": "This bolt is 2 mm more long than that one.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "This bolt is two millimeters more long than that one."
         }
       },
       {
         "id": "c",
         "text": "This bolt is 2 mm longer than that one.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "This bolt is two millimeters longer than that one."
         }
       },
       {
         "id": "d",
         "text": "This bolt is 2 mm longer that one.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "This bolt is two millimeters longer that one."
         }
       }
     ],
-    "explanation": "选项 c 正确，单音节形容词 long 的比较级为 longer，差值短语 2 mm 应当置于比较级之前，后接介词 than 引出比较对象 that one。选项 a 差值位置后置错误；选项 b 错误使用了 more long；选项 d 遗漏了比较介词 than。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "This bolt is 2 mm longer than that one.",
+        "tts": {
+          "voice": "stella",
+          "text": "This bolt is two millimeters longer than that one."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。单音节形容词 "
+      },
+      {
+        "type": "text",
+        "text": "long",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的比较级为 "
+      },
+      {
+        "type": "text",
+        "text": "longer",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，差值短语 "
+      },
+      {
+        "type": "text",
+        "text": "2 mm",
+        "tts": {
+          "voice": "stella",
+          "text": "two millimeters"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 应当置于比较级之前，后接介词 "
+      },
+      {
+        "type": "text",
+        "text": "than",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 引出比较对象 "
+      },
+      {
+        "type": "text",
+        "text": "that one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "This bolt is longer 2 mm than that one.",
+        "tts": {
+          "voice": "stella",
+          "text": "This bolt is longer two millimeters than that one."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”差值位置后置错误；“"
+      },
+      {
+        "type": "text",
+        "text": "This bolt is 2 mm more long than that one.",
+        "tts": {
+          "voice": "stella",
+          "text": "This bolt is two millimeters more long than that one."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误使用了 "
+      },
+      {
+        "type": "text",
+        "text": "more long",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "This bolt is 2 mm longer that one.",
+        "tts": {
+          "voice": "stella",
+          "text": "This bolt is two millimeters longer that one."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”遗漏了比较介词 "
+      },
+      {
+        "type": "text",
+        "text": "than",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -695,7 +2115,7 @@
       },
       {
         "id": "c",
-        "text": "Part A is heavyer than Part B.",
+        "text": "Part A is heaviest than Part B.",
         "tts": {
           "voice": "stella"
         }
@@ -708,7 +2128,111 @@
         }
       }
     ],
-    "explanation": "选项 b 正确，heavy 是以辅音字母加 y 结尾的双音节形容词，其比较级变化规则为变 y 为 i 加 -er，即 heavier。选项 a 错误使用了 more heavy；选项 c 拼写错误（未变 y 为 i）；选项 d 中 worse 表示更差，不能表达重量对比。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "Part A is heavier than Part B.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      },
+      {
+        "type": "text",
+        "text": "heavy",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是以辅音字母加 y 结尾的双音节形容词，其比较级变化规则为变 y 为 i 加 `-er`，即 "
+      },
+      {
+        "type": "text",
+        "text": "heavier",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "Part A is more heavy than Part B.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误使用了 "
+      },
+      {
+        "type": "text",
+        "text": "more heavy",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "Part A is heaviest than Part B.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了最高级 "
+      },
+      {
+        "type": "text",
+        "text": "heaviest",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配 "
+      },
+      {
+        "type": "text",
+        "text": "than",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "worse",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示更差，不能表达重量对比。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -726,34 +2250,104 @@
     "options": [
       {
         "id": "a",
-        "text": "good -> gooder",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "good -> gooder"
       },
       {
         "id": "b",
-        "text": "good -> better",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "good -> better"
       },
       {
         "id": "c",
-        "text": "bad -> worse",
+        "text": "bad -> worse"
+      },
+      {
+        "id": "d",
+        "text": "short -> more short"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是 `good -> better` 和 `bad -> worse`，两者均为标准英语中的不规则比较级变化，在质检交接中经常使用。"
+      },
+      {
+        "type": "text",
+        "text": "good",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "short -> more short",
+        "type": "text",
+        "text": " 的比较级是 "
+      },
+      {
+        "type": "text",
+        "text": "better",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": "（不是错误拼写 `gooder`）；"
+      },
+      {
+        "type": "text",
+        "text": "bad",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的比较级是 "
+      },
+      {
+        "type": "text",
+        "text": "worse",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；单音节词 "
+      },
+      {
+        "type": "text",
+        "text": "short",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的比较级应为 "
+      },
+      {
+        "type": "text",
+        "text": "shorter",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，而不是 "
+      },
+      {
+        "type": "text",
+        "text": "more short",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
       }
     ],
-    "explanation": "选项 b（good -> better）和选项 c（bad -> worse）均为标准英语中的不规则比较级变化，在质检交接（如品质更好/更差）中经常使用，完全正确。选项 a 错误，good 的比较级是 better 而非 gooder；选项 d 错误，单音节词 short 的比较级应为 shorter。",
     "grading": {
       "choice_ids": [
         "b",
@@ -777,7 +2371,8 @@
         "type": "text",
         "text": "This pin is 1 mm shorter than that one.",
         "tts": {
-          "voice": "tide"
+          "voice": "tide",
+          "text": "This pin is one millimeter shorter than that one."
         }
       },
       {
@@ -785,9 +2380,69 @@
         "text": " 中，one 是一个代词，用来指代前文提到过的单数名词 pin，以避免名词重复。判断：该说法是否正确？"
       }
     ],
-    "explanation": "该陈述正确。在比较级句子中，常用代词 one 替代前文出现的单数可数名词（如 pin、part、bolt），复数则用 ones 替代，这种表达简洁且符合规范工位英语习惯。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "该陈述正确。在比较级句子中，常用代词 "
+      },
+      {
+        "type": "text",
+        "text": "one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 替代前文出现的单数可数名词（如 "
+      },
+      {
+        "type": "text",
+        "text": "pin",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "bolt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），复数则用 "
+      },
+      {
+        "type": "text",
+        "text": "ones",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 替代，这种表达简洁且符合规范工位英语习惯。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -832,7 +2487,67 @@
         "text": "A 批次比 B 批次的质量更好"
       }
     ],
-    "explanation": "选项 d 正确，better 是形容词 good 的比较级，句意为“A 批次质量比 B 批次更好”。选项 a 是重量对比（对应 heavier）；选项 b 是更差（对应 worse）；选项 c 是尺寸更小（对应 smaller）。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“A 批次比 B 批次的质量更好”。"
+      },
+      {
+        "type": "text",
+        "text": "better",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是形容词 "
+      },
+      {
+        "type": "text",
+        "text": "good",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的比较级，句意为“A 批次质量比 B 批次更好”。“A 批次比 B 批次更重”对应 "
+      },
+      {
+        "type": "text",
+        "text": "heavier",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“A 批次比 B 批次的质量更差”对应 "
+      },
+      {
+        "type": "text",
+        "text": "worse",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“A 批次比 B 批次尺寸更小”对应 "
+      },
+      {
+        "type": "text",
+        "text": "smaller",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -851,104 +2566,296 @@
       "value": "4",
       "absolute_tolerance": "0"
     },
-    "explanation": "100 - 96 = 4 件不良品。"
+    "analysis": "100 - 96 = 4 件不良品。"
   },
   {
     "id": "describing-parts-num-2",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "形容词比较级",
     "concepts": [
       "comparatives"
     ],
-    "stem": "听质检对比录音，回答后面的问题：\nHow many millimeters longer is Part A than Part B?（零件A比零件B长多少毫米？请用阿拉伯数字作答）",
+    "stem": "听质检对比录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
         "text": "Part A is 35 mm long, and Part B is 30 mm long.",
         "tts": {
-          "voice": "tide"
+          "voice": "tide",
+          "text": "Part A is thirty-five millimeters long, and Part B is thirty millimeters long."
         }
       },
       {
         "speaker": "W",
         "text": "So Part A is 5 mm longer than Part B.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "So Part A is five millimeters longer than Part B."
         }
       }
     ],
-    "grading": {
-      "value": "5",
-      "absolute_tolerance": "0"
-    },
-    "explanation": "35 - 30 = 5 mm。"
+    "sub_questions": [
+      {
+        "id": "length-diff",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many millimeters longer is Part A than Part B?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（A零件比B零件长几毫米？请用阿拉伯数字作答）"
+          }
+        ],
+        "grading": {
+          "value": "5",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中提到 "
+          },
+          {
+            "type": "text",
+            "text": "Part A is 35 mm long",
+            "tts": {
+              "voice": "stella",
+              "text": "Part A is thirty-five millimeters long"
+            }
+          },
+          {
+            "type": "text",
+            "text": "、"
+          },
+          {
+            "type": "text",
+            "text": "Part B is 30 mm long",
+            "tts": {
+              "voice": "stella",
+              "text": "Part B is thirty millimeters long"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，两者相差 35 - 30 = 5 毫米。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话对比两个零件的长度并计算差值，听音时注意捕捉数字和比较结构 "
+      },
+      {
+        "type": "text",
+        "text": "5 mm longer than Part B",
+        "tts": {
+          "voice": "stella",
+          "text": "five millimeters longer than Part B"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   },
   {
     "id": "describing-parts-cloze-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "形容词比较级",
     "concepts": [
       "comparatives"
     ],
-    "stem": [
+    "stem": "质检对比两根金属轴，想表达“这根轴比那根更重”，请为句中空缺处选择正确的形容词比较级。",
+    "passage": "This shaft is {{1}} than that one.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "This shaft is heavier than that one."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "质检对比两根金属轴，想表达\"这根轴比那根更重\"，横线处应填入哪个形容词比较级？\nThis shaft is "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " than that one."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "heavier",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "heavy",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "heaviest",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "more heavy",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "heavy",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是以辅音字母加 y 结尾的形容词，比较级变 y 为 i 加 `-er`，即 "
+          },
+          {
+            "type": "text",
+            "text": "heavier",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "；"
+          },
+          {
+            "type": "text",
+            "text": "heavy",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是原级，"
+          },
+          {
+            "type": "text",
+            "text": "heaviest",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是最高级，均不与 "
+          },
+          {
+            "type": "text",
+            "text": "than",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 连用。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
-        "text": "heavier",
+        "type": "text",
+        "text": "句中有比较介词 "
+      },
+      {
+        "type": "text",
+        "text": "than",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "，需填入比较级形式。"
+      },
+      {
+        "type": "text",
         "text": "heavy",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
-        "text": "heaviest",
+        "type": "text",
+        "text": " 以辅音字母加 y 结尾，比较级应变为 "
+      },
+      {
+        "type": "text",
+        "text": "heavier",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": "，不能加 "
+      },
+      {
+        "type": "text",
+        "text": "more",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 构成 "
+      },
+      {
+        "type": "text",
         "text": "more heavy",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": "。"
       }
-    ],
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    },
-    "explanation": "heavy 以辅音字母加 y 结尾，比较级变 y 为 i 加 -er，即 heavier。"
+    ]
   },
   {
     "id": "describing-parts-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "颜色与形状",
     "concepts": [
       "colors-shapes"
     ],
-    "stem": "听外观质检录音，选择有划痕缺陷的托盘颜色：",
+    "stem": "听外观质检录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -965,41 +2872,103 @@
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "The blue tray",
+        "id": "scratched-tray",
+        "type": "single_choice",
+        "stem": "选择有划痕缺陷的托盘颜色：",
+        "options": [
+          {
+            "id": "a",
+            "text": "The blue tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "The red tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "The green tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "The yellow tray",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中质检员明确指出“"
+          },
+          {
+            "type": "text",
+            "text": "The red tray has five scratched parts.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "”，因此有划痕缺陷的托盘是 "
+          },
+          {
+            "type": "text",
+            "text": "The red tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话围绕划痕缺陷零件所在托盘的颜色展开，听音时注意关键词 "
+      },
+      {
+        "type": "text",
+        "text": "scratched parts",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": " 与对应的颜色托盘 "
+      },
+      {
+        "type": "text",
         "text": "The red tray",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
-        "text": "The green tray",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "The yellow tray",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": "。"
       }
-    ],
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    },
-    "explanation": "录音中明确指出 \"The red tray has five scratched parts\"。"
+    ]
   }
 ]

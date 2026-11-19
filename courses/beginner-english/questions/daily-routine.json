@@ -1,61 +1,146 @@
 [
   {
     "id": "days-dates-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "星期、月份与日期",
     "concepts": [
       "days-dates"
     ],
-    "stem": [
+    "stem": "在桌面质检分拣工位上，质检员记录传感器校准日程。若要表达“校准将在星期一进行”，请选择正确的介词填空。",
+    "passage": "The calibration is {{1}} Monday.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The calibration is on Monday."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "在桌面质检分拣工位上，质检员记录传感器校准日程。若要表达“校准将在星期一进行”，下列介词填空正确的是：\nThe calibration is "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " Monday."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "to",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "在具体的星期（如 "
+          },
+          {
+            "type": "text",
+            "text": "Monday",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）前必须使用时间介词 "
+          },
+          {
+            "type": "text",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
-        "text": "at",
+        "type": "text",
+        "text": "在具体的星期（如 "
+      },
+      {
+        "type": "text",
+        "text": "Monday",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "）前必须使用时间介词 "
+      },
+      {
+        "type": "text",
         "text": "on",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "。"
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用于具体钟点时刻，"
+      },
+      {
+        "type": "text",
         "text": "in",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 用于月份或年份，"
+      },
+      {
+        "type": "text",
         "text": "to",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 表示方向或终点，均不符合时间介词规则。"
       }
-    ],
-    "explanation": "在具体的星期（如 Monday）前必须使用时间介词 on。at 用于具体钟点时刻，in 用于月份或年份，to 表示方向或终点，均不符合时间介词规则。",
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    }
+    ]
   },
   {
     "id": "days-dates-2",
@@ -71,10 +156,7 @@
       },
       {
         "type": "text",
-        "text": "March 3rd",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "March 3rd"
       },
       {
         "type": "text",
@@ -111,7 +193,56 @@
         }
       }
     ],
-    "explanation": "英语中日期的序数词 3rd 规范朗读为 the third，整个日期读作 March the third（或 the third of March）。直接使用基数词 three 属于常见口误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "英语中日期的序数词 `3rd` 规范朗读为 "
+      },
+      {
+        "type": "text",
+        "text": "the third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，整个日期读作 "
+      },
+      {
+        "type": "text",
+        "text": "March the third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（或 "
+      },
+      {
+        "type": "text",
+        "text": "the third of March",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。直接使用基数词 "
+      },
+      {
+        "type": "text",
+        "text": "three",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于常见口误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -156,7 +287,133 @@
         }
       }
     ],
-    "explanation": "单独月份 May 前使用介词 in，表达正确；具体日期 May 12th 前使用介词 on，表达正确。选项 b 中星期 Friday 前应使用 on 而非 in；选项 d 中年份 2026 前应使用 in 而非 on。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "单独月份 "
+      },
+      {
+        "type": "text",
+        "text": "May",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，具体日期 "
+      },
+      {
+        "type": "text",
+        "text": "May 12th",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此“"
+      },
+      {
+        "type": "text",
+        "text": "The new batch arrives in May.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”和“"
+      },
+      {
+        "type": "text",
+        "text": "The maintenance is on May 12th.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。星期 "
+      },
+      {
+        "type": "text",
+        "text": "Friday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前应使用 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；年份 2026 前应使用 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -199,9 +456,58 @@
         "text": "）的首字母无论位于句首还是句中，都必须大写。"
       }
     ],
-    "explanation": "英文中的星期（Monday 至 Sunday）和月份（January 至 December）属于专有名词，首字母在句子的任何位置都必须大写。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "英文中的星期（"
+      },
+      {
+        "type": "text",
+        "text": "Monday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 至 "
+      },
+      {
+        "type": "text",
+        "text": "Sunday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）和月份（"
+      },
+      {
+        "type": "text",
+        "text": "January",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 至 "
+      },
+      {
+        "type": "text",
+        "text": "December",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）属于专有名词，首字母在句子的任何位置都必须大写。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -218,10 +524,7 @@
       },
       {
         "type": "text",
-        "text": "21st batch",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "21st batch"
       },
       {
         "type": "text",
@@ -258,7 +561,56 @@
         }
       }
     ],
-    "explanation": "基数词 21（twenty-one）对应的序数词为 twenty-first，缩写为 21st。twenty-one 是基数词，twentieth-one 为错误拼写，twelfth 表示第十二。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "基数词 21（"
+      },
+      {
+        "type": "text",
+        "text": "twenty-one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）对应的序数词为 "
+      },
+      {
+        "type": "text",
+        "text": "twenty-first",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，缩写为 `21st`。"
+      },
+      {
+        "type": "text",
+        "text": "twenty-one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是基数词，`twentieth-one` 为错误拼写，"
+      },
+      {
+        "type": "text",
+        "text": "twelfth",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示第十二。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -303,7 +655,67 @@
         }
       }
     ],
-    "explanation": "询问地点使用特殊疑问词 Where，含有 be 动词的疑问句语序为“疑问词 + be 动词 + 主语”，因此 Where is the reject box? 正确。选项 a 未倒装，选项 b 询问物品是什么，选项 d 缺少实义动词。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问地点使用特殊疑问词 "
+      },
+      {
+        "type": "text",
+        "text": "Where",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，含有 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词的疑问句语序为“疑问词 + "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 + 主语”，因此 "
+      },
+      {
+        "type": "text",
+        "text": "Where is the reject box?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确。`Where the reject box is?` 未倒装，"
+      },
+      {
+        "type": "text",
+        "text": "What is the reject box?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问物品是什么，`Where does the reject box?` 缺少实义动词。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -348,7 +760,89 @@
         }
       }
     ],
-    "explanation": "工件 parts 是可数名词复数，询问数量使用 How many 加复数名词，be 动词使用 are。How much 用于不可数名词，What time 询问时间，选项 c 主谓单复数不一致。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "工件 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是可数名词复数，询问数量使用 "
+      },
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 加复数名词，"
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词使用 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此 "
+      },
+      {
+        "type": "text",
+        "text": "How many good parts are in the bin?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确。"
+      },
+      {
+        "type": "text",
+        "text": "How much",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用于不可数名词，"
+      },
+      {
+        "type": "text",
+        "text": "What time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问时间，`How many is the good parts in the bin?` 主谓单复数不一致。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -368,32 +862,140 @@
         "id": "a",
         "text": "What time does the sorting start? —— Yes, it does.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "What time does the sorting start? Yes, it does."
         }
       },
       {
         "id": "b",
         "text": "Where is the camera? —— On the bracket.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "Where is the camera? On the bracket."
         }
       },
       {
         "id": "c",
         "text": "Who is the technician today? —— In the workshop.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "Who is the technician today? In the workshop."
         }
       },
       {
         "id": "d",
         "text": "How many defective parts are there? —— Three parts.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "How many defective parts are there? Three parts."
         }
       }
     ],
-    "explanation": "选项 b 询问位置 Where，回答在支架上 On the bracket.，搭配合理；选项 d 询问数量 How many，直接回答数量 Three parts.，搭配合理。选项 a 为特殊疑问句，不能用 Yes/No 作答；选项 c 询问人员 Who，回答地点属于答非所问。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问位置 "
+      },
+      {
+        "type": "text",
+        "text": "Where",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时回答在支架上（"
+      },
+      {
+        "type": "text",
+        "text": "On the bracket.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），询问数量 "
+      },
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时直接回答数量（"
+      },
+      {
+        "type": "text",
+        "text": "Three parts.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），这两组问答搭配合理。"
+      },
+      {
+        "type": "text",
+        "text": "What time does the sorting start?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为特殊疑问句，不能用 "
+      },
+      {
+        "type": "text",
+        "text": "Yes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "No",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 作答；"
+      },
+      {
+        "type": "text",
+        "text": "Who is the technician today?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问人员，回答地点 "
+      },
+      {
+        "type": "text",
+        "text": "In the workshop.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于答非所问。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -436,9 +1038,76 @@
         "text": " 简短回答。"
       }
     ],
-    "explanation": "What 引导的是特殊疑问句，用于询问具体检查的物品或操作（如 The sensor.），不能用 Yes 或 No 回答；Yes, I do. 仅用于回答 Do you...? 引导的一般疑问句。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "What",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 引导的是特殊疑问句，用于询问具体检查的物品或操作（如 "
+      },
+      {
+        "type": "text",
+        "text": "The sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），不能用 "
+      },
+      {
+        "type": "text",
+        "text": "Yes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "No",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 回答；"
+      },
+      {
+        "type": "text",
+        "text": "Yes, I do.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 仅用于回答 "
+      },
+      {
+        "type": "text",
+        "text": "Do you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头的一般疑问句。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -479,7 +1148,89 @@
         }
       }
     ],
-    "explanation": "含有实义动词的特殊疑问句语序为“疑问词 + 助动词 (do/does) + 主语 + 动词原形”。主语 the servo flap 是单数，助动词用 does，动词还原为 move。选项 a 缺少助动词，选项 b 语序错误，选项 c 混淆了 be 动词与助动词。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "含有实义动词的特殊疑问句语序为“疑问词 + 助动词（"
+      },
+      {
+        "type": "text",
+        "text": "do",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）+ 主语 + 动词原形”。主语 "
+      },
+      {
+        "type": "text",
+        "text": "the servo flap",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是单数，助动词用 "
+      },
+      {
+        "type": "text",
+        "text": "does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，动词还原为 "
+      },
+      {
+        "type": "text",
+        "text": "move",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "When does the servo flap move?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`When the servo flap moves?` 缺少助动词，`When moves the servo flap?` 语序错误，`When is the servo flap move?` 混淆了 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词与助动词。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -493,7 +1244,34 @@
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": "质检员描述自己的工位操作规范：“我总是先检查传感器。”使用频率副词 `always` 和动词 `check`，正确的语序是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检员描述自己的工位操作规范：“我总是先检查传感器。”使用频率副词 "
+      },
+      {
+        "type": "text",
+        "text": "always",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和动词 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，正确的语序是："
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -524,7 +1302,78 @@
         }
       }
     ],
-    "explanation": "频率副词修饰实义动词时应置于实义动词之前。check 为实义动词，因此 always 必须放在 check 之前，即 I always check...。选项 a 放在动词之后，选项 d 误加了 be 动词 am。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "频率副词修饰实义动词时应置于实义动词之前。"
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为实义动词，因此 "
+      },
+      {
+        "type": "text",
+        "text": "always",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 必须放在 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前，即 "
+      },
+      {
+        "type": "text",
+        "text": "I always check the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`I check always the sensor.` 把频率副词放在动词之后，`I am always check the sensor.` 误加了 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "am",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -538,7 +1387,34 @@
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": "质检员向维修工说明单片机控制的挡板状态：“舵机挡板从不卡顿。”使用频率副词 `never` 与状态系表结构 `is stuck`，正确的语序是：",
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检员向维修工说明单片机控制的挡板状态：“舵机挡板从不卡顿。”使用频率副词 "
+      },
+      {
+        "type": "text",
+        "text": "never",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与状态系表结构 "
+      },
+      {
+        "type": "text",
+        "text": "is stuck",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，正确的语序是："
+      }
+    ],
     "options": [
       {
         "id": "a",
@@ -569,7 +1445,89 @@
         }
       }
     ],
-    "explanation": "频率副词在含有 be 动词的句子中必须放在 be 动词之后。本句 be 动词为 is，因此 never 应紧跟在 is 之后构成 is never stuck。其余选项的副词位置均不符合语法规则。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "频率副词在含有 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词的句子中必须放在 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词之后。本句 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词为 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此 "
+      },
+      {
+        "type": "text",
+        "text": "never",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 应紧跟在 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之后构成 "
+      },
+      {
+        "type": "text",
+        "text": "is never stuck",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。其余选项的副词位置均不符合语法规则。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -630,7 +1588,122 @@
         }
       }
     ],
-    "explanation": "选项 a 中频次短语 twice a week（一周两次）放在句末，语法正确；选项 d 中 usually 位于实义动词 clean 之前，句末搭配 every day 表示通常每天清洁，语法正确。选项 b 中 often 错误地置于动词与宾语之间；选项 c 中星期 Monday 前应使用 on 而非 at。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "I clean it twice a week.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中频次短语 "
+      },
+      {
+        "type": "text",
+        "text": "twice a week",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（一周两次）放在句末，语法正确；“"
+      },
+      {
+        "type": "text",
+        "text": "I usually clean it every day.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "usually",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 位于实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前，句末搭配 "
+      },
+      {
+        "type": "text",
+        "text": "every day",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，语法正确。`I clean often it.` 将 "
+      },
+      {
+        "type": "text",
+        "text": "often",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 错误地置于动词与宾语之间；`I clean it at Monday.` 中星期 "
+      },
+      {
+        "type": "text",
+        "text": "Monday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前应使用 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -673,68 +1746,158 @@
         "text": " 表示“有时发生”。"
       }
     ],
-    "explanation": "在频率副词的词义程度中，never 表示发生频度为零（从不），sometimes 表示发生频度较低（有时），说法完全符合词义定义。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "在频率副词的词义程度中，"
+      },
+      {
+        "type": "text",
+        "text": "never",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示发生频度为零（从不），"
+      },
+      {
+        "type": "text",
+        "text": "sometimes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示发生频度较低（有时），说法完全符合词义定义。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
     "id": "frequency-adverbs-5",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "频率副词",
     "concepts": [
       "frequency-adverbs"
     ],
-    "stem": [
+    "stem": "质检员想询问同事“你多久清空一次不合格品料盒？”，请选择空缺处应填入的疑问短语。",
+    "passage": "{{1}} do you empty the reject box?",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "How often do you empty the reject box?"
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "质检员想询问同事“你多久清空一次不合格品料盒？”，空缺处应填入的疑问短语是：\n"
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " do you empty the reject box?"
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "How often",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "How many",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "How much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "What time",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "询问动作发生的频率固定使用疑问词组 "
+          },
+          {
+            "type": "text",
+            "text": "How often",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "询问动作发生的频率固定使用疑问词组 "
+      },
+      {
+        "type": "text",
         "text": "How often",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "。"
+      },
+      {
+        "type": "text",
         "text": "How many",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": " 询问可数数量，"
+      },
+      {
+        "type": "text",
         "text": "How much",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 询问不可数数量或价格，"
+      },
+      {
+        "type": "text",
         "text": "What time",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 询问具体钟点时刻。"
       }
-    ],
-    "explanation": "询问动作发生的频率固定使用疑问词组 How often。How many 询问可数数量，How much 询问不可数数量或价格，What time 询问具体钟点时刻。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "shift-schedule-1",
@@ -749,32 +1912,97 @@
         "id": "a",
         "text": "My shift start at 8:00 a.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "My shift start at eight a.m."
         }
       },
       {
         "id": "b",
         "text": "My shift is start at 8:00 a.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "My shift is start at eight a.m."
         }
       },
       {
         "id": "c",
         "text": "My shift starting on 8:00 a.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "My shift starting on eight a.m."
         }
       },
       {
         "id": "d",
         "text": "My shift starts at 8:00 a.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "My shift starts at eight a.m."
         }
       }
     ],
-    "explanation": "主语 My shift 是第三人称单数，一般现在时中实义动词 start 必须加 s 变为 starts，具体钟点前使用介词 at。选项 a 动词缺少词尾 s，选项 b 结构混乱，选项 c 缺少谓语动词且介词错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "My shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是第三人称单数，一般现在时中实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "start",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 必须加词尾 `s` 变为 "
+      },
+      {
+        "type": "text",
+        "text": "starts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，具体钟点前使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "My shift starts at 8:00 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "My shift starts at eight a.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`My shift start at 8:00 a.m.` 动词缺少词尾 `s`，`My shift is start at 8:00 a.m.` 助动词与原形动词混用，`My shift starting on 8:00 a.m.` 缺少谓语动词且介词错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -794,32 +2022,141 @@
         "id": "a",
         "text": "The break is between 12:00 to 12:30.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The break is between twelve to twelve thirty."
         }
       },
       {
         "id": "b",
         "text": "The break is on 12:00 at 12:30.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The break is on twelve at twelve thirty."
         }
       },
       {
         "id": "c",
         "text": "The break is from 12:00 to 12:30.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The break is from twelve to twelve thirty."
         }
       },
       {
         "id": "d",
         "text": "The break starts in 12:00 to 12:30.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The break starts in twelve to twelve thirty."
         }
       }
     ],
-    "explanation": "表达“从某时到某时”的时间区间固定搭配为 from ... to ...。选项 a 混淆了 between... and... 与 from... to...，选项 b 和 d 介词搭配完全错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表达“从某时到某时”的时间区间固定搭配为 "
+      },
+      {
+        "type": "text",
+        "text": "from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ... "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ...，因此正确答案是 "
+      },
+      {
+        "type": "text",
+        "text": "The break is from 12:00 to 12:30.",
+        "tts": {
+          "voice": "stella",
+          "text": "The break is from twelve to twelve thirty."
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`The break is between 12:00 to 12:30.` 混淆了 "
+      },
+      {
+        "type": "text",
+        "text": "between",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ... "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ... 与 "
+      },
+      {
+        "type": "text",
+        "text": "from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ... "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ...，其余带有 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的表达介词搭配错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -839,7 +2176,8 @@
         "id": "a",
         "text": "I finish work on 4:00 p.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "I finish work on four p.m."
         }
       },
       {
@@ -853,7 +2191,8 @@
         "id": "c",
         "text": "The day shift finishes at 4:30 p.m.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The day shift finishes at four thirty p.m."
         }
       },
       {
@@ -864,7 +2203,135 @@
         }
       }
     ],
-    "explanation": "选项 b 表达上夜班使用固定短语 on the night shift，表达正确；选项 c 表达白班在 4:30 结束，第三人称单数动词 finishes 与介词 at 均正确。选项 a 中具体钟点 4:00 p.m. 前应使用 at 而非 on；选项 d 中具体某一天的上午 Monday morning 前应使用介词 on 而非 in。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "I am on the night shift this week.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”使用固定短语 "
+      },
+      {
+        "type": "text",
+        "text": "on the night shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达上夜班，正确；“"
+      },
+      {
+        "type": "text",
+        "text": "The day shift finishes at 4:30 p.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "The day shift finishes at four thirty p.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中第三人称单数动词 "
+      },
+      {
+        "type": "text",
+        "text": "finishes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与介词 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均正确。具体钟点 "
+      },
+      {
+        "type": "text",
+        "text": "4:00 p.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "four p.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前应使用 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；具体某一天的上午 "
+      },
+      {
+        "type": "text",
+        "text": "Monday morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前应使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -896,9 +2363,47 @@
         "text": "。"
       }
     ],
-    "explanation": "表达在某个班次上工作，英语中规范使用介词 on，即 on the morning shift，不能搭配介词 at。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表达在某个班次上工作，英语中规范使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，即 "
+      },
+      {
+        "type": "text",
+        "text": "on the morning shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，不能搭配介词 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -939,7 +2444,100 @@
         }
       }
     ],
-    "explanation": "询问具体时间使用 What time，主语 your shift 为第三人称单数，实义动词 finish 的疑问句需要助动词 does，构成 What time does your shift finish?。选项 a 缺少助动词，选项 c 询问地点 Where，选项 d 助动词误用 be 动词 is。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问具体时间使用 "
+      },
+      {
+        "type": "text",
+        "text": "What time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，主语 "
+      },
+      {
+        "type": "text",
+        "text": "your shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为第三人称单数，实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "finish",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的疑问句需要助动词 "
+      },
+      {
+        "type": "text",
+        "text": "does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，构成 "
+      },
+      {
+        "type": "text",
+        "text": "What time does your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`What time your shift finish?` 缺少助动词，"
+      },
+      {
+        "type": "text",
+        "text": "Where does your shift finish?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问地点，而 `What time is your shift finish?` 助动词误用了 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -958,16 +2556,21 @@
       "value": "7",
       "absolute_tolerance": "0"
     },
-    "explanation": "8:00 到 16:30 共 8.5 小时，减去午休 1.5 小时，实际工时为 7 小时。"
+    "analysis": "8:00 到 16:30 共 8.5 小时，减去午休 1.5 小时，实际工时为 7 小时。"
   },
   {
     "id": "daily-routine-num-2",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "班次与日程",
     "concepts": [
       "shift-schedule"
     ],
-    "stem": "听班次安排通知录音，回答后面的问题：\nHow many night shifts does Li have this week?（小李本周有几个夜班？请用阿拉伯数字作答）",
+    "stem": "听班次沟通录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -984,71 +2587,244 @@
         }
       }
     ],
-    "grading": {
-      "value": "2",
-      "absolute_tolerance": "0"
-    },
-    "explanation": "录音中女声清楚回答 \"you have two night shifts this week\"，答案为 2。"
+    "sub_questions": [
+      {
+        "id": "night-shifts",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many night shifts does Li have this week?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（李这周有几个夜班？请用阿拉伯数字作答）"
+          }
+        ],
+        "grading": {
+          "value": "2",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中女声清楚回答 "
+          },
+          {
+            "type": "text",
+            "text": "you have two night shifts this week",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，其中 "
+          },
+          {
+            "type": "text",
+            "text": "two",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示 2，因此答案为 2。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话询问并确认本周夜班数量，听音时注意捕捉疑问句 "
+      },
+      {
+        "type": "text",
+        "text": "how many night shifts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及回答中的数字 "
+      },
+      {
+        "type": "text",
+        "text": "two",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与具体日期 "
+      },
+      {
+        "type": "text",
+        "text": "Thursday and Friday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   },
   {
     "id": "daily-routine-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "班次与日程",
     "concepts": [
       "shift-schedule"
     ],
-    "stem": "听班组早会通知录音，选择早会开始的准确时间：",
+    "stem": "听班组早会通知录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "W",
         "text": "Team, please remember that tomorrow morning meeting begins at 7:45 AM.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "Team, please remember that tomorrow morning meeting begins at seven forty-five a.m."
         }
       },
       {
         "speaker": "M",
         "text": "Got it. 7:45 AM at the briefing board.",
         "tts": {
-          "voice": "tide"
+          "voice": "tide",
+          "text": "Got it. Seven forty-five a.m. at the briefing board."
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "7:15 AM",
-        "tts": {
-          "voice": "stella"
-        }
+        "id": "meeting-time",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When does the morning meeting begin?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（早会什么时候开始？）"
+          }
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "7:15 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "Seven fifteen a.m."
+            }
+          },
+          {
+            "id": "b",
+            "text": "7:45 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "Seven forty-five a.m."
+            }
+          },
+          {
+            "id": "c",
+            "text": "8:00 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "Eight a.m."
+            }
+          },
+          {
+            "id": "d",
+            "text": "8:30 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "Eight thirty a.m."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中明确说明 "
+          },
+          {
+            "type": "text",
+            "text": "morning meeting begins at 7:45 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "morning meeting begins at seven forty-five a.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": "，可知早会开始时间为 "
+          },
+          {
+            "type": "text",
+            "text": "7:45 AM",
+            "tts": {
+              "voice": "stella",
+              "text": "seven forty-five a.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话通知次日早会的准确时间与集合地点，听音时重点捕捉时间表达 "
       },
       {
-        "id": "b",
+        "type": "text",
         "text": "7:45 AM",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "seven forty-five a.m."
         }
       },
       {
-        "id": "c",
-        "text": "8:00 AM",
+        "type": "text",
+        "text": " 与地点 "
+      },
+      {
+        "type": "text",
+        "text": "at the briefing board",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "8:30 AM",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": "。"
       }
-    ],
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    },
-    "explanation": "录音中明确说明 \"morning meeting begins at 7:45 AM\"。"
+    ]
   }
 ]

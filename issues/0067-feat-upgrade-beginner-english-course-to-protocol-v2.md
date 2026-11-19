@@ -1,7 +1,8 @@
 ---
 id: 0067
 type: feat
-status: open
+status: closed
+closed-by: 1f0cb79
 labels: [course, tts, v2]
 branch: feat/0067-upgrade-beginner-english-course-to-protocol-v2
 created: 2026-11-19
@@ -96,3 +97,10 @@ audio support on listening items, and clean browser/Go verification.
   the 3-turn dialogue (`['stella', 'tide', 'stella']`) via `DialoguePlayer`.
 - Keeping all 41 concept mappings unchanged preserves `tests/browser/course-roadmap.spec.ts`
   and existing learner concept mastery tracking.
+
+### Merge verification
+
+- Course validation reported 10 units, 216 items, and 41 concepts. The TTS audit
+  reported zero issues. The course contains 20 listening and 27 cloze items.
+- Type checking, all 57 frontend unit tests, Go tests, and all 15 browser tests
+  passed on the combined course and question navigation changes.
