@@ -46,6 +46,50 @@ test("clean v1 and v2 items pass with zero issues", () => {
       sample_response: "The delivery arrived.",
       sample_response_tts: { voice: "stella" },
     },
+    {
+      id: "clean-writing-paragraphs",
+      type: "writing",
+      subtype: "full_essay",
+      stem: "写一篇交班短文。",
+      sample_response: [
+        { type: "text", text: "First paragraph.", tts: { voice: "stella" } },
+        { type: "text", text: "\n\n" },
+        { type: "text", text: "Second paragraph.", tts: { voice: "stella" } },
+      ],
+    },
+    {
+      id: "clean-translation-en-to-zh",
+      type: "translation",
+      direction: "en_to_zh",
+      stem: "将下列提示译成中文。",
+      source_text: "Leave the signed checklist on the front desk.",
+      source_text_tts: { voice: "stella" },
+      reference_translation: "把已签字的清单留在前台。",
+    },
+    {
+      id: "clean-translation-zh-to-en",
+      type: "translation",
+      direction: "zh_to_en",
+      stem: "将下列提示译成英文。",
+      source_text: "把清单留在前台。",
+      reference_translation: "Leave the checklist on the front desk.",
+      reference_translation_tts: { voice: "stella" },
+    },
+    {
+      id: "clean-caps-override",
+      type: "reading_comprehension",
+      stem: "阅读通知。",
+      passage: [
+        { type: "text", text: "LOCKER ROOM NOTICE", tts: { voice: "stella", text: "Locker room notice." } },
+      ],
+    },
+    {
+      id: "clean-cloze-tts",
+      type: "cloze",
+      stem: "选词填空。",
+      passage: "Every worker {{1}} sign.",
+      passage_tts: { voice: "stella", text: "Every worker must sign." },
+    },
   ];
   assert.deepEqual(auditItems(items, "unit.json"), []);
 });
@@ -93,6 +137,36 @@ test("detects structural errors: options, shorthand, blanks, leaks, boundaries",
       stem: [{ type: "speech", text: "Silent" }],
       passage: [{ type: "text", text: "Read this", tts: { voice: "stella" } }],
     },
+    {
+      id: "bad-translation-en-to-zh",
+      type: "translation",
+      direction: "en_to_zh",
+      stem: "译成中文。",
+      source_text: "Stop the line.",
+    },
+    {
+      id: "bad-translation-zh-to-en",
+      type: "translation",
+      direction: "zh_to_en",
+      stem: "译成英文。",
+      source_text: "停线。",
+      reference_translation: "Stop the line.",
+    },
+    {
+      id: "bad-all-caps",
+      type: "reading_comprehension",
+      stem: "阅读通知。",
+      passage: [
+        { type: "text", text: "LOCKER ROOM NOTICE", tts: { voice: "stella" } },
+      ],
+    },
+    {
+      id: "bad-cloze-passage-tts",
+      type: "cloze",
+      stem: "选词填空。",
+      passage: "Every worker {{1}} sign.",
+      passage_tts: { voice: "stella", text: "Every worker {{1}} sign." },
+    },
   ];
   const issues = auditItems(items, "bad.json");
   const errorRules = new Set(
@@ -102,7 +176,9 @@ test("detects structural errors: options, shorthand, blanks, leaks, boundaries",
     "UNIFORM_OPTION_AUDIO", "TTS_BOOLEAN_SHORTHAND", "SEGMENT_WHITESPACE_BOUNDARY",
     "SEGMENT_QUOTE_BOUNDARY", "BLANK_TTS_COOCCURRENCE", "LISTENING_STEM_TTS_LEAK",
     "NON_SPEAKABLE_IN_TTS", "WRITING_MISSING_SAMPLE_TTS", "MIXED_ZH_EN_TTS",
-    "SPEECH_TYPE_WITHOUT_AUDIO",
+    "SPEECH_TYPE_WITHOUT_AUDIO", "TRANSLATION_MISSING_SOURCE_TTS",
+    "TRANSLATION_MISSING_REFERENCE_TTS", "ALL_CAPS_TTS_WITHOUT_OVERRIDE",
+    "CLOZE_PASSAGE_TTS_INCOMPLETE",
   ]) {
     assert.ok(errorRules.has(expected), `expected error rule ${expected}`);
   }

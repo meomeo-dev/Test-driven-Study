@@ -26,8 +26,14 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   const answer = card.getByRole('region', { name: '作答选项' });
   const analysis = card.getByRole('region', { name: '答案解析', exact: true });
   const submit = () => page.getByRole('button', { name: '提交答案' }).click();
+  const clozeSpeech: { text: string; voice: string }[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    clozeSpeech.push(route.request().postDataJSON());
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
   await page.goto(demo.link('cloze'));
   await expect(stem.getByText(/Every worker/)).toBeVisible();
+  await expect(stem.getByRole('button', { name: '播放发音', exact: true })).toHaveCount(0);
   await expect(answer.getByText(/Every worker/)).toHaveCount(0);
   await stem.getByRole('button', { name: '跳转到空格 1' }).click();
   await expect(answer.getByRole('radio', { name: 'must', exact: true })).toBeFocused();
@@ -35,6 +41,11 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   await expect(stem.getByRole('button', { name: '跳转到空格 1' })).toHaveText('must');
   await expect(card.getByText('本题得分比例：50%')).toHaveCount(0);
   await submit();
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => clozeSpeech[0]).toMatchObject({
+    text: 'Every worker must sign the checklist. Do not start the equipment without permission.',
+    voice: 'stella',
+  });
   await expect(answer.getByText(/Every worker/)).toHaveCount(0);
   await expect(answer.getByText('本题得分比例：50%')).toBeVisible();
   await expect(answer.getByText('你的答案：未作答')).toBeVisible();
@@ -60,9 +71,20 @@ test('cloze, reading, listening and translation can be answered and reviewed', a
   await expect(analysis.getByText(/第二位说话者明确说了 on the second shelf/)).toBeVisible();
   await expect(analysis.getByText(/before taking a pair/)).toBeVisible();
 
+  const translationSpeech: { text: string; voice: string }[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    translationSpeech.push(route.request().postDataJSON());
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
+
   await page.goto(demo.link('translation'));
   await expect(stem.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
   await expect(answer.getByText('Leave the signed checklist on the front desk.')).toHaveCount(0);
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => translationSpeech[0]).toMatchObject({
+    text: 'Leave the signed checklist on the front desk.',
+    voice: 'stella',
+  });
   await expect(card.getByText('参考译文', { exact: true })).toHaveCount(0);
   const translationInput = page.getByRole('textbox', { name: '中文译文' });
   await translationInput.fill('请将已签名的清单放在前台。');
@@ -85,9 +107,20 @@ test('cloze, listening and translation separate stem, answers and explanations i
   const answers = card.getByRole('region', { name: '参考答案' });
   const analysis = card.getByRole('region', { name: '答案解析', exact: true });
 
+  const translationSpeech: { text: string; voice: string }[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    translationSpeech.push(route.request().postDataJSON());
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
+
   await page.goto(demo.link('translation', 'memorize'));
   await expect(stem.getByText('Leave the signed checklist on the front desk.')).toBeVisible();
   await expect(answers.getByText('Leave the signed checklist on the front desk.')).toHaveCount(0);
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => translationSpeech[0]).toMatchObject({
+    text: 'Leave the signed checklist on the front desk.',
+    voice: 'stella',
+  });
   await expect(answers.getByRole('heading', { name: '参考译文' })).toBeVisible();
   await expect(answers.getByText('把已签字的清单留在前台。', { exact: true })).toBeVisible();
   await expect(answers.getByText('请将已签名的清单放在前台。')).toBeVisible();
@@ -95,10 +128,22 @@ test('cloze, listening and translation separate stem, answers and explanations i
   await expect(card.getByRole('textbox')).toHaveCount(0);
   await expect(analysis.getByText(/signed 在这里修饰 checklist/)).toBeVisible();
 
+  await page.goto(`/memorize?subject=${demo.subject}&question=${demo.bySource('sue1-extended-translation-zh-to-en')}`);
+  await answers.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => translationSpeech[1]).toMatchObject({
+    text: 'Please hand the signed checklist to the next shift and put the empty boxes by the loading door before three p.m.',
+    voice: 'stella',
+  });
+
   await page.goto(demo.link('cloze', 'memorize'));
   await expect(stem.getByText(/Every worker/)).toBeVisible();
   await expect(stem.getByText('空格 1: must')).toBeVisible();
   await expect(stem.getByText('空格 2: start')).toBeVisible();
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => translationSpeech[2]).toMatchObject({
+    text: 'Every worker must sign the checklist. Do not start the equipment without permission.',
+    voice: 'stella',
+  });
   await expect(answers.getByText(/Every worker/)).toHaveCount(0);
   await expect(answers.getByRole('radio')).toHaveCount(0);
   await expect(answers.getByRole('group', { name: '空格 1' }).getByText('正确答案')).toBeVisible();
@@ -187,6 +232,34 @@ test('writing shows a sample in memorization and an editor in practice', async (
   await page.setViewportSize({ width: 620, height: 900 });
   await page.getByRole('button', { name: '查看解析' }).click();
   await expect(page.getByRole('dialog').getByText(sample, { exact: true })).toBeVisible();
+
+  await page.goto(`/memorize?subject=${demo.subject}&question=${demo.bySource('sue1-extended-writing-full')}`);
+  const sampleButtons = reference.getByRole('button', { name: '播放发音', exact: true });
+  await expect(sampleButtons).toHaveCount(3);
+  await sampleButtons.first().click();
+  await expect.poll(() => speech[3]).toMatchObject({
+    text: 'A clear handover helps the next shift start work without guessing. Both paper and digital checklists can help, but they have different strengths.',
+    voice: 'stella',
+  });
+  await sampleButtons.nth(2).click();
+  await expect.poll(() => speech[4]).toMatchObject({
+    text: 'I would use the digital checklist every day and keep printed copies as a backup. If the tablet stops working, workers can write the date, time, and any unfinished tasks on paper. The shift lead can add those notes to the digital record later.',
+    voice: 'stella',
+  });
+
+  await page.goto(demo.link('judgment', 'memorize'));
+  await stem.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech[5]).toMatchObject({
+    text: 'The word equipment normally takes the plural form equipments.',
+    voice: 'stella',
+  });
+
+  await page.goto(`/memorize?subject=${demo.subject}&question=${demo.bySource('sue1-extended-reading-single-choice')}`);
+  await stem.getByRole('button', { name: '播放发音', exact: true }).first().click();
+  await expect.poll(() => speech[6]).toMatchObject({
+    text: 'Locker room notice.',
+    voice: 'stella',
+  });
 });
 
 test('reading separates the article, sub-questions and explanations', async ({ page, request }) => {

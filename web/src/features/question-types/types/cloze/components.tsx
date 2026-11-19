@@ -6,6 +6,7 @@ import type {
   ExtendedResponse,
   RichText,
 } from '../../../../api/generated/types.gen';
+import { AudioControls } from '../../../../components/AudioControls';
 import { RichContent } from '../../../../components/RichContent';
 import { PartOptions } from '../../shared/PartOptions';
 import { creditLabel } from '../../shared/format';
@@ -55,6 +56,13 @@ export function ClozePassage({
           );
         }}
       />
+      {review?.passage_tts?.text && (
+        <AudioControls
+          text={review.passage_tts.text}
+          voice={review.passage_tts.voice}
+          speed={review.passage_tts.speed}
+        />
+      )}
     </section>
   );
 }

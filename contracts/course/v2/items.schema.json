@@ -29,6 +29,7 @@
         "properties": {
           "type": { "const": "cloze" },
           "passage": { "$ref": "#/$defs/rich" },
+          "passage_tts": { "$ref": "../v1/items.schema.json#/$defs/ttsConfig" },
           "blanks": {
             "type": "array", "minItems": 1, "maxItems": 50,
             "items": { "$ref": "#/$defs/blank" }
@@ -95,7 +96,7 @@
           "keywords": { "$ref": "#/$defs/textList" },
           "min_words": { "$ref": "#/$defs/wordLimit" },
           "max_words": { "$ref": "#/$defs/wordLimit" },
-          "sample_response": { "$ref": "#/$defs/text" },
+          "sample_response": { "$ref": "#/$defs/rich" },
           "sample_response_tts": { "$ref": "../v1/items.schema.json#/$defs/ttsConfig" },
           "rubric": {
             "type": "object", "minProperties": 1, "maxProperties": 20,
@@ -110,7 +111,9 @@
           "type": { "const": "translation" },
           "direction": { "enum": ["en_to_zh", "zh_to_en"] },
           "source_text": { "$ref": "#/$defs/text" },
+          "source_text_tts": { "$ref": "../v1/items.schema.json#/$defs/ttsConfig" },
           "reference_translation": { "$ref": "#/$defs/text" },
+          "reference_translation_tts": { "$ref": "../v1/items.schema.json#/$defs/ttsConfig" },
           "acceptable_alternates": { "$ref": "#/$defs/textList" },
           "key_terms": {
             "type": "array", "minItems": 1, "maxItems": 50,

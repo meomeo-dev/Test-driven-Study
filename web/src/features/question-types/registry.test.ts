@@ -236,7 +236,11 @@ describe('QUESTION_TYPE_REGISTRY', () => {
     const translation: TranslationPublicQuestion = {
       ...basePublic,
       question_type: 'translation',
-      content: { direction: 'en_to_zh', source_text: 'Hello' },
+      content: {
+        direction: 'en_to_zh',
+        source_text: 'Hello',
+        source_text_tts: { voice: 'stella' },
+      },
     };
 
     // Positive: media-capable variants satisfy MediaQuestion and QuestionAudio props.

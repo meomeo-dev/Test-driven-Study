@@ -141,6 +141,7 @@ export function QuestionCard({
             </h2>
             <QuestionStimulus
               question={question}
+              reviewQuestion={result?.detail.question}
               cloze={{
                 value: result?.attempt.response ?? draft,
                 onJump:

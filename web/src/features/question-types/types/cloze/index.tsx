@@ -16,11 +16,15 @@ export const clozeModule: QuestionTypeModule<'cloze'> = {
     hasMedia: false,
   },
 
-  renderStimulus: ({ question, cloze }) => (
+  renderStimulus: ({ question, reviewQuestion, cloze }) => (
     <ClozePassage
       passage={question.content.passage}
       blanks={question.content.blanks}
-      review={'question_review' in question ? question.question_review : undefined}
+      review={
+        'question_review' in question
+          ? question.question_review
+          : reviewQuestion?.question_review
+      }
       value={cloze?.value}
       onJump={cloze?.onJump}
     />

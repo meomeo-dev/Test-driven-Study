@@ -9,16 +9,27 @@ import type { AnyQuestion, QuestionOf } from '../shared/contracts';
 
 export function QuestionStimulus({
   question,
+  reviewQuestion,
   cloze,
   protectedAudio,
 }: {
   question: AnyQuestion;
+  reviewQuestion?: Question;
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
 }) {
-  return dispatchQuestion(question, (mod, q) =>
-    mod.renderStimulus({ question: q, cloze, protectedAudio }),
-  );
+  return dispatchQuestion(question, (mod, q) => {
+    const matched =
+      reviewQuestion?.question_type === q.question_type
+        ? (reviewQuestion as QuestionOf<typeof q.question_type>)
+        : undefined;
+    return mod.renderStimulus({
+      question: q,
+      reviewQuestion: matched,
+      cloze,
+      protectedAudio,
+    });
+  });
 }
 
 export function ExamStem({

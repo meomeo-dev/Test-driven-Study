@@ -5,6 +5,10 @@
     "chapter": "交班规范完形",
     "stem": "阅读仓库交班提示，根据上下文选词填空。",
     "passage": "Every worker {{1}} sign the checklist. Do not {{2}} the equipment without permission.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Every worker must sign the checklist. Do not start the equipment without permission."
+    },
     "blanks": [
       {
         "index": 1,
@@ -194,6 +198,7 @@
     "direction": "en_to_zh",
     "stem": "将下列交班提示译成中文。",
     "source_text": "Leave the signed checklist on the front desk.",
+    "source_text_tts": { "voice": "stella" },
     "reference_translation": "把已签字的清单留在前台。",
     "acceptable_alternates": ["请将已签名的清单放在前台。"],
     "key_terms": [
@@ -213,9 +218,12 @@
     "type": "true_false",
     "chapter": "名词单复数判断",
     "stem": [
-      { "type": "text", "text": "判断下列英语语法说法是否正确：\nThe word " },
-      { "type": "text", "text": "equipment", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " normally takes the plural form equipments." }
+      { "type": "text", "text": "判断下列英语语法说法是否正确：\n" },
+      {
+        "type": "text",
+        "text": "The word equipment normally takes the plural form equipments.",
+        "tts": { "voice": "stella" }
+      }
     ],
     "grading": { "value": false },
     "analysis": [
@@ -315,8 +323,21 @@
     "keywords": ["truck", "Friday", "ten", "confirm"],
     "min_words": 40,
     "max_words": 65,
-    "sample_response": "Hi Mia,\n\nThe truck needs repairs, so today's delivery has been moved to Friday at ten in the morning. Please confirm that someone will be available to receive the boxes at that time. I'm sorry for the change and thank you for your help.\n\nBest,\nSam",
-    "sample_response_tts": { "voice": "stella" },
+    "sample_response": [
+      { "type": "text", "text": "Hi Mia,", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "The truck needs repairs, so today's delivery has been moved to Friday at ten in the morning. Please confirm that someone will be available to receive the boxes at that time. I'm sorry for the change and thank you for your help.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Best,\nSam",
+        "tts": { "voice": "stella", "text": "Best, Sam" }
+      }
+    ],
     "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
     "analysis": [
       { "type": "text", "text": "先用 " },
@@ -340,8 +361,25 @@
     "keywords": ["paper checklist", "digital checklist", "handover", "backup"],
     "min_words": 110,
     "max_words": 160,
-    "sample_response": "A clear handover helps the next shift start work without guessing. Both paper and digital checklists can help, but they have different strengths.\n\nA paper checklist is easy to use when the network is down. However, a page can get lost, and handwriting may be hard to read. A digital checklist lets both shifts see the latest notes in one place. It is also easier to find old records. The main problem is that a tablet may run out of power.\n\nI would use the digital checklist every day and keep printed copies as a backup. If the tablet stops working, workers can write the date, time, and any unfinished tasks on paper. The shift lead can add those notes to the digital record later.",
-    "sample_response_tts": { "voice": "stella" },
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "A clear handover helps the next shift start work without guessing. Both paper and digital checklists can help, but they have different strengths.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "A paper checklist is easy to use when the network is down. However, a page can get lost, and handwriting may be hard to read. A digital checklist lets both shifts see the latest notes in one place. It is also easier to find old records. The main problem is that a tablet may run out of power.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "I would use the digital checklist every day and keep printed copies as a backup. If the tablet stops working, workers can write the date, time, and any unfinished tasks on paper. The shift lead can add those notes to the digital record later.",
+        "tts": { "voice": "stella" }
+      }
+    ],
     "rubric": { "task_completion": 45, "language_accuracy": 30, "coherence": 25 },
     "analysis": [
       { "type": "text", "text": "第一段说明交班记录的目的，第二段用 " },
@@ -357,6 +395,7 @@
     "stem": "将下列交班指令翻译成英文。",
     "source_text": "请把签字后的清单交给下一班，并在下午三点前把空箱放到装货门旁。",
     "reference_translation": "Please hand the signed checklist to the next shift and put the empty boxes by the loading door before three p.m.",
+    "reference_translation_tts": { "voice": "stella" },
     "acceptable_alternates": [
       "Please give the signed checklist to the next shift and leave the empty boxes next to the loading door before 3 p.m."
     ],
@@ -491,7 +530,11 @@
     "chapter": "车间通知阅读",
     "stem": "阅读更衣室清洁通知，再回答两个问题。",
     "passage": [
-      { "type": "text", "text": "LOCKER ROOM NOTICE", "tts": { "voice": "stella" } },
+      {
+        "type": "text",
+        "text": "LOCKER ROOM NOTICE",
+        "tts": { "voice": "stella", "text": "Locker room notice." }
+      },
       { "type": "text", "text": "\n" },
       {
         "type": "text",

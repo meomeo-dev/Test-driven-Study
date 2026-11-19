@@ -9,6 +9,7 @@ import (
 
 type ExtendedFields struct {
 	Passage      *RichContent    `json:"passage,omitempty"`
+	PassageTTS   *TTSConfig      `json:"passage_tts,omitempty"`
 	Blanks       []ClozeBlank    `json:"blanks,omitempty"`
 	SubQuestions []Item          `json:"sub_questions,omitempty"`
 	Listening    *ListeningAudio `json:"-"`
@@ -17,12 +18,14 @@ type ExtendedFields struct {
 	Keywords     []string        `json:"keywords,omitempty"`
 	MinWords     int             `json:"min_words,omitempty"`
 	MaxWords     int             `json:"max_words,omitempty"`
-	Sample       string          `json:"sample_response,omitempty"`
+	Sample       *RichContent    `json:"sample_response,omitempty"`
 	SampleTTS    *TTSConfig      `json:"sample_response_tts,omitempty"`
 	Rubric       map[string]int  `json:"rubric,omitempty"`
 	Direction    string          `json:"direction,omitempty"`
 	Source       string          `json:"source_text,omitempty"`
+	SourceTTS    *TTSConfig      `json:"source_text_tts,omitempty"`
 	Reference    string          `json:"reference_translation,omitempty"`
+	ReferenceTTS *TTSConfig      `json:"reference_translation_tts,omitempty"`
 	Alternates   []string        `json:"acceptable_alternates,omitempty"`
 	KeyTerms     []KeyTerm       `json:"key_terms,omitempty"`
 }
@@ -55,6 +58,13 @@ func (item Item) AudioPath() string {
 		return item.Listening.Src
 	}
 	return item.Audio
+}
+
+func (item Item) SampleText() string {
+	if item.Sample == nil {
+		return ""
+	}
+	return item.Sample.String()
 }
 
 func (item *Item) UnmarshalJSON(data []byte) error {

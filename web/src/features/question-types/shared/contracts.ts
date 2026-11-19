@@ -48,6 +48,7 @@ export type QuestionTypeSpec = {
 
 export type StimulusContext<T extends QuestionType> = {
   question: AnyQuestionOf<T>;
+  reviewQuestion?: QuestionOf<T>;
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
 };

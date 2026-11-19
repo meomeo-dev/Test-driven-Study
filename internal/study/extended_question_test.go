@@ -65,6 +65,40 @@ func TestV2PracticeUsesSavedAttemptAndHidesReview(t *testing.T) {
 	if err != nil || saved.SelectedJson != `{"value":false}` {
 		t.Fatalf("Boolean response was not persisted: %s, %v", saved.SelectedJson, err)
 	}
+	transPres, err := s.OpenPresentation(ctx, "saved-v2-translation-tts", rows[4].QuestionID)
+	if err != nil || transPres.Detail.Question.Content == nil ||
+		transPres.Detail.Question.Content.SourceTextTTS == nil ||
+		transPres.Detail.Question.Content.SourceTextTTS.Voice != "stella" {
+		t.Fatalf("translation practice missed source_text_tts: %+v, %v", transPres, err)
+	}
+	transWire, _ := json.Marshal(transPres)
+	if bytes.Contains(transWire, []byte("reference_translation")) {
+		t.Fatalf("translation practice leaked reference_translation: %s", transWire)
+	}
+	clozePres, err := s.OpenPresentation(ctx, "saved-v2-cloze-tts", rows[0].QuestionID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	clozeWire, _ := json.Marshal(clozePres)
+	if bytes.Contains(clozeWire, []byte("passage_tts")) || bytes.Contains(clozeWire, []byte("Every worker must sign")) {
+		t.Fatalf("cloze practice leaked passage_tts: %s", clozeWire)
+	}
+	clozeDetail, err := s.Detail(ctx, rows[0].QuestionID)
+	if err != nil || clozeDetail.Question.QuestionReview == nil ||
+		clozeDetail.Question.QuestionReview.PassageTTS == nil ||
+		clozeDetail.Question.QuestionReview.PassageTTS.Text == "" {
+		t.Fatalf("cloze detail missed passage_tts: %+v, %v", clozeDetail, err)
+	}
+	for _, r := range rows {
+		if r.SourceItemID == "sue1-extended-translation-zh-to-en" {
+			detail, err := s.Detail(ctx, r.QuestionID)
+			if err != nil || detail.Question.QuestionReview == nil ||
+				detail.Question.QuestionReview.ReferenceTTS == nil ||
+				detail.Question.QuestionReview.ReferenceTTS.Voice != "stella" {
+				t.Fatalf("zh_to_en detail missed reference_translation_tts: %+v, %v", detail, err)
+			}
+		}
+	}
 }
 
 func TestV2ExamKeepsListeningAudioAndPartialCreditInSnapshot(t *testing.T) {

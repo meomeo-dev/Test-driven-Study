@@ -172,8 +172,9 @@ func projectWriting(base Question, item course.Item) (Question, error) {
 func projectTranslation(base Question, item course.Item) (Question, error) {
 	base.Items = nil
 	base.Content = &QuestionContent{
-		Direction:  item.Direction,
-		SourceText: item.Source,
+		Direction:     item.Direction,
+		SourceText:    item.Source,
+		SourceTextTTS: item.SourceTTS,
 	}
 	base.QuestionReview = projectReviewCopy(item)
 	return base, nil

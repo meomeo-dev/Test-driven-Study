@@ -10,6 +10,7 @@ const ENGLISH_SINGLE_WORDS = new Set(["I", "a", "A"]);
 const EN_SENTENCE_RE = /[A-Za-z]+(?:\s+[A-Za-z'’]+){3,}/;
 const NON_ENGLISH_OPT_RE = /[\u4e00-\u9fff]|->|→|√|__+|`|\/[A-Za-zɪʊəɜɑɔæʌθðŋʃʒː]+\//;
 const TRIVIAL_TF_RE = /^(?:true|false|t|f)$/i;
+const ALL_CAPS_WORD_RE = /\b[A-Z]{4,}\b/;
 
 const hasTts = (tts) => tts !== undefined && tts !== false && tts !== null;
 const ttsObj = (tts) => (tts && typeof tts === "object" ? tts : null);
@@ -66,6 +67,10 @@ function checkTextContent(ctx, path, text, tts, ttsText, opts = {}) {
   if (!override && HAN_RE.test(raw) && EN_WORD_RE.test(raw)) {
     addIssue(ctx, path, "MIXED_ZH_EN_TTS",
       "同一 TTS 片段混杂中文与英文且无 tts.text 改写，建议按语种拆分或留纯文本");
+  }
+  if (ALL_CAPS_WORD_RE.test(spoken)) {
+    addIssue(ctx, path, "ALL_CAPS_TTS_WITHOUT_OVERRIDE",
+      "TTS 实际朗读文本包含连续纯大写英文词，会按字母拼读，请配置小写或正常大小写的 tts.text");
   }
   checkNonSpeakable(ctx, path, raw, Boolean(override));
   checkCoarseSegment(ctx, path, raw, opts.allowCoarse);
@@ -195,17 +200,85 @@ function checkTranscript(ctx, item) {
   });
 }
 
-function checkWriting(ctx, item) {
-  if (item.type !== "writing" || !item.sample_response) return;
-  if (!item.sample_response_tts) {
-    addIssue(ctx, "sample_response_tts", "WRITING_MISSING_SAMPLE_TTS",
-      "writing 题型提供了范文但缺少 sample_response_tts");
+function checkNamedTts(ctx, field, present, tts, missingRule, missingMsg) {
+  if (!present) return;
+  if (!tts) {
+    addIssue(ctx, field, missingRule, missingMsg);
     return;
   }
-  if (!item.sample_response_tts.voice) {
-    addIssue(ctx, "sample_response_tts", "ENGLISH_TTS_MISSING_VOICE",
-      "sample_response_tts 缺少显式 voice");
+  if (!tts.voice) {
+    addIssue(ctx, field, "ENGLISH_TTS_MISSING_VOICE", `${field} 缺少显式 voice`);
   }
+}
+
+function checkWriting(ctx, item) {
+  if (item.type !== "writing" || !item.sample_response) return;
+  if (Array.isArray(item.sample_response)) {
+    checkSegments(ctx, "sample_response", item.sample_response,
+      { isSubQuestion: false, allowCoarse: true });
+    const hasAny = item.sample_response.some((s) => hasTts(s.tts) || Boolean(s.tts_text));
+    if (!hasAny) {
+      addIssue(ctx, "sample_response", "WRITING_MISSING_SAMPLE_TTS",
+        "writing 题型提供了范文切片但未配置任何 tts");
+      return;
+    }
+    item.sample_response.forEach((seg, idx) => {
+      const spoken = hasTts(seg.tts) || Boolean(seg.tts_text);
+      if (!spoken && (seg.text || "").trim() && EN_WORD_RE.test(seg.text || "")) {
+        addIssue(ctx, `sample_response[${idx}]`, "UNVOICED_ENGLISH_SENTENCE",
+          "writing 范文段落包含英文内容但未配置 tts", "warning");
+      }
+    });
+    return;
+  }
+  if (typeof item.sample_response === "string" && /\n\n/.test(item.sample_response)) {
+    addIssue(ctx, "sample_response", "COARSE_TTS_SEGMENT",
+      "多段 writing 范文应拆为 ContentSegment[] 按段落配 tts", "warning");
+  }
+  checkNamedTts(
+    ctx,
+    "sample_response_tts",
+    true,
+    item.sample_response_tts,
+    "WRITING_MISSING_SAMPLE_TTS",
+    "writing 题型提供了范文但缺少 sample_response_tts",
+  );
+}
+
+function checkTranslation(ctx, item) {
+  if (item.type !== "translation") return;
+  if (item.direction === "en_to_zh") {
+    checkNamedTts(
+      ctx,
+      "source_text_tts",
+      Boolean(item.source_text),
+      item.source_text_tts,
+      "TRANSLATION_MISSING_SOURCE_TTS",
+      "英译中题型提供了英文原文但缺少 source_text_tts",
+    );
+  }
+  if (item.direction === "zh_to_en") {
+    checkNamedTts(
+      ctx,
+      "reference_translation_tts",
+      Boolean(item.reference_translation),
+      item.reference_translation_tts,
+      "TRANSLATION_MISSING_REFERENCE_TTS",
+      "中译英题型提供了英文参考译文但缺少 reference_translation_tts",
+    );
+  }
+}
+
+function checkCloze(ctx, item) {
+  if (item.type !== "cloze" || !item.passage_tts) return;
+  const spoken = typeof item.passage_tts === "object" ? item.passage_tts.text : "";
+  if (!spoken || !spoken.trim() || /\{\{\d+\}\}/.test(spoken)) {
+    addIssue(ctx, "passage_tts", "CLOZE_PASSAGE_TTS_INCOMPLETE",
+      "cloze passage_tts 必须单独配置填入答案后的完整英文句子 tts.text（不得含占位符）");
+    return;
+  }
+  checkTextContent(ctx, "passage_tts", spoken, item.passage_tts, undefined,
+    { allowCoarse: true });
 }
 
 function checkSubItems(ctx, item) {
@@ -253,6 +326,8 @@ export function auditItems(items, file) {
     checkSegments(ctx, "explanation_audio", item.explanation_audio,
       { sequenceMode: true, allowCoarse: true, isSubQuestion: false });
     checkWriting(ctx, item);
+    checkTranslation(ctx, item);
+    checkCloze(ctx, item);
     checkSubItems(ctx, item);
   }
   return issues;

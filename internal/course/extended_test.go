@@ -128,6 +128,11 @@ func TestV2RejectsInvalidQuestionDefinitions(t *testing.T) {
 	if err := cloze.validate(2); err == nil {
 		t.Fatal("duplicate placeholder accepted")
 	}
+	cloze = items[0]
+	cloze.PassageTTS = &TTSConfig{Voice: "stella"}
+	if err := cloze.validate(2); err == nil {
+		t.Fatal("cloze passage_tts without spoken text accepted")
+	}
 	listening := items[1]
 	listening.SubQuestions[1].ID = listening.SubQuestions[0].ID
 	if err := listening.validate(2); err == nil || !strings.Contains(err.Error(), "duplicate") {

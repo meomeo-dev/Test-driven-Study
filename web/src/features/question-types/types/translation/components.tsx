@@ -2,17 +2,24 @@ import type {
   ExtendedResponse,
   TranslationContent,
   TranslationItemReview,
+  TtsConfig,
 } from '../../../../api/generated/types.gen';
+import { RichContent } from '../../../../components/RichContent';
 import { creditLabel } from '../../shared/format';
+
+function speechText(text: string, tts?: TtsConfig) {
+  return tts ? [{ type: 'text' as const, text, tts }] : text;
+}
 
 export function TranslationSource({ content }: { content: TranslationContent }) {
   if (!content.source_text) return null;
   const lang = content.direction === 'en_to_zh' ? 'en' : 'zh-CN';
+  const rich = speechText(content.source_text, content.source_text_tts);
   return (
     <section className="translation-source" aria-label="翻译原文">
       <h3 className="column-label">原文</h3>
       <p className="analysis-text extended-passage" lang={lang}>
-        {content.source_text}
+        <RichContent content={rich} />
       </p>
     </section>
   );
@@ -20,13 +27,17 @@ export function TranslationSource({ content }: { content: TranslationContent }) 
 
 export function TranslationReference({ review }: { review?: TranslationItemReview }) {
   if (!review) return null;
+  const referenceLang = review.direction === 'zh_to_en' ? 'en' : 'zh-CN';
+  const reference = review.reference_translation
+    ? speechText(review.reference_translation, review.reference_translation_tts)
+    : undefined;
   return (
     <section className="translation-reference" aria-label="参考译文">
-      {review.reference_translation && (
+      {reference !== undefined && (
         <>
           <h4 className="column-label">参考译文</h4>
-          <p className="analysis-text extended-passage">
-            {review.reference_translation}
+          <p className="analysis-text extended-passage" lang={referenceLang}>
+            <RichContent content={reference} />
           </p>
         </>
       )}

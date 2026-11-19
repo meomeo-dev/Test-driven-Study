@@ -33,15 +33,22 @@ is released after the paper finishes.
 
 Practice and mock exams grade objective parts with the same rules. Every
 blank or sub-question is weighted equally; omitted parts earn zero credit.
+Cloze items may also set `passage_tts` with a complete `text` (exposed only
+in review surfaces such as memorization and post-submission review) to read
+the completed passage aloud without spoiling unanswered blanks.
 Mock exams sum fractional credit across the whole paper and round down once
 to the integer score used by the terminal. Analysis still counts full-credit
 attempts as correct.
 
 Writing uses the server-computed word count and normalized keyword coverage;
-the sample can also match exactly after normalization. Set the optional
-`sample_response_tts` object to enable playback on writing review surfaces.
-It reads the full sample by default and accepts the shared `voice`, `text`,
-and `speed` settings. Translation awards full credit for a normalized
+the sample can also match exactly after normalization. Set `sample_response`
+to `ContentSegment[]` with segment-level `tts` for multi-paragraph playback, or
+set the optional `sample_response_tts` object on a single-string sample to
+enable playback on writing review surfaces. Both accept the shared `voice`,
+`text`, and `speed` settings. Translation supports the same optional `source_text_tts`
+(on source prompts and review) and `reference_translation_tts` (on reference
+review) objects alongside `source_text` and `reference_translation`. Translation
+awards full credit for a normalized
 reference or authored alternative. Key-term matching
 can earn up to half credit, since terms alone cannot establish meaning. These
 local checks do not assess fluency or fully judge an original answer. With

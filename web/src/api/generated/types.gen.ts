@@ -1276,6 +1276,7 @@ export type WritingContent = {
 export type TranslationContent = {
     direction: 'en_to_zh' | 'zh_to_en';
     source_text: string;
+    source_text_tts?: TtsConfig;
 };
 
 export type QuestionContent = ClozeContent | ListeningContent | ReadingContent | WritingContent | TranslationContent;
@@ -1344,6 +1345,7 @@ export type SubQuestionReview = ({
 export type ClozeItemReview = CourseItemReviewBase & {
     type: 'cloze';
     passage: RichText;
+    passage_tts?: TtsConfig;
     blanks: Array<{
         index: number;
         options: Array<CourseOption>;
@@ -1371,7 +1373,7 @@ export type WritingItemReview = CourseItemReviewBase & {
     keywords?: Array<string>;
     min_words?: number;
     max_words?: number;
-    sample_response?: string;
+    sample_response?: RichText;
     sample_response_tts?: TtsConfig;
     rubric?: {
         [key: string]: number;
@@ -1382,7 +1384,9 @@ export type TranslationItemReview = CourseItemReviewBase & {
     type: 'translation';
     direction: 'en_to_zh' | 'zh_to_en';
     source_text: string;
+    source_text_tts?: TtsConfig;
     reference_translation?: string;
+    reference_translation_tts?: TtsConfig;
     acceptable_alternates?: Array<string>;
     key_terms?: Array<{
         term: string;

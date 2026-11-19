@@ -39,7 +39,7 @@ Split the 9 types cleanly by **media capability** (verified against `contracts/c
 | `listening` | **Native (3 modes)** | `QuestionAudio` | `content: { sub_questions, passage? }` |
 | `reading_comprehension` | **Forbidden** | `ReadingPassage` | `content: { passage, sub_questions }` |
 | `writing` | **Forbidden** | `WritingRequirements` | `content: { subtype, requirements?, min_words?, max_words? }` |
-| `translation` | **Forbidden** | `TranslationSource` | `content: { direction, source_text, requirements? }` |
+| `translation` | **Forbidden** | `TranslationSource` | `content: { direction, source_text, source_text_tts? }` |
 
 ## 3. Course & HTTP Contract Design
 

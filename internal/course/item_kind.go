@@ -78,6 +78,9 @@ func init() {
 					return err
 				}
 				if protocol == 2 {
+					if item.PassageTTS != nil && strings.TrimSpace(item.PassageTTS.Text) == "" {
+						return fmt.Errorf("cloze passage_tts requires spoken text")
+					}
 					return item.validateBlanks()
 				}
 				return nil
@@ -153,7 +156,8 @@ func init() {
 					item.gradeWriting(text, wordCount), nil
 			},
 			ExpectedResponse: func(item Item) ExtendedResponse {
-				return ExtendedResponse{Text: &item.Sample}
+				text := item.SampleText()
+				return ExtendedResponse{Text: &text}
 			},
 		},
 		Translation: {

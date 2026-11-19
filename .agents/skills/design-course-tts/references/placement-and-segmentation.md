@@ -28,10 +28,10 @@
 | `stem`（`listening` / 含 `transcript`） | `string` | **保持纯文本字符串**，零内联 TTS | 严禁在 `stem` 泄露听力原文或按钮 |
 | `options` / `blanks[].options` / `sub_questions[].options` | `Option[]`（含 `tts` / `pinyin`） | 英文词句/听说选项可配 `{"voice": ...}`；拼音题全配 `pinyin: [...]` | **`uniformOptionAudio`**：同组选项 `tts` 必须**全有或全无**；纯中文选项/IPA/错拼干扰项不加 |
 | `audio` + `transcript`（`listening`） | `string \| ListeningAudio` + `string \| TranscriptLine[]` | v1 用 `transcript[]` 逐行配 `speaker` + `tts`；v2 用 `audio: {mode, voice_male, voice_female}` 或 `mode: "recording"` 配 `.mp3` | `mode: "dialogue"` 必有 `transcript[]`；`mode: "passage"` 必有 `passage`；`mode: "recording"` 必有 `audio.src` |
-| `cloze.passage` | `string \| ContentSegment[]` | 使用 `"Every worker {{1}} ..."` 字符串或 `['text', 'blank', ...]` | **`cloze` 短文禁挂 `tts`**（防止跨越或读出空格占位符） |
+| `cloze.passage` + `passage_tts` | `string \| ContentSegment[]` + `TTSConfig` | `passage` 仅放 `"Every worker {{1}} ..."` 或 `['text', 'blank', ...]`；完整句朗读单配 `passage_tts: {"voice": ..., "text": "..."}`（仅背题与交卷复盘展示） | **`cloze.passage` 内片禁挂 `tts`**；`passage_tts` 必须单配填入答案后的完整文本 `text`，严禁在未交卷练习或考试题干泄露 |
 | `reading_comprehension.passage` | `string \| ContentSegment[]` | 可用 `ContentSegment[]` 为短文（整段或逐段）配 `tts` | 仅渲染段落旁内联喇叭；绝不会触发 `QuestionAudio` 听力栏 |
-| `writing.sample_response` + `sample_response_tts` | `string` + `TTSConfig` | 英文写作题配置 `sample_response_tts: {"voice": "stella"\|"tide"}` | 不写进 `sample_response` 本身；仅作答后在范文区展示播放 |
-| `translation.source_text` / `reference_translation` | `string` | 纯字符串展示 | 不支持 `ContentSegment[]` 或 `tts` |
+| `writing.sample_response` + `sample_response_tts` | `string \| ContentSegment[]` + `TTSConfig` | 单段英文范文配 `sample_response_tts: {"voice": ...}`；多段范文将 `sample_response` 拆为按段落配 `tts` 的 `ContentSegment[]` | 仅作答后在范文区展示播放；多段不得共用同一 `sample_response_tts` |
+| `translation.source_text` / `reference_translation` + `*_tts` | `string` + `TTSConfig` | 英译中为 `source_text` 配 `source_text_tts`；中译英为 `reference_translation` 配 `reference_translation_tts` | 仅外语内容配 `{"voice": "stella"\|"tide"}`；中文原文/译文可留纯文本 |
 | `explanation` / `analysis` / `blanks[].explanation` | `string`（v1/v2） / `richContent`（v2 `analysis`、`blanks[].explanation`） | v2 可在 `analysis` / `blanks[].explanation` 内嵌例句 `tts` 切片；`explanation` 仅纯文本 | `explanation` 不支持切片；解析中不硬编码选项字母（`是 a` 等） |
 | `explanation_audio` | `ContentSegment[]` | 需整段语音讲解时使用，可交替混排汉语文段与 `pinyin` 片段 | 见第 5 节 `sequence` 模式陷阱 |
 
@@ -46,6 +46,7 @@
 ### 必须使用 `tts: {"text": "..."}`（或 `tts_text`）改写
 - **中文语境中的阿拉伯数字**：如原文 `"圈出第 1 行的整体认读音节..."` → `tts: {"text": "圈出第一行的整体认读音节..."}`。
 - **中文语境中的符号**：如原文 `"看图，在正确的音节后面打“√”。"` → `tts: {"text": "看图，在正确的音节后面打勾。"}`。
+- **纯大写英文标题或词汇（4 字母及以上的全大写单词）**：DeepSeek TTS 会把 `"LOCKER ROOM NOTICE"` 这类全大写词按字母拼读，必须保留屏幕视觉大写的同时配置正常大小写/小写的 `tts.text`（如 `tts: {"voice": "stella", "text": "Locker room notice."}`）。
 - **口语可读形式与视觉文本不一致时**：用 `tts.text` 提供展开的口语文本，保留屏幕视觉原样。
 
 ### 必须改用本地 `pinyin: [...]`（不送入 TTS）

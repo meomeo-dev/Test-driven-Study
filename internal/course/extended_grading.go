@@ -163,7 +163,7 @@ func (item Item) gradeWriting(text string, count int) float64 {
 	if normalized == "" || count < item.MinWords || (item.MaxWords > 0 && count > item.MaxWords) {
 		return 0
 	}
-	if normalized == normalizeText(item.Sample) {
+	if normalized == normalizeText(item.SampleText()) {
 		return 1
 	}
 	matched := 0

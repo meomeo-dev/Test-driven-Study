@@ -4,8 +4,12 @@ Updated 2026-11-18 (America/New_York).
 
 ## Repository state
 
-- Question type implementation commits: `0b96e4b`, `9202171`, and `88cf136`.
-- Completed [#56, v2 question types](issues/0056-feat-implement-v2-question-types.md).
+- Recent completed issues: [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
+  (polymorphic Go/OpenAPI/TS question-type contracts),
+  [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
+  (frontend `question-types` 5-layer DAG package), and
+  [#63](issues/0063-fix-add-tts-playback-to-translation-source-text-and-reference.md)
+  (translation, cloze, multi-paragraph writing sample, all-caps override, and judgment TTS fixes).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 
@@ -16,7 +20,7 @@ Updated 2026-11-18 (America/New_York).
   and exam controls. V1 courses remain supported with no database migration.
 - The [authoring guide](docs/features/question-types/README.md) documents
   scoring and optional AI feedback. The single 综合题型练习 unit in
-  `step-up-english-1@1.2.4` has 15 questions across all nine question types.
+  `step-up-english-1@1.2.7` has 15 questions across all nine question types.
   It covers all three writing subtypes, both translation directions, all
   three listening modes, and three reading sub-question types. The recorded
   listening example ships with a [local MP3](courses/step-up-english-1/assets/audio/README.md).
@@ -25,9 +29,12 @@ Updated 2026-11-18 (America/New_York).
 - Memorization shows the writing prompt and requirements on the left, the
   sample in the middle, and the explanation and rubric on the right.
   Practice collects submissions and reveals the sample and rubric afterward.
-- The writing samples declare TTS. Version `1.2.4` is active in the local
-  learner database with the same nine existing question IDs. Course validation,
-  course and study tests, and live API checks of the new examples and MP3 passed.
+- `writing` samples support either single-string `sample_response_tts` or
+  per-paragraph `ContentSegment[]` arrays; `translation` supports `source_text_tts`
+  and `reference_translation_tts`; `cloze` supports review-only `passage_tts`
+  without leaking unanswered blanks. Version `1.2.7` is active in the local
+  learner database with the existing question IDs. Course validation, TTS audit,
+  and full `check` (unit, Go, startup, build, Playwright e2e) passed.
 
 ## Elementary Chinese pronunciation
 

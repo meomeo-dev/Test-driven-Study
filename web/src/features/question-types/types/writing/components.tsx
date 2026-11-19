@@ -38,9 +38,12 @@ export function WritingRequirements({ content }: { content: WritingContent }) {
 export function WritingSample({ review }: { review?: WritingItemReview }) {
   if (!review?.sample_response) return null;
   const sample = review.sample_response;
-  const content = review.sample_response_tts
-    ? [{ type: 'text' as const, text: sample, tts: review.sample_response_tts }]
-    : sample;
+  if (Array.isArray(sample) && !sample.length) return null;
+  const content = Array.isArray(sample)
+    ? sample
+    : review.sample_response_tts
+      ? [{ type: 'text' as const, text: sample, tts: review.sample_response_tts }]
+      : sample;
   return (
     <section className="writing-sample" aria-label="参考范文">
       <h4 className="column-label">参考范文</h4>

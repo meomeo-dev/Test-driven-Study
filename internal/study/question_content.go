@@ -12,8 +12,9 @@ type QuestionContent struct {
 	Requirements []string            `json:"requirements,omitempty"`
 	MinWords     int                 `json:"min_words,omitempty"`
 	MaxWords     int                 `json:"max_words,omitempty"`
-	Direction    string              `json:"direction,omitempty"`
-	SourceText   string              `json:"source_text,omitempty"`
+	Direction     string              `json:"direction,omitempty"`
+	SourceText    string              `json:"source_text,omitempty"`
+	SourceTextTTS *course.TTSConfig   `json:"source_text_tts,omitempty"`
 }
 
 type BlankPrompt struct {

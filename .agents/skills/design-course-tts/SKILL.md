@@ -43,16 +43,16 @@ description: >-
 | 位置 | 何时加语音 | 禁止 / 留纯文本 |
 | --- | --- | --- |
 | `stem` / `sub_questions[].stem` | 非听力题中需要示范朗读的目标外语词句，或中文指令朗读（如低龄识字/拼音题） | **听力题干禁放 TTS**（防逐字稿剧透）；含 `blank` 段的填空题干禁与 TTS 共存；纯语法术语/代码/公式留纯文本 |
-| `passage` | `reading_comprehension` 可为全文或段落加 `tts` | `cloze` 短文含填空占位符，**禁在 `passage` 切片挂 TTS**；`listening` 无 `transcript` 时整段由 `ListeningLines()` 自动朗读 |
+| `passage` | `reading_comprehension` 可为全文或段落加 `tts`；`cloze` 需朗读完整句时在题级单独配 `passage_tts: {"voice": ..., "text": "填入答案的完整句"}` | `cloze.passage` 短文切片**禁直接挂 `tts`**（`passage_tts` 仅在背题/复盘下发）；`listening` 无 `transcript` 时整段由 `ListeningLines()` 自动朗读 |
 | `options` / `blanks[].options` | 选项为自然朗读短语/句子，或需逐项听音辨析的拼音词 | **防剧透均一法则**：同组选项必须全开或全不开 `tts`；纯中文翻译选项、IPA 音标、刻意拼错的干扰项不加 TTS |
 | `transcript` / `audio` | `listening` 优先用 `transcript[]`（逐行配说话人与音色）或本地 `.mp3` | 不把多轮对话揉进单一字符串，也不用 `tts: true` 简写 |
 | `explanation` / `analysis` / `explanation_audio` | v2 可用 `analysis` 富文本切片；v1 需整段解析朗读时单列 `explanation_audio[]` | `explanation` 是纯字符串；`explanation_audio` 中每段带 `text` 的非 `blank`/非 `pinyin` 切片都会被串联朗读 |
-| `writing` / `translation` | `writing` 应为 `sample_response` 配 `sample_response_tts` | `translation.source_text` 仅支持纯文本，不强塞语音 |
+| `writing` / `translation` | `writing` 单句范文配 `sample_response_tts`，多段范文将 `sample_response` 拆成按段落配 `tts` 的切片数组；`translation` 的英文原文配 `source_text_tts`，中译英英文参考译文配 `reference_translation_tts` | 不将多段范文揉进单个 TTS 切片，也不将纯中文译文/原文强行送入英语音色 TTS |
 
 核心硬规则（细节与反例见 `references/placement-and-segmentation.md`）：
 
 1. **切片边界**：中英混排采用 `['text', 'tts', 'text']` 包夹；TTS 切片内**去掉首尾空格与外围引号/反引号**，保留句末英文 `.?!` 在 TTS 内，把分隔空格放在相邻纯 `text` 切片。
-2. **TTS vs `tts.text` vs `pinyin`**：裸汉语拼音字母/韵母、带下划线遮罩空（如 `l___ yǔ`）、IPA、箭头、错误码、数学式**禁止直接送入 TTS**；中文题干含阿拉伯数字（`第 1 行` → `第一行`）或符号（`“√”` → `勾`）必须写 `tts: {"text": "..."}`；汉语拼音优先用 `pinyin: [...]` 本地录音（且 `pinyin` 在渲染时优先级高于 `tts`）。
+2. **TTS vs `tts.text` vs `pinyin`**：裸汉语拼音字母/韵母、带下划线遮罩空（如 `l___ yǔ`）、IPA、箭头、错误码、数学式**禁止直接送入 TTS**；中文题干含阿拉伯数字（`第 1 行` → `第一行`）或符号（`“√”` → `勾`），以及英文**纯大写标题/词汇**（如 `"LOCKER ROOM NOTICE"` 会被按字母拼读），必须配正常大小写/口语化的 `tts: {"text": "..."}`；汉语拼音优先用 `pinyin: [...]` 本地录音（且 `pinyin` 在渲染时优先级高于 `tts`）。
 3. **音色与引擎陷阱**：英文 TTS 一律显式写 `{"voice": "stella" | "tide"}`（男声/指令多用 `tide`，女声/词汇/选项多用 `stella`；听力对话 `M` → `tide`、`W` → `stella`）；`RichContent.tsx` 按 `pinyin`/`tts`/`tts_text` 触发按钮而非 `type: "speech"`，`type: "blank"` 会屏蔽音频，`speed` 仅在浏览器 `playbackRate` 生效。
 
 ## 流程

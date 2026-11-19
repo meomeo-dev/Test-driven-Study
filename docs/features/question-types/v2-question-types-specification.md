@@ -60,7 +60,8 @@ options:
 3. **Graceful Workspace Projection**:
    The runtime projection layer maps legacy items to their existing presentation while
    passing extended payloads (`content`, containing `passage`, `blanks`, `sub_questions`,
-   `subtype`, `requirements`, `min_words`, `max_words`, `direction`, and `source_text`,
+   `subtype`, `requirements`, `min_words`, `max_words`, `direction`, `source_text`,
+   and `source_text_tts`,
    and review-only `question_review`) through to React components (`RichContent`,
    `ExtendedQuestion`, `ExtendedReview`, `ClozeContent`, `TranslationContent`, etc.).
 
