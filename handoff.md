@@ -4,7 +4,7 @@ Updated 2026-11-19 (America/New_York).
 
 ## Repository state
 
-- `main` integrates the course and question navigation branches through `#68`:
+- `main` integrates the course and study navigation changes through `#70`:
   - [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
     (`4d2c69a`): polymorphic Go/OpenAPI/TS question-type contracts.
   - [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
@@ -62,6 +62,10 @@ Updated 2026-11-19 (America/New_York).
   on `ef3513c`, wraps original IDs within their tiles and sizes rows to fit the
   content. Type checking and all six course browser tests passed, including
   the layout regression at 1280 and 375 pixels.
+- [#70](issues/0070-fix-enable-independent-study-sidebar-scrolling.md), based on
+  `70d3999`, makes the shared sidebar scroll independently. Type checking and
+  all seven course browser tests passed, including wheel scrolling in two short
+  viewports.
 
 ## Elementary Chinese pronunciation
 

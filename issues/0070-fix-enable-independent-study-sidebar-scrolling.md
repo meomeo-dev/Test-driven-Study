@@ -1,7 +1,8 @@
 ---
 id: 0070
 type: fix
-status: open
+status: closed
+closed-by: beb646c
 labels: [frontend, navigation]
 branch: fix/0070-enable-independent-study-sidebar-scrolling
 created: 2026-11-19
@@ -36,3 +37,9 @@ Changes to sidebar routes, course order, or question navigation behavior.
 ## 讨论
 
 Use the existing viewport-height sidebar as the native scroll container.
+
+### Verification
+
+Type checking and all seven course browser tests passed. The memory palace
+regression scrolled to the final link and back at 1280×480 and 768×480 while
+the main content area retained its position.
