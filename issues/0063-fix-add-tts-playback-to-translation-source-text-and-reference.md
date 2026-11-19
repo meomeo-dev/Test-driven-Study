@@ -1,7 +1,8 @@
 ---
 id: 0063
 type: fix
-status: open
+status: closed
+closed-by: e5084ebe509e4328755724e2dda0d903c1529200
 labels: []
 branch: fix/0063-add-tts-playback-to-translation-source-text-and-reference
 created: 2026-11-19
