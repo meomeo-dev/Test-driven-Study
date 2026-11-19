@@ -1,6 +1,6 @@
 # Development Handoff
 
-Updated 2026-11-18 (America/New_York).
+Updated 2026-11-19 (America/New_York).
 
 ## Repository state
 
@@ -43,6 +43,15 @@ Updated 2026-11-18 (America/New_York).
   without leaking unanswered blanks. Version `1.0.0` of `golden-course-template`
   is active in the local learner database. Course validation, TTS audit, and full
   checks passed.
+
+## Shared question navigation
+
+- [#68](issues/0068-feat-share-question-navigation-across-study-modes.md) is complete
+  on its issue branch, based on `9b9f854`. Implementation `c7b6c4c` shares one
+  drawer and grid across memorization, practice, and memory palace.
+- Type checking and all 57 frontend unit tests passed. All 15 browser cases
+  passed across the full run and a focused retry. The branch is ready for
+  integration.
 
 ## Elementary Chinese pronunciation
 

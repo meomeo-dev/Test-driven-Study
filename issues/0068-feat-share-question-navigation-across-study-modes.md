@@ -1,7 +1,8 @@
 ---
 id: 0068
 type: feat
-status: open
+status: closed
+closed-by: c7b6c4c
 labels: [frontend, navigation]
 branch: feat/0068-share-question-navigation-across-study-modes
 created: 2026-11-19
@@ -46,3 +47,10 @@ visual redesign.
 Critical path: agree on the component contract, build the shared implementation,
 wire the three study pages, then run acceptance before committing. Browser
 regression authoring can proceed in parallel with package implementation.
+
+### Verification
+
+- Type checking and all 57 frontend unit tests passed.
+- The browser suite passed 14 cases, including the shared drawer regression.
+  The course roadmap case initially timed out while loading `/courses`. A
+  focused retry with a 90-second limit passed in 12.8 seconds.
