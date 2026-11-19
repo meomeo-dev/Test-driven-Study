@@ -1,7 +1,8 @@
 ---
 id: 0066
 type: chore
-status: open
+status: closed
+closed-by: b359144f50dc13fbb726a019e787c4c4bf1cd78d
 labels: []
 branch: chore/0066-update-design-course-tts-skill-against-golden-course-templat
 created: 2026-11-19
