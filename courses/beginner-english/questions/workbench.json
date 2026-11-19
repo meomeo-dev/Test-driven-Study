@@ -41,7 +41,19 @@
         "text": "手套"
       }
     ],
-    "explanation": "`screwdriver` 表示“螺丝刀”，在工位装配中常用于拧紧或拆卸螺丝。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "screwdriver",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“螺丝刀”，在工位装配中常用于拧紧或拆卸螺丝。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -90,7 +102,19 @@
         "text": "托盘"
       }
     ],
-    "explanation": "`tray` 在车间通常指放置零件的“托盘”，用于收纳或流转小零件。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 在车间通常指放置零件的“托盘”，用于收纳或流转小零件。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -135,7 +159,52 @@
         }
       }
     ],
-    "explanation": "`gloves` 表示“手套”，`button` 表示“按钮”；`wrench` 是扳手，`screw` 是螺丝。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "gloves",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“手套”，"
+      },
+      {
+        "type": "text",
+        "text": "button",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“按钮”；"
+      },
+      {
+        "type": "text",
+        "text": "wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是扳手，"
+      },
+      {
+        "type": "text",
+        "text": "screw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是螺丝。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -167,9 +236,32 @@
         "text": " 这句话的意思是“绿灯亮着”。判断：该表述是否正确？"
       }
     ],
-    "explanation": "`light` 意为“指示灯”，`green light is on` 表示绿色的指示灯亮起。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“指示灯”，"
+      },
+      {
+        "type": "text",
+        "text": "green light is on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示绿色的指示灯亮起。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -188,7 +280,8 @@
         "type": "text",
         "text": "Take 5 bolts and 3 nuts.",
         "tts": {
-          "voice": "tide"
+          "voice": "tide",
+          "text": "Take five bolts and three nuts."
         }
       },
       {
@@ -196,7 +289,36 @@
         "text": " 请问工人总共需要领取多少个零件？请用阿拉伯数字作答。"
       }
     ],
-    "explanation": "清单中的 `5 bolts`（5个螺栓）加上 `3 nuts`（3个螺母），总数为 5 + 3 = 8 个零件。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "清单中的 "
+      },
+      {
+        "type": "text",
+        "text": "5 bolts",
+        "tts": {
+          "voice": "stella",
+          "text": "five bolts"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（5个螺栓）加上 "
+      },
+      {
+        "type": "text",
+        "text": "3 nuts",
+        "tts": {
+          "voice": "stella",
+          "text": "three nuts"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（3个螺母），总数为 5 + 3 = 8 个零件。"
+      }
+    ],
     "grading": {
       "value": "8",
       "absolute_tolerance": "0"
@@ -240,7 +362,34 @@
         }
       }
     ],
-    "explanation": "`mm` 是毫米的缩写，英文完整读法为 `millimeters`，因此 `15 mm` 读作 `fifteen millimeters`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "`mm` 是毫米的缩写，英文完整读法为 "
+      },
+      {
+        "type": "text",
+        "text": "millimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此 `15 mm` 读作 "
+      },
+      {
+        "type": "text",
+        "text": "fifteen millimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -273,7 +422,23 @@
         "text": "米"
       }
     ],
-    "explanation": "`kg` 是重量单位千克（kilogram）的英文缩写，等于 1000 克。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "`kg` 是重量单位千克（"
+      },
+      {
+        "type": "text",
+        "text": "kilogram",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）的英文缩写，等于 1000 克。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -291,34 +456,22 @@
     "options": [
       {
         "id": "a",
-        "text": "kg",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "kg"
       },
       {
         "id": "b",
-        "text": "cm",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "cm"
       },
       {
         "id": "c",
-        "text": "g",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "g"
       },
       {
         "id": "d",
-        "text": "m",
-        "tts": {
-          "voice": "stella"
-        }
+        "text": "m"
       }
     ],
-    "explanation": "`cm`（厘米）和 `m`（米）属于长度计量单位；`kg`（千克）和 `g`（克）属于重量单位。",
+    "analysis": "`cm`（厘米）和 `m`（米）属于长度计量单位；`kg`（千克）和 `g`（克）属于重量单位。",
     "grading": {
       "choice_ids": [
         "b",
@@ -334,9 +487,9 @@
       "measurement-units"
     ],
     "stem": "尺寸图纸上注明：`1 m = 10 cm`。判断：该单位换算关系是否正确？",
-    "explanation": "`1 m`（米）等于 `100 cm`（厘米），因此 `1 m = 10 cm` 是错误的换算。",
+    "analysis": "`1 m`（米）等于 `100 cm`（厘米），因此 `1 m = 10 cm` 是错误的换算。",
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -347,7 +500,7 @@
       "measurement-units"
     ],
     "stem": "操作规程要求切断一段 `3 cm` 长的导线。请问这段导线换算为毫米（mm）是多少？请用阿拉伯数字作答。",
-    "explanation": "因为 `1 cm = 10 mm`，所以 `3 cm` 等于 3 × 10 = 30 毫米。",
+    "analysis": "因为 `1 cm = 10 mm`，所以 `3 cm` 等于 3 × 10 = 30 毫米。",
     "grading": {
       "value": "30",
       "absolute_tolerance": "0"
@@ -391,7 +544,34 @@
         }
       }
     ],
-    "explanation": "主语是第一人称 `I` 时，一般现在时谓语动词使用原形 `check`，第三人称单数才加 -s。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语是第一人称 "
+      },
+      {
+        "type": "text",
+        "text": "I",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时，一般现在时谓语动词使用原形 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第三人称单数才加 `-s`。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -400,61 +580,157 @@
   },
   {
     "id": "workbench-actions-2",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "工位动作现在时",
     "concepts": [
       "workbench-actions"
     ],
-    "stem": [
+    "stem": "描述女同事在流水线上的动作“她清点托盘里的螺丝”，请为句中空缺处选择正确的动词形式。",
+    "passage": "She {{1}} the screws on the tray.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "She counts the screws on the tray."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "描述女同事在流水线上的动作“她清点托盘里的螺丝”，空缺处应填入哪个动词形式？\nShe "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " the screws on the tray."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "count",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "counting",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "are count",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "counts",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "d"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "She",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是第三人称单数，在一般现在时陈述句中，动词 "
+          },
+          {
+            "type": "text",
+            "text": "count",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 需加词尾 `-s` 变为 "
+          },
+          {
+            "type": "text",
+            "text": "counts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "She",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于第三人称单数，一般现在时谓语动词必须使用三单形式 "
+      },
+      {
+        "type": "text",
+        "text": "counts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；原形 "
+      },
+      {
+        "type": "text",
         "text": "count",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "、现在分词 "
+      },
+      {
+        "type": "text",
         "text": "counting",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": " 以及搭配错误的形式 "
+      },
+      {
+        "type": "text",
         "text": "are count",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "counts",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 均不符合语法。"
       }
-    ],
-    "explanation": "主语 `She` 是第三人称单数，在一般现在时陈述句中，动词 `count` 需加词尾 -s 变为 `counts`。",
-    "grading": {
-      "choice_ids": [
-        "d"
-      ]
-    }
+    ]
   },
   {
     "id": "workbench-actions-3",
@@ -494,7 +770,122 @@
         }
       }
     ],
-    "explanation": "复数主语 `They` 搭配动词原形 `pick up`，第三人称单数 `He` 搭配单三形式 `cleans`；b项动词应为 `counts`，d项动词应为 `check`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "正确答案是“"
+      },
+      {
+        "type": "text",
+        "text": "They pick up the box.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”和“"
+      },
+      {
+        "type": "text",
+        "text": "He cleans the table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。复数主语 "
+      },
+      {
+        "type": "text",
+        "text": "They",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "pick up",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第三人称单数 "
+      },
+      {
+        "type": "text",
+        "text": "He",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配三单形式 "
+      },
+      {
+        "type": "text",
+        "text": "cleans",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "She count the screws.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中动词应为 "
+      },
+      {
+        "type": "text",
+        "text": "counts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "I checks the light.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中动词应为 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -526,68 +917,176 @@
         "text": " 这句话的意思是“它移动得很慢”。判断：该理解是否正确？"
       }
     ],
-    "explanation": "`It moves` 表示“它移动”，`slowly` 表示“缓慢地”，整句话翻译为“它移动得很慢”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "It moves",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“它移动”，"
+      },
+      {
+        "type": "text",
+        "text": "slowly",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“缓慢地”，整句话翻译为“它移动得很慢”。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
     "id": "workbench-actions-5",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "工位动作现在时",
     "concepts": [
       "workbench-actions"
     ],
-    "stem": [
+    "stem": "工位看板写着“机器每天早上停机检修”，请为句中空缺处选择正确的动词形式。",
+    "passage": "The machine {{1}} every morning.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The machine stops every morning."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "工位看板写着“机器每天早上停机检修”，英文句子的横线处应填入哪个词？\nThe machine "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " every morning."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "stops",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "stop",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "stopping",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "are stop",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "The machine",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是第三人称单数，一般现在时谓语动词应加 `-s` 使用 "
+          },
+          {
+            "type": "text",
+            "text": "stops",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "The machine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为单数名词，表示每天重复发生的习惯动作时，一般现在时动词应使用三单形式 "
+      },
+      {
+        "type": "text",
         "text": "stops",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "；原形 "
+      },
+      {
+        "type": "text",
         "text": "stop",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "、现在分词 "
+      },
+      {
+        "type": "text",
         "text": "stopping",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
         "text": "are stop",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 均不合语法。"
       }
-    ],
-    "explanation": "主语 `The machine` 是第三人称单数，一般现在时谓语动词应加 -s 使用 `stops`。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "workbench-instructions-1",
@@ -631,7 +1130,56 @@
         "text": "把螺丝刀放在桌子左边"
       }
     ],
-    "explanation": "`Put... in...` 表示“放入”，`the screw` 是“螺丝”，`in the box on the left` 表示“在左边的盒子里”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
+        "text": "Put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与介词 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配表示“放入”，"
+      },
+      {
+        "type": "text",
+        "text": "the screw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是“螺丝”，"
+      },
+      {
+        "type": "text",
+        "text": "in the box on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“在左边的盒子里”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -680,7 +1228,30 @@
         "text": "戴上手套并按下按钮"
       }
     ],
-    "explanation": "`Take the wrench` 意思是“拿起扳手”，`tighten the bolt` 意思是“拧紧螺栓”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Take the wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意思是“拿起扳手”，"
+      },
+      {
+        "type": "text",
+        "text": "tighten the bolt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意思是“拧紧螺栓”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -729,7 +1300,30 @@
         "text": "移动托盘"
       }
     ],
-    "explanation": "`Pick up the part` 意为“拿起零件”，`check the light` 意为“检查指示灯”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Pick up the part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“拿起零件”，"
+      },
+      {
+        "type": "text",
+        "text": "check the light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“检查指示灯”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -761,9 +1355,25 @@
         "text": " 工人理解为“把手套放在桌子下面的托盘里”。判断：工人的理解是否正确？"
       }
     ],
-    "explanation": "指令中的 `in the box on the right` 意思是“在右边的盒子里”，而不是“桌子下面的托盘里”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "指令中的 "
+      },
+      {
+        "type": "text",
+        "text": "in the box on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意思是“在右边的盒子里”，而不是“桌子下面的托盘里”。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -808,7 +1418,30 @@
         "text": "先清理工作台，再关灯"
       }
     ],
-    "explanation": "`Clean the table` 表示“清理工作台”，`turn off the light` 表示“关灯”，按先后顺序操作即为先清理工作台、再关灯。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Clean the table",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“清理工作台”，"
+      },
+      {
+        "type": "text",
+        "text": "turn off the light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“关灯”，按先后顺序操作即为先清理工作台、再关灯。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -817,12 +1450,16 @@
   },
   {
     "id": "workbench-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "听懂工位指令",
     "concepts": [
       "workbench-instructions"
     ],
-    "stem": "听工位动作复合指令录音，选择操作顺序：",
+    "stem": "听工位动作复合指令录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "W",
@@ -832,41 +1469,113 @@
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "拿起红螺栓 -> 用扳手紧固 -> 放入2号盒",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "b",
-        "text": "拿起蓝螺栓 -> 用螺丝刀拧紧 -> 放入1号盒",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "c",
-        "text": "用扳手拆卸 -> 放入2号盒 -> 擦拭零件",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "直接将螺栓丢弃在地面",
-        "tts": {
-          "voice": "stella"
-        }
+        "id": "action-order",
+        "type": "single_choice",
+        "stem": "选择正确的操作顺序：",
+        "options": [
+          {
+            "id": "a",
+            "text": "拿起红螺栓 -> 用扳手紧固 -> 放入2号盒"
+          },
+          {
+            "id": "b",
+            "text": "拿起蓝螺栓 -> 用螺丝刀拧紧 -> 放入1号盒"
+          },
+          {
+            "id": "c",
+            "text": "用扳手拆卸 -> 放入2号盒 -> 擦拭零件"
+          },
+          {
+            "id": "d",
+            "text": "直接将螺栓丢弃在地面"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中的三步顺序是："
+          },
+          {
+            "type": "text",
+            "text": "pick up the red bolt",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（拿起红螺栓）、"
+          },
+          {
+            "type": "text",
+            "text": "tighten it with the wrench",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（用扳手紧固）、"
+          },
+          {
+            "type": "text",
+            "text": "place the part in Box 2",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（放入2号盒）。"
+          }
+        ]
       }
     ],
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    },
-    "explanation": "录音中的三步顺序是：pick up the red bolt, tighten it with the wrench, place the part in Box 2。"
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段指令用序数词 "
+      },
+      {
+        "type": "text",
+        "text": "First",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Second",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 串联三个工位操作步骤，听音时注意抓住动作动词、工具名称及盒号信息。"
+      }
+    ]
   }
 ]

@@ -1,61 +1,168 @@
 [
   {
     "id": "past-be-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "一般过去时 was / were",
     "concepts": [
       "past-be"
     ],
-    "stem": [
+    "stem": "工位交接时，你想向下个班次的同事说明“昨天工件到位传感器是干净的”，请选词补全句子。",
+    "passage": "The sensor {{1}} clean yesterday.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The sensor was clean yesterday."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "工位交接时，你想向下个班次的同事说明“昨天工件到位传感器是干净的”，横线处应填入哪个词？\nThe sensor "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " clean yesterday."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "was",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "were",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "The sensor",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是单数名词，且句中有过去时间状语 "
+          },
+          {
+            "type": "text",
+            "text": "yesterday",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，`be` 动词应选用过去式单数 "
+          },
+          {
+            "type": "text",
+            "text": "was",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "The sensor",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是单数名词，且句中有过去时间状语 "
+      },
+      {
+        "type": "text",
+        "text": "yesterday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，`be` 动词应选用过去式单数 "
+      },
+      {
+        "type": "text",
         "text": "was",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "。"
+      },
+      {
+        "type": "text",
         "text": "were",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": " 搭配复数主语，"
+      },
+      {
+        "type": "text",
         "text": "is",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
         "text": "are",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 属于现在时。"
       }
-    ],
-    "explanation": "主语 `The sensor` 是单数名词，且句中有过去时间状语 `yesterday`，be 动词应选用过去式单数 `was`。`were` 搭配复数主语，`is` 与 `are` 属于现在时。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "past-be-2",
@@ -70,32 +177,111 @@
         "id": "a",
         "text": "There was 3 NG parts in the bin.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "There was three NG parts in the bin."
         }
       },
       {
         "id": "b",
         "text": "There is 3 NG parts in the bin.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "There is three NG parts in the bin."
         }
       },
       {
         "id": "c",
         "text": "There were 3 NG parts in the bin.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "There were three NG parts in the bin."
         }
       },
       {
         "id": "d",
         "text": "There are 3 NG parts in the bin.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "There are three NG parts in the bin."
         }
       }
     ],
-    "explanation": "陈述过去的客观事实且被描述对象为复数名词 `3 NG parts` 时，存在句应使用 `There were`。选项 a 错误使用了单数 `was`，选项 b 和 d 为一般现在时。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "陈述过去的客观事实且被描述对象为复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "3 NG parts",
+        "tts": {
+          "voice": "stella",
+          "text": "three NG parts"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时，存在句应使用 "
+      },
+      {
+        "type": "text",
+        "text": "There were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "There was 3 NG parts in the bin.",
+        "tts": {
+          "voice": "stella",
+          "text": "There was three NG parts in the bin."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误使用了单数 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "There is 3 NG parts in the bin.",
+        "tts": {
+          "voice": "stella",
+          "text": "There is three NG parts in the bin."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”和“"
+      },
+      {
+        "type": "text",
+        "text": "There are 3 NG parts in the bin.",
+        "tts": {
+          "voice": "stella",
+          "text": "There are three NG parts in the bin."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”为一般现在时。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -115,7 +301,8 @@
         "id": "a",
         "text": "The camera was ready at 8:00.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "The camera was ready at eight o'clock."
         }
       },
       {
@@ -140,7 +327,156 @@
         }
       }
     ],
-    "explanation": "选项 a 中单数主语 `The camera` 搭配 `was` 正确；选项 d 中复数主语 `The parts` 搭配 `were` 正确。选项 b 中复数主语 `We` 误搭配了 `was`（应为 `were`）；选项 c 中 and 连接的并列主语为复数，应使用 `were`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "The camera was ready at 8:00.",
+        "tts": {
+          "voice": "stella",
+          "text": "The camera was ready at eight o'clock."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中单数主语 "
+      },
+      {
+        "type": "text",
+        "text": "The camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确；“"
+      },
+      {
+        "type": "text",
+        "text": "The parts were not defective.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中复数主语 "
+      },
+      {
+        "type": "text",
+        "text": "The parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确。“"
+      },
+      {
+        "type": "text",
+        "text": "We was on Shift A yesterday.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中复数主语 "
+      },
+      {
+        "type": "text",
+        "text": "We",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 误搭配了 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（应为 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）；“"
+      },
+      {
+        "type": "text",
+        "text": "The servo and the sensor was OK.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接的并列主语为复数，应使用 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -172,113 +508,333 @@
         "text": " 的语法结构完全正确，意思是“今天早上合格品料盒满了吗？”。判断：该说法是否正确？"
       }
     ],
-    "explanation": "该句为主语是单数名词 `the OK bin` 的一般疑问句，过去式 be 动词 `Was` 提前至句首，句型和时态搭配完全正确。",
-    "grading": {
-      "boolean": true
-    }
-  },
-  {
-    "id": "past-be-5",
-    "type": "single_choice",
-    "chapter": "一般过去时 was / were",
-    "concepts": [
-      "past-be"
-    ],
-    "stem": [
+    "analysis": [
       {
         "type": "text",
-        "text": "交接班时你想表达“今天早上摄像头没有连接到电脑”，横线处应填入哪个否定词？\nThe camera "
-      },
-      {
-        "type": "blank",
-        "index": 1
+        "text": "该句为主语是单数名词 "
       },
       {
         "type": "text",
-        "text": " connected to the PC this morning."
-      }
-    ],
-    "options": [
-      {
-        "id": "a",
-        "text": "weren't",
+        "text": "the OK bin",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": " 的一般疑问句，过去式 `be` 动词 "
+      },
+      {
+        "type": "text",
+        "text": "Was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提前至句首，句型和时态搭配完全正确。"
+      }
+    ],
+    "grading": {
+      "value": true
+    }
+  },
+  {
+    "id": "past-be-5",
+    "type": "cloze",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "交接班时你想表达“今天早上摄像头没有连接到电脑”，请选词补全句子。",
+    "passage": "The camera {{1}} connected to the PC this morning.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The camera wasn't connected to the PC this morning."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "weren't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "wasn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "isn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "aren't",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "The camera",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为第三人称单数，时间状语 "
+          },
+          {
+            "type": "text",
+            "text": "this morning",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示过去时间，`be` 动词过去式的单数否定形式为 "
+          },
+          {
+            "type": "text",
+            "text": "wasn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "The camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为第三人称单数，时间状语 "
+      },
+      {
+        "type": "text",
+        "text": "this morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示过去时间，`be` 动词过去式的单数否定形式为 "
+      },
+      {
+        "type": "text",
         "text": "wasn't",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "。"
+      },
+      {
+        "type": "text",
+        "text": "weren't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配复数主语，"
+      },
+      {
+        "type": "text",
         "text": "isn't",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
         "text": "aren't",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 为现在时。"
       }
-    ],
-    "explanation": "主语 `The camera` 为第三人称单数，时间状语 `this morning` 表示过去时间，be 动词过去式的单数否定形式为 `wasn't`。`weren't` 搭配复数主语，`isn't` 和 `aren't` 为现在时。",
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    }
+    ]
   },
   {
     "id": "past-regular-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "规则动词过去式",
     "concepts": [
       "past-regular"
     ],
-    "stem": "交班记录中需要表述“质检员昨晚测试了舵机挡板”，动词 `test` 的规则过去式拼写是哪一个？",
-    "options": [
+    "stem": "交班记录中需要表述“质检员昨晚测试了舵机挡板”，请选择动词 `test` 的正确过去式拼写补全句子。",
+    "passage": "The inspector {{1}} the servo baffle last night.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The inspector tested the servo baffle last night."
+    },
+    "blanks": [
       {
-        "id": "a",
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "test"
+          },
+          {
+            "id": "b",
+            "text": "testted"
+          },
+          {
+            "id": "c",
+            "text": "testing"
+          },
+          {
+            "id": "d",
+            "text": "tested"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "d"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "规则动词 "
+          },
+          {
+            "type": "text",
+            "text": "test",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的过去式直接在词尾加 `-ed`，拼写为 "
+          },
+          {
+            "type": "text",
+            "text": "tested",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "规则动词 "
+      },
+      {
+        "type": "text",
         "text": "test",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
-        "text": "testted",
+        "type": "text",
+        "text": " 的过去式直接在词尾加 `-ed`，拼写为 "
+      },
+      {
+        "type": "text",
+        "text": "tested",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "。`testted` 错误地双写了词尾辅音；"
+      },
+      {
+        "type": "text",
         "text": "testing",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "tested",
+        "type": "text",
+        "text": " 是现在分词；"
+      },
+      {
+        "type": "text",
+        "text": "test",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 为动词原形，不符合过去时间状语 "
+      },
+      {
+        "type": "text",
+        "text": "last night",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
       }
-    ],
-    "explanation": "规则动词 `test` 的过去式直接在词尾加 `-ed`，拼写为 `tested`。选项 b 错误地双写了词尾辅音，选项 c 是现在分词。",
-    "grading": {
-      "choice_ids": [
-        "d"
-      ]
-    }
+    ]
   },
   {
     "id": "past-regular-2",
@@ -322,7 +878,23 @@
         "text": "/s/"
       }
     ],
-    "explanation": "动词 `move` 词尾为浊辅音 /v/，根据发音规律，浊辅音后加 `-ed` 读浊辅音 /d/。/t/ 用于清辅音后，/ɪd/ 用于 /t/ 或 /d/ 音后。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
+        "text": "move",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 词尾为浊辅音 `/v/`，根据发音规律，浊辅音后加 `-ed` 读浊辅音 `/d/`。`/t/` 用于清辅音后，`/ɪd/` 用于 `/t/` 或 `/d/` 音后。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -355,7 +927,63 @@
         "text": "`tryed`（动词原形为 try）"
       }
     ],
-    "explanation": "选项 b 中 `check` 直接加 `-ed` 为 `checked`；选项 c 中 `stop` 以辅音+元音+辅音结尾，需双写 p 再加 `-ed` 为 `stopped`。选项 a 缺少双写辅音，选项 d 遗漏了变 y 为 i 的规则（应为 `tried`）。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 直接加 `-ed` 为 "
+      },
+      {
+        "type": "text",
+        "text": "checked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以辅音+元音+辅音结尾，需双写 p 再加 `-ed` 为 "
+      },
+      {
+        "type": "text",
+        "text": "stopped",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`stoped` 缺少双写辅音；`tryed` 遗漏了变 y 为 i 的规则（应为 "
+      },
+      {
+        "type": "text",
+        "text": "tried",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -387,184 +1015,360 @@
         "text": "，其末尾 -ed 的读音为 /ɪd/。判断：该说法是否正确？"
       }
     ],
-    "explanation": "`check` 词尾为清辅音 /k/，按发音规则清辅音后加 `-ed` 应念清辅音 /t/，而不是 /ɪd/。只有以 /t/ 或 /d/ 音结尾的动词加 `-ed` 才读 /ɪd/。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 词尾为清辅音 `/k/`，按发音规则清辅音后加 `-ed` 应念清辅音 `/t/`，而不是 `/ɪd/`。只有以 `/t/` 或 `/d/` 音结尾的动词加 `-ed` 才读 `/ɪd/`。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
     "id": "past-regular-5",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "规则动词过去式",
     "concepts": [
       "past-regular"
     ],
-    "stem": [
+    "stem": "生产线重启后，质检员向组长汇报“今天早上我们尝试了重新连接串口”，请选词补全句子。",
+    "passage": "We {{1}} to reconnect the serial port this morning.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We tried to reconnect the serial port this morning."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "生产线重启后，质检员向组长汇报“今天早上我们尝试了重新连接串口”，横线处应填入哪个单词？\nWe "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " to reconnect the serial port this morning."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "trys"
+          },
+          {
+            "id": "b",
+            "text": "tryed"
+          },
+          {
+            "id": "c",
+            "text": "tried"
+          },
+          {
+            "id": "d",
+            "text": "trying"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "c"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "动词 "
+          },
+          {
+            "type": "text",
+            "text": "try",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 以“辅音字母 + y”结尾，过去式需变 y 为 i 再加 `-ed`，正确拼写为 "
+          },
+          {
+            "type": "text",
+            "text": "tried",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
-        "text": "trys",
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
+        "text": "try",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
-        "text": "tryed",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 以“辅音字母 + y”结尾，过去式需变 y 为 i 再加 `-ed`，正确拼写为 "
       },
       {
-        "id": "c",
+        "type": "text",
         "text": "tried",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": "。`tryed` 与 `trys` 均为错误拼写（第三人称单数应为 "
+      },
+      {
+        "type": "text",
+        "text": "tries",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）；"
+      },
+      {
+        "type": "text",
         "text": "trying",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 为现在分词。"
       }
-    ],
-    "explanation": "动词 `try` 以“辅音字母 + y”结尾，过去式需变 y 为 i 再加 `-ed`，正确拼写为 `tried`。选项 b 拼写错误，选项 a 为现在时单三形式，选项 d 为现在分词。",
-    "grading": {
-      "choice_ids": [
-        "c"
-      ]
-    }
+    ]
   },
   {
     "id": "past-irregular-1",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "常用不规则动词过去式",
     "concepts": [
       "past-irregular"
     ],
-    "stem": [
+    "stem": "工位交接时你想表达“上一班次舵机挡板坏了，无法分拣零件”，请填入动词 `break` 的过去式补全句子。",
+    "passage": "The servo baffle {{1}} during the last shift.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The servo baffle broke during the last shift."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "工位交接时你想表达“上一班次舵机挡板坏了，无法分拣零件”，横线处应填入动词 break 的过去式：\nThe servo baffle "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " during the last shift."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "breaked"
+          },
+          {
+            "id": "b",
+            "text": "breaks"
+          },
+          {
+            "id": "c",
+            "text": "broked"
+          },
+          {
+            "id": "d",
+            "text": "broke"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "d"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "动词 "
+          },
+          {
+            "type": "text",
+            "text": "break",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是不规则动词，其过去式为 "
+          },
+          {
+            "type": "text",
+            "text": "broke",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
-        "text": "breaked",
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
+        "text": "break",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": " 是不规则动词，其过去式为 "
+      },
+      {
+        "type": "text",
+        "text": "broke",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。`breaked` 与 `broked` 属于错误的规则化拼写；"
+      },
+      {
+        "type": "text",
         "text": "breaks",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
-        "text": "broked",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "broke",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 是第三人称单数现在时。"
       }
-    ],
-    "explanation": "动词 `break` 是不规则动词，其过去式为 `broke`。选项 a 与 c 属于错误的规则化拼写，选项 b 是第三人称单数现在时。",
-    "grading": {
-      "choice_ids": [
-        "d"
-      ]
-    }
+    ]
   },
   {
     "id": "past-irregular-2",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "常用不规则动词过去式",
     "concepts": [
       "past-irregular"
     ],
-    "stem": [
+    "stem": "接班时你想说明“质检员昨晚把不合格零件放进了红色料盒”，请填入动词 `put` 的过去式补全句子。",
+    "passage": "The inspector {{1}} the NG parts into the red bin last night.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The inspector put the NG parts into the red bin last night."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "接班时你想说明“质检员昨晚把不合格零件放进了红色料盒”，横线处应填入动词 put 的过去式：\nThe inspector "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " the NG parts into the red bin last night."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "put"
+          },
+          {
+            "id": "b",
+            "text": "putted"
+          },
+          {
+            "id": "c",
+            "text": "puts"
+          },
+          {
+            "id": "d",
+            "text": "putten"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "动词 "
+          },
+          {
+            "type": "text",
+            "text": "put",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是特殊不规则动词，其过去式与原形同形，仍为 "
+          },
+          {
+            "type": "text",
+            "text": "put",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
         "text": "put",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
-        "text": "putted",
+        "type": "text",
+        "text": " 是特殊不规则动词，其过去式与原形同形，仍为 "
+      },
+      {
+        "type": "text",
+        "text": "put",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "。`putted` 与 `putten` 属于臆造错误形式；"
+      },
+      {
+        "type": "text",
         "text": "puts",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "putten",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 是现在时单三形式。"
       }
-    ],
-    "explanation": "动词 `put` 是特殊不规则动词，其过去式与原形同形，仍为 `put`。选项 b 与 d 属于臆造错误形式，选项 c 是现在时单三形式。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "past-irregular-3",
@@ -598,13 +1402,150 @@
       },
       {
         "id": "d",
-        "text": "The engineer gived me a new sensor.",
+        "text": "The engineer give me a new sensor.",
         "tts": {
           "voice": "stella"
         }
       }
     ],
-    "explanation": "选项 a 中 `find` 的过去式 `found` 正确；选项 c 中 `take` 的过去式 `took` 正确。选项 b 中 `see` 的过去式应为 `saw`（不能加 `-ed`）；选项 d 中 `give` 的过去式应为 `gave`（不能加 `-ed`）。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "I found two bad screws on the table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "find",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的过去式 "
+      },
+      {
+        "type": "text",
+        "text": "found",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确；“"
+      },
+      {
+        "type": "text",
+        "text": "We took the OK parts to the warehouse.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "take",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的过去式 "
+      },
+      {
+        "type": "text",
+        "text": "took",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确。“"
+      },
+      {
+        "type": "text",
+        "text": "He seed an error message on the PC.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "see",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的过去式应为 "
+      },
+      {
+        "type": "text",
+        "text": "saw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（不能直接加 `-ed`）；“"
+      },
+      {
+        "type": "text",
+        "text": "The engineer give me a new sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "give",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 误用了原形，其过去式应为 "
+      },
+      {
+        "type": "text",
+        "text": "gave",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -636,68 +1577,142 @@
         "text": " 表达“我向班组长汇报了这项故障”。判断：该表述是否正确？"
       }
     ],
-    "explanation": "`tell` 的过去式为不规则变化 `told`，句型结构与工位交接语义表达均完全正确。",
-    "grading": {
-      "boolean": true
-    }
-  },
-  {
-    "id": "past-irregular-5",
-    "type": "single_choice",
-    "chapter": "常用不规则动词过去式",
-    "concepts": [
-      "past-irregular"
-    ],
-    "stem": [
+    "analysis": [
       {
         "type": "text",
-        "text": "汇报上一班次的合格品入库情况时，你想表达“今天上午我们得到了 150 个合格零件”，横线处应填入哪个单词？\nWe "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " 150 OK parts this morning."
-      }
-    ],
-    "options": [
-      {
-        "id": "a",
-        "text": "getted",
+        "text": "tell",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": " 的过去式为不规则变化 "
+      },
+      {
+        "type": "text",
+        "text": "told",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，句型结构与工位交接语义表达均完全正确。"
+      }
+    ],
+    "grading": {
+      "value": true
+    }
+  },
+  {
+    "id": "past-irregular-5",
+    "type": "cloze",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "汇报上一班次的合格品入库情况时，你想表达“今天上午我们得到了 150 个合格零件”，请选词补全句子。",
+    "passage": "We {{1}} 150 OK parts this morning.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We got one hundred and fifty OK parts this morning."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "getted"
+          },
+          {
+            "id": "b",
+            "text": "got"
+          },
+          {
+            "id": "c",
+            "text": "gets"
+          },
+          {
+            "id": "d",
+            "text": "gotted"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "动词 "
+          },
+          {
+            "type": "text",
+            "text": "get",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的不规则过去式为 "
+          },
+          {
+            "type": "text",
+            "text": "got",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "动词 "
+      },
+      {
+        "type": "text",
+        "text": "get",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的不规则过去式为 "
+      },
+      {
+        "type": "text",
         "text": "got",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": "。`getted` 和 `gotted` 属于错误的规则化变形；"
+      },
+      {
+        "type": "text",
         "text": "gets",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "gotted",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 为一般现在时单三形式。"
       }
-    ],
-    "explanation": "动词 `get` 的不规则过去式为 `got`。选项 a 和 d 属于错误的规则化变形，选项 c 为一般现在时单三形式。",
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    }
+    ]
   },
   {
     "id": "did-questions-1",
@@ -737,7 +1752,67 @@
         }
       }
     ],
-    "explanation": "一般过去时疑问句借助助动词 `Did` 提前，句中实义动词必须恢复为原形 `check`。选项 a 错误保留了过去式，选项 b 为现在时且动词形式矛盾，选项 d 助动词选用错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "一般过去时疑问句借助助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提前，句中实义动词必须恢复为原形 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。“"
+      },
+      {
+        "type": "text",
+        "text": "Did you checked the sensor wire?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误保留了过去式；“"
+      },
+      {
+        "type": "text",
+        "text": "Do you checked the sensor wire?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”为现在时助动词且动词形式矛盾；“"
+      },
+      {
+        "type": "text",
+        "text": "Were you check the sensor wire?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”助动词选用错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -798,7 +1873,89 @@
         }
       }
     ],
-    "explanation": "对 `Did you ...?` 引导的过去时疑问句，肯定简略回答统一使用助动词 `did`，即 `Yes, I did.`。选项 a 误用了 be 动词，选项 b 误用了现在时 `do`，选项 c 不是标准简略答语。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对“"
+      },
+      {
+        "type": "text",
+        "text": "Did you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " ...?”引导的过去时疑问句，肯定简略回答统一使用助动词 "
+      },
+      {
+        "type": "text",
+        "text": "did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，即“"
+      },
+      {
+        "type": "text",
+        "text": "Yes, I did.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。“"
+      },
+      {
+        "type": "text",
+        "text": "Yes, I was.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了 `be` 动词；“"
+      },
+      {
+        "type": "text",
+        "text": "Yes, I do.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了现在时 "
+      },
+      {
+        "type": "text",
+        "text": "do",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "Yes, I cleaned.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”不是标准简略答语。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -843,7 +2000,166 @@
         }
       }
     ],
-    "explanation": "选项 b 中 `Did` 疑问句后动词原形 `stop` 正确；选项 d 中 `didn't` 否定句后动词原形 `find` 正确。选项 a 在 `didn't` 后误用了过去式 `saw`（应为 `see`）；选项 c 在 `didn't` 后误用了过去式 `tested`（应为 `test`）。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "Did they stop the sorting machine?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "Did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 疑问句后接动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确；“"
+      },
+      {
+        "type": "text",
+        "text": "We didn't find any defects on the parts.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 否定句后接动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "find",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确。“"
+      },
+      {
+        "type": "text",
+        "text": "I didn't saw the red warning light.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”在 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后误用了过去式 "
+      },
+      {
+        "type": "text",
+        "text": "saw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（应为 "
+      },
+      {
+        "type": "text",
+        "text": "see",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）；“"
+      },
+      {
+        "type": "text",
+        "text": "He didn't tested the new servo.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”在 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后误用了过去式 "
+      },
+      {
+        "type": "text",
+        "text": "tested",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（应为 "
+      },
+      {
+        "type": "text",
+        "text": "test",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -875,68 +2191,168 @@
         "text": " 语法正确，表达“我刚才没有接收到来自电脑的串口信号”。判断：该表述是否正确？"
       }
     ],
-    "explanation": "助动词 `didn't` 之后实义动词必须恢复为动词原形，原句中错误使用了过去式 `received`，应改为原形 `receive`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "助动词 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之后实义动词必须恢复为动词原形，原句中错误使用了过去式 "
+      },
+      {
+        "type": "text",
+        "text": "received",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，应改为原形 "
+      },
+      {
+        "type": "text",
+        "text": "receive",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
     "id": "did-questions-5",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "过去时疑问与否定 did",
     "concepts": [
       "did-questions"
     ],
-    "stem": [
+    "stem": "交接班时向主管说明“上一班次我们没有出任何错误”，请选词补全句子。",
+    "passage": "We didn't {{1}} any mistakes last shift.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We didn't make any mistakes last shift."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "交接班时向主管说明“上一班次我们没有出任何错误”，横线处应填入哪个动词形式？\nWe didn't "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " any mistakes last shift."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "make"
+          },
+          {
+            "id": "b",
+            "text": "made"
+          },
+          {
+            "id": "c",
+            "text": "maked"
+          },
+          {
+            "id": "d",
+            "text": "making"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "在过去时否定助动词 "
+          },
+          {
+            "type": "text",
+            "text": "didn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 之后，实义动词必须使用动词原形 "
+          },
+          {
+            "type": "text",
+            "text": "make",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "在过去时否定助动词 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之后，实义动词必须使用动词原形 "
+      },
+      {
+        "type": "text",
         "text": "make",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": "。"
+      },
+      {
+        "type": "text",
         "text": "made",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
-        "text": "maked",
+        "type": "text",
+        "text": " 为过去式；`maked` 拼写错误；"
+      },
+      {
+        "type": "text",
+        "text": "making",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
-        "text": "making",
-        "tts": {
-          "voice": "stella"
-        }
+        "type": "text",
+        "text": " 为现在分词。"
       }
-    ],
-    "explanation": "在过去时否定助动词 `didn't` 之后，实义动词必须使用动词原形 `make`。选项 b 为过去式，选项 c 拼写错误，选项 d 为现在分词。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "past-reports-num-1",
@@ -945,21 +2361,43 @@
     "concepts": [
       "past-regular"
     ],
-    "stem": "早班计划装配 60 台工件，实际装配完成 54 台（We assembled 54 units yesterday）。请问未完成的台数是多少？",
+    "stem": [
+      {
+        "type": "text",
+        "text": "早班计划装配 60 台工件，实际装配完成 54 台："
+      },
+      {
+        "type": "text",
+        "text": "We assembled 54 units yesterday.",
+        "tts": {
+          "voice": "tide",
+          "text": "We assembled fifty-four units yesterday."
+        }
+      },
+      {
+        "type": "text",
+        "text": " 请问未完成的台数是多少？"
+      }
+    ],
     "grading": {
       "value": "6",
       "absolute_tolerance": "0"
     },
-    "explanation": "60 - 54 = 6 台。"
+    "analysis": "60 - 54 = 6 台。"
   },
   {
     "id": "past-reports-num-2",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "常用不规则动词过去式",
     "concepts": [
       "past-irregular"
     ],
-    "stem": "听交接班汇报录音，回答后面的问题：\nHow many defective parts were found yesterday?（昨天一共发现了多少个不良品零件？请用阿拉伯数字作答）",
+    "stem": "听交接班汇报录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -976,20 +2414,77 @@
         }
       }
     ],
-    "grading": {
-      "value": "7",
-      "absolute_tolerance": "0"
-    },
-    "explanation": "录音中女声说明 \"We found seven defective parts\"，故数值答案为 7。"
+    "sub_questions": [
+      {
+        "id": "defective-parts-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many defective parts were found yesterday?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（昨天一共发现了多少个不良品零件？请用阿拉伯数字作答）"
+          }
+        ],
+        "grading": {
+          "value": "7",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中女声说明“"
+          },
+          {
+            "type": "text",
+            "text": "We found seven defective parts during the visual inspection.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "”，故数值答案为 7。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段交接班对话询问夜班发现的不良品零件数量，听音时注意捕捉答句中的数词 "
+      },
+      {
+        "type": "text",
+        "text": "seven",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   },
   {
     "id": "past-reports-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "过去时疑问与否定 did",
     "concepts": [
       "did-questions"
     ],
     "stem": "听交接班问答录音，选择白班是否完成了最终质检：",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -1002,45 +2497,89 @@
         "speaker": "W",
         "text": "Yes, we finished the final inspection at 5:00 PM.",
         "tts": {
-          "voice": "stella"
+          "voice": "stella",
+          "text": "Yes, we finished the final inspection at five p.m."
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "Yes, they finished at 5:00 PM.",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "b",
-        "text": "No, they did not finish.",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "c",
-        "text": "They forgot the inspection.",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "They will inspect tomorrow.",
-        "tts": {
-          "voice": "stella"
-        }
+        "id": "final-inspection-status",
+        "type": "single_choice",
+        "stem": "白班是否完成了最终质检？",
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, they finished at 5:00 PM.",
+            "tts": {
+              "voice": "stella",
+              "text": "Yes, they finished at five p.m."
+            }
+          },
+          {
+            "id": "b",
+            "text": "No, they did not finish.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "They forgot the inspection.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "They will inspect tomorrow.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中明确肯定回答“"
+          },
+          {
+            "type": "text",
+            "text": "Yes, we finished the final inspection at 5:00 PM.",
+            "tts": {
+              "voice": "stella",
+              "text": "Yes, we finished the final inspection at five p.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": "”。"
+          }
+        ]
       }
     ],
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    },
-    "explanation": "录音中明确肯定回答 \"Yes, we finished the final inspection at 5:00 PM\"。"
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段交接班问答围绕白班是否完成最终质检及完成时间展开，听音时抓住肯定回答“"
+      },
+      {
+        "type": "text",
+        "text": "Yes, we finished the final inspection at 5:00 PM.",
+        "tts": {
+          "voice": "stella",
+          "text": "Yes, we finished the final inspection at five p.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ]
   }
 ]

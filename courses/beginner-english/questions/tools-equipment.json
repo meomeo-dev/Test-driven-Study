@@ -6,13 +6,19 @@
     "concepts": ["power-tools"],
     "stem": "在工位装配中，用于拧紧十字槽螺丝的工具英文是：",
     "options": [
-      { "id": "a", "text": "Phillips screwdriver" },
-      { "id": "b", "text": "flathead screwdriver" },
-      { "id": "c", "text": "claw hammer" },
-      { "id": "d", "text": "adjustable wrench" }
+      { "id": "a", "text": "Phillips screwdriver", "tts": { "voice": "stella" } },
+      { "id": "b", "text": "flathead screwdriver", "tts": { "voice": "stella" } },
+      { "id": "c", "text": "claw hammer", "tts": { "voice": "stella" } },
+      { "id": "d", "text": "adjustable wrench", "tts": { "voice": "stella" } }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "十字螺丝刀的标准英文是 Phillips screwdriver，一字螺丝刀是 flathead screwdriver。"
+    "analysis": [
+      { "type": "text", "text": "十字螺丝刀的标准英文是 " },
+      { "type": "text", "text": "Phillips screwdriver", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，一字螺丝刀是 " },
+      { "type": "text", "text": "flathead screwdriver", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "te-sc-02",
@@ -31,26 +37,57 @@
       { "id": "d", "text": "钳子" }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "wrench 表示扳手；screwdriver 为螺丝刀；pliers 为钳子；electric drill 为手电钻。"
+    "analysis": [
+      { "type": "text", "text": "wrench", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示扳手；" },
+      { "type": "text", "text": "screwdriver", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为螺丝刀；" },
+      { "type": "text", "text": "pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为钳子；" },
+      { "type": "text", "text": "electric drill", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为手电钻。" }
+    ]
   },
   {
     "id": "te-sc-03",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "检测量具与读数",
     "concepts": ["measuring-gauges"],
-    "stem": [
-      { "type": "text", "text": "在装配前，必须使用数显卡尺测量轴的外径。请选择横线处最合适的词汇填空：\nMeasure the outer diameter with a digital " },
-      { "type": "blank", "index": 1 },
-      { "type": "text", "text": "." }
+    "stem": "在装配前，必须使用数显卡尺测量轴的外径。请选词补全英文句子。",
+    "passage": "Measure the outer diameter with a digital {{1}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Measure the outer diameter with a digital caliper."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "caliper", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "hammer", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "wrench", "tts": { "voice": "stella" } },
+          { "id": "d", "text": "cutter", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "digital caliper", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 是数显游标卡尺；" },
+          { "type": "text", "text": "hammer", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 为锤子；" },
+          { "type": "text", "text": "wrench", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 为扳手；" },
+          { "type": "text", "text": "cutter", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 为切割工具。" }
+        ]
+      }
     ],
-    "options": [
-      { "id": "a", "text": "caliper" },
-      { "id": "b", "text": "hammer" },
-      { "id": "c", "text": "wrench" },
-      { "id": "d", "text": "cutter" }
-    ],
-    "grading": { "choice_ids": ["a"] },
-    "explanation": "digital caliper 是数显游标卡尺；hammer 为锤子；wrench 为扳手。"
+    "analysis": [
+      { "type": "text", "text": "句中测量外径（" },
+      { "type": "text", "text": "outer diameter", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）需配合数显卡尺 " },
+      { "type": "text", "text": "digital caliper", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，其余选项均不是用于精密长度测量的量具。" }
+    ]
   },
   {
     "id": "te-sc-04",
@@ -65,26 +102,88 @@
       { "id": "d", "text": "Drop the bolt with a wrench.", "tts": { "voice": "stella" } }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "tighten 表示'拧紧/紧固'，搭配 with a wrench 表示用扳手紧固螺栓。全部选项统一提供 TTS。"
+    "analysis": [
+      { "type": "text", "text": "tighten", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示“拧紧/紧固”，搭配 " },
+      { "type": "text", "text": "with a wrench", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示用扳手紧固螺栓。" }
+    ]
   },
   {
     "id": "te-sc-05",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "检测量具与读数",
     "concepts": ["measuring-gauges"],
     "stem": "听工位质检录音，选择对话中提到的测量公差要求：",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
     "transcript": [
-      { "speaker": "M", "text": "What is the tolerance requirement for this cylinder bore?", "tts": { "voice": "tide" } },
-      { "speaker": "W", "text": "The tolerance must be kept within 0.05 mm.", "tts": { "voice": "stella" } }
+      {
+        "speaker": "M",
+        "text": "What is the tolerance requirement for this cylinder bore?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "The tolerance must be kept within 0.05 mm.",
+        "tts": {
+          "voice": "stella",
+          "text": "The tolerance must be kept within zero point zero five millimeters."
+        }
+      }
     ],
-    "options": [
-      { "id": "a", "text": "within 0.01 mm" },
-      { "id": "b", "text": "within 0.05 mm" },
-      { "id": "c", "text": "within 0.5 mm" },
-      { "id": "d", "text": "within 1.0 mm" }
+    "sub_questions": [
+      {
+        "id": "tolerance",
+        "type": "single_choice",
+        "stem": "对话中提到的测量公差要求是哪一项？",
+        "options": [
+          {
+            "id": "a",
+            "text": "within 0.01 mm",
+            "tts": { "voice": "stella", "text": "within zero point zero one millimeters" }
+          },
+          {
+            "id": "b",
+            "text": "within 0.05 mm",
+            "tts": { "voice": "stella", "text": "within zero point zero five millimeters" }
+          },
+          {
+            "id": "c",
+            "text": "within 0.5 mm",
+            "tts": { "voice": "stella", "text": "within zero point five millimeters" }
+          },
+          {
+            "id": "d",
+            "text": "within 1.0 mm",
+            "tts": { "voice": "stella", "text": "within one point zero millimeters" }
+          }
+        ],
+        "grading": { "choice_ids": ["b"] },
+        "analysis": [
+          { "type": "text", "text": "录音中女声明确回答 " },
+          {
+            "type": "text",
+            "text": "The tolerance must be kept within 0.05 mm.",
+            "tts": {
+              "voice": "stella",
+              "text": "The tolerance must be kept within zero point zero five millimeters."
+            }
+          },
+          { "type": "text", "text": "。" }
+        ]
+      }
     ],
-    "grading": { "choice_ids": ["b"] },
-    "explanation": "录音中女声明确回答 'The tolerance must be kept within 0.05 mm'。"
+    "analysis": [
+      { "type": "text", "text": "本段对话询问气缸孔的公差要求，听音时需抓住关键词 " },
+      { "type": "text", "text": "tolerance", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与具体数值 " },
+      {
+        "type": "text",
+        "text": "0.05 mm",
+        "tts": { "voice": "stella", "text": "zero point zero five millimeters" }
+      },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "te-sc-06",
@@ -99,26 +198,45 @@
       { "id": "d", "text": "wool scarf", "tts": { "voice": "stella" } }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "safety goggles（安全护目镜）是打磨作业必须佩戴的眼部防护用具。"
+    "analysis": [
+      { "type": "text", "text": "safety goggles", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（安全护目镜）是打磨作业必须佩戴的眼部防护用具。" }
+    ]
   },
   {
     "id": "te-sc-07",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "设备安全规程与指令",
     "concepts": ["equipment-safety-rules"],
-    "stem": [
-      { "type": "text", "text": "设备处于通电旋转状态时，严禁触碰传动部件。请选择正确的否定情态动词填空：\nYou " },
-      { "type": "blank", "index": 1 },
-      { "type": "text", "text": " touch the rotating parts during operation." }
+    "stem": "设备处于通电旋转状态时，严禁触碰传动部件。请选词补全英文安全禁令。",
+    "passage": "You {{1}} touch the rotating parts during operation.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "You must not touch the rotating parts during operation."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "must not", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "can", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "should", "tts": { "voice": "stella" } },
+          { "id": "d", "text": "may", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "must not", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 表示“绝不能、严禁”，用于表达强制性安全禁令。" }
+        ]
+      }
     ],
-    "options": [
-      { "id": "a", "text": "must not" },
-      { "id": "b", "text": "can" },
-      { "id": "c", "text": "should" },
-      { "id": "d", "text": "may" }
-    ],
-    "grading": { "choice_ids": ["a"] },
-    "explanation": "must not 表示'绝不能、严禁'，用于表达强制性安全禁令。"
+    "analysis": [
+      { "type": "text", "text": "安全禁令句子中，情态动词否定式 " },
+      { "type": "text", "text": "must not", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 后接动词原形 " },
+      { "type": "text", "text": "touch", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，表示严禁触碰运转部件。" }
+    ]
   },
   {
     "id": "te-sc-08",
@@ -137,7 +255,14 @@
       { "id": "d", "text": "把扭力扳手直接扔进垃圾桶" }
     ],
     "grading": { "choice_ids": ["a"] },
-    "explanation": "return ... to the rack 表示'归还/放回架子'，torque wrench 为扭力扳手。"
+    "analysis": [
+      { "type": "text", "text": "return", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " ... " },
+      { "type": "text", "text": "to the rack", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示“归还/放回架子”，" },
+      { "type": "text", "text": "torque wrench", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为扭力扳手。" }
+    ]
   },
   {
     "id": "te-mc-01",
@@ -152,7 +277,16 @@
       { "id": "d", "text": "air compressor (空气压缩机)" }
     ],
     "grading": { "choice_ids": ["a", "b", "c"] },
-    "explanation": "screwdriver、wrench 和 pliers 均属于手动工具；air compressor 属于大型动力辅助设备。"
+    "analysis": [
+      { "type": "text", "text": "screwdriver", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "wrench", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 均属于手动工具；" },
+      { "type": "text", "text": "air compressor", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 属于大型动力辅助设备。" }
+    ]
   },
   {
     "id": "te-mc-02",
@@ -167,27 +301,64 @@
       { "id": "d", "text": "Leave running machines unattended.", "tts": { "voice": "stella" } }
     ],
     "grading": { "choice_ids": ["a", "b", "c"] },
-    "explanation": "佩戴护目镜、遇到危险按急停、严禁触摸运转齿轮均为规范规程；离开运转中的设备无人照看是违规行为。"
+    "analysis": "佩戴护目镜、遇到危险按急停、严禁触摸运转齿轮均为规范规程；离开运转中的设备无人照看是违规行为。"
   },
   {
     "id": "te-mc-03",
-    "type": "multiple_choice",
+    "type": "listening",
     "chapter": "工具点检与维护听力",
     "concepts": ["tool-inspection-listen"],
-    "stem": "听质检主管与领料员的录音，选出主管要求拿取到4号工位的仪器工具：（多选）",
+    "stem": "听质检主管与领料员的录音，回答下面的问题：",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
     "transcript": [
-      { "speaker": "W", "text": "Please bring the digital caliper and the torque wrench to Station 4.", "tts": { "voice": "stella" } },
-      { "speaker": "M", "text": "Understood. Do you also need the multimeter?", "tts": { "voice": "tide" } },
-      { "speaker": "W", "text": "No, just the caliper and the torque wrench.", "tts": { "voice": "stella" } }
+      {
+        "speaker": "W",
+        "text": "Please bring the digital caliper and the torque wrench to Station 4.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "Understood. Do you also need the multimeter?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "No, just the caliper and the torque wrench.",
+        "tts": { "voice": "stella" }
+      }
     ],
-    "options": [
-      { "id": "a", "text": "digital caliper (数显卡尺)" },
-      { "id": "b", "text": "torque wrench (扭力扳手)" },
-      { "id": "c", "text": "multimeter (万用表)" },
-      { "id": "d", "text": "angle grinder (角磨机)" }
+    "sub_questions": [
+      {
+        "id": "tools",
+        "type": "multiple_choice",
+        "stem": "选出主管要求拿取到4号工位的仪器工具：（多选）",
+        "options": [
+          { "id": "a", "text": "digital caliper (数显卡尺)" },
+          { "id": "b", "text": "torque wrench (扭力扳手)" },
+          { "id": "c", "text": "multimeter (万用表)" },
+          { "id": "d", "text": "angle grinder (角磨机)" }
+        ],
+        "grading": { "choice_ids": ["a", "b"] },
+        "analysis": [
+          { "type": "text", "text": "对话中主管要求带 " },
+          { "type": "text", "text": "digital caliper", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 和 " },
+          { "type": "text", "text": "torque wrench", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，明确不需要 " },
+          { "type": "text", "text": "multimeter", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      }
     ],
-    "grading": { "choice_ids": ["a", "b"] },
-    "explanation": "对话中主管要求带 digital caliper 和 torque wrench，明确不需要 multimeter。"
+    "analysis": [
+      { "type": "text", "text": "本段对话确认4号工位所需工具，听音时注意主管最终只要 " },
+      { "type": "text", "text": "digital caliper", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与 " },
+      { "type": "text", "text": "torque wrench", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，并排除了 " },
+      { "type": "text", "text": "multimeter", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "te-mc-04",
@@ -196,7 +367,11 @@
     "concepts": ["power-tools"],
     "stem": [
       { "type": "text", "text": "维修工对学徒说：" },
-      { "type": "text", "text": "We need these two tools: a screwdriver and a pair of pliers.", "tts": { "voice": "tide" } },
+      {
+        "type": "text",
+        "text": "We need these two tools: a screwdriver and a pair of pliers.",
+        "tts": { "voice": "tide" }
+      },
       { "type": "text", "text": " 学徒需要准备哪两样工具？（多选）" }
     ],
     "options": [
@@ -206,16 +381,30 @@
       { "id": "d", "text": "铁锤 (hammer)" }
     ],
     "grading": { "choice_ids": ["a", "b"] },
-    "explanation": "screwdriver 为螺丝刀，a pair of pliers 为钳子。"
+    "analysis": [
+      { "type": "text", "text": "screwdriver", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为螺丝刀，" },
+      { "type": "text", "text": "a pair of pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为钳子。" }
+    ]
   },
   {
     "id": "te-tf-01",
     "type": "true_false",
     "chapter": "常用动力与手工具",
     "concepts": ["power-tools"],
-    "stem": "英文单词 'pliers'（钳子）在表达单数一把钳子时，可以直接写作 'a pliers'。",
-    "grading": { "boolean": false },
-    "explanation": "pliers 属于对称双叶工具复数名词，表达单数一把钳子时应使用量词短语 'a pair of pliers'。"
+    "stem": [
+      { "type": "text", "text": "英文单词 " },
+      { "type": "text", "text": "pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（钳子）在表达单数一把钳子时，可以直接写作 `a pliers`。" }
+    ],
+    "grading": { "value": false },
+    "analysis": [
+      { "type": "text", "text": "pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 属于对称双叶工具复数名词，表达单数一把钳子时应使用量词短语 " },
+      { "type": "text", "text": "a pair of pliers", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，不能直接说 `a pliers`。" }
+    ]
   },
   {
     "id": "te-tf-02",
@@ -223,8 +412,8 @@
     "chapter": "检测量具与读数",
     "concepts": ["measuring-gauges"],
     "stem": "公制长度单位换算中，1 cm 等于 100 mm。",
-    "grading": { "boolean": false },
-    "explanation": "1 cm = 10 mm，1 m = 100 cm = 1000 mm。"
+    "grading": { "value": false },
+    "analysis": "1 cm = 10 mm，1 m = 100 cm = 1000 mm。"
   },
   {
     "id": "te-tf-03",
@@ -233,28 +422,58 @@
     "concepts": ["equipment-safety-rules"],
     "stem": [
       { "type": "text", "text": "车间设备安全规程写道：" },
-      { "type": "text", "text": "You must turn off the main power before maintaining the equipment.", "tts": { "voice": "stella" } },
+      {
+        "type": "text",
+        "text": "You must turn off the main power before maintaining the equipment.",
+        "tts": { "voice": "stella" }
+      },
       { "type": "text", "text": " 判定：检修设备前切断主电源是强制性安全要求。" }
     ],
-    "grading": { "boolean": true },
-    "explanation": "'must + 动词原形' 表达强制性安全义务，表明检修前切断主电源是必须遵守的安全要求。"
+    "grading": { "value": true },
+    "analysis": [
+      { "type": "text", "text": "must", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 后接动词原形表达强制性安全义务，表明检修前切断主电源是必须遵守的安全要求。" }
+    ]
   },
   {
     "id": "te-tf-04",
-    "type": "true_false",
+    "type": "listening",
     "chapter": "工具点检与维护听力",
     "concepts": ["tool-inspection-listen"],
     "stem": "听录音对话，判断给出的说法是否符合对话内容：",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
     "transcript": [
-      { "speaker": "M", "text": "Can we use this electric drill right now?", "tts": { "voice": "tide" } },
-      { "speaker": "W", "text": "No, the power cable is damaged. Do not use it until it is repaired.", "tts": { "voice": "stella" } }
+      {
+        "speaker": "M",
+        "text": "Can we use this electric drill right now?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "No, the power cable is damaged. Do not use it until it is repaired.",
+        "tts": { "voice": "stella" }
+      }
     ],
-    "explanation": "录音中女声明确说明电缆损坏，在修复好前严禁使用，因此说法'该电钻因电缆损坏目前严禁使用'完全正确。",
-    "options": [
-      { "id": "t", "text": "正确：该电钻因电缆损坏目前严禁使用", "value": true },
-      { "id": "f", "text": "错误：该电钻完好无损可以立即使用", "value": false }
+    "sub_questions": [
+      {
+        "id": "drill-status",
+        "type": "true_false",
+        "stem": "判断下列说法是否符合对话内容：",
+        "options": [
+          { "id": "t", "text": "正确：该电钻因电缆损坏目前严禁使用", "value": true },
+          { "id": "f", "text": "错误：该电钻完好无损可以立即使用", "value": false }
+        ],
+        "grading": { "value": true },
+        "analysis": "录音中女声明确说明电缆损坏，在修复好前严禁使用，因此说法“该电钻因电缆损坏目前严禁使用”完全正确。"
+      }
     ],
-    "grading": { "boolean": true }
+    "analysis": [
+      { "type": "text", "text": "本段对话确认电钻是否可用，女声指出 " },
+      { "type": "text", "text": "the power cable is damaged", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 且修复前禁止使用（" },
+      { "type": "text", "text": "Do not use it until it is repaired.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。" }
+    ]
   },
   {
     "id": "te-num-01",
@@ -263,7 +482,7 @@
     "concepts": ["measuring-gauges"],
     "stem": "数显卡尺主尺刻度为 24 mm，副尺示数为 0.35 mm。请问总测量值为多少毫米？（请填入具体数值）",
     "grading": { "value": "24.35", "absolute_tolerance": "0.01" },
-    "explanation": "总读数 = 24 + 0.35 = 24.35 mm。"
+    "analysis": "总读数 = 24 + 0.35 = 24.35 mm。"
   },
   {
     "id": "te-num-02",
@@ -272,20 +491,56 @@
     "concepts": ["power-tools"],
     "stem": "1号工具箱内有 8 把开口扳手，2号工具箱内有 7 把梅花扳手。两个工具箱内共有多少把扳手？",
     "grading": { "value": "15", "absolute_tolerance": "0" },
-    "explanation": "8 + 7 = 15 把扳手。"
+    "analysis": "8 + 7 = 15 把扳手。"
   },
   {
     "id": "te-num-03",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "工具点检与维护听力",
     "concepts": ["tool-inspection-listen"],
-    "stem": "听工位工具点检录音，回答后面的问题：\nHow many digital calipers are in Cabinet A?（A柜中有几把数显卡尺？请用阿拉伯数字作答）",
+    "stem": "听工位工具点检录音，回答后面的问题：",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
     "transcript": [
-      { "speaker": "M", "text": "Let us check Cabinet A. How many digital calipers do we have here?", "tts": { "voice": "tide" } },
-      { "speaker": "W", "text": "There are six digital calipers in Cabinet A.", "tts": { "voice": "stella" } }
+      {
+        "speaker": "M",
+        "text": "Let us check Cabinet A. How many digital calipers do we have here?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "There are six digital calipers in Cabinet A.",
+        "tts": { "voice": "stella" }
+      }
     ],
-    "grading": { "value": "6", "absolute_tolerance": "0" },
-    "explanation": "录音中女声清楚说明 'There are six digital calipers in Cabinet A'，故数值答案为 6。"
+    "sub_questions": [
+      {
+        "id": "caliper-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many digital calipers are in Cabinet A?",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": "（A柜中有几把数显卡尺？请用阿拉伯数字作答）" }
+        ],
+        "grading": { "value": "6", "absolute_tolerance": "0" },
+        "analysis": [
+          { "type": "text", "text": "录音中女声清楚说明 " },
+          {
+            "type": "text",
+            "text": "There are six digital calipers in Cabinet A.",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": "，故数值答案为 6。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "本段点检对话确认A柜中的数显卡尺数量，听音时重点捕捉数字词 " },
+      { "type": "text", "text": "six", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
   },
   {
     "id": "te-num-04",
@@ -294,6 +549,6 @@
     "concepts": ["measuring-gauges"],
     "stem": "螺栓标准紧固扭力设定值为 40 N·m，允许最大上限为 45 N·m。请问允许的最大扭力上浮差值是多少 N·m？",
     "grading": { "value": "5", "absolute_tolerance": "0" },
-    "explanation": "45 - 40 = 5 N·m。"
+    "analysis": "45 - 40 = 5 N·m。"
   }
 ]

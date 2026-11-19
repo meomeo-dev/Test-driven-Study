@@ -1,10 +1,12 @@
 # Development Handoff
 
-Updated 2026-11-18 (America/New_York).
+Updated 2026-11-19 (America/New_York).
 
 ## Repository state
 
-- `main` integrates all closed issues through `#64`:
+- `main` integrates all closed issues through `#66`, with current branch
+  `feat/0067-upgrade-beginner-english-course-to-protocol-v2` implementing
+  [#67](issues/0067-feat-upgrade-beginner-english-course-to-protocol-v2.md):
   - [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
     (`4d2c69a`): polymorphic Go/OpenAPI/TS question-type contracts.
   - [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
@@ -14,9 +16,13 @@ Updated 2026-11-18 (America/New_York).
     and judgment TTS fixes.
   - [#64](issues/0064-chore-rename-step-up-english-1-demo-course-and-unit-titles.md)
     (`1b49fe8` / `8fc3ee9`): renamed demo display titles to **题型展示**.
-  - [#65](issues/0065-chore-rename-course-package-to-golden-course-template.md):
-    renamed `step-up-english-1` package/directory to `golden-course-template`
-    (**黄金标准课程模板 → 题型展示**, `1.0.0`).
+  - [#65](issues/0065-chore-rename-course-package-to-golden-course-template.md)
+    (`973ef9e`): renamed `step-up-english-1` package/directory to
+    `golden-course-template` (**黄金标准课程模板 → 题型展示**, `1.0.0`).
+  - [#66](issues/0066-chore-update-design-course-tts-skill-against-golden-course-templat.md)
+    (`fac27ef`): updated `.agents/skills/design-course-tts` against `golden-course-template`.
+  - [#67](issues/0067-feat-upgrade-beginner-english-course-to-protocol-v2.md):
+    upgraded `courses/beginner-english` from `1.4.1` (v1) to `2.0.0` (v2).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 
@@ -57,8 +63,12 @@ Updated 2026-11-18 (America/New_York).
 
 ## English curriculum
 
-- `beginner-english@1.4.1` includes sequential dialogue playback and expandable
-  listening transcripts. See the [TTS architecture](docs/features/tts/deepseek-tts-architecture.md).
+- `beginner-english@2.0.0` (`protocol_version: 2`, 10 units, 41 concepts, 216
+  items) upgraded from `1.4.1`: 20 listening items converted to `listening`,
+  27 blank/orthographic items to `cloze` with `passage_tts`, all 216 items
+  migrated to `analysis` (`RichContent`, zero hardcoded option letters), and all
+  `audit-course-tts` errors/warnings resolved (`issueCount: 0`). See the
+  [TTS architecture](docs/features/tts/deepseek-tts-architecture.md).
 - The old semester lesson packages were retired from the question type demo.
   Curriculum research from [issue #52](issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
   remains in the [progress tracker](docs/research/step-up-english-1/progress.json).

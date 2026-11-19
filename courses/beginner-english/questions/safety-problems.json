@@ -37,7 +37,100 @@
         }
       }
     ],
-    "explanation": "情态动词 `must` 表达强制性规程要求，后面必须直接接动词原形 `wear`，因此 `You must wear gloves.` 正确。选项 a 误用了动名词 `wearing`，选项 c 错误地添加了不定式符号 `to`，选项 d 语序颠倒错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "情态动词 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达强制性规程要求，后面必须直接接动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "wear",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，因此“"
+      },
+      {
+        "type": "text",
+        "text": "You must wear gloves.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "You must wearing gloves.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了动名词 "
+      },
+      {
+        "type": "text",
+        "text": "wearing",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "You must to wear gloves.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误地添加了不定式符号 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "You wear must gloves.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”语序颠倒。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -82,7 +175,100 @@
         }
       }
     ],
-    "explanation": "在安全规程中表示“绝对不可、严禁”必须使用 `must not`（或 `mustn't`）加动词原形，故 `You must not touch the belt.` 正确。选项 a 含义为必须触碰，与规程相反；选项 b 把 don't 与 must 连用，形式错误；选项 c 否定词位置错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "在安全规程中表示“绝对不可、严禁”必须使用 "
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（或 "
+      },
+      {
+        "type": "text",
+        "text": "mustn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）加动词原形，故“"
+      },
+      {
+        "type": "text",
+        "text": "You must not touch the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "You must touch the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”含义为必须触碰，与规程相反；“"
+      },
+      {
+        "type": "text",
+        "text": "You don't must touch the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”把 "
+      },
+      {
+        "type": "text",
+        "text": "don't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连用，形式错误；“"
+      },
+      {
+        "type": "text",
+        "text": "You not must touch the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”否定词位置错误。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -127,7 +313,122 @@
         }
       }
     ],
-    "explanation": "选项 a 中 `have to check` 正确表示客观规程要求“开机前必须检查传感器”；选项 c 中 `must keep` 正确在情态动词后接动词原形保持台面清洁。选项 b 在 `must not` 后面多余添加了 `to`；选项 d 在 `must` 后面错误使用了第三人称单数词尾 `wears`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "You have to check the sensor before starting.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中的 "
+      },
+      {
+        "type": "text",
+        "text": "have to check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确表示客观规程要求“开机前必须检查传感器”；“"
+      },
+      {
+        "type": "text",
+        "text": "Operators must keep the workbench clean.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中的 "
+      },
+      {
+        "type": "text",
+        "text": "must keep",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 正确在情态动词后接动词原形。“"
+      },
+      {
+        "type": "text",
+        "text": "You must not to put tools on the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”在 "
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后面多余添加了 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "He must wears safety glasses today.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”在 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后面错误使用了第三人称单数词尾 "
+      },
+      {
+        "type": "text",
+        "text": "wears",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -159,68 +460,198 @@
         "text": " 的含义是“你不需要触碰传送带，但如果想碰也可以碰”。判断：该说法是否正确？"
       }
     ],
-    "explanation": "`mustn't` 即 `must not`，表示不可违抗的“严禁、绝对不可”，绝不是“不需要”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "mustn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 即 "
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，表示不可违抗的“严禁、绝对不可”，绝不是“不需要”。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
     "id": "modal-must-5",
-    "type": "single_choice",
+    "type": "cloze",
     "chapter": "必须与禁止 must",
     "concepts": [
       "modal-must"
     ],
-    "stem": [
+    "stem": "班组长向质检员重申车间统一规章：“我们在车间里必须穿安全鞋。”根据客观制度要求，选词补全句子。",
+    "passage": "We {{1}} wear safety shoes in the workshop.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We have to wear safety shoes in the workshop."
+    },
+    "blanks": [
       {
-        "type": "text",
-        "text": "班组长向质检员重申车间统一规章：“我们在车间里必须穿安全鞋。”根据客观制度要求，横线处应填入哪一项？\nWe "
-      },
-      {
-        "type": "blank",
-        "index": 1
-      },
-      {
-        "type": "text",
-        "text": " wear safety shoes in the workshop."
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "have to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "has to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "must to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "having to",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语为第一人称复数 "
+          },
+          {
+            "type": "text",
+            "text": "We",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表达遵守外部制度的“必须”使用 "
+          },
+          {
+            "type": "text",
+            "text": "have to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 后接动词原形。"
+          }
+        ]
       }
     ],
-    "options": [
+    "analysis": [
       {
-        "id": "a",
+        "type": "text",
+        "text": "主语为第一人称复数 "
+      },
+      {
+        "type": "text",
+        "text": "We",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，表达遵守外部制度的“必须”应使用 "
+      },
+      {
+        "type": "text",
         "text": "have to",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "b",
+        "type": "text",
+        "text": " 后接动词原形。"
+      },
+      {
+        "type": "text",
         "text": "has to",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "c",
+        "type": "text",
+        "text": " 为第三人称单数形式，与主语不符；情态动词 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后面不能带 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，故 "
+      },
+      {
+        "type": "text",
         "text": "must to",
         "tts": {
           "voice": "stella"
         }
       },
       {
-        "id": "d",
+        "type": "text",
+        "text": " 错误；"
+      },
+      {
+        "type": "text",
         "text": "having to",
         "tts": {
           "voice": "stella"
         }
+      },
+      {
+        "type": "text",
+        "text": " 为分词形式，不能单独作谓语。"
       }
-    ],
-    "explanation": "主语为第一人称复数 `We`，表达遵守外部制度的“必须”使用 `have to` 后接动词原形。选项 b 为第三人称单数形式与主语不符；选项 c 中情态动词 `must` 后面不能带 `to`；选项 d 为分词形式不能单独作谓语。",
-    "grading": {
-      "choice_ids": [
-        "a"
-      ]
-    }
+    ]
   },
   {
     "id": "safety-signs-1",
@@ -260,7 +691,52 @@
         }
       }
     ],
-    "explanation": "`Emergency stop` 表示“紧急停止 / 急停”，对应工位切断电源的红色急停开关。选项 a 为“安全出口”，选项 b 为“注意/小心”，选项 d 为“禁止入内”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Emergency stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“紧急停止 / 急停”，对应工位切断电源的红色急停开关。"
+      },
+      {
+        "type": "text",
+        "text": "Exit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“安全出口”，"
+      },
+      {
+        "type": "text",
+        "text": "Caution",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“注意/小心”，"
+      },
+      {
+        "type": "text",
+        "text": "No entry",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“禁止入内”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -305,7 +781,52 @@
         }
       }
     ],
-    "explanation": "`Hot surface` 意为“高温表面”，用于提醒操作人员谨防接触烫伤。选项 b 为“闲人免进”，选项 c 为“佩戴护目镜”，选项 d 为“安全出口”。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Hot surface",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“高温表面”，用于提醒操作人员谨防接触烫伤。"
+      },
+      {
+        "type": "text",
+        "text": "Keep out",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“闲人免进”，"
+      },
+      {
+        "type": "text",
+        "text": "Wear safety glasses",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“佩戴护目镜”，"
+      },
+      {
+        "type": "text",
+        "text": "Exit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为“安全出口”。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -350,7 +871,52 @@
         }
       }
     ],
-    "explanation": "选项 b `No entry`（禁止入内）和选项 d `Do not touch`（请勿触碰）属于禁止人员进入特定区域或禁止接触设备的指令。选项 a 属于防护装备佩戴指令，选项 c 属于应急制动装置标识。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "No entry",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（禁止入内）和 "
+      },
+      {
+        "type": "text",
+        "text": "Do not touch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（请勿触碰）属于禁止人员进入特定区域或禁止接触设备的指令。"
+      },
+      {
+        "type": "text",
+        "text": "Wear safety glasses",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于防护装备佩戴指令，"
+      },
+      {
+        "type": "text",
+        "text": "Emergency stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于应急制动装置标识。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -382,9 +948,21 @@
         "text": " 标识通常指示人员疏散的安全出口方向。判断：该表述是否正确？"
       }
     ],
-    "explanation": "`Exit` 的含义为“出口 / 安全出口”，在生产车间与公共场所中用于指引火灾或突发事故时的紧急疏散通道。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Exit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的含义为“出口 / 安全出口”，在生产车间与公共场所中用于指引火灾或突发事故时的紧急疏散通道。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -425,7 +1003,52 @@
         }
       }
     ],
-    "explanation": "`Keep out` 意为“闲人免进 / 请勿靠近”，用于设立隔离防线防止非作业人员靠近。选项 a、b、c 分别为危险、警告、注意等危险等级词，而非具体的隔离指令。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Keep out",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为“闲人免进 / 请勿靠近”，用于设立隔离防线防止非作业人员靠近。"
+      },
+      {
+        "type": "text",
+        "text": "Danger",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Warning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Caution",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 分别为危险、警告、注意等危险等级词，而非具体的隔离指令。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -470,7 +1093,100 @@
         }
       }
     ],
-    "explanation": "情态动词 `can` 表示能力时后接动词原形，故 `I can use the scanner.` 正确。选项 a 误用了现在分词 `using`，选项 b 错误地添加了 `to`，选项 d 误用了过去式 `used`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "情态动词 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示能力时后接动词原形，故“"
+      },
+      {
+        "type": "text",
+        "text": "I can use the scanner.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "I can using the scanner.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了现在分词 "
+      },
+      {
+        "type": "text",
+        "text": "using",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "I can to use the scanner.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误地添加了 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "I can used the scanner.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”误用了过去式 "
+      },
+      {
+        "type": "text",
+        "text": "used",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -515,7 +1231,78 @@
         }
       }
     ],
-    "explanation": "向管理人员申请许可使用疑问句型 `Can I + 动词原形 ...?`，故 `Can I take a break?` 正确。选项 a 为陈述句语序；选项 c 动词误用了分词形式；选项 d 动词前错误添加了 `to`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "向管理人员申请许可使用疑问句型“"
+      },
+      {
+        "type": "text",
+        "text": "Can I",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 动词原形 ...?”，故“"
+      },
+      {
+        "type": "text",
+        "text": "Can I take a break?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "I can take a break?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”为陈述句语序；“"
+      },
+      {
+        "type": "text",
+        "text": "Can I taking a break?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”动词误用了分词形式；“"
+      },
+      {
+        "type": "text",
+        "text": "Can I to take a break?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”动词前错误添加了 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -560,7 +1347,122 @@
         }
       }
     ],
-    "explanation": "选项 a `You can't stand here.` 正确使用 `can't + 动词原形` 表示此处不许站立的现场规则；选项 d 正确使用 `can + 动词原形 sort` 表达一分钟分拣二十个零件的能力。选项 b 错误地给情态动词加了第三人称单数 `cans`；选项 c 错误地在 `start` 前加了 `to`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "You can't stand here.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确使用 "
+      },
+      {
+        "type": "text",
+        "text": "can't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 动词原形表示此处不许站立的现场规则；“"
+      },
+      {
+        "type": "text",
+        "text": "She can sort twenty parts in one minute.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确使用 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "sort",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达一分钟分拣二十个零件的能力。“"
+      },
+      {
+        "type": "text",
+        "text": "He cans check the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误地给情态动词加了第三人称单数 "
+      },
+      {
+        "type": "text",
+        "text": "cans",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "Can we to start the test?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”错误地在 "
+      },
+      {
+        "type": "text",
+        "text": "start",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前加了 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a",
@@ -592,9 +1494,58 @@
         "text": " 语法完全正确，符合工位英语规范。判断：该表述是否正确？"
       }
     ],
-    "explanation": "情态动词 `can` 后面必须接动词原形 `fix`，不能接动名词或现在分词 `fixing`。规范表达应为 `The technician can fix the sorting servo.`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "情态动词 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后面必须接动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "fix",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，不能接动名词或现在分词 "
+      },
+      {
+        "type": "text",
+        "text": "fixing",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。规范表达应为“"
+      },
+      {
+        "type": "text",
+        "text": "The technician can fix the sorting servo.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”。"
+      }
+    ],
     "grading": {
-      "boolean": false
+      "value": false
     }
   },
   {
@@ -635,7 +1586,89 @@
         }
       }
     ],
-    "explanation": "表达规则不允许做某事使用 `can't + 动词原形`，故 `You can't stand here.` 正确。选项 b 否定词位置错误；选项 c 多余添加了 `to`；选项 d 在情态动词后误用了分词 `standing`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表达规则不允许做某事使用 "
+      },
+      {
+        "type": "text",
+        "text": "can't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 动词原形，故“"
+      },
+      {
+        "type": "text",
+        "text": "You can't stand here.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "You not can stand here.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”否定词位置错误；“"
+      },
+      {
+        "type": "text",
+        "text": "You can't to stand here.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”多余添加了 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "You can not standing here.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”在情态动词后误用了分词 "
+      },
+      {
+        "type": "text",
+        "text": "standing",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "a"
@@ -680,7 +1713,89 @@
         }
       }
     ],
-    "explanation": "报告某部件发生故障使用固定句型 `There is a problem with + 部件`。选项 a 中单数名词 `a problem` 误用了复数 be 动词 `are`；选项 b 介词误用了 `of`；选项 c 表达不符合英语语法习惯。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "报告某部件发生故障使用固定句型“"
+      },
+      {
+        "type": "text",
+        "text": "There is a problem with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 部件”。“"
+      },
+      {
+        "type": "text",
+        "text": "There are a problem with the camera.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中单数名词 "
+      },
+      {
+        "type": "text",
+        "text": "a problem",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 误用了复数 `be` 动词 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "There is a problem of the camera.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”介词误用了 "
+      },
+      {
+        "type": "text",
+        "text": "of",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；“"
+      },
+      {
+        "type": "text",
+        "text": "The camera have problem.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”表达不符合英语语法习惯。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "d"
@@ -719,13 +1834,80 @@
       },
       {
         "id": "d",
-        "text": "The belt stucks.",
+        "text": "The belt sticks.",
         "tts": {
           "voice": "stella"
         }
       }
     ],
-    "explanation": "`stuck` 作形容词表示“卡住的、动弹不得的”，句型 `The belt is stuck.` 表示当前机械卡滞状态。选项 a 中 `stick` 为动词原形；选项 b 缺少谓语动词；选项 d 词形变化错误。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "stuck",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 作形容词表示“卡住的、动弹不得的”，句型“"
+      },
+      {
+        "type": "text",
+        "text": "The belt is stuck.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”表示当前机械卡滞状态。“"
+      },
+      {
+        "type": "text",
+        "text": "The belt is stick.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中 "
+      },
+      {
+        "type": "text",
+        "text": "stick",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为动词原形，不能直接作表语；“"
+      },
+      {
+        "type": "text",
+        "text": "The belt sticking.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”缺少谓语动词；“"
+      },
+      {
+        "type": "text",
+        "text": "The belt sticks.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”用一般现在时主动语态动词，不能准确表达传送带当前已被卡住的状态。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "c"
@@ -770,7 +1952,78 @@
         }
       }
     ],
-    "explanation": "选项 b `The light doesn't work.` 正确使用第三人称单数助动词否定说明指示灯不亮；选项 c `Please call the technician.` 是标准的求助祈使句。选项 a 否定句结构错误；选项 d 主语 `The machine` 为单数，be 动词误用了 `are`。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "“"
+      },
+      {
+        "type": "text",
+        "text": "The light doesn't work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确使用第三人称单数助动词否定，说明指示灯不亮；“"
+      },
+      {
+        "type": "text",
+        "text": "Please call the technician.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”是标准的求助祈使句。“"
+      },
+      {
+        "type": "text",
+        "text": "The light is no work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”否定句结构错误；“"
+      },
+      {
+        "type": "text",
+        "text": "The machine are not moving.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”中主语 "
+      },
+      {
+        "type": "text",
+        "text": "The machine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为单数，`be` 动词误用了 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b",
@@ -802,9 +2055,21 @@
         "text": " 使用现在进行时的否定形式，在分拣工位上可以准确表达“机器当前没有动作/停止运转”的故障状态。判断：该表述是否正确？"
       }
     ],
-    "explanation": "`is not moving` 为现在进行时的否定式，准确反映了设备在当前时刻处于停止动作、无反应的异常状态，常用于现场故障描述。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "is not moving",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为现在进行时的否定式，准确反映了设备在当前时刻处于停止动作、无反应的异常状态，常用于现场故障描述。"
+      }
+    ],
     "grading": {
-      "boolean": true
+      "value": true
     }
   },
   {
@@ -845,7 +2110,89 @@
         }
       }
     ],
-    "explanation": "主语 `The light` 为第三人称单数，一般现在时中实义动词 `work` 的否定式使用助动词 `doesn't + 动词原形`，故 `The light doesn't work.` 正确。选项 a 缺少助动词；选项 c 助动词人称错误；选项 d 助动词混淆了 be 动词。",
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "The light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为第三人称单数，一般现在时中实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的否定式使用助动词 "
+      },
+      {
+        "type": "text",
+        "text": "doesn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " + 动词原形，故“"
+      },
+      {
+        "type": "text",
+        "text": "The light doesn't work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”正确。“"
+      },
+      {
+        "type": "text",
+        "text": "The light not work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”缺少助动词；“"
+      },
+      {
+        "type": "text",
+        "text": "The light don't work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”助动词人称错误；“"
+      },
+      {
+        "type": "text",
+        "text": "The light isn't work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "”把助动词混淆成了 `be` 动词。"
+      }
+    ],
     "grading": {
       "choice_ids": [
         "b"
@@ -864,16 +2211,21 @@
       "value": "7",
       "absolute_tolerance": "0"
     },
-    "explanation": "92 - 85 = 7 分贝。"
+    "analysis": "92 - 85 = 7 分贝。"
   },
   {
     "id": "safety-num-2",
-    "type": "numeric",
+    "type": "listening",
     "chapter": "报告故障与问题",
     "concepts": [
       "reporting-problems"
     ],
-    "stem": "听故障排查录音，回答后面的问题：\nHow many emergency stop buttons are installed on Line 1?（1号流水线安装了几个急停按钮？请用阿拉伯数字作答）",
+    "stem": "听故障排查录音，回答后面的问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -890,20 +2242,77 @@
         }
       }
     ],
-    "grading": {
-      "value": "4",
-      "absolute_tolerance": "0"
-    },
-    "explanation": "录音中女声清楚说明 \"There are four emergency stop buttons along Line 1\"，故答案为 4。"
+    "sub_questions": [
+      {
+        "id": "emergency-stop-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many emergency stop buttons are installed on Line 1?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（1号流水线安装了几个急停按钮？请用阿拉伯数字作答）"
+          }
+        ],
+        "grading": {
+          "value": "4",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音中女声清楚说明“"
+          },
+          {
+            "type": "text",
+            "text": "There are four emergency stop buttons along Line 1.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "”，故答案为 4。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话询问 1 号流水线上的急停按钮数量，听音时注意捕捉答句中的数词 "
+      },
+      {
+        "type": "text",
+        "text": "four",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   },
   {
     "id": "safety-listen-sc-1",
-    "type": "single_choice",
+    "type": "listening",
     "chapter": "安全标志与警示语",
     "concepts": [
       "safety-signs"
     ],
     "stem": "听车间广播安全警报录音，选择紧急撤离集合点：",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "W",
@@ -920,41 +2329,81 @@
         }
       }
     ],
-    "options": [
+    "sub_questions": [
       {
-        "id": "a",
-        "text": "Assembly Point A",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "b",
-        "text": "Assembly Point B",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "c",
-        "text": "The cafeteria",
-        "tts": {
-          "voice": "stella"
-        }
-      },
-      {
-        "id": "d",
-        "text": "The warehouse roof",
-        "tts": {
-          "voice": "stella"
-        }
+        "id": "assembly-point",
+        "type": "single_choice",
+        "stem": "请选择正确的紧急撤离集合点：",
+        "options": [
+          {
+            "id": "a",
+            "text": "Assembly Point A",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "Assembly Point B",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "The cafeteria",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "d",
+            "text": "The warehouse roof",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "广播明确要求在 "
+          },
+          {
+            "type": "text",
+            "text": "Assembly Point B",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 集合。"
+          }
+        ]
       }
     ],
-    "grading": {
-      "choice_ids": [
-        "b"
-      ]
-    },
-    "explanation": "广播明确要求集合在 \"Assembly Point B\"。"
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段广播通知二区人员立即撤离并到指定地点集合，听音时抓住关键词 "
+      },
+      {
+        "type": "text",
+        "text": "gather at Assembly Point B",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   }
 ]
