@@ -168,7 +168,7 @@ func setupExtendedCourse(t *testing.T) (*study.Service, *storedb.Queries, int64)
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { db.Close() })
-	if _, err := storage.InstallCourse(ctx, db, filepath.Join(root, "courses", "step-up-english-1")); err != nil {
+	if _, err := storage.InstallCourse(ctx, db, filepath.Join(root, "courses", "golden-course-template")); err != nil {
 		t.Fatal(err)
 	}
 	s := study.New(db, root)
@@ -177,7 +177,7 @@ func setupExtendedCourse(t *testing.T) (*study.Service, *storedb.Queries, int64)
 		t.Fatal(err)
 	}
 	for _, entry := range courses {
-		if entry.ID == "step-up-english-1" {
+		if entry.ID == "golden-course-template" {
 			for _, unit := range entry.Units {
 				if unit.ID == "extended-practice" {
 					return s, storedb.New(db), unit.SubjectID

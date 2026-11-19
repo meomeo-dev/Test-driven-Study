@@ -238,14 +238,14 @@ func TestMigration00016SemanticQuestionTypeAndLegacySnapshots(t *testing.T) {
 		t.Fatalf("legacy palace snapshot leaked media: %+v", snap.Question)
 	}
 
-	// Verify step-up-english-1 (v2) installs cleanly and its cloze question has zero media/transcript.
-	if _, err := InstallCourse(ctx, db, filepath.Join(root, "courses", "step-up-english-1")); err != nil {
+	// Verify golden-course-template (v2) installs cleanly and its cloze question has zero media/transcript.
+	if _, err := InstallCourse(ctx, db, filepath.Join(root, "courses", "golden-course-template")); err != nil {
 		t.Fatal(err)
 	}
 	queries := storedb.New(db)
-	units, err := queries.ListWorkspaceUnits(ctx, "step-up-english-1")
+	units, err := queries.ListWorkspaceUnits(ctx, "golden-course-template")
 	if err != nil || len(units) == 0 {
-		t.Fatalf("step-up-english-1 units: %+v, %v", units, err)
+		t.Fatalf("golden-course-template units: %+v, %v", units, err)
 	}
 	qRows, err := queries.ListQuestions(ctx, storedb.ListQuestionsParams{
 		SubjectID: units[0].ID, ChapterID: -1, Search: "", State: "all",

@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Five v2 course question types (`cloze`, `listening`, `reading_comprehension`,
   `writing`, `translation`) with schema validation, structured evaluation,
   optional AI feedback, and the installable v2 showcase package
-  `step-up-english-1@1.2.8` (**标准课程模板 → 题型展示**).
+  `golden-course-template@1.0.0` (**黄金标准课程模板 → 题型展示**,
+  renamed from `step-up-english-1`).
 - Polymorphic discriminated-union HTTP contracts and Go projections
   (`PublicQuestion`, `Question`, `QuestionContent`, `CourseItemReview`) enforcing
   media vs. non-media boundaries per question type.

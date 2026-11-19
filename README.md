@@ -16,7 +16,7 @@
 A local course study application with a Go backend, React and TypeScript
 frontend, and SQLite storage. It bundles 18 default courses (including Basic Math
 and [Elementary Chinese](courses/elementary-chinese/course.json)) alongside an
-installable v2 template course ([标准课程模板](courses/step-up-english-1/README.md))
+installable v2 template course ([黄金标准课程模板](courses/golden-course-template/README.md))
 demonstrating all nine question types.
 
 The interface is in Chinese. Studying does not require an account, API key,

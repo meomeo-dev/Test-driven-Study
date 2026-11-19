@@ -23,7 +23,7 @@ The platform's current question system is defined by three tightly coupled compo
    Evaluates choices by exact integer ID matching and numeric values with absolute tolerance.
 
 ### 1.2 Motivation for v2 Extension
-Vocational and academic English curricula (such as the `step-up-english-1` demo)
+Vocational and academic English curricula (such as the `golden-course-template` demo)
 require complex evaluation formats that cannot be modeled by simple isolated multiple-choice
 options:
 - **Declarative Rich Content / Mixed Inline TTS**: Stems and options can be defined as

@@ -145,7 +145,7 @@ func TestAttemptIncludesQuestionTypeInSubmissionAndAnalysis(t *testing.T) {
 		t.Fatal(err)
 	}
 	defer db.Close()
-	if _, err := storage.InstallCourse(ctx, db, filepath.Join(root, "courses", "step-up-english-1")); err != nil {
+	if _, err := storage.InstallCourse(ctx, db, filepath.Join(root, "courses", "golden-course-template")); err != nil {
 		t.Fatal(err)
 	}
 	s := study.New(db, root)
@@ -155,7 +155,7 @@ func TestAttemptIncludesQuestionTypeInSubmissionAndAnalysis(t *testing.T) {
 	}
 	var subject int64
 	for _, entry := range courses {
-		if entry.ID == "step-up-english-1" {
+		if entry.ID == "golden-course-template" {
 			subject = entry.Units[0].SubjectID
 		}
 	}

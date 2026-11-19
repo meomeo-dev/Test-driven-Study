@@ -5,7 +5,7 @@ import type { AttemptResult, CourseSummary, ExamSession, PracticeSummary } from
 
 async function demoUnit(request: APIRequestContext) {
   const courses: CourseSummary[] = await (await request.get('/api/courses')).json();
-  const subject = courses.find(c => c.id === 'step-up-english-1')
+  const subject = courses.find(c => c.id === 'golden-course-template')
     ?.units.find(u => u.id === 'extended-practice')?.subject_id;
   expect(subject).toBeDefined();
   const questions: PracticeSummary[] =

@@ -1,7 +1,7 @@
 # V2 question types
 
 The v2 course contract adds five types. The existing four types remain
-available. [The sample unit](../../../courses/step-up-english-1/questions/extended-practice.json)
+available. [The sample unit](../../../courses/golden-course-template/questions/extended-practice.json)
 demonstrates all nine types, including the three writing subtypes, both
 translation directions, all three listening modes, and reading sub-questions
 with single-choice, multiple-choice, and numeric responses. The standalone
@@ -57,11 +57,11 @@ written practice submission. Feedback does not change practice history or
 exam scores.
 
 Install or upgrade the example course through the normal versioned import.
-The questions appear under **标准课程模板 → 题型展示**:
+The questions appear under **黄金标准课程模板 → 题型展示**:
 
 ```sh
-npm run course:check -- courses/step-up-english-1
-npm run course:install -- courses/step-up-english-1
+npm run course:check -- courses/golden-course-template
+npm run course:install -- courses/golden-course-template
 ```
 
 See the [v2 schemas](../../../contracts/course/v2/README.md) and the original

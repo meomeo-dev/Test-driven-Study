@@ -6,7 +6,7 @@
 > - Schema：`contracts/course/v1/items.schema.json`、`contracts/course/v2/items.schema.json`
 > - 后端校验与合成：`internal/course/{model,extended,load}.go`、`internal/tts/{service,phrase_key,wav}.go`、`internal/study/exam_audio.go`、`internal/httpapi/exam_audio.go`
 > - 前端渲染：`web/src/components/{RichContent,AudioControls,OptionAudio,QuestionAudio}.tsx`、`web/src/features/question-types/`
-> - 课程样本：`courses/beginner-english/`、`courses/elementary-chinese/`、`courses/step-up-english-1/`
+> - 课程样本：`courses/beginner-english/`、`courses/elementary-chinese/`、`courses/golden-course-template/`
 
 ## 目录
 

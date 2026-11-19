@@ -11,7 +11,7 @@ import (
 )
 
 func TestExtendedPromptUsesReferenceAnswer(t *testing.T) {
-	pkg, err := course.Load("../../courses/step-up-english-1")
+	pkg, err := course.Load("../../courses/golden-course-template")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -31,7 +31,7 @@ func TestExtendedPromptUsesReferenceAnswer(t *testing.T) {
 }
 
 func TestExtendedPromptOmitsListeningPassageAndConcepts(t *testing.T) {
-	pkg, err := course.Load("../../courses/step-up-english-1")
+	pkg, err := course.Load("../../courses/golden-course-template")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -76,11 +76,11 @@ func TestClozeNeverReceivesListeningTranscriptInPreview(t *testing.T) {
 	options := testOptions(t, providerFunc(func(context.Context, ProviderInput) (ProviderOutput, error) {
 		return ProviderOutput{}, nil
 	}))
-	if _, err := storage.InstallCourse(context.Background(), options.DB, "../../courses/step-up-english-1"); err != nil {
+	if _, err := storage.InstallCourse(context.Background(), options.DB, "../../courses/golden-course-template"); err != nil {
 		t.Fatal(err)
 	}
 	s := newService(t, options)
-	pkg, err := course.Load("../../courses/step-up-english-1")
+	pkg, err := course.Load("../../courses/golden-course-template")
 	if err != nil {
 		t.Fatal(err)
 	}

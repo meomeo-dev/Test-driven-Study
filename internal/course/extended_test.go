@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-const sampleV2Path = "../../courses/step-up-english-1"
+const sampleV2Path = "../../courses/golden-course-template"
 
 func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 	pkg, err := Load(sampleV2Path)

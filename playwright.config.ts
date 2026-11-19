@@ -22,7 +22,7 @@ export default defineConfig({
   }, {
     command: 'npm run course:install -- tests/fixtures/courses/intro-geometry'
       + ' && npm run course:install -- tests/fixtures/courses/concept-graph'
-      + ' && npm run course:install -- courses/step-up-english-1 && npm run dev',
+      + ' && npm run course:install -- courses/golden-course-template && npm run dev',
     url: 'http://127.0.0.1:43287/api/health',
     reuseExistingServer: false,
     timeout: 180_000,

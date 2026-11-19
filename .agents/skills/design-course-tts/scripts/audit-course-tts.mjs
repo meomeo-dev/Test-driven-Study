@@ -30,7 +30,7 @@ const HELP = `audit-course-tts: 审计课程题库 JSON 的声明式 TTS 与本�
 示例:
   node <skill-root>/scripts/audit-course-tts.mjs courses/elementary-chinese
   node <skill-root>/scripts/audit-course-tts.mjs courses/beginner-english --json
-  node <skill-root>/scripts/audit-course-tts.mjs --file courses/step-up-english-1/questions/extended-practice.json
+  node <skill-root>/scripts/audit-course-tts.mjs --file courses/golden-course-template/questions/extended-practice.json
 `;
 
 function resolvePath(raw) {
