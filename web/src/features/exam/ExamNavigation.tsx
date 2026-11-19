@@ -1,25 +1,13 @@
 import type { ExamItem, ExamSession } from '../../api/exams';
-import { assertNever } from '../question-types/registry';
-import { answerSymbols } from './terminalLabels';
+import { formatExamNavValue } from '../question-types';
 
 function cellText(item: ExamItem, value: number[]): string {
-  const q = item.detail.question;
-  switch (q.question_type) {
-    case 'cloze':
-    case 'listening':
-    case 'reading_comprehension':
-    case 'writing':
-    case 'translation':
-      return item.response ? '已答' : '';
-    case 'numeric':
-      return item.numeric ?? '';
-    case 'single_choice':
-    case 'multiple_choice':
-    case 'true_false':
-      return answerSymbols(q, value).replaceAll('、', '');
-    default:
-      return assertNever(q);
-  }
+  return formatExamNavValue(
+    item.detail.question,
+    value,
+    item.numeric,
+    item.response,
+  );
 }
 
 export function ExamNavigation({

@@ -5,16 +5,14 @@ import type { ExtendedResponse } from '../../api/generated/types.gen';
 import type { AttemptResult, Presentation } from '../../api/practice';
 import { RichContent } from '../../components/RichContent';
 import {
-  QuestionReferenceAnswers,
-  QuestionStimulus,
-} from '../question-types/QuestionStimulus';
-import { QUESTION_TYPE_REGISTRY } from '../question-types/registry';
-import { questionType } from './model';
-import {
   hasDraftAnswer,
   PracticeAnswerBody,
+  QUESTION_TYPE_REGISTRY,
+  QuestionReferenceAnswers,
+  QuestionStimulus,
   shouldShowExplanation,
-} from './PracticeAnswerBody';
+} from '../question-types';
+import { questionType } from './model';
 import { QuestionExplanation } from './QuestionExplanation';
 import { QuestionImage } from './QuestionImage';
 import type { DetailsTab } from './StudyDetails';
@@ -81,12 +79,11 @@ export function QuestionCard({
   const detail = presentation.detail;
   const question = detail.question;
   const clozeId = useId();
-  const writing = question.question_type === 'writing';
   const spec = QUESTION_TYPE_REGISTRY[question.question_type];
   const written = spec.isWritten && Boolean(result);
   const hint = (key: string) =>
     shortcuts || key === 'Enter' ? <kbd aria-hidden="true">{key}</kbd> : null;
-  const ready = hasDraftAnswer(question, canSubmitExtended, numeric, selected);
+  const ready = hasDraftAnswer(question, { selected, numeric, canSubmitExtended });
 
   return (
     <article className="question-card" aria-labelledby="question-title" aria-busy={pending}>
@@ -159,12 +156,27 @@ export function QuestionCard({
               shortcuts={shortcuts}
             />
           </section>
-          <section className="question-answers" aria-label={writing ? '作答' : '作答选项'}>
-            {!writing && <h3 className="column-label">{spec.answerHeading}</h3>}
+          <section
+            className="question-answers"
+            aria-label={spec.hideAnswerHeading ? '作答' : '作答选项'}
+          >
+            {!spec.hideAnswerHeading && (
+              <h3 className="column-label">{spec.answerHeading}</h3>
+            )}
             <PracticeAnswerBody
               question={question}
+              reviewQuestion={result?.detail.question}
               presentationId={presentation.id}
-              result={result}
+              result={
+                result
+                  ? {
+                      score: result.attempt.score,
+                      response: result.attempt.response,
+                      correctAnswer: result.attempt.correct_answer,
+                      correctNumeric: result.attempt.correct_numeric,
+                    }
+                  : undefined
+              }
               selected={selected}
               draft={draft}
               onDraft={onDraft}
@@ -172,8 +184,8 @@ export function QuestionCard({
               onNumeric={onNumeric}
               pending={pending}
               shortcuts={shortcuts}
+              partIdPrefix={clozeId}
               onChoose={onChoose}
-              clozeId={clozeId}
             />
           </section>
         </div>

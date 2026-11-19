@@ -11,10 +11,11 @@ import {
 import type { Detail, ProgressState, Question } from '../../api/client';
 import { RichContent } from '../../components/RichContent';
 import {
+  isExtendedType,
+  QUESTION_TYPE_REGISTRY,
   QuestionReferenceAnswers,
   QuestionStimulus,
-} from '../question-types/QuestionStimulus';
-import { isExtendedType } from '../question-types/registry';
+} from '../question-types';
 import { questionType, stateLabel } from './model';
 import { QuestionExplanation } from './QuestionExplanation';
 import { QuestionImage } from './QuestionImage';
@@ -56,6 +57,7 @@ export function QuestionCard({
   onMark,
 }: Props) {
   const question = detail.question;
+  const spec = QUESTION_TYPE_REGISTRY[question.question_type];
   const reading = question.question_type === 'reading_comprehension';
   const writing = question.question_type === 'writing';
   const extended = isExtendedType(question.question_type);
@@ -109,7 +111,7 @@ export function QuestionCard({
           />
         </section>
         <section className="question-answers" aria-label="参考答案">
-          {!writing && <h3 className="column-label">选项与答案</h3>}
+          {!spec.hideAnswerHeading && <h3 className="column-label">选项与答案</h3>}
           <AnswerOptions question={question} />
         </section>
         <QuestionExplanation detail={detail} onDetails={onDetails} />

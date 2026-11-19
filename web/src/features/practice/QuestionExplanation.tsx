@@ -2,12 +2,12 @@ import { ChevronDown, FileText, Lightbulb } from 'lucide-react';
 import type { Detail } from '../../api/client';
 import { ExplanationAudio } from '../../components/AudioControls';
 import { RichContent } from '../../components/RichContent';
-import { hasRichContent } from '../question-types/model';
 import {
+  hasRichContent,
   QuestionExtendedExplanations,
   QuestionWritingCriteria,
   QuestionWritingSample,
-} from '../question-types/QuestionStimulus';
+} from '../question-types';
 import type { DetailsTab } from './StudyDetails';
 
 type Props = {

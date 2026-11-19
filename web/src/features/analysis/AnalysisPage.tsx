@@ -10,7 +10,7 @@ import { ThemeToggle } from '../../components/ThemeToggle';
 import { Tabs } from '../../components/Tabs';
 import { ReviewBookPanel } from './ReviewBookPanel';
 import { AnalysisMetrics, ChapterDistribution, DailyTrend, RateLine } from './AnalysisPanels';
-import { questionType } from '../question-types/model';
+import { questionType } from '../question-types';
 import { attemptSummary } from './model';
 
 const tabs = [{ id: 'overview', label: '学习概览' }, { id: 'review', label: '错题本' }];

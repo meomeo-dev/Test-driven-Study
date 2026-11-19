@@ -2,8 +2,7 @@ import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'reac
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import * as api from '../../api/practice';
-import { readyResponse } from '../question-types/model';
-import { assertNever } from '../question-types/registry';
+import { assertNever, readyResponse } from '../question-types';
 import { QuestionCard } from './QuestionCard';
 import { QuestionPreview } from './QuestionPreview';
 import { StudyDetails, type DetailsTab } from './StudyDetails';

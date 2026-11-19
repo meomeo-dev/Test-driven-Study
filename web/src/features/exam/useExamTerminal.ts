@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ExamItem } from '../../api/exams';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
-import { readyResponse } from '../question-types/model';
-import { assertNever } from '../question-types/registry';
+import { assertNever, readyResponse } from '../question-types';
 import { useExamClock, useExamSession } from './useExamSession';
 
 export type TerminalDialog = 'submit' | 'result' | 'review' | 'help' | 'navigation' | null;

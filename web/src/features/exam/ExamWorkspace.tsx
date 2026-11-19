@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useShortcutPreference } from '../practice/useStudyShortcuts';
-import { QUESTION_TYPE_REGISTRY } from '../question-types/registry';
+import { QUESTION_TYPE_REGISTRY } from '../question-types';
 import { ExamNavigation } from './ExamNavigation';
 import { ExamQuestion } from './ExamQuestion';
 import { TerminalCandidate } from './TerminalCandidate';

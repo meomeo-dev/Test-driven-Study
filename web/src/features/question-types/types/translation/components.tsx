@@ -2,7 +2,8 @@ import type {
   ExtendedResponse,
   TranslationContent,
   TranslationItemReview,
-} from '../../api/generated/types.gen';
+} from '../../../../api/generated/types.gen';
+import { creditLabel } from '../../shared/format';
 
 export function TranslationSource({ content }: { content: TranslationContent }) {
   if (!content.source_text) return null;
@@ -24,7 +25,9 @@ export function TranslationReference({ review }: { review?: TranslationItemRevie
       {review.reference_translation && (
         <>
           <h4 className="column-label">参考译文</h4>
-          <p className="analysis-text extended-passage">{review.reference_translation}</p>
+          <p className="analysis-text extended-passage">
+            {review.reference_translation}
+          </p>
         </>
       )}
       {!!review.acceptable_alternates?.length && (
@@ -81,10 +84,37 @@ export function TranslationEditor({
             maxLength={12000}
             disabled={disabled || !onChange}
             value={text}
-            onChange={event => onChange?.({ translation: event.currentTarget.value })}
+            onChange={event =>
+              onChange?.({ translation: event.currentTarget.value })
+            }
           />
         </label>
       )}
     </div>
+  );
+}
+
+export function TranslationReview({
+  item,
+  response,
+  credit,
+}: {
+  item: TranslationItemReview;
+  response?: ExtendedResponse;
+  credit?: number;
+}) {
+  return (
+    <section className="extended-review" aria-label="作答反馈">
+      {credit !== undefined && <p role="status">本地检查得分：{creditLabel(credit)}</p>}
+      {response?.translation && (
+        <p className="extended-passage">你的译文：{response.translation}</p>
+      )}
+      <TranslationReference review={item} />
+      {credit !== undefined && (
+        <p className="muted">
+          本地得分依据词数、关键词或参考译文，可结合范文和评分细则检查表达。
+        </p>
+      )}
+    </section>
   );
 }

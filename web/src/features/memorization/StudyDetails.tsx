@@ -5,12 +5,12 @@ import { ExplanationAudio } from '../../components/AudioControls';
 import { Modal } from '../../components/Modal';
 import { RichContent } from '../../components/RichContent';
 import { Tabs } from '../../components/Tabs';
-import { hasRichContent } from '../question-types/model';
 import {
+  hasRichContent,
   QuestionExtendedExplanations,
   QuestionStimulus,
   QuestionWritingCriteria,
-} from '../question-types/QuestionStimulus';
+} from '../question-types';
 import { questionType, stateLabel } from './model';
 import { AnswerOptions } from './QuestionCard';
 import { QuestionImage } from './QuestionImage';

@@ -1,53 +1,17 @@
-import type { Detail, Question } from '../../api/client';
+import type { Detail } from '../../api/client';
 import { ExplanationAudio } from '../../components/AudioControls';
-import { OptionAudio } from '../../components/OptionAudio';
 import { RichContent } from '../../components/RichContent';
 import { questionType } from '../memorization/model';
 import { QuestionImage } from '../memorization/QuestionImage';
-import { ExtendedReference } from '../question-types/ExtendedReference';
-import { hasRichContent } from '../question-types/model';
 import {
+  hasRichContent,
+  PalaceAnswers,
   QuestionExtendedExplanations,
   questionHasReviewExplanation,
   questionHasWritingCriteria,
   QuestionStimulus,
   QuestionWritingCriteria,
-} from '../question-types/QuestionStimulus';
-import { assertNever } from '../question-types/registry';
-
-function PalaceAnswers({ question }: { question: Question }) {
-  switch (question.question_type) {
-    case 'cloze':
-    case 'listening':
-    case 'reading_comprehension':
-    case 'writing':
-    case 'translation':
-      return <ExtendedReference question={question} />;
-    case 'numeric':
-      return <p className="answer-option correct">正确答案：{question.answer}</p>;
-    case 'single_choice':
-    case 'multiple_choice':
-    case 'true_false': {
-      const answers = question.answer.split(',').map(Number);
-      const hasAnyTts = question.items.some(option => Boolean(option.tts));
-      return (
-        <ol className="palace-options">
-          {question.items.map(item => (
-            <li key={item.sign} className={answers.includes(item.sign) ? 'correct' : ''}>
-              <span>
-                {item.sign}. {item.item_title}
-              </span>
-              <OptionAudio option={item} allOptionsHaveTts={hasAnyTts} />
-              {answers.includes(item.sign) && <b>正确</b>}
-            </li>
-          ))}
-        </ol>
-      );
-    }
-    default:
-      return assertNever(question);
-  }
-}
+} from '../question-types';
 
 export function PalaceSource({ detail }: { detail: Detail }) {
   const q = detail.question;

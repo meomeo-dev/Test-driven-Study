@@ -1,0 +1,62 @@
+import type {
+  ExtendedResponse,
+  PublicQuestion,
+  Question,
+} from '../../../api/generated/types.gen';
+import type { ProtectedAudio } from '../../../components/QuestionAudio';
+import { dispatchPublicQuestion, dispatchQuestion } from '../registry';
+import type { AnyQuestion, QuestionOf } from '../shared/contracts';
+
+export function QuestionStimulus({
+  question,
+  cloze,
+  protectedAudio,
+}: {
+  question: AnyQuestion;
+  cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
+  protectedAudio?: ProtectedAudio;
+}) {
+  return dispatchQuestion(question, (mod, q) =>
+    mod.renderStimulus({ question: q, cloze, protectedAudio }),
+  );
+}
+
+export function ExamStem({
+  question,
+  protectedAudio,
+  draft,
+  onDraft,
+  disabled,
+}: {
+  question: AnyQuestion;
+  protectedAudio?: ProtectedAudio;
+  draft?: ExtendedResponse;
+  onDraft: (value: ExtendedResponse) => void;
+  disabled: boolean;
+}) {
+  return dispatchQuestion(question, (mod, q) =>
+    mod.renderExamStem({ question: q, protectedAudio, draft, onDraft, disabled }),
+  );
+}
+
+export function FeedbackQuestionBody({
+  question,
+  response,
+  review,
+}: {
+  question: AnyQuestion;
+  response?: ExtendedResponse;
+  review?: Question;
+}) {
+  return dispatchQuestion(question, (mod, q) => {
+    const matched =
+      review?.question_type === q.question_type
+        ? (review as QuestionOf<typeof q.question_type>)
+        : undefined;
+    return mod.renderFeedbackBody(q, response, matched);
+  });
+}
+
+export function PreviewBody({ question }: { question: PublicQuestion }) {
+  return dispatchPublicQuestion(question, (mod, q) => mod.renderPreviewBody(q));
+}

@@ -2,13 +2,13 @@ import { Link } from 'react-router';
 import type { ExamItem, ExamSession } from '../../api/exams';
 import { ExplanationAudio } from '../../components/AudioControls';
 import { RichContent } from '../../components/RichContent';
-import { ExtendedReview } from '../question-types/ExtendedReview';
-import { hasRichContent } from '../question-types/model';
-import { questionHasReviewExplanation } from '../question-types/QuestionStimulus';
-import { assertNever } from '../question-types/registry';
-import { WritingCriteria, WritingReview, WritingSample } from '../question-types/WritingContent';
+import {
+  DialogReviewContent,
+  hasRichContent,
+  questionHasReviewExplanation,
+} from '../question-types';
 import { ExamNavigation } from './ExamNavigation';
-import { answerSymbols, examCounts } from './terminalLabels';
+import { examCounts } from './terminalLabels';
 import { TerminalModal } from './TerminalModal';
 import type { TerminalDialog } from './useExamTerminal';
 
@@ -32,63 +32,6 @@ export function ReviewAnalysis({
       <ExplanationAudio segments={review.analysis_audio} />
     </p>
   );
-}
-
-function DialogReviewContent({
-  item,
-  review,
-}: {
-  item: ExamItem;
-  review: NonNullable<ExamItem['review']>;
-}) {
-  switch (review.question_type) {
-    case 'writing':
-      return (
-        <>
-          <WritingReview response={item.response} credit={item.credit} />
-          <WritingSample review={review.question_review} />
-          <ReviewAnalysis review={review} />
-          <WritingCriteria review={review.question_review} />
-        </>
-      );
-    case 'cloze':
-    case 'listening':
-    case 'reading_comprehension':
-    case 'translation':
-      return (
-        <>
-          {review.question_review && (
-            <ExtendedReview
-              item={review.question_review}
-              response={item.response}
-              credit={item.credit}
-            />
-          )}
-          <ReviewAnalysis review={review} />
-        </>
-      );
-    case 'numeric':
-      return (
-        <>
-          <p>正确答案：{review.answer}</p>
-          <ReviewAnalysis review={review} />
-        </>
-      );
-    case 'single_choice':
-    case 'multiple_choice':
-    case 'true_false':
-      return (
-        <>
-          <p>
-            正确答案：
-            {answerSymbols(item.detail.question, review.answer.split(',').map(Number))}
-          </p>
-          <ReviewAnalysis review={review} />
-        </>
-      );
-    default:
-      return assertNever(review);
-  }
 }
 
 export function TerminalDialogs({
@@ -184,7 +127,13 @@ export function TerminalDialogs({
         )}
         {dialog === 'review' && item.review && (
           <>
-            <DialogReviewContent item={item} review={item.review} />
+            <DialogReviewContent
+              question={item.detail.question}
+              review={item.review}
+              response={item.response}
+              credit={item.credit}
+              renderAnalysis={() => <ReviewAnalysis review={item.review!} />}
+            />
             {item.review.skill && <p>{item.review.skill}</p>}
             <Link to={`/practice?subject=${session.subject_id}&question=${item.review.question_id}`}>
               到答题模式练习

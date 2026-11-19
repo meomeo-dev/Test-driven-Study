@@ -1,135 +1,116 @@
-import type { PublicQuestion, Question, QuestionType } from '../../api/generated/types.gen';
-
-export type QuestionOf<T extends QuestionType> = Extract<Question, { question_type: T }>;
-export type PublicQuestionOf<T extends QuestionType> = Extract<
+import type {
+  CourseItemReview,
   PublicQuestion,
-  { question_type: T }
->;
-export type AnyQuestion = Question | PublicQuestion;
-export type MediaQuestion = Extract<
+  Question,
+  QuestionType,
+} from '../../api/generated/types.gen';
+import type {
   AnyQuestion,
-  {
-    question_type:
-      | 'single_choice'
-      | 'multiple_choice'
-      | 'true_false'
-      | 'numeric'
-      | 'listening';
-  }
->;
-export type ChoiceQuestion = Extract<
-  AnyQuestion,
-  { question_type: 'single_choice' | 'multiple_choice' | 'true_false' }
->;
-export type ExtendedQuestionType =
-  | 'cloze'
-  | 'listening'
-  | 'reading_comprehension'
-  | 'writing'
-  | 'translation';
+  AnyQuestionOf,
+  ExtendedQuestionType,
+  PublicQuestionOf,
+  QuestionOf,
+  QuestionTypeModule,
+  QuestionTypeSpec,
+  ReviewOf,
+} from './shared/contracts';
+import { clozeModule } from './types/cloze';
+import { listeningModule } from './types/listening';
+import { multipleChoiceModule } from './types/multiple-choice';
+import { numericModule } from './types/numeric';
+import { readingModule } from './types/reading-comprehension';
+import { singleChoiceModule } from './types/single-choice';
+import { translationModule } from './types/translation';
+import { trueFalseModule } from './types/true-false';
+import { writingModule } from './types/writing';
 
-export type QuestionTypeSpec = {
-  label: string;
-  examPrompt: string;
-  answerHeading: string;
-  isChoice: boolean;
-  isMultiple: boolean;
-  isWritten: boolean;
+export type QuestionTypeRegistry = {
+  readonly [K in QuestionType]: QuestionTypeModule<K>;
+};
+
+export const QUESTION_TYPE_MODULES: QuestionTypeRegistry = {
+  single_choice: singleChoiceModule,
+  multiple_choice: multipleChoiceModule,
+  true_false: trueFalseModule,
+  numeric: numericModule,
+  cloze: clozeModule,
+  listening: listeningModule,
+  reading_comprehension: readingModule,
+  writing: writingModule,
+  translation: translationModule,
 };
 
 export const QUESTION_TYPE_REGISTRY: Record<QuestionType, QuestionTypeSpec> = {
-  single_choice: {
-    label: '单选题',
-    examPrompt: '请在备选答案中选择你认为正确的答案！',
-    answerHeading: '选择答案',
-    isChoice: true,
-    isMultiple: false,
-    isWritten: false,
-  },
-  multiple_choice: {
-    label: '多选题',
-    examPrompt: '请选择所有正确答案，全部选对才得分！',
-    answerHeading: '可选择多项',
-    isChoice: true,
-    isMultiple: true,
-    isWritten: false,
-  },
-  true_false: {
-    label: '判断题',
-    examPrompt: '本题为判断题，请判断对错！',
-    answerHeading: '选择答案',
-    isChoice: true,
-    isMultiple: false,
-    isWritten: false,
-  },
-  numeric: {
-    label: '数值题',
-    examPrompt: '请填写数值答案。',
-    answerHeading: '填写答案',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: false,
-  },
-  cloze: {
-    label: '完形填空',
-    examPrompt: '作答后可切换题目并保存。',
-    answerHeading: '作答',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: false,
-  },
-  listening: {
-    label: '听力题',
-    examPrompt: '作答后可切换题目并保存。',
-    answerHeading: '作答',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: false,
-  },
-  reading_comprehension: {
-    label: '阅读理解',
-    examPrompt: '作答后可切换题目并保存。',
-    answerHeading: '作答',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: false,
-  },
-  writing: {
-    label: '写作题',
-    examPrompt: '作答后可切换题目并保存。',
-    answerHeading: '作答',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: true,
-  },
-  translation: {
-    label: '翻译题',
-    examPrompt: '作答后可切换题目并保存。',
-    answerHeading: '作答',
-    isChoice: false,
-    isMultiple: false,
-    isWritten: true,
-  },
+  single_choice: singleChoiceModule.spec,
+  multiple_choice: multipleChoiceModule.spec,
+  true_false: trueFalseModule.spec,
+  numeric: numericModule.spec,
+  cloze: clozeModule.spec,
+  listening: listeningModule.spec,
+  reading_comprehension: readingModule.spec,
+  writing: writingModule.spec,
+  translation: translationModule.spec,
 };
 
-export function assertNever(value: never): never {
-  throw new Error(`Unhandled question type: ${JSON.stringify(value)}`);
+// Correlated-union dispatch helpers: runtime check + single internal bridge so
+// strict TS callers never face TS2322 contravariance errors.
+type AnyQuestionRunner<R> = <T extends QuestionType>(
+  mod: QuestionTypeModule<T>,
+  q: AnyQuestionOf<T>,
+) => R;
+
+export function dispatchQuestion<R>(
+  question: AnyQuestion,
+  run: AnyQuestionRunner<R>,
+): R {
+  const mod = QUESTION_TYPE_MODULES[
+    question.question_type
+  ] as unknown as QuestionTypeModule<typeof question.question_type>;
+  if (!mod) {
+    throw new Error(`Unhandled question type: ${JSON.stringify(question.question_type)}`);
+  }
+  return run(mod, question as AnyQuestionOf<typeof question.question_type>);
+}
+
+export function dispatchPublicQuestion<R>(
+  question: PublicQuestion,
+  run: <T extends QuestionType>(mod: QuestionTypeModule<T>, q: PublicQuestionOf<T>) => R,
+): R {
+  const mod = QUESTION_TYPE_MODULES[
+    question.question_type
+  ] as unknown as QuestionTypeModule<typeof question.question_type>;
+  if (!mod) {
+    throw new Error(`Unhandled question type: ${JSON.stringify(question.question_type)}`);
+  }
+  return run(mod, question as PublicQuestionOf<typeof question.question_type>);
+}
+
+export function dispatchFullQuestion<R>(
+  question: Question,
+  run: <T extends QuestionType>(mod: QuestionTypeModule<T>, q: QuestionOf<T>) => R,
+): R {
+  const mod = QUESTION_TYPE_MODULES[
+    question.question_type
+  ] as unknown as QuestionTypeModule<typeof question.question_type>;
+  if (!mod) {
+    throw new Error(`Unhandled question type: ${JSON.stringify(question.question_type)}`);
+  }
+  return run(mod, question as QuestionOf<typeof question.question_type>);
+}
+
+export function dispatchCourseReview<R>(
+  review: CourseItemReview,
+  run: <T extends QuestionType>(mod: QuestionTypeModule<T>, r: ReviewOf<T>) => R,
+): R {
+  const mod = QUESTION_TYPE_MODULES[
+    review.type
+  ] as unknown as QuestionTypeModule<typeof review.type>;
+  if (!mod) {
+    throw new Error(`Unhandled question type: ${JSON.stringify(review.type)}`);
+  }
+  return run(mod, review as ReviewOf<typeof review.type>);
 }
 
 export function isExtendedType(type: QuestionType): type is ExtendedQuestionType {
-  switch (type) {
-    case 'cloze':
-    case 'listening':
-    case 'reading_comprehension':
-    case 'writing':
-    case 'translation':
-      return true;
-    case 'single_choice':
-    case 'multiple_choice':
-    case 'true_false':
-    case 'numeric':
-      return false;
-    default:
-      return assertNever(type);
-  }
+  return QUESTION_TYPE_REGISTRY[type].isExtended;
 }

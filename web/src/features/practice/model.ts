@@ -20,7 +20,7 @@ export function activeQuestion(rows: Summary[], requested: string | null, last: 
   return rows[0]?.question_id ?? 0;
 }
 export function answerSigns(answer: string) { return new Set(answer.split(',').map(value => Number(value))); }
-export { questionType } from '../question-types/model';
+export { questionType } from '../question-types';
 export function stateLabel(state: string) { return ({ correct: '最近答对', incorrect: '最近答错', unanswered: '未作答', mastered: '已记住', review: '待复习', unlearned: '未学习' })[state] ?? '未作答'; }
 export function nearbyQuestion(rows: Summary[], current: number, delta: number) {
   const index = rows.findIndex(row => row.question_id === current);

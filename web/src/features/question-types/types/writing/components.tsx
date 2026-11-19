@@ -3,27 +3,15 @@ import type {
   ExtendedResponse,
   WritingContent,
   WritingItemReview,
-} from '../../api/generated/types.gen';
-import { RichContent } from '../../components/RichContent';
-import { creditLabel } from './model';
+} from '../../../../api/generated/types.gen';
+import { RichContent } from '../../../../components/RichContent';
+import { creditLabel, writingRubricLabel } from '../../shared/format';
 
 const writingSubtypes = {
   sentence_making: '造句',
   short_essay: '小作文',
   full_essay: '大作文',
 };
-
-const rubricLabels: Record<string, string> = {
-  task_completion: '任务完成度',
-  language_accuracy: '语言准确性',
-  coherence: '连贯性',
-  grammar: '语法',
-  keyword_usage: '关键词运用',
-};
-
-export function writingRubricLabel(name: string) {
-  return Object.hasOwn(rubricLabels, name) ? rubricLabels[name] : name.replaceAll('_', ' ');
-}
 
 export function WritingRequirements({ content }: { content: WritingContent }) {
   const wordLimits = [
