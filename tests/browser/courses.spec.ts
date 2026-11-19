@@ -176,6 +176,40 @@ test('long original question IDs stay inside navigation tiles', async ({ page, r
   }
 });
 
+test('the study sidebar scrolls independently in the memory palace', async ({ page, request }) => {
+  const courses: CourseSummary[] = await (await request.get('/api/courses')).json();
+  const subject = courses.find(course => course.id === 'beginner-english')
+    ?.units.find(unit => unit.id === 'intro')?.subject_id;
+  expect(subject).toBeDefined();
+
+  await page.goto(`/palace?subject=${subject}`);
+  const sidebar = page.locator('aside.sidebar');
+  const nav = sidebar.getByRole('navigation', { name: '主导航' });
+  const first = nav.getByRole('link', { name: '背题模式', exact: true });
+  const last = nav.getByRole('link', { name: '所有课程', exact: true });
+  const workspace = page.getByRole('main');
+  await expect(nav.getByRole('group', { name: '选择科目' }).getByRole('button'))
+    .toHaveCount(10);
+
+  for (const width of [1280, 768]) {
+    await page.setViewportSize({ width, height: 480 });
+    const workspaceBounds = await workspace.boundingBox();
+    await expect(first).toBeInViewport({ ratio: 1 });
+    await expect(last).not.toBeInViewport();
+
+    await first.hover();
+    await page.mouse.wheel(0, 1500);
+    await expect.poll(() => sidebar.evaluate(element => element.scrollTop)).toBeGreaterThan(0);
+    await expect(last).toBeInViewport({ ratio: 1 });
+    expect(await workspace.boundingBox()).toEqual(workspaceBounds);
+
+    await last.hover();
+    await page.mouse.wheel(0, -1500);
+    await expect.poll(() => sidebar.evaluate(element => element.scrollTop)).toBe(0);
+    await expect(first).toBeInViewport({ ratio: 1 });
+  }
+});
+
 test('math uses the shared guide, exam terminal, assistant and memory palace', async ({ page, request }) => {
   await page.goto('/courses/basic-math');
   const navigation = page.getByRole('navigation', { name: '主导航' });
