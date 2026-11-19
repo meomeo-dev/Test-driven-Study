@@ -1,7 +1,8 @@
 ---
 id: 0061
 type: feat
-status: open
+status: closed
+closed-by: 4d2c69a254a9bc32005fb8881864267564516c50
 labels: []
 branch: feat/0061-refactor-question-types-to-named-polymorphic-dispatch
 created: 2026-11-18
