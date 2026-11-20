@@ -1,0 +1,153 @@
+[
+  {
+    "id": "glove",
+    "unit_id": "extended-practice",
+    "term": "glove",
+    "meaning": "手套",
+    "category": "word",
+    "question_ids": [
+      "sue1-extended-listening",
+      "sue1-extended-listening-passage"
+    ],
+    "example": "Put on your gloves before you touch the parts.",
+    "example_translation": "接触零件前请戴上手套。"
+  },
+  {
+    "id": "shelf",
+    "unit_id": "extended-practice",
+    "term": "shelf",
+    "meaning": "搁板；置物架的一层",
+    "category": "word",
+    "question_ids": [
+      "sue1-extended-listening"
+    ],
+    "example": "The spare parts are on the top shelf.",
+    "example_translation": "备用零件在最上层搁板上。"
+  },
+  {
+    "id": "checklist",
+    "unit_id": "extended-practice",
+    "term": "checklist",
+    "meaning": "核对清单",
+    "category": "word",
+    "question_ids": [
+      "sue1-extended-cloze",
+      "sue1-extended-listening",
+      "sue1-extended-translation"
+    ],
+    "example": "Use the checklist before you start work.",
+    "example_translation": "开工前请使用核对清单。"
+  },
+  {
+    "id": "front-desk",
+    "unit_id": "extended-practice",
+    "term": "front desk",
+    "meaning": "前台；接待处",
+    "category": "word_group",
+    "question_ids": [
+      "sue1-extended-reading",
+      "sue1-extended-translation"
+    ],
+    "example": "Pick up your visitor pass at the front desk.",
+    "example_translation": "请在前台领取访客通行证。"
+  },
+  {
+    "id": "visitor-badge",
+    "unit_id": "extended-practice",
+    "term": "visitor badge",
+    "meaning": "访客证",
+    "category": "word_group",
+    "question_ids": [
+      "sue1-extended-reading"
+    ],
+    "example": "Keep your visitor badge on while you are inside.",
+    "example_translation": "在里面时请一直佩戴访客证。"
+  },
+  {
+    "id": "sign-in",
+    "unit_id": "extended-practice",
+    "term": "sign in",
+    "meaning": "签到；登记进入",
+    "category": "phrase",
+    "question_ids": [
+      "sue1-extended-reading"
+    ],
+    "example": "All visitors must sign in at the entrance.",
+    "example_translation": "所有访客都必须在入口处登记。"
+  },
+  {
+    "id": "a-pair",
+    "unit_id": "extended-practice",
+    "term": "a pair",
+    "meaning": "一双；一副",
+    "category": "phrase",
+    "question_ids": [
+      "sue1-extended-listening"
+    ],
+    "example": "These shoes are on sale. I will buy a pair.",
+    "example_translation": "这款鞋正在打折。我会买一双。"
+  },
+  {
+    "id": "sign-the-checklist",
+    "unit_id": "extended-practice",
+    "term": "sign the checklist",
+    "meaning": "在核对清单上签名",
+    "category": "collocation",
+    "question_ids": [
+      "sue1-extended-cloze",
+      "sue1-extended-listening"
+    ],
+    "example": "Sign the checklist after you check the tools.",
+    "example_translation": "检查完工具后，请在核对清单上签名。"
+  },
+  {
+    "id": "run-late",
+    "unit_id": "extended-practice",
+    "term": "run late",
+    "meaning": "晚点；比预定时间晚",
+    "category": "idiom",
+    "question_ids": [
+      "sue1-extended-listening-recording"
+    ],
+    "example": "The truck is running late this morning.",
+    "example_translation": "今天上午货车晚点了。"
+  },
+  {
+    "id": "next-to",
+    "unit_id": "extended-practice",
+    "term": "next to",
+    "meaning": "在……旁边",
+    "category": "function_phrase",
+    "question_ids": [
+      "sue1-extended-listening-passage",
+      "sue1-extended-reading-single-choice"
+    ],
+    "example": "The spare parts are next to the toolbox.",
+    "example_translation": "备用零件在工具箱旁边。"
+  },
+  {
+    "id": "without-permission",
+    "unit_id": "extended-practice",
+    "term": "without permission",
+    "meaning": "未经许可",
+    "category": "function_phrase",
+    "question_ids": [
+      "sue1-extended-cloze"
+    ],
+    "example": "Do not use the machine without permission.",
+    "example_translation": "未经许可，请勿使用这台机器。"
+  },
+  {
+    "id": "loading-door",
+    "unit_id": "extended-practice",
+    "term": "loading door",
+    "meaning": "装卸门",
+    "category": "word_group",
+    "question_ids": [
+      "sue1-extended-listening-recording",
+      "sue1-extended-translation-zh-to-en"
+    ],
+    "example": "Leave the empty boxes by the loading door.",
+    "example_translation": "把空箱子放在装卸门旁。"
+  }
+]

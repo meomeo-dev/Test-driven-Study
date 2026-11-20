@@ -7,6 +7,7 @@ import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
 import type { ProgressState } from '../../api/client';
 import { Sidebar } from '../../components/Sidebar';
 import { QuestionNavigation } from '../question-navigation';
+import { VocabularyNotebook } from '../vocabulary/VocabularyNotebook';
 import { PageHeader } from './PageHeader';
 import { Filters } from './Filters';
 import { QuestionCard } from './QuestionCard';
@@ -152,6 +153,8 @@ export function MemorizationPage() {
     <main id="study-main" className="workspace">
       <PageHeader overview={overview} shortcuts={shortcuts.enabled}
         onHelp={openHelp} onAnalysis={trigger => openDetails('analysis', trigger)}
+        vocabulary={<VocabularyNotebook subject={filters.subject}
+          questionId={currentQuestion?.source_item_id} />}
         navigation={<QuestionNavigation rows={rows} current={displayedId} status={navigationStatus}
           palaces={palaceImages.marked} conversations={conversations} onSelect={go}
           shortcuts={shortcuts.enabled} triggerRef={navigation} />} />

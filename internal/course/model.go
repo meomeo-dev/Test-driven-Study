@@ -14,6 +14,7 @@ type Manifest struct {
 	Language        string        `json:"language"`
 	Description     string        `json:"description,omitempty"`
 	Logo            string        `json:"logo,omitempty"`
+	VocabularyFile  string        `json:"vocabulary_file,omitempty"`
 	Units           []Unit        `json:"units"`
 	AIProfile       *AIProfileRef `json:"ai_profile,omitempty"`
 	Roadmap         *Roadmap      `json:"roadmap,omitempty"`

@@ -1,0 +1,897 @@
+[
+  {
+    "id": "teammate",
+    "unit_id": "intro",
+    "term": "teammate",
+    "meaning": "队友；同组同事",
+    "category": "word",
+    "question_ids": [
+      "greetings-v2-listening-1",
+      "self-introduction-v2-reading-1"
+    ],
+    "example": "Mia is my new teammate on Line Two.",
+    "example_translation": "米娅是我在二号线的新同事。"
+  },
+  {
+    "id": "spell",
+    "unit_id": "intro",
+    "term": "spell",
+    "meaning": "拼写",
+    "category": "word",
+    "question_ids": [
+      "spelling-v2-listening-1",
+      "spelling-v2-reading-1"
+    ],
+    "example": "Can you spell your name for me?",
+    "example_translation": "你能给我拼一下你的名字吗？"
+  },
+  {
+    "id": "first-name",
+    "unit_id": "intro",
+    "term": "first name",
+    "meaning": "名；个人名",
+    "category": "word_group",
+    "question_ids": [
+      "spelling-v2-listening-1",
+      "spelling-v2-reading-1"
+    ],
+    "example": "Please write your first name on this line.",
+    "example_translation": "请在这一行写下你的名字。"
+  },
+  {
+    "id": "my-name-is",
+    "unit_id": "intro",
+    "term": "My name is …",
+    "meaning": "我叫……",
+    "category": "phrase",
+    "question_ids": [
+      "sample-multiple",
+      "intro-listen-sc-1",
+      "self-introduction-v2-listening-1"
+    ],
+    "example": "My name is Mia Chen.",
+    "example_translation": "我叫陈米娅。"
+  },
+  {
+    "id": "be-from",
+    "unit_id": "intro",
+    "term": "be from",
+    "meaning": "来自……",
+    "category": "phrase",
+    "question_ids": [
+      "intro-listen-sc-1",
+      "self-introduction-v2-listening-1",
+      "self-introduction-v2-reading-1"
+    ],
+    "example": "I am from Chengdu.",
+    "example_translation": "我来自成都。"
+  },
+  {
+    "id": "nice-to-meet-you",
+    "unit_id": "intro",
+    "term": "Nice to meet you.",
+    "meaning": "很高兴认识你。",
+    "category": "idiom",
+    "question_ids": [
+      "greetings-4",
+      "greetings-v2-reading-1",
+      "self-introduction-v2-listening-1"
+    ],
+    "example": "Hi, I am Maya. Nice to meet you.",
+    "example_translation": "你好，我叫玛雅。很高兴认识你。"
+  },
+  {
+    "id": "on-duty",
+    "unit_id": "intro",
+    "term": "on duty",
+    "meaning": "在值班；当班",
+    "category": "function_phrase",
+    "question_ids": [
+      "be-verb-v2-reading-1"
+    ],
+    "example": "Who is on duty this evening?",
+    "example_translation": "今晚谁值班？"
+  },
+  {
+    "id": "tray",
+    "unit_id": "numbers-places",
+    "term": "tray",
+    "meaning": "托盘",
+    "category": "word",
+    "question_ids": [
+      "numbers-3",
+      "positions-v2-reading-1"
+    ],
+    "example": "The small parts are in the tray.",
+    "example_translation": "小零件在托盘里。"
+  },
+  {
+    "id": "pass-box",
+    "unit_id": "numbers-places",
+    "term": "pass box",
+    "meaning": "合格品料盒",
+    "category": "word_group",
+    "question_ids": [
+      "positions-v2-listening-1"
+    ],
+    "example": "Put good parts in the green pass box.",
+    "example_translation": "把合格零件放进绿色的合格品料盒。"
+  },
+  {
+    "id": "shift-timetable",
+    "unit_id": "numbers-places",
+    "term": "shift timetable",
+    "meaning": "班次时间表",
+    "category": "word_group",
+    "question_ids": [
+      "clock-time-v2-reading-1"
+    ],
+    "example": "Check the shift timetable for your start time.",
+    "example_translation": "查看班次时间表，确认你的上班时间。"
+  },
+  {
+    "id": "on-the-left",
+    "unit_id": "numbers-places",
+    "term": "on the left",
+    "meaning": "在左边",
+    "category": "function_phrase",
+    "question_ids": [
+      "positions-v2-listening-1"
+    ],
+    "example": "The blue box is on the left.",
+    "example_translation": "蓝色盒子在左边。"
+  },
+  {
+    "id": "in-front-of",
+    "unit_id": "numbers-places",
+    "term": "in front of",
+    "meaning": "在……前面",
+    "category": "function_phrase",
+    "question_ids": [
+      "positions-v2-reading-1"
+    ],
+    "example": "Stand in front of the desk, please.",
+    "example_translation": "请站在桌子前面。"
+  },
+  {
+    "id": "at-all-times",
+    "unit_id": "numbers-places",
+    "term": "at all times",
+    "meaning": "始终；任何时候",
+    "category": "function_phrase",
+    "question_ids": [
+      "positions-v2-reading-1"
+    ],
+    "example": "Keep the exit clear at all times.",
+    "example_translation": "请始终保持出口畅通。"
+  },
+  {
+    "id": "quarter-past",
+    "unit_id": "numbers-places",
+    "term": "a quarter past",
+    "meaning": "……点一刻（过十五分钟）",
+    "category": "phrase",
+    "question_ids": [
+      "clock-time-v2-listening-1",
+      "clock-time-v2-translation-1"
+    ],
+    "example": "The inspection starts at a quarter past ten.",
+    "example_translation": "检查十点一刻开始。"
+  },
+  {
+    "id": "batch",
+    "unit_id": "requests",
+    "term": "batch",
+    "meaning": "一批；批次",
+    "category": "word",
+    "question_ids": [
+      "polite-requests-v2-listening-1"
+    ],
+    "example": "Finish this batch before lunch.",
+    "example_translation": "午饭前完成这一批。"
+  },
+  {
+    "id": "ready-for",
+    "unit_id": "requests",
+    "term": "be ready for",
+    "meaning": "为……做好准备",
+    "category": "collocation",
+    "question_ids": [
+      "yes-no-questions-v2-listening-1"
+    ],
+    "example": "The team is ready for the morning check.",
+    "example_translation": "团队已为早上的点检做好准备。"
+  },
+  {
+    "id": "put-on",
+    "unit_id": "requests",
+    "term": "put on",
+    "meaning": "穿上；戴上",
+    "category": "phrase",
+    "question_ids": [
+      "yes-no-questions-v2-listening-1"
+    ],
+    "example": "Put on your gloves before work.",
+    "example_translation": "工作前请戴上手套。"
+  },
+  {
+    "id": "work-properly",
+    "unit_id": "requests",
+    "term": "work properly",
+    "meaning": "正常工作",
+    "category": "collocation",
+    "question_ids": [
+      "yes-no-questions-v2-reading-1"
+    ],
+    "example": "Does the scanner work properly?",
+    "example_translation": "扫描器工作正常吗？"
+  },
+  {
+    "id": "right-away",
+    "unit_id": "requests",
+    "term": "right away",
+    "meaning": "马上；立即",
+    "category": "idiom",
+    "question_ids": [
+      "yes-no-questions-v2-reading-1"
+    ],
+    "example": "Call the team leader right away.",
+    "example_translation": "马上给班长打电话。"
+  },
+  {
+    "id": "could-you-please",
+    "unit_id": "requests",
+    "term": "Could you please …?",
+    "meaning": "能请你……吗？",
+    "category": "phrase",
+    "question_ids": [
+      "polite-requests-v2-reading-1",
+      "polite-requests-v2-translation-1"
+    ],
+    "example": "Could you please close the door?",
+    "example_translation": "能请你关一下门吗？"
+  },
+  {
+    "id": "need-help",
+    "unit_id": "requests",
+    "term": "need help",
+    "meaning": "需要帮助",
+    "category": "collocation",
+    "question_ids": [
+      "polite-requests-v2-reading-1"
+    ],
+    "example": "Ask the trainer if you need help.",
+    "example_translation": "如果需要帮助，请找培训员。"
+  },
+  {
+    "id": "wrench",
+    "unit_id": "workbench",
+    "term": "wrench",
+    "meaning": "扳手",
+    "category": "word",
+    "question_ids": [
+      "tools-parts-3",
+      "workbench-instructions-v2-listening-1",
+      "workbench-instructions-v2-reading-1"
+    ],
+    "example": "The wrench is on the bench.",
+    "example_translation": "扳手在工作台上。"
+  },
+  {
+    "id": "bolt",
+    "unit_id": "workbench",
+    "term": "bolt",
+    "meaning": "螺栓",
+    "category": "word",
+    "question_ids": [
+      "tools-parts-5",
+      "workbench-instructions-v2-listening-1"
+    ],
+    "example": "Check the two bolts before assembly.",
+    "example_translation": "装配前检查这两个螺栓。"
+  },
+  {
+    "id": "screwdriver",
+    "unit_id": "workbench",
+    "term": "screwdriver",
+    "meaning": "螺丝刀",
+    "category": "word",
+    "question_ids": [
+      "tools-parts-1",
+      "workbench-instructions-v2-listening-2"
+    ],
+    "example": "Use a screwdriver to remove the cover.",
+    "example_translation": "用螺丝刀拆下盖板。"
+  },
+  {
+    "id": "pick-up",
+    "unit_id": "workbench",
+    "term": "pick up",
+    "meaning": "拿起；拾起",
+    "category": "phrase",
+    "question_ids": [
+      "workbench-instructions-v2-listening-1",
+      "workbench-instructions-v2-translation-1"
+    ],
+    "example": "Pick up the tag next to the tray.",
+    "example_translation": "拿起托盘旁边的标签。"
+  },
+  {
+    "id": "turn-off",
+    "unit_id": "workbench",
+    "term": "turn off",
+    "meaning": "关闭（电源、设备等）",
+    "category": "phrase",
+    "question_ids": [
+      "workbench-instructions-v2-listening-1"
+    ],
+    "example": "Turn off the light before you leave.",
+    "example_translation": "离开前请关灯。"
+  },
+  {
+    "id": "tighten-a-bolt",
+    "unit_id": "workbench",
+    "term": "tighten a bolt",
+    "meaning": "拧紧螺栓",
+    "category": "collocation",
+    "question_ids": [
+      "workbench-instructions-v2-listening-1"
+    ],
+    "example": "Tighten the bolt with a wrench.",
+    "example_translation": "用扳手把螺栓拧紧。"
+  },
+  {
+    "id": "dry-cloth",
+    "unit_id": "workbench",
+    "term": "dry cloth",
+    "meaning": "干布",
+    "category": "word_group",
+    "question_ids": [
+      "workbench-instructions-v2-listening-2"
+    ],
+    "example": "Wipe the bench with a dry cloth.",
+    "example_translation": "用干布擦拭工作台。"
+  },
+  {
+    "id": "weekday",
+    "unit_id": "daily-routine",
+    "term": "weekday",
+    "meaning": "平日；星期一至星期五中的一天",
+    "category": "word",
+    "question_ids": [
+      "shift-schedule-v2-reading-1"
+    ],
+    "example": "We open at seven on weekdays.",
+    "example_translation": "我们在工作日七点开门。"
+  },
+  {
+    "id": "day-shift",
+    "unit_id": "daily-routine",
+    "term": "day shift",
+    "meaning": "白班",
+    "category": "word_group",
+    "question_ids": [
+      "shift-schedule-v2-reading-1"
+    ],
+    "example": "I work the day shift on Tuesday.",
+    "example_translation": "星期二我上白班。"
+  },
+  {
+    "id": "lunch-break",
+    "unit_id": "daily-routine",
+    "term": "lunch break",
+    "meaning": "午休",
+    "category": "word_group",
+    "question_ids": [
+      "shift-schedule-v2-reading-1",
+      "shift-schedule-v2-translation-1"
+    ],
+    "example": "Our lunch break starts at noon.",
+    "example_translation": "我们的午休从中午十二点开始。"
+  },
+  {
+    "id": "power-cable",
+    "unit_id": "daily-routine",
+    "term": "power cable",
+    "meaning": "电源线",
+    "category": "word_group",
+    "question_ids": [
+      "frequency-adverbs-v2-reading-1"
+    ],
+    "example": "Check the power cable before you start.",
+    "example_translation": "启动前检查电源线。"
+  },
+  {
+    "id": "twice-a-week",
+    "unit_id": "daily-routine",
+    "term": "twice a week",
+    "meaning": "每周两次",
+    "category": "function_phrase",
+    "question_ids": [
+      "frequency-adverbs-v2-listening-1",
+      "frequency-adverbs-v2-reading-1",
+      "frequency-adverbs-v2-translation-1"
+    ],
+    "example": "We test the backup scanner twice a week.",
+    "example_translation": "我们每周测试两次备用扫描器。"
+  },
+  {
+    "id": "every-day",
+    "unit_id": "daily-routine",
+    "term": "every day",
+    "meaning": "每天",
+    "category": "function_phrase",
+    "question_ids": [
+      "frequency-adverbs-v2-reading-1",
+      "frequency-adverbs-v2-listening-1"
+    ],
+    "example": "I clean this desk every day.",
+    "example_translation": "我每天擦这张桌子。"
+  },
+  {
+    "id": "sweep-the-bench",
+    "unit_id": "daily-routine",
+    "term": "sweep the bench",
+    "meaning": "清扫工作台",
+    "category": "collocation",
+    "question_ids": [
+      "frequency-adverbs-v2-listening-1"
+    ],
+    "example": "Sweep the bench after packing the parts.",
+    "example_translation": "包装完零件后，清扫工作台。"
+  },
+  {
+    "id": "round",
+    "unit_id": "describing-parts",
+    "term": "round",
+    "meaning": "圆的；圆形的",
+    "category": "word",
+    "question_ids": [
+      "colors-shapes-1",
+      "colors-shapes-v2-reading-1"
+    ],
+    "example": "Put the round caps in this box.",
+    "example_translation": "把圆形的盖子放进这个盒子。"
+  },
+  {
+    "id": "flat",
+    "unit_id": "describing-parts",
+    "term": "flat",
+    "meaning": "平的；扁平的",
+    "category": "word",
+    "question_ids": [
+      "colors-shapes-2",
+      "colors-shapes-v2-reading-1",
+      "demonstratives-v2-reading-1"
+    ],
+    "example": "This washer is flat.",
+    "example_translation": "这个垫片是扁平的。"
+  },
+  {
+    "id": "scratched",
+    "unit_id": "describing-parts",
+    "term": "scratched",
+    "meaning": "有划痕的",
+    "category": "word",
+    "question_ids": [
+      "describing-parts-listen-sc-1",
+      "adjectives-quality-v2-reading-1"
+    ],
+    "example": "Set the scratched parts aside.",
+    "example_translation": "把有划痕的零件放到一旁。"
+  },
+  {
+    "id": "loose-screw",
+    "unit_id": "describing-parts",
+    "term": "loose screw",
+    "meaning": "松动的螺丝",
+    "category": "word_group",
+    "question_ids": [
+      "adjectives-quality-v2-listening-1",
+      "demonstratives-v2-reading-1"
+    ],
+    "example": "There is a loose screw on the cover.",
+    "example_translation": "盖板上有一颗螺丝松了。"
+  },
+  {
+    "id": "copper-washer",
+    "unit_id": "describing-parts",
+    "term": "copper washer",
+    "meaning": "铜垫片",
+    "category": "word_group",
+    "question_ids": [
+      "comparatives-v2-reading-1"
+    ],
+    "example": "The copper washer goes under the nut.",
+    "example_translation": "铜垫片装在螺母下方。"
+  },
+  {
+    "id": "longer-than",
+    "unit_id": "describing-parts",
+    "term": "longer than",
+    "meaning": "比……长",
+    "category": "phrase",
+    "question_ids": [
+      "describing-parts-num-2",
+      "comparatives-v2-listening-1"
+    ],
+    "example": "This bolt is longer than that one.",
+    "example_translation": "这根螺栓比那根长。"
+  },
+  {
+    "id": "ready-for-packing",
+    "unit_id": "describing-parts",
+    "term": "ready for packing",
+    "meaning": "可以包装了；已做好包装准备",
+    "category": "collocation",
+    "question_ids": [
+      "demonstratives-v2-listening-1"
+    ],
+    "example": "These parts are ready for packing.",
+    "example_translation": "这些零件可以包装了。"
+  },
+  {
+    "id": "technician",
+    "unit_id": "safety-problems",
+    "term": "technician",
+    "meaning": "技术员",
+    "category": "word",
+    "question_ids": [
+      "can-permission-v2-listening-1",
+      "reporting-problems-v2-reading-1"
+    ],
+    "example": "Ask a technician to check the machine.",
+    "example_translation": "请技术员检查机器。"
+  },
+  {
+    "id": "emergency-stop",
+    "unit_id": "safety-problems",
+    "term": "emergency stop",
+    "meaning": "急停装置；急停",
+    "category": "word_group",
+    "question_ids": [
+      "reporting-problems-v2-reading-1"
+    ],
+    "example": "Press the emergency stop if it is unsafe to continue.",
+    "example_translation": "如果继续操作不安全，请按下急停按钮。"
+  },
+  {
+    "id": "be-stuck",
+    "unit_id": "safety-problems",
+    "term": "be stuck",
+    "meaning": "卡住了；动不了",
+    "category": "phrase",
+    "question_ids": [
+      "reporting-problems-v2-listening-1",
+      "reporting-problems-v2-translation-1"
+    ],
+    "example": "The drawer is stuck.",
+    "example_translation": "抽屉卡住了。"
+  },
+  {
+    "id": "loose-cable",
+    "unit_id": "safety-problems",
+    "term": "loose cable",
+    "meaning": "松动的线缆",
+    "category": "word_group",
+    "question_ids": [
+      "reporting-problems-v2-reading-1"
+    ],
+    "example": "Report any loose cables to the shift lead.",
+    "example_translation": "发现线缆松动时请向班组长报告。"
+  },
+  {
+    "id": "keep-the-power-off",
+    "unit_id": "safety-problems",
+    "term": "keep the power off",
+    "meaning": "保持断电",
+    "category": "collocation",
+    "question_ids": [
+      "reporting-problems-v2-listening-1"
+    ],
+    "example": "Keep the power off until the technician arrives.",
+    "example_translation": "在技术员到达前保持断电。"
+  },
+  {
+    "id": "call-the-technician",
+    "unit_id": "safety-problems",
+    "term": "call the technician",
+    "meaning": "叫技术员；联系技术员",
+    "category": "collocation",
+    "question_ids": [
+      "reporting-problems-v2-reading-1",
+      "reporting-problems-v2-translation-1"
+    ],
+    "example": "Call the technician if the light stays off.",
+    "example_translation": "如果指示灯一直不亮，请联系技术员。"
+  },
+  {
+    "id": "take-a-break",
+    "unit_id": "safety-problems",
+    "term": "take a break",
+    "meaning": "休息一会儿",
+    "category": "collocation",
+    "question_ids": [
+      "can-permission-v2-listening-1"
+    ],
+    "example": "Can I take a short break after this batch?",
+    "example_translation": "这一批做完后，我能休息一下吗？"
+  },
+  {
+    "id": "dusty",
+    "unit_id": "past-reports",
+    "term": "dusty",
+    "meaning": "积灰的；沾有灰尘的",
+    "category": "word",
+    "question_ids": [
+      "past-be-v2-listening-1"
+    ],
+    "example": "The sensor was dusty, so I wiped it.",
+    "example_translation": "传感器沾了灰，我就擦了一下。"
+  },
+  {
+    "id": "handover-sheet",
+    "unit_id": "past-reports",
+    "term": "handover sheet",
+    "meaning": "交接单",
+    "category": "word_group",
+    "question_ids": [
+      "past-irregular-v2-listening-1"
+    ],
+    "example": "Write the count on the handover sheet.",
+    "example_translation": "在交接单上写下数量。"
+  },
+  {
+    "id": "air-pressure",
+    "unit_id": "past-reports",
+    "term": "air pressure",
+    "meaning": "气压",
+    "category": "word_group",
+    "question_ids": [
+      "past-regular-v2-reading-1"
+    ],
+    "example": "The operator checked the air pressure.",
+    "example_translation": "操作员检查了气压。"
+  },
+  {
+    "id": "team-lead",
+    "unit_id": "past-reports",
+    "term": "team lead",
+    "meaning": "组长；班组长",
+    "category": "word_group",
+    "question_ids": [
+      "past-irregular-v2-listening-1",
+      "past-irregular-v2-reading-1"
+    ],
+    "example": "I gave the report to the team lead.",
+    "example_translation": "我把报告交给了组长。"
+  },
+  {
+    "id": "final-inspection",
+    "unit_id": "past-reports",
+    "term": "final inspection",
+    "meaning": "最终检验；终检",
+    "category": "word_group",
+    "question_ids": [
+      "past-reports-listen-sc-1"
+    ],
+    "example": "We finished the final inspection before lunch.",
+    "example_translation": "我们在午饭前完成了终检。"
+  },
+  {
+    "id": "at-once",
+    "unit_id": "past-reports",
+    "term": "at once",
+    "meaning": "立刻；马上",
+    "category": "function_phrase",
+    "question_ids": [
+      "past-irregular-v2-reading-1"
+    ],
+    "example": "We reported the crack at once.",
+    "example_translation": "我们立刻报告了裂纹。"
+  },
+  {
+    "id": "finish-a-batch",
+    "unit_id": "past-reports",
+    "term": "finish a batch",
+    "meaning": "完成一批",
+    "category": "collocation",
+    "question_ids": [
+      "did-questions-v2-reading-1"
+    ],
+    "example": "We finished the first batch before four.",
+    "example_translation": "我们四点前完成了第一批。"
+  },
+  {
+    "id": "phillips-screwdriver",
+    "unit_id": "tools-equipment",
+    "term": "Phillips screwdriver",
+    "meaning": "十字螺丝刀",
+    "category": "word_group",
+    "question_ids": [
+      "te-sc-01",
+      "power-tools-v2-reading-1"
+    ],
+    "example": "Use a Phillips screwdriver for this screw.",
+    "example_translation": "这颗螺丝请用十字螺丝刀。"
+  },
+  {
+    "id": "digital-caliper",
+    "unit_id": "tools-equipment",
+    "term": "digital caliper",
+    "meaning": "数显卡尺",
+    "category": "word_group",
+    "question_ids": [
+      "te-sc-03",
+      "measuring-gauges-v2-listening-1",
+      "tool-inspection-listen-v2-reading-1"
+    ],
+    "example": "Measure the part with a digital caliper.",
+    "example_translation": "用数显卡尺测量这个零件。"
+  },
+  {
+    "id": "torque-wrench",
+    "unit_id": "tools-equipment",
+    "term": "torque wrench",
+    "meaning": "扭矩扳手",
+    "category": "word_group",
+    "question_ids": [
+      "te-mc-03",
+      "measuring-gauges-v2-reading-1",
+      "tool-inspection-listen-v2-listening-2"
+    ],
+    "example": "The torque wrench is in Cabinet A.",
+    "example_translation": "扭矩扳手在 A 柜。"
+  },
+  {
+    "id": "goggles",
+    "unit_id": "tools-equipment",
+    "term": "goggles",
+    "meaning": "护目镜",
+    "category": "word",
+    "question_ids": [
+      "equipment-safety-rules-v2-listening-1"
+    ],
+    "example": "Wear goggles when you use the grinder.",
+    "example_translation": "使用角磨机时请戴护目镜。"
+  },
+  {
+    "id": "within-tolerance",
+    "unit_id": "tools-equipment",
+    "term": "within tolerance",
+    "meaning": "在公差范围内",
+    "category": "function_phrase",
+    "question_ids": [
+      "measuring-gauges-v2-listening-1",
+      "te-sc-05"
+    ],
+    "example": "The part is within tolerance.",
+    "example_translation": "这个零件在公差范围内。"
+  },
+  {
+    "id": "check-out",
+    "unit_id": "tools-equipment",
+    "term": "check out",
+    "meaning": "办理借出登记；借用",
+    "category": "phrase",
+    "question_ids": [
+      "tool-inspection-listen-v2-translation-1"
+    ],
+    "example": "We checked out two wrenches this morning.",
+    "example_translation": "今天上午我们登记借出了两把扳手。"
+  },
+  {
+    "id": "sign-off-on",
+    "unit_id": "tools-equipment",
+    "term": "sign off on",
+    "meaning": "在……上签字确认；签字批准",
+    "category": "phrase",
+    "question_ids": [
+      "tool-inspection-listen-v2-listening-2"
+    ],
+    "example": "Please sign off on the tool log before you leave.",
+    "example_translation": "离开前请在工具记录上签字确认。"
+  },
+  {
+    "id": "bracket",
+    "unit_id": "workplace-dialogue",
+    "term": "bracket",
+    "meaning": "支架",
+    "category": "word",
+    "question_ids": [
+      "wd-sc-01",
+      "radio-calls-v2-listening-1"
+    ],
+    "example": "Can you hold this bracket for me?",
+    "example_translation": "你能帮我扶一下这个支架吗？"
+  },
+  {
+    "id": "wiring-harness",
+    "unit_id": "workplace-dialogue",
+    "term": "wiring harness",
+    "meaning": "线束",
+    "category": "word_group",
+    "question_ids": [
+      "present-continuous-actions-v2-listening-1",
+      "wd-mc-03",
+      "schedule-coordination-v2-translation-2"
+    ],
+    "example": "We are testing the wiring harness now.",
+    "example_translation": "我们正在测试线束。"
+  },
+  {
+    "id": "clear-space",
+    "unit_id": "workplace-dialogue",
+    "term": "clear space",
+    "meaning": "腾出空间",
+    "category": "collocation",
+    "question_ids": [
+      "schedule-coordination-v2-listening-1"
+    ],
+    "example": "Clear space for the boxes by the door.",
+    "example_translation": "在门边给这些箱子腾出空间。"
+  },
+  {
+    "id": "for-a-moment",
+    "unit_id": "workplace-dialogue",
+    "term": "for a moment",
+    "meaning": "一会儿；片刻",
+    "category": "function_phrase",
+    "question_ids": [
+      "wd-sc-01"
+    ],
+    "example": "Please hold the part for a moment.",
+    "example_translation": "请把零件扶住一会儿。"
+  },
+  {
+    "id": "loud-and-clear",
+    "unit_id": "workplace-dialogue",
+    "term": "loud and clear",
+    "meaning": "听得很清楚（常用于对讲机通话）",
+    "category": "idiom",
+    "question_ids": [
+      "wd-sc-05",
+      "radio-calls-v2-listening-1"
+    ],
+    "example": "I hear you loud and clear.",
+    "example_translation": "我听得很清楚。"
+  },
+  {
+    "id": "stand-by",
+    "unit_id": "workplace-dialogue",
+    "term": "stand by",
+    "meaning": "等候；保持待命",
+    "category": "phrase",
+    "question_ids": [
+      "radio-calls-v2-listening-1"
+    ],
+    "example": "Stand by while I check the order.",
+    "example_translation": "请稍等，我核对一下订单。"
+  },
+  {
+    "id": "in-stock",
+    "unit_id": "workplace-dialogue",
+    "term": "in stock",
+    "meaning": "有库存；有现货",
+    "category": "function_phrase",
+    "question_ids": [
+      "wd-tf-04",
+      "schedule-coordination-v2-reading-1"
+    ],
+    "example": "We have ten fans in stock.",
+    "example_translation": "我们有十个风扇的库存。"
+  },
+  {
+    "id": "copy-that",
+    "unit_id": "workplace-dialogue",
+    "term": "Copy that.",
+    "meaning": "收到；明白了（通话确认用语）",
+    "category": "idiom",
+    "question_ids": [
+      "wd-sc-05",
+      "radio-calls-v2-listening-1"
+    ],
+    "example": "Copy that. I will send the parts now.",
+    "example_translation": "收到。我现在就把零件送过去。"
+  }
+]

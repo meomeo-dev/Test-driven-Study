@@ -1,0 +1,53 @@
+.vocabulary-content { display: grid; gap: 12px; }
+.vocabulary-scopes {
+  display: flex; gap: 4px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.vocabulary-scopes .button { color: var(--text-secondary); }
+.vocabulary-scopes .button[aria-pressed="true"] {
+  background: var(--primary-soft); color: var(--link);
+}
+.vocabulary-filters {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px;
+}
+.vocabulary-search, .vocabulary-filters select {
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  min-height: 36px; font-size: var(--font-size-control);
+}
+.vocabulary-search {
+  display: flex; align-items: center; gap: 7px; padding-inline: 9px;
+}
+.vocabulary-search svg { color: var(--muted); flex-shrink: 0; }
+.vocabulary-search:focus-within { border-color: var(--primary); }
+.vocabulary-search input {
+  background: transparent; color: inherit; width: 100%; min-width: 0;
+  font: inherit; outline: none;
+}
+.vocabulary-filters select { max-width: 100%; padding-inline: 8px; }
+.vocabulary-summary {
+  margin: 0; color: var(--muted); font-size: var(--font-size-control);
+}
+.vocabulary-entries {
+  margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border-subtle);
+}
+.vocabulary-entry {
+  display: grid; gap: 5px; padding-block: 11px;
+  border-bottom: 1px solid var(--border-subtle); overflow-wrap: anywhere;
+}
+.vocabulary-entry-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 9px; }
+.vocabulary-entry h3 { margin: 0; font-size: var(--font-size-dialog-title); }
+.vocabulary-entry p { margin: 0; }
+.vocabulary-category {
+  border-radius: 4px; padding: 2px 5px; background: var(--primary-soft); color: var(--link);
+  font-size: var(--font-size-caption);
+}
+.vocabulary-unit { color: var(--muted); font-size: var(--font-size-caption); }
+.vocabulary-example {
+  display: grid; gap: 2px; margin-top: 2px; padding: 6px 9px;
+  border-inline-start: 2px solid var(--border); color: var(--text-secondary);
+}
+
+@media (max-width: 650px) {
+  .workspace-tools .vocabulary-trigger > span { display: none; }
+}

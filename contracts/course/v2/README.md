@@ -15,5 +15,10 @@ segment or structured transcript line. Its optional `sub_questions` object
 maps existing sub-question IDs to a translated `stem` and/or `options` keyed by
 existing option IDs. See the guide below for alignment and review visibility.
 
+English course packages can declare an optional `vocabulary_file` containing a
+[vocabulary array](vocabulary.schema.json). See the
+[vocabulary authoring guide](../../../docs/features/vocabulary/README.md) for
+entry categories, unit and question references, and a complete example.
+
 See the [authoring and scoring guide](../../../docs/features/question-types/README.md)
 for cross-reference checks, local scoring and sample items.

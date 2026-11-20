@@ -1,10 +1,11 @@
 {
   "protocol_version": 2,
   "course_id": "beginner-english",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "title": "零基础英语（听说与基础语法）",
   "language": "zh-CN",
   "description": "从自我介绍、数字和简短指令开始，逐步衔接工程英语。",
+  "vocabulary_file": "assets/vocabulary/english.json",
   "units": [
     {
       "id": "intro",

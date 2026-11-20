@@ -31,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Memorization displays English–Chinese passages, transcripts, questions, and
   options, with a shared original-only toggle. Practice exposes the translation
   data after submission, and exams release it at the end of the paper.
+- A memorization vocabulary notebook with question, unit, and course views,
+  category filters, and bilingual search in Golden Course Template 1.3.0 and
+  Beginner English 2.3.0.
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
 - Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in

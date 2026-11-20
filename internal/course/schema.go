@@ -14,8 +14,9 @@ import (
 )
 
 type packageSchemas struct {
-	manifest *jsonschema.Schema
-	items    *jsonschema.Schema
+	manifest   *jsonschema.Schema
+	items      *jsonschema.Schema
+	vocabulary *jsonschema.Schema
 }
 
 var loadSchemas = sync.OnceValues(func() ([3]packageSchemas, error) {
@@ -25,10 +26,14 @@ var loadSchemas = sync.OnceValues(func() ([3]packageSchemas, error) {
 	var schemas [3]packageSchemas
 	for version, files := range []embed.FS{coursev1.Files, coursev2.Files} {
 		version++
-		for name, target := range map[string]**jsonschema.Schema{
+		targets := map[string]**jsonschema.Schema{
 			"manifest.schema.json": &schemas[version].manifest,
 			"items.schema.json":    &schemas[version].items,
-		} {
+		}
+		if version == 2 {
+			targets["vocabulary.schema.json"] = &schemas[version].vocabulary
+		}
+		for name, target := range targets {
 			data, err := files.ReadFile(name)
 			if err != nil {
 				return schemas, err

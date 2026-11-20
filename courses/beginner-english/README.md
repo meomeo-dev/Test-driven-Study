@@ -25,11 +25,15 @@
 
 ## 课程内容
 
-2.2.0 版（协议版本 `protocol_version: 2`）包含十个单元、41 个知识点（合计 2,240 分钟 / 37.33 学时）和 424 道练习题（涵盖全部 9 类 v2 题型：`single_choice` 76、`multiple_choice` 38、`true_false` 38、`numeric` 19、`cloze` 65、`listening` 59、`reading_comprehension` 39、`translation` 51、`writing` 39）。讲义小节通过 `<!-- concepts: ... -->` / `effort-lab` 锚点与多题型配额自底向上对齐，全面通过 `course:check`、`audit-course-tts` 与 `audit-course-effort --strict` 质量门。表中同一单元的知识点以分号分隔。
+2.3.0 版（协议版本 `protocol_version: 2`）包含十个单元、41 个知识点（合计 2,240 分钟 / 37.33 学时）和 424 道练习题（涵盖全部 9 类 v2 题型：`single_choice` 76、`multiple_choice` 38、`true_false` 38、`numeric` 19、`cloze` 65、`listening` 59、`reading_comprehension` 39、`translation` 51、`writing` 39）。讲义小节通过 `<!-- concepts: ... -->` / `effort-lab` 锚点与多题型配额自底向上对齐，全面通过 `course:check`、`audit-course-tts` 与 `audit-course-effort --strict` 质量门。表中同一单元的知识点以分号分隔。
 
 背题模式为全部 39 道阅读理解和 59 道听力题提供英中对照，涵盖阅读段落、
 听力逐字稿以及英文小题与选项。听力播放器下可展开逐字稿，
 并使用「仅原文」切回英文材料。
+
+在背题工具栏打开「生词本」，可查看本题相关词条，或按单元和全课程复习。
+[课程词表](assets/vocabulary/english.json)含 71 条词汇，覆盖十个单元，
+提供中文释义、英中例句和词类筛选。
 
 | 单元 | 知识点 |
 | --- | --- |

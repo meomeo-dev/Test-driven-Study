@@ -10,14 +10,15 @@ import (
 )
 
 type CourseSummary struct {
-	ID          string              `json:"id"`
-	Version     string              `json:"version"`
-	Title       string              `json:"title"`
-	Language    string              `json:"language"`
-	Description string              `json:"description,omitempty"`
-	Logo        string              `json:"logo,omitempty"`
-	Legacy      bool                `json:"legacy"`
-	Units       []CourseUnitSummary `json:"units"`
+	ID             string              `json:"id"`
+	Version        string              `json:"version"`
+	Title          string              `json:"title"`
+	Language       string              `json:"language"`
+	Description    string              `json:"description,omitempty"`
+	Logo           string              `json:"logo,omitempty"`
+	VocabularyFile string              `json:"vocabulary_file,omitempty"`
+	Legacy         bool                `json:"legacy"`
+	Units          []CourseUnitSummary `json:"units"`
 	// ConceptCount lets the workspace offer learning paths only for courses
 	// that declare a concept graph.
 	ConceptCount int `json:"concept_count"`
@@ -43,8 +44,8 @@ func (s *Service) Courses(ctx context.Context) ([]CourseSummary, error) {
 		}
 		value := CourseSummary{ID: manifest.ID, Version: manifest.Version, Title: manifest.Title,
 			Language: manifest.Language, Description: manifest.Description, Logo: manifest.Logo,
-			Legacy: false,
-			Units:  make([]CourseUnitSummary, 0, len(manifest.Units)),
+			VocabularyFile: manifest.VocabularyFile, Legacy: false,
+			Units: make([]CourseUnitSummary, 0, len(manifest.Units)),
 		}
 		index, err := s.queries.ListWorkspaceUnits(ctx, manifest.ID)
 		if err != nil {

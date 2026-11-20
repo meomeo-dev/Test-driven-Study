@@ -12,6 +12,7 @@
     "language": {"$ref": "../v1/manifest.schema.json#/properties/language"},
     "description": {"$ref": "../v1/manifest.schema.json#/properties/description"},
     "logo": {"$ref": "../v1/manifest.schema.json#/properties/logo"},
+    "vocabulary_file": {"$ref": "../v1/manifest.schema.json#/$defs/path"},
     "ai_profile": {"$ref": "../v1/manifest.schema.json#/properties/ai_profile"},
     "roadmap": {"$ref": "../v1/manifest.schema.json#/properties/roadmap"},
     "units": {"$ref": "../v1/manifest.schema.json#/properties/units"}

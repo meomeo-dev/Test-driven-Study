@@ -1,6 +1,6 @@
 # 黄金标准课程模板
 
-`golden-course-template@1.2.0` 是可安装的 v2 课程模板。「题型展示」单元
+`golden-course-template@1.3.0` 是可安装的 v2 课程模板。「题型展示」单元
 （`extended-practice`）包含 15 道题，覆盖全部 9 类题型，并以车间交班为主题演示
 知识图谱、学习路径和按知识点练习。
 
@@ -9,6 +9,14 @@
 两道阅读题和三道听力题（对话、独白、录音）均提供英中对照。
 题库的 `study_translation.material` 按原文片段或逐字稿轮次保存中文，
 `study_translation.sub_questions` 按小题和选项的原有 ID 对应译文。
+
+## 生词本示例
+
+背题模式可打开「生词本」，按本题、本单元或全课程查看
+[12 条车间交班词汇](assets/vocabulary/english.json)。
+词表覆盖单词、词组、短语、固定搭配、习语或惯用语、介词或功能短语，
+每条附中文释义及英中例句。课程声明中的 `vocabulary_file` 指向词表，
+`question_ids` 关联同一单元的原题 ID。
 
 ## 学习路径示例
 

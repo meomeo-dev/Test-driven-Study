@@ -77,6 +77,11 @@ func Load(directory string) (Package, error) {
 	if err := validateConcepts(manifest, result.Units); err != nil {
 		return Package{}, err
 	}
+	if manifest.VocabularyFile != "" {
+		if err := files.validateVocabulary(manifest.VocabularyFile, result.Units, schemas); err != nil {
+			return Package{}, err
+		}
+	}
 	if err := validateRoadmap(manifest); err != nil {
 		return Package{}, err
 	}
@@ -248,7 +253,8 @@ func validPath(filename, directory string) bool {
 }
 
 func IsAssetPath(filename string) bool {
-	return isImagePath(filename) || IsAudioPath(filename) || IsTranscriptPath(filename)
+	return isImagePath(filename) || IsAudioPath(filename) || IsTranscriptPath(filename) ||
+		isVocabularyPath(filename)
 }
 
 func IsAudioPath(filename string) bool {

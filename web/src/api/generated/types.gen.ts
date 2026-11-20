@@ -49,9 +49,24 @@ export type CourseSummary = {
     language: string;
     description?: string;
     logo?: string;
+    /**
+     * Optional path to the versioned course vocabulary asset.
+     */
+    vocabulary_file?: string;
     legacy: boolean;
     concept_count: number;
     units: Array<CourseUnitSummary>;
+};
+
+export type VocabularyEntry = {
+    id: string;
+    unit_id: string;
+    term: string;
+    meaning: string;
+    category: 'word' | 'word_group' | 'phrase' | 'collocation' | 'idiom' | 'function_phrase';
+    question_ids?: Array<string>;
+    example?: string;
+    example_translation?: string;
 };
 
 export type ConceptGraph = {
@@ -1785,9 +1800,9 @@ export type ReadCourseAssetError = ReadCourseAssetErrors[keyof ReadCourseAssetEr
 
 export type ReadCourseAssetResponses = {
     /**
-     * Referenced media from an installed version
+     * Referenced asset from an installed version
      */
-    200: Blob | File;
+    200: Array<VocabularyEntry>;
 };
 
 export type ReadCourseAssetResponse = ReadCourseAssetResponses[keyof ReadCourseAssetResponses];
