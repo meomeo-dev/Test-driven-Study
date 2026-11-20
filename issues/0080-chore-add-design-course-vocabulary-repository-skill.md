@@ -1,7 +1,8 @@
 ---
 id: 0080
 type: chore
-status: open
+status: closed
+closed-by: 7cd142e
 labels: [course, vocabulary, skills]
 branch: chore/0080-add-design-course-vocabulary-repository-skill
 created: 2026-11-20
@@ -52,3 +53,12 @@ Keeping TTS speech segmentation/overrides in `design-course-tts` and package/uni
 planning in `design-course-package` avoids overlapping responsibilities while
 giving vocabulary authors clear rules against `pos` duplication and over-annotated
 `grammar_note` entries.
+
+### Verification
+
+- `meta-create-skills/scripts/check-skill.sh design-course-vocabulary .agents/skills`: `PASS`.
+- `meta-skill-toolbox/scripts/check-toolbox.mjs`: `valid: true` (`0` errors, `0` warnings).
+- `meta-skill-knowledge-base/scripts/check-knowledge-base.mjs`: `valid: true` (`0` errors, `0` warnings).
+- `node --test .agents/skills/design-course-vocabulary/tests/*.test.mjs`: `4/4` passed.
+- `audit-course-vocabulary.mjs --strict`: passed with `0` errors and `0` warnings on `golden-course-template@1.4.0` (`12` entries) and `beginner-english@2.4.0` (`71` entries).
+- `npm run issue:check`: passed across issues `0001–0080`.

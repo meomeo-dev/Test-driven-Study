@@ -28,7 +28,8 @@ Updated 2026-11-20 (America/New_York). Functional baseline `aaf6fed` on `main`.
   `grammar_note` schema support, `design-course-tts` vocabulary auditing, and
   updated glossaries in Golden Template `1.4.0` (12 entries) and Beginner
   English `2.4.0` (71 entries).
-  See the [vocabulary authoring guide](docs/features/vocabulary/README.md).
+  See the [vocabulary authoring guide](docs/features/vocabulary/README.md) and
+  [vocabulary design skill](.agents/skills/design-course-vocabulary/SKILL.md).
 
 ## Course packages and authoring
 
