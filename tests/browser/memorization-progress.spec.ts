@@ -58,8 +58,12 @@ test('memorization keeps the card and navigator aligned while a next question lo
   const { subject, first, second, overview } = await studyUnit(request);
   const navigator = navigation(page);
   const counter = page.getByTestId('mastered-count');
+  const position = page.locator('.question-card .question-position');
   await page.goto(urlFor(subject, first));
   await expect(sourceLine(page)).toHaveText(sourceLabel(first));
+  await expect(page.locator('.flip-actions > .previous + .question-position + .next'))
+    .toBeVisible();
+  await expect(position).toHaveText(`1 / ${overview.total}`);
   const delay = await holdResponse(page, url =>
     url.pathname === `/api/questions/${second.question_id}`);
 
@@ -68,6 +72,7 @@ test('memorization keeps the card and navigator aligned while a next question lo
     await delay.received;
     await navigator.open();
     await expect(sourceLine(page)).toHaveText(sourceLabel(first));
+    await expect(position).toHaveText(`1 / ${overview.total}`);
     await expect(navigator.current).toHaveAttribute('data-question-id', String(first.question_id));
     await expect(counter).toHaveText(String(overview.mastered));
   } finally {
@@ -75,10 +80,14 @@ test('memorization keeps the card and navigator aligned while a next question lo
   }
 
   await expect(sourceLine(page)).toHaveText(sourceLabel(second));
+  await expect(position).toHaveText(`2 / ${overview.total}`);
   await expect(navigator.current).toHaveAttribute('data-question-id', String(second.question_id));
   await navigator.close();
   await page.getByRole('button', { name: '上一题', exact: true }).click();
   await expect(sourceLine(page)).toHaveText(sourceLabel(first));
+  await page.setViewportSize({ width: 375, height: 820 });
+  await expect(position).toHaveText(`1 / ${overview.total}`);
+  await expect(position).toBeInViewport({ ratio: 1 });
   await navigator.open();
   await expect(navigator.current).toHaveAttribute('data-question-id', String(first.question_id));
   await expect(counter).toHaveText(String(overview.mastered));

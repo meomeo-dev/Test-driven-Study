@@ -80,9 +80,6 @@ export function QuestionCard({
         <span className="chapter-badge question-chapter" title={question.chapter_name.trim()}>
           {question.chapter_name.trim() || '未分章节'}
         </span>
-        <span className="question-position">
-          {position} <span>/ {total}</span>
-        </span>
         <StudyTranslationToggle control={translationControl} />
         <button
           type="button"
@@ -143,6 +140,9 @@ export function QuestionCard({
             <ChevronLeft size={16} />
             上一题{hint('k')}
           </button>
+          <span className="question-position">
+            {position} <span>/ {total}</span>
+          </span>
           <button
             type="button"
             className="button secondary next"

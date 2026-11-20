@@ -62,6 +62,10 @@
 .correct-label { display: inline-flex; align-items: center; gap: 3px; margin-left: auto; white-space: nowrap; color: var(--success); font-size: 10px; background: var(--success-badge); border-radius: 4px; padding: 3px 4px; }
 .question-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 10px; border-top: 1px solid var(--border-subtle); flex-shrink: 0; }
 .flip-actions, .mark-actions { display: flex; gap: 6px; align-items: center; }
+.flip-actions .question-position {
+  margin-inline: 4px; font-size: var(--font-size-control);
+  font-variant-numeric: tabular-nums;
+}
 .compact-tabs { display: flex; gap: 3px; padding: 3px; border-radius: 7px; background: var(--surface-muted); flex-shrink: 0; }
 .compact-tabs button { flex: 1; color: var(--muted); background: transparent; border-radius: 5px; padding: 8px 7px; font-size: 12px; }
 .compact-tabs button[aria-selected="true"] { background: var(--surface); color: var(--text-secondary); font-weight: 650; box-shadow: 0 1px 3px var(--shadow); }
