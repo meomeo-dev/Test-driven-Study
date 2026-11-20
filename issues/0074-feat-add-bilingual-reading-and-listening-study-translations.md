@@ -1,7 +1,8 @@
 ---
 id: 0074
 type: feat
-status: open
+status: closed
+closed-by: 7b36c09
 labels: []
 branch: feat/0074-add-bilingual-reading-and-listening-study-translations
 created: 2026-11-20
@@ -36,3 +37,13 @@ Runtime machine translation, Chinese speech synthesis, new grading rules, and a 
 ## 讨论
 
 Author material translations as plain strings. Align by nonblank passage segment or transcript line. Split a monologue using the existing rich-text shape and preserve the exact concatenated English speech text.
+
+### Verification
+
+- Both course packages pass `course:check` and the repository TTS audit.
+- Verified 103 translated items and exact English reconstruction for all 14
+  monologues by comparison with the previous course versions.
+- Generated binding checks, 57 frontend unit tests, Go tests, four startup
+  tests, the application build, and final type checking passed.
+- Twenty browser cases passed in the suite run. The catalog roadmap case timed
+  out loading the page on the first run and passed on a focused retry.

@@ -30,6 +30,21 @@ Updated 2026-11-20 (America/New_York).
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 
+## Bilingual memorization
+
+- [#74](issues/0074-feat-add-bilingual-reading-and-listening-study-translations.md)
+  (`7b36c09`) adds optional v2 learning translations to reading and listening.
+  Memorization uses one translation toggle for the card and full-question
+  dialog. Active assessment responses omit the translations.
+- `golden-course-template@1.2.0` covers five items across reading and the three
+  listening modes. `beginner-english@2.2.0` covers 98 items. Package upgrades
+  retain stable question and option IDs and exact monologue playback text.
+- Course validation, TTS audits, generated bindings, unit, Go, startup, build,
+  and browser checks passed. The first roadmap browser case passed on a focused
+  retry after the initial page-load timeout. The new packages were validated
+  with isolated data. Existing installations use the versioned course upgrade
+  described in the [README](README.md).
+
 ## V2 question types
 
 - Cloze, listening, reading comprehension, writing and translation now use
