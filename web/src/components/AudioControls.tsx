@@ -33,10 +33,16 @@ export function registerGlobalAudio(audio: HTMLAudioElement, onStop: () => void)
 type Voice = 'stella' | 'tide';
 export const ttsConfig = (tts?: TtsDeclaration) => typeof tts === 'object' ? tts : undefined;
 type Track = { clip: string } | { text: string; voice?: Voice; speed?: number };
-type AudioControlsProps =
+type CommonAudioProps = {
+  targetLabel?: string;
+  allowRegenerate?: boolean;
+  onError?: (message?: string) => void;
+};
+type AudioControlsProps = CommonAudioProps & (
   | { text: string; voice?: Voice; speed?: number; pinyin?: never; sequence?: never }
   | { text: string; pinyin: string[]; voice?: never; speed?: never; sequence?: never }
-  | { sequence: ContentSegment[]; text?: never; voice?: never; speed?: never; pinyin?: never };
+  | { sequence: ContentSegment[]; text?: never; voice?: never; speed?: never; pinyin?: never }
+);
 
 function audioTracks({ text, voice, speed, pinyin, sequence }: AudioControlsProps): Track[] {
   if (sequence) {
@@ -53,16 +59,23 @@ function audioTracks({ text, voice, speed, pinyin, sequence }: AudioControlsProp
 }
 
 export function AudioControls(props: AudioControlsProps) {
-  const { text, pinyin, sequence } = props;
+  const { text, pinyin, sequence, targetLabel, allowRegenerate = true, onError } = props;
   const [status, setStatus] = useState<'idle' | 'loading' | 'playing' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const active = useRef<HTMLAudioElement | null>(null);
+  const onErrorRef = useRef(onError);
+  const reportedErrorRef = useRef(false);
+  onErrorRef.current = onError;
   const tracks = audioTracks(props);
   const hasSpeech = tracks.some(track => 'text' in track);
   const trackKey = JSON.stringify(tracks);
 
   useEffect(() => () => {
     if (active.current && active.current === currentAudio) stopGlobalAudio();
+    if (reportedErrorRef.current) {
+      reportedErrorRef.current = false;
+      onErrorRef.current?.(undefined);
+    }
   }, [trackKey]);
 
   async function playAudio(force = false) {
@@ -82,12 +95,16 @@ export function AudioControls(props: AudioControlsProps) {
     active.current = audio;
     setStatus('loading');
     setErrorMessage('');
+    reportedErrorRef.current = false;
+    onErrorRef.current?.(undefined);
 
     function fail(message: string) {
       if (active.current !== audio) return;
       stopGlobalAudio();
       setStatus('error');
       setErrorMessage(message);
+      reportedErrorRef.current = true;
+      onErrorRef.current?.(message);
     }
 
     let index = 0;
@@ -133,8 +150,10 @@ export function AudioControls(props: AudioControlsProps) {
   }
 
   const playing = status === 'playing';
+  const playLabel = targetLabel ? `播放${targetLabel}` : '播放发音';
+  const stopLabel = targetLabel ? `停止${targetLabel}` : '停止发音';
   const label = sequence ? (playing ? '停止解析' : '播放解析')
-    : playing ? '停止发音' : pinyin ? `播放拼音：${text}` : '播放发音';
+    : playing ? stopLabel : pinyin ? `播放拼音：${text}` : playLabel;
   return (
     <span className="tts-audio-controls">
       <button
@@ -155,7 +174,7 @@ export function AudioControls(props: AudioControlsProps) {
         )}
         {sequence && label}
       </button>
-      {hasSpeech && <button
+      {hasSpeech && allowRegenerate && <button
         type="button"
         className="tts-btn tts-regen-btn"
         aria-label={sequence ? '重新生成解析语音' : '重新生成发音'}

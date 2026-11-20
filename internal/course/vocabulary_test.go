@@ -81,6 +81,26 @@ func TestRejectInvalidVocabulary(t *testing.T) {
 			vocabularyTestFile},
 		{"unpaired example", vocabularyTestFile,
 			vocabularyWith(`,"example_translation":"交接检查表。"`, ""), vocabularyTestFile},
+		{"invalid term_tts voice", vocabularyTestFile,
+			vocabularyWith(`"meaning":"交接"`, `"meaning":"交接","term_tts":{"voice":"invalid"}`),
+			vocabularyTestFile},
+		{"unpaired example_tts", vocabularyTestFile,
+			`[{"id":"hand-over","unit_id":"intro","term":"hand over","meaning":"交接",` +
+				`"category":"word_group","example_tts":{"voice":"stella"}}]`,
+			vocabularyTestFile},
+		{"invalid pos", vocabularyTestFile,
+			vocabularyWith(`"meaning":"交接"`, `"meaning":"交接","pos":"verb"`),
+			vocabularyTestFile},
+		{"blank grammar_note", vocabularyTestFile,
+			vocabularyWith(`"meaning":"交接"`, `"meaning":"交接","grammar_note":"   "`),
+			vocabularyTestFile},
+		{"overlong grammar_note", vocabularyTestFile,
+			vocabularyWith(`"meaning":"交接"`,
+				`"meaning":"交接","grammar_note":"`+strings.Repeat("a", 121)+`"`),
+			vocabularyTestFile},
+		{"unknown property", vocabularyTestFile,
+			vocabularyWith(`"meaning":"交接"`, `"meaning":"交接","extra_field":"nope"`),
+			vocabularyTestFile},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			manifest.VocabularyFile = test.path
@@ -101,6 +121,28 @@ func TestRejectInvalidVocabulary(t *testing.T) {
 
 func vocabularyWith(old, updated string) string {
 	return "[" + strings.Replace(vocabularyTestEntry, old, updated, 1) + "]"
+}
+
+func TestVocabularyOptionalTTSAndGrammar(t *testing.T) {
+	directory, manifest := writeVocabularyTestCourse(t)
+	manifest.VocabularyFile = vocabularyTestFile
+	if err := writeJSON(directory, ManifestFile, manifest); err != nil {
+		t.Fatal(err)
+	}
+	entry := `[{"id":"hand-over","unit_id":"intro","term":"hand over",` +
+		`"meaning":"交接","category":"word_group","pos":"v",` +
+		`"grammar_note":"` + strings.Repeat("a", 120) + `",` +
+		`"question_ids":["1"],` +
+		`"term_tts":{"voice":"stella","text":"hand over","speed":0.9},` +
+		`"example":"Hand over the checklist.",` +
+		`"example_translation":"交接检查表。",` +
+		`"example_tts":{"voice":"tide","text":"Hand over the checklist."}}]`
+	if err := writeContent(directory, vocabularyTestFile, []byte(entry)); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(directory); err != nil {
+		t.Fatalf("expected valid optional TTS and grammar fields, got %v", err)
+	}
 }
 
 func writeVocabularyTestCourse(t *testing.T) (string, Manifest) {

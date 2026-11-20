@@ -186,4 +186,17 @@ func TestTTSRoutes(t *testing.T) {
 	if !bytes.Contains(v2Bytes, []byte("PCM_V2_DATA_5678")) {
 		t.Fatalf("expected v2 PCM payload in WAV after force regeneration")
 	}
+
+	// 6. Empty or whitespace-only text must fail with 400 Bad Request
+	for _, blank := range []string{"", "   \t\n "} {
+		body, _ := json.Marshal(map[string]any{"text": blank})
+		r, err := http.Post(server.URL+"/api/tts/synthesize", "application/json", bytes.NewReader(body))
+		if err != nil {
+			t.Fatalf("POST /api/tts/synthesize failed: %v", err)
+		}
+		r.Body.Close()
+		if r.StatusCode != http.StatusBadRequest {
+			t.Fatalf("expected 400 for blank text %q, got %d", blank, r.StatusCode)
+		}
+	}
 }

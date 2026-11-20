@@ -21,8 +21,10 @@ The asset is a nonempty array validated by the
     "meaning": "访客证",
     "category": "word_group",
     "question_ids": ["sue1-extended-reading"],
+    "term_tts": {"voice": "stella"},
     "example": "Please wear your visitor badge in the workshop.",
-    "example_translation": "在车间里请佩戴访客证。"
+    "example_translation": "在车间里请佩戴访客证。",
+    "example_tts": {"voice": "stella"}
   }
 ]
 ```
@@ -31,6 +33,18 @@ Use one unique slug per entry within the course. `unit_id` refers to a declared
 unit. Optional `question_ids` use original question IDs from that unit. Add
 `example` and `example_translation` together when including an example.
 Keep entries useful for study and keep grading answers in the question bank.
+
+Optional audio and grammar fields:
+
+- `term_tts` and `example_tts` accept a `TTSConfig` object (`voice`, `text`,
+  `speed`). `example_tts` requires `example`. Use `text` overrides when the
+  displayed string contains placeholders such as `…` or non-speakable text.
+- `pos` accepts `n`, `v`, `adj`, `adv`, `prep`, `pron`, `num`, `conj`, or
+  `interj`. Prefer setting `pos` on `word` entries when helpful, and omit it
+  when `category` already conveys the structural role.
+- `grammar_note` is a concise Chinese usage or morphology note (up to 120
+  characters, non-whitespace). Keep it minimalist and omit it when no
+  non-obvious rule applies.
 
 | Category | Display label |
 | --- | --- |

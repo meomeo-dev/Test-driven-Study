@@ -5,6 +5,7 @@
     "term": "glove",
     "meaning": "手套",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "sue1-extended-listening",
       "sue1-extended-listening-passage"
@@ -18,6 +19,8 @@
     "term": "shelf",
     "meaning": "搁板；置物架的一层",
     "category": "word",
+    "pos": "n",
+    "grammar_note": "可数名词，复数 shelves（变 f 为 ves）。",
     "question_ids": [
       "sue1-extended-listening"
     ],
@@ -30,6 +33,7 @@
     "term": "checklist",
     "meaning": "核对清单",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "sue1-extended-cloze",
       "sue1-extended-listening",
@@ -81,6 +85,7 @@
     "term": "a pair",
     "meaning": "一双；一副",
     "category": "phrase",
+    "grammar_note": "常接 of + 复数名词（如 a pair of gloves）表示“一副／一双……”。",
     "question_ids": [
       "sue1-extended-listening"
     ],
@@ -106,6 +111,7 @@
     "term": "run late",
     "meaning": "晚点；比预定时间晚",
     "category": "idiom",
+    "grammar_note": "run 随主语与时态变化（is running late / ran late），现在分词须双写 n。",
     "question_ids": [
       "sue1-extended-listening-recording"
     ],
@@ -118,6 +124,7 @@
     "term": "next to",
     "meaning": "在……旁边",
     "category": "function_phrase",
+    "grammar_note": "复合介词，后接名词或代词宾格，表示在某物紧邻旁边。",
     "question_ids": [
       "sue1-extended-listening-passage",
       "sue1-extended-reading-single-choice"
@@ -131,6 +138,7 @@
     "term": "without permission",
     "meaning": "未经许可",
     "category": "function_phrase",
+    "grammar_note": "介词 without 后接名词或动名词（V-ing），表示“未经／没有……”。",
     "question_ids": [
       "sue1-extended-cloze"
     ],

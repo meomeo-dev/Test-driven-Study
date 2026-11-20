@@ -25,6 +25,14 @@
   font: inherit; outline: none;
 }
 .vocabulary-filters select { max-width: 100%; padding-inline: 8px; }
+.vocabulary-tts-error {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 7px 10px; border-radius: 6px; font-size: var(--font-size-control);
+  color: var(--danger); background: var(--danger-bg); border: 1px solid var(--danger-border);
+}
+.vocabulary-tts-error .icon-button {
+  width: 24px; height: 24px; flex-shrink: 0; color: inherit;
+}
 .vocabulary-summary {
   margin: 0; color: var(--muted); font-size: var(--font-size-control);
 }
@@ -35,17 +43,37 @@
   display: grid; gap: 5px; padding-block: 11px;
   border-bottom: 1px solid var(--border-subtle); overflow-wrap: anywhere;
 }
-.vocabulary-entry-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 9px; }
+.vocabulary-entry-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 9px; }
+.vocabulary-term-row {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-width: 0; max-width: 100%; flex-wrap: wrap;
+}
+.vocabulary-term-row .tts-audio-controls { margin-left: 0; flex-shrink: 0; }
 .vocabulary-entry h3 { margin: 0; font-size: var(--font-size-dialog-title); }
 .vocabulary-entry p { margin: 0; }
 .vocabulary-category {
   border-radius: 4px; padding: 2px 5px; background: var(--primary-soft); color: var(--link);
   font-size: var(--font-size-caption);
 }
+.vocabulary-pos {
+  border-radius: 4px; padding: 1px 5px;
+  background: var(--surface-muted); color: var(--text-secondary);
+  border: 1px solid var(--border); font-size: var(--font-size-caption);
+}
 .vocabulary-unit { color: var(--muted); font-size: var(--font-size-caption); }
+.vocabulary-grammar-note {
+  font-size: var(--font-size-control); color: var(--muted); line-height: 1.5;
+}
 .vocabulary-example {
   display: grid; gap: 2px; margin-top: 2px; padding: 6px 9px;
   border-inline-start: 2px solid var(--border); color: var(--text-secondary);
+}
+.vocabulary-example-line {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+}
+.vocabulary-example-line p { flex: 1; min-width: 0; }
+.vocabulary-example-line .tts-audio-controls {
+  margin-left: 0; flex-shrink: 0; margin-top: 2px;
 }
 
 @media (max-width: 650px) {

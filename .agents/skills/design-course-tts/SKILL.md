@@ -1,13 +1,13 @@
 ---
 name: design-course-tts
 description: >-
-  为课程包（courses/<id>/questions/*.json，v1 与 v2）设计、编写和审查声明式 TTS 语音与本地拼音
-  音频（stem、options、transcript、audio、passage、passage_tts、sub_questions、
-  explanation_audio、analysis、sample_response_tts、source_text_tts、
-  reference_translation_tts）：决定哪些字段放语音或留纯文本、如何做 ContentSegment 切片与标点
-  归属、何时用 tts.text 改写或改用 pinyin 本地录音、如何选 stella/tide 音色与遵守选项全有
-  全无（uniformOptionAudio）及听力防剧透规则。新建或修改题库语音、审查 TTS 切片、
-  为 v2 阅读或听力编写英中对照逐字稿（study_translation）时使用。
+  为课程包（courses/<id>/questions/*.json，v1 与 v2；及 course.json 声明的 vocabulary_file）
+  设计、编写和审查声明式 TTS 语音与本地拼音音频（stem、options、transcript、audio、passage、
+  passage_tts、sub_questions、explanation_audio、analysis、sample_response_tts、
+  source_text_tts、reference_translation_tts、term_tts、example_tts）：决定哪些字段放语音或留
+  纯文本、如何做 ContentSegment 切片与标点归属、何时用 tts.text 改写或改用 pinyin 本地录音、
+  如何选 stella/tide 音色与遵守选项全有全无（uniformOptionAudio）及听力防剧透规则。新建或修改
+  题库/词表语音、审查 TTS 切片、为 v2 阅读或听力编写英中对照逐字稿（study_translation）时使用。
   不用于静态句库离线批量预合成或维护 .wav/.mp3 文件（那属于
   maintain-deepseek-tts-audio）。
 ---
@@ -53,11 +53,12 @@ description: >-
 | `transcript` / `audio` | v2 `listening` 三模式：`dialogue` 配 `audio: {mode, voice_male, voice_female}`，台词行可省略 `voice`/`tts` 或仅设 `tts: {speed}`；`passage` 用 `audio.voice_female` 读 `passage`；`recording` 配 `.mp3` `audio.src` 与可选不配 `tts` 的 `transcript[]`；v1 逐行显式配说话人 `tts` 或 `.mp3` | 不把多轮对话揉进单一字符串，也不用 `tts: true` 简写；`passage` 模式禁配 `transcript`；非 `"M"` 男性说话人不可省 `line.tts.voice` |
 | `explanation` / `analysis` / `blanks[].explanation` / `sub_questions[].analysis` | v2 要求提供 `analysis`（及 `sub_questions[].analysis`）；`analysis`、`blanks[].explanation` 与 `sub_questions[].analysis` 为 `RichContent`，可为外语例句内嵌 `tts`；v1 整段讲解单列 `explanation_audio[]` | `explanation` 仅为纯字符串；`sub_questions[]` 禁止 `explanation_audio`；`explanation_audio` 中所有非 `blank`/非 `pinyin` 且非空切片都会被串联朗读 |
 | `writing` / `translation` | `writing` 单段英文范文（`sentence_making`）用字符串 `sample_response` + `sample_response_tts`，多段范文（`short_essay`/`full_essay`）拆成按段落配 `tts` 的 `ContentSegment[]` 并以 `"\n\n"` 纯文本分隔（**省略** `sample_response_tts`）；`translation` 英译中为 `source_text` 配 `source_text_tts`（`TranslationContent`，作答前可见），中译英为 `reference_translation` 配 `reference_translation_tts`（`TranslationItemReview`，仅背题与复盘下发） | `writing` 的 `requirements`/`keywords`/`rubric` 为纯文本或整数权重，不可加 TTS；`translation` 的 `source_text`/`reference_translation` 仅支持纯 `string`（改写放 `*_tts.text`），`acceptable_alternates`/`key_terms` 无 TTS；纯中文不强配英语音色 |
+| `vocabulary_file`（`term` / `example` + `term_tts` / `example_tts`） | 干净词条 `term` 与例句 `example` 直接按默认音色合成，**省略 `term_tts` / `example_tts`**；仅在需改写口语或指定 `voice`/`speed` 时声明 `term_tts` / `example_tts`（`TTSConfig`） | 含省略号（`…`、`...`）、斜杠备选（`a/b`）、括号注释（`(sb.)`）、全大写词或不可直读符号时，**必须配 `*_tts.text` 改写**；`voice` 仅限 `"stella"` / `"tide"`；`example_tts` 不可脱离 `example`；`meaning` / `grammar_note` / `example_translation` 无 TTS |
 
 核心硬规则（细节与反例见 `references/placement-and-segmentation.md`）：
 
 1. **切片边界**：中英混排采用 `['text', 'tts', 'text']` 包夹；TTS 切片内**去掉首尾空格与外围引号/反引号**，保留句末英文 `.?!` 在 TTS 内，把分隔空格放在相邻纯 `text` 切片（多句英文同理用 `{"type": "text", "text": " "}` 间隔）。
-2. **TTS vs `tts.text` vs `pinyin`**：裸汉语拼音字母/韵母、带下划线遮罩空（如 `l___ yǔ`）、IPA、箭头、算式/代码、错误码**禁止直接送入 TTS**。中文含数字（`第 1 行` → `第一行`）或符号（`“√”` → `勾`）、英文冒号钟点时间（`"At 10:30 a.m."` → `"At ten thirty a.m."`；整点简写如 `"8 a.m."` 可直读）、段落内视觉换行（`"Best,\nSam"` → `"Best, Sam"`）以及需要朗读的英文**全大写标题/词**（`"LOCKER ROOM NOTICE"` → `"Locker room notice."`），必须配 `tts.text` 改写。`tts_text` 仅存在于 `ContentSegment`，`Option` / `TranscriptLine` / `*_tts` 均需使用 `tts.text`。拼音优先用 `pinyin: [...]`（渲染优先级高于 `tts`，勿同时声明）。
+2. **TTS vs `tts.text` vs `pinyin`**：裸汉语拼音字母/韵母、带下划线遮罩空（如 `l___ yǔ`）、IPA、箭头、算式/代码、错误码**禁止直接送入 TTS**。中文含数字（`第 1 行` → `第一行`）或符号（`“√”` → `勾`）、英文冒号钟点时间（`"At 10:30 a.m."` → `"At ten thirty a.m."`；整点简写如 `"8 a.m."` 可直读）、段落内视觉换行（`"Best,\nSam"` → `"Best, Sam"`）、需要朗读的英文**全大写标题/词**（`"LOCKER ROOM NOTICE"` → `"Locker room notice."`），以及词表 `vocabulary_file` 中的省略号/斜杠备选/括号占位符（如 `"My name is …"` → `term_tts: {"voice": "stella", "text": "My name is"}`），必须配 `tts.text` / `*_tts.text` 改写。`tts_text` 仅存在于 `ContentSegment`，`Option` / `TranscriptLine` / `*_tts`（含 `term_tts` / `example_tts`）均需使用 `tts.text`。拼音优先用 `pinyin: [...]`（渲染优先级高于 `tts`，勿同时声明）。
 3. **音色与引擎陷阱**：英文 TTS 一律显式写 `{"voice": "stella" | "tide"}`（v2 `listening` `dialogue` 可从 `audio` 继承，但 `resolveListeningLines` 仅对 `M` 映射 `voice_male`，其余说话人全落 `voice_female`；`mode: "passage"` 固定读取 `audio.voice_female`）。`RichContent.tsx` 按 `pinyin`/`tts`/`tts_text` 触发按钮而非 `type: "speech"`，`type: "blank"` 会屏蔽音频，`speed` 仅在浏览器 `playbackRate` 生效。
 
 ## 流程
@@ -68,7 +69,7 @@ description: >-
 - [主观] **对齐英中逐字稿**：将中文保存在 `study_translation.material`，按非空原文段
   或结构化逐字稿行一一对应。独白可用富文本数组划分显示段，拼接后的英文须与原文一致，
   继续使用整段合成。按 `references/study-transcripts.md` 核对三种听力形态及复习可见性。
-- [自动] **脚本审计**：运行 `node <skill-root>/scripts/audit-course-tts.mjs courses/<id>`，清零全部 `error`（结构/防剧透/符号/内联禁用违规）与 `warning`（过粗切片、`pinyin`/`tts` 冲突、漏配语音的纯英文小题/选项/题干/短文句子，以及 `analysis`/`writing`/`translation` 一致性警告）。
+- [自动] **脚本审计**：运行 `node <skill-root>/scripts/audit-course-tts.mjs courses/<id>`（若 `course.json` 声明 `vocabulary_file` 会一并审计词表），清零全部 `error`（结构/防剧透/符号/词表占位符/内联禁用违规）与 `warning`（过粗切片、`pinyin`/`tts` 冲突、漏配语音的纯英文小题/选项/题干/短文句子，以及 `analysis`/`writing`/`translation` 一致性警告）。
 - [自动] **包校验与交付**：修改课程后配合仓库校验命令 `npm run course:check -- courses/<id>` 确认 Schema 与 `uniformOptionAudio` 全数通过。
 
 ## 失败与纠正反馈

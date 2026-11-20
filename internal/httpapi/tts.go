@@ -67,7 +67,7 @@ func (s *Server) synthesizeSpeech(w http.ResponseWriter, r *http.Request) {
 		problem(w, http.StatusBadRequest, "请求体格式无效")
 		return
 	}
-	if req.Text == "" {
+	if strings.TrimSpace(req.Text) == "" {
 		problem(w, http.StatusBadRequest, "发音文本不能为空")
 		return
 	}

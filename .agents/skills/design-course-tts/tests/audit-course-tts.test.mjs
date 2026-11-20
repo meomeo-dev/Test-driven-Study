@@ -1,14 +1,18 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import test from "node:test";
-import { main } from "../scripts/audit-course-tts.mjs";
-import { auditItems } from "../scripts/lib/audit.mjs";
+import { auditCourseTts, main } from "../scripts/audit-course-tts.mjs";
+import { auditItems, auditVocabulary } from "../scripts/lib/audit.mjs";
 
 const GOLDEN_EXTENDED = resolve(
   process.cwd(),
   "courses/golden-course-template/questions/extended-practice.json",
+);
+const GOLDEN_VOCAB = resolve(
+  process.cwd(),
+  "courses/golden-course-template/assets/vocabulary/english.json",
 );
 
 test("clean v1 and v2 items across all 9 question types pass with zero issues", () => {
@@ -573,6 +577,260 @@ test("CLI supports --help, --file, and returns standard exit codes 0..3", async 
       options: [{ id: "a", text: "Yes", tts: true }, { id: "b", text: "No" }],
     }]));
     assert.equal(await main(["--file", qFile]), 1);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("auditVocabulary passes clean entries and resolved *_tts.text overrides", () => {
+  const entries = [
+    {
+      id: "glove",
+      unit_id: "u1",
+      term: "glove",
+      meaning: "手套",
+      category: "word",
+      example: "Put on your gloves before you touch the parts.",
+      example_translation: "接触零件前请戴上手套。",
+    },
+    {
+      id: "checklist",
+      unit_id: "u1",
+      term: "checklist",
+      meaning: "核对清单",
+      category: "word",
+    },
+    {
+      id: "my-name-is",
+      unit_id: "u1",
+      term: "My name is …",
+      meaning: "我叫……",
+      category: "phrase",
+      term_tts: { voice: "stella", text: "My name is" },
+      example: "My name is Mia Chen.",
+      example_translation: "我叫陈米娅。",
+      example_tts: { voice: "tide", speed: 0.9 },
+    },
+    {
+      id: "ask-sb",
+      unit_id: "u1",
+      term: "ask (sb.) for help",
+      meaning: "向某人求助",
+      category: "phrase",
+      term_tts: { text: "ask someone for help" },
+    },
+    {
+      id: "yes-or-no",
+      unit_id: "u1",
+      term: "yes/no",
+      meaning: "是或否",
+      category: "phrase",
+      term_tts: { voice: "stella", text: "yes or no" },
+    },
+  ];
+  assert.deepEqual(auditVocabulary(entries, "assets/vocabulary/english.json"), []);
+  const goldenVocab = JSON.parse(readFileSync(GOLDEN_VOCAB, "utf8"));
+  assert.deepEqual(
+    auditVocabulary(goldenVocab, "assets/vocabulary/english.json"),
+    [],
+  );
+});
+
+test("auditVocabulary flags ellipsis/placeholders without override, symbols, all-caps, and invalid voices", () => {
+  const entries = [
+    {
+      id: "ellipsis-unicode",
+      term: "My name is …",
+    },
+    {
+      id: "ellipsis-ascii-with-voice-only",
+      term: "Could you ...?",
+      term_tts: { voice: "stella" },
+    },
+    {
+      id: "slash-alt",
+      term: "he/she",
+    },
+    {
+      id: "paren-note",
+      term: "ask (sb.)",
+      example: "Ask (someone) before starting.",
+    },
+    {
+      id: "invalid-example-voice",
+      term: "valve",
+      example: "Check the valve.",
+      example_tts: { voice: "alloy" },
+    },
+    {
+      id: "all-caps-term",
+      term: "LOCKER ROOM",
+    },
+    {
+      id: "empty-term",
+      term: "   ",
+      term_tts: true,
+    },
+    {
+      id: "orphan-example-tts",
+      term: "bolt",
+      example_tts: { voice: "tide" },
+    },
+    {
+      id: "arrow-symbol",
+      term: "good -> better",
+    },
+  ];
+  const issues = auditVocabulary(entries, "assets/vocabulary/english.json");
+  const find = (id, path) =>
+    issues.filter((it) => it.itemId === id && (!path || it.path === path));
+  assert.deepEqual(find("ellipsis-unicode", "term").map((i) => i.rule), [
+    "NON_SPEAKABLE_IN_TTS",
+  ]);
+  assert.deepEqual(
+    find("ellipsis-ascii-with-voice-only", "term").map((i) => i.rule),
+    ["NON_SPEAKABLE_IN_TTS"],
+  );
+  assert.deepEqual(find("slash-alt", "term").map((i) => i.rule), [
+    "NON_SPEAKABLE_IN_TTS",
+  ]);
+  assert.deepEqual(find("paren-note", "term").map((i) => i.rule), [
+    "NON_SPEAKABLE_IN_TTS",
+  ]);
+  assert.deepEqual(find("paren-note", "example").map((i) => i.rule), [
+    "NON_SPEAKABLE_IN_TTS",
+  ]);
+  assert.deepEqual(find("invalid-example-voice", "example_tts").map((i) => i.rule), [
+    "INVALID_TTS_VOICE",
+  ]);
+  assert.deepEqual(find("all-caps-term", "term").map((i) => i.rule), [
+    "ALL_CAPS_TTS_WITHOUT_OVERRIDE",
+  ]);
+  assert.deepEqual(
+    find("empty-term").map((i) => i.rule),
+    ["EMPTY_TTS_TEXT", "TTS_BOOLEAN_SHORTHAND"],
+  );
+  assert.deepEqual(find("orphan-example-tts", "example_tts").map((i) => i.rule), [
+    "EMPTY_TTS_TEXT",
+  ]);
+  assert.deepEqual(find("arrow-symbol", "term").map((i) => i.rule), [
+    "NON_SPEAKABLE_IN_TTS",
+  ]);
+});
+
+test("auditCourseTts reads and audits vocabulary_file alongside units and reports vocabularyChecked", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "audit-course-vocab-"));
+  try {
+    mkdirSync(join(dir, "questions"), { recursive: true });
+    mkdirSync(join(dir, "assets", "vocabulary"), { recursive: true });
+    writeFileSync(
+      join(dir, "course.json"),
+      JSON.stringify({
+        protocol_version: 2,
+        course_id: "vocab-test",
+        version: "1.0.0",
+        title: "Vocab Test",
+        language: "en",
+        vocabulary_file: "assets/vocabulary/english.json",
+        units: [
+          {
+            id: "u1",
+            title: "Unit 1",
+            question_file: "questions/u1.json",
+          },
+        ],
+      }),
+    );
+    writeFileSync(
+      join(dir, "questions", "u1.json"),
+      JSON.stringify([{ id: "q1", type: "numeric", stem: "1+1=?" }]),
+    );
+    writeFileSync(
+      join(dir, "assets", "vocabulary", "english.json"),
+      JSON.stringify([
+        {
+          id: "my-name-is",
+          unit_id: "u1",
+          term: "My name is …",
+          meaning: "我叫……",
+          category: "phrase",
+          term_tts: { voice: "stella", text: "My name is" },
+        },
+        {
+          id: "glove",
+          unit_id: "u1",
+          term: "glove",
+          meaning: "手套",
+          category: "word",
+          example: "Wear a glove.",
+          example_translation: "戴上手套。",
+        },
+      ]),
+    );
+
+    const cleanRes = auditCourseTts(dir);
+    assert.equal(cleanRes.exitCode, 0);
+    assert.equal(cleanRes.data.ok, true);
+    assert.equal(cleanRes.data.filesChecked, 1);
+    assert.equal(cleanRes.data.itemsChecked, 1);
+    assert.equal(cleanRes.data.vocabularyChecked, 2);
+    assert.equal(cleanRes.data.vocabularyFile, "assets/vocabulary/english.json");
+    assert.deepEqual(cleanRes.data.issues, []);
+
+    writeFileSync(
+      join(dir, "assets", "vocabulary", "english.json"),
+      JSON.stringify([
+        {
+          id: "bad-ellipsis",
+          unit_id: "u1",
+          term: "My name is …",
+          meaning: "我叫……",
+          category: "phrase",
+        },
+        {
+          id: "bad-voice",
+          unit_id: "u1",
+          term: "glove",
+          meaning: "手套",
+          category: "word",
+          example: "Wear a glove.",
+          example_translation: "戴上手套。",
+          example_tts: { voice: "nova" },
+        },
+      ]),
+    );
+
+    const badRes = auditCourseTts(dir);
+    assert.equal(badRes.exitCode, 1);
+    assert.equal(badRes.data.ok, false);
+    assert.equal(badRes.data.vocabularyChecked, 2);
+    assert.equal(badRes.data.errorCount, 2);
+    assert.deepEqual(
+      badRes.data.issues.map((i) => ({
+        file: i.file,
+        itemId: i.itemId,
+        path: i.path,
+        rule: i.rule,
+      })),
+      [
+        {
+          file: "assets/vocabulary/english.json",
+          itemId: "bad-ellipsis",
+          path: "term",
+          rule: "NON_SPEAKABLE_IN_TTS",
+        },
+        {
+          file: "assets/vocabulary/english.json",
+          itemId: "bad-voice",
+          path: "example_tts",
+          rule: "INVALID_TTS_VOICE",
+        },
+      ],
+    );
+    assert.equal(await main([dir, "--json"]), 1);
+
+    rmSync(join(dir, "assets", "vocabulary", "english.json"));
+    assert.equal(await main([dir]), 3);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -2,9 +2,9 @@
 
 执行到设计具体题型的音频放置、切片边界、`tts.text` 改写或核对引擎/UI 行为时加载。
 
-> **真相源与核验日期（2026-11-19）**：本文结论核验自仓库源码与契约：
-> - Schema：`contracts/course/v1/items.schema.json`、`contracts/course/v2/items.schema.json`、`contracts/http/openapi.yaml`
-> - 后端校验、投影与合成：`internal/course/{model,extended,item_kind,load}.go`、`internal/study/{type_projection,type_handler,question_content,exam_audio,exam_session}.go`、`internal/tts/{service,phrase_key,wav}.go`、`internal/httpapi/exam_audio.go`
+> **真相源与核验日期（2026-11-20）**：本文结论核验自仓库源码与契约：
+> - Schema：`contracts/course/v1/items.schema.json`、`contracts/course/v2/items.schema.json`、`contracts/course/v2/vocabulary.schema.json`、`contracts/http/openapi.yaml`
+> - 后端校验、投影与合成：`internal/course/{model,extended,item_kind,load,vocabulary}.go`、`internal/study/{type_projection,type_handler,question_content,exam_audio,exam_session}.go`、`internal/tts/{service,phrase_key,wav}.go`、`internal/httpapi/exam_audio.go`
 > - 前端渲染：`web/src/components/{RichContent,AudioControls,OptionAudio,QuestionAudio,AnswerOptionList,ListeningTranscript}.tsx`、`web/src/features/question-types/{shared,types}/...`
 > - 课程样本：`courses/beginner-english/`、`courses/elementary-chinese/`、`courses/golden-course-template/`
 
@@ -38,12 +38,13 @@
 | `translation`（`source_text` / `reference_translation` + `*_tts`） | `string` + `TTSConfig` | 英译中（`en_to_zh`）为 `source_text` 配 `source_text_tts`（随 `TranslationContent` 作答前可见）；中译英（`zh_to_en`）为 `reference_translation` 配 `reference_translation_tts`（仅随 `TranslationItemReview` 在背题与复盘下发） | 仅支持纯 `string`（不可用 `ContentSegment[]`），口语改写只能写进 `*_tts.text`；`acceptable_alternates`/`key_terms` 无 TTS；纯中文原文/译文不配英语音色 |
 | `explanation` / `analysis` / `blanks[].explanation` / `sub_questions[].analysis` | `string`（`explanation`） / `RichContent`（v2 `analysis`、`blanks[].explanation`、`sub_questions[].analysis`） | v2 **要求**填写 `analysis`（及 `sub_questions[].analysis`）；纯中文可写字符串，含英文例句/短语时用 `ContentSegment[]` 为外语片段内嵌 `tts` | `explanation` 不支持切片；`sub_questions[]` 禁止 `explanation_audio`；解析中禁止硬编码选项字母（`是 a` 等，因模拟考会洗牌选项） |
 | `explanation_audio` | `ContentSegment[]` | 顶层题需整段语音讲解时使用，可交替混排汉语文段与 `pinyin` 片段 | 见第 5 节 `sequence` 模式陷阱 |
+| `vocabulary_file`（`term` / `example` + `term_tts` / `example_tts`） | `VocabularyEntry[]`（`TTSConfig`） | 干净词条与例句省略 `*_tts`（跟随学习者默认音色）；仅在需要改写读音或指定 `voice`/`speed` 时写 `term_tts` / `example_tts` | 未经 `*_tts.text` 改写时禁止出现 `…`、`...`、`a/b`、`(sb.)`、全大写词或不可直读符号；`voice` 仅限 `"stella"`/`"tide"`；`example_tts` 依赖 `example` 存在；`meaning`/`grammar_note`/`example_translation` 无 TTS |
 
 ---
 
 ## 2. 内容判定：TTS vs tts.text 改写 vs pinyin vs 纯文本
 
-> **字段写法范围**：`tts_text` **仅存在于 `ContentSegment`**；`Option`、`TranscriptLine`、`passage_tts`、`sample_response_tts`、`source_text_tts`、`reference_translation_tts` 均只支持 `tts: {"voice", "text", "speed"}`（顶层 `*_tts` 直接写 `{"voice", "text", "speed"}`）。全仓库推荐统一使用 `tts.text`。
+> **字段写法范围**：`tts_text` **仅存在于 `ContentSegment`**；`Option`、`TranscriptLine`、`passage_tts`、`sample_response_tts`、`source_text_tts`、`reference_translation_tts`、`term_tts`、`example_tts` 均只支持 `tts: {"voice", "text", "speed"}`（顶层与词表 `*_tts` 直接写 `{"voice", "text", "speed"}`）。全仓库推荐统一使用 `tts.text`。
 
 ### 适合直接送入 DeepSeek TTS
 - 自然完整的英文单词、短语、祈使句、问句、对话台词、短文范文与整点时间简写（如 `"8 a.m."`）。
@@ -56,6 +57,7 @@
 - **段落内的视觉单换行 `\n`**：如邮件落款 `"Best,\nSam"` 需要保留 `\n` 配合 `.extended-passage`（`white-space: pre-wrap`）换行显示，但必须配置 `tts: {"voice": "stella", "text": "Best, Sam"}`，避免把原始 `\n` 送入 DeepSeek。
 - **纯大写英文标题或词汇（4 字母及以上的全大写单词）**：DeepSeek TTS 会把 `"LOCKER ROOM NOTICE"` 这类全大写词按字母拼读。若标题需要配 TTS，必须保留屏幕视觉大写并配正常大小写的 `tts.text`（如 `tts: {"voice": "stella", "text": "Locker room notice."}`，否则触发 `ALL_CAPS_TTS_WITHOUT_OVERRIDE`）；在有正文的阅读短文中，短标题也可像 `"WORKSHOP NOTICE"` 一样直接保留为无 `tts` 的纯文本标题（而正文句子若部分漏配会触发 `PARTIAL_PASSAGE_TTS`）。
 - **翻译口语形式与数字备选的区分**：在 `translation`（`zh_to_en`）中，把带 `reference_translation_tts` 的 `reference_translation` 写成自然口语形式（如 `"before three p.m."`），把阿拉伯数字写法（如 `"before 3 p.m."`）留在无 TTS 的 `acceptable_alternates`。
+- **词表（`vocabulary_file`）占位符、斜杠备选与括号说明**：`term` 或 `example` 若含 `…` / `...`（如 `"My name is …"`、`"Could you please …?"`）、斜杠备选（如 `"he/she"`、`"yes/no"`）或括号注记（如 `"ask (sb.)"`、`"(optional)"`），必须通过 `term_tts.text` / `example_tts.text` 改写为可直读自然短语（去掉省略号或展开为自然词形，如 `"term_tts": {"voice": "stella", "text": "My name is"}`），否则会被 `audit-course-tts.mjs` 拦截；干净词条保持省略 `*_tts`。
 
 ### 必须改用本地 `pinyin: [...]`（不送入 TTS）
 - **孤立字母、声母、韵母、音节**：DeepSeek TTS 会把孤立拼音读成英文字母名或错调。
@@ -329,3 +331,4 @@
 - **反例 C（中英混杂单段直出 TTS）**——见 `beginner-english :: intro-listen-sc-1`：
   `"text": "David, 装配部 (Assembly Department)", "tts": {"voice": "stella"}`（带中文括号解释的选项不应整体送 TTS，或应省略选项 `tts`）。
 - **反例 D（`blank` 与 `tts` 共存于同一题干 / 在 `cloze.passage` 挂 TTS / `writing` 数组态仍挂 `sample_response_tts`）**：会导致误读下划线、作答前泄露完形全文音频或冗余字段被前端忽略。
+- **反例 E（词表 `vocabulary_file` 占位符未配 `*_tts.text` 或使用无效 `voice`）**：如 `{"id": "my-name-is", "term": "My name is …"}` 缺 `term_tts.text`（应配 `"term_tts": {"voice": "stella", "text": "My name is"}`），或 `"example_tts": {"voice": "alloy"}`（仅允许 `"stella"` / `"tide"`）。

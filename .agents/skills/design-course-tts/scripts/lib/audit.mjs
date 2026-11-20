@@ -14,11 +14,13 @@ const NON_ENGLISH_OPT_RE =
   /[\u4e00-\u9fff]|->|→|√|__+|`|\/[A-Za-zɪʊəɜɑɔæʌθðŋʃʒː]+\/|[÷×±≤≥≠≈=]/;
 const TRIVIAL_TF_RE = /^(?:true|false|t|f)$/i;
 const ALL_CAPS_WORD_RE = /\b[A-Z]{4,}\b/;
+const VALID_VOICES = new Set(["stella", "tide"]);
+const VOCAB_PLACEHOLDER_RE = /…|\.{3,}|\{\{\d+\}\}|\S\s*\/\s*\S|[()（）]/;
 const CODE_LINE_RE =
   /(?:[+\-*/]?=|<=|>=|!=|==|\):|\(\):|;|[{}\[\]]|^\s*(?:from\s+\S+\s+import|import\s+\S+|for\s+\w+\s+in\s+|def\s+\w+|class\s+\w+|with\s+\S+)|\b\w+\.\w+\()/;
 
 const hasTts = (tts) => tts !== undefined && tts !== false && tts !== null;
-const ttsObj = (tts) => (tts && typeof tts === "object" ? tts : null);
+const ttsObj = (tts) => (tts && typeof tts === "object" && !Array.isArray(tts) ? tts : null);
 
 function addIssue(ctx, path, rule, message, severity = "error") {
   const itemId = ctx.item.id ?? "(unknown)";
@@ -53,33 +55,59 @@ function checkCoarseSegment(ctx, path, text, allowCoarse) {
   }
 }
 
-function checkNonSpeakable(ctx, path, spoken) {
+function checkNonSpeakable(ctx, path, spoken, opts = {}) {
   const hanWithDigit = HAN_RE.test(spoken) && /\d/.test(spoken);
   const bareLetter = BARE_LETTER_RE.test(spoken) && !ENGLISH_SINGLE_WORDS.has(spoken);
   if (NON_SPEAKABLE_RE.test(spoken) || bareLetter || hanWithDigit) {
     addIssue(ctx, path, "NON_SPEAKABLE_IN_TTS",
       "TTS 片段含不可直读字符（符号/下划线/IPA/单字母或中文内数字），请改用 tts.text 或 pinyin");
+    return;
+  }
+  if (opts.forbidPlaceholders && VOCAB_PLACEHOLDER_RE.test(spoken)) {
+    addIssue(ctx, path, "NON_SPEAKABLE_IN_TTS",
+      "词汇朗读文本含占位符/省略号/斜杠备选或括号注释，请补充 *_tts.text 改写为可直读文本");
   }
 }
 
 function checkTextContent(ctx, path, text, tts, ttsText, opts = {}) {
   const cfg = ttsObj(tts);
-  const override = ttsText || cfg?.text;
+  const hasCfgText = cfg !== null && cfg.text !== undefined;
+  const override = ttsText !== undefined ? ttsText : (hasCfgText ? cfg.text : undefined);
   if (tts === true) {
     addIssue(ctx, path, "TTS_BOOLEAN_SHORTHAND",
       "禁止使用 tts: true 简写，请改为显式对象（如 {\"voice\": \"stella\"}）");
+  } else if (typeof tts === "boolean") {
+    addIssue(ctx, path, "TTS_BOOLEAN_SHORTHAND",
+      "禁止使用 tts 布尔简写，请改为显式对象（如 {\"voice\": \"stella\"}）");
+  } else if (tts !== undefined && tts !== null && !cfg) {
+    addIssue(ctx, path, "INVALID_TTS_CONFIG",
+      "TTS 配置必须是对象（如 {\"voice\": \"stella\"}）");
   }
-  const raw = text ?? "";
-  const spoken = override || raw;
-  if (EDGE_SPACE_RE.test(raw) || (override && EDGE_SPACE_RE.test(override))) {
+  if (hasCfgText && (typeof cfg.text !== "string" || cfg.text.trim() === "")) {
+    addIssue(ctx, path, "EMPTY_TTS_TEXT",
+      "tts.text 不能为空或纯空白字符串");
+  }
+  if (cfg?.voice !== undefined && !VALID_VOICES.has(cfg.voice)) {
+    addIssue(ctx, path, "INVALID_TTS_VOICE",
+      `无效的 TTS voice "${String(cfg.voice)}"，仅支持 "stella" 或 "tide"`);
+  }
+  const raw = typeof text === "string" ? text : "";
+  const hasOverride = typeof override === "string" && override !== "";
+  const spoken = hasOverride ? override : raw;
+  if (spoken.trim() === "" && !hasCfgText) {
+    addIssue(ctx, path, "EMPTY_TTS_TEXT",
+      "TTS 实际朗读文本不能为空或纯空白");
+    return;
+  }
+  if (EDGE_SPACE_RE.test(raw) || (hasOverride && EDGE_SPACE_RE.test(override))) {
     addIssue(ctx, path, "SEGMENT_WHITESPACE_BOUNDARY",
       "TTS 文本首尾包含空白字符，应将空格移到相邻纯 text 切片");
   }
-  if (QUOTE_WRAP_RE.test(spoken) || (!override && QUOTE_WRAP_RE.test(raw))) {
+  if (QUOTE_WRAP_RE.test(spoken) || (!hasOverride && QUOTE_WRAP_RE.test(raw))) {
     addIssue(ctx, path, "SEGMENT_QUOTE_BOUNDARY",
       "TTS 文本外围包含成对引号或反引号，请将其移到外围纯 text 切片或去掉");
   }
-  if (LATIN_RE.test(spoken) && !HAN_RE.test(spoken) &&
+  if (!opts.allowOmittedVoice && LATIN_RE.test(spoken) && !HAN_RE.test(spoken) &&
       !cfg?.voice && !opts.inheritedVoice) {
     addIssue(ctx, path, "ENGLISH_TTS_MISSING_VOICE",
       "英文 TTS 缺少显式 voice（应指定 \"stella\" 或 \"tide\"）");
@@ -92,7 +120,7 @@ function checkTextContent(ctx, path, text, tts, ttsText, opts = {}) {
     addIssue(ctx, path, "ALL_CAPS_TTS_WITHOUT_OVERRIDE",
       "TTS 实际朗读文本包含连续纯大写英文词，会按字母拼读，请配置小写或正常大小写的 tts.text");
   }
-  checkNonSpeakable(ctx, path, spoken);
+  checkNonSpeakable(ctx, path, spoken, { forbidPlaceholders: opts.forbidPlaceholders });
   checkCoarseSegment(ctx, path, spoken, opts.allowCoarse);
 }
 
@@ -504,6 +532,68 @@ export function auditItems(items, file) {
     checkTranslation(ctx, item);
     checkCloze(ctx, item);
     checkSubItems(ctx, item);
+  }
+  return issues;
+}
+
+function checkVocabularyField(ctx, field, text, tts) {
+  const ttsField = `${field}_tts`;
+  const hasText = typeof text === "string" && text.trim() !== "";
+  const hasTtsConfig = tts !== undefined && tts !== null;
+  if (!hasText) {
+    const emptyPath = field === "term" || !hasTtsConfig ? field : ttsField;
+    const emptyMsg = field === "term"
+      ? "词条 term 不能为空，否则无法合成发音"
+      : hasTtsConfig
+        ? "配置了 example_tts 但缺少非空 example 文本"
+        : "词条 example 不能为空白";
+    addIssue(ctx, emptyPath, "EMPTY_TTS_TEXT", emptyMsg);
+    if (typeof tts === "boolean") {
+      addIssue(ctx, ttsField, "TTS_BOOLEAN_SHORTHAND",
+        "禁止使用 tts 布尔简写，请改为显式对象（如 {\"voice\": \"stella\"}）");
+    } else if (hasTtsConfig) {
+      const cfg = ttsObj(tts);
+      if (!cfg) {
+        addIssue(ctx, ttsField, "INVALID_TTS_CONFIG",
+          "TTS 配置必须是对象（如 {\"voice\": \"stella\"}）");
+      } else if (cfg.voice !== undefined && !VALID_VOICES.has(cfg.voice)) {
+        addIssue(ctx, ttsField, "INVALID_TTS_VOICE",
+          `无效的 TTS voice "${String(cfg.voice)}"，仅支持 "stella" 或 "tide"`);
+      }
+    }
+    return;
+  }
+  const cfg = ttsObj(tts);
+  const path = hasTtsConfig && (!cfg || cfg.text !== undefined ||
+    (cfg.voice !== undefined && !VALID_VOICES.has(cfg.voice)))
+    ? ttsField
+    : field;
+  checkTextContent(ctx, path, text, tts, undefined, {
+    allowOmittedVoice: true,
+    forbidPlaceholders: true,
+  });
+}
+
+export function auditVocabulary(entries, file) {
+  const issues = [];
+  if (!Array.isArray(entries)) return issues;
+  for (const entry of entries) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+      issues.push({
+        severity: "error",
+        file,
+        itemId: "(unknown)",
+        path: "(entry)",
+        rule: "INVALID_VOCABULARY_ENTRY",
+        message: "词表条目必须是 JSON 对象",
+      });
+      continue;
+    }
+    const ctx = { item: entry, file, issues };
+    checkVocabularyField(ctx, "term", entry.term, entry.term_tts);
+    if (entry.example !== undefined || entry.example_tts !== undefined) {
+      checkVocabularyField(ctx, "example", entry.example, entry.example_tts);
+    }
   }
   return issues;
 }

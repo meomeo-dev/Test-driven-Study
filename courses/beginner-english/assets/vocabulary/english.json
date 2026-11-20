@@ -5,6 +5,7 @@
     "term": "teammate",
     "meaning": "队友；同组同事",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "greetings-v2-listening-1",
       "self-introduction-v2-reading-1"
@@ -18,6 +19,8 @@
     "term": "spell",
     "meaning": "拼写",
     "category": "word",
+    "pos": "v",
+    "grammar_note": "过去式／过去分词 spelled 或 spelt；常接名词作宾语。",
     "question_ids": [
       "spelling-v2-listening-1",
       "spelling-v2-reading-1"
@@ -49,6 +52,10 @@
       "intro-listen-sc-1",
       "self-introduction-v2-listening-1"
     ],
+    "term_tts": {
+      "voice": "stella",
+      "text": "My name is"
+    },
     "example": "My name is Mia Chen.",
     "example_translation": "我叫陈米娅。"
   },
@@ -58,6 +65,7 @@
     "term": "be from",
     "meaning": "来自……",
     "category": "phrase",
+    "grammar_note": "be 随主语与时态变为 am / is / are / was / were；后接地点名词。",
     "question_ids": [
       "intro-listen-sc-1",
       "self-introduction-v2-listening-1",
@@ -86,6 +94,7 @@
     "term": "on duty",
     "meaning": "在值班；当班",
     "category": "function_phrase",
+    "grammar_note": "常放在 be 动词后作表语（如 Who is on duty?）。",
     "question_ids": [
       "be-verb-v2-reading-1"
     ],
@@ -98,6 +107,7 @@
     "term": "tray",
     "meaning": "托盘",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "numbers-3",
       "positions-v2-reading-1"
@@ -147,6 +157,7 @@
     "term": "in front of",
     "meaning": "在……前面",
     "category": "function_phrase",
+    "grammar_note": "复合介词，后接名词或代词宾格，表示在物体外部前方。",
     "question_ids": [
       "positions-v2-reading-1"
     ],
@@ -171,6 +182,7 @@
     "term": "a quarter past",
     "meaning": "……点一刻（过十五分钟）",
     "category": "phrase",
+    "grammar_note": "后接整点数字，表示“……点十五分”（如 a quarter past ten）。",
     "question_ids": [
       "clock-time-v2-listening-1",
       "clock-time-v2-translation-1"
@@ -184,6 +196,8 @@
     "term": "batch",
     "meaning": "一批；批次",
     "category": "word",
+    "pos": "n",
+    "grammar_note": "可数名词，以 ch 结尾，复数加 -es（batches）。",
     "question_ids": [
       "polite-requests-v2-listening-1"
     ],
@@ -196,6 +210,7 @@
     "term": "be ready for",
     "meaning": "为……做好准备",
     "category": "collocation",
+    "grammar_note": "be 随主语变化；for 后接名词或动名词（V-ing）。",
     "question_ids": [
       "yes-no-questions-v2-listening-1"
     ],
@@ -208,6 +223,7 @@
     "term": "put on",
     "meaning": "穿上；戴上",
     "category": "phrase",
+    "grammar_note": "put 过去式仍为 put；代词作宾语须放中间（put them on）。",
     "question_ids": [
       "yes-no-questions-v2-listening-1"
     ],
@@ -244,10 +260,15 @@
     "term": "Could you please …?",
     "meaning": "能请你……吗？",
     "category": "phrase",
+    "grammar_note": "后接动词原形，用于礼貌提出请求。",
     "question_ids": [
       "polite-requests-v2-reading-1",
       "polite-requests-v2-translation-1"
     ],
+    "term_tts": {
+      "voice": "stella",
+      "text": "Could you please?"
+    },
     "example": "Could you please close the door?",
     "example_translation": "能请你关一下门吗？"
   },
@@ -257,6 +278,7 @@
     "term": "need help",
     "meaning": "需要帮助",
     "category": "collocation",
+    "grammar_note": "help 在此作不可数名词，不加 a 或 -s。",
     "question_ids": [
       "polite-requests-v2-reading-1"
     ],
@@ -269,6 +291,8 @@
     "term": "wrench",
     "meaning": "扳手",
     "category": "word",
+    "pos": "n",
+    "grammar_note": "可数名词，以 ch 结尾，复数加 -es（wrenches）。",
     "question_ids": [
       "tools-parts-3",
       "workbench-instructions-v2-listening-1",
@@ -283,6 +307,7 @@
     "term": "bolt",
     "meaning": "螺栓",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "tools-parts-5",
       "workbench-instructions-v2-listening-1"
@@ -296,6 +321,7 @@
     "term": "screwdriver",
     "meaning": "螺丝刀",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "tools-parts-1",
       "workbench-instructions-v2-listening-2"
@@ -309,6 +335,7 @@
     "term": "pick up",
     "meaning": "拿起；拾起",
     "category": "phrase",
+    "grammar_note": "动副短语，代词作宾语须放中间（pick it up）。",
     "question_ids": [
       "workbench-instructions-v2-listening-1",
       "workbench-instructions-v2-translation-1"
@@ -322,6 +349,7 @@
     "term": "turn off",
     "meaning": "关闭（电源、设备等）",
     "category": "phrase",
+    "grammar_note": "动副短语，代词作宾语须放中间（turn it off）。",
     "question_ids": [
       "workbench-instructions-v2-listening-1"
     ],
@@ -346,6 +374,7 @@
     "term": "dry cloth",
     "meaning": "干布",
     "category": "word_group",
+    "grammar_note": "指“一块干布”时可数（a dry cloth）；指布料材质时不可数。",
     "question_ids": [
       "workbench-instructions-v2-listening-2"
     ],
@@ -358,6 +387,7 @@
     "term": "weekday",
     "meaning": "平日；星期一至星期五中的一天",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "shift-schedule-v2-reading-1"
     ],
@@ -421,6 +451,7 @@
     "term": "every day",
     "meaning": "每天",
     "category": "function_phrase",
+    "grammar_note": "分开写为时间状语“每天”；合写 everyday 为形容词“日常的”。",
     "question_ids": [
       "frequency-adverbs-v2-reading-1",
       "frequency-adverbs-v2-listening-1"
@@ -434,6 +465,7 @@
     "term": "sweep the bench",
     "meaning": "清扫工作台",
     "category": "collocation",
+    "grammar_note": "sweep 为不规则动词，过去式／过去分词为 swept。",
     "question_ids": [
       "frequency-adverbs-v2-listening-1"
     ],
@@ -446,6 +478,7 @@
     "term": "round",
     "meaning": "圆的；圆形的",
     "category": "word",
+    "pos": "adj",
     "question_ids": [
       "colors-shapes-1",
       "colors-shapes-v2-reading-1"
@@ -459,6 +492,8 @@
     "term": "flat",
     "meaning": "平的；扁平的",
     "category": "word",
+    "pos": "adj",
+    "grammar_note": "比较级 flatter（双写 t），最高级 flattest。",
     "question_ids": [
       "colors-shapes-2",
       "colors-shapes-v2-reading-1",
@@ -473,6 +508,8 @@
     "term": "scratched",
     "meaning": "有划痕的",
     "category": "word",
+    "pos": "adj",
+    "grammar_note": "由 scratch 的过去分词转化，可作前置定语或放在 be 后作表语。",
     "question_ids": [
       "describing-parts-listen-sc-1",
       "adjectives-quality-v2-reading-1"
@@ -511,6 +548,7 @@
     "term": "longer than",
     "meaning": "比……长",
     "category": "phrase",
+    "grammar_note": "long 的比较级搭配，than 后接比较对象（如 that one）。",
     "question_ids": [
       "describing-parts-num-2",
       "comparatives-v2-listening-1"
@@ -524,6 +562,7 @@
     "term": "ready for packing",
     "meaning": "可以包装了；已做好包装准备",
     "category": "collocation",
+    "grammar_note": "for 后接动名词（V-ing）或名词，常放在 be 动词后作表语。",
     "question_ids": [
       "demonstratives-v2-listening-1"
     ],
@@ -536,6 +575,7 @@
     "term": "technician",
     "meaning": "技术员",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "can-permission-v2-listening-1",
       "reporting-problems-v2-reading-1"
@@ -561,6 +601,7 @@
     "term": "be stuck",
     "meaning": "卡住了；动不了",
     "category": "phrase",
+    "grammar_note": "be 随主语与时态变化（is / are / was）；stuck 作形容词表状态。",
     "question_ids": [
       "reporting-problems-v2-listening-1",
       "reporting-problems-v2-translation-1"
@@ -586,6 +627,7 @@
     "term": "keep the power off",
     "meaning": "保持断电",
     "category": "collocation",
+    "grammar_note": "keep + 宾语 + off 表“使……保持关闭”；keep 过去式为 kept。",
     "question_ids": [
       "reporting-problems-v2-listening-1"
     ],
@@ -611,6 +653,7 @@
     "term": "take a break",
     "meaning": "休息一会儿",
     "category": "collocation",
+    "grammar_note": "take 过去式 took，现在分词 taking；中间可加修饰词（a short break）。",
     "question_ids": [
       "can-permission-v2-listening-1"
     ],
@@ -623,6 +666,8 @@
     "term": "dusty",
     "meaning": "积灰的；沾有灰尘的",
     "category": "word",
+    "pos": "adj",
+    "grammar_note": "比较级 dustier（变 y 为 i 加 -er）。",
     "question_ids": [
       "past-be-v2-listening-1"
     ],
@@ -647,6 +692,7 @@
     "term": "air pressure",
     "meaning": "气压",
     "category": "word_group",
+    "grammar_note": "不可数名词短语，作主语时谓语动词用单数（is / was）。",
     "question_ids": [
       "past-regular-v2-reading-1"
     ],
@@ -708,6 +754,7 @@
     "term": "Phillips screwdriver",
     "meaning": "十字螺丝刀",
     "category": "word_group",
+    "grammar_note": "Phillips 源自专有名词，首字母须大写。",
     "question_ids": [
       "te-sc-01",
       "power-tools-v2-reading-1"
@@ -749,6 +796,8 @@
     "term": "goggles",
     "meaning": "护目镜",
     "category": "word",
+    "pos": "n",
+    "grammar_note": "常用复数形式，表示“一副护目镜”，作主语时谓语用复数。",
     "question_ids": [
       "equipment-safety-rules-v2-listening-1"
     ],
@@ -774,6 +823,7 @@
     "term": "check out",
     "meaning": "办理借出登记；借用",
     "category": "phrase",
+    "grammar_note": "规则变化（过去式 checked out）；可拆开说 check it out。",
     "question_ids": [
       "tool-inspection-listen-v2-translation-1"
     ],
@@ -786,6 +836,7 @@
     "term": "sign off on",
     "meaning": "在……上签字确认；签字批准",
     "category": "phrase",
+    "grammar_note": "介词 on 后接签字确认的对象（如记录表、日志）。",
     "question_ids": [
       "tool-inspection-listen-v2-listening-2"
     ],
@@ -798,6 +849,7 @@
     "term": "bracket",
     "meaning": "支架",
     "category": "word",
+    "pos": "n",
     "question_ids": [
       "wd-sc-01",
       "radio-calls-v2-listening-1"
@@ -825,6 +877,7 @@
     "term": "clear space",
     "meaning": "腾出空间",
     "category": "collocation",
+    "grammar_note": "space 指“空间／空位”时为不可数名词。",
     "question_ids": [
       "schedule-coordination-v2-listening-1"
     ],
@@ -862,6 +915,7 @@
     "term": "stand by",
     "meaning": "等候；保持待命",
     "category": "phrase",
+    "grammar_note": "stand 过去式 stood；常单独作祈使句，不接宾语。",
     "question_ids": [
       "radio-calls-v2-listening-1"
     ],
@@ -874,6 +928,7 @@
     "term": "in stock",
     "meaning": "有库存；有现货",
     "category": "function_phrase",
+    "grammar_note": "常放在 be 动词后（be in stock）或名词后作定语（fans in stock）。",
     "question_ids": [
       "wd-tf-04",
       "schedule-coordination-v2-reading-1"

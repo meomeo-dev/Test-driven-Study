@@ -64,9 +64,13 @@ export type VocabularyEntry = {
     term: string;
     meaning: string;
     category: 'word' | 'word_group' | 'phrase' | 'collocation' | 'idiom' | 'function_phrase';
+    pos?: 'n' | 'v' | 'adj' | 'adv' | 'prep' | 'pron' | 'num' | 'conj' | 'interj';
+    grammar_note?: string;
     question_ids?: Array<string>;
+    term_tts?: TtsConfig;
     example?: string;
     example_translation?: string;
+    example_tts?: TtsConfig;
 };
 
 export type ConceptGraph = {

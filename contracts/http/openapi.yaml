@@ -2683,9 +2683,17 @@ components:
         category:
           type: string
           enum: [word, word_group, phrase, collocation, idiom, function_phrase]
+        pos:
+          type: string
+          enum: [n, v, adj, adv, prep, pron, num, conj, interj]
+        grammar_note:
+          type: string
+          maxLength: 120
         question_ids: { type: array, items: { type: string } }
+        term_tts: { $ref: '#/components/schemas/TTSConfig' }
         example: { type: string }
         example_translation: { type: string }
+        example_tts: { $ref: '#/components/schemas/TTSConfig' }
     ConceptGraph:
       type: object
       required: [course_id, version, units, concepts]

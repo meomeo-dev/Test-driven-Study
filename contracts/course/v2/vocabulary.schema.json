@@ -15,17 +15,29 @@
       "category": {
         "enum": ["word", "word_group", "phrase", "collocation", "idiom", "function_phrase"]
       },
+      "pos": {
+        "enum": ["n", "v", "adj", "adv", "prep", "pron", "num", "conj", "interj"]
+      },
+      "grammar_note": {
+        "allOf": [
+          {"$ref": "../v1/items.schema.json#/$defs/text"},
+          {"maxLength": 120}
+        ]
+      },
       "question_ids": {
         "type": "array",
         "uniqueItems": true,
         "items": {"$ref": "../v1/items.schema.json#/$defs/id"}
       },
+      "term_tts": {"$ref": "../v1/items.schema.json#/$defs/ttsConfig"},
       "example": {"$ref": "../v1/items.schema.json#/$defs/text"},
-      "example_translation": {"$ref": "../v1/items.schema.json#/$defs/text"}
+      "example_translation": {"$ref": "../v1/items.schema.json#/$defs/text"},
+      "example_tts": {"$ref": "../v1/items.schema.json#/$defs/ttsConfig"}
     },
     "dependentRequired": {
       "example": ["example_translation"],
-      "example_translation": ["example"]
+      "example_translation": ["example"],
+      "example_tts": ["example"]
     }
   }
 }

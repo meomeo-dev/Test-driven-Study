@@ -118,3 +118,174 @@ test('the vocabulary button is limited to supported subjects in memorization', a
   await expect(page.locator('.question-card')).toBeVisible();
   await expect(page.getByRole('button', { name: '生词本' })).toHaveCount(0);
 });
+
+test('vocabulary entries play term and example TTS, render selective grammar, and handle errors on mobile', async ({
+  page, request,
+}) => {
+  const target = await studyTarget(
+    request, 'golden-course-template', 'extended-practice', 'sue1-extended-listening',
+  );
+  const speechRequests: { text: string; voice?: string; force?: boolean }[] = [];
+  let failWith: { status: number; error: string } | undefined;
+  await page.route('**/api/tts/synthesize', async route => {
+    speechRequests.push(route.request().postDataJSON());
+    if (failWith) {
+      return route.fulfill({ status: failWith.status, json: { error: failWith.error } });
+    }
+    return route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
+
+  await page.route(url => url.pathname === target.vocabularyPath, async route => {
+    await route.fulfill({
+      json: [
+        {
+          id: 'shelf',
+          unit_id: 'extended-practice',
+          term: 'shelf',
+          meaning: '搁板；置物架的一层',
+          category: 'word',
+          pos: 'n',
+          grammar_note: '可数名词，复数 shelves（变 f 为 ves）',
+          question_ids: ['sue1-extended-listening'],
+          example: 'The spare parts are on the top shelf.',
+          example_translation: '备用零件在最上层搁板上。',
+        },
+        {
+          id: 'glove',
+          unit_id: 'extended-practice',
+          term: 'glove',
+          meaning: '手套',
+          category: 'word',
+          question_ids: ['sue1-extended-listening'],
+          example: 'Put on your gloves before you touch the parts.',
+          example_translation: '接触零件前请戴上手套。',
+        },
+        {
+          id: 'my-name-is',
+          unit_id: 'extended-practice',
+          term: 'My name is …',
+          meaning: '我叫……',
+          category: 'phrase',
+          question_ids: ['sue1-extended-listening'],
+          term_tts: { voice: 'tide', speed: 0.9 },
+          example: 'My name is Mia Chen.',
+          example_translation: '我叫陈米娅。',
+        },
+      ],
+    });
+  });
+
+  await page.setViewportSize({ width: 375, height: 810 });
+  await page.goto(target.memorizeUrl);
+  await page.getByRole('button', { name: '生词本' }).click();
+
+  const dialog = page.getByRole('dialog', { name: '生词本' });
+  const items = dialog.getByRole('listitem');
+  await expect(items).toHaveCount(3);
+
+  const shelfItem = items.nth(0);
+  await expect(shelfItem.locator('.vocabulary-pos')).toHaveText('名词');
+  await expect(shelfItem.locator('.vocabulary-grammar-note'))
+    .toHaveText('可数名词，复数 shelves（变 f 为 ves）');
+
+  const gloveItem = items.nth(1);
+  await expect(gloveItem.locator('.vocabulary-pos')).toHaveCount(0);
+  await expect(gloveItem.locator('.vocabulary-grammar-note')).toHaveCount(0);
+
+  const termPlay = gloveItem.getByRole('button', { name: '播放词条发音：glove' });
+  const examplePlay = gloveItem.getByRole('button', { name: '播放例句发音：glove' });
+  await expect(termPlay).toBeInViewport();
+  await expect(examplePlay).toBeInViewport();
+  await expect(gloveItem.getByRole('button', { name: '重新生成发音' })).toHaveCount(0);
+
+  await termPlay.click();
+  await expect.poll(() => speechRequests[0]).toEqual({ text: 'glove', force: false });
+  await examplePlay.click();
+  await expect.poll(() => speechRequests[1]).toEqual({
+    text: 'Put on your gloves before you touch the parts.',
+    force: false,
+  });
+
+  await items.nth(2).getByRole('button', { name: '播放词条发音：My name is …' }).click();
+  await expect.poll(() => speechRequests[2]).toEqual({
+    text: 'My name is',
+    voice: 'tide',
+    force: false,
+  });
+
+  failWith = { status: 503, error: 'TTS 语音服务未启用' };
+  await shelfItem.getByRole('button', { name: '播放词条发音：shelf' }).click();
+  const alert = dialog.getByRole('alert');
+  await expect(alert).toContainText('TTS 语音服务未启用');
+  await expect(shelfItem.getByRole('button', { name: '播放词条发音：shelf' })).toBeEnabled();
+
+  await dialog.getByRole('button', { name: '关闭语音提示' }).click();
+  await expect(alert).toHaveCount(0);
+
+  failWith = { status: 500, error: 'TTS 服务尚未配置 API Key，请在「服务设置」中配置' };
+  await shelfItem.getByRole('button', { name: '播放例句发音：shelf' }).click();
+  await expect(alert).toContainText('TTS 服务尚未配置 API Key');
+  await dialog.getByRole('button', { name: '本单元' }).click();
+  await expect(alert).toHaveCount(0);
+
+  const overflow = await dialog.evaluate(el => ({
+    dialogOverflow: el.scrollWidth > el.clientWidth,
+    bodyOverflow: (el.querySelector('.modal-body')?.scrollWidth ?? 0)
+      > (el.querySelector('.modal-body')?.clientWidth ?? 0),
+  }));
+  expect(overflow).toEqual({ dialogOverflow: false, bodyOverflow: false });
+});
+
+test('vocabulary TTS enforces mutual exclusion and stops on modal close', async ({
+  page, request,
+}) => {
+  await page.addInitScript(() => {
+    const win = window as typeof window & { __audioLog?: string[] };
+    win.__audioLog = [];
+    HTMLAudioElement.prototype.play = function () {
+      win.__audioLog?.push(`play:${this.src}`);
+      return Promise.resolve();
+    };
+    HTMLAudioElement.prototype.pause = function () {
+      if (this.src) win.__audioLog?.push(`pause:${this.src}`);
+    };
+  });
+
+  const target = await studyTarget(
+    request, 'golden-course-template', 'extended-practice', 'sue1-extended-listening',
+  );
+  await page.route('**/api/tts/synthesize', async route => {
+    const { text } = route.request().postDataJSON() as { text: string };
+    const slug = text.split(/\s+/)[0]?.toLowerCase() || 'clip';
+    await route.fulfill({
+      json: {
+        audio_url: `/api/audio/pinyin/ri4.mp3?clip=${encodeURIComponent(slug)}`,
+        voice: 'stella',
+      },
+    });
+  });
+
+  await page.goto(target.memorizeUrl);
+  await page.getByRole('button', { name: '生词本' }).click();
+  const dialog = page.getByRole('dialog', { name: '生词本' });
+
+  await dialog.getByRole('button', { name: '播放词条发音：glove' }).click();
+  const stopGlove = dialog.getByRole('button', { name: '停止词条发音：glove' });
+  await expect(stopGlove).toHaveAttribute('data-playing', 'true');
+
+  await dialog.getByRole('button', { name: '播放例句发音：glove' }).click();
+  await expect(dialog.getByRole('button', { name: '播放词条发音：glove' }))
+    .not.toHaveAttribute('data-playing', 'true');
+  await expect(dialog.getByRole('button', { name: '停止例句发音：glove' }))
+    .toHaveAttribute('data-playing', 'true');
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect.poll(() => page.evaluate(() =>
+    (window as typeof window & { __audioLog?: string[] }).__audioLog)).toEqual([
+    expect.stringContaining('play:'),
+    expect.stringContaining('pause:'),
+    expect.stringContaining('play:'),
+    expect.stringContaining('pause:'),
+  ]);
+});
