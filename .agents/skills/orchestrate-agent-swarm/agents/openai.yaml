@@ -1,0 +1,9 @@
+interface:
+  display_name: "Agent Swarm Orchestration"
+  short_description: "Coordinate background subagents through a shared message board"
+  default_prompt: >-
+    Use $orchestrate-agent-swarm to act as the coordinator for this task: split it
+    into pieces with one owner each, write public briefs, start background worker,
+    verifier, and monitor subagents, track them with the bundled message-board CLI
+    and its Markdown overview, send fixes back to authors, and report the accepted
+    results.

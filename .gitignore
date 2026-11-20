@@ -22,6 +22,7 @@ var/
 !.agents/skills/
 !.agents/skills/design-course-package/
 !.agents/skills/design-course-tts/
+!.agents/skills/orchestrate-agent-swarm/
 .claude/skills/
 .todo_tasks/
 /.tmp_pinyin_repo/
