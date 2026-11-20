@@ -6,7 +6,8 @@ description: >-
   设计无环先修知识图谱与学习路径节点、按目标课时与自底向上工作量模型反推讲义字数与多题型配额
   （防止高学时低题量空壳或共享讲义重复计入）、规范零题实操自评锚点，并执行课时质量门与课程校验。
   新建课程包、把课时大纲转为课程包、重校准课程 estimated_minutes 与题量配比时使用；
-  纯声明式 TTS 切片与音色规则由 design-course-tts 负责。
+  为初级英语阅读和听力规划英中背题对照时也使用。
+  音频、原文切片与逐字稿对齐细则由 design-course-tts 负责。
 ---
 
 # 课程包设计与课时对齐
@@ -17,6 +18,7 @@ description: >-
 
 ## 触发与形态
 
+- [主观] 为初级英语阅读与听力安排背题对照，依据受众确认材料、小题和选项的译文覆盖。
 - [主观] 从零设计课程包、把课时大纲（`syllabus_180h.json`）或历史研学稿件转化为可安装 v2 课程包。
 - [自动+主观] 评估或修复课程包的“学时—内容量”失配（如 60 分钟课时仅 3–5 道短单选题、零题自评虚标 60–110 分钟）。
 - [主观] 边界划分：题库 JSON 的 `tts`/`tts.text`/`pinyin`/`transcript` 细则由 `design-course-tts` 负责；静态音频文件离线生成由 `maintain-deepseek-tts-audio` 负责。
@@ -49,9 +51,14 @@ description: >-
 - [主观] **确认目标与版本契约**：明确课程受众、语言/工科定位、目标总学时，确认使用 `protocol_version: 2` 且新改动递增 `course.json` 版本号。
 - [主观] **搭知识图谱与预算拆解**：设计语义化 `units`、`lessons`、`concepts`（无环 `prerequisites`，`estimated_minutes` 设真实目标），用 `references/package-and-effort-spec.md` 为每个知识点算出讲义字数与分题型配额。
 - [主观] **写讲义与 v2 题库**：在共享讲义用 `<!-- concepts: id -->` 与 `## <Concept Title>` 对齐章节（杜绝 `"无资料"`/`TODO` 占位）；题库按配额编写 v2 题型（`true_false` 用 `grading.value` + `analysis`，`numeric` 含 `absolute_tolerance`，解析不写死 `选项 a/b/c/d`）。
+- [主观] **编写背题对照**：为初学者使用可选的 `study_translation`。
+  按覆盖范围补齐各原文段的译文，校对英文小题和选项。用黄金模板的两道阅读与
+  三种听力形态检查覆盖。原文切片、录音稿和音频边界按 `design-course-tts` 执行。
+  仅补译文的版本沿用题目、小题、选项和知识点 ID。
 - [自动] **四重质量门验收**：
   1. TTS 审计：`node .agents/skills/design-course-tts/scripts/audit-course-tts.mjs courses/<id>`（清零 error 与 warning）。
-  2. 课时内容量门：`node scripts/audit-course-effort.mjs courses/<id>`（新课建议加 `--strict`，确认 $\eta$ 与速通比达标）。
+  2. 课时内容量门：从仓库根运行 `node ./scripts/audit-course-effort.mjs courses/<id>`，
+     新课建议加 `--strict` 检查 $\eta$ 与速通比。
   3. 课程结构校验：`npm run course:check -- courses/<id>`（0 未标注题、无环、Schema 通过）。
   4. 本地安装验证：`npm run course:install -- courses/<id>`。
 
@@ -69,6 +76,7 @@ description: >-
 
 ## 指针
 
-- `references/package-and-effort-spec.md` —— `golden-course-template` 标杆口径、9 类题型工时权重、讲义锚点写法、大纲映射与四重检查命令参考。
+- `references/package-and-effort-spec.md` —— 黄金模板、背题译文覆盖、9 类题型工时权重、
+  讲义锚点及大纲映射。
 
 执行到具体估算或改写环节再加载 `references/package-and-effort-spec.md`，不要一次全读。

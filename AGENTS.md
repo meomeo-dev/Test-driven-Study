@@ -110,6 +110,15 @@ inspect their state before restarting services or changing configuration.
   saved default, and the selected voice determines the cache entry. Keep
   playback controls consistent across options before grading. Use
   `design-course-tts` to audit course audio segmentation and all-caps overrides.
+- Use v2 `study_translation` for aligned study text in reading and listening.
+  Match `material` to nonblank `passage` text segments or structured
+  `transcript` lines in order, and key sub-question and option translations by
+  their existing IDs. Keep translated strings separate from the source audio
+  inputs. Follow `golden-course-template` and validate with `course:check`.
+  Expose translations through `question_review` in memorization and graded
+  practice, and in mock exam review only after the entire paper ends.
+  The [authoring guide](docs/features/question-types/README.md#study-translations)
+  defines the alignment rules.
 - Keep explanation audio, `cloze.passage_tts`, `writing.sample_response` /
   `sample_response_tts`, and `translation.reference_translation_tts` restricted to
   graded review and memorization payloads; never expose them in active unanswered

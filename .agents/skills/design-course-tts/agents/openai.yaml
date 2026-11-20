@@ -2,8 +2,9 @@ interface:
   display_name: "课程题库 TTS 与音频设计"
   short_description: >-
     为课程题库（v1/v2 全 9 类题型）设计、编写和审计声明式 TTS 与本地拼音音频：放置规则、
-    切片边界、tts.text 改写、音色选择、选项均一性与听力防剧透检查
+    切片边界、tts.text 改写、音色选择、选项均一性、英中逐字稿对齐与听力防剧透检查
   default_prompt: >-
     使用 $design-course-tts 审查或设计这门课程的题库音频：先用 audit-course-tts.mjs 扫描现有
-    questions JSON，按放置矩阵、切片边界、tts.text 改写与防剧透规则修正每道题，再复跑审计与
+    questions JSON，按放置矩阵、切片边界、tts.text 改写与防剧透规则检查题目。
+    有英中对照时用 study_translation 逐段核对原文及播放文本，再用 TTS 审计与
     course:check 确认通过。

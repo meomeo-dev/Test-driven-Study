@@ -6,8 +6,9 @@ description: >-
   explanation_audio、analysis、sample_response_tts、source_text_tts、
   reference_translation_tts）：决定哪些字段放语音或留纯文本、如何做 ContentSegment 切片与标点
   归属、何时用 tts.text 改写或改用 pinyin 本地录音、如何选 stella/tide 音色与遵守选项全有
-  全无（uniformOptionAudio）及听力防剧透规则。新建或修改课程题库语音、审查课程 TTS 切片
-  质量时使用。不用于静态句库离线批量预合成或维护 .wav/.mp3 文件（那属于
+  全无（uniformOptionAudio）及听力防剧透规则。新建或修改题库语音、审查 TTS 切片、
+  为 v2 阅读或听力编写英中对照逐字稿（study_translation）时使用。
+  不用于静态句库离线批量预合成或维护 .wav/.mp3 文件（那属于
   maintain-deepseek-tts-audio）。
 ---
 
@@ -25,6 +26,7 @@ description: >-
   `transcript`、`passage_tts`、`sub_questions`、`explanation_audio`、
   `sample_response_tts`、`source_text_tts`、`reference_translation_tts`）。
 - [自动+主观] 审查已有题库的音频覆盖一致性、切片边界、选项均一性、听力防剧透与不可读符号。
+- [主观] 为 v2 阅读和听力对齐原文与 `study_translation`，检查译文是否影响原音或提前泄露。
 - [主观] 不属于本技能：离线批量合成静态句库、清理过期 `.wav`/`.mp3` 文件、配置或排查
   DeepSeek API Key（由 `maintain-deepseek-tts-audio` 负责）。
 
@@ -63,6 +65,9 @@ description: >-
 - [交互] **确认课程受众与协议**：确认课程处于 `v1` 还是 `v2`、目标学习语言、中文指令是否需要朗读，以及拼音题是否使用课程的本地拼音录音库。
 - [主观] **逐字段定放置与音色**：按上表与 `references/placement-and-segmentation.md` 确定每个题型在 `stem`、`sub_questions`、`passage`、`passage_tts`、`options`、`transcript`、`analysis`/`explanation_audio`、`sample_response_tts`、`source_text_tts`、`reference_translation_tts` 的开关与音色。
 - [主观] **切片与文本净化**：拆分混排段，剥离引号与多余空格，为数字/符号/钟点时间/段内换行/全大写标题补 `tts.text` 改写，将拼音词/残缺提示改为 `pinyin[]`，保证每段 TTS 只含 1–2 句自然语流（多段范文/逐字稿/短文按段落或句界切片）。
+- [主观] **对齐英中逐字稿**：将中文保存在 `study_translation.material`，按非空原文段
+  或结构化逐字稿行一一对应。独白可用富文本数组划分显示段，拼接后的英文须与原文一致，
+  继续使用整段合成。按 `references/study-transcripts.md` 核对三种听力形态及复习可见性。
 - [自动] **脚本审计**：运行 `node <skill-root>/scripts/audit-course-tts.mjs courses/<id>`，清零全部 `error`（结构/防剧透/符号/内联禁用违规）与 `warning`（过粗切片、`pinyin`/`tts` 冲突、漏配语音的纯英文小题/选项/题干/短文句子，以及 `analysis`/`writing`/`translation` 一致性警告）。
 - [自动] **包校验与交付**：修改课程后配合仓库校验命令 `npm run course:check -- courses/<id>` 确认 Schema 与 `uniformOptionAudio` 全数通过。
 
@@ -78,6 +83,7 @@ description: >-
 
 ## 指针
 
+- `references/study-transcripts.md` —— v2 英中对照的字段结构、按段对齐、播放和验收。
 - `references/placement-and-segmentation.md` —— v1/v2 全字段矩阵、切片与改写细则、引擎/UI 陷阱与课程正反例。
 - `scripts/audit-course-tts.mjs` —— 零依赖课程 TTS 审计工具（支持 `--help`、`--json`、退出码 0–3）。
 - `tests/audit-course-tts.test.mjs` —— 审计工具的 Node 单元测试。

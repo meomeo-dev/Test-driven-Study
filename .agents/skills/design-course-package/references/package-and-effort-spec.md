@@ -1,10 +1,14 @@
 # v2 课程包规范与自底向上课时配额参考
 
-本文件补充 `SKILL.md` 的量化口径、锚点写法与工作流对接细则；基准参照 `courses/golden-course-template`（`v1.1.0`）。
+规划题型配额、讲义结构或背题译文覆盖时加载。黄金模板与题型规范随仓库更新。
+英中对照于 2026-11-20 对照
+[模板题库](../../../../courses/golden-course-template/questions/extended-practice.json)
+和 [v2 编写规范](../../../../docs/features/question-types/README.md#study-translations)
+核验。课时数字沿用模板的估算口径。
 
 ---
 
-## 1. 黄金模板标杆对照（`golden-course-template@1.1.0`）
+## 1. 黄金模板标杆对照（`golden-course-template@1.2.0`）
 
 - 唯一单元 `extended-practice`（题型展示）共 `1` 篇讲义 `lessons/workplace-handover.md`、`5` 个知识点（合计 `65m`）、`15` 道覆盖全部 9 类题型的题目：
   - `workplace-quantities` (`10m`): `numbers-1` (sc), `numbers-3` (mc), `numbers-5` (num) → 估算 ~`7.45m`
@@ -12,7 +16,19 @@
   - `workplace-notices` (`15m`): `sue1-extended-listening` (dialogue, 2 sub_q), `sue1-extended-listening-passage` (passage, 2 sub_q), `sue1-extended-listening-recording` (recording, 2 sub_q), `sue1-extended-reading-single-choice` (2 sub_q) + 共享 `sue1-extended-reading` → 估算 ~`17.42m` ($\eta = 1.16$)
   - `handover-writing` (`20m`): `sue1-extended-writing-short` (40–65w), `sue1-extended-writing-full` (110–160w), + 1 篇阅读/写作相关练习 → 估算 ~`35.19m`
   - `handover-self-check` (`5m`): 零题口语复述自评 → 估算 ~`4.25m` ($\eta = 0.85$)
-- 全包 `audit-course-effort`: `65m 声明 / 86.16m 设计估算 | η=1.33 | error=0`。
+- 全包 `audit-course-effort` 为 65 分钟声明、86.16 分钟设计估算，
+  `η=1.33`、0 个错误、5 个课时或讲义覆盖警告。
+
+### 背题对照覆盖
+
+- 模板的两道阅读及对话、独白、录音三道听力均提供 `study_translation`。
+  `beginner-english@2.2.0` 的 39 道阅读和 59 道听力可作为完整课程的覆盖基准。
+- 把材料逐段对应的中文写入 `study_translation.material`。需要辅助理解的小题题干、
+  正确选项和干扰选项，按既有 ID 写入可选的 `sub_questions` 翻译映射。
+  已有充分中文释义的内容可沿用原文。
+- 对照译文属于同一道题的复习内容。增补译文时沿用题目及其关联 ID，递增课程包版本，
+  用 `course:check` 校验段数和 ID，再抽查数字、时间、否定及选项差异。
+  对照分段和音频核对由 `design-course-tts` 负责。
 
 ---
 
