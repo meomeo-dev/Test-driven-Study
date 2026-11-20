@@ -5,6 +5,7 @@
 These instructions apply throughout this repository. Read [README.md](README.md)
 for setup, [handoff.md](handoff.md) for the dated development state, and the
 relevant issue and feature documentation before changing behavior.
+[CHANGELOG.md](CHANGELOG.md) records user-facing changes and package releases.
 
 - Keep source, comments, commits and technical documentation in clear English.
   Product labels and question-bank content are Chinese; preserve that language.
@@ -86,6 +87,11 @@ inspect their state before restarting services or changing configuration.
 - Preserve question IDs, option signs, answers, and modular course exports.
   New package content requires a new version. Update an installed course with
   `course:install` so existing learner records keep their stable question IDs.
+- In memorization, derive the card ordinal and active navigation tile from the
+  displayed question. Publish the subject progress and filtered navigator rows
+  together after marking. The footer position uses the filtered list, and
+  the toolbar progress counts the whole subject. Retain learning-state colors
+  on the selected tile.
 - Default learner data are in `var/study.sqlite`, generated images in
   `var/palaces/`, and resumable LLM state in `var/llm-checkpoints/`. Respect a
   configured data directory. Back up these together while the service is stopped.
@@ -148,8 +154,10 @@ Follow [issues/README.md](issues/README.md) and the shared contract in
    Commits such as `fix: description (closes #N)`. Normally open PRs from the
    primary repository. Inspect the actual remote configuration first.
 
-For authorized branch cleanup, confirm the branch tip is reachable from the
-target branch before removing its local or remote reference.
+For authorized cleanup, inspect linked worktrees for local changes and
+confirm each branch tip is reachable from the integration target. Before
+removing a remote branch, verify the current remote tip and preserve it on the
+remote integration branch, either already published or in the same atomic push.
 
 Explicit user instructions can authorize a different workflow for a specific
 task; preserve that scope. The direct-on-main decisions recorded in issues #27

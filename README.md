@@ -16,8 +16,9 @@
 A local course study application with a Go backend, React and TypeScript
 frontend, and SQLite storage. It bundles 18 default courses (including Basic Math
 and [Elementary Chinese](courses/elementary-chinese/course.json)) alongside an
-installable v2 template course ([黄金标准课程模板](courses/golden-course-template/README.md))
-demonstrating all nine question types.
+installable v2 template course ([黄金标准课程模板](courses/golden-course-template/README.md)).
+Version 1.2.0 demonstrates all nine question types, a concept-based learning
+path, and bilingual reading and listening materials.
 
 The interface is in Chinese. Studying does not require an account, API key,
 or external database.
@@ -48,11 +49,12 @@ baseline on a separate batch. Record missed defects, false rejects, and cycle ti
 | Supporting mathematics | [Algebra, trigonometry and geometry](courses/algebra-geometry/README.md), [Calculus](courses/engineering-calculus/README.md), [Linear algebra](courses/linear-algebra/README.md), [Probability and statistics](courses/probability-statistics/README.md), [Automatic control](courses/automatic-control/README.md) |
 | Language | [Beginner English](courses/beginner-english/README.md) |
 
-Each package is a sample course of about 30 study hours: seven or eight units
-with a lesson per unit, a concept graph, 124–159 reviewed items in all four
-graded question types and a self-check project. The course roadmap shows the
-prerequisites that each README names; Microcontrollers, for example, requires
-Circuits and C. Beginner English includes listening exercises with transcripts.
+The technical courses in this track provide lessons, concept graphs, graded
+practice, and a self-check project. The course roadmap shows the prerequisites
+named in each course README. For example, Microcontrollers requires Circuits
+and C. Beginner English 2.2.0 has 10 units and 424 questions across all nine
+v2 question types. It includes English–Chinese study translations for all 39
+reading and 59 listening questions.
 
 ## Features
 
@@ -65,6 +67,8 @@ Circuits and C. Beginner English includes listening exercises with transcripts.
   full-width reading pane with study guidance.
 - **Memorization (背题模式):** read answers and explanations, mark questions as
   remembered or needing review, and resume your last question in each subject.
+  The toolbar shows subject-wide study counts. The footer shows the current
+  position and filtered total between Previous and Next.
 - **Practice (答题模式):** select answers with number keys, submit for grading,
   then view the explanation. Every submitted attempt is saved separately.
 - **[Mock exams (模拟考试)](docs/features/mock-exam/README.md):** use the same
@@ -91,9 +95,11 @@ Circuits and C. Beginner English includes listening exercises with transcripts.
 - **Reading controls:** practice follows a focused question-and-answer lane with
   review below the actions. Memorization uses three desktop columns. Full content
   is also available in dialogs.
-- **Question audio:** play marked passages and answer choices in supported
-  courses. Listening exercises provide a recording or synthesized dialogue
-  with an expandable transcript.
+- **Question audio and translations:** play marked passages and answer choices
+  in supported courses. Listening can use a recording, synthesized dialogue,
+  or a synthesized passage. In memorization, items with study translations
+  offer an original-only toggle and an expandable bilingual listening transcript.
+  See the [authoring guide](docs/features/question-types/README.md#study-translations).
 - **Elementary Chinese pronunciation:** play local Pinyin recordings in the
   worksheet and read the answer explanations aloud after submitting in
   practice mode. Explanation playback uses local recordings for Pinyin and
@@ -185,8 +191,17 @@ An installed version stays readable for submitted and pending attempts.
 Reinstalling a validated version activates it again, so an earlier version can
 serve as a rollback.
 
-See the [course protocol](contracts/course/v1/README.md) for file layout,
-answer formats, validation, and offline behavior. See the
+To install the bilingual template or upgrade an existing Beginner English
+installation, run the applicable command and reload the catalog.
+
+```sh
+npm run course:install -- courses/golden-course-template
+npm run course:install -- courses/beginner-english
+```
+
+See the [v1 protocol](contracts/course/v1/README.md) and
+[v2 protocol](contracts/course/v2/README.md) for file layout, answer formats,
+validation, and offline behavior. See the
 [shared workspace design](docs/features/course-platform/shared-learning-workspace.md)
 for ownership and migration.
 
@@ -312,8 +327,10 @@ After grading, the right-side Submit button becomes Next, with Retry immediately
 to its left. The separate Previous/Next pair remains available on the left.
 
 The navigator displays each question's position in the filtered list and its
-original ID. These numbers can differ. **Locate current question (定位当前题)**
-centers and focuses the current tile. Hundred-question jumps use list positions.
+original ID. In memorization, the selection border identifies the displayed
+question and the tile color indicates learning status. **Locate current
+question (定位当前题)** centers and focuses the current tile. Hundred-question
+jumps use list positions.
 
 ### Keyboard shortcuts
 

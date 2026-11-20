@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Repository skill `design-course-package`, bottom-up effort quality gate
   `scripts/audit-course-effort.mjs`, and upfront budget/quota decomposition in
   `scripts/curriculum_batch_workflow.py`.
+- Repository skill `orchestrate-agent-swarm` for coordinating independent
+  work, review, and progress monitoring.
+- Optional v2 `study_translation` for aligned reading and listening translations.
+  Memorization displays English–Chinese passages, transcripts, questions, and
+  options, with a shared original-only toggle. Practice exposes the translation
+  data after submission, and exams release it at the end of the paper.
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
 - Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in
@@ -38,6 +44,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `golden-course-template@1.1.0` adds a five-concept learning graph, a handover
   lesson, and practice tags for all 15 existing items.
+- `golden-course-template@1.2.0` and `beginner-english@2.2.0` add aligned
+  translations to all 103 reading and listening items across both packages.
+  Original item and option IDs and monologue speech text are preserved.
+- Memorization, practice, and memory palace share a question navigator. The
+  memorization footer places the filtered position between Previous and Next.
+- Course authoring skills document translation alignment, original audio,
+  review visibility, and the current golden template.
 - Modularized frontend `web/src/features/question-types/` into 9 independent
   question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
   typed registry and facade components.
@@ -60,6 +73,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Omitted TTS voices use the saved default before selecting cached audio.
 - Forced speech regeneration returns an updated audio URL. Sequential listening
   retains the authored voices through the final turn.
+- Kept the memorization card, position, and navigator in sync during navigation.
+  Remembering a question refreshes its tile and subject counts together, even
+  when the filter removes that question. Selected tiles retain learning colors.
+- Wrapped long original question IDs inside navigator tiles and enabled
+  independent scrolling in the shared study sidebar.
 
 ## [0.1.0] - 2026-11-17
 
