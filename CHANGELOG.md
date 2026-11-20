@@ -38,6 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `example_tts`, `pos`, and minimalist `grammar_note` schema fields in
   `vocabulary_file`, `design-course-tts` vocabulary auditing, and updated glossaries
   in `golden-course-template@1.4.0` and `beginner-english@2.4.0`.
+- Repository skill `design-course-vocabulary` (`audit-course-vocabulary.mjs`)
+  guiding unit/question coverage, `category` vs. `pos` boundaries, and
+  minimalist `grammar_note` authoring and auditing.
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
 - Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in

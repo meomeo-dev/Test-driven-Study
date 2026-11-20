@@ -1,0 +1,10 @@
+interface:
+  display_name: "课程生词本与语法点拨设计"
+  short_description: >-
+    规划并审查 v2 课程生词本（vocabulary_file）：单元选词与题号映射、category 与 pos 分工、
+    按需匹配极简语法/时态点拨（grammar_note）、双语例句配对与词表质量审计
+  default_prompt: >-
+    使用 $design-course-vocabulary 规划或审查这门课程的生词本：先运行
+    audit-course-vocabulary.mjs --strict 扫描 vocabulary_file，按规范核对单元覆盖、
+    question_ids 绑定、word 的 pos 词性与克制精准的 grammar_note，随后联动
+    $design-course-tts 检查 term_tts/example_tts 并跑 course:check 与 course:install。
