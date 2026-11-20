@@ -1,7 +1,8 @@
 ---
 id: 0076
 type: fix
-status: open
+status: closed
+closed-by: 303865c
 labels: []
 branch: fix/0076-synchronize-memorization-progress-and-question-navigation
 created: 2026-11-20
@@ -36,3 +37,15 @@ Changing what counts as remembered, clearing learner progress, or changing gradi
 ## 讨论
 
 The progress strip is subject-wide, while the drawer lists the current search and filter results. The selected tile must still communicate its learning status.
+
+### Findings and verification
+
+- The reported unit contained 45 items, one remembered and zero to review.
+  A read-only check found matching counts in the overview and unfiltered list.
+- The UI had separate render states for the requested question and the visible
+  card, and published the post-mark overview and list at different times.
+  The current tile also overrode the learning-state color.
+- Type checking, 57 frontend unit tests, and 20 isolated browser cases passed.
+  The three new cases cover a delayed next question, delayed overview after
+  marking, and advancing within a filter without recording an intermediate
+  question exposure.

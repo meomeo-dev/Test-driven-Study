@@ -74,6 +74,12 @@ Updated 2026-11-20 (America/New_York).
 
 ## Shared question navigation
 
+- [#76](issues/0076-fix-synchronize-memorization-progress-and-question-navigation.md)
+  (`303865c`) aligns the active tile and ordinal with the visible question, publishes
+  the subject overview and navigator rows together, and preserves each tile's
+  learning color. Type checking, 57 frontend unit tests, and 20 isolated browser
+  cases passed.
+
 - Memorization, practice, and memory palace use the same drawer and grid.
   The [browser regression](tests/browser/courses.spec.ts) exercises status legends,
   resource markers, selection, focus, and filter retention.
