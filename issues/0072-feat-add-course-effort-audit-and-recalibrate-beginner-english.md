@@ -1,7 +1,8 @@
 ---
 id: 0072
 type: feat
-status: open
+status: closed
+closed-by: 45df0fb
 labels: [course, tooling, curriculum]
 branch: feat/0072-add-course-effort-audit-and-recalibrate-beginner-english
 created: 2026-11-20
@@ -66,3 +67,17 @@ unanchored graded concepts unless explicit `<!-- concepts: ... -->` markers are
 present, and scores multi-stage lab workshops via explicit `<!-- effort-lab: ... -->`
 or structured speaking stages so self-check practice hours do not require fake
 auto-graded MCQs.
+
+### Verification
+
+- `node --test scripts/audit-course-effort.test.mjs`: 6/6 passed.
+- `npm run course:check -- courses/beginner-english`: `beginner-english@2.1.0:
+  10 units, 424 items` (`concepts: 41, prerequisite groups: 36, tagged items:
+  424, untagged items: 0`).
+- `audit-course-tts.mjs courses/beginner-english --json`: 10 files, 424 items,
+  0 errors, 0 warnings.
+- `audit-course-effort.mjs courses/beginner-english --strict`: declared `2240m`
+  vs design `2337.27m` (`η=1.04`, first-pass `1280.71m`, 0 errors, 0 warnings).
+- `npm run issue:check`, `npm run check:generated`, `npm run test:unit` (14 files,
+  57 tests), `npm run test:go`, `npm run test:startup` (4/4), `npm run build`, and
+  `npm run test:e2e` (18/18) all passed.

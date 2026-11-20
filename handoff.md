@@ -1,10 +1,10 @@
 # Development Handoff
 
-Updated 2026-11-19 (America/New_York).
+Updated 2026-11-20 (America/New_York).
 
 ## Repository state
 
-- `main` integrates the course and study navigation changes through `#71`:
+- `main` integrates the course, tooling, and study navigation changes through `#72`:
   - [#61](issues/0061-feat-refactor-question-types-to-named-polymorphic-dispatch.md)
     (`4d2c69a`): polymorphic Go/OpenAPI/TS question-type contracts.
   - [#62](issues/0062-feat-modularize-frontend-question-types-into-9-independent-module.md)
@@ -24,6 +24,9 @@ Updated 2026-11-19 (America/New_York).
     upgraded `courses/beginner-english` from `1.4.1` (v1) to `2.0.0` (v2).
   - [#68](issues/0068-feat-share-question-navigation-across-study-modes.md)
     (`c7b6c4c`): shared the question drawer and grid across study modes.
+  - [#72](issues/0072-feat-add-course-effort-audit-and-recalibrate-beginner-english.md)
+    (`45df0fb`): added `audit-course-effort.mjs`, `design-course-package` skill,
+    budget-first `curriculum_batch_workflow.py`, and `beginner-english@2.1.0`.
 - User setup is in [README.md](README.md). Durable repository rules are in
   [AGENTS.md](AGENTS.md).
 
