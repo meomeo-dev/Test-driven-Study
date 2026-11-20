@@ -1,6 +1,6 @@
 # Development Handoff
 
-Updated 2026-11-20 (America/New_York). Functional baseline `ea6db16` on `main`.
+Updated 2026-11-20 (America/New_York). Functional baseline `aaf6fed` on `main`.
 
 ## Current learning behavior
 
@@ -22,18 +22,20 @@ Updated 2026-11-20 (America/New_York). Functional baseline `ea6db16` on `main`.
 
 - [#78](issues/0078-feat-add-vocabulary-notebook-to-english-memorization.md) adds
   an offline course-provided glossary to memorization, with question, unit, and
-  course scopes. The repository packages provide 12 entries in Golden Template
-  1.3.0 and 71 in Beginner English 2.3.0.
-- The new versions were validated and installed in isolated browser fixtures.
-  The live catalog still lists the earlier versions in the table below.
+  course scopes.
+- [#79](issues/0079-feat-add-vocabulary-tts-and-minimalist-grammar-notes.md) (`aaf6fed`)
+  adds term and example TTS playback, optional `term_tts`/`example_tts`/`pos`/
+  `grammar_note` schema support, `design-course-tts` vocabulary auditing, and
+  updated glossaries in Golden Template `1.4.0` (12 entries) and Beginner
+  English `2.4.0` (71 entries).
   See the [vocabulary authoring guide](docs/features/vocabulary/README.md).
 
 ## Course packages and authoring
 
 | Package | Active local version | Coverage |
 | --- | --- | --- |
-| [Golden course template](courses/golden-course-template/README.md) | 1.2.0 | 15 items across all nine question types, a five-concept learning path, and two reading and three listening translation examples. |
-| [Beginner English](courses/beginner-english/README.md) | 2.2.0 | 10 units, 41 concepts, 424 items, and translations for all 39 reading and 59 listening questions. |
+| [Golden course template](courses/golden-course-template/README.md) | 1.4.0 | 15 items across all nine question types, a five-concept learning path, two reading and three listening translation examples, and 12 vocabulary entries with TTS and targeted grammar notes. |
+| [Beginner English](courses/beginner-english/README.md) | 2.4.0 | 10 units, 41 concepts, 424 items, translations for all 39 reading and 59 listening questions, and 71 vocabulary entries with TTS overrides and minimalist grammar notes. |
 | [Elementary Chinese](courses/elementary-chinese/course.json) | 1.0.4 | Local Pinyin for the fill-in stems and combined Pinyin and Han speech for the explanations. |
 
 Use the [versioned install workflow](README.md#author-a-course) to update
@@ -53,6 +55,12 @@ The English curriculum research remains in the
   records type checking, 57 unit tests, and 20 isolated browser cases.
   [#77](issues/0077-fix-move-memorization-question-position-between-navigation-butto.md)
   records the later footer change and its three browser cases.
+- [#79](issues/0079-feat-add-vocabulary-tts-and-minimalist-grammar-notes.md)
+  (`aaf6fed`) records `npm run check` passing across all gates (62 unit tests,
+  all Go packages, 4 startup tests, build, 29 browser cases including 5 in
+  `tests/browser/vocabulary.spec.ts`), plus `design-course-tts` (9 tests, 0
+  audit issues) and strict effort audit passing for `golden-course-template@1.4.0`
+  and `beginner-english@2.4.0`.
 
 See [README.md](README.md) for setup, [AGENTS.md](AGENTS.md) for repository
 rules, and [CHANGELOG.md](CHANGELOG.md) for unreleased changes.

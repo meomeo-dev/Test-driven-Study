@@ -1,7 +1,8 @@
 ---
 id: 0079
 type: feat
-status: open
+status: closed
+closed-by: aaf6fed
 labels: []
 branch: feat/0079-add-vocabulary-tts-and-minimalist-grammar-notes
 created: 2026-11-20
@@ -39,3 +40,10 @@ Mandatory TTS or grammar metadata on all entries, personal vocabulary editing, a
 ## 讨论
 
 Keeping `term` and `example` as plain strings while adding optional `term_tts` and `example_tts` (`TTSConfig`) preserves search filtering and backward compatibility with existing v2 packages, mirroring `source_text_tts` and `reference_translation_tts` in translation items. Minimalist `pos` and `grammar_note` fields avoid duplicating `category` and allow omitting grammar notes on transparent compounds, fixed greetings, and regular nouns.
+
+### Verification
+
+- `node --test .agents/skills/design-course-tts/tests/*.test.mjs`: 9 passed, 0 failed.
+- `npm run course:check -- courses/golden-course-template` (`1.4.0`: 1 unit, 15 items) and `npm run course:check -- courses/beginner-english` (`2.4.0`: 10 units, 424 items) passed.
+- `node .agents/skills/design-course-tts/scripts/audit-course-tts.mjs` passed with 0 issues (`golden-course-template`: 12 vocabulary entries; `beginner-english`: 71 vocabulary entries), and `node scripts/audit-course-effort.mjs courses/beginner-english --strict` passed (`error=0, warning=0`).
+- `npm run check` passed across all gates (`issue:check` 0001–0079, `check:generated`, `test:unit` 62 passed, `test:go` all packages, `test:startup` 4/4, `build`, and `test:e2e` 29 passed including all 5 specs in `tests/browser/vocabulary.spec.ts`).
