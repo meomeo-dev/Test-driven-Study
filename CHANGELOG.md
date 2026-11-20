@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (`passage_tts`), and multi-paragraph `writing.sample_response` arrays.
 - Repository skill `design-course-tts` (`audit-course-tts.mjs`) for automated
   TTS segmentation, Pinyin placement, and all-caps override auditing.
+- Repository skill `design-course-package`, bottom-up effort quality gate
+  `scripts/audit-course-effort.mjs`, and upfront budget/quota decomposition in
+  `scripts/curriculum_batch_workflow.py`.
 - DeepSeek text-to-speech with dedicated provider settings, inline playback,
   and a local cache indexed by voice and phrase.
 - Elementary Chinese 1.0.4 adds local Pinyin playback for the seven fill-in
@@ -38,14 +41,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modularized frontend `web/src/features/question-types/` into 9 independent
   question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
   typed registry and facade components.
-- Beginner English 2.0.0 (`protocol_version: 2`, upgraded from `1.4.1`) migrates
-  all 10 units (41 concepts, 216 items) to v2 contracts: converts all 20
-  listening items to `type: "listening"` (enabling mock-exam audio and voiced
-  sub-question stems), 27 fill-in/orthographic items (25 blank prompts plus
-  `spelling-2` and `past-regular-1`) to `type: "cloze"` with `passage_tts`,
-  all 216 explanations to segmented `analysis` (`RichContent`) without
-  hardcoded option letters, and resolves all `design-course-tts` findings
-  (`audit-course-tts` 0 errors, 0 warnings).
+- Beginner English 2.1.0 (`protocol_version: 2`, upgraded from `1.4.1`) migrates
+  all 10 units (41 concepts, 2,240 minutes) to v2 contracts and recalibrates
+  lecture depth (`<!-- concepts -->` / `effort-lab` anchors) and typed item
+  quotas to **424 items across all 9 v2 question types** (`single_choice` 76,
+  `cloze` 65, `listening` 59, `translation` 51, `reading_comprehension` 39,
+  `writing` 39, `multiple_choice` 38, `true_false` 38, `numeric` 19), preserving
+  all 216 original IDs and passing `course:check`, `audit-course-tts`, and
+  `audit-course-effort --strict` (`η = 1.04`, 0 errors, 0 warnings).
 
 ### Fixed
 

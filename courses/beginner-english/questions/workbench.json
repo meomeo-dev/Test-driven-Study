@@ -1577,5 +1577,3306 @@
         "text": " 串联三个工位操作步骤，听音时注意抓住动作动词、工具名称及盒号信息。"
       }
     ]
+  },
+  {
+    "id": "tools-parts-v2-listening-1",
+    "type": "listening",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "听早班领料员与库房管理员核对工具零件的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Good morning, Linda. I need four bolts and four nuts for station three.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Sure, they are in the gray tray. Do you have a wrench and gloves?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "I have gloves, but I still need a wrench and a screwdriver.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "parts-container",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where are the bolts and nuts?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "gray-tray",
+            "text": "In the gray tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "blue-box",
+            "text": "In the blue box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "red-shelf",
+            "text": "On the red shelf.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "gray-tray"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "管理员回答 "
+          },
+          {
+            "type": "text",
+            "text": "they are in the gray tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即在灰色托盘里。"
+          }
+        ]
+      },
+      {
+        "id": "has-gloves",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The worker already has a pair of gloves.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "领料员说 "
+          },
+          {
+            "type": "text",
+            "text": "I have gloves",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，说明已经自备了手套。"
+          }
+        ]
+      },
+      {
+        "id": "needed-tools",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two tools does the worker still need?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "wrench-screwdriver",
+            "text": "A wrench and a screwdriver.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "gloves-camera",
+            "text": "Gloves and a camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "button-light",
+            "text": "A button and a light.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "wrench-screwdriver"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声最后说明还需要一把扳手和一把螺丝刀（"
+          },
+          {
+            "type": "text",
+            "text": "a wrench and a screwdriver",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听对话时需抓住领料数量、容器名词（"
+      },
+      {
+        "type": "text",
+        "text": "tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）及紧固件与手工具名称（"
+      },
+      {
+        "type": "text",
+        "text": "bolts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "nuts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "screwdriver",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "tools-parts-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "阅读三号工位工具架管理说明，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "TOOL RACK GUIDE",
+        "tts": {
+          "voice": "stella",
+          "text": "Tool rack guide."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Put screwdrivers and wrenches on the top rack after use.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Small screws go into the yellow box, and bolts and nuts stay in the blue tray.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Check the camera light before you put on your gloves.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "rack-tools",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should workers put screwdrivers and wrenches after use?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "top-rack",
+            "text": "On the top rack.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "yellow-box",
+            "text": "In the yellow box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "blue-tray",
+            "text": "In the blue tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "top-rack"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明用完螺丝刀和扳手后要放回顶层架子（"
+          },
+          {
+            "type": "text",
+            "text": "on the top rack",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "blue-tray-items",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two parts stay in the blue tray?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "bolts",
+            "text": "Bolts.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "nuts",
+            "text": "Nuts.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "screws",
+            "text": "Small screws.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "bolts",
+            "nuts"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句说明小螺丝放进黄盒子，螺栓（"
+          },
+          {
+            "type": "text",
+            "text": "bolts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）和螺母（"
+          },
+          {
+            "type": "text",
+            "text": "nuts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）留在蓝色托盘里。"
+          }
+        ]
+      },
+      {
+        "id": "camera-light-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Workers should check the camera light before putting on gloves.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句指出 "
+          },
+          {
+            "type": "text",
+            "text": "Check the camera light before you put on your gloves.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": "阅读工具架规范时，注意把工具、紧固件与对应的容器或架层位置一一对应。"
+  },
+  {
+    "id": "tools-parts-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "stem": "阅读装配作业提示，选择合适的劳保与工具名词填空。",
+    "passage": "Put on your {{1}} first, then use the {{2}} to tighten the bolt.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Put on your gloves first, then use the wrench to tighten the bolt."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "gloves",
+            "text": "gloves",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "trays",
+            "text": "trays",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "buttons",
+            "text": "buttons",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "gloves"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "Put on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示戴上防护用品，因此选 "
+          },
+          {
+            "type": "text",
+            "text": "gloves",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（手套）。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "wrench",
+            "text": "wrench",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "camera",
+            "text": "camera",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "light",
+            "text": "light",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "wrench"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "拧紧螺栓（"
+          },
+          {
+            "type": "text",
+            "text": "tighten the bolt",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）应配套使用扳手 "
+          },
+          {
+            "type": "text",
+            "text": "wrench",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "佩戴手套用 "
+      },
+      {
+        "type": "text",
+        "text": "put on gloves",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，紧固螺栓用 "
+      },
+      {
+        "type": "text",
+        "text": "wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，两者不可与零件或电器词汇混淆。"
+      }
+    ]
+  },
+  {
+    "id": "tools-parts-v2-translation-1",
+    "type": "translation",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位备料提示译成中文。",
+    "source_text": "Two wrenches and three boxes of screws are on the tray.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "托盘上有两把扳手和三盒螺丝。",
+    "acceptable_alternates": [
+      "两把扳手和三盒螺丝在托盘上。"
+    ],
+    "key_terms": [
+      {
+        "term": "扳手"
+      },
+      {
+        "term": "螺丝"
+      },
+      {
+        "term": "托盘"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "wrenches",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "boxes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均为加 `-es` 构成的复数形式，表示“多把扳手”和“多盒”。"
+      }
+    ]
+  },
+  {
+    "id": "tools-parts-v2-translation-2",
+    "type": "translation",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工具检查要求翻译成英文。",
+    "source_text": "请检查工位上的工业相机和绿色指示灯。",
+    "reference_translation": "Please check the camera and the green light on the workbench.",
+    "reference_translation_tts": {
+      "voice": "tide"
+    },
+    "acceptable_alternates": [
+      "Please check the industrial camera and the green light on the workbench."
+    ],
+    "key_terms": [
+      {
+        "term": "camera"
+      },
+      {
+        "term": "green light"
+      },
+      {
+        "term": "workbench"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示工业相机，"
+      },
+      {
+        "type": "text",
+        "text": "green light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示绿色指示灯。"
+      }
+    ]
+  },
+  {
+    "id": "tools-parts-v2-writing-1",
+    "type": "writing",
+    "chapter": "工具与零件词汇",
+    "concepts": [
+      "tools-parts"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "bolts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文工位提示，说明桌上的蓝色托盘里有十颗螺栓。"
+      }
+    ],
+    "requirements": [
+      "正确使用复数形式 bolts。",
+      "说明位置在蓝色托盘里（in the blue tray）。"
+    ],
+    "keywords": [
+      "bolts",
+      "tray",
+      "blue"
+    ],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "There are ten bolts in the blue tray on the table.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "There are ten bolts...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达存在多个螺栓，并搭配 "
+      },
+      {
+        "type": "text",
+        "text": "in the blue tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指明容器。"
+      }
+    ]
+  },
+  {
+    "id": "measurement-units-v2-listening-1",
+    "type": "listening",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "听质检员口述的新批次零件尺寸与限重通知，再回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Attention, station two. The new steel bolt is twenty-five millimeters long. Each part weighs fifty grams, and the maximum weight for one blue tray is two kilograms.",
+    "sub_questions": [
+      {
+        "id": "bolt-cm",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many centimeters (cm) long is the new steel bolt?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "2.5",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音说明螺栓长 "
+          },
+          {
+            "type": "text",
+            "text": "twenty-five millimeters",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（25 毫米），按 `1 cm = 10 mm` 换算为 2.5 厘米。"
+          }
+        ]
+      },
+      {
+        "id": "tray-limit",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is the maximum weight for one blue tray?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "two-kg",
+            "text": "Two kilograms.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "twenty-g",
+            "text": "Twenty grams.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "five-kg",
+            "text": "Five kilograms.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "two-kg"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句明确说明蓝色托盘的最大限重为 "
+          },
+          {
+            "type": "text",
+            "text": "two kilograms",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（2 千克）。"
+          }
+        ]
+      }
+    ],
+    "analysis": "听音时先抓英文数字与单位全称，再根据 `1 cm = 10 mm` 进行口算换算。"
+  },
+  {
+    "id": "measurement-units-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "阅读质检台规格卡片，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SPEC CARD",
+        "tts": {
+          "voice": "stella",
+          "text": "Spec card."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Cut the green wire to 4 cm.",
+        "tts": {
+          "voice": "stella",
+          "text": "Cut the green wire to four centimeters."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Each finished bracket must weigh 100 g.",
+        "tts": {
+          "voice": "stella",
+          "text": "Each finished bracket must weigh one hundred grams."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Pack 10 brackets into one small box.",
+        "tts": {
+          "voice": "stella",
+          "text": "Pack ten brackets into one small box."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "box-weight-kg",
+        "type": "numeric",
+        "stem": "一盒装满 10 个成品支架（不含盒子自重），总重量换算为千克（kg）是多少？请用阿拉伯数字作答。",
+        "grading": {
+          "value": "1",
+          "absolute_tolerance": "0"
+        },
+        "analysis": "10 个支架共 10 × 100 g = 1000 g，按 `1 kg = 1000 g` 换算等于 1 kg。"
+      },
+      {
+        "id": "spec-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements match the spec card?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "wire-40mm",
+            "text": "The green wire is forty millimeters long.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "bracket-100g",
+            "text": "Each finished bracket weighs one hundred grams.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "pack-20",
+            "text": "Pack twenty brackets into one small box.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "wire-40mm",
+            "bracket-100g"
+          ]
+        },
+        "analysis": "卡片要求绿色导线长 4 厘米（即 40 毫米），每个支架重 100 克，每盒装 10 个而非 20 个。"
+      }
+    ],
+    "analysis": "结合卡片中的长度与重量数字进行单位换算（`4 cm = 40 mm`、`1000 g = 1 kg`），并注意区分书面符号缩写与口语全称。"
+  },
+  {
+    "id": "measurement-units-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "阅读质检口头汇报记录，根据数值单复数与物理量选择正确的单位词填空。",
+    "passage": "This bolt is twelve {{1}} long, and the full box weighs two {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "This bolt is twelve millimeters long, and the full box weighs two kilograms."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "millimeters",
+            "text": "millimeters",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "millimeter",
+            "text": "millimeter",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "grams",
+            "text": "grams",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "millimeters"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "数值 12 大于 1，长度单位全称须用复数 "
+          },
+          {
+            "type": "text",
+            "text": "millimeters",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "kilograms",
+            "text": "kilograms",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "kilogram",
+            "text": "kilogram",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "centimeters",
+            "text": "centimeters",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "kilograms"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "weighs",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示“重达”，数值 2 大于 1，重量单位用复数 "
+          },
+          {
+            "type": "text",
+            "text": "kilograms",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "口头读出大于 1 的测量结果时，英文单位全称（"
+      },
+      {
+        "type": "text",
+        "text": "millimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "kilograms",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）必须使用复数形式，不可混淆长度与重量单位。"
+      }
+    ]
+  },
+  {
+    "id": "measurement-units-v2-translation-1",
+    "type": "translation",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列零件规格描述译成中文。",
+    "source_text": "The metal pin is 18 mm long and weighs 15 g.",
+    "source_text_tts": {
+      "voice": "stella",
+      "text": "The metal pin is eighteen millimeters long and weighs fifteen grams."
+    },
+    "reference_translation": "这根金属销长 18 毫米，重 15 克。",
+    "acceptable_alternates": [
+      "金属销长 18 mm，重 15 g。"
+    ],
+    "key_terms": [
+      {
+        "term": "18 毫米",
+        "variants": [
+          "十八毫米",
+          "18 mm"
+        ]
+      },
+      {
+        "term": "15 克",
+        "variants": [
+          "十五克",
+          "15 g"
+        ]
+      },
+      {
+        "term": "金属销"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "long",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 接在尺寸后表示“……长”，"
+      },
+      {
+        "type": "text",
+        "text": "weighs",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“重”。书面缩写 `mm` 和 `g` 保持单数不变。"
+      }
+    ]
+  },
+  {
+    "id": "measurement-units-v2-writing-1",
+    "type": "writing",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "centimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "millimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文句子，说明托盘上的这颗螺栓长二十五毫米。"
+      }
+    ],
+    "requirements": [
+      "主语为这颗螺栓（This bolt / The bolt）。",
+      "正确使用复数单位词并放在 long 前。"
+    ],
+    "keywords": [
+      "bolt",
+      "millimeters",
+      "long"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "The bolt on the tray is twenty-five millimeters long.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "长度句型结构为 `主语 + is + 数字 + 单位复数 + long.`，口语或拼写全称时 "
+      },
+      {
+        "type": "text",
+        "text": "millimeters",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 须加 `-s`。"
+      }
+    ]
+  },
+  {
+    "id": "measurement-units-v2-numeric-1",
+    "type": "numeric",
+    "chapter": "长度与重量单位",
+    "concepts": [
+      "measurement-units"
+    ],
+    "stem": "配料单要求从一个总重 `2 kg` 的大箱子里取出 `500 g` 螺母装入小托盘，再从同一箱子里取出 `250 g` 螺栓备用。请问大箱子里现在还剩多少克（g）紧固件？请用阿拉伯数字作答。",
+    "analysis": "先把总重量换算为克：`2 kg = 2000 g`。两次一共取出 `500 g + 250 g = 750 g`，剩余 `2000 - 750 = 1250` 克。",
+    "grading": {
+      "value": "1250",
+      "absolute_tolerance": "0"
+    }
+  },
+  {
+    "id": "workbench-actions-v2-listening-1",
+    "type": "listening",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "听主管询问工位日常作业流程的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Zhang, tell me what you and Lisa do at station one every morning.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "First, I check the green light and turn on the camera. Lisa counts twenty parts and places them on the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "What happens next?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "The sensor detects each part, and the flap pushes any bad part into the red box.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "lisa-action",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What does Lisa do at station one?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "counts-places",
+            "text": "She counts twenty parts and places them on the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "turns-camera",
+            "text": "She checks the green light and turns on the camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "cleans-box",
+            "text": "She cleans the red box.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "counts-places"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话说明丽莎负责清点二十个零件并放到传送带上（"
+          },
+          {
+            "type": "text",
+            "text": "counts twenty parts and places them on the belt",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "flap-pushes-good",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The flap pushes good parts into the red box.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声说的是 "
+          },
+          {
+            "type": "text",
+            "text": "pushes any bad part into the red box",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，推入红盒的是不良品而非良品。"
+          }
+        ]
+      },
+      {
+        "id": "sensor-role",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which device detects each part on the belt?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "sensor",
+            "text": "The sensor.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "flap",
+            "text": "The flap.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wrench",
+            "text": "The wrench.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "sensor"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "句子 "
+          },
+          {
+            "type": "text",
+            "text": "The sensor detects each part",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 指出由传感器检测每个工件。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听一般现在时工作流程时，注意单数主语（"
+      },
+      {
+        "type": "text",
+        "text": "Lisa",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "the sensor",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "the flap",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）搭配动词第三人称单数形式（"
+      },
+      {
+        "type": "text",
+        "text": "counts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "places",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "detects",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "pushes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-actions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "阅读工位日常作业流程表，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "DAILY STATION SOP",
+        "tts": {
+          "voice": "stella",
+          "text": "Daily station standard operating procedure."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Every morning, Ben turns on the power and checks the yellow tray.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "He carries full boxes to the inspection table and fixes loose screws.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Before five p.m., Ben and his partner clean the bench together.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "ben-carries",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where does Ben carry the full boxes?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "inspection-table",
+            "text": "To the inspection table.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "yellow-tray",
+            "text": "To the yellow tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "loading-door",
+            "text": "To the loading door.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "inspection-table"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句明确写明 "
+          },
+          {
+            "type": "text",
+            "text": "carries full boxes to the inspection table",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "ben-tasks",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two tasks does Ben do by himself every morning?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "check-tray",
+            "text": "Turns on the power and checks the yellow tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fix-screws",
+            "text": "Fixes loose screws.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "clean-alone",
+            "text": "Cleans the bench alone before five p.m.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "check-tray",
+            "fix-screws"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "下午五点前清理工作台是本和搭档一起完成的（"
+          },
+          {
+            "type": "text",
+            "text": "clean the bench together",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），并非独自完成。"
+          }
+        ]
+      },
+      {
+        "id": "verb-clean-plural",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "In the last sentence, the verb clean takes no -s because the subject is plural.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句主语是 "
+          },
+          {
+            "type": "text",
+            "text": "Ben and his partner",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（两个人，复数），所以动词 "
+          },
+          {
+            "type": "text",
+            "text": "clean",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 用原形不加 `-s`。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读流程短文时观察主语单复数：单数主语 "
+      },
+      {
+        "type": "text",
+        "text": "Ben",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配 "
+      },
+      {
+        "type": "text",
+        "text": "turns",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "checks",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "carries",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "fixes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；复数主语 "
+      },
+      {
+        "type": "text",
+        "text": "Ben and his partner",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-actions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "stem": "阅读工位交接短文，根据主谓一致与三单拼写规则选词填空。",
+    "passage": "The technician {{1}} the camera every shift, and we {{2}} the heavy trays to the shelf.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The technician checks the camera every shift, and we carry the heavy trays to the shelf."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "checks",
+            "text": "checks",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "check",
+            "text": "check",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "checking",
+            "text": "checking",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "checks"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "The technician",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为第三人称单数，一般现在时动词加 `-s` 变成 "
+          },
+          {
+            "type": "text",
+            "text": "checks",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "carry",
+            "text": "carry",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "carries",
+            "text": "carries",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "carrying",
+            "text": "carrying",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "carry"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "后半句主语是第一人称复数 "
+          },
+          {
+            "type": "text",
+            "text": "we",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，动词必须用原形 "
+          },
+          {
+            "type": "text",
+            "text": "carry",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "同一复合句中不同分句主语不同，必须分别判断：单数名词用三单 "
+      },
+      {
+        "type": "text",
+        "text": "checks",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，复数人称 "
+      },
+      {
+        "type": "text",
+        "text": "we",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用原形 "
+      },
+      {
+        "type": "text",
+        "text": "carry",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-actions-v2-translation-1",
+    "type": "translation",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列设备作业描述译成中文。",
+    "source_text": "The technician fixes the loose bolt and passes the box to me.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "技术员拧紧松动的螺栓，并把盒子递给我。",
+    "acceptable_alternates": [
+      "技术员修好松动的螺栓，然后把料盒递给我。"
+    ],
+    "key_terms": [
+      {
+        "term": "技术员"
+      },
+      {
+        "term": "螺栓"
+      },
+      {
+        "term": "盒子",
+        "variants": [
+          "料盒",
+          "箱子"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "以 `x` 和 `s` 结尾的动词 "
+      },
+      {
+        "type": "text",
+        "text": "fix",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "pass",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 在第三人称单数后均加 `-es`，变为 "
+      },
+      {
+        "type": "text",
+        "text": "fixes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "passes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-actions-v2-translation-2",
+    "type": "translation",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位日常动作描述翻译成英文。",
+    "source_text": "她每天早上擦拭工作台并清点托盘里的螺丝。",
+    "reference_translation": "She cleans the workbench and counts the screws in the tray every morning.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Every morning, she cleans the workbench and counts the screws on the tray."
+    ],
+    "key_terms": [
+      {
+        "term": "cleans"
+      },
+      {
+        "term": "counts"
+      },
+      {
+        "term": "screws"
+      },
+      {
+        "term": "every morning"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语 "
+      },
+      {
+        "type": "text",
+        "text": "She",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后面并列的两个一般现在时动词都要用三单形式："
+      },
+      {
+        "type": "text",
+        "text": "cleans",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "counts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-actions-v2-writing-1",
+    "type": "writing",
+    "chapter": "工位动作现在时",
+    "concepts": [
+      "workbench-actions"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "The camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 作主语，写出一般现在时句子，说明相机检查每个工件并亮起绿灯。"
+      }
+    ],
+    "requirements": [
+      "正确使用第三人称单数动词形式（如 checks、turns on）。",
+      "包含 workpiece / part 和 green light。"
+    ],
+    "keywords": [
+      "camera",
+      "checks",
+      "part",
+      "green light"
+    ],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "The camera checks each part and turns on the green light.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "单数主语 "
+      },
+      {
+        "type": "text",
+        "text": "The camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后的两个并列谓语动词均需加 `-s`："
+      },
+      {
+        "type": "text",
+        "text": "checks",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "turns on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-writing-1",
+    "type": "writing",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "subtype": "short_essay",
+    "stem": "你是早班工位操作员。请给晚班接班同事写一封英文交接便条，说明：（1）五颗螺栓已经拧紧并放进左边绿盒；（2）坏掉的螺丝留在右边红托盘上；（3）开机前请先戴手套并按下绿色按钮，完成后回复 Done。",
+    "requirements": [
+      "写明左/右方位与对应物料位置。",
+      "写出开机前的两步操作指令及完成后闭环反馈词。",
+      "包含称呼与落款。"
+    ],
+    "keywords": [
+      "bolts",
+      "left",
+      "right",
+      "gloves",
+      "button"
+    ],
+    "min_words": 40,
+    "max_words": 65,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Team,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Five bolts are ready in the green box on the left. Please leave the bad screws on the red tray on the right. Before starting the machine, put on your gloves and press the green button. Tell the supervisor done when you finish.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nLin",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Lin"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "交接便条应分段清楚：先交代左右料盒与托盘物料状态，再用祈使句交代开机两步操作，最后提醒回复 "
+      },
+      {
+        "type": "text",
+        "text": "Done",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 完成闭环，并附上称呼和落款。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "阅读四号装配台标准作业指令卡，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "STATION FOUR INSTRUCTIONS",
+        "tts": {
+          "voice": "stella",
+          "text": "Station four instructions."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "First, take the small wrench from the shelf and tighten the two nuts on the bracket.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Second, place the finished bracket under the camera for a quick check.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Third, put good parts in Box 1 on the left and bad parts in Box 2 on the right.",
+        "tts": {
+          "voice": "stella",
+          "text": "Third, put good parts in Box one on the left and bad parts in Box two on the right."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "step-one-tool",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which tool is used in the first step?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "small-wrench",
+            "text": "The small wrench.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "screwdriver",
+            "text": "The long screwdriver.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "camera",
+            "text": "The inspection camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "small-wrench"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一步指示 "
+          },
+          {
+            "type": "text",
+            "text": "take the small wrench from the shelf",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，使用小扳手。"
+          }
+        ]
+      },
+      {
+        "id": "good-parts-box",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two details describe where good parts go?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "box-one",
+            "text": "In Box 1.",
+            "tts": {
+              "voice": "stella",
+              "text": "In Box one."
+            }
+          },
+          {
+            "id": "on-left",
+            "text": "On the left.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "on-right",
+            "text": "On the right.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "box-one",
+            "on-left"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第三步要求把良品放进左边的 1 号盒（"
+          },
+          {
+            "type": "text",
+            "text": "Box 1 on the left",
+            "tts": {
+              "voice": "stella",
+              "text": "Box one on the left"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "camera-step-order",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Workers place the bracket under the camera before tightening the nuts.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一步先拧紧螺母（"
+          },
+          {
+            "type": "text",
+            "text": "First, tighten the two nuts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），第二步才放到相机下方检测（"
+          },
+          {
+            "type": "text",
+            "text": "Second, place the finished bracket under the camera",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "读多步指令卡时要对齐序数词（"
+      },
+      {
+        "type": "text",
+        "text": "First",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Second",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与对应的工具、传感器位置和左右料盒编号。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-listening-1",
+    "type": "listening",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "听组长与操作员在工位现场的多步指令对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "David, first pick up the silver bolt on the tray and tighten it with the wrench.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Got it. Where do I put it after that?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Put it in the green box on the right, then turn off the light and say done.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Done! It is in the green box now.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "bolt-color",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which bolt does David pick up?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "silver",
+            "text": "The silver bolt on the tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "red",
+            "text": "The red bolt in the box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "blue",
+            "text": "The blue bolt under the camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "silver"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "组长要求先拿起托盘上的银色螺栓（"
+          },
+          {
+            "type": "text",
+            "text": "the silver bolt on the tray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "box-side",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "David puts the bolt in the green box on the left.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "组长说的是放进右边的绿色盒子里（"
+          },
+          {
+            "type": "text",
+            "text": "in the green box on the right",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），不是左边。"
+          }
+        ]
+      },
+      {
+        "id": "closing-feedback",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What word does David say when he finishes?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "done",
+            "text": "Done.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wait",
+            "text": "Wait.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "sorry",
+            "text": "Sorry.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "done"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "大卫完成操作后回应 "
+          },
+          {
+            "type": "text",
+            "text": "Done!",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 完成工位闭环。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听现场复合指令时，同时抓准颜色修饰（"
+      },
+      {
+        "type": "text",
+        "text": "silver",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "green",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）、工具（"
+      },
+      {
+        "type": "text",
+        "text": "wrench",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）、方位（"
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与闭环应答（"
+      },
+      {
+        "type": "text",
+        "text": "Done",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-listening-2",
+    "type": "listening",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "听班前广播的工位清理与工具归位指令，再回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Attention, station two. Before nine, collect the spare wrenches from the gray cabinet. First, clean the table with a dry cloth. Second, tighten any loose screws with the screwdriver. Third, leave all finished parts on the blue tray on the left.",
+    "sub_questions": [
+      {
+        "id": "cloth-step",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is the first step in the announcement?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "clean-table",
+            "text": "Clean the table with a dry cloth.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tighten-screws",
+            "text": "Tighten any loose screws.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "leave-parts",
+            "text": "Leave finished parts on the blue tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "clean-table"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "广播中 "
+          },
+          {
+            "type": "text",
+            "text": "First",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 对应的是用干布清理工作台（"
+          },
+          {
+            "type": "text",
+            "text": "clean the table with a dry cloth",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "screws-tool",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Workers tighten loose screws with the wrench in step two.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二步说的是 "
+          },
+          {
+            "type": "text",
+            "text": "tighten any loose screws with the screwdriver",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（用螺丝刀），不是扳手。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "广播中同时出现 "
+      },
+      {
+        "type": "text",
+        "text": "spare wrenches",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "dry cloth",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "screwdriver",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，听音时注意把每个动作与对应工具精准配对。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "stem": "阅读复合操作指令，选择正确的工具介词与方位短语填空。",
+    "passage": "Tighten the nut {{1}} the wrench and put the part in the box {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Tighten the nut with the wrench and put the part in the box on the right."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "with",
+            "text": "with",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "on",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under",
+            "text": "under",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "with"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "表示“使用某种工具”应搭配介词 "
+          },
+          {
+            "type": "text",
+            "text": "with",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 "
+          },
+          {
+            "type": "text",
+            "text": "with the wrench",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "on-right",
+            "text": "on the right",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "in-left",
+            "text": "in the left",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at-right",
+            "text": "at the right",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "on-right"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "表示“在右边”的固定方位短语是 "
+          },
+          {
+            "type": "text",
+            "text": "on the right",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，不可用 `in` 或 `at`。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "工位复合指令中，“用某工具”固定使用介词 "
+      },
+      {
+        "type": "text",
+        "text": "with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，“在左边/在右边”固定使用 "
+      },
+      {
+        "type": "text",
+        "text": "on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " / "
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "workbench-instructions-v2-translation-1",
+    "type": "translation",
+    "chapter": "听懂工位指令",
+    "concepts": [
+      "workbench-instructions"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列双步工位指令翻译成英文。",
+    "source_text": "拿起零件并放进相机下方的托盘里。",
+    "reference_translation": "Pick up the part and put it on the tray under the camera.",
+    "reference_translation_tts": {
+      "voice": "tide"
+    },
+    "acceptable_alternates": [
+      "Take the part and place it on the tray under the camera."
+    ],
+    "key_terms": [
+      {
+        "term": "pick up",
+        "variants": [
+          "take"
+        ]
+      },
+      {
+        "term": "part"
+      },
+      {
+        "term": "tray"
+      },
+      {
+        "term": "under the camera"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接两个祈使动作："
+      },
+      {
+        "type": "text",
+        "text": "Pick up the part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "put it on the tray under the camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   }
 ]

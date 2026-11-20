@@ -1,0 +1,9 @@
+interface:
+  display_name: "课程包设计与课时对齐"
+  short_description: >-
+    按 golden-course-template 基准设计 v2 课程包、无环知识图谱与学习路径，按课时预算反推
+    讲义篇幅与多题型配额，并执行 audit-course-effort、audit-course-tts 与 course:check 质量门
+  default_prompt: >-
+    使用 $design-course-package 规划、审计或升级这门课程：先跑 audit-course-effort.mjs 与
+    course:check 评估各知识点课时密度与结构问题，按预算拆分公式补齐讲义小节、实操锚点及多题型配额，
+    再联动 $design-course-tts 清零语音警告并完成复验。

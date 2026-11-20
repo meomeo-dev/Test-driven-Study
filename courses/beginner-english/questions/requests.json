@@ -1364,5 +1364,2102 @@
         "text": " 或非原形变化。"
       }
     ]
+  },
+  {
+    "id": "imperatives-v2-listening-1",
+    "type": "listening",
+    "chapter": "祈使句指令",
+    "concepts": [
+      "imperatives"
+    ],
+    "stem": "听师傅与操作员在分拣工位的对话，再回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Stop the belt right now! Do not touch the servo arm.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Got it. Should I turn off the light too?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, turn off the workbench light and press the red button once.",
+        "tts": {
+          "voice": "tide"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "forbidden-action",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What does the master tell the worker not to touch?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "servo",
+            "text": "The servo arm.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tray",
+            "text": "The blue tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "button",
+            "text": "The red button.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "servo"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话中师傅明确说 "
+          },
+          {
+            "type": "text",
+            "text": "Do not touch the servo arm.",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，要求不要触碰舵机臂。"
+          }
+        ]
+      },
+      {
+        "id": "turn-off-light",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The worker should turn off the workbench light and press the red button.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "师傅最后回答 "
+          },
+          {
+            "type": "text",
+            "text": "turn off the workbench light and press the red button once",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，故该判断正确。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本题综合考查否定祈使句 "
+      },
+      {
+        "type": "text",
+        "text": "Do not touch...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与肯定祈使句 "
+      },
+      {
+        "type": "text",
+        "text": "turn off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "press",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 在紧急停机排查中的搭配使用。"
+      }
+    ]
+  },
+  {
+    "id": "imperatives-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "祈使句指令",
+    "concepts": [
+      "imperatives"
+    ],
+    "stem": "阅读桌面分拣站停机收尾提示牌，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "END OF SHIFT NOTICE",
+        "tts": {
+          "voice": "stella",
+          "text": "End of shift notice."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Check all trays and put empty boxes on the shelf.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Close the parts box and turn off the workbench light.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Do not leave tools on the conveyor belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "empty-boxes-place",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should workers put empty boxes?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "shelf",
+            "text": "On the shelf.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "belt",
+            "text": "On the conveyor belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "floor",
+            "text": "By the door.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "shelf"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "通知第一句要求 "
+          },
+          {
+            "type": "text",
+            "text": "put empty boxes on the shelf",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即把空箱放在架子上。"
+          }
+        ]
+      },
+      {
+        "id": "closing-tasks",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two actions are required before leaving?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "close-box",
+            "text": "Close the parts box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "turn-off-light",
+            "text": "Turn off the workbench light.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "leave-tools",
+            "text": "Leave tools on the conveyor belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "close-box",
+            "turn-off-light"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "提示牌要求关闭零件盒（"
+          },
+          {
+            "type": "text",
+            "text": "Close the parts box",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）并关闭工位灯（"
+          },
+          {
+            "type": "text",
+            "text": "turn off the workbench light",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），同时禁止把工具留在传送带上。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读工位告示时应逐句定位祈使动词：肯定句表示必须完成的收尾动作，"
+      },
+      {
+        "type": "text",
+        "text": "Do not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头的否定祈使句表示严禁事项。"
+      }
+    ]
+  },
+  {
+    "id": "imperatives-v2-translation-1",
+    "type": "translation",
+    "chapter": "祈使句指令",
+    "concepts": [
+      "imperatives"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位安全指令翻译成英文。",
+    "source_text": "不要触碰传送带，先按下红色按钮。",
+    "reference_translation": "Do not touch the belt and press the red button first.",
+    "reference_translation_tts": {
+      "voice": "tide"
+    },
+    "acceptable_alternates": [
+      "Don't touch the belt, press the red button first.",
+      "Don't touch the conveyor belt and press the red button first."
+    ],
+    "key_terms": [
+      {
+        "term": "touch"
+      },
+      {
+        "term": "belt",
+        "variants": [
+          "conveyor belt"
+        ]
+      },
+      {
+        "term": "red button"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "禁止指令用 "
+      },
+      {
+        "type": "text",
+        "text": "Do not touch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "Don't touch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；肯定指令用动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "press",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头，"
+      },
+      {
+        "type": "text",
+        "text": "first",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 放在句末表示“先”。"
+      }
+    ]
+  },
+  {
+    "id": "imperatives-v2-writing-1",
+    "type": "writing",
+    "chapter": "祈使句指令",
+    "concepts": [
+      "imperatives"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "turn off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "close",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一条英文收尾指令，要求关掉指示灯并合上托盘箱。"
+      }
+    ],
+    "requirements": [
+      "使用肯定祈使句结构（动词原形开头）。",
+      "正确搭配 turn off 与 close，不可互换。"
+    ],
+    "keywords": [
+      "turn off",
+      "close",
+      "light",
+      "box"
+    ],
+    "min_words": 6,
+    "max_words": 18,
+    "sample_response": "Turn off the light and close the parts box.",
+    "sample_response_tts": {
+      "voice": "tide"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "照明灯具用 "
+      },
+      {
+        "type": "text",
+        "text": "turn off the light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，物理箱盖用 "
+      },
+      {
+        "type": "text",
+        "text": "close the parts box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，两者通过 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 并列构成规范的双动祈使句。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-listening-1",
+    "type": "listening",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "stem": "听开班前质检组长与操作员的确认对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Good morning, Lin. Are you ready for the morning check?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Yes, I am. I put on my gloves five minutes ago.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "speaker": "M",
+        "text": "Great. Does the camera work well today?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "No, it doesn't. The cable is loose, but the spare tray is ready.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "worker-ready",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How does Lin answer the first question?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "yes-am",
+            "text": "Yes, I am.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "yes-do",
+            "text": "Yes, I do.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-not",
+            "text": "No, I'm not.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "yes-am"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "面对 "
+          },
+          {
+            "type": "text",
+            "text": "Are you ready?",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的提问，操作员肯定回答了 "
+          },
+          {
+            "type": "text",
+            "text": "Yes, I am.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "camera-status",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The camera works well today.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声回答 "
+          },
+          {
+            "type": "text",
+            "text": "No, it doesn't. The cable is loose.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，说明相机今天工作不正常。"
+          }
+        ]
+      },
+      {
+        "id": "spare-tray",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Is the spare tray ready?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "yes-it-is",
+            "text": "Yes, it is.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-it-isnt",
+            "text": "No, it isn't.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-it-doesnt",
+            "text": "No, it doesn't.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "yes-it-is"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话最后说明 "
+          },
+          {
+            "type": "text",
+            "text": "the spare tray is ready",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，对应 "
+          },
+          {
+            "type": "text",
+            "text": "Is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 问句的肯定回答为 "
+          },
+          {
+            "type": "text",
+            "text": "Yes, it is.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听对话时需分别锁定 "
+      },
+      {
+        "type": "text",
+        "text": "Are you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "Does the camera",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 两组问答，注意 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词与助动词简短回答的呼应关系。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "stem": "阅读工位交接核查卡片，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SHIFT CHECKLIST",
+        "tts": {
+          "voice": "stella",
+          "text": "Shift checklist."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Ask two questions before every shift.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "First, ask your partner: Are the parts clean and dry?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Second, check the tester and ask: Does it work properly?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "If the answer is no, call the team leader right away.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "parts-answer",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "If the parts are clean and dry, what is the right short answer?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "they-are",
+            "text": "Yes, they are.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "it-is",
+            "text": "Yes, it is.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "they-do",
+            "text": "Yes, they do.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "they-are"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "问句主语是复数 "
+          },
+          {
+            "type": "text",
+            "text": "the parts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，动词是 "
+          },
+          {
+            "type": "text",
+            "text": "Are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，因此肯定回答用 "
+          },
+          {
+            "type": "text",
+            "text": "Yes, they are.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "call-leader",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Workers should call the team leader if the tester does not work.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "卡片最后一句明确写出 "
+          },
+          {
+            "type": "text",
+            "text": "If the answer is no, call the team leader right away.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "check-items",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two things must workers check before every shift?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "parts",
+            "text": "Whether the parts are clean and dry.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tester",
+            "text": "Whether the tester works properly.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "locker",
+            "text": "Whether the locker room is open.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "parts",
+            "tester"
+          ]
+        },
+        "analysis": "交接卡片只列出了确认工件干净干燥以及测试仪运转正常两项检查，未提及更衣室。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本题把交接卡片中的复数主语一般疑问句 "
+      },
+      {
+        "type": "text",
+        "text": "Are the parts...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与单数设备助动词疑问句 "
+      },
+      {
+        "type": "text",
+        "text": "Does it work...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 结合考查，注意人称单复数与助词一致。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "stem": "阅读工位设备点检问答，根据语法搭配选择正确的词填空。",
+    "passage": "{{1}} the scanner work now? No, it {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Does the scanner work now? No, it doesn't."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "does",
+            "text": "Does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is",
+            "text": "Is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "do",
+            "text": "Do",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "does"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "句中含有实义动词原形 "
+          },
+          {
+            "type": "text",
+            "text": "work",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，主语 "
+          },
+          {
+            "type": "text",
+            "text": "the scanner",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为单数第三人称，句首需用助动词 "
+          },
+          {
+            "type": "text",
+            "text": "Does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "doesnt",
+            "text": "doesn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "isnt",
+            "text": "isn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dont",
+            "text": "don't",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "doesnt"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "由 "
+          },
+          {
+            "type": "text",
+            "text": "Does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 引导的问句，否定简短回答必须呼应使用 "
+          },
+          {
+            "type": "text",
+            "text": "doesn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "一般疑问句中有实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时不可再用 "
+      },
+      {
+        "type": "text",
+        "text": "Is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问，必须使用单数助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问并用 "
+      },
+      {
+        "type": "text",
+        "text": "doesn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 作否定简答。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-translation-1",
+    "type": "translation",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列班前核对对话译成中文。",
+    "source_text": "Do you have a wrench? No, I don't.",
+    "source_text_tts": {
+      "voice": "tide"
+    },
+    "reference_translation": "你有扳手吗？不，我没有。",
+    "acceptable_alternates": [
+      "你有扳手吗？没有，我没有。"
+    ],
+    "key_terms": [
+      {
+        "term": "扳手"
+      },
+      {
+        "term": "没有"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Do you have...?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问对方是否拥有某物；"
+      },
+      {
+        "type": "text",
+        "text": "No, I don't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“没有”。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-translation-2",
+    "type": "translation",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位问答翻译成英文。",
+    "source_text": "绿色指示灯亮着吗？是的，它亮着。",
+    "reference_translation": "Is the green light on? Yes, it is.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Is the green indicator light on? Yes, it is."
+    ],
+    "key_terms": [
+      {
+        "term": "green light"
+      },
+      {
+        "term": "is on",
+        "variants": [
+          "on"
+        ]
+      },
+      {
+        "term": "Yes, it is"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表示灯处于亮着的状态用 "
+      },
+      {
+        "type": "text",
+        "text": "be on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，主语 "
+      },
+      {
+        "type": "text",
+        "text": "the green light",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是单数，所以用 "
+      },
+      {
+        "type": "text",
+        "text": "Is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 提问并用 "
+      },
+      {
+        "type": "text",
+        "text": "Yes, it is.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 回答。"
+      }
+    ]
+  },
+  {
+    "id": "yes-no-questions-v2-writing-1",
+    "type": "writing",
+    "chapter": "一般疑问句",
+    "concepts": [
+      "yes-no-questions"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句问设备是否正常运转的英文问句，并紧接着写出它的否定简短回答。"
+      }
+    ],
+    "requirements": [
+      "必须使用 Does + 单数设备 + 动词原形构成问句。",
+      "附带对应的否定简短回答（No, it doesn't.）。"
+    ],
+    "keywords": [
+      "Does",
+      "work",
+      "No",
+      "doesn't"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "Does the sensor work? No, it doesn't.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "句首用助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后，实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 必须保持原形，否定简答使用 "
+      },
+      {
+        "type": "text",
+        "text": "No, it doesn't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "polite-requests-v2-listening-1",
+    "type": "listening",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "stem": "听班长发出的工位协作广播，再回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Hi team, please help check the red trays near door two. Could you move the full trays to table four before ten? If you are busy now, just say sorry, I cannot, and finish your current batch first.",
+    "sub_questions": [
+      {
+        "id": "target-table",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should workers move the full trays?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "table-four",
+            "text": "To table four.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "door-two",
+            "text": "To door two.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "table-two",
+            "text": "To table two.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "table-four"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "广播中的请求是 "
+          },
+          {
+            "type": "text",
+            "text": "Could you move the full trays to table four before ten?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，目标位置是四号桌。"
+          }
+        ]
+      },
+      {
+        "id": "busy-reply",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Busy workers should stop their current batch immediately.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "广播说明忙的同事可以先礼貌婉拒并 "
+          },
+          {
+            "type": "text",
+            "text": "finish your current batch first",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，不必立刻停下当前批次。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段广播包含了 "
+      },
+      {
+        "type": "text",
+        "text": "please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "Could you...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 礼貌请求及条件应答提示，听音时注意区分起始位置与目标桌子编号。"
+      }
+    ]
+  },
+  {
+    "id": "polite-requests-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "stem": "阅读工位交接便条，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKBENCH NOTE",
+        "tts": {
+          "voice": "stella",
+          "text": "Workbench note."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Could you please test the ten blue parts on tray two?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Please put any bad parts in the red box.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "If you need help, ask Ben at station three.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "parts-to-test",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which parts does the note ask you to test?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "blue-tray-two",
+            "text": "The ten blue parts on tray two.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "red-box",
+            "text": "The bad parts in the red box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "station-three",
+            "text": "The tools at station three.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "blue-tray-two"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句请求 "
+          },
+          {
+            "type": "text",
+            "text": "test the ten blue parts on tray two",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即二号托盘上的十个蓝色零件。"
+          }
+        ]
+      },
+      {
+        "id": "polite-instructions",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What should you do according to the note?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "put-bad",
+            "text": "Put any bad parts in the red box.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "ask-ben",
+            "text": "Ask Ben at station three if you need help.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "leave-desk",
+            "text": "Leave the parts on the floor.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "put-bad",
+            "ask-ben"
+          ]
+        },
+        "analysis": "便条明确要求把不良品放进红盒子，有需要时到三号工位找本帮忙。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "交接便条使用了 "
+      },
+      {
+        "type": "text",
+        "text": "Could you please...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "Please...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 两种礼貌请求形式来交办测试与分拣任务。"
+      }
+    ]
+  },
+  {
+    "id": "polite-requests-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "stem": "阅读同事间借用工具的对话，根据礼貌请求句型选词填空。",
+    "passage": "{{1}} you please {{2}} me the screwdriver? Sure, here you are.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Could you please pass me the screwdriver? Sure, here you are."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "could",
+            "text": "Could",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are",
+            "text": "Are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "does",
+            "text": "Does",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "could"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "向同事礼貌求助常用情态动词 "
+          },
+          {
+            "type": "text",
+            "text": "Could",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 构成 "
+          },
+          {
+            "type": "text",
+            "text": "Could you please...",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 句型。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "pass",
+            "text": "pass",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "passing",
+            "text": "passing",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "passes",
+            "text": "passes",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "pass"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "情态动词 "
+          },
+          {
+            "type": "text",
+            "text": "Could",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 后面必须接动词原形 "
+          },
+          {
+            "type": "text",
+            "text": "pass",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "记住礼貌请求固定框架 "
+      },
+      {
+        "type": "text",
+        "text": "Could you please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 加动词原形，不可误用现在分词或第三人称单数。"
+      }
+    ]
+  },
+  {
+    "id": "polite-requests-v2-translation-1",
+    "type": "translation",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位礼貌求助与应答翻译成英文。",
+    "source_text": "请问你能帮我检查这只料盒吗？当然可以。",
+    "reference_translation": "Can you help me check this box, please? Sure.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Could you please help me check this box? Sure.",
+      "Can you please help me check this box? OK."
+    ],
+    "key_terms": [
+      {
+        "term": "help me"
+      },
+      {
+        "term": "check"
+      },
+      {
+        "term": "please"
+      },
+      {
+        "term": "Sure"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Can you ... please?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "Could you please ...?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均可用于提出礼貌请求，答应时用 "
+      },
+      {
+        "type": "text",
+        "text": "Sure.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 简洁自然。"
+      }
+    ]
+  },
+  {
+    "id": "polite-requests-v2-writing-1",
+    "type": "writing",
+    "chapter": "礼貌请求",
+    "concepts": [
+      "polite-requests"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Could you please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文礼貌请求，请同事把托盘放到蓝色工作台上。"
+      }
+    ],
+    "requirements": [
+      "使用 Could you please + 动词原形结构。",
+      "明确提到托盘（tray）和蓝色工作台（blue table/workbench）。"
+    ],
+    "keywords": [
+      "Could",
+      "please",
+      "tray",
+      "blue"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "Could you please put the tray on the blue table?",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "以 "
+      },
+      {
+        "type": "text",
+        "text": "Could you please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开头，后接动词原形 "
+      },
+      {
+        "type": "text",
+        "text": "put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，并用 "
+      },
+      {
+        "type": "text",
+        "text": "on the blue table",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指明放置位置。"
+      }
+    ]
   }
 ]

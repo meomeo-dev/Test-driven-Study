@@ -1957,5 +1957,2673 @@
         "text": "。"
       }
     ]
+  },
+  {
+    "id": "greetings-v2-listening-1",
+    "type": "listening",
+    "chapter": "问候与告别",
+    "concepts": [
+      "greetings"
+    ],
+    "stem": "听车间早班交接时的对话，再回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Good morning, Lina. How are you today?"
+      },
+      {
+        "speaker": "W",
+        "text": "Good morning, Mark. I'm fine, thank you. Nice to meet our new teammate, Tom."
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, welcome to the sorting station. See you at lunch break."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "reply",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How does Lina answer Mark's greeting?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "fine",
+            "text": "I'm fine, thank you.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "afternoon",
+            "text": "Good afternoon.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "goodbye",
+            "text": "Goodbye, see you.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "fine"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声用 "
+          },
+          {
+            "type": "text",
+            "text": "How are you today?",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 询问近况，女声先回早安再说 "
+          },
+          {
+            "type": "text",
+            "text": "I'm fine, thank you.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "time-of-day",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The conversation takes place in the afternoon.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "双方互相问候 "
+          },
+          {
+            "type": "text",
+            "text": "Good morning",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 并提到午休再见，说明对话发生在上午而非下午。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话覆盖早班问候 "
+      },
+      {
+        "type": "text",
+        "text": "Good morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、询问近况 "
+      },
+      {
+        "type": "text",
+        "text": "How are you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 及礼貌回应，听音时注意抓住问候时段与应答句式。"
+      }
+    ]
+  },
+  {
+    "id": "greetings-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "问候与告别",
+    "concepts": [
+      "greetings"
+    ],
+    "stem": "阅读车间迎新接待提示，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SHIFT GREETING GUIDE",
+        "tts": {
+          "voice": "stella",
+          "text": "Shift greeting guide."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Say Good morning before twelve noon and Good afternoon after lunch.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "When you meet a new visitor, smile and say Nice to meet you.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Before leaving the bench, say Goodbye or See you tomorrow to your partner.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "new-visitor",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What should workers say when meeting a new visitor?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "nice",
+            "text": "Nice to meet you.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "bye",
+            "text": "See you tomorrow.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "night",
+            "text": "Good night.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "nice"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句明确要求见到新访客时说 "
+          },
+          {
+            "type": "text",
+            "text": "Nice to meet you.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "leaving-phrases",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two expressions are used before leaving the bench?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "goodbye",
+            "text": "Goodbye.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "see-you",
+            "text": "See you tomorrow.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "morning",
+            "text": "Good morning.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "goodbye",
+            "see-you"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "提示最后一句列出了离开工位时的告别表达 "
+          },
+          {
+            "type": "text",
+            "text": "Goodbye",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 和 "
+          },
+          {
+            "type": "text",
+            "text": "See you tomorrow.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": "阅读时对照三个时间与场景节点：上午与午后的时段问候、初次接待访客的寒暄以及离岗前的道别表达。"
+  },
+  {
+    "id": "greetings-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "问候与告别",
+    "concepts": [
+      "greetings"
+    ],
+    "stem": "补全工位交接与初次相识的问候对话。",
+    "passage": "Good afternoon, Anna. {{1}} are you? I'm fine, thank you. Nice to {{2}} you.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Good afternoon, Anna. How are you? I'm fine, thank you. Nice to meet you."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "how",
+            "text": "How",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "who",
+            "text": "Who",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "what",
+            "text": "What",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "how"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "询问近况固定用 "
+          },
+          {
+            "type": "text",
+            "text": "How are you?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "meet",
+            "text": "meet",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "see-verb",
+            "text": "look",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fine",
+            "text": "fine",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "meet"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "初次见面寒暄固定搭配 "
+          },
+          {
+            "type": "text",
+            "text": "Nice to meet you.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "两空分别考查询问近况的固定句型 "
+      },
+      {
+        "type": "text",
+        "text": "How are you?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与初次见面问候语 "
+      },
+      {
+        "type": "text",
+        "text": "Nice to meet you.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "greetings-v2-writing-1",
+    "type": "writing",
+    "chapter": "问候与告别",
+    "concepts": [
+      "greetings"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Good afternoon",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "How are you",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句下午接班时向班长问候的英文表达。"
+      }
+    ],
+    "requirements": [
+      "包含下午问候语 Good afternoon。",
+      "礼貌询问对方近况 How are you?"
+    ],
+    "keywords": [
+      "Good afternoon",
+      "How are you"
+    ],
+    "min_words": 6,
+    "max_words": 18,
+    "sample_response": "Good afternoon, team lead. How are you today?",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "先用 "
+      },
+      {
+        "type": "text",
+        "text": "Good afternoon",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 问候午间时段，再用 "
+      },
+      {
+        "type": "text",
+        "text": "How are you today?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 礼貌询问近况，注意问号与首字母大写。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-listening-1",
+    "type": "listening",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "stem": "听分拣工位开班设备核对对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Good morning, David. Are you ready for the line check?"
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, I'm ready. The main sensor is green, so it's working fine."
+      },
+      {
+        "speaker": "W",
+        "text": "What about the two blue trays? Are they clean?"
+      },
+      {
+        "speaker": "M",
+        "text": "No, they aren't. They are on the back shelf for washing."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "sensor-status",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is the status of the main sensor?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "working",
+            "text": "It is green and working fine.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "broken",
+            "text": "It isn't working today.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "washing",
+            "text": "It is on the back shelf for washing.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "working"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声明确汇报 "
+          },
+          {
+            "type": "text",
+            "text": "The main sensor is green, so it's working fine.",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "trays-clean",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The two blue trays are clean and ready.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "针对蓝色托盘是否干净，男声回答 "
+          },
+          {
+            "type": "text",
+            "text": "No, they aren't.",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，它们还放在后架上等待清洗。"
+          }
+        ]
+      },
+      {
+        "id": "true-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two facts are true according to the dialogue?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "david-ready",
+            "text": "David is ready for the check.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "trays-shelf",
+            "text": "The blue trays are on the back shelf.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "trays-ready",
+            "text": "The blue trays are clean now.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "david-ready",
+            "trays-shelf"
+          ]
+        },
+        "analysis": "大卫确认自己已准备好，蓝色托盘在后架上等待清洗、目前并不干净。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话分别使用了第一人称 "
+      },
+      {
+        "type": "text",
+        "text": "I'm",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、单数设备 "
+      },
+      {
+        "type": "text",
+        "text": "it's",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与复数物品 "
+      },
+      {
+        "type": "text",
+        "text": "they aren't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，听音时注意区分单复数状态。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "stem": "阅读工位交接状态表，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "STATION STATUS LOG",
+        "tts": {
+          "voice": "stella",
+          "text": "Station status log."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Lina and Sam are on duty at Station Two today.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The optical camera is calibrated and ready for testing.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "However, the old barcode printer isn't working, and three spare belts are still in the storage room.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "camera",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which device is ready for testing?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "cam",
+            "text": "The optical camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "printer",
+            "text": "The old barcode printer.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "belts",
+            "text": "The spare belts.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "cam"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "原文明确说明 "
+          },
+          {
+            "type": "text",
+            "text": "The optical camera is calibrated and ready for testing.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "printer-working",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The old barcode printer is working properly.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "日志写道 "
+          },
+          {
+            "type": "text",
+            "text": "the old barcode printer isn't working",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示条码打印机故障未工作。"
+          }
+        ]
+      },
+      {
+        "id": "belt-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many spare belts are in the storage room?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "3",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句提到 "
+          },
+          {
+            "type": "text",
+            "text": "three spare belts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，数量为 3。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "日志分别用 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接复数人员与零件、用 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "isn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 描述单台摄像头与打印机的正常和故障状态。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "stem": "根据工位人员与工具单复数，补全交接说明。",
+    "passage": "My partner and I {{1}} at the inspection bench. The red scanner {{2}} broken, so we use the blue one.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "My partner and I are at the inspection bench. The red scanner isn't broken, so we use the blue one."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "am",
+            "text": "am",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "are"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "My partner and I",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示两个人，相当于 "
+          },
+          {
+            "type": "text",
+            "text": "we",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，须用 "
+          },
+          {
+            "type": "text",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "isnt",
+            "text": "isn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "arent",
+            "text": "aren't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "am-not",
+            "text": "am not",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "isnt"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "The red scanner",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为单数设备名词，否定缩写为 "
+          },
+          {
+            "type": "text",
+            "text": "isn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空考查并列复数主语用 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第二空考查单数设备名词否定用 "
+      },
+      {
+        "type": "text",
+        "text": "isn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-translation-1",
+    "type": "translation",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列设备检查汇报译成中文。",
+    "source_text": "The new sensors are ready, but the blue tray isn't clean yet.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "新传感器准备好了，但蓝色托盘还没干净。",
+    "acceptable_alternates": [
+      "新传感器已就绪，不过蓝色托盘还没有清洗干净。"
+    ],
+    "key_terms": [
+      {
+        "term": "传感器"
+      },
+      {
+        "term": "准备好",
+        "variants": [
+          "就绪"
+        ]
+      },
+      {
+        "term": "托盘"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "sensors",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是复数配 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，"
+      },
+      {
+        "type": "text",
+        "text": "tray",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是单数配 "
+      },
+      {
+        "type": "text",
+        "text": "isn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-translation-2",
+    "type": "translation",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位状态说明翻译成英文。",
+    "source_text": "今天我在质检工位值班，这台扫码枪没有坏。",
+    "reference_translation": "I am on duty at the inspection station today, and this scanner isn't broken.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "I'm on duty at the inspection station today, and this scanner is not broken."
+    ],
+    "key_terms": [
+      {
+        "term": "on duty"
+      },
+      {
+        "term": "inspection station"
+      },
+      {
+        "term": "isn't broken",
+        "variants": [
+          "is not broken"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语“我”搭配 "
+      },
+      {
+        "type": "text",
+        "text": "am",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，“这台扫码枪”为单数用 "
+      },
+      {
+        "type": "text",
+        "text": "isn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "be-verb-v2-writing-1",
+    "type": "writing",
+    "chapter": "be 动词 am / is / are",
+    "concepts": [
+      "be-verb"
+    ],
+    "subtype": "short_essay",
+    "stem": "给接班同事写一条简短的英文交班留言，说明你今天在岗、哪台设备正常、哪些零件或托盘还没准备好。",
+    "requirements": [
+      "用 I'm 或 I am 说明自己的值班状态。",
+      "至少使用一次单数 is / isn't 描述一台设备状态。",
+      "至少使用一次复数 are / aren't 描述工具或零件状态。",
+      "包含称呼与落款。"
+    ],
+    "keywords": [
+      "I'm",
+      "is",
+      "are",
+      "aren't"
+    ],
+    "min_words": 35,
+    "max_words": 55,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Tom,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "I'm on duty at Station One this morning. The main scanner is ready and working fine. However, the green trays aren't clean yet, and two spare sensors are still in the back box. Please check them before starting.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nLina",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Lina"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "留言依次用 "
+      },
+      {
+        "type": "text",
+        "text": "I'm",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "is ready",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "aren't clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 清晰交代了人、机、料三方面状态。"
+      }
+    ]
+  },
+  {
+    "id": "spelling-v2-listening-1",
+    "type": "listening",
+    "chapter": "字母与拼读",
+    "concepts": [
+      "spelling"
+    ],
+    "stem": "听门岗登记姓名拼写的对话，再回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Good morning. What is your name, please?"
+      },
+      {
+        "speaker": "M",
+        "text": "My name is Ben Zhou."
+      },
+      {
+        "speaker": "W",
+        "text": "How do you spell your first name? Is it V or B?"
+      },
+      {
+        "speaker": "M",
+        "text": "It is B, E, N, Ben. And my last name is Z, H, O, U."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "first-name-spelling",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How does the man spell his first name?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "ben",
+            "text": "B-E-N",
+            "tts": {
+              "voice": "stella",
+              "text": "B, E, N."
+            }
+          },
+          {
+            "id": "ven",
+            "text": "V-E-N",
+            "tts": {
+              "voice": "stella",
+              "text": "V, E, N."
+            }
+          },
+          {
+            "id": "ban",
+            "text": "B-A-N",
+            "tts": {
+              "voice": "stella",
+              "text": "B, A, N."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "ben"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声逐字母拼出 "
+          },
+          {
+            "type": "text",
+            "text": "B, E, N",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，强调首字母是 B 而不是 V。"
+          }
+        ]
+      },
+      {
+        "id": "last-name-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The man's last name starts with the letter S.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声拼出的姓氏是 "
+          },
+          {
+            "type": "text",
+            "text": "Z, H, O, U",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，以字母 Z 开头，而非 S。"
+          }
+        ]
+      }
+    ],
+    "analysis": "本段对话聚焦门岗登记时的易混字母辨音（B 与 V）及姓氏逐字拼读。"
+  },
+  {
+    "id": "spelling-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "字母与拼读",
+    "concepts": [
+      "spelling"
+    ],
+    "stem": "阅读新员工工牌制作规范，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "BADGE SPELLING RULES",
+        "tts": {
+          "voice": "stella",
+          "text": "Badge spelling rules."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Every worker must write their full name clearly on the registration sheet.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Start both the first name and the last name with a capital letter, like Anna Chen.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "If the clerk asks How do you spell your name, read each letter slowly and pause between letters.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "capital-rule",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which parts of a worker's full name must start with a capital letter?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "both-names",
+            "text": "Both the first name and the last name.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "first-only",
+            "text": "Only the first name.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "last-only",
+            "text": "Only the last name.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "both-names"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "规范要求名和姓的第一个字母都要大写，例如 "
+          },
+          {
+            "type": "text",
+            "text": "Anna Chen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "oral-rules",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What should workers do when spelling their name aloud?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "slowly",
+            "text": "Read each letter slowly.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "pause",
+            "text": "Pause between letters.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "skip",
+            "text": "Skip the last name.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "slowly",
+            "pause"
+          ]
+        },
+        "analysis": "规范最后一句要求放慢速度逐个念出字母，并在字母之间停顿。"
+      }
+    ],
+    "analysis": "工牌登记规范包含两条核心要求：书面书写名与姓均须首字母大写，口头拼读须放慢语速并适当停顿。"
+  },
+  {
+    "id": "spelling-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "字母与拼读",
+    "concepts": [
+      "spelling"
+    ],
+    "stem": "根据英文人名专有名词大写规范，选出填写工单的正确拼写。",
+    "passage": "Operator: {{1}} {{2}}, Station Three",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Operator: Lina Wang, Station Three."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "lina-ok",
+            "text": "Lina"
+          },
+          {
+            "id": "lina-low",
+            "text": "lina"
+          },
+          {
+            "id": "lina-mix",
+            "text": "lIna"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "lina-ok"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "名字首字母必须大写，其余字母小写，写作 "
+          },
+          {
+            "type": "text",
+            "text": "Lina",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "wang-ok",
+            "text": "Wang"
+          },
+          {
+            "id": "wang-low",
+            "text": "wang"
+          },
+          {
+            "id": "wang-mix",
+            "text": "waNg"
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "wang-ok"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "姓氏同样属于专有名词，首字母大写，写作 "
+          },
+          {
+            "type": "text",
+            "text": "Wang",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "人名与姓氏每个单词的首字母都必须大写，规范写法为 "
+      },
+      {
+        "type": "text",
+        "text": "Lina Wang",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "spelling-v2-translation-1",
+    "type": "translation",
+    "chapter": "字母与拼读",
+    "concepts": [
+      "spelling"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工牌登记问句翻译成英文。",
+    "source_text": "请问你的姓氏怎么拼写？",
+    "reference_translation": "How do you spell your last name, please?",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "How do you spell your last name?",
+      "Please tell me how to spell your last name."
+    ],
+    "key_terms": [
+      {
+        "term": "How do you spell"
+      },
+      {
+        "term": "last name",
+        "variants": [
+          "family name",
+          "surname"
+        ]
+      },
+      {
+        "term": "please"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问拼写固定用 "
+      },
+      {
+        "type": "text",
+        "text": "How do you spell",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，“姓氏”用 "
+      },
+      {
+        "type": "text",
+        "text": "last name",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "spelling-v2-writing-1",
+    "type": "writing",
+    "chapter": "字母与拼读",
+    "concepts": [
+      "spelling"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "My name is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和大写的字母拼写形式，写一句向门岗人员拼读自己英文名的回复。"
+      }
+    ],
+    "requirements": [
+      "用 My name is 报出名字（首字母大写）。",
+      "用连字符逐字母写出拼读（如 L-I-N-A）。"
+    ],
+    "keywords": [
+      "My name is"
+    ],
+    "min_words": 6,
+    "max_words": 16,
+    "sample_response": "My name is Lina, L-I-N-A.",
+    "sample_response_tts": {
+      "voice": "stella",
+      "text": "My name is Lina, L, I, N, A."
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "先说整词姓名 "
+      },
+      {
+        "type": "text",
+        "text": "Lina",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（首字母大写），随后逐个字母拼读。"
+      }
+    ]
+  },
+  {
+    "id": "self-introduction-v2-listening-1",
+    "type": "listening",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "stem": "听新同事的一段工位自我介绍播报，再回答三个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Hello, everyone. My name is Anna Li. I am from Guizhou, and I live in Kunming now. I work at the sorting station in the Quality Department. I am learning English every evening. Nice to meet you all!",
+    "sub_questions": [
+      {
+        "id": "city",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where does Anna live now?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "kunming",
+            "text": "In Kunming.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "guizhou",
+            "text": "In Guizhou.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "yunnan-station",
+            "text": "At the assembly line.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "kunming"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声说 "
+          },
+          {
+            "type": "text",
+            "text": "I am from Guizhou, and I live in Kunming now.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，注意区分来自贵州与现居昆明。"
+          }
+        ]
+      },
+      {
+        "id": "learning-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Anna is learning English every evening.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音提到 "
+          },
+          {
+            "type": "text",
+            "text": "I am learning English every evening.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，判断正确。"
+          }
+        ]
+      },
+      {
+        "id": "work-details",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two facts describe Anna's job?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "sorting",
+            "text": "She works at the sorting station.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "quality",
+            "text": "She is in the Quality Department.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "maint",
+            "text": "She is in the Maintenance Department.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "sorting",
+            "quality"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "原文说明她在质检部（"
+          },
+          {
+            "type": "text",
+            "text": "Quality Department",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）的分拣工位（"
+          },
+          {
+            "type": "text",
+            "text": "sorting station",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）工作。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听自我介绍短文时注意区分来源地（"
+      },
+      {
+        "type": "text",
+        "text": "from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）、居住地（"
+      },
+      {
+        "type": "text",
+        "text": "live in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与工作地点和部门（"
+      },
+      {
+        "type": "text",
+        "text": "work at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "self-introduction-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "stem": "阅读车间迎新栏的新员工简介，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "NEW TEAMMATE PROFILE",
+        "tts": {
+          "voice": "stella",
+          "text": "New teammate profile."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Hello! My name is Chen Lei.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "I am from Hunan, and I live in Dongguan.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "I work at the testing desk in Workshop B, and I am learning English with my team.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "hometown",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where is Chen Lei from?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "hunan",
+            "text": "Hunan.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dongguan",
+            "text": "Dongguan.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "yunnan",
+            "text": "Yunnan.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "hunan"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "简介写道 "
+          },
+          {
+            "type": "text",
+            "text": "I am from Hunan",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，而东莞是他现在的居住城市。"
+          }
+        ]
+      },
+      {
+        "id": "workshop-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Chen Lei works at the testing desk in Workshop A.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": "简介说明他在 B 车间（Workshop B）的测试台工作，不是 A 车间。"
+      },
+      {
+        "id": "correct-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements are true about Chen Lei?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "live-dg",
+            "text": "He lives in Dongguan.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "learn-en",
+            "text": "He is learning English with his team.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "from-dg",
+            "text": "He is from Dongguan.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "live-dg",
+            "learn-en"
+          ]
+        },
+        "analysis": "陈磊现在住在东莞，并且正与班组一起学习英语。"
+      }
+    ],
+    "analysis": "短文以第一人称串起姓名、家乡、现居地、工位和英语学习五个核心介绍维度。"
+  },
+  {
+    "id": "self-introduction-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "stem": "选择正确的介词补全工位自我介绍短句。",
+    "passage": "Hello, I live {{1}} Kunming and I work {{2}} the sorting station.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Hello, I live in Kunming and I work at the sorting station."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "in",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "from",
+            "text": "from",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "in"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "居住在某座城市固定用 "
+          },
+          {
+            "type": "text",
+            "text": "live in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "at2",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "on2",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under2",
+            "text": "under",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "at2"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "在具体工位或站点工作常用 "
+          },
+          {
+            "type": "text",
+            "text": "work at",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "城市前用 "
+      },
+      {
+        "type": "text",
+        "text": "live in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，具体站点或工厂前用 "
+      },
+      {
+        "type": "text",
+        "text": "work at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "self-introduction-v2-translation-1",
+    "type": "translation",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列自我介绍句译成中文。",
+    "source_text": "My name is Wang Wei, and I work at the sorting station.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "我的名字是王伟，我在分拣工位工作。",
+    "acceptable_alternates": [
+      "我叫王伟，在分拣工位工作。"
+    ],
+    "key_terms": [
+      {
+        "term": "王伟"
+      },
+      {
+        "term": "分拣工位"
+      },
+      {
+        "term": "工作"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "My name is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 介绍姓名，"
+      },
+      {
+        "type": "text",
+        "text": "work at the sorting station",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示在分拣工位工作。"
+      }
+    ]
+  },
+  {
+    "id": "self-introduction-v2-translation-2",
+    "type": "translation",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列自我介绍句子翻译成英文。",
+    "source_text": "我来自云南，住在昆明，现在我正在学英语。",
+    "reference_translation": "I am from Yunnan, I live in Kunming, and I am learning English now.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "I'm from Yunnan, I live in Kunming, and I'm learning English now."
+    ],
+    "key_terms": [
+      {
+        "term": "from Yunnan"
+      },
+      {
+        "term": "live in Kunming"
+      },
+      {
+        "term": "learning English"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "依次使用 "
+      },
+      {
+        "type": "text",
+        "text": "be from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "live in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "am learning English",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，注意别漏掉介词与 "
+      },
+      {
+        "type": "text",
+        "text": "am",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "self-introduction-v2-writing-1",
+    "type": "writing",
+    "chapter": "自我介绍句型",
+    "concepts": [
+      "self-introduction"
+    ],
+    "subtype": "short_essay",
+    "stem": "给新班组同事写一封简短的英文自我介绍便条，说明你的名字、家乡、居住城市、所在工位以及你正在学英语。",
+    "requirements": [
+      "包含问候语和姓名（My name is / I am）。",
+      "写明来自哪里（from）和居住城市（live in）。",
+      "说明所在工位（work at）和正在学英语（learning English）。",
+      "包含结尾礼貌语和落款。"
+    ],
+    "keywords": [
+      "My name is",
+      "from",
+      "live in",
+      "work at",
+      "learning English"
+    ],
+    "min_words": 35,
+    "max_words": 55,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hello team,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "My name is Li Ming. I am from Yunnan, and I live in Kunming now. I work at the sorting station in our workshop, and I am learning English every day. Nice to meet you all!",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nLi Ming",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Li Ming"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "便条结构完整，用 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 自然串联家乡、居住地、工位与学习状态，格式清晰礼貌。"
+      }
+    ]
   }
 ]

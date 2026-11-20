@@ -2405,5 +2405,2965 @@
         "text": "。"
       }
     ]
+  },
+  {
+    "id": "modal-must-v2-listening-1",
+    "type": "listening",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "听班长与操作员的班前安全对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Good morning, Mei. Before you start the sorting station, you must put on your safety glasses and gloves."
+      },
+      {
+        "speaker": "W",
+        "text": "I have my gloves and glasses on. Do I have to move the empty cart right now?"
+      },
+      {
+        "speaker": "M",
+        "text": "No, you don't have to move the cart now. Just remember you must not touch the moving belt."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "ppe-required",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What must Mei wear before starting the station?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "glasses-gloves",
+            "text": "Safety glasses and gloves.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "only-gloves",
+            "text": "Only gloves.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "visitor-badge",
+            "text": "A visitor badge.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "glasses-gloves"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "班长明确指出开机前必须戴好护目镜和手套（"
+          },
+          {
+            "type": "text",
+            "text": "safety glasses and gloves",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "move-cart",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Mei has to move the empty cart right now.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "班长回答说 "
+          },
+          {
+            "type": "text",
+            "text": "you don't have to move the cart now",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示现在不必移动推车。"
+          }
+        ]
+      },
+      {
+        "id": "belt-rule",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What must Mei not do?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "touch-belt",
+            "text": "Touch the moving belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wear-glasses",
+            "text": "Wear safety glasses.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "start-station",
+            "text": "Start the sorting station.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "touch-belt"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话最后强调 "
+          },
+          {
+            "type": "text",
+            "text": "you must not touch the moving belt",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，严禁触碰运转中的传送带。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话围绕班前防护要求与工位禁止事项展开，听音时注意区分 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（必须）、"
+      },
+      {
+        "type": "text",
+        "text": "don't have to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（不必）以及 "
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（严禁）的含义差异。"
+      }
+    ]
+  },
+  {
+    "id": "modal-must-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "阅读分拣工位班前安全检查要求，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SAFETY CHECKLIST",
+        "tts": {
+          "voice": "stella",
+          "text": "Safety checklist."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "All operators must wear safety shoes and sign the sheet before 8:00 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "All operators must wear safety shoes and sign the sheet before eight a.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "You must not open the servo cover while the machine is on.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Operators do not have to repair the motor themselves.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "sign-deadline",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When must operators sign the sheet?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "before-eight",
+            "text": "Before 8:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "Before eight a.m."
+            }
+          },
+          {
+            "id": "after-lunch",
+            "text": "After 12:00 p.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "After twelve p.m."
+            }
+          },
+          {
+            "id": "end-shift",
+            "text": "At 5:00 p.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "At five p.m."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "before-eight"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句明确要求员工在上午八点前（"
+          },
+          {
+            "type": "text",
+            "text": "before 8:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "before eight a.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": "）签表。"
+          }
+        ]
+      },
+      {
+        "id": "required-actions",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What must every operator do according to the checklist?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "wear-shoes",
+            "text": "Wear safety shoes.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "sign-sheet",
+            "text": "Sign the safety sheet.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "repair-motor",
+            "text": "Repair the motor.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "wear-shoes",
+            "sign-sheet"
+          ]
+        },
+        "analysis": "操作员必须穿安全鞋并在安全表上签字；维修电机不是操作员必须自己做的事。"
+      },
+      {
+        "id": "servo-cover",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Operators can open the servo cover while the machine is running.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句使用了 "
+          },
+          {
+            "type": "text",
+            "text": "must not open the servo cover",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示通电运转时严禁打开舵机盖。"
+          }
+        ]
+      }
+    ],
+    "analysis": "本则安全清单区分了强制要求（穿安全鞋、签表）、严禁动作（开机时开舵机盖）与不必自行承担的工作（修电机），答题时注意对应情态动词的语气。"
+  },
+  {
+    "id": "modal-must-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "stem": "阅读工位安全提示，选出最合适的情态表达补全两处空格。",
+    "passage": "Before starting the line, every worker {{1}} wear safety glasses. You {{2}} touch the moving belt.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Before starting the line, every worker must wear safety glasses. You must not touch the moving belt."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "must",
+            "text": "must",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "has",
+            "text": "has",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "need",
+            "text": "need",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "having",
+            "text": "having",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "must"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "空格后直接接动词原形 "
+          },
+          {
+            "type": "text",
+            "text": "wear",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，应选情态动词 "
+          },
+          {
+            "type": "text",
+            "text": "must",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示强制佩戴；"
+          },
+          {
+            "type": "text",
+            "text": "has",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 缺少 "
+          },
+          {
+            "type": "text",
+            "text": "to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "must-not",
+            "text": "must not",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dont-have-to",
+            "text": "don't have to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "have-to",
+            "text": "have to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "can",
+            "text": "can",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "must-not"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "触碰运动传送带属于严禁行为，必须用 "
+          },
+          {
+            "type": "text",
+            "text": "must not",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "；"
+          },
+          {
+            "type": "text",
+            "text": "don't have to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示“不必”，语气与安全禁令不符。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空考查情态动词 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 直接接动词原形；第二空考查 "
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（严禁）与 "
+      },
+      {
+        "type": "text",
+        "text": "don't have to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（不必）的语义区分。"
+      }
+    ]
+  },
+  {
+    "id": "modal-must-v2-translation-1",
+    "type": "translation",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位安全规程翻译成中文。",
+    "source_text": "Operators must check the sensor before starting, and they must not open the cover.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "操作员开机前必须检查传感器，而且严禁打开盖子。",
+    "acceptable_alternates": [
+      "操作人员启动前必须检查传感器，绝对不能打开盖子。"
+    ],
+    "key_terms": [
+      {
+        "term": "操作员",
+        "variants": [
+          "操作人员",
+          "工人"
+        ]
+      },
+      {
+        "term": "检查传感器",
+        "variants": [
+          "检测传感器"
+        ]
+      },
+      {
+        "term": "严禁打开盖子",
+        "variants": [
+          "绝对不能打开盖子",
+          "禁止打开盖子",
+          "不能打开罩壳"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "句中 "
+      },
+      {
+        "type": "text",
+        "text": "must check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“必须检查”，"
+      },
+      {
+        "type": "text",
+        "text": "must not open",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达绝对禁止的“严禁打开”。"
+      }
+    ]
+  },
+  {
+    "id": "modal-must-v2-writing-1",
+    "type": "writing",
+    "chapter": "必须与禁止 must",
+    "concepts": [
+      "modal-must"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "must",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "must not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "gloves",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "belt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的工位安全规则，说明工人必须戴手套且严禁触碰传送带。"
+      }
+    ],
+    "requirements": [
+      "同时包含 must 和 must not。",
+      "使用关键词 gloves 和 belt。",
+      "写出语法完整的英文句子（10–24 词）。"
+    ],
+    "keywords": [
+      "must",
+      "must not",
+      "gloves",
+      "belt"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "Workers must wear gloves at the station, and they must not touch the moving belt.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "前半句用 "
+      },
+      {
+        "type": "text",
+        "text": "must wear gloves",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 说明强制穿戴要求，后半句用 "
+      },
+      {
+        "type": "text",
+        "text": "must not touch the moving belt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 强调危险禁令。"
+      }
+    ]
+  },
+  {
+    "id": "safety-signs-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "阅读车间安全标牌说明，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKSHOP SAFETY SIGNS",
+        "tts": {
+          "voice": "stella",
+          "text": "Workshop safety signs."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "There is a red Danger sign on the main power box.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Above the camera light, a yellow sign warns Hot surface.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Everyone must follow the Wear safety glasses sign before entering Line A.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The Emergency stop button is on the right side of the control box.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "power-box-sign",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which sign is on the main power box?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "danger",
+            "text": "Danger.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "caution",
+            "text": "Caution.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "exit",
+            "text": "Exit.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "danger"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "首句指出主配电箱上是红色的 "
+          },
+          {
+            "type": "text",
+            "text": "Danger",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 危险标志。"
+          }
+        ]
+      },
+      {
+        "id": "lamp-and-line",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements match the notice?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "hot-lamp",
+            "text": "The camera light has a Hot surface sign.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "glasses-line-a",
+            "text": "Workers need safety glasses for Line A.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "stop-left",
+            "text": "The emergency stop is on the left side.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "hot-lamp",
+            "glasses-line-a"
+          ]
+        },
+        "analysis": "通知提到相机灯上方贴有高温表面标志，进入产线前必须佩戴护目镜；急停按钮在控制盒右侧而非左侧。"
+      },
+      {
+        "id": "stop-location",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The Emergency stop button is on the control box.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句明确写了 "
+          },
+          {
+            "type": "text",
+            "text": "on the right side of the control box",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读时将各标识名称（"
+      },
+      {
+        "type": "text",
+        "text": "Danger",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Hot surface",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Wear safety glasses",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "Emergency stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与对应的位置一一匹配即可快速作答。"
+      }
+    ]
+  },
+  {
+    "id": "safety-signs-v2-listening-1",
+    "type": "listening",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "听安全员关于车间分区标识的语音通知，再回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Attention, new staff in Zone B. The storage room on the left has a No entry sign, so please keep out. The green Exit sign at the back leads to the safe yard outside.",
+    "sub_questions": [
+      {
+        "id": "left-room",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What sign is on the storage room on the left?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "no-entry",
+            "text": "No entry.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "hot-surface",
+            "text": "Hot surface.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "exit",
+            "text": "Exit.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "no-entry"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "通知说明左侧储藏室贴有 "
+          },
+          {
+            "type": "text",
+            "text": "No entry",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（禁止入内）标识。"
+          }
+        ]
+      },
+      {
+        "id": "exit-location",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The green Exit sign is at the back and leads outside.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": "通知结尾明确说明后方的绿色安全出口标识通向室外的安全空地。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本则语音通知对比了管制标志 "
+      },
+      {
+        "type": "text",
+        "text": "No entry",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与疏散标志 "
+      },
+      {
+        "type": "text",
+        "text": "Exit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的所在位置与作用。"
+      }
+    ]
+  },
+  {
+    "id": "safety-signs-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "stem": "根据分拣工位的安全警示场景，选择正确的英文标志词填入空格。",
+    "passage": "The yellow label on the lamp says {{1}}, so do not touch it. When the belt jams, press the red {{2}} button right away.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The yellow label on the lamp says Hot surface, so do not touch it. When the belt jams, press the red Emergency stop button right away."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "hot-surface",
+            "text": "Hot surface",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "exit",
+            "text": "Exit",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-entry",
+            "text": "No entry",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "caution",
+            "text": "Caution",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "hot-surface"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "补光灯外壳发烫且提示不要触碰，对应标识为 "
+          },
+          {
+            "type": "text",
+            "text": "Hot surface",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "emergency-stop",
+            "text": "Emergency stop",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "keep-out",
+            "text": "Keep out",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wear-glasses",
+            "text": "Wear safety glasses",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "caution",
+            "text": "Caution",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "emergency-stop"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "发生传送带卡死时应立刻拍下红色 "
+          },
+          {
+            "type": "text",
+            "text": "Emergency stop",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 按钮。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "防烫标签使用 "
+      },
+      {
+        "type": "text",
+        "text": "Hot surface",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，机械卡滞时的红色制动开关称为 "
+      },
+      {
+        "type": "text",
+        "text": "Emergency stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "safety-signs-v2-translation-1",
+    "type": "translation",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列安全提示译成中文。",
+    "source_text": "Keep out of the testing area, and do not touch the hot surface near the lamp.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "请勿进入测试区，也不要触碰补光灯附近的高温表面。",
+    "acceptable_alternates": [
+      "请勿靠近测试区域，不要触摸灯旁的高温表面。"
+    ],
+    "key_terms": [
+      {
+        "term": "请勿进入",
+        "variants": [
+          "请勿靠近",
+          "闲人免进",
+          "不要进入"
+        ]
+      },
+      {
+        "term": "测试区",
+        "variants": [
+          "测试区域"
+        ]
+      },
+      {
+        "term": "高温表面",
+        "variants": [
+          "滚烫表面",
+          "热表面"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "Keep out",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示禁止靠近或进入，"
+      },
+      {
+        "type": "text",
+        "text": "hot surface",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指高温表面。"
+      }
+    ]
+  },
+  {
+    "id": "safety-signs-v2-writing-1",
+    "type": "writing",
+    "chapter": "安全标志与警示语",
+    "concepts": [
+      "safety-signs"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Hot surface",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "Emergency stop",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文工位提示，提醒同事补光灯外壳有高温表面标志，以及急停按钮在控制盒旁边。"
+      }
+    ],
+    "requirements": [
+      "准确使用 Hot surface 和 Emergency stop。",
+      "写出一句语法通顺的英文句子（10–24 词）。"
+    ],
+    "keywords": [
+      "Hot surface",
+      "Emergency stop",
+      "lamp"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "The lamp has a Hot surface sign, and the Emergency stop button is next to the control box.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "可用 "
+      },
+      {
+        "type": "text",
+        "text": "has a Hot surface sign",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 说明灯壳标牌，并用 "
+      },
+      {
+        "type": "text",
+        "text": "next to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 交代急停开关位置。"
+      }
+    ]
+  },
+  {
+    "id": "can-permission-v2-listening-1",
+    "type": "listening",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "听组长与新员工关于技能确认和休息请示的对话，再回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "I finished the training. I can use the barcode scanner, but I can't calibrate the camera yet."
+      },
+      {
+        "speaker": "M",
+        "text": "That is okay. Call the technician if the camera needs calibration."
+      },
+      {
+        "speaker": "W",
+        "text": "Got it. Can I take a five-minute break after this tray?"
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, you can. Just turn off the belt first."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "skill-check",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What can the new worker do?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "use-scanner",
+            "text": "Use the barcode scanner.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "calibrate-camera",
+            "text": "Calibrate the camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fix-servo",
+            "text": "Fix the servo motor.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "use-scanner"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女员工明确表示自己会用扫码枪（"
+          },
+          {
+            "type": "text",
+            "text": "I can use the barcode scanner",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），但还不会校准相机。"
+          }
+        ]
+      },
+      {
+        "id": "break-permission",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The team lead allows the worker to take a break after turning off the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "组长回答 "
+          },
+          {
+            "type": "text",
+            "text": "Yes, you can",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 同意了休息请示，并叮嘱先关掉传送带。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话先后展示了 "
+      },
+      {
+        "type": "text",
+        "text": "can / can't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达能力与 "
+      },
+      {
+        "type": "text",
+        "text": "Can I...?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 申请许可的典型问答。"
+      }
+    ]
+  },
+  {
+    "id": "can-permission-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "阅读工位操作许可规定，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKSTATION RULES",
+        "tts": {
+          "voice": "stella",
+          "text": "Workstation rules."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Trained operators can run the sorting station and check the daily pass count.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "However, you can't drink water at the desk or leave tools on the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "If you need to leave early, ask the shift lead first.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "trained-can",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Who can run the sorting station?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "trained",
+            "text": "Trained operators.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "visitors",
+            "text": "All visitors.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "drivers",
+            "text": "Delivery drivers.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "trained"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明只有经过培训的操作员（"
+          },
+          {
+            "type": "text",
+            "text": "Trained operators",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）可以运行分拣站。"
+          }
+        ]
+      },
+      {
+        "id": "not-allowed",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two things can't workers do at the workstation?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "drink-desk",
+            "text": "Drink water at the desk.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "leave-tools",
+            "text": "Leave tools on the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "check-count",
+            "text": "Check the daily pass count.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "drink-desk",
+            "leave-tools"
+          ]
+        },
+        "analysis": "规则明确规定不能在工作台喝水，也不能把工具留在传送带上；核对每日合格计数是允许的。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "短文分别用 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "can't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 说明了受训员工的操作权限以及工位纪律禁区。"
+      }
+    ]
+  },
+  {
+    "id": "can-permission-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "stem": "阅读员工的技能说明与借用请求，选词补全两处空格。",
+    "passage": "I have finished my training, so I {{1}} operate the barcode scanner now. {{2}} I borrow your wrench for five minutes?",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "I have finished my training, so I can operate the barcode scanner now. Can I borrow your wrench for five minutes?"
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "can",
+            "text": "can",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "cant",
+            "text": "can't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "mustnt",
+            "text": "mustn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "does",
+            "text": "does",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "can"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "因为已经完成培训，所以现在“能够/会”操作扫码枪，选肯定情态动词 "
+          },
+          {
+            "type": "text",
+            "text": "can",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "can-q",
+            "text": "Can",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "am-q",
+            "text": "Am",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "does-q",
+            "text": "Does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "mustnt-q",
+            "text": "Mustn't",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "can-q"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "向同事礼貌请求借用工具，用一般疑问句 "
+          },
+          {
+            "type": "text",
+            "text": "Can I borrow...?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空用 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达培训后具备的操作能力，第二空用 "
+      },
+      {
+        "type": "text",
+        "text": "Can I...?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 礼貌提出借用请求。"
+      }
+    ]
+  },
+  {
+    "id": "can-permission-v2-translation-1",
+    "type": "translation",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位对话翻译成英文。",
+    "source_text": "我会使用扫码枪，但我不会修理相机镜头。请问我现在可以休息一下吗？",
+    "reference_translation": "I can use the scanner, but I can't fix the camera lens. Can I take a break now?",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "I can use the barcode scanner, but I cannot repair the camera lens. Can I take a break now?"
+    ],
+    "key_terms": [
+      {
+        "term": "use the scanner",
+        "variants": [
+          "use the barcode scanner"
+        ]
+      },
+      {
+        "term": "can't fix",
+        "variants": [
+          "cannot fix",
+          "can't repair",
+          "cannot repair"
+        ]
+      },
+      {
+        "term": "take a break"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "前半句对比能力用 "
+      },
+      {
+        "type": "text",
+        "text": "can use",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "can't fix",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，后半句用 "
+      },
+      {
+        "type": "text",
+        "text": "Can I take a break now?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 请示休息。"
+      }
+    ]
+  },
+  {
+    "id": "can-permission-v2-writing-1",
+    "type": "writing",
+    "chapter": "能力与许可 can",
+    "concepts": [
+      "can-permission"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "can",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "can't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "scanner",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "servo",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，向班长说明自己会操作扫码枪，但还不会修理舵机。"
+      }
+    ],
+    "requirements": [
+      "使用 can 和 can't 对比两项技能。",
+      "包含关键词 scanner 和 servo。",
+      "写出完整句子（10–24 词）。"
+    ],
+    "keywords": [
+      "can",
+      "can't",
+      "scanner",
+      "servo"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "I can operate the barcode scanner well, but I can't repair the servo motor yet.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用转折连词 "
+      },
+      {
+        "type": "text",
+        "text": "but",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接 "
+      },
+      {
+        "type": "text",
+        "text": "I can operate...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "I can't repair...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，情态动词后均保留动词原形。"
+      }
+    ]
+  },
+  {
+    "id": "reporting-problems-v2-writing-essay-1",
+    "type": "writing",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "subtype": "short_essay",
+    "stem": "2 号分拣工位在检测时突然停机：传送带卡住不动，检测相机上方的补光灯也不亮了。请给维修技术员陈工写一条简短的英文报修信息。",
+    "requirements": [
+      "点明出故障的工位位置（Station 2）。",
+      "说明传送带卡住和补光灯不亮两个具体现象。",
+      "礼貌请求技术员过来检查，并包含称呼与落款。"
+    ],
+    "keywords": [
+      "problem",
+      "belt",
+      "stuck",
+      "light",
+      "technician"
+    ],
+    "min_words": 45,
+    "max_words": 70,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Mr. Chen,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "There is a problem with Sorting Station two right now. A plastic part jammed the gate, so the belt is stuck and the machine is not moving. Also, the camera light doesn't work anymore. I already turned off the power switch. Please come and check the station when you are free.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nLin",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Lin"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "首句用 "
+      },
+      {
+        "type": "text",
+        "text": "There is a problem with...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 锁定故障工位，接着用 "
+      },
+      {
+        "type": "text",
+        "text": "is stuck",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "is not moving",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "doesn't work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 准确描述现象，最后礼貌请求检查。"
+      }
+    ]
+  },
+  {
+    "id": "reporting-problems-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "阅读分拣站故障上报指南，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "FAULT REPORT GUIDE",
+        "tts": {
+          "voice": "stella",
+          "text": "Fault report guide."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "If the machine stops moving, press the emergency stop first.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Do not pull any loose cables or try to fix the servo yourself.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Look carefully to see if the belt is stuck or if the sensor light doesn't work.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Then call the technician and tell him the exact station number.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "first-step",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What should operators do first if the machine stops moving?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "press-stop",
+            "text": "Press the emergency stop.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "pull-cables",
+            "text": "Pull the loose cables.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fix-servo",
+            "text": "Fix the servo themselves.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "press-stop"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明机器停止运动时应先拍下急停按钮（"
+          },
+          {
+            "type": "text",
+            "text": "press the emergency stop first",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "check-and-call",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two details should operators report to the technician?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "what-failed",
+            "text": "Whether the belt is stuck or the light doesn't work.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "station-num",
+            "text": "The exact station number.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "lunch-time",
+            "text": "The canteen lunch time.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "what-failed",
+            "station-num"
+          ]
+        },
+        "analysis": "指南要求观察是传送带卡住还是传感器灯不亮，并在呼叫技术员时说明准确的工位编号。"
+      },
+      {
+        "id": "pull-wires-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Operators should pull loose cables before calling the technician.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "指南明确禁止拉扯松动线缆（"
+          },
+          {
+            "type": "text",
+            "text": "Do not pull any loose cables",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": "本则指南按“急停断电—禁止盲目拆线—观察具体症状—报修工位号”的顺序规范了工位故障处理流程。"
+  },
+  {
+    "id": "reporting-problems-v2-listening-1",
+    "type": "listening",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "听操作员向技术员汇报工位故障的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Excuse me, Mr. Li. There is a problem with Station three."
+      },
+      {
+        "speaker": "M",
+        "text": "What is wrong? Is the camera bracket loose again?"
+      },
+      {
+        "speaker": "W",
+        "text": "No, the camera is fine, but the belt is stuck and the sensor light doesn't work."
+      },
+      {
+        "speaker": "M",
+        "text": "Okay, keep the power off. How many NG parts are waiting on the tray?"
+      },
+      {
+        "speaker": "W",
+        "text": "There are six NG parts on the tray. Please check the station when you can."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "which-fault",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is wrong at Station three?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "belt-sensor",
+            "text": "The belt is stuck and the sensor light doesn't work.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "camera-loose",
+            "text": "The camera bracket is loose.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "scanner-broken",
+            "text": "The barcode scanner is broken.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "belt-sensor"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "操作员排除了相机问题，说明实际故障是 "
+          },
+          {
+            "type": "text",
+            "text": "the belt is stuck and the sensor light doesn't work",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "camera-ok-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The camera at Station three is fine.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "操作员明确回答 "
+          },
+          {
+            "type": "text",
+            "text": "the camera is fine",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "ng-count-num",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many NG parts are waiting on the tray?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "6",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话最后回答托盘上有六个不合格零件（"
+          },
+          {
+            "type": "text",
+            "text": "six NG parts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话演示了如何用 "
+      },
+      {
+        "type": "text",
+        "text": "There is a problem with...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 引出故障并核对具体异常部件与待处理零件数量。"
+      }
+    ]
+  },
+  {
+    "id": "reporting-problems-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "stem": "根据工位报修语句的固定搭配，选词补全两处空格。",
+    "passage": "There is a problem {{1}} the sorting station. The light {{2}} work, and the servo flap is stuck.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "There is a problem with the sorting station. The light doesn't work, and the servo flap is stuck."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "with",
+            "text": "with",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "of",
+            "text": "of",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "for",
+            "text": "for",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "with"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "固定句型为 "
+          },
+          {
+            "type": "text",
+            "text": "There is a problem with...",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示“某设备出问题了”。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "doesnt",
+            "text": "doesn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dont",
+            "text": "don't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "isnt",
+            "text": "isn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "arent",
+            "text": "aren't",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "doesnt"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "The light",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为第三人称单数，实义动词 "
+          },
+          {
+            "type": "text",
+            "text": "work",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的否定必须使用助动词 "
+          },
+          {
+            "type": "text",
+            "text": "doesn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空考查固定介词搭配 "
+      },
+      {
+        "type": "text",
+        "text": "a problem with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第二空考查单数主语实义动词否定 "
+      },
+      {
+        "type": "text",
+        "text": "doesn't work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "reporting-problems-v2-translation-1",
+    "type": "translation",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位故障汇报翻译成中文。",
+    "source_text": "There is a problem with the camera, and the belt is stuck. Please call the technician.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "摄像头出问题了，而且传送带卡住了。请呼叫技术员。",
+    "acceptable_alternates": [
+      "相机出了故障，传送带也卡住了，请叫维修技术员。"
+    ],
+    "key_terms": [
+      {
+        "term": "摄像头出问题",
+        "variants": [
+          "相机出问题",
+          "相机出了故障",
+          "摄像头有故障"
+        ]
+      },
+      {
+        "term": "传送带卡住",
+        "variants": [
+          "皮带卡住"
+        ]
+      },
+      {
+        "term": "呼叫技术员",
+        "variants": [
+          "叫技术员",
+          "联系技术员"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "is stuck",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示“卡住了”，"
+      },
+      {
+        "type": "text",
+        "text": "Please call the technician.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用祈使句提出维修请求。"
+      }
+    ]
+  },
+  {
+    "id": "reporting-problems-v2-translation-2",
+    "type": "translation",
+    "chapter": "报告故障与问题",
+    "concepts": [
+      "reporting-problems"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列中文故障汇报翻译成英文。",
+    "source_text": "传感器出问题了，指示灯不亮，而且机器没有动作。",
+    "reference_translation": "There is a problem with the sensor. The light doesn't work, and the machine is not moving.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "There is a problem with the sensor, the light does not work, and the machine isn't moving."
+    ],
+    "key_terms": [
+      {
+        "term": "problem with the sensor"
+      },
+      {
+        "term": "doesn't work",
+        "variants": [
+          "does not work"
+        ]
+      },
+      {
+        "term": "is not moving",
+        "variants": [
+          "isn't moving"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "There is a problem with the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 总述故障，分别用 "
+      },
+      {
+        "type": "text",
+        "text": "doesn't work",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "is not moving",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 说明灯不亮与整机不动。"
+      }
+    ]
   }
 ]

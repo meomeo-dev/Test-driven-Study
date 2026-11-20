@@ -83,12 +83,13 @@ Updated 2026-11-19 (America/New_York).
 
 ## English curriculum
 
-- `beginner-english@2.0.0` (`protocol_version: 2`, 10 units, 41 concepts, 216
-  items) upgraded from `1.4.1`: 20 listening items converted to `listening`,
-  27 blank/orthographic items to `cloze` with `passage_tts`, all 216 items
-  migrated to `analysis` (`RichContent`, zero hardcoded option letters), and all
-  `audit-course-tts` errors/warnings resolved (`issueCount: 0`). See the
-  [TTS architecture](docs/features/tts/deepseek-tts-architecture.md).
+- `beginner-english@2.1.0` (`protocol_version: 2`, 10 units, 41 concepts, 2,240
+  minutes, 424 items across all 9 v2 question types) preserves all 216 original
+  IDs, enriches all 10 unit lessons with explicit `concepts` / `effort-lab`
+  anchors, and passes `course:check`, `audit-course-tts` (`issueCount: 0`),
+  and `audit-course-effort --strict` (`η = 1.04`, 0 errors, 0 warnings). See the
+  [TTS architecture](docs/features/tts/deepseek-tts-architecture.md) and
+  [package design skill](.agents/skills/design-course-package/SKILL.md).
 - The old semester lesson packages were retired from the question type demo.
   Curriculum research from [issue #52](issues/0052-feat-expand-sample-courses-to-180-hour-standard-curriculum.md)
   remains in the [progress tracker](docs/research/step-up-english-1/progress.json).

@@ -2826,5 +2826,2426 @@
         "text": "。"
       }
     ]
+  },
+  {
+    "id": "days-dates-v2-listening-1",
+    "type": "listening",
+    "chapter": "星期、月份与日期",
+    "concepts": [
+      "days-dates"
+    ],
+    "stem": "听班组排期沟通对话，回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "When does the new batch of pins arrive?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "It arrives on May 12th, on Tuesday morning. Our sensor calibration is at 8:30 a.m. on Monday.",
+        "tts": {
+          "voice": "stella",
+          "text": "It arrives on May the twelfth, on Tuesday morning. Our sensor calibration is at eight thirty a.m. on Monday."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "batch-date",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When does the new batch arrive?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "may-12",
+            "text": "On May 12th.",
+            "tts": {
+              "voice": "stella",
+              "text": "On May the twelfth."
+            }
+          },
+          {
+            "id": "may-20",
+            "text": "On May 20th.",
+            "tts": {
+              "voice": "stella",
+              "text": "On May the twentieth."
+            }
+          },
+          {
+            "id": "june-12",
+            "text": "On June 12th.",
+            "tts": {
+              "voice": "stella",
+              "text": "On June the twelfth."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "may-12"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声明确说明新批次将在 "
+          },
+          {
+            "type": "text",
+            "text": "May 12th",
+            "tts": {
+              "voice": "stella",
+              "text": "May the twelfth"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（五月十二日）到达。"
+          }
+        ]
+      },
+      {
+        "id": "calibration-day",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The sensor calibration is on Tuesday morning.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "传感器校准时间是周一上午八点半（"
+          },
+          {
+            "type": "text",
+            "text": "at 8:30 a.m. on Monday",
+            "tts": {
+              "voice": "stella",
+              "text": "at eight thirty a.m. on Monday"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），周二是新批次到货日。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话考查具体日期、星期和钟点介词的听辨，注意区分 "
+      },
+      {
+        "type": "text",
+        "text": "on May 12th",
+        "tts": {
+          "voice": "stella",
+          "text": "on May the twelfth"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（到货日期）与 "
+      },
+      {
+        "type": "text",
+        "text": "at 8:30 a.m. on Monday",
+        "tts": {
+          "voice": "stella",
+          "text": "at eight thirty a.m. on Monday"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（校准时间）。"
+      }
+    ]
+  },
+  {
+    "id": "days-dates-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "星期、月份与日期",
+    "concepts": [
+      "days-dates"
+    ],
+    "stem": "阅读质检站月度排期通知，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "MONTHLY CHECK NOTICE",
+        "tts": {
+          "voice": "stella",
+          "text": "Monthly check notice."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The annual line check is in July.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Our team meeting starts on July 10th at 9:00 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "Our team meeting starts on July the tenth at nine a.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Please label the 21st batch before Friday afternoon.",
+        "tts": {
+          "voice": "stella",
+          "text": "Please label the twenty-first batch before Friday afternoon."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "meeting-date",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When does the team meeting start?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "july-10",
+            "text": "On July 10th at 9:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "On July the tenth at nine a.m."
+            }
+          },
+          {
+            "id": "july-21",
+            "text": "On July 21st at 9:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "On July the twenty-first at nine a.m."
+            }
+          },
+          {
+            "id": "friday-pm",
+            "text": "On Friday afternoon.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "july-10"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "通知第二句写明会议在 "
+          },
+          {
+            "type": "text",
+            "text": "July 10th at 9:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "July the tenth at nine a.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": " 开始。"
+          }
+        ]
+      },
+      {
+        "id": "notice-tasks",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements are true according to the notice?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "annual-july",
+            "text": "The annual line check is in July.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "label-21st",
+            "text": "Workers must label the 21st batch before Friday afternoon.",
+            "tts": {
+              "voice": "stella",
+              "text": "Workers must label the twenty-first batch before Friday afternoon."
+            }
+          },
+          {
+            "id": "annual-august",
+            "text": "The annual line check is in August.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "annual-july",
+            "label-21st"
+          ]
+        },
+        "analysis": "通知第一句说明年度产线检查在七月，最后一句要求在周五下午前贴好第 21 批标签。"
+      }
+    ],
+    "analysis": "阅读时逐句定位月份、具体日期与截止星期，注意序数词与时间介词的对应关系。"
+  },
+  {
+    "id": "days-dates-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "星期、月份与日期",
+    "concepts": [
+      "days-dates"
+    ],
+    "stem": "阅读设备维保备忘，为两处时间介词与序数词空格选择正确答案。",
+    "passage": "The sensor audit is {{1}} October, and the full test starts on October the {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The sensor audit is in October, and the full test starts on October the third."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "in",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "on",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "in"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "单独月份 "
+          },
+          {
+            "type": "text",
+            "text": "October",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 前使用介词 "
+          },
+          {
+            "type": "text",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "third",
+            "text": "third",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "three",
+            "text": "three",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "thirteen",
+            "text": "thirteen",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "third"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "日期中的“三日”必须用序数词 "
+          },
+          {
+            "type": "text",
+            "text": "third",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，不可用基数词 "
+          },
+          {
+            "type": "text",
+            "text": "three",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空考核单独月份前用 "
+      },
+      {
+        "type": "text",
+        "text": "in",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第二空考核具体日期必须使用序数词 "
+      },
+      {
+        "type": "text",
+        "text": "third",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "days-dates-v2-translation-1",
+    "type": "translation",
+    "chapter": "星期、月份与日期",
+    "concepts": [
+      "days-dates"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位排期提示翻译成中文。",
+    "source_text": "The calibration is on Friday morning at 8:00 a.m. in August.",
+    "source_text_tts": {
+      "voice": "stella",
+      "text": "The calibration is on Friday morning at eight a.m. in August."
+    },
+    "reference_translation": "校准安排在八月周五上午八点。",
+    "acceptable_alternates": [
+      "校准在八月星期五早上 8:00 进行。"
+    ],
+    "key_terms": [
+      {
+        "term": "校准",
+        "variants": [
+          "标定"
+        ]
+      },
+      {
+        "term": "周五上午",
+        "variants": [
+          "星期五上午",
+          "周五早上"
+        ]
+      },
+      {
+        "term": "八月"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "注意三个时间介词层层限定："
+      },
+      {
+        "type": "text",
+        "text": "on Friday morning",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（具体某天上午）、"
+      },
+      {
+        "type": "text",
+        "text": "at 8:00 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "at eight a.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": "（钟点）和 "
+      },
+      {
+        "type": "text",
+        "text": "in August",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（月份）。"
+      }
+    ]
+  },
+  {
+    "id": "days-dates-v2-writing-1",
+    "type": "writing",
+    "chapter": "星期、月份与日期",
+    "concepts": [
+      "days-dates"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "arrives",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "Monday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的工位通知，说明新批次将于周一上午九点到达。"
+      }
+    ],
+    "requirements": [
+      "使用 arrives 和 Monday，且星期首字母大写。",
+      "正确使用时间介词 on 和 at。"
+    ],
+    "keywords": [
+      "arrives",
+      "Monday"
+    ],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "The new batch arrives on Monday at nine a.m.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "具体星期前用 "
+      },
+      {
+        "type": "text",
+        "text": "on Monday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，具体钟点前用 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，单数主语搭配动词第三人称单数 "
+      },
+      {
+        "type": "text",
+        "text": "arrives",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "wh-questions-v2-listening-1",
+    "type": "listening",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "stem": "听新员工与班长的工位问答对话，回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Where is the red reject bin, and who checks Station 2 today?",
+        "tts": {
+          "voice": "tide",
+          "text": "Where is the red reject bin, and who checks Station two today?"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "The red bin is under the desk. Sarah checks Station 2, and there are twelve bent pins inside.",
+        "tts": {
+          "voice": "stella",
+          "text": "The red bin is under the desk. Sarah checks Station two, and there are twelve bent pins inside."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "bin-location",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where is the red reject bin?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "under-desk",
+            "text": "Under the desk.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "on-shelf",
+            "text": "On the top shelf.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "by-door",
+            "text": "By the door.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "under-desk"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "回答中明确提到 "
+          },
+          {
+            "type": "text",
+            "text": "under the desk",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "bent-pins-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many bent pins are inside the bin?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "12",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声说 "
+          },
+          {
+            "type": "text",
+            "text": "there are twelve bent pins inside",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 12 个。"
+          }
+        ]
+      },
+      {
+        "id": "station-lead",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Sarah checks Station 2 today.",
+            "tts": {
+              "voice": "stella",
+              "text": "Sarah checks Station two today."
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": "对话明确说明今天由萨拉负责二号工位检测。"
+      }
+    ],
+    "analysis": "听音时对应抓住三个特殊疑问词的回答：地点（桌子下方）、负责人（萨拉）与数量（12 个）。"
+  },
+  {
+    "id": "wh-questions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "stem": "阅读工位常见问答指引，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKSTATION Q&A GUIDE"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Technician Chen checks the camera sensor at 7:30 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "Technician Chen checks the camera sensor at seven thirty a.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The spare trays are behind Station 3.",
+        "tts": {
+          "voice": "stella",
+          "text": "The spare trays are behind Station three."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Each tray holds twenty good caps and needs two milliliters of light oil for the rail.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "who-checks",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Who checks the camera sensor at 7:30 a.m.?",
+            "tts": {
+              "voice": "stella",
+              "text": "Who checks the camera sensor at seven thirty a.m.?"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "chen",
+            "text": "Technician Chen.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "station-3",
+            "text": "Station 3.",
+            "tts": {
+              "voice": "stella",
+              "text": "Station three."
+            }
+          },
+          {
+            "id": "yes",
+            "text": "Yes, he does.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "chen"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "Who",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 询问人员身份，必须直接回答人名，不能用 "
+          },
+          {
+            "type": "text",
+            "text": "Yes",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 作答。"
+          }
+        ]
+      },
+      {
+        "id": "valid-questions",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two questions match the information in the guide?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "how-many-caps",
+            "text": "How many good caps does each tray hold?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "how-much-oil",
+            "text": "How much oil does the rail need?",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "how-much-caps",
+            "text": "How much good caps are in the tray?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "how-many-caps",
+            "how-much-oil"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "caps",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 可数，用 "
+          },
+          {
+            "type": "text",
+            "text": "How many",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "；"
+          },
+          {
+            "type": "text",
+            "text": "oil",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 不可数，用 "
+          },
+          {
+            "type": "text",
+            "text": "How much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": "结合特殊疑问词语义与名词可数性核对信息与问句结构。"
+  },
+  {
+    "id": "wh-questions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "stem": "补全质检主管询问班次时间和待检数量的两条特殊疑问句。",
+    "passage": "What time {{1}} the morning check start, and {{2}} boxes do we have?",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "What time does the morning check start, and how many boxes do we have?"
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "does",
+            "text": "does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "do",
+            "text": "do",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "does"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "主语 "
+          },
+          {
+            "type": "text",
+            "text": "the morning check",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为单数，实义动词 "
+          },
+          {
+            "type": "text",
+            "text": "start",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 需用助动词 "
+          },
+          {
+            "type": "text",
+            "text": "does",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "how-many",
+            "text": "how many",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "how-much",
+            "text": "how much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "where",
+            "text": "where",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "how-many"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "boxes",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是可数名词复数，询问数量用 "
+          },
+          {
+            "type": "text",
+            "text": "how many",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": "分别考查实义动词三单疑问句助动词与可数名词数量的疑问词。"
+  },
+  {
+    "id": "wh-questions-v2-translation-1",
+    "type": "translation",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位询问翻译成英文。",
+    "source_text": "新零件盒在哪里，今天谁负责检查摄像头？",
+    "reference_translation": "Where is the new parts box, and who checks the camera today?",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Where is the new part box and who is checking the camera today?"
+    ],
+    "key_terms": [
+      {
+        "term": "Where is"
+      },
+      {
+        "term": "new parts box",
+        "variants": [
+          "new part box"
+        ]
+      },
+      {
+        "term": "who checks"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问位置用 "
+      },
+      {
+        "type": "text",
+        "text": "Where is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 倒装；"
+      },
+      {
+        "type": "text",
+        "text": "who",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 直接作主语时保持陈述语序 "
+      },
+      {
+        "type": "text",
+        "text": "who checks",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "wh-questions-v2-translation-2",
+    "type": "translation",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列班长提问译成中文。",
+    "source_text": "What time does the technician test the servo flap?",
+    "source_text_tts": {
+      "voice": "tide"
+    },
+    "reference_translation": "技术员几点测试舵机挡板？",
+    "acceptable_alternates": [
+      "技术员什么时候测试伺服挡板？"
+    ],
+    "key_terms": [
+      {
+        "term": "几点",
+        "variants": [
+          "什么时候"
+        ]
+      },
+      {
+        "term": "技术员"
+      },
+      {
+        "term": "舵机挡板",
+        "variants": [
+          "伺服挡板"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "What time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 询问具体钟点，助动词 "
+      },
+      {
+        "type": "text",
+        "text": "does",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与单数主语 "
+      },
+      {
+        "type": "text",
+        "text": "the technician",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配，实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "test",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用原形。"
+      }
+    ]
+  },
+  {
+    "id": "wh-questions-v2-writing-1",
+    "type": "writing",
+    "chapter": "特殊疑问句",
+    "concepts": [
+      "wh-questions"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "reject bin",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文问句，询问废品盒里有多少个破损盖子。"
+      }
+    ],
+    "requirements": [
+      "使用 How many 开头，后接复数名词。",
+      "保持正确的疑问句语序。"
+    ],
+    "keywords": [
+      "How many",
+      "reject bin"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "How many broken caps are in the reject bin?",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后接复数名词短语 "
+      },
+      {
+        "type": "text",
+        "text": "broken caps",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，谓语动词用复数 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "frequency-adverbs-v2-listening-1",
+    "type": "listening",
+    "chapter": "频率副词",
+    "concepts": [
+      "frequency-adverbs"
+    ],
+    "stem": "听质检员介绍工位日常维护频率，回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "I always clean the camera lens before eight a.m. The servo flap is usually smooth, and it is never stuck when we oil it twice a week. Sometimes small screws fall near the belt, so we sweep the bench every day.",
+    "sub_questions": [
+      {
+        "id": "lens-frequency",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How often does the inspector clean the camera lens?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "always",
+            "text": "Always before 8:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "Always before eight a.m."
+            }
+          },
+          {
+            "id": "twice-week",
+            "text": "Twice a week.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "never",
+            "text": "Never.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "always"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句明确说 "
+          },
+          {
+            "type": "text",
+            "text": "I always clean the camera lens before 8:00 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "I always clean the camera lens before eight a.m."
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "flap-stuck",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The servo flap is often stuck during work.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "原文说明每周上油两次后舵机挡板从不卡顿（"
+          },
+          {
+            "type": "text",
+            "text": "never stuck",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": "听音时注意区分不同动作对应的频率副词与句末频次短语。"
+  },
+  {
+    "id": "frequency-adverbs-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "频率副词",
+    "concepts": [
+      "frequency-adverbs"
+    ],
+    "stem": "阅读分拣站周检规程，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "STATION CHECKLIST"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The safety gate is always closed during testing.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Operators usually check the power cable every day and test the serial port twice a week.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "They never leave loose bolts on the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "serial-port-freq",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How often do operators test the serial port?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "twice-week",
+            "text": "Twice a week.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "every-day",
+            "text": "Every day.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "never",
+            "text": "Never.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "twice-week"
+          ]
+        },
+        "analysis": "第二句表明每周测试两次串口，每天检查电源线。"
+      },
+      {
+        "id": "safety-habits",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two rules follow the station checklist?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "gate-closed",
+            "text": "Keep the safety gate always closed during testing.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-loose-bolts",
+            "text": "Never leave loose bolts on the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "skip-cable",
+            "text": "Sometimes check the power cable once a month.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "gate-closed",
+            "no-loose-bolts"
+          ]
+        },
+        "analysis": "规程要求测试时安全门始终关闭，且绝不将松动螺栓留在传送带上。"
+      }
+    ],
+    "analysis": "阅读时关注频率副词与“be 后实前”的搭配及其表达的安全要求。"
+  },
+  {
+    "id": "frequency-adverbs-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "频率副词",
+    "concepts": [
+      "frequency-adverbs"
+    ],
+    "stem": "根据“be 后实前”位置规则和频次短语拼写要求，完成下列填空。",
+    "passage": "The sensor {{1}} clean, and we wipe the cover {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The sensor is always clean, and we wipe the cover every day."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "is-always",
+            "text": "is always",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "always-is",
+            "text": "always is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are-always",
+            "text": "are always",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "is-always"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "频率副词放在 "
+          },
+          {
+            "type": "text",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 动词之后，单数主语配 "
+          },
+          {
+            "type": "text",
+            "text": "is always",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "every-day",
+            "text": "every day",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "everyday",
+            "text": "everyday",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "every-days",
+            "text": "every days",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "every-day"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "句末作时间状语表示“每天”，必须分写为 "
+          },
+          {
+            "type": "text",
+            "text": "every day",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空考核频率副词位于 "
+      },
+      {
+        "type": "text",
+        "text": "be",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 动词后，第二空考核时间状语 "
+      },
+      {
+        "type": "text",
+        "text": "every day",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的分写。"
+      }
+    ]
+  },
+  {
+    "id": "frequency-adverbs-v2-translation-1",
+    "type": "translation",
+    "chapter": "频率副词",
+    "concepts": [
+      "frequency-adverbs"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位维护说明译成中文。",
+    "source_text": "He usually checks the tray twice a week and never skips the label.",
+    "source_text_tts": {
+      "voice": "tide"
+    },
+    "reference_translation": "他通常每周检查两次托盘，而且从不漏看标签。",
+    "acceptable_alternates": [
+      "他通常一周检查托盘两次，从不跳过标签。"
+    ],
+    "key_terms": [
+      {
+        "term": "通常"
+      },
+      {
+        "term": "每周两次",
+        "variants": [
+          "一周两次"
+        ]
+      },
+      {
+        "term": "从不"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "usually",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "never",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均位于实义动词三单形式之前，"
+      },
+      {
+        "type": "text",
+        "text": "twice a week",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示每周两次。"
+      }
+    ]
+  },
+  {
+    "id": "frequency-adverbs-v2-writing-1",
+    "type": "writing",
+    "chapter": "频率副词",
+    "concepts": [
+      "frequency-adverbs"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "always",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "before",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，说明你总是在早班开始前清洁镜头。"
+      }
+    ],
+    "requirements": [
+      "把 always 放在实义动词之前。",
+      "写明动作发生时间在早班开始前。"
+    ],
+    "keywords": [
+      "always",
+      "before"
+    ],
+    "min_words": 6,
+    "max_words": 18,
+    "sample_response": "I always clean the lens before the morning shift starts.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "频率副词 "
+      },
+      {
+        "type": "text",
+        "text": "always",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 紧跟主语并放在实义动词 "
+      },
+      {
+        "type": "text",
+        "text": "clean",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前。"
+      }
+    ]
+  },
+  {
+    "id": "shift-schedule-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "stem": "阅读车间白班排班通知，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "DAY SHIFT ROSTER"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The day shift runs from 8:00 a.m. to 5:00 p.m. on weekdays.",
+        "tts": {
+          "voice": "stella",
+          "text": "The day shift runs from eight in the morning to five in the afternoon on weekdays."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The lunch break is from 12:00 to 1:00 p.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "The lunch break is from twelve to one p.m."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "All operators must count the reject bin and sign the handover log before 4:50 p.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "All operators must count the reject bin and sign the handover log before four fifty p.m."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "net-hours",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many net working hours does the day shift have each day?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "8",
+          "absolute_tolerance": "0"
+        },
+        "analysis": "上午 8 点到下午 5 点共 9 小时，扣除 1 小时午休，净工作时长为 8 小时。"
+      },
+      {
+        "id": "end-tasks",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What must operators do before 4:50 p.m.?",
+            "tts": {
+              "voice": "stella",
+              "text": "What must operators do before four fifty p.m.?"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "count-bin",
+            "text": "Count the reject bin.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "sign-log",
+            "text": "Sign the handover log.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "take-lunch",
+            "text": "Start the lunch break.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "count-bin",
+            "sign-log"
+          ]
+        },
+        "analysis": "通知最后一句要求在四点五十前清点废品箱并签署交班日志。"
+      }
+    ],
+    "analysis": "核对总跨度并扣除午休时间即可得到净工时，同时注意班末交接的两项动作要求。"
+  },
+  {
+    "id": "shift-schedule-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "stem": "补全质检员在交班邮件中关于班次与休息时间的句子。",
+    "passage": "I am {{1}} the morning shift this week, and our break is {{2}} twelve to twelve thirty.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "I am on the morning shift this week, and our break is from twelve to twelve thirty."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "on",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "in",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "on"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "表示“在某个班次上工作”，固定搭配介词 "
+          },
+          {
+            "type": "text",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "from",
+            "text": "from",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "between",
+            "text": "between",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "since",
+            "text": "since",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "from"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "后文有介词 "
+          },
+          {
+            "type": "text",
+            "text": "to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，必须配对 "
+          },
+          {
+            "type": "text",
+            "text": "from",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 构成时段表达。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "考查班次介词搭配 "
+      },
+      {
+        "type": "text",
+        "text": "on the morning shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与时间段搭配 "
+      },
+      {
+        "type": "text",
+        "text": "from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 加 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "shift-schedule-v2-translation-1",
+    "type": "translation",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列班次交接提示翻译成英文。",
+    "source_text": "早班上午七点开始，下午三点半结束，午休从十二点到十二点半。",
+    "reference_translation": "The morning shift starts at seven a.m. and finishes at three thirty p.m., and the break is from twelve to twelve thirty.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "The morning shift starts at 7:00 a.m. and finishes at 3:30 p.m., with a break from 12:00 to 12:30."
+    ],
+    "key_terms": [
+      {
+        "term": "morning shift"
+      },
+      {
+        "term": "starts",
+        "variants": [
+          "begins"
+        ]
+      },
+      {
+        "term": "finishes",
+        "variants": [
+          "ends"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "单数主语 "
+      },
+      {
+        "type": "text",
+        "text": "The morning shift",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配三单动词 "
+      },
+      {
+        "type": "text",
+        "text": "starts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "finishes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，休息时段用 "
+      },
+      {
+        "type": "text",
+        "text": "from ... to ...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "shift-schedule-v2-writing-1",
+    "type": "writing",
+    "chapter": "班次与日程",
+    "concepts": [
+      "shift-schedule"
+    ],
+    "subtype": "short_essay",
+    "stem": "给接班同事写一则简短的英文交班便条，说明你本周上早班（8:00 a.m. 至 4:30 p.m.）、午休时段（12:00 至 12:30），并提醒对方在早会前签署交班表。",
+    "requirements": [
+      "写明班次名称、起止时间和午休时段。",
+      "提醒接班同事在早会前签字。",
+      "使用称呼与落款。"
+    ],
+    "keywords": [
+      "morning shift",
+      "break",
+      "handover"
+    ],
+    "min_words": 40,
+    "max_words": 60,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Lin,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "I am on the morning shift this week. My shift starts at eight a.m. and finishes at four thirty p.m., with a lunch break from twelve to twelve thirty. Please count the pass bin and sign the handover sheet before the morning briefing.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nChen",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Chen"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "便条需包含班次介词 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、动词三单 "
+      },
+      {
+        "type": "text",
+        "text": "starts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "finishes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，并用 "
+      },
+      {
+        "type": "text",
+        "text": "from",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接休息时段，保持完整称呼和落款格式。"
+      }
+    ]
   }
 ]

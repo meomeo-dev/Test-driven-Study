@@ -2970,5 +2970,2113 @@
         "text": "。"
       }
     ]
+  },
+  {
+    "id": "colors-shapes-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "颜色与形状",
+    "concepts": [
+      "colors-shapes"
+    ],
+    "stem": "阅读视觉分拣台物料分类指引，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "PART SORTING GUIDE"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The round green caps go into the blue tray on the left.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The washers are flat and gray, and they stay in the white box.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Please check the long black wire under Station 2 before starting.",
+        "tts": {
+          "voice": "stella",
+          "text": "Please check the long black wire under Station two before starting."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "washer-features",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What do the washers look like?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "flat-gray",
+            "text": "They are flat and gray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "round-green",
+            "text": "They are round and green.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "square-white",
+            "text": "They are square and white.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "flat-gray"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句说明垫片是扁平且呈灰色的（"
+          },
+          {
+            "type": "text",
+            "text": "flat and gray",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "sorting-rules",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements are true according to the guide?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "green-caps",
+            "text": "The round green caps go into the blue tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "long-wire",
+            "text": "Operators should check the long black wire under Station 2.",
+            "tts": {
+              "voice": "stella",
+              "text": "Operators should check the long black wire under Station two."
+            }
+          },
+          {
+            "id": "washers-blue",
+            "text": "The washers stay in the blue tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "green-caps",
+            "long-wire"
+          ]
+        },
+        "analysis": "圆绿色盖子放蓝色托盘，长黑色线缆在二号工位下方；垫片放在白色盒子里。"
+      }
+    ],
+    "analysis": "阅读时把零件的颜色、形状与对应料盒颜色逐一匹配。"
+  },
+  {
+    "id": "colors-shapes-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "颜色与形状",
+    "concepts": [
+      "colors-shapes"
+    ],
+    "stem": "根据主谓一致和颜色形状搭配规则，完成下列工位记录。",
+    "passage": "The sensor cover {{1}} yellow and square, and the metal washers {{2}} flat and gray.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The sensor cover is yellow and square, and the metal washers are flat and gray."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "be",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "is"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "单数主语 "
+          },
+          {
+            "type": "text",
+            "text": "The sensor cover",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 搭配单数 "
+          },
+          {
+            "type": "text",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 动词 "
+          },
+          {
+            "type": "text",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "are",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "am",
+            "text": "am",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "are"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "复数主语 "
+          },
+          {
+            "type": "text",
+            "text": "the metal washers",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 必须搭配复数 "
+          },
+          {
+            "type": "text",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 动词 "
+          },
+          {
+            "type": "text",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": "分别考查单数主语与复数主语在描述颜色和形状时对 be 动词的选择。"
+  },
+  {
+    "id": "colors-shapes-v2-translation-1",
+    "type": "translation",
+    "chapter": "颜色与形状",
+    "concepts": [
+      "colors-shapes"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位物料描述译成中文。",
+    "source_text": "Put the short white pins into the square black box.",
+    "source_text_tts": {
+      "voice": "tide"
+    },
+    "reference_translation": "把短的白色销钉放进正方形的黑色盒子里。",
+    "acceptable_alternates": [
+      "将短的白色销钉放入黑色方盒中。"
+    ],
+    "key_terms": [
+      {
+        "term": "白色销钉",
+        "variants": [
+          "白色的销钉"
+        ]
+      },
+      {
+        "term": "正方形",
+        "variants": [
+          "方的"
+        ]
+      },
+      {
+        "term": "黑色盒子",
+        "variants": [
+          "黑盒",
+          "黑色盒"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "英文前置修饰语序为长度或形状在前、颜色在后，如 "
+      },
+      {
+        "type": "text",
+        "text": "short white pins",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "square black box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "colors-shapes-v2-writing-1",
+    "type": "writing",
+    "chapter": "颜色与形状",
+    "concepts": [
+      "colors-shapes"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "round",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "blue",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，描述工位上的盖子是蓝色且圆形的。"
+      }
+    ],
+    "requirements": [
+      "使用 be 动词连接主语和形容词。",
+      "用 and 连接颜色与形状。"
+    ],
+    "keywords": [
+      "round",
+      "blue"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "The cap on the bench is blue and round.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "主语为单数时搭配 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，并用 "
+      },
+      {
+        "type": "text",
+        "text": "and",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 连接颜色和形状两个表语形容词。"
+      }
+    ]
+  },
+  {
+    "id": "adjectives-quality-v2-listening-1",
+    "type": "listening",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "stem": "听质检员与技术员的现场故障排查对话，回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Stop the belt. One cover is cracked, and two screws are loose.",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Got it. Put the cracked cover in the NG box, and please wipe the dirty lens too.",
+        "tts": {
+          "voice": "stella",
+          "text": "Got it. Put the cracked cover in the N G box, and please wipe the dirty lens too."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "screw-issue",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is the problem with the two screws?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "loose",
+            "text": "They are loose.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "bent",
+            "text": "They are bent.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "clean",
+            "text": "They are clean.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "loose"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男声说 "
+          },
+          {
+            "type": "text",
+            "text": "two screws are loose",
+            "tts": {
+              "voice": "tide"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示两颗螺丝松动了。"
+          }
+        ]
+      },
+      {
+        "id": "lens-clean",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The camera lens is clean now.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声要求擦拭脏污的镜头（"
+          },
+          {
+            "type": "text",
+            "text": "wipe the dirty lens",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），说明镜头目前是脏的。"
+          }
+        ]
+      }
+    ],
+    "analysis": "注意区分对话中的缺陷形容词：裂纹、松动和脏污。"
+  },
+  {
+    "id": "adjectives-quality-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "stem": "阅读质检交接缺陷日志，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "QUALITY LOG"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Most parts in Batch 4 are OK and clean.",
+        "tts": {
+          "voice": "stella",
+          "text": "Most parts in Batch four are okay and clean."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "However, three pins are bent and one cap is broken.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Please label each defective item as a scratched or bent part before packing.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "cap-status",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is wrong with one cap in Batch 4?",
+            "tts": {
+              "voice": "stella",
+              "text": "What is wrong with one cap in Batch four?"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "broken",
+            "text": "It is broken.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tight",
+            "text": "It is tight.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dirty",
+            "text": "It is dirty.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "broken"
+          ]
+        },
+        "analysis": "日志第二句明确记录一个盖子已破损。"
+      },
+      {
+        "id": "valid-phrases",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two expressions use quality adjectives correctly?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "bent-part",
+            "text": "a bent part",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "parts-clean",
+            "text": "The parts are clean.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "part-cracked",
+            "text": "a part cracked",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "bent-part",
+            "parts-clean"
+          ]
+        },
+        "analysis": "单个形容词作定语必须前置在名词前，作表语则放在 be 动词之后。"
+      }
+    ],
+    "analysis": "阅读日志时核对缺陷类型，同时巩固前置定语与表语的语序。"
+  },
+  {
+    "id": "adjectives-quality-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "stem": "选择正确的质量形容词形式与冠词搭配，补全不良品汇报。",
+    "passage": "The sensor found {{1}} scratched cover, and two bolts are {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The sensor found a scratched cover, and two bolts are loose."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "a",
+            "text": "a",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "an",
+            "text": "an",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "two",
+            "text": "two",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "scratched cover",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是单数且以辅音音素开头，前面用冠词 "
+          },
+          {
+            "type": "text",
+            "text": "a",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "loose",
+            "text": "loose",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "crack",
+            "text": "crack",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "not-ok-bad",
+            "text": "OK not",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "loose"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 动词后接形容词 "
+          },
+          {
+            "type": "text",
+            "text": "loose",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 作表语，表示螺栓松动。"
+          }
+        ]
+      }
+    ],
+    "analysis": "注意区分前置定语冠词搭配与表语形容词的正确词形。"
+  },
+  {
+    "id": "adjectives-quality-v2-translation-1",
+    "type": "translation",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列质检汇报翻译成英文。",
+    "source_text": "这个金属盖没有破损，但有一点脏。",
+    "reference_translation": "This metal cover is not broken, but it is a bit dirty.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "The metal cover isn't broken, but it is a little dirty."
+    ],
+    "key_terms": [
+      {
+        "term": "metal cover"
+      },
+      {
+        "term": "not broken",
+        "variants": [
+          "isn't broken"
+        ]
+      },
+      {
+        "term": "dirty"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "否定句需把 "
+      },
+      {
+        "type": "text",
+        "text": "not",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 放在 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之后，破损用形容词 "
+      },
+      {
+        "type": "text",
+        "text": "broken",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "adjectives-quality-v2-writing-1",
+    "type": "writing",
+    "chapter": "质量形容词",
+    "concepts": [
+      "adjectives-quality"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "cracked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "reject box",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文指令，要求把有裂纹的零件放进废品箱。"
+      }
+    ],
+    "requirements": [
+      "把 cracked 作为前置定语放在零件名词前。",
+      "使用祈使句表达放入废品箱的指令。"
+    ],
+    "keywords": [
+      "cracked",
+      "reject box"
+    ],
+    "min_words": 7,
+    "max_words": 18,
+    "sample_response": "Please put the cracked part into the reject box.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "单个形容词 "
+      },
+      {
+        "type": "text",
+        "text": "cracked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 必须置于名词 "
+      },
+      {
+        "type": "text",
+        "text": "part",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前作前置定语。"
+      }
+    ]
+  },
+  {
+    "id": "demonstratives-v2-listening-1",
+    "type": "listening",
+    "chapter": "指示代词 this / that / these / those",
+    "concepts": [
+      "demonstratives"
+    ],
+    "stem": "听工位远近物料交接对话，回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Is this tray on our bench ready for packing?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "speaker": "W",
+        "text": "Yes, it is. These parts here are all clean, but those boxes on the far shelf are empty.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "near-tray",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which items on the bench are clean?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "these-parts",
+            "text": "These parts here.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "those-boxes",
+            "text": "Those boxes on the far shelf.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "that-bin",
+            "text": "That bin by the door.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "these-parts"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声用近指复数 "
+          },
+          {
+            "type": "text",
+            "text": "These parts here",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 指代工作台手边的零件。"
+          }
+        ]
+      },
+      {
+        "id": "far-boxes",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Those boxes on the far shelf are full.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": "对话明确说明远处架子上的那些盒子是空的（empty）。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "通过近指（"
+      },
+      {
+        "type": "text",
+        "text": "this",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "these",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）和远指（"
+      },
+      {
+        "type": "text",
+        "text": "those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）区分工位手边与远端货架的物料状态。"
+      }
+    ]
+  },
+  {
+    "id": "demonstratives-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "指示代词 this / that / these / those",
+    "concepts": [
+      "demonstratives"
+    ],
+    "stem": "阅读工位交接清单，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "BENCH HANDOVER NOTE"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "This blue bin near the sensor holds thirty good caps.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "These washers on the left mat are flat and clean.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "That red tray by the wall is dirty, and those screws in the corner are loose.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "dirty-tray",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which container is dirty?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "red-tray",
+            "text": "That red tray by the wall.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "blue-bin",
+            "text": "This blue bin near the sensor.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "left-mat",
+            "text": "These washers on the left mat.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "red-tray"
+          ]
+        },
+        "analysis": "最后一句明确说明靠墙的那个红色托盘是脏的。"
+      },
+      {
+        "id": "grammar-match",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two sentences match singular or plural grammar correctly?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "these-clean",
+            "text": "These washers are clean.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "those-loose",
+            "text": "Those screws are loose.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "this-are",
+            "text": "This blue bin are full.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "these-clean",
+            "those-loose"
+          ]
+        },
+        "analysis": "指示代词、名词与 be 动词必须单复数一致。"
+      }
+    ],
+    "analysis": "结合空间位置与单复数一致原则核对工位物品状态。"
+  },
+  {
+    "id": "demonstratives-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "指示代词 this / that / these / those",
+    "concepts": [
+      "demonstratives"
+    ],
+    "stem": "根据远近指代与单复数简答规则，补全工位对话。",
+    "passage": "{{1}} pins in my hand are bent, and are those boxes empty? Yes, {{2}} are.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "These pins in my hand are bent, and are those boxes empty? Yes, they are."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "these",
+            "text": "These",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "this",
+            "text": "This",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "that",
+            "text": "That",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "these"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "in my hand",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示近处，且 "
+          },
+          {
+            "type": "text",
+            "text": "pins",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为复数，用 "
+          },
+          {
+            "type": "text",
+            "text": "These",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "they",
+            "text": "they",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "those",
+            "text": "those",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "it",
+            "text": "it",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "they"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "复数指示代词问句的简短回答必须用人称代词 "
+          },
+          {
+            "type": "text",
+            "text": "they",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 替代。"
+          }
+        ]
+      }
+    ],
+    "analysis": "考查近指复数代词与疑问句简答代词替换。"
+  },
+  {
+    "id": "demonstratives-v2-translation-1",
+    "type": "translation",
+    "chapter": "指示代词 this / that / these / those",
+    "concepts": [
+      "demonstratives"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列工位确认句译成中文。",
+    "source_text": "Is that green box on the far shelf full? No, it isn't.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "远处架子上的那个绿盒子满了吗？不，没有满。",
+    "acceptable_alternates": [
+      "远端货架上的那个绿色料盒装满了吗？没有。"
+    ],
+    "key_terms": [
+      {
+        "term": "那个",
+        "variants": [
+          "远处",
+          "远端"
+        ]
+      },
+      {
+        "term": "绿盒子",
+        "variants": [
+          "绿色料盒",
+          "绿色盒子"
+        ]
+      },
+      {
+        "term": "满",
+        "variants": [
+          "装满"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "that",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指代远处的单个料盒，简答时用 "
+      },
+      {
+        "type": "text",
+        "text": "it",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指代。"
+      }
+    ]
+  },
+  {
+    "id": "demonstratives-v2-writing-1",
+    "type": "writing",
+    "chapter": "指示代词 this / that / these / those",
+    "concepts": [
+      "demonstratives"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Those",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "trays",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，说明远处货架上的那些托盘都是干净的。"
+      }
+    ],
+    "requirements": [
+      "使用远指复数代词 Those 和复数名词 trays。",
+      "正确搭配复数 be 动词 are。"
+    ],
+    "keywords": [
+      "Those",
+      "trays"
+    ],
+    "min_words": 6,
+    "max_words": 18,
+    "sample_response": "Those trays on the shelf are clean.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "远指复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "trays",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 需搭配复数动词 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "comparatives-v2-listening-1",
+    "type": "listening",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "stem": "听质检员汇报两批螺栓的测量比对结果，回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "We measured two bolts with the caliper. Bolt A is forty-two millimeters long, and Bolt B is thirty-eight millimeters long. So Bolt A is four millimeters longer than Bolt B. Batch A is also cleaner and better than Batch B.",
+    "sub_questions": [
+      {
+        "id": "bolt-diff",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many millimeters longer is Bolt A than Bolt B?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "4",
+          "absolute_tolerance": "0"
+        },
+        "analysis": "录音中明确算出 A 螺栓比 B 螺栓长 4 毫米（42 - 38 = 4）。"
+      },
+      {
+        "id": "better-batch",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which batch has better quality?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "batch-a",
+            "text": "Batch A.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "batch-b",
+            "text": "Batch B.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "same",
+            "text": "They are the same.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "batch-a"
+          ]
+        },
+        "analysis": "最后一句明确说明 A 批次更干净且质量更好。"
+      }
+    ],
+    "analysis": "听音时注意捕捉具体毫米差值及不规则比较级 better 的对比结论。"
+  },
+  {
+    "id": "comparatives-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "stem": "阅读垫片公差抽检记录，回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "TOLERANCE REPORT"
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The copper washer weighs 45 grams, and the plastic one weighs 20 grams.",
+        "tts": {
+          "voice": "stella",
+          "text": "The copper washer weighs forty-five grams, and the plastic one weighs twenty grams."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The copper washer is heavier and bigger than the plastic one.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Pin 1 is 3 mm shorter than the standard pin, so Pin 1 is NG.",
+        "tts": {
+          "voice": "stella",
+          "text": "Pin one is three millimeters shorter than the standard pin, so Pin one is N G."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "weight-diff",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many grams heavier is the copper washer than the plastic one?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "25",
+          "absolute_tolerance": "0"
+        },
+        "analysis": "铜垫片重 45 克，塑料垫片重 20 克，相差 45 - 20 = 25 克。"
+      },
+      {
+        "id": "true-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements are true according to the report?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "copper-bigger",
+            "text": "The copper washer is bigger than the plastic one.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "pin1-shorter",
+            "text": "Pin 1 is 3 mm shorter than the standard pin.",
+            "tts": {
+              "voice": "stella",
+              "text": "Pin one is three millimeters shorter than the standard pin."
+            }
+          },
+          {
+            "id": "pin1-longer",
+            "text": "Pin 1 is 3 mm longer than the standard pin.",
+            "tts": {
+              "voice": "stella",
+              "text": "Pin one is three millimeters longer than the standard pin."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "copper-bigger",
+            "pin1-shorter"
+          ]
+        },
+        "analysis": "报告指出铜垫片更大、1 号销钉比标准件短 3 毫米。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读时核对测量数值差值及比较级形容词方向（"
+      },
+      {
+        "type": "text",
+        "text": "shorter",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "longer",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "comparatives-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "stem": "为比较级与公差汇报句选择正确的词形与语法词。",
+    "passage": "The new tray is {{1}} than the old one, and Batch B is {{2}} than Batch A.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The new tray is bigger than the old one, and Batch B is worse than Batch A."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "bigger",
+            "text": "bigger",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "biger",
+            "text": "biger",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "more-big",
+            "text": "more big",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "bigger"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "big",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 是重读闭音节单音节词，比较级必须双写末尾字母加 `-er`，拼作 "
+          },
+          {
+            "type": "text",
+            "text": "bigger",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "worse",
+            "text": "worse",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "more-worse",
+            "text": "more worse",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "badder",
+            "text": "badder",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "worse"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "bad",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的不规则比较级是 "
+          },
+          {
+            "type": "text",
+            "text": "worse",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，不可再加 "
+          },
+          {
+            "type": "text",
+            "text": "more",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "考查重读闭音节双写规则（"
+      },
+      {
+        "type": "text",
+        "text": "bigger",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与不规则比较级（"
+      },
+      {
+        "type": "text",
+        "text": "worse",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
+    ]
+  },
+  {
+    "id": "comparatives-v2-translation-1",
+    "type": "translation",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列公差测量汇报翻译成英文。",
+    "source_text": "这根定位销比标准件长两毫米，而且更干净。",
+    "reference_translation": "This pin is two millimeters longer than the standard one, and it is cleaner.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "This pin is 2 mm longer than the standard one, and it is cleaner."
+    ],
+    "key_terms": [
+      {
+        "term": "two millimeters longer",
+        "variants": [
+          "2 mm longer"
+        ]
+      },
+      {
+        "term": "than"
+      },
+      {
+        "term": "cleaner"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "测量差值必须置于比较级 "
+      },
+      {
+        "type": "text",
+        "text": "longer",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前，并用 "
+      },
+      {
+        "type": "text",
+        "text": "one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 替代同类单数名词。"
+      }
+    ]
+  },
+  {
+    "id": "comparatives-v2-writing-1",
+    "type": "writing",
+    "chapter": "形容词比较级",
+    "concepts": [
+      "comparatives"
+    ],
+    "subtype": "short_essay",
+    "stem": "写一则简短的英文质检对比说明，比较 A、B 两批垫片的长度差异（A 批比 B 批长 2 mm）、重量差异（A 批比 B 批重 10 g）以及整体表面质量（A 批更好）。",
+    "requirements": [
+      "写明两项带具体单位差值的比较级句子。",
+      "写明两批的整体质量结论。",
+      "使用称呼与落款。"
+    ],
+    "keywords": [
+      "longer than",
+      "heavier than",
+      "better"
+    ],
+    "min_words": 40,
+    "max_words": 60,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Team,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "I checked Batch A and Batch B today. The washer in Batch A is two millimeters longer than the one in Batch B, and it is ten grams heavier. Batch A is also cleaner and better than Batch B.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nWang",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Wang"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "注意把差值放在比较级之前，用 "
+      },
+      {
+        "type": "text",
+        "text": "one",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 替代前文单数名词 "
+      },
+      {
+        "type": "text",
+        "text": "washer",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，并合理使用不规则比较级 "
+      },
+      {
+        "type": "text",
+        "text": "better",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
   }
 ]

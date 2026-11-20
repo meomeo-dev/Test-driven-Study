@@ -1665,5 +1665,3004 @@
       "value": "1",
       "absolute_tolerance": "0"
     }
+  },
+  {
+    "id": "numbers-v2-listening-1",
+    "type": "listening",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "stem": "听物料员与组长盘点零件的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Lina, how many yellow caps are in Box A?"
+      },
+      {
+        "speaker": "W",
+        "text": "There are fourteen yellow caps, and forty green caps in Box B."
+      },
+      {
+        "speaker": "M",
+        "text": "Fourteen yellow and forty green. Do we have any red washers?"
+      },
+      {
+        "speaker": "W",
+        "text": "We have nineteen red washers in the small tray."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "yellow-caps",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many yellow caps are in Box A?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "14",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声说 "
+          },
+          {
+            "type": "text",
+            "text": "fourteen yellow caps",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，"
+          },
+          {
+            "type": "text",
+            "text": "fourteen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示 14（重音在后），而 40（"
+          },
+          {
+            "type": "text",
+            "text": "forty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）是绿色盖子的数量。"
+          }
+        ]
+      },
+      {
+        "id": "green-caps",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many green caps are in Box B?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "fourteen",
+            "text": "Fourteen.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "forty",
+            "text": "Forty.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "forty-four",
+            "text": "Forty-four.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "forty"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "B 箱里有 "
+          },
+          {
+            "type": "text",
+            "text": "forty green caps",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 40 个绿色盖子。"
+          }
+        ]
+      },
+      {
+        "id": "washer-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "There are ninety red washers in the small tray.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声说的是 "
+          },
+          {
+            "type": "text",
+            "text": "nineteen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（19），而不是 "
+          },
+          {
+            "type": "text",
+            "text": "ninety",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（90）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本段对话重点辨析 "
+      },
+      {
+        "type": "text",
+        "text": "fourteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "forty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "nineteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "ninety",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的重音及尾音差异。"
+      }
+    ]
+  },
+  {
+    "id": "numbers-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "stem": "阅读下午批次的工位盘点单，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "PARTS TALLY SHEET",
+        "tts": {
+          "voice": "stella",
+          "text": "Parts tally sheet."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Each clean tray holds twenty-five small bolts.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Station One currently has fifty small bolts in two full trays.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "We also counted thirteen defective pins and zero missing labels.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "per-tray",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many small bolts does one clean tray hold?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "25",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明 "
+          },
+          {
+            "type": "text",
+            "text": "twenty-five small bolts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即每个托盘装 25 个小螺栓。"
+          }
+        ]
+      },
+      {
+        "id": "defective-pins",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many defective pins were counted?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "thirteen",
+            "text": "Thirteen.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "thirty",
+            "text": "Thirty.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fifty",
+            "text": "Fifty.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "thirteen"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "原文最后一句写明 "
+          },
+          {
+            "type": "text",
+            "text": "thirteen defective pins",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 13 个不良销钉。"
+          }
+        ]
+      },
+      {
+        "id": "summary-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements match the tally sheet?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "fifty-bolts",
+            "text": "Station One has fifty small bolts in total.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-missing",
+            "text": "No labels are missing.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "thirty-pins",
+            "text": "There are thirty defective pins.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "fifty-bolts",
+            "no-missing"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "盘点单显示 1 号工位共有 50 个小螺栓，且缺标数为 "
+          },
+          {
+            "type": "text",
+            "text": "zero",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（零个）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读盘点单时注意把复合数字 "
+      },
+      {
+        "type": "text",
+        "text": "twenty-five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、整十数 "
+      },
+      {
+        "type": "text",
+        "text": "fifty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与十几数 "
+      },
+      {
+        "type": "text",
+        "text": "thirteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 准确对应到各自的物品上。"
+      }
+    ]
+  },
+  {
+    "id": "numbers-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "stem": "根据括号提示的中文数字与名词单复数规则，选出填入工单的正确形式。",
+    "passage": "We need {{1}} clean trays (40) and {{2}} spare boxes (28).",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We need forty clean trays and twenty-eight spare boxes."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "forty",
+            "text": "forty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "fourteen",
+            "text": "fourteen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "four",
+            "text": "four",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "forty"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "40 的规范拼写为 "
+          },
+          {
+            "type": "text",
+            "text": "forty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（不含字母 u），注意区分 14（"
+          },
+          {
+            "type": "text",
+            "text": "fourteen",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "twenty-eight",
+            "text": "twenty-eight",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "eighty-two",
+            "text": "eighty-two",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "eighteen",
+            "text": "eighteen",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "twenty-eight"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "28 为复合数词，先写十位 "
+          },
+          {
+            "type": "text",
+            "text": "twenty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 再加连字符和个位 "
+          },
+          {
+            "type": "text",
+            "text": "eight",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "40 写作 "
+      },
+      {
+        "type": "text",
+        "text": "forty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，28 写作带连字符的 "
+      },
+      {
+        "type": "text",
+        "text": "twenty-eight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "numbers-v2-translation-1",
+    "type": "translation",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列物料需求句子译成中文。",
+    "source_text": "We have thirty-six metal bolts and fifteen plastic trays on the shelf.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "架子上有三十六个金属螺栓和十五个塑料托盘。",
+    "acceptable_alternates": [
+      "货架上有 36 个金属螺栓和 15 个塑料托盘。"
+    ],
+    "key_terms": [
+      {
+        "term": "三十六",
+        "variants": [
+          "36"
+        ]
+      },
+      {
+        "term": "十五",
+        "variants": [
+          "15"
+        ]
+      },
+      {
+        "term": "托盘"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "thirty-six",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 36，"
+      },
+      {
+        "type": "text",
+        "text": "fifteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 15，"
+      },
+      {
+        "type": "text",
+        "text": "on the shelf",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示在架子上。"
+      }
+    ]
+  },
+  {
+    "id": "numbers-v2-translation-2",
+    "type": "translation",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列盘点问句与答句翻译成英文（英文数字请用单词拼写）。",
+    "source_text": "工作台上有多少个盒子？有二十四个盒子。",
+    "reference_translation": "How many boxes are there on the table? There are twenty-four boxes.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "How many boxes are on the table? There are 24 boxes."
+    ],
+    "key_terms": [
+      {
+        "term": "How many boxes"
+      },
+      {
+        "term": "are there"
+      },
+      {
+        "term": "twenty-four",
+        "variants": [
+          "24"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "询问数量时 "
+      },
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后接复数 "
+      },
+      {
+        "type": "text",
+        "text": "boxes",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，24 的单词拼写为 "
+      },
+      {
+        "type": "text",
+        "text": "twenty-four",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "numbers-v2-writing-1",
+    "type": "writing",
+    "chapter": "数字 0–100",
+    "concepts": [
+      "numbers"
+    ],
+    "subtype": "short_essay",
+    "stem": "为早班组长写一份简短的英文盘点便条：说明工作台上有 18 个合格品（good parts）和 30 个待检零件，另外 2 个托盘里装满 42 颗螺丝，还缺 10 个干净料盒。",
+    "requirements": [
+      "用英文基数词写出 18、30、42 和 10（如 eighteen、thirty、forty-two、ten）。",
+      "准确使用复数名词（parts、screws、boxes）。",
+      "包含称呼与落款。"
+    ],
+    "keywords": [
+      "eighteen",
+      "thirty",
+      "forty-two",
+      "ten"
+    ],
+    "min_words": 35,
+    "max_words": 55,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Sam,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Here is our morning count. There are eighteen good parts and thirty unchecked parts on the bench. We also have forty-two screws in two trays, and we still need ten clean boxes.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nLina",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Lina"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "盘点便条用 "
+      },
+      {
+        "type": "text",
+        "text": "eighteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "thirty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "forty-two",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "ten",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 清晰汇报了各物料数量，注意 "
+      },
+      {
+        "type": "text",
+        "text": "forty-two",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 中的 "
+      },
+      {
+        "type": "text",
+        "text": "forty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不含字母 u 且带连字符。"
+      }
+    ]
+  },
+  {
+    "id": "there-is-are-v2-listening-1",
+    "type": "listening",
+    "chapter": "There is / There are",
+    "concepts": [
+      "there-is-are"
+    ],
+    "stem": "听班组长开班前播报工位物料检查情况，再回答两个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Station Two is ready for the morning shift. There is one clean barcode scanner on the desk, and there are six spare batteries in the blue drawer. However, there aren't any clean rags on the shelf today.",
+    "sub_questions": [
+      {
+        "id": "drawer-items",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is in the blue drawer?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "batteries",
+            "text": "Six spare batteries.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "scanner",
+            "text": "One barcode scanner.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "rags",
+            "text": "Clean rags.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "batteries"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "播报说 "
+          },
+          {
+            "type": "text",
+            "text": "there are six spare batteries in the blue drawer",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，蓝色抽屉里是六节备用电池。"
+          }
+        ]
+      },
+      {
+        "id": "rags-available",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "There are some clean rags on the shelf today.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "播报最后一句使用否定句 "
+          },
+          {
+            "type": "text",
+            "text": "there aren't any clean rags on the shelf today",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，说明架子上没有干净抹布。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听音时注意肯定句 "
+      },
+      {
+        "type": "text",
+        "text": "There is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "There are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及否定句 "
+      },
+      {
+        "type": "text",
+        "text": "there aren't any",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 传达的有无信息。"
+      }
+    ]
+  },
+  {
+    "id": "there-is-are-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "There is / There are",
+    "concepts": [
+      "there-is-are"
+    ],
+    "stem": "阅读 3 号工位点检记录，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "BENCH CHECKLIST",
+        "tts": {
+          "voice": "stella",
+          "text": "Bench checklist."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "There is a green pass box on the left side of Bench Three.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "There are twelve metal pins and four clean trays next to the sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Is there a wrench in the tool cup? No, there isn't.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "wrench-check",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Is there a wrench in the tool cup?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "yes",
+            "text": "Yes, there is.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-isnt",
+            "text": "No, there isn't.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-arent",
+            "text": "No, there aren't.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "no-isnt"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "记录末尾问答明确写着 "
+          },
+          {
+            "type": "text",
+            "text": "No, there isn't.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "next-to-sensor",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two items are next to the sensor?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "pins",
+            "text": "Twelve metal pins.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "trays",
+            "text": "Four clean trays.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "pass-box",
+            "text": "A green pass box.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "pins",
+            "trays"
+          ]
+        },
+        "analysis": "第二句说明传感器旁边有 12 个金属销和 4 个干净托盘；绿色合格品盒位于工作台左侧。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "点检记录同时展示了单数 "
+      },
+      {
+        "type": "text",
+        "text": "There is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、复数 "
+      },
+      {
+        "type": "text",
+        "text": "There are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与一般疑问句 "
+      },
+      {
+        "type": "text",
+        "text": "Is there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的问答配合。"
+      }
+    ]
+  },
+  {
+    "id": "there-is-are-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "There is / There are",
+    "concepts": [
+      "there-is-are"
+    ],
+    "stem": "根据句中物品单复数与疑问句结构，选择合适形式补全工位对话。",
+    "passage": "There {{1}} one red button on the panel. {{2}} there any bolts in the small tray?",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "There is one red button on the panel. Are there any bolts in the small tray?"
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "has",
+            "text": "has",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "is"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "one red button",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为单数名词，搭配 "
+          },
+          {
+            "type": "text",
+            "text": "There is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "are-cap",
+            "text": "Are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is-cap",
+            "text": "Is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "do-cap",
+            "text": "Do",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "are-cap"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "bolts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为复数名词，询问是否存在用 "
+          },
+          {
+            "type": "text",
+            "text": "Are there",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空后接单数名词选 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第二空后接复数名词且为句首疑问句选 "
+      },
+      {
+        "type": "text",
+        "text": "Are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "there-is-are-v2-translation-1",
+    "type": "translation",
+    "chapter": "There is / There are",
+    "concepts": [
+      "there-is-are"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列工位检查句子翻译成英文。",
+    "source_text": "导轨上有一个传感器，工作台上有十个干净的托盘。",
+    "reference_translation": "There is one sensor on the track, and there are ten clean trays on the table.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "There is a sensor on the track, and there are 10 clean trays on the workbench."
+    ],
+    "key_terms": [
+      {
+        "term": "There is"
+      },
+      {
+        "term": "on the track"
+      },
+      {
+        "term": "there are"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "前半句单数传感器用 "
+      },
+      {
+        "type": "text",
+        "text": "There is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，后半句复数托盘用 "
+      },
+      {
+        "type": "text",
+        "text": "there are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "there-is-are-v2-writing-1",
+    "type": "writing",
+    "chapter": "There is / There are",
+    "concepts": [
+      "there-is-are"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Is there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "Are there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，向搭档询问红色料盒里是否有备用螺丝（spare screws）。"
+      }
+    ],
+    "requirements": [
+      "使用正确的存在句疑问语序（Are there ...）。",
+      "包含 spare screws 和 in the red box。"
+    ],
+    "keywords": [
+      "Are there",
+      "spare screws",
+      "red box"
+    ],
+    "min_words": 7,
+    "max_words": 19,
+    "sample_response": "Are there any spare screws in the red box?",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "screws",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是复数名词，疑问句需用 "
+      },
+      {
+        "type": "text",
+        "text": "Are there any spare screws",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "positions-v2-listening-1",
+    "type": "listening",
+    "chapter": "方位介词",
+    "concepts": [
+      "positions"
+    ],
+    "stem": "听班长与新员工核对分拣台设备位置的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Lina, where should I put the green pass box and the yellow reject box?"
+      },
+      {
+        "speaker": "W",
+        "text": "Put the green pass box on the left, and put the yellow reject box on the right."
+      },
+      {
+        "speaker": "M",
+        "text": "Got it. What about the scissors and the blue tape?"
+      },
+      {
+        "speaker": "W",
+        "text": "Keep the scissors between the two boxes, and leave the blue tape under the table."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "green-location",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should the green pass box go?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "left",
+            "text": "On the left.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "right",
+            "text": "On the right.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under",
+            "text": "Under the table.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "left"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女声指令 "
+          },
+          {
+            "type": "text",
+            "text": "Put the green pass box on the left",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "tape-check",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The blue tape goes between the two boxes.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "放在两盒中间的是剪刀（"
+          },
+          {
+            "type": "text",
+            "text": "scissors",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），蓝色胶带放在工作台下面（"
+          },
+          {
+            "type": "text",
+            "text": "under the table",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "layout-pair",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two placements match Lina's instructions?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "yellow-right",
+            "text": "Yellow reject box on the right.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "scissors-between",
+            "text": "Scissors between the two boxes.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tape-on",
+            "text": "Blue tape on the table.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "yellow-right",
+            "scissors-between"
+          ]
+        },
+        "analysis": "黄色不良品盒放右侧，剪刀放两盒中间；蓝色胶带在桌子下方。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听方位指令时注意将物品名称与 "
+      },
+      {
+        "type": "text",
+        "text": "on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "between",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "under",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 一一对应。"
+      }
+    ]
+  },
+  {
+    "id": "positions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "方位介词",
+    "concepts": [
+      "positions"
+    ],
+    "stem": "阅读分拣站设备布置说明，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WORKSTATION LAYOUT",
+        "tts": {
+          "voice": "stella",
+          "text": "Workstation layout."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The camera sits directly above the track, and the parts tray sits under the camera.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The red stop button is in front of the machine, while the power plug is behind the desk.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Keep the oil bottle next to the motor at all times.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "stop-button",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where is the red stop button?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "front",
+            "text": "In front of the machine.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "behind",
+            "text": "Behind the desk.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under",
+            "text": "Under the camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "front"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句明确说明 "
+          },
+          {
+            "type": "text",
+            "text": "The red stop button is in front of the machine",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "layout-true",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements match the layout guide?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "tray-under",
+            "text": "The parts tray is under the camera.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "oil-next",
+            "text": "The oil bottle stays next to the motor.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "plug-front",
+            "text": "The power plug is in front of the desk.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "tray-under",
+            "oil-next"
+          ]
+        },
+        "analysis": "零件托盘在摄像头下方，油壶紧挨电机；电源插头在桌子后面（behind），不是前面。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "布置说明对比了 "
+      },
+      {
+        "type": "text",
+        "text": "under",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "in front of",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "behind",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "next to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 四组工位常用方位介词。"
+      }
+    ]
+  },
+  {
+    "id": "positions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "方位介词",
+    "concepts": [
+      "positions"
+    ],
+    "stem": "选择恰当的方位短语补全工位摆放说明。",
+    "passage": "Put the pass box {{1}} the left, and place the servo flap {{2}} the two boxes.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Put the pass box on the left, and place the servo flap between the two boxes."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "on",
+            "text": "on",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "in",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under",
+            "text": "under",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "on"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "“在左边”固定搭配为 "
+          },
+          {
+            "type": "text",
+            "text": "on the left",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "between",
+            "text": "between",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "behind",
+            "text": "behind",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "under2",
+            "text": "under",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "between"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "在两个盒子中间应使用 "
+          },
+          {
+            "type": "text",
+            "text": "between",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "表示左右用 "
+      },
+      {
+        "type": "text",
+        "text": "on the left",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，表示两者之间用 "
+      },
+      {
+        "type": "text",
+        "text": "between",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "positions-v2-translation-1",
+    "type": "translation",
+    "chapter": "方位介词",
+    "concepts": [
+      "positions"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列设备位置说明译成中文。",
+    "source_text": "The scanner is next to the monitor, and the cables are behind the box.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "扫码枪在显示器旁边，线缆在盒子后面。",
+    "acceptable_alternates": [
+      "扫码枪紧挨着显示器，线缆放在箱子后面。"
+    ],
+    "key_terms": [
+      {
+        "term": "扫码枪"
+      },
+      {
+        "term": "旁边",
+        "variants": [
+          "紧挨着"
+        ]
+      },
+      {
+        "term": "后面"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "next to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为紧挨着、在旁边，"
+      },
+      {
+        "type": "text",
+        "text": "behind",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 意为在后面。"
+      }
+    ]
+  },
+  {
+    "id": "positions-v2-writing-1",
+    "type": "writing",
+    "chapter": "方位介词",
+    "concepts": [
+      "positions"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "in front of",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，说明按钮在机器前面、料盒在右边。"
+      }
+    ],
+    "requirements": [
+      "正确写出 in front of（不要漏掉 of）。",
+      "正确写出 on the right（不要漏掉 the）。"
+    ],
+    "keywords": [
+      "in front of",
+      "on the right"
+    ],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "The button is in front of the machine, and the box is on the right.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "注意两个完整介词短语："
+      },
+      {
+        "type": "text",
+        "text": "in front of the machine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "on the right",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-listening-1",
+    "type": "listening",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "stem": "听早班主管播报今日工位排班时间表，再回答三个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "Good morning, everyone. Today our line starts at eight thirty in the morning. Please take your first check at a quarter past ten, and stop the machine at a quarter to five in the afternoon for handover.",
+    "sub_questions": [
+      {
+        "id": "line-start",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When does the line start today?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "eight-thirty",
+            "text": "At 8:30 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "At eight thirty a.m."
+            }
+          },
+          {
+            "id": "ten-fifteen",
+            "text": "At 10:15 a.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "At ten fifteen a.m."
+            }
+          },
+          {
+            "id": "four-forty-five",
+            "text": "At 4:45 p.m.",
+            "tts": {
+              "voice": "stella",
+              "text": "At four forty-five p.m."
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "eight-thirty"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "通知说 "
+          },
+          {
+            "type": "text",
+            "text": "at eight thirty in the morning",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即上午 8:30。"
+          }
+        ]
+      },
+      {
+        "id": "first-check-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The first check is at nine fifteen in the morning.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一次点检时间是 "
+          },
+          {
+            "type": "text",
+            "text": "a quarter past ten",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "（10:15），而不是 9:15。"
+          }
+        ]
+      },
+      {
+        "id": "stop-minutes",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "At a quarter to five, how many minutes are left until five o'clock?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "15",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "a quarter to five",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示差一刻钟（15 分钟）到五点，即 4:45。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "听排班时间表时需熟练将 "
+      },
+      {
+        "type": "text",
+        "text": "eight thirty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "a quarter past ten",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "a quarter to five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 对应为 8:30、10:15 与 4:45。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "stem": "阅读车间看板上的班次时间通知，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SHIFT TIMETABLE",
+        "tts": {
+          "voice": "stella",
+          "text": "Shift timetable."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "The workshop gate opens at 7:30 a.m. for the morning shift.",
+        "tts": {
+          "voice": "stella",
+          "text": "The workshop gate opens at seven thirty a.m. for the morning shift."
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Team briefing begins at eight o'clock, and lunch break is from twelve to one p.m.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Afternoon cleaning starts at 4:45 p.m. before shift handover.",
+        "tts": {
+          "voice": "stella",
+          "text": "Afternoon cleaning starts at four forty-five p.m. before shift handover."
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "gate-open",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When does the workshop gate open?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "half-past-seven",
+            "text": "At half past seven in the morning.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "eight-oclock",
+            "text": "At eight o'clock in the morning.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "quarter-to-five",
+            "text": "At a quarter to five in the afternoon.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "half-past-seven"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明大门在 7:30 a.m. 开放，即 "
+          },
+          {
+            "type": "text",
+            "text": "half past seven in the morning",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "schedule-pair",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two schedule details are correct?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "briefing",
+            "text": "Team briefing starts at eight o'clock.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "cleaning",
+            "text": "Afternoon cleaning starts at a quarter to five.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "lunch",
+            "text": "Lunch break ends at two p.m.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "briefing",
+            "cleaning"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "早会八点整开始，下午清洁于 4:45（即 "
+          },
+          {
+            "type": "text",
+            "text": "a quarter to five",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）开始；午休在下午一点结束。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "读看板时间表时需在数字写法（7:30、4:45）与英文习惯表达（"
+      },
+      {
+        "type": "text",
+        "text": "half past seven",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "a quarter to five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）之间准确转换。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "stem": "根据括号内时刻提示，选出正确的英文报时介词或单词。",
+    "passage": "The morning check is at half {{1}} eight (8:30), and the afternoon break ends at a quarter {{2}} four (3:45).",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The morning check is at half past eight, and the afternoon break ends at a quarter to four."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "past",
+            "text": "past",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "to",
+            "text": "to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "oclock",
+            "text": "o'clock",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "past"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "8:30 用 "
+          },
+          {
+            "type": "text",
+            "text": "half past eight",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示 8 点过了半小时。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "to2",
+            "text": "to",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "past2",
+            "text": "past",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "at2",
+            "text": "at",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "to2"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "3:45 距离 4 点还差一刻钟，用 "
+          },
+          {
+            "type": "text",
+            "text": "a quarter to four",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "半点固定搭配 "
+      },
+      {
+        "type": "text",
+        "text": "half past",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；差一刻到下一整点固定搭配 "
+      },
+      {
+        "type": "text",
+        "text": "a quarter to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-translation-1",
+    "type": "translation",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列交接班时间提醒翻译成英文。",
+    "source_text": "现在是九点一刻，机器将在下午五点整停止运行。",
+    "reference_translation": "It is a quarter past nine now, and the machine will stop at five o'clock in the afternoon.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "It's 9:15 now, and the machine stops at 5:00 p.m."
+    ],
+    "key_terms": [
+      {
+        "term": "a quarter past nine",
+        "variants": [
+          "nine fifteen",
+          "9:15"
+        ]
+      },
+      {
+        "term": "five o'clock",
+        "variants": [
+          "5:00"
+        ]
+      },
+      {
+        "term": "in the afternoon",
+        "variants": [
+          "p.m."
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "9:15 习惯表达为 "
+      },
+      {
+        "type": "text",
+        "text": "a quarter past nine",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，下午 5 点整用 "
+      },
+      {
+        "type": "text",
+        "text": "at five o'clock in the afternoon",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，注意不可缺少介词 "
+      },
+      {
+        "type": "text",
+        "text": "at",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-writing-1",
+    "type": "writing",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "half past",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "a quarter to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句英文，说明晚班在四点四十五分开始点检。"
+      }
+    ],
+    "requirements": [
+      "使用 a quarter to five 表达四点四十五分。",
+      "在具体时刻前正确使用介词 at。"
+    ],
+    "keywords": [
+      "a quarter to five",
+      "at"
+    ],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "The evening shift starts checking at a quarter to five.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "4:45 距离 5 点差一刻，因此用 "
+      },
+      {
+        "type": "text",
+        "text": "at a quarter to five",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "clock-time-v2-numeric-1",
+    "type": "numeric",
+    "chapter": "钟点与时间",
+    "concepts": [
+      "clock-time"
+    ],
+    "stem": [
+      {
+        "type": "text",
+        "text": "质检工位排班规定如下：早间开机自检在 "
+      },
+      {
+        "type": "text",
+        "text": "half past eight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 开始，随后全员必须工作到 "
+      },
+      {
+        "type": "text",
+        "text": "a quarter to twelve",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 才停机准备午休。请问从早间自检开始到上午停机，一共连续运行了多少分钟？请用阿拉伯数字作答。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "half past eight",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 8:30，"
+      },
+      {
+        "type": "text",
+        "text": "a quarter to twelve",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 11:45。从 8:30 到 11:30 为 3 小时（180 分钟），再加上 15 分钟，共 195 分钟。"
+      }
+    ],
+    "grading": {
+      "value": "195",
+      "absolute_tolerance": "0"
+    }
   }
 ]

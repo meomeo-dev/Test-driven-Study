@@ -25,7 +25,7 @@
 
 ## 课程内容
 
-2.0.0 版（协议版本 `protocol_version: 2`）包含十个单元、41 个知识点和 216 道原创练习题，知识点之间声明了先修关系，可在应用的“学习路径”中按目标生成学习顺序。全课程涵盖单选、多选、判断、数值填空、`cloze` 完形填空（27 题，提交/背题可听完整句读音）及 `listening` 听力（20 题，支持练习与模拟考试对话音色合成播放）。表中同一单元的知识点以分号分隔。
+2.1.0 版（协议版本 `protocol_version: 2`）包含十个单元、41 个知识点（合计 2,240 分钟 / 37.33 学时）和 424 道练习题（涵盖全部 9 类 v2 题型：`single_choice` 76、`multiple_choice` 38、`true_false` 38、`numeric` 19、`cloze` 65、`listening` 59、`reading_comprehension` 39、`translation` 51、`writing` 39）。讲义小节通过 `<!-- concepts: ... -->` / `effort-lab` 锚点与多题型配额自底向上对齐，全面通过 `course:check`、`audit-course-tts` 与 `audit-course-effort --strict` 质量门。表中同一单元的知识点以分号分隔。
 
 | 单元 | 知识点 |
 | --- | --- |

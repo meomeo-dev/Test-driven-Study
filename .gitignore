@@ -20,6 +20,7 @@ var/
 # Local agent and asset import artifacts
 !.agents/
 !.agents/skills/
+!.agents/skills/design-course-package/
 !.agents/skills/design-course-tts/
 .claude/skills/
 .todo_tasks/

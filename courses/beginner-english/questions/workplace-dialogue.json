@@ -538,5 +538,1035 @@
     "stem": "小李完成单件工件检测需 15 分钟，在工友协助下每件提速了 3 分钟。协助后检测单件工件需要多少分钟？",
     "grading": { "value": "12", "absolute_tolerance": "0" },
     "analysis": "15 - 3 = 12 分钟。"
+  },
+  {
+    "id": "asking-assistance-v2-listening-1",
+    "type": "listening",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "听装配线两位工友的求助对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Excuse me, Fang. Would you mind helping me lift this motor casing onto the cart?",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "I am calibrating a pressure sensor right now. Can I help you in two minutes?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "Sure, no problem. Thank you!",
+        "tts": { "voice": "tide" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "delay-reason",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "Why can't Fang help immediately?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "calibrating", "text": "She is calibrating a pressure sensor.", "tts": { "voice": "stella" } },
+          { "id": "lunch", "text": "She is going to the canteen.", "tts": { "voice": "stella" } },
+          { "id": "broken", "text": "Her cart is broken.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["calibrating"] },
+        "analysis": [
+          { "type": "text", "text": "女声解释正在校准压力传感器（" },
+          { "type": "text", "text": "calibrating a pressure sensor", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "），两分钟后再帮忙。" }
+        ]
+      },
+      {
+        "id": "refusal-check",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "Fang refuses to help the man at all.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "女声并非拒绝，而是礼貌地约定两分钟后过来协助（" },
+          { "type": "text", "text": "Can I help you in two minutes?", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      }
+    ],
+    "analysis": "本段对话展示工位礼貌求助与忙线时的专业推迟答复，注意听清正在进行的任务与约定时间。"
+  },
+  {
+    "id": "asking-assistance-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "阅读双人协同搬运作业指引，再回答两个问题。",
+    "passage": [
+      { "type": "text", "text": "TEAM LIFTING GUIDE" },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "When lifting a heavy casing together, always ask your partner if they have a firm grip first.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Count to three before lifting, and do not let go until the bolt is locked.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "If you are busy calibrating a gauge, politely tell your partner when you will be free.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "when-release",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "When can a worker let go of the casing?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "locked", "text": "After the bolt is locked.", "tts": { "voice": "stella" } },
+          { "id": "two", "text": "Right after counting to two.", "tts": { "voice": "stella" } },
+          { "id": "anytime", "text": "At any time without asking.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["locked"] },
+        "analysis": [
+          { "type": "text", "text": "指引第二句规定直到螺栓锁紧（" },
+          { "type": "text", "text": "until the bolt is locked", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）前不可松手。" }
+        ]
+      },
+      {
+        "id": "team-steps",
+        "type": "multiple_choice",
+        "stem": [
+          { "type": "text", "text": "Which safety habits are recommended in the guide?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "grip", "text": "Confirm your partner has a firm grip.", "tts": { "voice": "stella" } },
+          { "id": "count", "text": "Count to three before lifting.", "tts": { "voice": "stella" } },
+          { "id": "shout", "text": "Shout commands without waiting.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["grip", "count"] },
+        "analysis": [
+          { "type": "text", "text": "指引强调先确认抓稳（" },
+          { "type": "text", "text": "firm grip", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）并在抬起前数到三（" },
+          { "type": "text", "text": "count to three", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      }
+    ],
+    "analysis": "本则作业指引规范了双人搬运重物时的沟通确认流程，以及手头忙碌时的礼貌回应方式。"
+  },
+  {
+    "id": "asking-assistance-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "stem": "根据礼貌求助句型的固定搭配选词补全对话。",
+    "passage": "Would you mind {{1}} the bracket while I tighten the screw? — Not at {{2}}.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Would you mind holding the bracket while I tighten the screw? Not at all."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "holding", "text": "holding", "tts": { "voice": "stella" } },
+          { "id": "hold", "text": "hold", "tts": { "voice": "stella" } },
+          { "id": "held", "text": "held", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["holding"] },
+        "explanation": [
+          { "type": "text", "text": "Would you mind", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 后必须接动名词，故选择 " },
+          { "type": "text", "text": "holding", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "all", "text": "all", "tts": { "voice": "stella" } },
+          { "id": "yes", "text": "yes", "tts": { "voice": "stella" } },
+          { "id": "once", "text": "once", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["all"] },
+        "explanation": [
+          { "type": "text", "text": "表达“一点也不介意、乐意帮忙”固定回答 " },
+          { "type": "text", "text": "Not at all.", "tts": { "voice": "stella" } }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "两空分别考查 " },
+      { "type": "text", "text": "Would you mind + V-ing", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 语法规则及肯定协助时的标准应答 " },
+      { "type": "text", "text": "Not at all.", "tts": { "voice": "stella" } }
+    ]
+  },
+  {
+    "id": "asking-assistance-v2-translation-1",
+    "type": "translation",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "direction": "zh_to_en",
+    "stem": "将下列工位求助对话译成英文。",
+    "source_text": "你能帮我核对一下这个读数吗？谢谢你的帮忙。",
+    "reference_translation": "Could you please check this reading for me? Thank you for your help.",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "Would you mind checking this reading for me? Thank you for your help.",
+      "Could you check this reading for me, please? Thanks for your help."
+    ],
+    "key_terms": [
+      { "term": "Could you please", "variants": ["Would you mind"] },
+      { "term": "reading" },
+      { "term": "Thank you for your help", "variants": ["Thanks for your help"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "核对读数用 " },
+      { "type": "text", "text": "check this reading", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，表达感谢注意介词搭配 " },
+      { "type": "text", "text": "Thank you for your help.", "tts": { "voice": "stella" } }
+    ]
+  },
+  {
+    "id": "asking-assistance-v2-writing-1",
+    "type": "writing",
+    "chapter": "工位求助与礼貌应答",
+    "concepts": ["asking-assistance"],
+    "subtype": "short_essay",
+    "stem": "编写一段两人的简短车间求助对话（英文）。工人A想请工人B帮忙把一个重箱体抬到推车上；工人B正在记录数据，礼貌请对方等一分钟后再过来帮忙，最后工人A表示感谢。",
+    "requirements": [
+      "使用 Could you please 或 Would you mind 提出请求。",
+      "写出工人B礼貌推迟并给出具体等待时间。",
+      "包含感谢与礼貌回应。"
+    ],
+    "keywords": ["Could you", "heavy casing", "one minute", "Thank you"],
+    "min_words": 30,
+    "max_words": 50,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Could you please help me lift this heavy casing onto the cart?",
+        "tts": { "voice": "tide" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "I am writing down the gauge numbers right now. Can I help you in one minute?",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Sure, thank you for your help! You are welcome.",
+        "tts": { "voice": "tide" }
+      }
+    ],
+    "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
+    "analysis": [
+      { "type": "text", "text": "对话结构完整，覆盖礼貌求助、" },
+      { "type": "text", "text": "in one minute", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 约定时间及收尾致谢。" }
+    ]
+  },
+  {
+    "id": "present-continuous-actions-v2-listening-1",
+    "type": "listening",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "听班长巡检工位时的对话，再回答三个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Hi, Zhou. What are you and Wu doing at Station Four right now?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "I am assembling three control panels, and Wu is testing the wiring harnesses.",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "Why is Line Two stopping?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "The maintenance team is replacing a worn conveyor belt right now.",
+        "tts": { "voice": "tide" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "wu-task",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "What is Wu doing right now?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "testing", "text": "Testing the wiring harnesses.", "tts": { "voice": "stella" } },
+          { "id": "belt", "text": "Replacing a worn conveyor belt.", "tts": { "voice": "stella" } },
+          { "id": "cleaning", "text": "Cleaning the canteen.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["testing"] },
+        "analysis": [
+          { "type": "text", "text": "男声说明吴师傅正在测试线束（" },
+          { "type": "text", "text": "testing the wiring harnesses", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      },
+      {
+        "id": "panel-count",
+        "type": "numeric",
+        "stem": [
+          { "type": "text", "text": "How many control panels is Zhou assembling?", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": "3", "absolute_tolerance": "0" },
+        "analysis": [
+          { "type": "text", "text": "周师傅正在装配三个控制面板（" },
+          { "type": "text", "text": "three control panels", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      },
+      {
+        "id": "line-two-running",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "Line Two is running smoothly without any stops.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": false },
+        "analysis": "二号线正在停机更换磨损的传送带，并未顺畅运行。"
+      }
+    ],
+    "analysis": "本段巡检对话考查现在进行时多人并行动作与设备停机原因的听力提取。"
+  },
+  {
+    "id": "present-continuous-actions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "阅读早班工位实时状态看板，再回答三个问题。",
+    "passage": [
+      { "type": "text", "text": "LIVE STATION STATUS" },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Station One is calibrating two digital scales before the morning batch starts.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Station Two is not operating right now because the technicians are cutting new aluminum brackets.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "All operators on Station Three need twenty more bolts.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "stn1-doing",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "What is Station One doing right now?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "scales", "text": "Calibrating two digital scales.", "tts": { "voice": "stella" } },
+          { "id": "brackets", "text": "Cutting aluminum brackets.", "tts": { "voice": "stella" } },
+          { "id": "bolts", "text": "Packing twenty bolts.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["scales"] },
+        "analysis": [
+          { "type": "text", "text": "第一句说明1号工位正在校准两台电子秤（" },
+          { "type": "text", "text": "calibrating two digital scales", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      },
+      {
+        "id": "true-statements",
+        "type": "multiple_choice",
+        "stem": [
+          { "type": "text", "text": "Which statements match the live status board?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "not-op", "text": "Station Two is not operating right now.", "tts": { "voice": "stella" } },
+          { "id": "cutting", "text": "Technicians are cutting aluminum brackets.", "tts": { "voice": "stella" } },
+          { "id": "need-thirty", "text": "Station Three needs thirty bolts.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["not-op", "cutting"] },
+        "analysis": "2号工位当前未运行，技术员正在切割铝制支架；3号工位需要的是 20 个螺栓而非 30 个。"
+      },
+      {
+        "id": "stn3-verb",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "Station Three operators already have enough bolts.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "最后一句使用状态动词 " },
+          { "type": "text", "text": "need", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，表示他们还需要二十个螺栓。" }
+        ]
+      }
+    ],
+    "analysis": "本则看板信息结合现在进行时肯定/否定句及静态需求动词表达工位状态。"
+  },
+  {
+    "id": "present-continuous-actions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "stem": "根据现在进行时拼写规则与状态动词用法选词填空。",
+    "passage": "The workers are {{1}} the pump cover right now, and they {{2}} ten spare gaskets.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The workers are measuring the pump cover right now, and they need ten spare gaskets."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "measuring", "text": "measuring", "tts": { "voice": "stella" } },
+          { "id": "measure", "text": "measure", "tts": { "voice": "stella" } },
+          { "id": "measured", "text": "measured", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["measuring"] },
+        "explanation": [
+          { "type": "text", "text": "be", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 动词后配合 " },
+          { "type": "text", "text": "right now", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 需用现在分词 " },
+          { "type": "text", "text": "measuring", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "（去掉末尾不发音字母再加现在分词后缀）。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "need", "text": "need", "tts": { "voice": "stella" } },
+          { "id": "needing", "text": "needing", "tts": { "voice": "stella" } },
+          { "id": "needs", "text": "needs", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["need"] },
+        "explanation": [
+          { "type": "text", "text": "need", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 为状态动词，通常不用进行时，且主语 " },
+          { "type": "text", "text": "they", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 为复数，用原形 " },
+          { "type": "text", "text": "need", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "第一空考查去 `e` 加 `-ing` 的现在进行时 " },
+      { "type": "text", "text": "measuring", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；第二空考查状态动词 " },
+      { "type": "text", "text": "need", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 的一般现在时主谓一致。" }
+    ]
+  },
+  {
+    "id": "present-continuous-actions-v2-translation-1",
+    "type": "translation",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "direction": "en_to_zh",
+    "stem": "将下列工位状态汇报译成中文。",
+    "source_text": "The main motor is not running because the technician is inspecting the switch.",
+    "source_text_tts": { "voice": "stella" },
+    "reference_translation": "主电机没有运转，因为技术员正在检查开关。",
+    "acceptable_alternates": ["主马达目前没在运行，技术员正在检查开关。"],
+    "key_terms": [
+      { "term": "主电机", "variants": ["主马达"] },
+      { "term": "没有运转", "variants": ["没在运行"] },
+      { "term": "正在检查" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "is not running", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为现在进行时否定式，表示此刻设备未运行；" },
+      { "type": "text", "text": "is inspecting", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 说明技术员正在进行的排查动作。" }
+    ]
+  },
+  {
+    "id": "present-continuous-actions-v2-translation-2",
+    "type": "translation",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "direction": "zh_to_en",
+    "stem": "将下列工位汇报译成英文。",
+    "source_text": "我们正在校准扭力扳手，他正在清理工作台。",
+    "reference_translation": "We are calibrating the torque wrench, and he is cleaning the workbench.",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "We are calibrating the torque wrench while he is cleaning the workbench."
+    ],
+    "key_terms": [
+      { "term": "are calibrating" },
+      { "term": "torque wrench" },
+      { "term": "is cleaning" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "注意主语 " },
+      { "type": "text", "text": "We", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 搭配 " },
+      { "type": "text", "text": "are calibrating", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（去掉末尾不发音字母再加现在分词后缀），主语 " },
+      { "type": "text", "text": "he", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 搭配 " },
+      { "type": "text", "text": "is cleaning", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "present-continuous-actions-v2-writing-1",
+    "type": "writing",
+    "chapter": "现在进行时描述工位状态",
+    "concepts": ["present-continuous-actions"],
+    "subtype": "short_essay",
+    "stem": "给车间班长发一条简短的英文工作进展汇报。说明你正在用扭力扳手紧固泵盖螺栓，同事小李正在检查气压表，但2号输送带因维修目前没有运转。",
+    "requirements": [
+      "用现在进行时描述自己和小李当前正在做的动作。",
+      "用现在进行时否定式说明2号输送带的停机状态。",
+      "使用称呼与落款。"
+    ],
+    "keywords": ["tightening", "checking", "not running", "torque wrench"],
+    "min_words": 35,
+    "max_words": 55,
+    "sample_response": [
+      { "type": "text", "text": "Hi Supervisor,", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Here is our station update. I am tightening the pump cover bolts with a torque wrench, and Li is checking the air pressure gauge. However, Conveyor Two is not running right now because the technician is replacing a worn belt.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      { "type": "text", "text": "Best,\nZhou", "tts": { "voice": "stella", "text": "Best, Zhou" } }
+    ],
+    "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
+    "analysis": [
+      { "type": "text", "text": "整段汇报准确运用了 " },
+      { "type": "text", "text": "am tightening", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "is checking", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与否定式 " },
+      { "type": "text", "text": "is not running", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "radio-calls-v2-listening-1",
+    "type": "listening",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": "听仓库与二号产线的对讲机通话录音，再回答三个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Line Two Supervisor, this is Warehouse. We have fifteen motor brackets ready at Gate B. Do you copy? Over.",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "Copy that, Warehouse. Loud and clear. Stand by while I check our cart. Over.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "speaker": "M",
+        "text": "Standing by. Over.",
+        "tts": { "voice": "tide" }
+      },
+      {
+        "speaker": "W",
+        "text": "Warehouse, please send the brackets to Station Five. Thank you. Over and out.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "caller-id",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "Who starts the radio call?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "wh", "text": "Warehouse.", "tts": { "voice": "stella" } },
+          { "id": "stn5", "text": "Station Five.", "tts": { "voice": "stella" } },
+          { "id": "maint", "text": "Maintenance.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["wh"] },
+        "analysis": [
+          { "type": "text", "text": "男声开头自报身份为仓库（" },
+          { "type": "text", "text": "this is Warehouse", "tts": { "voice": "tide" } },
+          { "type": "text", "text": "）。" }
+        ]
+      },
+      {
+        "id": "radio-details",
+        "type": "multiple_choice",
+        "stem": [
+          { "type": "text", "text": "Which details are true about the brackets?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "qty", "text": "There are fifteen brackets ready.", "tts": { "voice": "stella" } },
+          { "id": "dest", "text": "They should go to Station Five.", "tts": { "voice": "stella" } },
+          { "id": "gate-a", "text": "They are waiting at Gate A.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["qty", "dest"] },
+        "analysis": "共有 15 个支架备在 B 门（非 A 门），最终发往 5 号工位。"
+      },
+      {
+        "id": "call-ending",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "The supervisor uses 'Over and out' to end the entire conversation.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": true },
+        "analysis": [
+          { "type": "text", "text": "最后一轮确认完毕后，女声用 " },
+          { "type": "text", "text": "Over and out.", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 结束整次通话。" }
+        ]
+      }
+    ],
+    "analysis": "本段无线电通话完整示范了自报家门、确认信号、暂候待命及结束通话四步规范用语。"
+  },
+  {
+    "id": "radio-calls-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": "阅读车间无线电通信操作规范，再回答两个问题。",
+    "passage": [
+      { "type": "text", "text": "RADIO RULES" },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Press the talk button and pause briefly before speaking so the first word is not cut off.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Repeat important numbers like fifteen or fifty so your partner can confirm them.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "If the signal is weak, say 'Say again, please' instead of shouting.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "pause-reason",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "Why should workers pause briefly after pressing the talk button?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "cutoff", "text": "So the first word is not cut off.", "tts": { "voice": "stella" } },
+          { "id": "battery", "text": "To save battery power.", "tts": { "voice": "stella" } },
+          { "id": "channel", "text": "To switch to Channel Three.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["cutoff"] },
+        "analysis": [
+          { "type": "text", "text": "第一句说明按键后停顿是为了防止第一个词被切掉（" },
+          { "type": "text", "text": "so the first word is not cut off", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      },
+      {
+        "id": "weak-signal",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "When the signal is weak, workers should shout louder into the radio.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "信号弱时应礼貌说 " },
+          { "type": "text", "text": "Say again, please.", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，而不是大声喊叫。" }
+        ]
+      }
+    ],
+    "analysis": "本则无线电操作规范涵盖按键停顿防切音、重要数字复诵确认及弱信号时的规范请求用语。"
+  },
+  {
+    "id": "radio-calls-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "stem": "阅读无线电对讲呼叫，选择正确的呼号与确认术语补全句子。",
+    "passage": "Station Three, {{1}} is Zhang from Packing. Do you {{2}}? Over.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Station Three, this is Zhang from Packing. Do you copy? Over."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "this", "text": "this", "tts": { "voice": "stella" } },
+          { "id": "i", "text": "I", "tts": { "voice": "stella" } },
+          { "id": "me", "text": "me", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["this"] },
+        "explanation": [
+          { "type": "text", "text": "电话与对讲机自报身份固定使用 " },
+          { "type": "text", "text": "this is", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "copy", "text": "copy", "tts": { "voice": "stella" } },
+          { "id": "listen", "text": "listen", "tts": { "voice": "stella" } },
+          { "id": "look", "text": "look", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["copy"] },
+        "explanation": [
+          { "type": "text", "text": "询问对方是否清晰收到信号固定使用 " },
+          { "type": "text", "text": "Do you copy?", "tts": { "voice": "stella" } }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "无线电标准开场白为 " },
+      { "type": "text", "text": "this is ...", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 报身份，紧接 " },
+      { "type": "text", "text": "Do you copy?", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 确认信号。" }
+    ]
+  },
+  {
+    "id": "radio-calls-v2-translation-1",
+    "type": "translation",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "direction": "en_to_zh",
+    "stem": "将下列对讲机指令译成中文。",
+    "source_text": "Switch to Channel Three and stand by for our next update. Over.",
+    "source_text_tts": { "voice": "stella" },
+    "reference_translation": "切换到三频道并保持守候等待我们的下一次通报。完毕。",
+    "acceptable_alternates": ["请切到3频道待命，等待我们的后续通知。完毕。"],
+    "key_terms": [
+      { "term": "切换", "variants": ["切到"] },
+      { "term": "频道" },
+      { "term": "守候", "variants": ["待命", "稍等"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "switch to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示切换频道，" },
+      { "type": "text", "text": "stand by", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示保持在线待命，" },
+      { "type": "text", "text": "Over", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示本轮发言完毕。" }
+    ]
+  },
+  {
+    "id": "radio-calls-v2-writing-1",
+    "type": "writing",
+    "chapter": "通信与对讲机规范",
+    "concepts": ["radio-calls"],
+    "subtype": "short_essay",
+    "stem": "编写一段三轮车间对讲机标准脚本（英文）。内容：3号线的小王呼叫仓库，询问 20 个风扇是否备好；仓库回复已收到并请对方稍候核查；随后仓库告知风扇在B门备妥等待自提并结束通话。",
+    "requirements": [
+      "使用 This is、Do you copy、Copy that、Stand by。",
+      "每轮结尾正确区分使用 Over 与 Over and out。"
+    ],
+    "keywords": ["this is", "Do you copy", "Copy that", "Stand by"],
+    "min_words": 35,
+    "max_words": 55,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Warehouse, this is Wang from Line Three. Are the twenty fans ready? Do you copy? Over.",
+        "tts": { "voice": "tide" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Copy that, Line Three. Stand by while I check the shelf. Over.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Line Three, the twenty fans are ready at Gate B. Over and out.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
+    "analysis": [
+      { "type": "text", "text": "前两轮等待对方回复均用 " },
+      { "type": "text", "text": "Over.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 收尾，最后一轮确认信息后用 " },
+      { "type": "text", "text": "Over and out.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 结束通话。" }
+    ]
+  },
+  {
+    "id": "schedule-coordination-v2-listening-1",
+    "type": "listening",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "听车间调度员的广播通知，再回答三个问题。",
+    "audio": { "mode": "passage", "voice_female": "stella" },
+    "passage": "Attention, Line Two. Twenty motor covers will arrive at your station at ten thirty a.m. Please clear space by the loading door before ten a.m. The remaining thirty covers will arrive on the afternoon truck at three p.m.",
+    "sub_questions": [
+      {
+        "id": "morning-arrival",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "When will the first batch of motor covers arrive?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "ten", "text": "At 10:00 a.m.", "tts": { "voice": "stella", "text": "At ten a.m." } },
+          { "id": "ten-thirty", "text": "At 10:30 a.m.", "tts": { "voice": "stella", "text": "At ten thirty a.m." } },
+          { "id": "three", "text": "At 3:00 p.m.", "tts": { "voice": "stella", "text": "At three p.m." } }
+        ],
+        "grading": { "choice_ids": ["ten-thirty"] },
+        "analysis": [
+          { "type": "text", "text": "上午十点前是清理装货门旁空间的时间，首批电机盖在十点半（" },
+          { "type": "text", "text": "ten thirty a.m.", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）送达。" }
+        ]
+      },
+      {
+        "id": "total-covers",
+        "type": "numeric",
+        "stem": [
+          { "type": "text", "text": "How many motor covers will Line Two receive in total today?", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": "50", "absolute_tolerance": "0" },
+        "analysis": "上午到货 20 个，下午到货剩余 30 个，今日共收到 20 + 30 = 50 个电机盖。"
+      },
+      {
+        "id": "door-space",
+        "type": "true_false",
+        "stem": [
+          { "type": "text", "text": "Workers should clear space by the loading door before ten a.m.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": true },
+        "analysis": [
+          { "type": "text", "text": "广播明确要求在上午十点前清理装货门旁的堆放空间（" },
+          { "type": "text", "text": "clear space by the loading door before ten a.m.", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      }
+    ],
+    "analysis": "本则调度广播考查分批到货时间区分、两批物料总和计算以及前置清理任务。"
+  },
+  {
+    "id": "schedule-coordination-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "阅读下午班物料调配交接单，再回答两个问题。",
+    "passage": [
+      { "type": "text", "text": "SHIFT DISPATCH NOTE" },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Station B needs forty cooling fans for the afternoon shift.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "We have twenty-five fans in stock and are sending them first before two thirty p.m.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Hold Lot Five and handle the urgent order for Station D after lunch.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "urgent-station",
+        "type": "single_choice",
+        "stem": [
+          { "type": "text", "text": "Which station has an urgent order after lunch?", "tts": { "voice": "stella" } }
+        ],
+        "options": [
+          { "id": "stn-d", "text": "Station D.", "tts": { "voice": "stella" } },
+          { "id": "stn-b", "text": "Station B.", "tts": { "voice": "stella" } },
+          { "id": "lot-5", "text": "Lot Five.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["stn-d"] },
+        "analysis": [
+          { "type": "text", "text": "交接单最后一句指示暂停 5 号批，午饭后优先处理D工位（" },
+          { "type": "text", "text": "Station D", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）的急单。" }
+        ]
+      },
+      {
+        "id": "remaining-fans",
+        "type": "numeric",
+        "stem": [
+          { "type": "text", "text": "How many more cooling fans does Station B still need after the first delivery?", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "value": "15", "absolute_tolerance": "0" },
+        "analysis": "B工位共需 40 个风扇，首批先发库存 25 个，因此仍缺 40 - 25 = 15 个。"
+      }
+    ],
+    "analysis": "本则交接单考查部分先行发货后的库存缺口计算，以及急单插单工位识别。"
+  },
+  {
+    "id": "schedule-coordination-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "stem": "阅读物料交接通知，选词补全现货与时间表达。",
+    "passage": "We only have twenty brackets in {{1}}, so please send them first and put empty trays by the loading door {{2}} four p.m.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "We only have twenty brackets in stock, so please send them first and put empty trays by the loading door before four p.m."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "stock", "text": "stock", "tts": { "voice": "stella" } },
+          { "id": "store", "text": "store", "tts": { "voice": "stella" } },
+          { "id": "line", "text": "line", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["stock"] },
+        "explanation": [
+          { "type": "text", "text": "固定短语 " },
+          { "type": "text", "text": "in stock", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 表示“现有库存/有现货”。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "before", "text": "before", "tts": { "voice": "stella" } },
+          { "id": "during", "text": "during", "tts": { "voice": "stella" } },
+          { "id": "inside", "text": "inside", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["before"] },
+        "explanation": [
+          { "type": "text", "text": "表达“在某个截止时刻之前”使用时间介词 " },
+          { "type": "text", "text": "before", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "第一空考查仓储常用短语 " },
+      { "type": "text", "text": "in stock", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，第二空考查截止时间介词 " },
+      { "type": "text", "text": "before", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "schedule-coordination-v2-translation-1",
+    "type": "translation",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "direction": "zh_to_en",
+    "stem": "将下列物料调度通知译成英文。",
+    "source_text": "早间送货晚了三十分钟，剩下的十五个风扇将在下午四点到达。",
+    "reference_translation": "The morning delivery is thirty minutes late, and the remaining fifteen fans will arrive at four p.m.",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "The morning delivery is running 30 minutes late, and the remaining 15 fans will arrive at 4 p.m."
+    ],
+    "key_terms": [
+      { "term": "morning delivery" },
+      { "term": "remaining" },
+      { "term": "will arrive" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "remaining", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 准确传达“剩余的”，" },
+      { "type": "text", "text": "thirty minutes late", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示延迟三十分钟。" }
+    ]
+  },
+  {
+    "id": "schedule-coordination-v2-translation-2",
+    "type": "translation",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "direction": "en_to_zh",
+    "stem": "将下列产线急单调度句译成中文。",
+    "source_text": "Please hold Lot Five and send sixteen wiring harnesses to Station C first.",
+    "source_text_tts": { "voice": "stella" },
+    "reference_translation": "请暂停五号批，先将十六套线束送到C工位。",
+    "acceptable_alternates": ["请先暂停5号批次，优先把16套线束发往C工位。"],
+    "key_terms": [
+      { "term": "暂停", "variants": ["暂缓", "先停"] },
+      { "term": "线束" },
+      { "term": "先", "variants": ["优先"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "hold", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 在生产调度中表示“暂缓/暂停某批次”，" },
+      { "type": "text", "text": "wiring harnesses", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 指线束。" }
+    ]
+  },
+  {
+    "id": "schedule-coordination-v2-writing-1",
+    "type": "writing",
+    "chapter": "调度协调与交接听力",
+    "concepts": ["schedule-coordination"],
+    "subtype": "sentence_making",
+    "stem": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "dispatch", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "loading door", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 写一句完整的英文交接通知，说明下午三点前向3号线配发二十个传感器并将空托盘放到装货门旁。" }
+    ],
+    "requirements": [
+      "使用 dispatch 和 loading door。",
+      "写明数量、工位与截止时间。"
+    ],
+    "keywords": ["dispatch", "loading door", "Line Three"],
+    "min_words": 8,
+    "max_words": 24,
+    "sample_response": "Please dispatch twenty sensors to Line Three and leave empty trays by the loading door before three p.m.",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": { "task_completion": 50, "language_accuracy": 50 },
+    "analysis": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "dispatch ... to Line Three", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表达物料调配方向，并用 " },
+      { "type": "text", "text": "by the loading door before three p.m.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 明确返空地点与时间限制。" }
+    ]
   }
 ]

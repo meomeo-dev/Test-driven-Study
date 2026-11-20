@@ -2581,5 +2581,3452 @@
         "text": "”。"
       }
     ]
+  },
+  {
+    "id": "past-be-v2-listening-1",
+    "type": "listening",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "听早晚班交接时关于设备与料盒状态的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Good morning. How was Station one on the night shift?"
+      },
+      {
+        "speaker": "W",
+        "text": "The camera and the belt were OK. The sensor was a little dusty at two a.m., so I wiped it."
+      },
+      {
+        "speaker": "M",
+        "text": "Were there many NG parts in the red bin?"
+      },
+      {
+        "speaker": "W",
+        "text": "No, there weren't many. There were only four NG parts in the red bin."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "sensor-issue",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How was the sensor at two a.m.?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "dusty",
+            "text": "It was a little dusty.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "broken",
+            "text": "It was broken.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "disconnected",
+            "text": "It was disconnected.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "dusty"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "夜班同事明确说明凌晨两点时传感器有点灰尘（"
+          },
+          {
+            "type": "text",
+            "text": "was a little dusty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "camera-belt-ok",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The camera and the belt were OK on the night shift.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "女员工第一句话即提到 "
+          },
+          {
+            "type": "text",
+            "text": "The camera and the belt were OK.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "id": "red-bin-count",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many NG parts were there in the red bin?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "4",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "对话最后说红色料盒里只有四个不合格零件（"
+          },
+          {
+            "type": "text",
+            "text": "four NG parts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话综合运用了单数 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、并列主语 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及存在句 "
+      },
+      {
+        "type": "text",
+        "text": "There were...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-be-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "阅读夜班交接日志，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "NIGHT SHIFT LOG",
+        "tts": {
+          "voice": "stella",
+          "text": "Night shift log."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Last night, Station one was busy from eight to midnight.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The servo and the belt were stable, and there were no jams.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Only three NG parts were in the red bin this morning.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "station-busy",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When was Station one busy last night?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "eight-midnight",
+            "text": "From eight to midnight.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "two-four",
+            "text": "From two to four a.m.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "six-seven",
+            "text": "From six to seven a.m.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "eight-midnight"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明昨晚八点到午夜（"
+          },
+          {
+            "type": "text",
+            "text": "from eight to midnight",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）工位繁忙。"
+          }
+        ]
+      },
+      {
+        "id": "log-facts",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which two statements are true about the night shift?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "servo-stable",
+            "text": "The servo and the belt were stable.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "three-ng",
+            "text": "There were three NG parts in the red bin.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "many-jams",
+            "text": "There were two jams on the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "servo-stable",
+            "three-ng"
+          ]
+        },
+        "analysis": "日志说明舵机和传送带稳定、没有卡料，且今早红色料盒里只有 3 个不合格零件。"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "本篇夜班日志展示了单数主语配 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、并列复数主语配 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及存在句 "
+      },
+      {
+        "type": "text",
+        "text": "there were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的标准用法。"
+      }
+    ]
+  },
+  {
+    "id": "past-be-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "stem": "根据主语单复数与过去时语境，选择正确的 be 动词形式补全句子。",
+    "passage": "The camera {{1}} ready at eight, and there {{2}} five NG parts in the bin.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "The camera was ready at eight, and there were five NG parts in the bin."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "was",
+            "text": "was",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "were",
+            "text": "were",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "are",
+            "text": "are",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "be",
+            "text": "be",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "was"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "单数主语 "
+          },
+          {
+            "type": "text",
+            "text": "The camera",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 在过去时中搭配 "
+          },
+          {
+            "type": "text",
+            "text": "was",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "were",
+            "text": "were",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "was",
+            "text": "was",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "is",
+            "text": "is",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "being",
+            "text": "being",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "were"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "后接复数名词 "
+          },
+          {
+            "type": "text",
+            "text": "five NG parts",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，过去存在句必须用 "
+          },
+          {
+            "type": "text",
+            "text": "were",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "第一空主语为单数用 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，第二空存在句后接复数名词用 "
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-be-v2-translation-1",
+    "type": "translation",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列交接班情况说明翻译成英文。",
+    "source_text": "昨晚质检相机是正常的，而且料盒里有四个不合格零件。",
+    "reference_translation": "The inspection camera was fine last night, and there were four NG parts in the bin.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "The inspection camera was OK last night, and there were 4 NG parts in the bin."
+    ],
+    "key_terms": [
+      {
+        "term": "camera was",
+        "variants": [
+          "inspection camera was"
+        ]
+      },
+      {
+        "term": "last night"
+      },
+      {
+        "term": "there were"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "前半句单数主语搭配 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，后半句表示“过去有四个零件”用 "
+      },
+      {
+        "type": "text",
+        "text": "there were four NG parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-be-v2-writing-1",
+    "type": "writing",
+    "chapter": "一般过去时 was / were",
+    "concepts": [
+      "past-be"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "was",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "were",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "yesterday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的英文交接记录，说明昨天传感器是干净的，且料盒里有两件不合格零件。"
+      }
+    ],
+    "requirements": [
+      "同时包含 was 和 were。",
+      "包含关键词 yesterday 和 parts。",
+      "写出完整英文句子（10–24 词）。"
+    ],
+    "keywords": [
+      "was",
+      "were",
+      "yesterday",
+      "parts"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "The sensor was clean yesterday, and there were two NG parts in the red bin.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "先用 "
+      },
+      {
+        "type": "text",
+        "text": "The sensor was clean yesterday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 陈述设备状态，再用 "
+      },
+      {
+        "type": "text",
+        "text": "there were two NG parts",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 汇报数量。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-listening-1",
+    "type": "listening",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "听早班操作员的班次动作语音汇报，再回答三个问题。",
+    "audio": {
+      "mode": "passage",
+      "voice_female": "stella"
+    },
+    "passage": "This morning, I cleaned the camera lens and tested the sorting flap before eight. At ten, a tray dropped near the gate, so I stopped the belt and moved it away. In total, I scanned eighty boxes.",
+    "sub_questions": [
+      {
+        "id": "what-happened-ten",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What happened at ten o'clock?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "tray-dropped",
+            "text": "A tray dropped near the gate.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "shift-ended",
+            "text": "The shift ended early.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "camera-fell",
+            "text": "The camera lens fell off.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "tray-dropped"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "录音第二句说明十点时有个托盘掉在闸口附近（"
+          },
+          {
+            "type": "text",
+            "text": "a tray dropped near the gate",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "tested-after-ten",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The operator tested the sorting flap after ten o'clock.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明她是在八点前（"
+          },
+          {
+            "type": "text",
+            "text": "before eight",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）测试的分拣挡板。"
+          }
+        ]
+      },
+      {
+        "id": "scanned-boxes",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many boxes did the operator scan in total?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": "80",
+          "absolute_tolerance": "0"
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "结尾句说明总共扫描了八十箱（"
+          },
+          {
+            "type": "text",
+            "text": "eighty boxes",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "汇报中使用了 "
+      },
+      {
+        "type": "text",
+        "text": "cleaned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "tested",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "dropped",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "stopped",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "scanned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 等规则动词过去式。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "阅读工位维护记录，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "MAINTENANCE LOG",
+        "tts": {
+          "voice": "stella",
+          "text": "Maintenance log."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Yesterday afternoon, Chen checked the air pressure and cleaned the optical sensor.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "He emptied the side bin and carried the rejected screws to the scrap table.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Before leaving, he closed the test app and reported a loose lamp holder.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "where-screws",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where did Chen carry the rejected screws?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "scrap-table",
+            "text": "To the scrap table.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "loading-door",
+            "text": "To the loading door.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "front-desk",
+            "text": "To the front desk.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "scrap-table"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句提到他把不良螺丝搬到了废品台（"
+          },
+          {
+            "type": "text",
+            "text": "to the scrap table",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "actions-before-leaving",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two things did Chen do before leaving?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "closed-app",
+            "text": "Closed the test app.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "reported-holder",
+            "text": "Reported a loose lamp holder.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "repaired-belt",
+            "text": "Repaired the conveyor belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "closed-app",
+            "reported-holder"
+          ]
+        },
+        "analysis": "最后一句写明他在离开前关闭了测试软件并汇报了灯座松动的问题。"
+      },
+      {
+        "id": "emptied-bin-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Chen emptied the side bin yesterday afternoon.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句明确说明 "
+          },
+          {
+            "type": "text",
+            "text": "He emptied the side bin",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读时留意 "
+      },
+      {
+        "type": "text",
+        "text": "checked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "cleaned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "emptied",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "carried",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "closed",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "reported",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 等规则动词过去式所对应的具体动作和顺序。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "stem": "根据过去时间状语与规则动词拼写规则，选出正确的动词形式补全句子。",
+    "passage": "Yesterday afternoon, the operator {{1}} the belt when a tray dropped. Later, she {{2}} the side bin and saved the report.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Yesterday afternoon, the operator stopped the belt when a tray dropped. Later, she emptied the side bin and saved the report."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "stopped",
+            "text": "stopped",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "stops",
+            "text": "stops",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "stopping",
+            "text": "stopping",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "stop",
+            "text": "stop",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "stopped"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "时间状语为 "
+          },
+          {
+            "type": "text",
+            "text": "Yesterday afternoon",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，且 "
+          },
+          {
+            "type": "text",
+            "text": "stop",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为闭音节动词，过去式双写字母加后缀写作 "
+          },
+          {
+            "type": "text",
+            "text": "stopped",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "emptied",
+            "text": "emptied",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "empty",
+            "text": "empty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "empties",
+            "text": "empties",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "emptying",
+            "text": "emptying",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "emptied"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "句尾的 "
+          },
+          {
+            "type": "text",
+            "text": "saved",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 提示并列动作同为过去式，"
+          },
+          {
+            "type": "text",
+            "text": "empty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 变末尾字母为 "
+          },
+          {
+            "type": "text",
+            "text": "emptied",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "两空分别考查闭音节双写过去式 "
+      },
+      {
+        "type": "text",
+        "text": "stopped",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与“辅音加字母变为 i 再加后缀”的过去式 "
+      },
+      {
+        "type": "text",
+        "text": "emptied",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-translation-1",
+    "type": "translation",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列早班操作汇报翻译成中文。",
+    "source_text": "I cleaned the camera lens, checked the sensor, and scanned every finished box this morning.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "今天早上我擦了相机镜头，检查了传感器，并扫描了每个完工的箱子。",
+    "acceptable_alternates": [
+      "今早我清洁了相机镜头，检查了传感器，并扫描了每一个完工箱。"
+    ],
+    "key_terms": [
+      {
+        "term": "相机镜头",
+        "variants": [
+          "镜头"
+        ]
+      },
+      {
+        "term": "检查",
+        "variants": [
+          "核查"
+        ]
+      },
+      {
+        "term": "扫描",
+        "variants": [
+          "扫码"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "cleaned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "checked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "scanned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 按先后顺序叙述了今早完成的三个动作。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-translation-2",
+    "type": "translation",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列中文交接句翻译成英文。",
+    "source_text": "昨天我们停止了传送带，移走了托盘，并测试了舵机挡板。",
+    "reference_translation": "Yesterday we stopped the belt, moved the tray away, and tested the servo flap.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Yesterday, we stopped the conveyor belt, moved the tray, and tested the servo flap."
+    ],
+    "key_terms": [
+      {
+        "term": "stopped the belt"
+      },
+      {
+        "term": "moved the tray",
+        "variants": [
+          "moved the tray away"
+        ]
+      },
+      {
+        "term": "tested the servo flap"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "注意三个规则动词过去式的拼写与读音："
+      },
+      {
+        "type": "text",
+        "text": "stopped",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（双写）、"
+      },
+      {
+        "type": "text",
+        "text": "moved",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（末尾加 d）和 "
+      },
+      {
+        "type": "text",
+        "text": "tested",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-regular-v2-writing-1",
+    "type": "writing",
+    "chapter": "规则动词过去式",
+    "concepts": [
+      "past-regular"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "checked",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "cleaned",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "yesterday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的英文交接句，说明昨天你清洁了传感器并检查了舵机。"
+      }
+    ],
+    "requirements": [
+      "使用规则动词过去式 checked 和 cleaned。",
+      "包含时间状语 yesterday。",
+      "写出完整句（10–24 词）。"
+    ],
+    "keywords": [
+      "checked",
+      "cleaned",
+      "yesterday"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "Yesterday I cleaned the optical sensor and checked the servo flap before closing the station.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用并列谓语 "
+      },
+      {
+        "type": "text",
+        "text": "cleaned... and checked...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配过去时间词 "
+      },
+      {
+        "type": "text",
+        "text": "yesterday",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 即可清晰完成班次动作汇报。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-writing-essay-1",
+    "type": "writing",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "subtype": "short_essay",
+    "stem": "你是夜班质检员小吴。昨晚十一点半测试时塑料舵机挡板断裂，你立即向夜班技术员汇报，他拿来备用金属挡板并完成更换；最终你们测得 118 个合格品和 2 个不合格品，并把不合格品放进了红色料盒。请用一般过去时写一篇简短的英文交接班留言。",
+    "requirements": [
+      "准确使用至少 4 个不规则动词过去式（如 broke、told、gave、got、put）。",
+      "交代故障发生时间、处理过程与最终合格/不合格品数量。",
+      "包含称呼与落款。"
+    ],
+    "keywords": [
+      "broke",
+      "told",
+      "gave",
+      "got",
+      "put"
+    ],
+    "min_words": 45,
+    "max_words": 70,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "Hi Team,",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "We had one issue on the night shift at eleven thirty. The plastic servo flap broke during the check. I told the night technician, and he gave us a metal flap to replace it. Later, we got one hundred eighteen OK parts and two NG parts. I put the two NG parts in the red bin.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n\n"
+      },
+      {
+        "type": "text",
+        "text": "Best,\nWu",
+        "tts": {
+          "voice": "stella",
+          "text": "Best, Wu"
+        }
+      }
+    ],
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 30,
+      "coherence": 20
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "短文依次使用 "
+      },
+      {
+        "type": "text",
+        "text": "had",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "broke",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "told",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "gave",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "got",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 串联出完整的异常处置与产量交接记录。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "阅读工位交班异常纪要，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SHIFT INCIDENT NOTE",
+        "tts": {
+          "voice": "stella",
+          "text": "Shift incident note."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "At nine a.m., we saw a crack on the sensor bracket and the bracket broke soon after.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Feng told the supervisor at once, and a technician came within five minutes.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "After the repair, we found three scratched caps on the tray and gave them to the team lead.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "We took the good parts to the packing cart and wrote the final count on the sheet.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "what-broke",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What broke at nine a.m.?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "bracket",
+            "text": "The sensor bracket.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "scanner",
+            "text": "The barcode scanner.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "packing-cart",
+            "text": "The packing cart.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "bracket"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句写到早上九点他们看到传感器支架有裂纹，随后支架断裂（"
+          },
+          {
+            "type": "text",
+            "text": "the bracket broke",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "actions-after-repair",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two things did the workers do after the repair?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "gave-caps",
+            "text": "Gave three scratched caps to the team lead.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "took-good",
+            "text": "Took the good parts to the packing cart.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "left-sheet",
+            "text": "Threw away the final count sheet.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "gave-caps",
+            "took-good"
+          ]
+        },
+        "analysis": "维修完成后，他们把三个有划痕的盖子交给了组长，并把合格件送去打包推车、在记录表上写下最终计数。"
+      },
+      {
+        "id": "tech-arrived-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "A technician came within five minutes after Feng told the supervisor.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第二句明确提到技术员在五分钟内赶到（"
+          },
+          {
+            "type": "text",
+            "text": "came within five minutes",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "阅读时注意对应 "
+      },
+      {
+        "type": "text",
+        "text": "saw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "broke",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "told",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "came",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "found",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "gave",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "took",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "wrote",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 等不规则过去式所交代的事实与顺序。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-listening-1",
+    "type": "listening",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "听两位操作员交接量具与记录本的对话，再回答三个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Here is the handover sheet. I wrote the final count on the top line."
+      },
+      {
+        "speaker": "W",
+        "text": "Thanks. Where is our digital caliper? I looked on the mat, and it was not there."
+      },
+      {
+        "speaker": "M",
+        "text": "Maintenance took it for calibration at four p.m., and they gave us a backup gauge. I put the backup gauge in Drawer two."
+      },
+      {
+        "speaker": "W",
+        "text": "Got it. Did the team lead see the morning error note?"
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, she saw it and went to check the cable hub."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "who-took-caliper",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Who took the digital caliper at four p.m.?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "maintenance",
+            "text": "Maintenance.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "team-lead",
+            "text": "The team lead.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "night-shift",
+            "text": "The night shift.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "maintenance"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "男同事说维修组下午四点拿去校准了（"
+          },
+          {
+            "type": "text",
+            "text": "Maintenance took it for calibration",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "backup-drawer-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The backup gauge is in Drawer two.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "他说明自己把备用量具放进了二号抽屉（"
+          },
+          {
+            "type": "text",
+            "text": "put the backup gauge in Drawer two",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "what-lead-did",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What did the team lead do after seeing the error note?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "check-hub",
+            "text": "She went to check the cable hub.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "took-gauge",
+            "text": "She took the backup gauge away.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wrote-count",
+            "text": "She wrote the count on the sheet.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "check-hub"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句明确说了 "
+          },
+          {
+            "type": "text",
+            "text": "she saw it and went to check the cable hub",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话集中使用了 "
+      },
+      {
+        "type": "text",
+        "text": "wrote",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "took",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "gave",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "saw",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "went",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 等不规则动词过去式。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "stem": "根据昨晚故障发生的语境，选出正确的不规则动词过去式补全句子。",
+    "passage": "Last night, the servo flap {{1}} during the test. I {{2}} the technician right away, and he came in five minutes.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Last night, the servo flap broke during the test. I told the technician right away, and he came in five minutes."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "broke",
+            "text": "broke",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "break",
+            "text": "break",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "broken",
+            "text": "broken",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "breaks",
+            "text": "breaks",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "broke"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "时间状语 "
+          },
+          {
+            "type": "text",
+            "text": "Last night",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 要求用一般过去时，"
+          },
+          {
+            "type": "text",
+            "text": "break",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的过去式为 "
+          },
+          {
+            "type": "text",
+            "text": "broke",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "told",
+            "text": "told",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tell",
+            "text": "tell",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "tells",
+            "text": "tells",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "telling",
+            "text": "telling",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "told"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "后半句并列动词 "
+          },
+          {
+            "type": "text",
+            "text": "came",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 同为过去式，"
+          },
+          {
+            "type": "text",
+            "text": "tell",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的不规则过去式为 "
+          },
+          {
+            "type": "text",
+            "text": "told",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "句中两个动作均发生在昨晚，"
+      },
+      {
+        "type": "text",
+        "text": "break",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 变 "
+      },
+      {
+        "type": "text",
+        "text": "broke",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，"
+      },
+      {
+        "type": "text",
+        "text": "tell",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 变 "
+      },
+      {
+        "type": "text",
+        "text": "told",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-translation-1",
+    "type": "translation",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "direction": "en_to_zh",
+    "stem": "将下列交接班记录翻译成中文。",
+    "source_text": "We found two cracked parts on the belt and put them in the red quarantine box.",
+    "source_text_tts": {
+      "voice": "stella"
+    },
+    "reference_translation": "我们在传送带上发现了两个开裂的零件，并把它们放进了红色隔离盒。",
+    "acceptable_alternates": [
+      "我们在皮带上找到两个有裂纹的零件，并放进了红色隔离盒。"
+    ],
+    "key_terms": [
+      {
+        "term": "发现",
+        "variants": [
+          "找到"
+        ]
+      },
+      {
+        "term": "开裂的零件",
+        "variants": [
+          "有裂纹的零件",
+          "破裂零件"
+        ]
+      },
+      {
+        "term": "红色隔离盒",
+        "variants": [
+          "红隔离盒"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "found",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是 "
+      },
+      {
+        "type": "text",
+        "text": "find",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的过去式，"
+      },
+      {
+        "type": "text",
+        "text": "put",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 过去式与原形同形。"
+      }
+    ]
+  },
+  {
+    "id": "past-irregular-v2-translation-2",
+    "type": "translation",
+    "chapter": "常用不规则动词过去式",
+    "concepts": [
+      "past-irregular"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列中文汇报翻译成英文。",
+    "source_text": "我向组长汇报了这个故障，后来我们得到了一百个合格零件。",
+    "reference_translation": "I told the team lead about the fault, and later we got one hundred OK parts.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "I told the team leader about the fault, and later we got 100 OK parts."
+    ],
+    "key_terms": [
+      {
+        "term": "told the team lead",
+        "variants": [
+          "told the team leader"
+        ]
+      },
+      {
+        "term": "fault",
+        "variants": [
+          "problem",
+          "issue"
+        ]
+      },
+      {
+        "term": "got"
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "told... about...",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达向组长汇报某事，用 "
+      },
+      {
+        "type": "text",
+        "text": "got",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（"
+      },
+      {
+        "type": "text",
+        "text": "get",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的过去式）表示取得合格品数量。"
+      }
+    ]
+  },
+  {
+    "id": "did-questions-v2-listening-1",
+    "type": "listening",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "听班长与操作员用 did 核对交接细节的对话，再回答两个问题。",
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Hi, Mei. Did you finish all two hundred parts on Line A?"
+      },
+      {
+        "speaker": "W",
+        "text": "No, we didn't. The belt stopped at three o'clock because the power cable got loose."
+      },
+      {
+        "speaker": "M",
+        "text": "Did you tell the technician about the loose cable?"
+      },
+      {
+        "speaker": "W",
+        "text": "Yes, I did. He tightened the plug, and we didn't see any more errors."
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "why-not-finish",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Why didn't they finish all two hundred parts?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "loose-cable",
+            "text": "Because the power cable got loose.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "lens-broken",
+            "text": "Because the camera lens broke.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-trays",
+            "text": "Because there were no empty trays.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "loose-cable"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "小梅回答没有做完的原因是电源线松了（"
+          },
+          {
+            "type": "text",
+            "text": "the power cable got loose",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "more-errors-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "They saw more errors after the technician tightened the plug.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": false
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "最后一句明确说了 "
+          },
+          {
+            "type": "text",
+            "text": "we didn't see any more errors",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示之后没有再出现报错。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "对话中两次使用 "
+      },
+      {
+        "type": "text",
+        "text": "Did you...?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 核对情况，并分别用 "
+      },
+      {
+        "type": "text",
+        "text": "No, we didn't.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "Yes, I did.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 简略作答，且 "
+      },
+      {
+        "type": "text",
+        "text": "didn't see",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后保留了动词原形。"
+      }
+    ]
+  },
+  {
+    "id": "did-questions-v2-reading-1",
+    "type": "reading_comprehension",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "阅读 B 班交接班核对记录，再回答三个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "HANDOVER CHECK RECORD",
+        "tts": {
+          "voice": "stella",
+          "text": "Handover check record."
+        }
+      },
+      {
+        "type": "text",
+        "text": "\n"
+      },
+      {
+        "type": "text",
+        "text": "Shift B didn't finish Batch five because the cable connection failed at four p.m.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The operator didn't pull the cable herself and called the technician right away.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "She scanned all finished trays and didn't leave any tools on the belt.",
+        "tts": {
+          "voice": "stella"
+        }
+      }
+    ],
+    "sub_questions": [
+      {
+        "id": "why-batch-unfinished",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Why didn't Shift B finish Batch five?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "cable-failed",
+            "text": "Because the cable connection failed.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "no-power",
+            "text": "Because the workshop closed early.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "missing-scanner",
+            "text": "Because the scanner was missing.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "cable-failed"
+          ]
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第一句说明原因是线缆连接失效（"
+          },
+          {
+            "type": "text",
+            "text": "the cable connection failed",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "id": "what-operator-did-not-do",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What two things did the operator not do?",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "not-pull",
+            "text": "Pull the cable herself.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "not-leave-tools",
+            "text": "Leave tools on the belt.",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "not-scan",
+            "text": "Scan the finished trays.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "not-pull",
+            "not-leave-tools"
+          ]
+        },
+        "analysis": "记录写明操作员没有自己拉扯线缆，也没有把工具留在传送带上；她完成了已完工托盘的扫码。"
+      },
+      {
+        "id": "scanned-trays-tf",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Did the operator scan all finished trays? Yes, she did.",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "value": true
+        },
+        "analysis": [
+          {
+            "type": "text",
+            "text": "第三句前半部分写到 "
+          },
+          {
+            "type": "text",
+            "text": "She scanned all finished trays",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "记录中反复使用“助动词否定加动词原形”结构（"
+      },
+      {
+        "type": "text",
+        "text": "didn't finish",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "didn't pull",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "didn't leave",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），阅读时要注意抓住否定动作的实际含义。"
+      }
+    ]
+  },
+  {
+    "id": "did-questions-v2-cloze-1",
+    "type": "cloze",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "stem": "根据一般过去时助动词的疑问与否定规则，选词补全两处空格。",
+    "passage": "{{1}} you check the sensor before leaving? No, I {{2}} have enough time after the repair.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Did you check the sensor before leaving? No, I didn't have enough time after the repair."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          {
+            "id": "did",
+            "text": "Did",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "do",
+            "text": "Do",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "were",
+            "text": "Were",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "was",
+            "text": "Was",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "did"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "句中含实义动词原形 "
+          },
+          {
+            "type": "text",
+            "text": "check",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，询问过去是否完成动作必须用助动词 "
+          },
+          {
+            "type": "text",
+            "text": "Did",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          {
+            "id": "didnt",
+            "text": "didn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "dont",
+            "text": "don't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "wasnt",
+            "text": "wasn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "werent",
+            "text": "weren't",
+            "tts": {
+              "voice": "stella"
+            }
+          }
+        ],
+        "grading": {
+          "choice_ids": [
+            "didnt"
+          ]
+        },
+        "explanation": [
+          {
+            "type": "text",
+            "text": "答句实义动词 "
+          },
+          {
+            "type": "text",
+            "text": "have",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 的过去否定须借助 "
+          },
+          {
+            "type": "text",
+            "text": "didn't",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "实义动词的过去时疑问与否定一律借助助动词 "
+      },
+      {
+        "type": "text",
+        "text": "Did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，不可混用系动词或现在时。"
+      }
+    ]
+  },
+  {
+    "id": "did-questions-v2-translation-1",
+    "type": "translation",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "direction": "zh_to_en",
+    "stem": "将下列交接班问答翻译成英文。",
+    "source_text": "你昨天检查舵机挡板了吗？是的，我检查了，但我没有发现任何错误。",
+    "reference_translation": "Did you check the servo flap yesterday? Yes, I did, but I didn't find any errors.",
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
+    "acceptable_alternates": [
+      "Did you check the servo flap yesterday? Yes, I did, but I did not find any errors."
+    ],
+    "key_terms": [
+      {
+        "term": "Did you check"
+      },
+      {
+        "term": "Yes, I did"
+      },
+      {
+        "term": "didn't find",
+        "variants": [
+          "did not find"
+        ]
+      }
+    ],
+    "analysis": [
+      {
+        "type": "text",
+        "text": "问句中的 "
+      },
+      {
+        "type": "text",
+        "text": "Did you check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与否定句中的 "
+      },
+      {
+        "type": "text",
+        "text": "didn't find",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均需把实义动词还原为原形。"
+      }
+    ]
+  },
+  {
+    "id": "did-questions-v2-writing-1",
+    "type": "writing",
+    "chapter": "过去时疑问与否定 did",
+    "concepts": [
+      "did-questions"
+    ],
+    "subtype": "sentence_making",
+    "stem": [
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "Did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "didn't",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "sensor",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "error",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一组简短英文交接问答：先问对方昨天是否检查了传感器，再回答自己没有看到任何报错。"
+      }
+    ],
+    "requirements": [
+      "使用 Did 提出一般过去时疑问句。",
+      "使用 didn't 加动词原形作否定陈述。",
+      "包含关键词 sensor 和 error（10–24 词）。"
+    ],
+    "keywords": [
+      "Did",
+      "didn't",
+      "sensor",
+      "error"
+    ],
+    "min_words": 10,
+    "max_words": 24,
+    "sample_response": "Did you check the sensor yesterday? Yes, I did, and I didn't see any error.",
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "rubric": {
+      "task_completion": 50,
+      "language_accuracy": 50
+    },
+    "analysis": [
+      {
+        "type": "text",
+        "text": "问句用 "
+      },
+      {
+        "type": "text",
+        "text": "Did you check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，答句先给出 "
+      },
+      {
+        "type": "text",
+        "text": "Yes, I did",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，再用 "
+      },
+      {
+        "type": "text",
+        "text": "didn't see",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 说明未见报错。"
+      }
+    ]
   }
 ]
