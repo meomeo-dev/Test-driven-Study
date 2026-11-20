@@ -1,7 +1,8 @@
 ---
 id: 0073
 type: chore
-status: open
+status: closed
+closed-by: 6b7fae2
 labels: [tooling, skills]
 branch: chore/0073-add-orchestrate-agent-swarm-repository-skill
 created: 2026-11-20
@@ -40,3 +41,9 @@ board CLI, templates, and test suite cleanly in `.gitignore` and git history.
 
 Adding the explicit unignore rule matches `design-course-package` and
 `design-course-tts` so repository skill tracking stays symmetric.
+
+### Verification
+
+- `node --test .agents/skills/orchestrate-agent-swarm/tests/*.test.mjs`: 77/77
+  tests across 26 suites passed.
+- `npm run issue:check`: passed across all 73 issue files.
