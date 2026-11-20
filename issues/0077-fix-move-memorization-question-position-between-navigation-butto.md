@@ -1,7 +1,8 @@
 ---
 id: 0077
 type: fix
-status: open
+status: closed
+closed-by: f4860b2
 labels: []
 branch: fix/0077-move-memorization-question-position-between-navigation-butto
 created: 2026-11-20
@@ -31,3 +32,9 @@ The counter appears once between the navigation buttons and tracks the visible q
 ## 讨论
 
 Use the existing position and filtered total from the question card.
+
+### Verification
+
+- Type checking and three isolated memorization browser cases passed.
+- The position stays between Previous and Next while details load, updates
+  after navigation, and fits in the viewport at 375 pixels.
