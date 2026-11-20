@@ -17,8 +17,14 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
     hasMedia: false,
   },
 
-  renderStimulus: ({ question }) => (
-    <ReadingPassage passage={question.content.passage} />
+  renderStimulus: ({ question, showStudyTranslation }) => (
+    <ReadingPassage
+      passage={question.content.passage}
+      translations={'question_review' in question
+        ? question.question_review?.study_translation?.material
+        : undefined}
+      showStudyTranslation={showStudyTranslation}
+    />
   ),
 
   renderPracticeAnswer: ctx => (
@@ -48,11 +54,12 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
 
   renderExamSelection: () => null,
   renderPreviewBody: question => <ReadingQuestions content={question.content} />,
-  renderReferenceAnswers: ({ question }) => (
+  renderReferenceAnswers: ({ question, showStudyTranslation }) => (
     <ReadingQuestions
       content={question.content}
       hidePassage
       review={question.question_review}
+      showStudyTranslation={showStudyTranslation}
     />
   ),
   renderPalaceAnswers: question => (

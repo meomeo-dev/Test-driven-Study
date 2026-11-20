@@ -2414,6 +2414,12 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "昨天夜班发现了多少个有缺陷的零件？",
+        "我们目视检查时发现了七个有缺陷的零件。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "defective-parts-count",
@@ -2502,6 +2508,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "你们组在交班前完成了最终检验吗？",
+        "是的，我们下午 5 点完成了最终检验。"
+      ],
+      "sub_questions": {
+        "final-inspection-status": {
+          "options": {
+            "a": "是的，他们下午 5 点完成了。",
+            "b": "没有，他们没完成。",
+            "c": "他们忘记检验了。",
+            "d": "他们明天会检验。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "final-inspection-status",
@@ -2613,6 +2635,30 @@
         "text": "No, there weren't many. There were only four NG parts in the red bin."
       }
     ],
+    "study_translation": {
+      "material": [
+        "早上好。夜班时 1 号工位的情况怎么样？",
+        "摄像头和传送带都正常。凌晨两点时传感器有点灰尘，我就擦了一下。",
+        "红色收纳箱里有很多不合格零件吗？",
+        "没有，不多。红色收纳箱里只有四个不合格零件。"
+      ],
+      "sub_questions": {
+        "sensor-issue": {
+          "stem": "凌晨两点时传感器的情况怎么样？",
+          "options": {
+            "dusty": "有点灰尘。",
+            "broken": "坏了。",
+            "disconnected": "断开了连接。"
+          }
+        },
+        "camera-belt-ok": {
+          "stem": "夜班时摄像头和传送带都正常。"
+        },
+        "red-bin-count": {
+          "stem": "红色收纳箱里有几个不合格零件？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "sensor-issue",
@@ -2831,6 +2877,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "夜班记录",
+        "昨晚从八点到午夜，1 号工位很忙。",
+        "伺服电机和传送带运行稳定，没有发生卡料。",
+        "今天早上红色收纳箱里只有三个不合格零件。"
+      ],
+      "sub_questions": {
+        "station-busy": {
+          "stem": "昨晚 1 号工位什么时候很忙？",
+          "options": {
+            "eight-midnight": "从晚上八点到午夜。",
+            "two-four": "从凌晨两点到四点。",
+            "six-seven": "从早上六点到七点。"
+          }
+        },
+        "log-facts": {
+          "stem": "关于夜班，哪两项说法正确？",
+          "options": {
+            "servo-stable": "伺服电机和传送带运行稳定。",
+            "three-ng": "红色收纳箱里有三个不合格零件。",
+            "many-jams": "传送带卡了两次料。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "station-busy",
@@ -3330,7 +3402,36 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "This morning, I cleaned the camera lens and tested the sorting flap before eight. At ten, a tray dropped near the gate, so I stopped the belt and moved it away. In total, I scanned eighty boxes.",
+    "passage": [
+      {"type": "text", "text": "This morning, I cleaned the camera lens and tested the sorting flap before eight."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "At ten, a tray dropped near the gate, so I stopped the belt and moved it away."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "In total, I scanned eighty boxes."}
+    ],
+    "study_translation": {
+      "material": [
+        "今天早上八点前，我清洁了摄像头镜头并测试了分拣挡板。",
+        "十点时，有个托盘掉在门附近，所以我停下传送带，把托盘挪开了。",
+        "我一共扫描了 80 个箱子。"
+      ],
+      "sub_questions": {
+        "what-happened-ten": {
+          "stem": "十点时发生了什么？",
+          "options": {
+            "tray-dropped": "有个托盘掉在门附近。",
+            "shift-ended": "这个班次提前结束了。",
+            "camera-fell": "摄像头镜头掉了下来。"
+          }
+        },
+        "tested-after-ten": {
+          "stem": "操作员在十点之后测试了分拣挡板。"
+        },
+        "scanned-boxes": {
+          "stem": "操作员一共扫描了几个箱子？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "what-happened-ten",
@@ -3571,6 +3672,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "维护记录",
+        "昨天下午，陈检查了气压，并清洁了光学传感器。",
+        "他倒空了侧边收纳箱，把不合格的螺丝拿到了废品台。",
+        "离开前，他关闭了测试应用，并报告有一个灯座松了。"
+      ],
+      "sub_questions": {
+        "where-screws": {
+          "stem": "陈把不合格的螺丝拿到哪里去了？",
+          "options": {
+            "scrap-table": "拿到废品台。",
+            "loading-door": "拿到装卸门口。",
+            "front-desk": "拿到前台。"
+          }
+        },
+        "actions-before-leaving": {
+          "stem": "陈离开前做了哪两件事？",
+          "options": {
+            "closed-app": "关闭了测试应用。",
+            "reported-holder": "报告了一个松动的灯座。",
+            "repaired-belt": "修好了传送带。"
+          }
+        },
+        "emptied-bin-tf": {
+          "stem": "陈昨天下午倒空了侧边收纳箱。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "where-screws",
@@ -4413,6 +4543,36 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "班次异常记录",
+        "上午九点，我们发现传感器支架上有道裂纹，不久后支架就断了。",
+        "冯立即告诉了主管，一位技术员在五分钟内赶到了。",
+        "修好以后，我们在托盘里发现了三个划伤的盖帽，把它们交给了组长。",
+        "我们把合格零件拿到包装推车上，并在记录单上写下最终数量。"
+      ],
+      "sub_questions": {
+        "what-broke": {
+          "stem": "上午九点什么东西坏了？",
+          "options": {
+            "bracket": "传感器支架。",
+            "scanner": "条码扫描器。",
+            "packing-cart": "包装推车。"
+          }
+        },
+        "actions-after-repair": {
+          "stem": "修好以后，工人们做了哪两件事？",
+          "options": {
+            "gave-caps": "把三个划伤的盖帽交给了组长。",
+            "took-good": "把合格零件拿到包装推车上。",
+            "left-sheet": "扔掉了记录最终数量的单子。"
+          }
+        },
+        "tech-arrived-tf": {
+          "stem": "冯告诉主管后，一位技术员在五分钟内赶到了。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "what-broke",
@@ -4679,6 +4839,36 @@
         "text": "Yes, she saw it and went to check the cable hub."
       }
     ],
+    "study_translation": {
+      "material": [
+        "这是交接单。我把最终数量写在第一行了。",
+        "谢谢。我们的数显卡尺在哪儿？我找过垫子上，没在那里。",
+        "维修人员下午四点把它拿去校准了，给了我们一把备用量具。我把备用量具放在 2 号抽屉里了。",
+        "明白了。组长看过早上的故障记录了吗？",
+        "是的，她看过了，然后去检查线缆集线器了。"
+      ],
+      "sub_questions": {
+        "who-took-caliper": {
+          "stem": "谁在下午四点拿走了数显卡尺？",
+          "options": {
+            "maintenance": "维修人员。",
+            "team-lead": "组长。",
+            "night-shift": "夜班人员。"
+          }
+        },
+        "backup-drawer-tf": {
+          "stem": "备用量具在 2 号抽屉里。"
+        },
+        "what-lead-did": {
+          "stem": "组长看过故障记录后做了什么？",
+          "options": {
+            "check-hub": "她去检查了线缆集线器。",
+            "took-gauge": "她把备用量具拿走了。",
+            "wrote-count": "她把数量写在记录单上了。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "who-took-caliper",
@@ -5303,6 +5493,27 @@
         "text": "Yes, I did. He tightened the plug, and we didn't see any more errors."
       }
     ],
+    "study_translation": {
+      "material": [
+        "你好，梅。A 线上 200 个零件全做完了吗？",
+        "没有。电源线松了，传送带三点钟停了。",
+        "你把线缆松动的事告诉技术员了吗？",
+        "告诉了。他把插头紧固好，我们之后没再看到报错。"
+      ],
+      "sub_questions": {
+        "why-not-finish": {
+          "stem": "他们为什么没做完全部 200 个零件？",
+          "options": {
+            "loose-cable": "因为电源线松了。",
+            "lens-broken": "因为摄像头镜头坏了。",
+            "no-trays": "因为没有空托盘。"
+          }
+        },
+        "more-errors-tf": {
+          "stem": "技术员紧固插头以后，他们看到了更多报错。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "why-not-finish",
@@ -5498,6 +5709,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "交接检查记录",
+        "下午四点线缆连接出了故障，所以 B 班没完成第 5 批。",
+        "操作员没有自己拔线，而是立刻叫来了技术员。",
+        "她扫描了所有已完成的托盘，也没有把工具留在传送带上。"
+      ],
+      "sub_questions": {
+        "why-batch-unfinished": {
+          "stem": "B 班为什么没完成第 5 批？",
+          "options": {
+            "cable-failed": "因为线缆连接出了故障。",
+            "no-power": "因为车间提前关门了。",
+            "missing-scanner": "因为扫描器不见了。"
+          }
+        },
+        "what-operator-did-not-do": {
+          "stem": "操作员没有做哪两件事？",
+          "options": {
+            "not-pull": "自己拔线。",
+            "not-leave-tools": "把工具留在传送带上。",
+            "not-scan": "扫描已完成的托盘。"
+          }
+        },
+        "scanned-trays-tf": {
+          "stem": "操作员扫描了所有已完成的托盘吗？是的，她扫描了。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "why-batch-unfinished",

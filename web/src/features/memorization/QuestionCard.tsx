@@ -20,6 +20,7 @@ import { questionType, stateLabel } from './model';
 import { QuestionExplanation } from './QuestionExplanation';
 import { QuestionImage } from './QuestionImage';
 import type { DetailsTab } from './StudyDetails';
+import { StudyTranslationToggle, type StudyTranslationControl } from './StudyTranslationToggle';
 
 type Props = {
   detail: Detail;
@@ -28,6 +29,7 @@ type Props = {
   pending: boolean;
   shortcuts: boolean;
   imageRef: Ref<HTMLButtonElement>;
+  translationControl?: StudyTranslationControl;
   onDetails: (tab: DetailsTab, trigger?: HTMLElement) => void;
   onPrevious: () => void;
   onNext: () => void;
@@ -37,11 +39,19 @@ type Props = {
 export function AnswerOptions({
   question,
   mode = 'compact',
+  showStudyTranslation,
 }: {
   question: Question;
   mode?: 'compact' | 'full';
+  showStudyTranslation?: boolean;
 }) {
-  return <QuestionReferenceAnswers question={question} mode={mode} />;
+  return (
+    <QuestionReferenceAnswers
+      question={question}
+      mode={mode}
+      showStudyTranslation={showStudyTranslation}
+    />
+  );
 }
 
 export function QuestionCard({
@@ -51,6 +61,7 @@ export function QuestionCard({
   pending,
   shortcuts,
   imageRef,
+  translationControl,
   onDetails,
   onPrevious,
   onNext,
@@ -72,6 +83,7 @@ export function QuestionCard({
         <span className="question-position">
           {position} <span>/ {total}</span>
         </span>
+        <StudyTranslationToggle control={translationControl} />
         <button
           type="button"
           className="read-full"
@@ -102,7 +114,10 @@ export function QuestionCard({
               question.title
             )}
           </h2>
-          <QuestionStimulus question={question} />
+          <QuestionStimulus
+            question={question}
+            showStudyTranslation={translationControl?.visible}
+          />
           <QuestionImage
             key={`image-${question.question_id}`}
             detail={detail}
@@ -112,7 +127,7 @@ export function QuestionCard({
         </section>
         <section className="question-answers" aria-label="参考答案">
           {!spec.hideAnswerHeading && <h3 className="column-label">选项与答案</h3>}
-          <AnswerOptions question={question} />
+          <AnswerOptions question={question} showStudyTranslation={translationControl?.visible} />
         </section>
         <QuestionExplanation detail={detail} onDetails={onDetails} />
       </div>

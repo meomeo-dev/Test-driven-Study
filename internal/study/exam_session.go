@@ -59,8 +59,8 @@ func (r *examRecord) public(now int64) (ExamSession, error) {
 		if r.row.Status != "finished" {
 			visible.AudioSpeeds = h.ExamAudioSpeeds(item.Question)
 		}
-		// The terminal gives feedback after commitment. The transcript stays
-		// hidden until the entire paper is finished.
+		// The terminal gives feedback after commitment. Transcripts and study
+		// translations stay hidden until the entire paper is finished.
 		if r.row.Status == "finished" || visible.Answered {
 			var credit float64
 			var err error

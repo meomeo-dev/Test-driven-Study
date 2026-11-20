@@ -23,6 +23,7 @@ export function MemorizationPage() {
   const conversations = useConversationCoverage(filters.subject);
   const [notice, setNotice] = useState('');
   const [detailsTab, setDetailsTab] = useState<DetailsTab | null>(null);
+  const [showStudyTranslation, setShowStudyTranslation] = useState(true);
   const [help, setHelp] = useState(false);
   const shortcuts = useShortcutPreference();
   const reading = useRef<HTMLElement>(null);
@@ -36,6 +37,16 @@ export function MemorizationPage() {
   const ready = !!overview.data && !!list.data;
   const id = ready ? activeQuestion(rows, params.get('question'), overview.data.last_question_id) : 0;
   const question = useQuestionQuery(id);
+  const currentQuestion = question.data?.question;
+  const translationControl =
+    (currentQuestion?.question_type === 'reading_comprehension'
+      || currentQuestion?.question_type === 'listening')
+    && currentQuestion.question_review?.study_translation
+      ? {
+          visible: showStudyTranslation,
+          toggle: () => setShowStudyTranslation(visible => !visible),
+        }
+      : undefined;
   const mutation = useProgressMutation(filters.subject);
   useMemorizationExposure(question.data?.question.question_id === id ? id : 0);
   const position = rows.findIndex(row => row.question_id === id) + 1;
@@ -116,12 +127,14 @@ export function MemorizationPage() {
               <p>请调整关键词、章节或学习状态。</p><button className="button outline" onClick={() => setParams({ subject: String(filters.subject) })}>重置筛选</button></div>
             : question.data ? <QuestionCard detail={question.data} position={position} total={rows.length}
               pending={!canAct} shortcuts={shortcuts.enabled} imageRef={image}
+              translationControl={translationControl}
               onPrevious={previous} onNext={next} onMark={mark} onDetails={openDetails} />
             : <div className="page-state" role="status"><LoaderCircle className="spin" size={26} /><p>正在加载题目…</p></div>}
         </section>
       </div>
       <div className={`save-notice ${notice ? 'visible' : ''}`} role="status" aria-live="polite">{notice}</div>
-      <StudyDetails detail={question.data} tab={detailsTab} onTab={setDetailsTab} returnFocus={detailsFocus} />
+      <StudyDetails detail={question.data} tab={detailsTab} onTab={setDetailsTab}
+        returnFocus={detailsFocus} translationControl={translationControl} />
       <KeyboardHelp open={help} onOpenChange={setHelp} enabled={shortcuts.enabled}
         onEnabled={shortcuts.change} returnFocus={helpFocus} />
     </main>

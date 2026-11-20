@@ -5,14 +5,29 @@ import type {
   RichText,
 } from '../../../../api/generated/types.gen';
 import { RichContent } from '../../../../components/RichContent';
+import { StudyPassage } from '../../../../components/StudyPassage';
 import { SubQuestionList } from '../../shared/SubQuestionParts';
 import { SubQuestionReviewList } from '../../shared/SubQuestionReview';
 
-export function ReadingPassage({ passage }: { passage?: RichText }) {
+export function ReadingPassage({
+  passage,
+  translations,
+  showStudyTranslation,
+}: {
+  passage?: RichText;
+  translations?: string[];
+  showStudyTranslation?: boolean;
+}) {
   if (!passage) return null;
   return (
     <section className="analysis-text" aria-label="阅读材料">
-      <RichContent content={passage} />
+      {translations && showStudyTranslation !== undefined ? (
+        <StudyPassage
+          passage={passage}
+          translations={translations}
+          showTranslation={showStudyTranslation}
+        />
+      ) : <RichContent content={passage} />}
     </section>
   );
 }
@@ -24,6 +39,7 @@ export function ReadingQuestions({
   disabled,
   hidePassage,
   review,
+  showStudyTranslation,
 }: {
   content: ReadingContent;
   value?: ExtendedResponse;
@@ -31,6 +47,7 @@ export function ReadingQuestions({
   disabled?: boolean;
   hidePassage?: boolean;
   review?: ReadingItemReview;
+  showStudyTranslation?: boolean;
 }) {
   const studyRows = Boolean(content.passage) || Boolean(review);
   return (
@@ -46,6 +63,7 @@ export function ReadingQuestions({
         onChange={onChange}
         disabled={disabled}
         reviewSubs={review?.sub_questions}
+        translations={showStudyTranslation ? review?.study_translation?.sub_questions : undefined}
         studyRows={studyRows}
       />
     </div>

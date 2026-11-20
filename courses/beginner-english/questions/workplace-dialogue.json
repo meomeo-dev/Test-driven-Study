@@ -177,6 +177,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "仓库，替换用的传感器什么时候能送到 2 号线？",
+        "已经打包好了，下午 3 点 30 分送达。"
+      ],
+      "sub_questions": {
+        "arrival-time": {
+          "options": {
+            "a": "下午 2 点",
+            "b": "下午 3 点 30 分",
+            "c": "下午 4 点 15 分",
+            "d": "明天早上"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "arrival-time",
@@ -320,6 +336,12 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "今天会把哪些物料发到 B 工位？",
+        "我们给 B 工位发了 20 个散热风扇和 40 套线束。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "materials",
@@ -434,6 +456,12 @@
         "tts": { "voice": "tide" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "仓库，我们急需 50 个支架。",
+        "收到。我们现在只有 30 个现货。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "stock-status",
@@ -500,6 +528,12 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "调度员，我们要给 3 号线送几个散热风扇？",
+        "我们要向 3 号线发八个散热风扇。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "fan-count",
@@ -563,6 +597,26 @@
         "tts": { "voice": "tide" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "打扰一下，方。能帮我把这个电机外壳抬到推车上吗？",
+        "我正在校准压力传感器。两分钟后帮你，可以吗？",
+        "当然，没问题。谢谢！"
+      ],
+      "sub_questions": {
+        "delay-reason": {
+          "stem": "方为什么不能马上帮忙？",
+          "options": {
+            "calibrating": "她正在校准压力传感器。",
+            "lunch": "她正要去食堂。",
+            "broken": "她的推车坏了。"
+          }
+        },
+        "refusal-check": {
+          "stem": "方完全拒绝帮助这名男子。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "delay-reason",
@@ -625,6 +679,32 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "协作搬抬指南",
+        "一起搬抬沉重的外壳时，一定要先问搭档是否抓牢。",
+        "数到三再抬，螺栓锁紧之前不要松手。",
+        "如果正忙着校准量具，礼貌地告诉搭档你什么时候有空。"
+      ],
+      "sub_questions": {
+        "when-release": {
+          "stem": "工作人员什么时候可以松开外壳？",
+          "options": {
+            "locked": "螺栓锁紧之后。",
+            "two": "刚数到二就可以。",
+            "anytime": "随时都可以，不用问。"
+          }
+        },
+        "team-steps": {
+          "stem": "指南推荐哪些安全习惯？",
+          "options": {
+            "grip": "确认搭档已经抓牢。",
+            "count": "数到三再抬。",
+            "shout": "不等搭档回应就大声发号施令。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "when-release",
@@ -811,6 +891,30 @@
         "tts": { "voice": "tide" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "你好，周。你和吴现在在 4 号工位做什么？",
+        "我正在组装三个控制面板，吴正在测试线束。",
+        "2 号线为什么要停？",
+        "维修组正在更换磨损的传送带。"
+      ],
+      "sub_questions": {
+        "wu-task": {
+          "stem": "吴现在在做什么？",
+          "options": {
+            "testing": "测试线束。",
+            "belt": "更换磨损的传送带。",
+            "cleaning": "打扫食堂。"
+          }
+        },
+        "panel-count": {
+          "stem": "周正在组装几个控制面板？"
+        },
+        "line-two-running": {
+          "stem": "2 号线运转顺畅，没有停机。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "wu-task",
@@ -882,6 +986,35 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位实时状态",
+        "早班批次开工前，1 号工位正在校准两台电子秤。",
+        "2 号工位现在没有运行，因为技术员正在切割新的铝支架。",
+        "3 号工位的操作员还需要 20 根螺栓。"
+      ],
+      "sub_questions": {
+        "stn1-doing": {
+          "stem": "1 号工位现在在做什么？",
+          "options": {
+            "scales": "校准两台电子秤。",
+            "brackets": "切割铝支架。",
+            "bolts": "打包 20 根螺栓。"
+          }
+        },
+        "true-statements": {
+          "stem": "哪些说法与实时状态板相符？",
+          "options": {
+            "not-op": "2 号工位现在没有运行。",
+            "cutting": "技术员正在切割铝支架。",
+            "need-thirty": "3 号工位需要 30 根螺栓。"
+          }
+        },
+        "stn3-verb": {
+          "stem": "3 号工位的操作员已经有足够的螺栓了。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "stn1-doing",
@@ -1105,6 +1238,35 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "2 号线主管，这里是仓库。B 门有 15 个电机支架已备好。收到请回答，完毕。",
+        "仓库，收到，听得很清楚。请稍等，我检查一下我们的推车。完毕。",
+        "等候中。完毕。",
+        "仓库，请把支架送到 5 号工位。谢谢。通话结束。"
+      ],
+      "sub_questions": {
+        "caller-id": {
+          "stem": "谁发起了对讲机通话？",
+          "options": {
+            "wh": "仓库。",
+            "stn5": "5 号工位。",
+            "maint": "维修组。"
+          }
+        },
+        "radio-details": {
+          "stem": "关于支架，哪些细节正确？",
+          "options": {
+            "qty": "有 15 个支架已备好。",
+            "dest": "支架应该送到 5 号工位。",
+            "gate-a": "支架在 A 门等候。"
+          }
+        },
+        "call-ending": {
+          "stem": "主管用「通话结束（Over and out）」结束了整段通话。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "caller-id",
@@ -1181,6 +1343,27 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "对讲机使用规则",
+        "按下通话键后稍等片刻再说话，这样第一个词才不会被截掉。",
+        "重复 15 或 50 这类重要数字，让对方确认。",
+        "如果信号弱，请说「请再说一遍」，不要大声喊。"
+      ],
+      "sub_questions": {
+        "pause-reason": {
+          "stem": "按下通话键后，工作人员为什么应该稍等片刻？",
+          "options": {
+            "cutoff": "这样第一个词才不会被截掉。",
+            "battery": "为了节省电量。",
+            "channel": "为了切换到 3 频道。"
+          }
+        },
+        "weak-signal": {
+          "stem": "信号弱时，工作人员应该对着对讲机更大声地喊。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "pause-reason",
@@ -1338,7 +1521,39 @@
     "concepts": ["schedule-coordination"],
     "stem": "听车间调度员的广播通知，再回答三个问题。",
     "audio": { "mode": "passage", "voice_female": "stella" },
-    "passage": "Attention, Line Two. Twenty motor covers will arrive at your station at ten thirty a.m. Please clear space by the loading door before ten a.m. The remaining thirty covers will arrive on the afternoon truck at three p.m.",
+    "passage": [
+      {"type": "text", "text": "Attention, Line Two."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Twenty motor covers will arrive at your station at ten thirty a.m."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Please clear space by the loading door before ten a.m."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The remaining thirty covers will arrive on the afternoon truck at three p.m."}
+    ],
+    "study_translation": {
+      "material": [
+        "2 号线请注意。",
+        "20 个电机盖将在上午 10 点 30 分送到你们工位。",
+        "请在上午 10 点前把装卸门旁腾出空间。",
+        "剩下 30 个电机盖将由下午 3 点的货车送达。"
+      ],
+      "sub_questions": {
+        "morning-arrival": {
+          "stem": "第一批电机盖什么时候送达？",
+          "options": {
+            "ten": "上午 10 点。",
+            "ten-thirty": "上午 10 点 30 分。",
+            "three": "下午 3 点。"
+          }
+        },
+        "total-covers": {
+          "stem": "2 号线今天总共会收到几个电机盖？"
+        },
+        "door-space": {
+          "stem": "工作人员应该在上午 10 点前把装卸门旁腾出空间。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "morning-arrival",
@@ -1410,6 +1625,27 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "班次调度记录",
+        "B 工位的下午班需要 40 个散热风扇。",
+        "库存有 25 个风扇，我们会在下午 2 点 30 分前先把这批发过去。",
+        "暂缓第 5 批，午饭后处理 D 工位的加急订单。"
+      ],
+      "sub_questions": {
+        "urgent-station": {
+          "stem": "哪个工位有午饭后要处理的加急订单？",
+          "options": {
+            "stn-d": "D 工位。",
+            "stn-b": "B 工位。",
+            "lot-5": "第 5 批。"
+          }
+        },
+        "remaining-fans": {
+          "stem": "第一批送到后，B 工位还需要几个散热风扇？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "urgent-station",

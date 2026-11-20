@@ -2587,6 +2587,12 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "主管，我这周有几个夜班？",
+        "小李，你这周有两个夜班，在周四和周五。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "night-shifts",
@@ -2709,6 +2715,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "各位请记好，明天早会上午七点四十五分开始。",
+        "明白了。上午七点四十五分在简报板前集合。"
+      ],
+      "sub_questions": {
+        "meeting-time": {
+          "options": {
+            "a": "上午七点十五分",
+            "b": "上午七点四十五分",
+            "c": "上午八点",
+            "d": "上午八点半"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "meeting-time",
@@ -2857,6 +2879,25 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "新一批销钉什么时候到？",
+        "五月十二日，也就是周二上午到货。我们的传感器校准安排在周一上午八点半。"
+      ],
+      "sub_questions": {
+        "batch-date": {
+          "stem": "新一批货什么时候到？",
+          "options": {
+            "may-12": "五月十二日。",
+            "may-20": "五月二十日。",
+            "june-12": "六月十二日。"
+          }
+        },
+        "calibration-day": {
+          "stem": "传感器校准安排在周二上午。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "batch-date",
@@ -3039,6 +3080,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "月度检查通知",
+        "年度生产线检查安排在七月。",
+        "我们组的会议在七月十日上午九点开始。",
+        "请在周五下午之前给第二十一批产品贴标签。"
+      ],
+      "sub_questions": {
+        "meeting-date": {
+          "stem": "小组会议什么时候开始？",
+          "options": {
+            "july-10": "七月十日上午九点。",
+            "july-21": "七月二十一日上午九点。",
+            "friday-pm": "周五下午。"
+          }
+        },
+        "notice-tasks": {
+          "stem": "根据通知，哪两项属实？",
+          "options": {
+            "annual-july": "年度生产线检查安排在七月。",
+            "label-21st": "员工必须在周五下午之前给第二十一批产品贴标签。",
+            "annual-august": "年度生产线检查安排在八月。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "meeting-date",
@@ -3512,6 +3579,28 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "红色废品箱在哪里？今天谁检查二号工位？",
+        "红色箱子在桌子下面。莎拉检查二号工位，箱里有十二根弯曲的销钉。"
+      ],
+      "sub_questions": {
+        "bin-location": {
+          "stem": "红色废品箱在哪里？",
+          "options": {
+            "under-desk": "在桌子下面。",
+            "on-shelf": "在最上层架子上。",
+            "by-door": "在门旁。"
+          }
+        },
+        "bent-pins-count": {
+          "stem": "箱里有多少根弯曲的销钉？"
+        },
+        "station-lead": {
+          "stem": "莎拉今天检查二号工位。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "bin-location",
@@ -3675,6 +3764,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位问答指南",
+        "陈技术员上午七点半检查相机传感器。",
+        "备用托盘放在三号工位后面。",
+        "每个托盘能装二十个合格盖子，导轨需要两毫升轻质润滑油。"
+      ],
+      "sub_questions": {
+        "who-checks": {
+          "stem": "谁在上午七点半检查相机传感器？",
+          "options": {
+            "chen": "陈技术员。",
+            "station-3": "三号工位。",
+            "yes": "是的，他会检查。"
+          }
+        },
+        "valid-questions": {
+          "stem": "哪两个问题与指南里的信息相符？",
+          "options": {
+            "how-many-caps": "每个托盘能装多少个合格盖子？（How many）",
+            "how-much-oil": "导轨需要多少油？（How much）",
+            "how-much-caps": "托盘里有多少个合格盖子？（How much）"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "who-checks",
@@ -4230,7 +4345,33 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "I always clean the camera lens before eight a.m. The servo flap is usually smooth, and it is never stuck when we oil it twice a week. Sometimes small screws fall near the belt, so we sweep the bench every day.",
+    "passage": [
+      {"type": "text", "text": "I always clean the camera lens before eight a.m."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The servo flap is usually smooth, and it is never stuck when we oil it twice a week."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Sometimes small screws fall near the belt, so we sweep the bench every day."}
+    ],
+    "study_translation": {
+      "material": [
+        "我总是在上午八点之前清洁相机镜头。",
+        "伺服挡板通常动作顺畅。每周给它上两次油，它就从不卡住。",
+        "小螺丝有时会掉到传送带附近，所以我们每天打扫工作台。"
+      ],
+      "sub_questions": {
+        "lens-frequency": {
+          "stem": "检查员多久清洁一次相机镜头？",
+          "options": {
+            "always": "总是在上午八点之前清洁。",
+            "twice-week": "每周两次。",
+            "never": "从不。"
+          }
+        },
+        "flap-stuck": {
+          "stem": "伺服挡板工作时经常卡住。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "lens-frequency",
@@ -4375,6 +4516,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位检查清单",
+        "测试期间安全门始终关闭。",
+        "操作员通常每天检查电源线，每周测试两次串口。",
+        "他们从不把松动的螺栓留在传送带上。"
+      ],
+      "sub_questions": {
+        "serial-port-freq": {
+          "stem": "操作员多久测试一次串口？",
+          "options": {
+            "twice-week": "每周两次。",
+            "every-day": "每天。",
+            "never": "从不。"
+          }
+        },
+        "safety-habits": {
+          "stem": "哪两条规定符合工位检查清单？",
+          "options": {
+            "gate-closed": "测试期间始终关闭安全门。",
+            "no-loose-bolts": "切勿把松动的螺栓留在传送带上。",
+            "skip-cable": "有时每月检查一次电源线。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "serial-port-freq",
@@ -4815,6 +4982,27 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "白班排班表",
+        "工作日白班从上午八点到下午五点。",
+        "午休从中午十二点到下午一点。",
+        "所有操作员必须在下午四点五十分之前清点废品箱，并在交班记录上签名。"
+      ],
+      "sub_questions": {
+        "net-hours": {
+          "stem": "白班每天的净工作时间是多少小时？"
+        },
+        "end-tasks": {
+          "stem": "操作员必须在下午四点五十分之前做什么？",
+          "options": {
+            "count-bin": "清点废品箱。",
+            "sign-log": "在交班记录上签名。",
+            "take-lunch": "开始午休。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "net-hours",

@@ -12,12 +12,14 @@ export function ListeningQuestions({
   onChange,
   disabled,
   review,
+  showStudyTranslation,
 }: {
   content: ListeningContent;
   value?: ExtendedResponse;
   onChange?: (value: ExtendedResponse) => void;
   disabled?: boolean;
   review?: ListeningItemReview;
+  showStudyTranslation?: boolean;
 }) {
   const studyRows = Boolean(review);
   return (
@@ -28,6 +30,7 @@ export function ListeningQuestions({
         onChange={onChange}
         disabled={disabled}
         reviewSubs={review?.sub_questions}
+        translations={showStudyTranslation ? review?.study_translation?.sub_questions : undefined}
         studyRows={studyRows}
       />
     </div>

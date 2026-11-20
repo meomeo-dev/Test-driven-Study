@@ -1137,6 +1137,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "能请你把桌上的蓝色文件夹递给我吗？",
+        "当然，给你。"
+      ],
+      "sub_questions": {
+        "requested-item": {
+          "options": {
+            "a": "蓝色文件夹",
+            "b": "红笔",
+            "c": "钢尺",
+            "d": "护目镜"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "requested-item",
@@ -1401,6 +1417,26 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "马上停下传送带！不要碰伺服臂。",
+        "明白了。灯也要关掉吗？",
+        "是的，关掉工作台灯，再按一下红色按钮。"
+      ],
+      "sub_questions": {
+        "forbidden-action": {
+          "stem": "师傅让工人不要碰什么？",
+          "options": {
+            "servo": "伺服臂。",
+            "tray": "蓝色托盘。",
+            "button": "红色按钮。"
+          }
+        },
+        "turn-off-light": {
+          "stem": "工人应该关掉工作台灯，并按下红色按钮。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "forbidden-action",
@@ -1585,6 +1621,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "下班通知",
+        "检查所有托盘，把空箱放到架子上。",
+        "合上零件盒，关掉工作台灯。",
+        "不要把工具留在传送带上。"
+      ],
+      "sub_questions": {
+        "empty-boxes-place": {
+          "stem": "员工应该把空箱放在哪里？",
+          "options": {
+            "shelf": "在架子上。",
+            "belt": "在传送带上。",
+            "floor": "在门旁。"
+          }
+        },
+        "closing-tasks": {
+          "stem": "离开前需要做哪两件事？",
+          "options": {
+            "close-box": "合上零件盒。",
+            "turn-off-light": "关掉工作台灯。",
+            "leave-tools": "把工具留在传送带上。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "empty-boxes-place",
@@ -1955,6 +2017,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "早上好，小林。你准备好做早间检查了吗？",
+        "是的，我准备好了。我五分钟前就戴上手套了。",
+        "很好。相机今天运转正常吗？",
+        "不正常。线缆松了，但备用托盘已经准备好了。"
+      ],
+      "sub_questions": {
+        "worker-ready": {
+          "stem": "小林怎么回答第一个问题？",
+          "options": {
+            "yes-am": "是的。（I am）",
+            "yes-do": "是的。（I do）",
+            "no-not": "不，我还没准备好。（I'm not）"
+          }
+        },
+        "camera-status": {
+          "stem": "相机今天运转正常。"
+        },
+        "spare-tray": {
+          "stem": "备用托盘准备好了吗？",
+          "options": {
+            "yes-it-is": "是的。（it is）",
+            "no-it-isnt": "不。（it isn't）",
+            "no-it-doesnt": "不。（it doesn't）"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "worker-ready",
@@ -2241,6 +2332,36 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "交班检查清单",
+        "每班开始前问两个问题。",
+        "先问搭档：零件干净、干燥吗？",
+        "然后检查测试仪，并问：它运行正常吗？",
+        "如果答案是否定的，立即叫组长。"
+      ],
+      "sub_questions": {
+        "parts-answer": {
+          "stem": "如果零件干净、干燥，正确的简短回答是什么？",
+          "options": {
+            "they-are": "是的。（they are）",
+            "it-is": "是的。（it is）",
+            "they-do": "是的。（they do）"
+          }
+        },
+        "call-leader": {
+          "stem": "如果测试仪无法正常工作，员工应该叫组长。"
+        },
+        "check-items": {
+          "stem": "每班开始前，员工必须检查哪两件事？",
+          "options": {
+            "parts": "零件是否干净、干燥。",
+            "tester": "测试仪是否运行正常。",
+            "locker": "更衣室是否开门。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "parts-answer",
@@ -2852,7 +2973,33 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Hi team, please help check the red trays near door two. Could you move the full trays to table four before ten? If you are busy now, just say sorry, I cannot, and finish your current batch first.",
+    "passage": [
+      {"type": "text", "text": "Hi team, please help check the red trays near door two."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Could you move the full trays to table four before ten?"},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "If you are busy now, just say sorry, I cannot, and finish your current batch first."}
+    ],
+    "study_translation": {
+      "material": [
+        "各位好，请帮忙检查二号门附近的红色托盘。",
+        "能请你在十点前把装满的托盘移到四号桌吗？",
+        "如果你现在正忙，就说“对不起，我现在做不了”，先做完手头这一批。"
+      ],
+      "sub_questions": {
+        "target-table": {
+          "stem": "员工应该把装满的托盘移到哪里？",
+          "options": {
+            "table-four": "四号桌。",
+            "door-two": "二号门。",
+            "table-two": "二号桌。"
+          }
+        },
+        "busy-reply": {
+          "stem": "正在忙的员工应立即停下手头这批活。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "target-table",
@@ -3026,6 +3173,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工作台便条",
+        "能请你检测二号托盘上的十个蓝色零件吗？",
+        "请把不合格的零件放进红色盒子。",
+        "需要帮助时，请找三号工位的本。"
+      ],
+      "sub_questions": {
+        "parts-to-test": {
+          "stem": "便条请你检测哪些零件？",
+          "options": {
+            "blue-tray-two": "二号托盘上的十个蓝色零件。",
+            "red-box": "红色盒子里的不合格零件。",
+            "station-three": "三号工位的工具。"
+          }
+        },
+        "polite-instructions": {
+          "stem": "按照便条，你应该怎么做？",
+          "options": {
+            "put-bad": "把不合格的零件放进红色盒子。",
+            "ask-ben": "需要帮助时，找三号工位的本。",
+            "leave-desk": "把零件留在地板上。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "parts-to-test",

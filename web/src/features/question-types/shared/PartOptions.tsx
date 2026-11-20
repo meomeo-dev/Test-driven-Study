@@ -49,6 +49,7 @@ function PartOptionRow({
   studyOption,
   hasAnyTts,
   onChoose,
+  translation,
 }: {
   option: CourseOption;
   index: number;
@@ -60,6 +61,7 @@ function PartOptionRow({
   studyOption?: QuestionOption;
   hasAnyTts: boolean;
   onChoose: (id: string) => void;
+  translation?: string;
 }) {
   const row = `answer-option choice-option ${chosen ? 'selected' : ''}`;
   return (
@@ -73,7 +75,14 @@ function PartOptionRow({
           checked={chosen}
           onChange={() => onChoose(option.id)}
         />
-        <span className={studyRows ? 'option-text' : undefined}>{option.text}</span>
+        <span className={studyRows ? 'option-text' : undefined}>
+          {translation ? (
+            <>
+              <span>{option.text}</span>
+              <span className="study-translation" lang="zh-Hans">{translation}</span>
+            </>
+          ) : option.text}
+        </span>
       </label>
       <PartOptionAudio
         option={option}
@@ -94,6 +103,7 @@ export function PartOptions({
   correct,
   judgment,
   studyRows,
+  translations,
 }: {
   options: CourseOption[];
   name: string;
@@ -104,8 +114,10 @@ export function PartOptions({
   correct?: string[];
   judgment?: boolean;
   studyRows?: boolean;
+  translations?: Readonly<Record<string, string>>;
 }) {
   const studyOptions = studyRows ? options.map(toQuestionOption) : [];
+  const translationById = translations && new Map(Object.entries(translations));
   if (studyRows && correct) {
     const signs = (ids: string[]) =>
       new Set(
@@ -117,6 +129,9 @@ export function PartOptions({
         correct={signs(correct)}
         selected={signs(selected)}
         judgment={judgment}
+        translations={translationById && Object.fromEntries(
+          options.map((option, index) => [index + 1, translationById.get(option.id)]),
+        )}
       />
     );
   }
@@ -136,6 +151,7 @@ export function PartOptions({
           studyOption={studyOptions[index]}
           hasAnyTts={hasAnyTts}
           onChoose={onChoose}
+          translation={translationById?.get(option.id)}
         />
       ))}
     </ul>

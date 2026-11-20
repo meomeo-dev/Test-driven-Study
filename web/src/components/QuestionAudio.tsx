@@ -7,7 +7,7 @@ import {
   type DialogueLine,
   type ProtectedAudio,
 } from './DialoguePlayer';
-import { ListeningTranscript } from './ListeningTranscript';
+import { ListeningTranscript, type ListeningStudyTranslation } from './ListeningTranscript';
 
 export type { DialogueLine, ProtectedAudio };
 
@@ -62,9 +62,11 @@ export function parseDialogueLines(
 export function QuestionAudio({
   question,
   protectedAudio,
+  studyTranslation,
 }: {
   question: QuestionAudioSource;
   protectedAudio?: ProtectedAudio;
+  studyTranslation?: ListeningStudyTranslation;
 }) {
   const {
     audio_url: audio,
@@ -117,6 +119,7 @@ export function QuestionAudio({
           url={transcriptSrc}
           inlineText={inlineTranscript}
           dialogueLines={dialogueLines}
+          studyTranslation={studyTranslation}
         />
       )}
     </div>

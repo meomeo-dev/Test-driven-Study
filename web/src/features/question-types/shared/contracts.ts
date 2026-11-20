@@ -51,6 +51,7 @@ export type StimulusContext<T extends QuestionType> = {
   reviewQuestion?: QuestionOf<T>;
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
+  showStudyTranslation?: boolean;
 };
 
 export type PracticeAnswerContext<T extends QuestionType> = {
@@ -119,6 +120,7 @@ export type ReferenceContext<T extends QuestionType> = {
   question: QuestionOf<T>;
   mode?: 'compact' | 'full';
   includeWritingSample?: boolean;
+  showStudyTranslation?: boolean;
 };
 
 export type ReviewContext<T extends QuestionType> = {

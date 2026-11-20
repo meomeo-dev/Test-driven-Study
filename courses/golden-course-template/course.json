@@ -1,7 +1,7 @@
 {
   "protocol_version": 2,
   "course_id": "golden-course-template",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "title": "黄金标准课程模板",
   "language": "zh-CN",
   "description": "黄金标准课程包模板，展示全部 9 类题型，以及知识图谱、学习路径与按知识点练习。",

@@ -1469,6 +1469,11 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "首先，拿起红色螺栓。然后，用扳手拧紧。最后，把零件放进二号盒。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "action-order",
@@ -1614,6 +1619,34 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "琳达，早上好。我需要给三号工位拿四个螺栓和四个螺母。",
+        "好，它们在灰色托盘里。你有扳手和手套吗？",
+        "我有手套，但还需要一把扳手和一把螺丝刀。"
+      ],
+      "sub_questions": {
+        "parts-container": {
+          "stem": "螺栓和螺母在哪里？",
+          "options": {
+            "gray-tray": "在灰色托盘里。",
+            "blue-box": "在蓝色盒子里。",
+            "red-shelf": "在红色架子上。"
+          }
+        },
+        "has-gloves": {
+          "stem": "这名工人已经有一副手套了。"
+        },
+        "needed-tools": {
+          "stem": "这名工人还需要哪两件工具？",
+          "options": {
+            "wrench-screwdriver": "一把扳手和一把螺丝刀。",
+            "gloves-camera": "手套和相机。",
+            "button-light": "按钮和灯。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "parts-container",
@@ -1878,6 +1911,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工具架使用指南",
+        "螺丝刀和扳手用完后放到工具架最上层。",
+        "小螺丝放进黄色盒子，螺栓和螺母放在蓝色托盘里。",
+        "戴手套前先检查相机的灯。"
+      ],
+      "sub_questions": {
+        "rack-tools": {
+          "stem": "员工用完螺丝刀和扳手后，应该把它们放在哪里？",
+          "options": {
+            "top-rack": "在工具架最上层。",
+            "yellow-box": "在黄色盒子里。",
+            "blue-tray": "在蓝色托盘里。"
+          }
+        },
+        "blue-tray-items": {
+          "stem": "哪两种零件放在蓝色托盘里？",
+          "options": {
+            "bolts": "螺栓。",
+            "nuts": "螺母。",
+            "screws": "小螺丝。"
+          }
+        },
+        "camera-light-check": {
+          "stem": "员工应在戴手套前检查相机的灯。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "rack-tools",
@@ -2403,7 +2465,33 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Attention, station two. The new steel bolt is twenty-five millimeters long. Each part weighs fifty grams, and the maximum weight for one blue tray is two kilograms.",
+    "passage": [
+      {"type": "text", "text": "Attention, station two."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The new steel bolt is twenty-five millimeters long."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Each part weighs fifty grams, and the maximum weight for one blue tray is two kilograms."}
+    ],
+    "study_translation": {
+      "material": [
+        "二号工位请注意。",
+        "新的钢螺栓长二十五毫米。",
+        "每个零件重五十克，一个蓝色托盘的最大承重为两千克。"
+      ],
+      "sub_questions": {
+        "bolt-cm": {
+          "stem": "新的钢螺栓长多少厘米（cm）？"
+        },
+        "tray-limit": {
+          "stem": "一个蓝色托盘最大能承受多重？",
+          "options": {
+            "two-kg": "两千克。",
+            "twenty-g": "二十克。",
+            "five-kg": "五千克。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "bolt-cm",
@@ -2554,6 +2642,24 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "规格卡",
+        "把绿线剪成 4 厘米长。",
+        "每个成品支架必须重 100 克。",
+        "每个小盒装 10 个支架。"
+      ],
+      "sub_questions": {
+        "spec-facts": {
+          "stem": "哪两项符合规格卡？",
+          "options": {
+            "wire-40mm": "绿线长四十毫米。",
+            "bracket-100g": "每个成品支架重一百克。",
+            "pack-20": "每个小盒装二十个支架。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "box-weight-kg",
@@ -2950,6 +3056,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "小张，告诉我你和丽莎每天早上在一号工位做什么。",
+        "我先检查绿灯，再打开相机。丽莎数出二十个零件，把它们放到传送带上。",
+        "接下来会怎样？",
+        "传感器检测每个零件，挡板把不合格的零件推入红色盒子。"
+      ],
+      "sub_questions": {
+        "lisa-action": {
+          "stem": "丽莎在一号工位做什么？",
+          "options": {
+            "counts-places": "她数出二十个零件，并放到传送带上。",
+            "turns-camera": "她检查绿灯并打开相机。",
+            "cleans-box": "她清洁红色盒子。"
+          }
+        },
+        "flap-pushes-good": {
+          "stem": "挡板把合格零件推入红色盒子。"
+        },
+        "sensor-role": {
+          "stem": "哪个装置检测传送带上的每个零件？",
+          "options": {
+            "sensor": "传感器。",
+            "flap": "挡板。",
+            "wrench": "扳手。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "lisa-action",
@@ -3236,6 +3371,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位日常操作规程",
+        "每天早上，本打开电源并检查黄色托盘。",
+        "他把装满的箱子搬到检测台，并拧紧松动的螺丝。",
+        "下午五点之前，本和搭档一起清洁工作台。"
+      ],
+      "sub_questions": {
+        "ben-carries": {
+          "stem": "本把装满的箱子搬到哪里？",
+          "options": {
+            "inspection-table": "搬到检测台。",
+            "yellow-tray": "搬到黄色托盘处。",
+            "loading-door": "搬到装货门旁。"
+          }
+        },
+        "ben-tasks": {
+          "stem": "本每天早上独自做哪两项工作？",
+          "options": {
+            "check-tray": "打开电源并检查黄色托盘。",
+            "fix-screws": "拧紧松动的螺丝。",
+            "clean-alone": "下午五点之前独自清洁工作台。"
+          }
+        },
+        "verb-clean-plural": {
+          "stem": "最后一句中，动词 clean 不加 -s，因为主语是复数。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "ben-carries",
@@ -4025,6 +4189,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "四号工位操作说明",
+        "第一步，从架子上取下小扳手，拧紧支架上的两个螺母。",
+        "第二步，把成品支架放到相机下方快速检查。",
+        "第三步，合格零件放入左边的一号盒，不合格零件放入右边的二号盒。"
+      ],
+      "sub_questions": {
+        "step-one-tool": {
+          "stem": "第一步用什么工具？",
+          "options": {
+            "small-wrench": "小扳手。",
+            "screwdriver": "长螺丝刀。",
+            "camera": "检测相机。"
+          }
+        },
+        "good-parts-box": {
+          "stem": "哪两项描述了合格零件的放置位置？",
+          "options": {
+            "box-one": "在一号盒里。",
+            "on-left": "在左边。",
+            "on-right": "在右边。"
+          }
+        },
+        "camera-step-order": {
+          "stem": "工人先把支架放到相机下方，再拧紧螺母。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "step-one-tool",
@@ -4273,6 +4466,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "戴维，先拿起托盘上的银色螺栓，用扳手拧紧。",
+        "明白了。那之后放在哪里？",
+        "把它放进右边的绿色盒子，再关灯并说“完成”。",
+        "完成！现在它在绿色盒子里了。"
+      ],
+      "sub_questions": {
+        "bolt-color": {
+          "stem": "戴维拿起的是哪个螺栓？",
+          "options": {
+            "silver": "托盘上的银色螺栓。",
+            "red": "盒子里的红色螺栓。",
+            "blue": "相机下方的蓝色螺栓。"
+          }
+        },
+        "box-side": {
+          "stem": "戴维把螺栓放进左边的绿色盒子。"
+        },
+        "closing-feedback": {
+          "stem": "戴维做完后说了哪个词？",
+          "options": {
+            "done": "完成。",
+            "wait": "等一下。",
+            "sorry": "对不起。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "bolt-color",
@@ -4498,7 +4720,39 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Attention, station two. Before nine, collect the spare wrenches from the gray cabinet. First, clean the table with a dry cloth. Second, tighten any loose screws with the screwdriver. Third, leave all finished parts on the blue tray on the left.",
+    "passage": [
+      {"type": "text", "text": "Attention, station two."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Before nine, collect the spare wrenches from the gray cabinet."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "First, clean the table with a dry cloth."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Second, tighten any loose screws with the screwdriver."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Third, leave all finished parts on the blue tray on the left."}
+    ],
+    "study_translation": {
+      "material": [
+        "二号工位请注意。",
+        "九点前从灰色柜子里领取备用扳手。",
+        "第一步，用干布擦拭桌面。",
+        "第二步，用螺丝刀拧紧所有松动的螺丝。",
+        "第三步，把所有完成的零件留在左边的蓝色托盘上。"
+      ],
+      "sub_questions": {
+        "cloth-step": {
+          "stem": "通知里的第一步是什么？",
+          "options": {
+            "clean-table": "用干布擦拭桌面。",
+            "tighten-screws": "拧紧所有松动的螺丝。",
+            "leave-parts": "把完成的零件留在蓝色托盘上。"
+          }
+        },
+        "screws-tool": {
+          "stem": "第二步中，工人用扳手拧紧松动的螺丝。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "cloth-step",

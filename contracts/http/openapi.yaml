@@ -5279,6 +5279,30 @@ components:
           multiple_choice: '#/components/schemas/MultipleChoiceItemReview'
           true_false: '#/components/schemas/TrueFalseItemReview'
           numeric: '#/components/schemas/NumericItemReview'
+    StudySubQuestionTranslation:
+      type: object
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        stem: { type: string, minLength: 1 }
+        options:
+          type: object
+          minProperties: 1
+          additionalProperties: { type: string, minLength: 1 }
+    StudyTranslation:
+      type: object
+      additionalProperties: false
+      required: [material]
+      properties:
+        material:
+          description: Translations in the order of the source passage segments or transcript lines.
+          type: array
+          minItems: 1
+          items: { type: string, minLength: 1 }
+        sub_questions:
+          type: object
+          minProperties: 1
+          additionalProperties: { $ref: '#/components/schemas/StudySubQuestionTranslation' }
     ClozeItemReview:
       allOf:
         - $ref: '#/components/schemas/CourseItemReviewBase'
@@ -5308,6 +5332,7 @@ components:
             type: { type: string, enum: [listening] }
             passage: { $ref: '#/components/schemas/RichText' }
             sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
+            study_translation: { $ref: '#/components/schemas/StudyTranslation' }
     ReadingItemReview:
       allOf:
         - $ref: '#/components/schemas/CourseItemReviewBase'
@@ -5317,6 +5342,7 @@ components:
             type: { type: string, enum: [reading_comprehension] }
             passage: { $ref: '#/components/schemas/RichText' }
             sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
+            study_translation: { $ref: '#/components/schemas/StudyTranslation' }
     WritingItemReview:
       allOf:
         - $ref: '#/components/schemas/CourseItemReviewBase'

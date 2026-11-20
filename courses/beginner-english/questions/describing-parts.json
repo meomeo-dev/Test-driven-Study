@@ -2599,6 +2599,12 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "A 零件长 35 毫米，B 零件长 30 毫米。",
+        "所以 A 零件比 B 零件长 5 毫米。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "length-diff",
@@ -2872,6 +2878,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "检验员，哪个托盘里有划伤的零件？",
+        "红色托盘里有五个划伤的零件。请把它们分开。"
+      ],
+      "sub_questions": {
+        "scratched-tray": {
+          "options": {
+            "a": "蓝色托盘",
+            "b": "红色托盘",
+            "c": "绿色托盘",
+            "d": "黄色托盘"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "scratched-tray",
@@ -3019,6 +3041,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "零件分拣指南",
+        "圆形的绿色盖帽放进左边的蓝色托盘。",
+        "垫圈是扁平的、灰色的，放在白色盒子里。",
+        "开工前，请检查 2 号工位下面那根黑色长电线。"
+      ],
+      "sub_questions": {
+        "washer-features": {
+          "stem": "垫圈是什么样子的？",
+          "options": {
+            "flat-gray": "扁平的，灰色的。",
+            "round-green": "圆形的，绿色的。",
+            "square-white": "方形的，白色的。"
+          }
+        },
+        "sorting-rules": {
+          "stem": "根据指南，哪两项说法正确？",
+          "options": {
+            "green-caps": "圆形的绿色盖帽放进蓝色托盘。",
+            "long-wire": "操作员应检查 2 号工位下面那根黑色长电线。",
+            "washers-blue": "垫圈放在蓝色托盘里。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "washer-features",
@@ -3462,6 +3510,25 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "停下传送带。有一个盖子开裂了，有两颗螺丝松了。",
+        "明白了。把开裂的盖子放进不合格品箱，也请把脏镜头擦干净。"
+      ],
+      "sub_questions": {
+        "screw-issue": {
+          "stem": "两颗螺丝有什么问题？",
+          "options": {
+            "loose": "松了。",
+            "bent": "弯了。",
+            "clean": "很干净。"
+          }
+        },
+        "lens-clean": {
+          "stem": "摄像头镜头现在是干净的。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "screw-issue",
@@ -3605,6 +3672,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "质量记录",
+        "第 4 批的大部分零件合格，也很干净。",
+        "但是，有三根销子弯了，一个盖帽坏了。",
+        "包装前，请给每个有缺陷的零件贴标签，标明是划伤还是弯曲。"
+      ],
+      "sub_questions": {
+        "cap-status": {
+          "stem": "第 4 批中有一个盖帽出了什么问题？",
+          "options": {
+            "broken": "坏了。",
+            "tight": "很紧。",
+            "dirty": "脏了。"
+          }
+        },
+        "valid-phrases": {
+          "stem": "哪两种表达正确使用了描述质量的形容词？",
+          "options": {
+            "bent-part": "一个弯曲的零件",
+            "parts-clean": "这些零件很干净。",
+            "part-cracked": "一个零件，开裂的"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "cap-status",
@@ -4005,6 +4098,25 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "我们工作台上的这个托盘可以拿去包装了吗？",
+        "可以。这里这些零件都很干净，但远处架子上的那些盒子是空的。"
+      ],
+      "sub_questions": {
+        "near-tray": {
+          "stem": "工作台上哪些东西是干净的？",
+          "options": {
+            "these-parts": "这里这些零件。",
+            "those-boxes": "远处架子上的那些盒子。",
+            "that-bin": "门边的那个收纳箱。"
+          }
+        },
+        "far-boxes": {
+          "stem": "远处架子上的那些盒子是满的。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "near-tray",
@@ -4169,6 +4281,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位交接记录",
+        "传感器旁边这个蓝色收纳箱里装着 30 个合格盖帽。",
+        "左边垫子上的这些垫圈扁平而且干净。",
+        "墙边那个红色托盘脏了，角落里的那些螺丝也松了。"
+      ],
+      "sub_questions": {
+        "dirty-tray": {
+          "stem": "哪个容器脏了？",
+          "options": {
+            "red-tray": "墙边那个红色托盘。",
+            "blue-bin": "传感器旁边这个蓝色收纳箱。",
+            "left-mat": "左边垫子上的这些垫圈。"
+          }
+        },
+        "grammar-match": {
+          "stem": "哪两个句子的单复数搭配正确？",
+          "options": {
+            "these-clean": "这些垫圈很干净。",
+            "those-loose": "那些螺丝松了。",
+            "this-are": "这个蓝色收纳箱满了。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "dirty-tray",
@@ -4548,7 +4686,36 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "We measured two bolts with the caliper. Bolt A is forty-two millimeters long, and Bolt B is thirty-eight millimeters long. So Bolt A is four millimeters longer than Bolt B. Batch A is also cleaner and better than Batch B.",
+    "passage": [
+      {"type": "text", "text": "We measured two bolts with the caliper."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Bolt A is forty-two millimeters long, and Bolt B is thirty-eight millimeters long."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "So Bolt A is four millimeters longer than Bolt B."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Batch A is also cleaner and better than Batch B."}
+    ],
+    "study_translation": {
+      "material": [
+        "我们用卡尺测量了两根螺栓。",
+        "A 螺栓长 42 毫米，B 螺栓长 38 毫米。",
+        "所以 A 螺栓比 B 螺栓长 4 毫米。",
+        "A 批也比 B 批更干净，质量更好。"
+      ],
+      "sub_questions": {
+        "bolt-diff": {
+          "stem": "A 螺栓比 B 螺栓长几毫米？"
+        },
+        "better-batch": {
+          "stem": "哪一批质量更好？",
+          "options": {
+            "batch-a": "A 批。",
+            "batch-b": "B 批。",
+            "same": "两批一样。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "bolt-diff",
@@ -4662,6 +4829,27 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "公差报告",
+        "铜垫圈重 45 克，塑料垫圈重 20 克。",
+        "铜垫圈比塑料垫圈更重也更大。",
+        "1 号销子比标准销子短 3 毫米，因此 1 号销子不合格。"
+      ],
+      "sub_questions": {
+        "weight-diff": {
+          "stem": "铜垫圈比塑料垫圈重几克？"
+        },
+        "true-facts": {
+          "stem": "根据报告，哪两项说法正确？",
+          "options": {
+            "copper-bigger": "铜垫圈比塑料垫圈大。",
+            "pin1-shorter": "1 号销子比标准销子短 3 毫米。",
+            "pin1-longer": "1 号销子比标准销子长 3 毫米。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "weight-diff",

@@ -14,6 +14,7 @@ import {
 import { questionType, stateLabel } from './model';
 import { AnswerOptions } from './QuestionCard';
 import { QuestionImage } from './QuestionImage';
+import { StudyTranslationToggle, type StudyTranslationControl } from './StudyTranslationToggle';
 
 export type DetailsTab = 'question' | 'analysis' | 'metadata';
 const tabs = [
@@ -26,6 +27,7 @@ type Props = {
   tab: DetailsTab | null;
   onTab: (tab: DetailsTab | null) => void;
   returnFocus: RefObject<HTMLElement | null>;
+  translationControl?: StudyTranslationControl;
 };
 
 export function QuestionMetadata({ detail }: { detail: Detail }) {
@@ -79,7 +81,7 @@ export function FullExplanation({ detail }: { detail: Detail }) {
   );
 }
 
-export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
+export function StudyDetails({ detail, tab, onTab, returnFocus, translationControl }: Props) {
   if (!detail) return null;
   return (
     <Modal
@@ -109,9 +111,17 @@ export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
             <h3 className="question-text">
               <RichContent content={detail.question.rich_content ?? detail.question.title} />
             </h3>
-            <QuestionStimulus question={detail.question} />
+            <StudyTranslationToggle control={translationControl} />
+            <QuestionStimulus
+              question={detail.question}
+              showStudyTranslation={translationControl?.visible}
+            />
             <QuestionImage key={`image-${detail.question.question_id}`} detail={detail} />
-            <AnswerOptions question={detail.question} mode="full" />
+            <AnswerOptions
+              question={detail.question}
+              mode="full"
+              showStudyTranslation={translationControl?.visible}
+            />
           </div>
         )}
         {tab === 'analysis' && <FullExplanation detail={detail} />}

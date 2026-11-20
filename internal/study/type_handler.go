@@ -107,7 +107,7 @@ var typeHandlers = map[course.QuestionType]TypeHandler{
 		PrepareExamItem:  keepExamItem,
 		ExamAudioSpeeds:  noExamAudioSpeeds,
 		ExamSpeechLine:   noExamSpeechLine,
-		ExamReview:       keepNonMediaReview,
+		ExamReview:       nonMediaExamReview,
 		TranscriptText:   noTranscriptText,
 	},
 	course.Listening: {
@@ -139,7 +139,7 @@ var typeHandlers = map[course.QuestionType]TypeHandler{
 		PrepareExamItem:  keepExamItem,
 		ExamAudioSpeeds:  noExamAudioSpeeds,
 		ExamSpeechLine:   noExamSpeechLine,
-		ExamReview:       keepNonMediaReview,
+		ExamReview:       nonMediaExamReview,
 		TranscriptText:   noTranscriptText,
 	},
 	course.Writing: {
@@ -155,7 +155,7 @@ var typeHandlers = map[course.QuestionType]TypeHandler{
 		PrepareExamItem:  keepExamItem,
 		ExamAudioSpeeds:  noExamAudioSpeeds,
 		ExamSpeechLine:   noExamSpeechLine,
-		ExamReview:       keepNonMediaReview,
+		ExamReview:       nonMediaExamReview,
 		TranscriptText:   noTranscriptText,
 	},
 	course.Translation: {
@@ -171,7 +171,7 @@ var typeHandlers = map[course.QuestionType]TypeHandler{
 		PrepareExamItem:  keepExamItem,
 		ExamAudioSpeeds:  noExamAudioSpeeds,
 		ExamSpeechLine:   noExamSpeechLine,
-		ExamReview:       keepNonMediaReview,
+		ExamReview:       nonMediaExamReview,
 		TranscriptText:   noTranscriptText,
 	},
 }
@@ -412,13 +412,18 @@ func redactListeningReview(q Question, finished bool) Question {
 			key := *q.QuestionReview
 			key.Transcript = nil
 			key.Passage = nil
+			key.StudyTranslation = nil
 			q.QuestionReview = &key
 		}
 	}
 	return q
 }
 
-func keepNonMediaReview(q Question, _ bool) Question {
+func nonMediaExamReview(q Question, finished bool) Question {
+	// Sanitize a copy of the authored review before redacting it for an active paper.
 	q.sanitizeMedia()
+	if !finished && q.QuestionReview != nil {
+		q.QuestionReview.StudyTranslation = nil
+	}
 	return q
 }

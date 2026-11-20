@@ -28,6 +28,8 @@ type ExtendedFields struct {
 	ReferenceTTS *TTSConfig      `json:"reference_translation_tts,omitempty"`
 	Alternates   []string        `json:"acceptable_alternates,omitempty"`
 	KeyTerms     []KeyTerm       `json:"key_terms,omitempty"`
+
+	StudyTranslation *StudyTranslation `json:"study_translation,omitempty"`
 }
 
 type ListeningAudio struct {
@@ -195,15 +197,18 @@ func (item Item) validateComposite() error {
 			}
 		}
 	}
-	ids := map[string]bool{}
+	optionsBySubID := make(map[string][]Option, len(item.SubQuestions))
 	for _, sub := range item.SubQuestions {
-		if ids[sub.ID] {
+		if _, exists := optionsBySubID[sub.ID]; exists {
 			return fmt.Errorf("duplicate sub-question %q", sub.ID)
 		}
-		ids[sub.ID] = true
+		optionsBySubID[sub.ID] = sub.Options
 		if err := sub.validate(2); err != nil {
 			return fmt.Errorf("sub-question %q: %w", sub.ID, err)
 		}
+	}
+	if item.StudyTranslation != nil {
+		return item.validateStudyTranslation(optionsBySubID)
 	}
 	return nil
 }

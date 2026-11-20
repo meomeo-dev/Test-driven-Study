@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { expect, test, type APIRequestContext } from '@playwright/test';
-import type { AttemptResult, CourseSummary, ExamSession, PracticeSummary } from
+import type { AttemptResult, CourseSummary, ExamSession, PracticeSummary, QuestionDetail } from
   '../../web/src/api/generated/types.gen';
 
 async function demoUnit(request: APIRequestContext) {
@@ -316,6 +316,125 @@ test('reading separates the article, sub-questions and explanations', async ({ p
   await expect(card.getByText('本题得分比例：100%')).toBeVisible();
   await expect(card.getByRole('region', { name: '答案解析', exact: true })
     .getByText(/回收访客证的是主管/)).toBeVisible();
+});
+
+test('reading translation stays aligned and shares the full-question switch', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  const card = page.locator('article.question-card');
+  const passage = card.getByRole('region', { name: '阅读材料' });
+  const answers = card.getByRole('region', { name: '参考答案' });
+  const toggle = card.getByRole('switch', { name: '英中对照' });
+  const translatedSentence = '车间上午八点开放。';
+  const translatedOption = '收回访客证。';
+  await page.setViewportSize({ width: 375, height: 820 });
+  await page.goto(demo.link('reading', 'memorize'));
+  await expect(toggle).toHaveAttribute('aria-checked', 'true');
+  const pairs = passage.locator('.study-passage > div');
+  await expect(pairs).toHaveCount(4);
+  await expect(pairs.nth(1)).toContainText('The workshop opens at 8 a.m.');
+  await expect(pairs.nth(1).getByText(translatedSentence, { exact: true })).toBeVisible();
+  const distractor = answers.getByRole('listitem').filter({
+    has: page.getByText('Collect the badges.', { exact: true }),
+  });
+  await expect(distractor.getByText(translatedOption, { exact: true })).toBeVisible();
+  await expect(answers.getByText('访客必须做什么？', { exact: true })).toBeVisible();
+  await expect.poll(() => passage.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+
+  await toggle.click();
+  await expect(toggle).toHaveText('仅原文');
+  await expect(passage.getByText(translatedSentence, { exact: true })).toHaveCount(0);
+  await expect(distractor.getByText(translatedOption, { exact: true })).toHaveCount(0);
+  await expect(pairs.nth(1)).toContainText('The workshop opens at 8 a.m.');
+  await card.getByRole('button', { name: '完整题目' }).click();
+  const dialog = page.getByRole('dialog');
+  const dialogToggle = dialog.getByRole('switch', { name: '英中对照' });
+  await expect(dialogToggle).toHaveAttribute('aria-checked', 'false');
+  await expect(dialog.getByText(translatedSentence, { exact: true })).toHaveCount(0);
+  await dialogToggle.click();
+  await expect(dialog.getByText(translatedSentence, { exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(toggle).toHaveAttribute('aria-checked', 'true');
+  await expect(passage.getByText(translatedSentence, { exact: true })).toBeVisible();
+
+  await page.goto(demo.link('reading'));
+  await expect(passage.getByText('The workshop opens at 8 a.m.', { exact: true })).toBeVisible();
+  await expect(passage.getByText(translatedSentence, { exact: true })).toHaveCount(0);
+  await expect(toggle).toHaveCount(0);
+});
+
+test('memorization transcript translation preserves dialogue, monologue and recording audio', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  const card = page.locator('article.question-card');
+  const stem = card.getByRole('region', { name: '题干与图例' });
+  const audio = stem.getByRole('region', { name: '听力音频播放' });
+  const transcript = stem.getByRole('region', { name: '本题逐字稿' });
+  const speech: { text: string; voice: string }[] = [];
+  await page.route('**/api/tts/synthesize', async route => {
+    speech.push(route.request().postDataJSON());
+    await route.fulfill({ json: { audio_url: '/api/audio/pinyin/ri4.mp3', voice: 'stella' } });
+  });
+
+  await page.goto(demo.link('listening', 'memorize'));
+  await stem.getByText('查看英中逐字稿', { exact: true }).click();
+  const translatedLine = '下一班要用的手套放在哪里？';
+  await expect(transcript.getByText(translatedLine, { exact: true })).toBeVisible();
+  await card.getByRole('switch', { name: '英中对照' }).click();
+  await expect(transcript.getByText(translatedLine, { exact: true })).toHaveCount(0);
+  await expect(transcript.getByText('Where are the gloves for the new shift?')).toBeVisible();
+  await audio.getByRole('button', { name: '播放发音', exact: true }).click();
+  await expect.poll(() => speech).toMatchObject([
+    { text: 'Where are the gloves for the new shift?', voice: 'tide' },
+    {
+      text: 'They are on the second shelf. Please sign the checklist before taking a pair.',
+      voice: 'stella',
+    },
+  ]);
+
+  await page.goto(demo.link('listening-passage', 'memorize'));
+  await stem.getByText('查看英中逐字稿', { exact: true }).click();
+  await expect(transcript.getByText('库房今天四点关门。', { exact: true })).toBeVisible();
+  await expect(transcript.getByText('备用手套在门旁的蓝色柜子里。', { exact: true })).toBeVisible();
+  await expect(transcript.getByRole('button', { name: '播放发音', exact: true })).toHaveCount(1);
+  await audio.getByRole('button', { name: '播放发音', exact: true }).click();
+  const monologue = 'The storeroom will close at four today. '
+    + 'If you need new gloves, collect them before three thirty. '
+    + 'The spare gloves are in the blue cabinet next to the door.';
+  await expect.poll(() => speech.slice(2)).toMatchObject([{ text: monologue, voice: 'stella' }]);
+
+  await page.goto(demo.link('listening-recording', 'memorize'));
+  const recording = stem.locator('audio.question-audio');
+  await expect(recording).toHaveAttribute('src', /delivery-delay\.mp3$/);
+  await stem.getByText('查看英中逐字稿', { exact: true }).click();
+  await expect(transcript.getByText(/今天早上的送货晚点了。/)).toBeVisible();
+  await expect.poll(() => recording.evaluate(el => (el as HTMLAudioElement).readyState))
+    .toBeGreaterThanOrEqual(1);
+});
+
+test('memorization keeps the original transcript on a legacy question payload', async ({
+  page,
+  request,
+}) => {
+  const demo = await demoUnit(request);
+  await page.route(`**/api/questions/${demo.id('listening')}`, async route => {
+    const response = await route.fetch();
+    const detail: QuestionDetail = await response.json();
+    if (detail.question.question_type === 'listening' && detail.question.question_review) {
+      delete detail.question.question_review.study_translation;
+    }
+    await route.fulfill({ response, json: detail });
+  });
+  await page.goto(demo.link('listening', 'memorize'));
+  const card = page.locator('article.question-card');
+  await expect(card.getByRole('switch', { name: '英中对照' })).toHaveCount(0);
+  await card.getByText('查看逐字稿', { exact: true }).click();
+  await expect(card.getByRole('region', { name: '本题逐字稿' })
+    .getByText('Where are the gloves for the new shift?')).toBeVisible();
 });
 
 test('a listening paper plays audio without exposing the active transcript', async ({ page, request }) => {

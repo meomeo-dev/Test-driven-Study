@@ -31,6 +31,32 @@ text. A structured transcript may also omit the audio object. In a mock exam,
 the player requests audio by line index from the saved paper. The transcript
 is released after the paper finishes.
 
+### Study translations
+
+`reading_comprehension` and `listening` support optional `study_translation`
+for an aligned translation of their material and sub-questions. Memorization
+shows translations alongside the English. Practice releases them in graded
+review, and mock exams release them in review after the whole paper ends.
+
+- `material` is a required array of plain strings in source order. For a
+  rich `passage`, count each segment with nonblank `text`, including any
+  title. A plain `passage` string is one part. For dialogue and recorded
+  listening, count one part per authored `transcript` line. A recording needs
+  a structured transcript to use study translations.
+- To align a spoken passage to multiple translations, use `ContentSegment[]`
+  for `passage`. Preserve whitespace between parts so that joining the segment
+  text reproduces the original English. The passage still plays as one track.
+- `sub_questions` may map existing sub-question IDs to a plain `stem`, an
+  `options` map keyed by existing option IDs, or both. Omit entries that
+  already have sufficient Chinese text. Apply the same level of literal
+  detail to correct options and distractors.
+
+The [dialogue example](../../../courses/golden-course-template/questions/extended-practice.json)
+has two translated lines in `material` and keys its location-question
+translations as `sub_questions.location.options.second` and `.desk`.
+
+### Grading and feedback
+
 Practice and mock exams grade objective parts with the same rules. Every
 blank or sub-question is weighted equally; omitted parts earn zero credit.
 Cloze items may also set `passage_tts` with a complete `text` (exposed only

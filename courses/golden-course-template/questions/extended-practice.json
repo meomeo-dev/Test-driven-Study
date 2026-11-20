@@ -59,6 +59,24 @@
         "tts": { "speed": 0.9 }
       }
     ],
+    "study_translation": {
+      "material": [
+        "下一班要用的手套放在哪里？",
+        "在第二层架子上。领一副之前，请先在清单上签名。"
+      ],
+      "sub_questions": {
+        "location": {
+          "stem": "手套放在哪里？",
+          "options": {
+            "second": "在第二层架子上。",
+            "desk": "在桌上。"
+          }
+        },
+        "checklist": {
+          "stem": "工人不用在清单上签名也可以领手套。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "location",
@@ -125,6 +143,27 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "车间通知",
+        "车间上午八点开放。",
+        "访客必须在前台登记，并佩戴访客证。",
+        "访客离开前，主管会收回访客证。"
+      ],
+      "sub_questions": {
+        "opening": {
+          "stem": "请用数字写出开放时间是几点。"
+        },
+        "visitors": {
+          "stem": "访客必须做什么？",
+          "options": {
+            "sign": "在前台登记。",
+            "badge": "佩戴访客证。",
+            "collect": "收回访客证。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "opening",
@@ -431,7 +470,33 @@
     "chapter": "库房与送货听力",
     "stem": "听库房管理员的通知，再回答两个问题。",
     "audio": { "mode": "passage", "voice_female": "stella" },
-    "passage": "The storeroom will close at four today. If you need new gloves, collect them before three thirty. The spare gloves are in the blue cabinet next to the door.",
+    "passage": [
+      {"type": "text", "text": "The storeroom will close at four today."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "If you need new gloves, collect them before three thirty."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The spare gloves are in the blue cabinet next to the door."}
+    ],
+    "study_translation": {
+      "material": [
+        "库房今天四点关门。",
+        "如果需要新手套，请在三点半前领取。",
+        "备用手套在门旁的蓝色柜子里。"
+      ],
+      "sub_questions": {
+        "closing-hour": {
+          "stem": "库房几点关门？只填写小时数。"
+        },
+        "gloves-location": {
+          "stem": "备用手套放在哪里？",
+          "options": {
+            "blue-cabinet": "在蓝色柜子里。",
+            "front-desk": "在前台。",
+            "green-cabinet": "在绿色柜子里。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "closing-hour",
@@ -484,6 +549,24 @@
         "text": "The morning delivery is running late. The driver will arrive at ten thirty. Please leave the empty boxes by the loading door."
       }
     ],
+    "study_translation": {
+      "material": [
+        "今天早上的送货晚点了。司机十点半到。请把空箱放在装货门旁。"
+      ],
+      "sub_questions": {
+        "arrival-time": {
+          "stem": "司机什么时候到？",
+          "options": {
+            "ten": "上午十点。",
+            "ten-thirty": "上午十点半。",
+            "eleven-thirty": "上午十一点半。"
+          }
+        },
+        "boxes-location": {
+          "stem": "空箱应放在装货门旁。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "arrival-time",
@@ -569,6 +652,32 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "更衣室通知",
+        "主更衣室将于周五下午四点关闭，以便清洁。",
+        "四点以后，工作人员可以使用食堂旁的小更衣室。",
+        "主更衣室将于周一上午重新开放。"
+      ],
+      "sub_questions": {
+        "alternative-locker-room": {
+          "stem": "周五四点以后，工作人员可以使用哪个更衣室？",
+          "options": {
+            "main": "主更衣室。",
+            "by-canteen": "食堂旁的小更衣室。",
+            "by-entrance": "入口旁的小更衣室。"
+          }
+        },
+        "reopen-time": {
+          "stem": "主更衣室什么时候重新开放？",
+          "options": {
+            "friday-evening": "周五晚上。",
+            "monday-morning": "周一上午。",
+            "tuesday-morning": "周二上午。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "alternative-locker-room",

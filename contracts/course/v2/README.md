@@ -9,5 +9,11 @@ V2 adds cloze, listening, reading comprehension, writing and translation to
 the four existing types. V2 true/false items require Boolean `grading.value`
 and rich `analysis`. V1 true/false items retain `grading.boolean`.
 
+Reading comprehension and listening items may declare `study_translation`.
+Its `material` array contains one plain-text translation per nonblank passage
+segment or structured transcript line. Its optional `sub_questions` object
+maps existing sub-question IDs to a translated `stem` and/or `options` keyed by
+existing option IDs. See the guide below for alignment and review visibility.
+
 See the [authoring and scoring guide](../../../docs/features/question-types/README.md)
 for cross-reference checks, local scoring and sample items.

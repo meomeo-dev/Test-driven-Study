@@ -1342,6 +1342,23 @@ export type SubQuestionReview = ({
     type: 'numeric';
 } & NumericItemReview);
 
+export type StudySubQuestionTranslation = {
+    stem?: string;
+    options?: {
+        [key: string]: string;
+    };
+};
+
+export type StudyTranslation = {
+    /**
+     * Translations in the order of the source passage segments or transcript lines.
+     */
+    material: Array<string>;
+    sub_questions?: {
+        [key: string]: StudySubQuestionTranslation;
+    };
+};
+
 export type ClozeItemReview = CourseItemReviewBase & {
     type: 'cloze';
     passage: RichText;
@@ -1358,12 +1375,14 @@ export type ListeningItemReview = CourseItemReviewBase & CourseItemMediaFields &
     type: 'listening';
     passage?: RichText;
     sub_questions: Array<SubQuestionReview>;
+    study_translation?: StudyTranslation;
 };
 
 export type ReadingItemReview = CourseItemReviewBase & {
     type: 'reading_comprehension';
     passage: RichText;
     sub_questions: Array<SubQuestionReview>;
+    study_translation?: StudyTranslation;
 };
 
 export type WritingItemReview = CourseItemReviewBase & {

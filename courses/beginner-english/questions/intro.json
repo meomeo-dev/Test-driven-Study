@@ -1882,6 +1882,12 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "大家好。我叫戴维，来自装配部。",
+        "戴维，欢迎加入我们！"
+      ]
+    },
     "sub_questions": [
       {
         "id": "department",
@@ -1985,6 +1991,26 @@
         "text": "Yes, welcome to the sorting station. See you at lunch break."
       }
     ],
+    "study_translation": {
+      "material": [
+        "莉娜，早上好。你今天怎么样？",
+        "马克，早上好。我很好，谢谢。很高兴认识我们的新同事汤姆。",
+        "是的，欢迎来到分拣工位。午休时见。"
+      ],
+      "sub_questions": {
+        "reply": {
+          "stem": "莉娜怎么回应马克的问候？",
+          "options": {
+            "fine": "我很好，谢谢。",
+            "afternoon": "下午好。",
+            "goodbye": "再见，回头见。"
+          }
+        },
+        "time-of-day": {
+          "stem": "这段对话发生在下午。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "reply",
@@ -2169,6 +2195,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "交班问候指南",
+        "中午十二点前说“早上好”，午饭后说“下午好”。",
+        "遇到新访客时，微笑着说“很高兴认识你”。",
+        "离开工作台之前，对搭档说“再见”或“明天见”。"
+      ],
+      "sub_questions": {
+        "new-visitor": {
+          "stem": "遇到新访客时，工作人员应该说什么？",
+          "options": {
+            "nice": "很高兴认识你。",
+            "bye": "明天见。",
+            "night": "晚安。"
+          }
+        },
+        "leaving-phrases": {
+          "stem": "离开工作台之前会用到哪两句？",
+          "options": {
+            "goodbye": "再见。",
+            "see-you": "明天见。",
+            "morning": "早上好。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "new-visitor",
@@ -2555,6 +2607,35 @@
         "text": "No, they aren't. They are on the back shelf for washing."
       }
     ],
+    "study_translation": {
+      "material": [
+        "戴维，早上好。你准备好检查生产线了吗？",
+        "是的，我准备好了。主传感器指示灯是绿色的，说明它运行正常。",
+        "那两个蓝色托盘呢？干净吗？",
+        "不干净。它们在后面的架子上，等着清洗。"
+      ],
+      "sub_questions": {
+        "sensor-status": {
+          "stem": "主传感器现在是什么状态？",
+          "options": {
+            "working": "指示灯是绿色的，运行正常。",
+            "broken": "它今天不能正常工作。",
+            "washing": "它在后面的架子上，等着清洗。"
+          }
+        },
+        "trays-clean": {
+          "stem": "两个蓝色托盘是干净的，已经准备好了。"
+        },
+        "true-facts": {
+          "stem": "根据对话，哪两项属实？",
+          "options": {
+            "david-ready": "戴维已准备好进行检查。",
+            "trays-shelf": "蓝色托盘在后面的架子上。",
+            "trays-ready": "蓝色托盘现在是干净的。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "sensor-status",
@@ -2782,6 +2863,30 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位状态记录",
+        "莉娜和萨姆今天在二号工位值班。",
+        "光学相机已校准，可以开始测试。",
+        "不过，旧条码打印机不能正常工作，三条备用传送带还在库房里。"
+      ],
+      "sub_questions": {
+        "camera": {
+          "stem": "哪台设备已经准备好进行测试？",
+          "options": {
+            "cam": "光学相机。",
+            "printer": "旧条码打印机。",
+            "belts": "备用传送带。"
+          }
+        },
+        "printer-working": {
+          "stem": "旧条码打印机运行正常。"
+        },
+        "belt-count": {
+          "stem": "库房里有多少条备用传送带？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "camera",
@@ -3387,6 +3492,27 @@
         "text": "It is B, E, N, Ben. And my last name is Z, H, O, U."
       }
     ],
+    "study_translation": {
+      "material": [
+        "早上好。请问你叫什么名字？",
+        "我叫本·周。",
+        "你的名字怎么拼？是 V 还是 B？",
+        "拼作 B、E、N，Ben。我的姓拼作 Z、H、O、U。"
+      ],
+      "sub_questions": {
+        "first-name-spelling": {
+          "stem": "这位男士的名字是怎么拼的？",
+          "options": {
+            "ben": "B、E、N",
+            "ven": "V、E、N",
+            "ban": "B、A、N"
+          }
+        },
+        "last-name-check": {
+          "stem": "这位男士的姓以字母 S 开头。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "first-name-spelling",
@@ -3536,6 +3662,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工牌姓名拼写规则",
+        "每位员工都必须在登记表上清楚地写下全名。",
+        "名字和姓氏都要以大写字母开头，例如 Anna Chen。",
+        "如果登记员问“你的姓名怎么拼”，就慢慢念出每个字母，字母之间稍作停顿。"
+      ],
+      "sub_questions": {
+        "capital-rule": {
+          "stem": "员工全名的哪些部分必须以大写字母开头？",
+          "options": {
+            "both-names": "名字和姓氏都要大写开头。",
+            "first-only": "只有名字要大写开头。",
+            "last-only": "只有姓氏要大写开头。"
+          }
+        },
+        "oral-rules": {
+          "stem": "口头拼写姓名时，员工应该怎么做？",
+          "options": {
+            "slowly": "慢慢念出每个字母。",
+            "pause": "字母之间稍作停顿。",
+            "skip": "跳过姓氏。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "capital-rule",
@@ -3887,7 +4039,50 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Hello, everyone. My name is Anna Li. I am from Guizhou, and I live in Kunming now. I work at the sorting station in the Quality Department. I am learning English every evening. Nice to meet you all!",
+    "passage": [
+      {"type": "text", "text": "Hello, everyone."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "My name is Anna Li."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "I am from Guizhou, and I live in Kunming now."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "I work at the sorting station in the Quality Department."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "I am learning English every evening."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Nice to meet you all!"}
+    ],
+    "study_translation": {
+      "material": [
+        "大家好。",
+        "我叫安娜·李。",
+        "我来自贵州，现在住在昆明。",
+        "我在质检部的分拣工位工作。",
+        "我每天晚上都在学英语。",
+        "很高兴认识大家！"
+      ],
+      "sub_questions": {
+        "city": {
+          "stem": "安娜现在住在哪里？",
+          "options": {
+            "kunming": "在昆明。",
+            "guizhou": "在贵州。",
+            "yunnan-station": "在装配线上。"
+          }
+        },
+        "learning-check": {
+          "stem": "安娜每天晚上都在学英语。"
+        },
+        "work-details": {
+          "stem": "哪两项描述了安娜的工作？",
+          "options": {
+            "sorting": "她在分拣工位工作。",
+            "quality": "她在质检部。",
+            "maint": "她在维修部。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "city",
@@ -4153,6 +4348,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "新同事简介",
+        "你好！我叫陈磊。",
+        "我来自湖南，现在住在东莞。",
+        "我在 B 车间的检测台工作，和同事们一起学英语。"
+      ],
+      "sub_questions": {
+        "hometown": {
+          "stem": "陈磊来自哪里？",
+          "options": {
+            "hunan": "湖南。",
+            "dongguan": "东莞。",
+            "yunnan": "云南。"
+          }
+        },
+        "workshop-check": {
+          "stem": "陈磊在 A 车间的检测台工作。"
+        },
+        "correct-facts": {
+          "stem": "关于陈磊，哪两项属实？",
+          "options": {
+            "live-dg": "他住在东莞。",
+            "learn-en": "他和同事们一起学英语。",
+            "from-dg": "他来自东莞。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "hometown",

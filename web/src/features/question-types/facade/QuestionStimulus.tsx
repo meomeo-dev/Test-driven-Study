@@ -12,11 +12,13 @@ export function QuestionStimulus({
   reviewQuestion,
   cloze,
   protectedAudio,
+  showStudyTranslation,
 }: {
   question: AnyQuestion;
   reviewQuestion?: Question;
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
+  showStudyTranslation?: boolean;
 }) {
   return dispatchQuestion(question, (mod, q) => {
     const matched =
@@ -28,6 +30,7 @@ export function QuestionStimulus({
       reviewQuestion: matched,
       cloze,
       protectedAudio,
+      showStudyTranslation,
     });
   });
 }

@@ -131,6 +131,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "这个气缸内孔的公差要求是多少？",
+        "公差必须控制在 0.05 毫米以内。"
+      ],
+      "sub_questions": {
+        "tolerance": {
+          "options": {
+            "a": "在 0.01 毫米以内",
+            "b": "在 0.05 毫米以内",
+            "c": "在 0.5 毫米以内",
+            "d": "在 1.0 毫米以内"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "tolerance",
@@ -327,6 +343,13 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "请把数显卡尺和扭力扳手拿到 4 号工位。",
+        "明白。还需要万用表吗？",
+        "不用，只要卡尺和扭力扳手。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "tools",
@@ -454,6 +477,12 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "我们现在能用这把电钻吗？",
+        "不能，电源线坏了。修好之前不要用。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "drill-status",
@@ -512,6 +541,12 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "我们检查一下 A 柜。这里有几把数显卡尺？",
+        "A 柜里有六把数显卡尺。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "caliper-count",
@@ -575,6 +610,26 @@
         "tts": { "voice": "tide" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "林，能把架子上的活动扳手递给我吗？",
+        "给你。装支架还需要电钻吗？",
+        "不用了，谢谢。我只需要一把尖嘴钳夹住这根线。"
+      ],
+      "sub_questions": {
+        "second-tool": {
+          "stem": "最后这名男子要的是哪种工具？",
+          "options": {
+            "pliers": "一把尖嘴钳。",
+            "drill": "一把电钻。",
+            "grinder": "一台角磨机。"
+          }
+        },
+        "drill-needed": {
+          "stem": "这名男子请这名女子把电钻拿来。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "second-tool",
@@ -643,6 +698,32 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工作台工具指南",
+        "用十字螺丝刀拧紧 2 号工位的盖板螺丝。",
+        "不要用一字螺丝刀拧十字槽螺丝。",
+        "用角磨机去除毛刺后，把手柄擦干净，再把角磨机放回金属架。"
+      ],
+      "sub_questions": {
+        "correct-driver": {
+          "stem": "应该用什么工具拧紧盖板螺丝？",
+          "options": {
+            "phillips": "十字螺丝刀。",
+            "flathead": "一字螺丝刀。",
+            "hammer": "羊角锤。"
+          }
+        },
+        "grinder-steps": {
+          "stem": "用完角磨机后，工作人员应该做什么？",
+          "options": {
+            "wipe": "把手柄擦干净。",
+            "rack": "把角磨机放回金属架。",
+            "leave": "把角磨机留在地上。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "correct-driver",
@@ -821,6 +902,29 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "陈，数显卡尺测得的外径读数是多少？",
+        "卡尺归零后，读数是 30.03 毫米。这在公差范围内吗？",
+        "是的，我们允许与 30 毫米相差不超过 0.05 毫米。现在把扭力扳手设为 40 牛·米。"
+      ],
+      "sub_questions": {
+        "caliper-reading": {
+          "stem": "卡尺归零后的外径读数是多少？",
+          "options": {
+            "thirty-zero-three": "30.03 毫米",
+            "thirty-zero-five": "30.05 毫米",
+            "thirty-three": "30.30 毫米"
+          }
+        },
+        "target-torque": {
+          "stem": "工作人员应将扭矩设为多少牛·米？"
+        },
+        "within-tol": {
+          "stem": "测得的轴尺寸在公差范围内。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "caliper-reading",
@@ -908,6 +1012,36 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "量具检查程序",
+        "用千分尺测量厚度前，先用干布把两个面擦干净。",
+        "对于泵盖上的螺栓，把扭力扳手设为 35 牛·米，允许偏差为 3 牛·米。",
+        "启动生产线前，还要确认气压表读数至少为 5 巴。"
+      ],
+      "sub_questions": {
+        "micrometer-prep": {
+          "stem": "使用千分尺前应该做什么？",
+          "options": {
+            "wipe": "用干布把两个面擦干净。",
+            "oil": "在两个面上都涂上机油。",
+            "heat": "先加热金属零件。"
+          }
+        },
+        "upper-torque": {
+          "stem": "允许的最大扭矩是多少牛·米？"
+        },
+        "gauges-mentioned": {
+          "stem": "该程序提到了哪些仪器？",
+          "options": {
+            "micrometer": "千分尺。",
+            "torque": "扭力扳手。",
+            "pressure": "气压表。",
+            "hammer": "羊角锤。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "micrometer-prep",
@@ -1102,7 +1236,36 @@
     "concepts": ["equipment-safety-rules"],
     "stem": "听车间安全主管的开机前广播提醒，再回答两个问题。",
     "audio": { "mode": "passage", "voice_female": "stella" },
-    "passage": "Safety reminder for Line One. Every worker must wear safety goggles and ear protection before starting the angle grinder. Never remove the protective guard. If you hear any strange noise, press the emergency stop button and call the technician.",
+    "passage": [
+      {"type": "text", "text": "Safety reminder for Line One."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Every worker must wear safety goggles and ear protection before starting the angle grinder."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Never remove the protective guard."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "If you hear any strange noise, press the emergency stop button and call the technician."}
+    ],
+    "study_translation": {
+      "material": [
+        "1 号线安全提醒。",
+        "启动角磨机前，每位工作人员都必须戴上护目镜和听力防护用品。",
+        "切勿拆除防护罩。",
+        "如果听到异常声响，请按下急停按钮并叫技术员来。"
+      ],
+      "sub_questions": {
+        "ppe-required": {
+          "stem": "启动角磨机前，工作人员必须佩戴什么？",
+          "options": {
+            "goggles-ear": "护目镜和听力防护用品。",
+            "sandals": "软手套和凉鞋。",
+            "cap": "只戴一顶纸帽。"
+          }
+        },
+        "guard-rule": {
+          "stem": "为了更快地打磨，工作人员可以拆除防护罩。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "ppe-required",
@@ -1165,6 +1328,32 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "配电柜告示",
+        "维修任何机器前，都必须断开主电源断路器，并在上面挂好你的个人安全锁。",
+        "只有受过培训的电工可以打开高压柜门。",
+        "不要徒手触碰潮湿的开关。"
+      ],
+      "sub_questions": {
+        "who-opens": {
+          "stem": "谁可以打开高压柜门？",
+          "options": {
+            "electricians": "只有受过培训的电工。",
+            "visitors": "所有车间访客。",
+            "packers": "新来的包装助手。"
+          }
+        },
+        "must-do": {
+          "stem": "维修机器之前必须采取哪些安全措施？",
+          "options": {
+            "breaker": "断开主电源断路器。",
+            "lock": "在断路器上挂好个人安全锁。",
+            "wet": "直接触碰潮湿的开关。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "who-opens",
@@ -1346,6 +1535,30 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "早上好，梅。清单上写着 B 柜有十把数显卡尺。它们都能用吗？",
+        "不全能用。三把卡尺的校准标签已过期，我给它们挂了红牌。还有七把卡尺的校准在有效期内，可以用。",
+        "明白了。另外，4 号工位能借用备用角磨机吗？",
+        "不能，备用角磨机还在等新的防护罩。请改用电钻。"
+      ],
+      "sub_questions": {
+        "valid-calipers": {
+          "stem": "B 柜有几把校准有效、可以使用的数显卡尺？"
+        },
+        "tool-taken": {
+          "stem": "4 号工位应该改用哪种工具？",
+          "options": {
+            "drill": "电钻。",
+            "grinder": "备用角磨机。",
+            "micrometer": "千分尺。"
+          }
+        },
+        "expired-tags": {
+          "stem": "校准已过期的卡尺挂上了绿牌。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "valid-calipers",
@@ -1401,7 +1614,41 @@
     "concepts": ["tool-inspection-listen"],
     "stem": "听班后工具室广播通知，再回答两个问题。",
     "audio": { "mode": "passage", "voice_female": "stella" },
-    "passage": "Attention, night shift workers. Before leaving, return all torque wrenches to Cabinet A and wipe off any oil. Two eight-millimeter drill bits are broken today and have been placed in the scrap tray. Do not forget to sign off on the check-out log at the counter.",
+    "passage": [
+      {"type": "text", "text": "Attention, night shift workers."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Before leaving, return all torque wrenches to Cabinet A and wipe off any oil."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Two eight-millimeter drill bits are broken today and have been placed in the scrap tray."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Do not forget to sign off on the check-out log at the counter."}
+    ],
+    "study_translation": {
+      "material": [
+        "夜班工作人员请注意。",
+        "离开前，请把所有扭力扳手归还到 A 柜，并擦掉油污。",
+        "今天有两支 8 毫米钻头坏了，已经放进废品托盘。",
+        "别忘了在柜台的工具借还记录上签字确认。"
+      ],
+      "sub_questions": {
+        "return-where": {
+          "stem": "工作人员必须把所有扭力扳手还到哪里？",
+          "options": {
+            "cab-a": "A 柜。",
+            "scrap": "废品托盘。",
+            "cab-c": "C 柜。"
+          }
+        },
+        "end-tasks": {
+          "stem": "工作人员离开前必须做什么？",
+          "options": {
+            "wipe": "把扭力扳手上的油污擦掉。",
+            "sign": "在工具借还记录上签字确认。",
+            "keep": "把坏钻头放在自己的口袋里。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "return-where",
@@ -1471,6 +1718,27 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工具室记录",
+        "2 号工位的气动扳手有一根磨损的气管，今天挂了红牌。",
+        "两把数显卡尺挂了黄牌，因为它们本周五到校准日期。",
+        "十二把开口扳手都很干净，放在 C 柜里，随时可用。"
+      ],
+      "sub_questions": {
+        "yellow-reason": {
+          "stem": "这两把数显卡尺为什么挂了黄牌？",
+          "options": {
+            "due": "它们本周五到校准日期。",
+            "broken": "它们的显示屏坏了。",
+            "lost": "它们不在 C 柜里了。"
+          }
+        },
+        "wrench-usable": {
+          "stem": "2 号工位的气动扳手现在就可以用。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "yellow-reason",

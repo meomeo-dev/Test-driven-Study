@@ -2242,6 +2242,12 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "安全员，1 号线有几个急停按钮？",
+        "沿着 1 号线有四个急停按钮。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "emergency-stop-count",
@@ -2329,6 +2335,22 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "全体工作人员请注意：立即撤离 2 区，到 B 集合点集合。",
+        "收到。全体工作人员现在前往 B 集合点。"
+      ],
+      "sub_questions": {
+        "assembly-point": {
+          "options": {
+            "a": "A 集合点",
+            "b": "B 集合点",
+            "c": "食堂",
+            "d": "仓库屋顶"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "assembly-point",
@@ -2433,6 +2455,34 @@
         "text": "No, you don't have to move the cart now. Just remember you must not touch the moving belt."
       }
     ],
+    "study_translation": {
+      "material": [
+        "早上好，梅。启动分拣工位前，你必须戴好护目镜和手套。",
+        "我已经戴好手套和护目镜了。现在就得把空推车挪走吗？",
+        "不用现在挪推车。记住，绝对不能碰正在运转的传送带。"
+      ],
+      "sub_questions": {
+        "ppe-required": {
+          "stem": "梅在启动工位前必须戴什么？",
+          "options": {
+            "glasses-gloves": "护目镜和手套。",
+            "only-gloves": "只戴手套。",
+            "visitor-badge": "访客证。"
+          }
+        },
+        "move-cart": {
+          "stem": "梅现在就得把空推车挪走。"
+        },
+        "belt-rule": {
+          "stem": "梅绝对不能做什么？",
+          "options": {
+            "touch-belt": "碰正在运转的传送带。",
+            "wear-glasses": "戴护目镜。",
+            "start-station": "启动分拣工位。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "ppe-required",
@@ -2676,6 +2726,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "安全检查清单",
+        "所有操作员都必须穿安全鞋，并在上午 8 点前签字。",
+        "机器开着时，绝对不能打开伺服装置的盖子。",
+        "操作员不必自行维修电机。"
+      ],
+      "sub_questions": {
+        "sign-deadline": {
+          "stem": "操作员必须在什么时候签字？",
+          "options": {
+            "before-eight": "上午 8 点前。",
+            "after-lunch": "中午 12 点后。",
+            "end-shift": "下午 5 点。"
+          }
+        },
+        "required-actions": {
+          "stem": "根据清单，每位操作员都必须做什么？",
+          "options": {
+            "wear-shoes": "穿安全鞋。",
+            "sign-sheet": "在安全检查表上签字。",
+            "repair-motor": "维修电机。"
+          }
+        },
+        "servo-cover": {
+          "stem": "机器运行时，操作员可以打开伺服装置的盖子。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "sign-deadline",
@@ -3266,6 +3345,36 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "车间安全标志",
+        "主电源箱上有一个红色的「危险」标志。",
+        "摄像头照明灯上方有一块黄色标志，提醒「表面高温」。",
+        "进入 A 线前，所有人都必须按「戴护目镜」标志的要求戴好护目镜。",
+        "急停按钮在控制箱右侧。"
+      ],
+      "sub_questions": {
+        "power-box-sign": {
+          "stem": "主电源箱上是什么标志？",
+          "options": {
+            "danger": "危险。",
+            "caution": "当心。",
+            "exit": "出口。"
+          }
+        },
+        "lamp-and-line": {
+          "stem": "哪两项与告示相符？",
+          "options": {
+            "hot-lamp": "摄像头照明灯上有「表面高温」标志。",
+            "glasses-line-a": "工作人员进入 A 线时需要戴护目镜。",
+            "stop-left": "急停按钮在左侧。"
+          }
+        },
+        "stop-location": {
+          "stem": "急停按钮在控制箱上。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "power-box-sign",
@@ -3465,7 +3574,33 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Attention, new staff in Zone B. The storage room on the left has a No entry sign, so please keep out. The green Exit sign at the back leads to the safe yard outside.",
+    "passage": [
+      {"type": "text", "text": "Attention, new staff in Zone B."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The storage room on the left has a No entry sign, so please keep out."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "The green Exit sign at the back leads to the safe yard outside."}
+    ],
+    "study_translation": {
+      "material": [
+        "B 区新员工请注意。",
+        "左边的储物间挂有「禁止入内」标志，请勿进入。",
+        "后方的绿色「出口」标志指向外面的安全空地。"
+      ],
+      "sub_questions": {
+        "left-room": {
+          "stem": "左边的储物间挂着什么标志？",
+          "options": {
+            "no-entry": "禁止入内。",
+            "hot-surface": "表面高温。",
+            "exit": "出口。"
+          }
+        },
+        "exit-location": {
+          "stem": "绿色「出口」标志在后方，指向室外。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "left-room",
@@ -3906,6 +4041,27 @@
         "text": "Yes, you can. Just turn off the belt first."
       }
     ],
+    "study_translation": {
+      "material": [
+        "我完成了培训。我会用条码扫描器，但还不会校准摄像头。",
+        "没关系。如果摄像头需要校准，就叫技术员来。",
+        "明白了。处理完这个托盘后，我可以休息五分钟吗？",
+        "可以。先关掉传送带就行。"
+      ],
+      "sub_questions": {
+        "skill-check": {
+          "stem": "新员工会做什么？",
+          "options": {
+            "use-scanner": "使用条码扫描器。",
+            "calibrate-camera": "校准摄像头。",
+            "fix-servo": "修理伺服电机。"
+          }
+        },
+        "break-permission": {
+          "stem": "组长允许这名员工关掉传送带后休息。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "skill-check",
@@ -4079,6 +4235,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位规则",
+        "受过培训的操作员可以运行分拣工位，并查看每天的合格数量。",
+        "但是，你不能在工作台旁喝水，也不能把工具留在传送带上。",
+        "如果需要提前离开，先问一下带班组长。"
+      ],
+      "sub_questions": {
+        "trained-can": {
+          "stem": "谁可以运行分拣工位？",
+          "options": {
+            "trained": "受过培训的操作员。",
+            "visitors": "所有访客。",
+            "drivers": "送货司机。"
+          }
+        },
+        "not-allowed": {
+          "stem": "工作人员在工位上不能做哪两件事？",
+          "options": {
+            "drink-desk": "在工作台旁喝水。",
+            "leave-tools": "把工具留在传送带上。",
+            "check-count": "查看每天的合格数量。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "trained-can",
@@ -4733,6 +4915,36 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "故障报告指南",
+        "如果机器停止运转，请先按下急停按钮。",
+        "不要拉拽松动的线缆，也不要自行修理伺服装置。",
+        "仔细看看传送带是否卡住，或者传感器的灯是否不亮。",
+        "然后叫技术员来，告诉他准确的工位编号。"
+      ],
+      "sub_questions": {
+        "first-step": {
+          "stem": "机器停止运转时，操作员应该先做什么？",
+          "options": {
+            "press-stop": "按下急停按钮。",
+            "pull-cables": "拉拽松动的线缆。",
+            "fix-servo": "自行修理伺服装置。"
+          }
+        },
+        "check-and-call": {
+          "stem": "操作员应该向技术员报告哪两项信息？",
+          "options": {
+            "what-failed": "传送带是否卡住，或者灯是否不亮。",
+            "station-num": "准确的工位编号。",
+            "lunch-time": "食堂的午餐时间。"
+          }
+        },
+        "pull-wires-tf": {
+          "stem": "操作员应该先拉拽松动的线缆，再叫技术员来。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "first-step",
@@ -4906,6 +5118,31 @@
         "text": "There are six NG parts on the tray. Please check the station when you can."
       }
     ],
+    "study_translation": {
+      "material": [
+        "打扰一下，李先生。3 号工位出了问题。",
+        "怎么了？摄像头支架又松了吗？",
+        "没有，摄像头没事，但传送带卡住了，传感器的灯也不亮。",
+        "好，保持断电。托盘上还有几个不合格零件等着处理？",
+        "托盘上有六个不合格零件。您有空时请来检查这个工位。"
+      ],
+      "sub_questions": {
+        "which-fault": {
+          "stem": "3 号工位出了什么问题？",
+          "options": {
+            "belt-sensor": "传送带卡住了，传感器的灯也不亮。",
+            "camera-loose": "摄像头支架松了。",
+            "scanner-broken": "条码扫描器坏了。"
+          }
+        },
+        "camera-ok-tf": {
+          "stem": "3 号工位的摄像头是正常的。"
+        },
+        "ng-count-num": {
+          "stem": "托盘上有几个不合格零件等着处理？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "which-fault",

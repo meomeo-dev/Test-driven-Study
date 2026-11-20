@@ -18,13 +18,22 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
     hasMedia: true,
   },
 
-  renderStimulus: ({ question, protectedAudio }) => (
-    <QuestionAudio
-      key={`audio-${question.question_id}`}
-      question={question}
-      protectedAudio={protectedAudio}
-    />
-  ),
+  renderStimulus: ({ question, protectedAudio, showStudyTranslation }) => {
+    const review = 'question_review' in question ? question.question_review : undefined;
+    const material = review?.study_translation?.material;
+    return (
+      <QuestionAudio
+        key={`audio-${question.question_id}`}
+        question={question}
+        protectedAudio={protectedAudio}
+        studyTranslation={material && showStudyTranslation !== undefined ? {
+          material,
+          passage: Array.isArray(review?.transcript) ? undefined : review?.passage,
+          visible: showStudyTranslation,
+        } : undefined}
+      />
+    );
+  },
 
   renderPracticeAnswer: ctx => {
     const review = ctx.reviewQuestion?.question_review;
@@ -73,8 +82,12 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
     </>
   ),
 
-  renderReferenceAnswers: ({ question }) => (
-    <ListeningQuestions content={question.content} review={question.question_review} />
+  renderReferenceAnswers: ({ question, showStudyTranslation }) => (
+    <ListeningQuestions
+      content={question.content}
+      review={question.question_review}
+      showStudyTranslation={showStudyTranslation}
+    />
   ),
 
   renderPalaceAnswers: question => (

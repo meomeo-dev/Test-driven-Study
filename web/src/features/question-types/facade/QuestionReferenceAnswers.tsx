@@ -5,13 +5,15 @@ export function QuestionReferenceAnswers({
   question,
   mode = 'compact',
   includeWritingSample = true,
+  showStudyTranslation,
 }: {
   question: Question;
   mode?: 'compact' | 'full';
   includeWritingSample?: boolean;
+  showStudyTranslation?: boolean;
 }) {
   return dispatchFullQuestion(question, (mod, q) =>
-    mod.renderReferenceAnswers({ question: q, mode, includeWritingSample }),
+    mod.renderReferenceAnswers({ question: q, mode, includeWritingSample, showStudyTranslation }),
   );
 }
 

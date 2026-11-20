@@ -438,6 +438,13 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "你好。我叫莉娜。",
+        "桌上有三个零件。",
+        "按钮在左边。"
+      ]
+    },
     "sub_questions": [
       {
         "id": "part-count",
@@ -1697,6 +1704,30 @@
         "text": "We have nineteen red washers in the small tray."
       }
     ],
+    "study_translation": {
+      "material": [
+        "莉娜，A 盒里有多少个黄色盖子？",
+        "A 盒里有十四个黄色盖子，B 盒里有四十个绿色盖子。",
+        "十四个黄色的，四十个绿色的。我们有红色垫圈吗？",
+        "小托盘里有十九个红色垫圈。"
+      ],
+      "sub_questions": {
+        "yellow-caps": {
+          "stem": "A 盒里有多少个黄色盖子？"
+        },
+        "green-caps": {
+          "stem": "B 盒里有多少个绿色盖子？",
+          "options": {
+            "fourteen": "十四个。",
+            "forty": "四十个。",
+            "forty-four": "四十四个。"
+          }
+        },
+        "washer-check": {
+          "stem": "小托盘里有九十个红色垫圈。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "yellow-caps",
@@ -1959,6 +1990,35 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "零件清点表",
+        "每个干净的托盘可装二十五颗小螺栓。",
+        "一号工位目前有五十颗小螺栓，装满了两个托盘。",
+        "我们还数出了十三根有缺陷的销钉，没有标签缺失。"
+      ],
+      "sub_questions": {
+        "per-tray": {
+          "stem": "一个干净的托盘可装多少颗小螺栓？"
+        },
+        "defective-pins": {
+          "stem": "清点出了多少根有缺陷的销钉？",
+          "options": {
+            "thirteen": "十三根。",
+            "thirty": "三十根。",
+            "fifty": "五十根。"
+          }
+        },
+        "summary-facts": {
+          "stem": "哪两项符合清点表？",
+          "options": {
+            "fifty-bolts": "一号工位一共有五十颗小螺栓。",
+            "no-missing": "没有标签缺失。",
+            "thirty-pins": "有三十根有缺陷的销钉。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "per-tray",
@@ -2599,7 +2659,33 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Station Two is ready for the morning shift. There is one clean barcode scanner on the desk, and there are six spare batteries in the blue drawer. However, there aren't any clean rags on the shelf today.",
+    "passage": [
+      {"type": "text", "text": "Station Two is ready for the morning shift."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "There is one clean barcode scanner on the desk, and there are six spare batteries in the blue drawer."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "However, there aren't any clean rags on the shelf today."}
+    ],
+    "study_translation": {
+      "material": [
+        "二号工位已为早班准备就绪。",
+        "桌上有一台干净的条码扫描器，蓝色抽屉里有六节备用电池。",
+        "不过今天架子上没有干净的抹布。"
+      ],
+      "sub_questions": {
+        "drawer-items": {
+          "stem": "蓝色抽屉里有什么？",
+          "options": {
+            "batteries": "六节备用电池。",
+            "scanner": "一台条码扫描器。",
+            "rags": "干净的抹布。"
+          }
+        },
+        "rags-available": {
+          "stem": "今天架子上有一些干净的抹布。"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "drawer-items",
@@ -2784,6 +2870,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工作台检查清单",
+        "三号工作台左侧有一个绿色合格品盒。",
+        "传感器旁有十二根金属销钉和四个干净的托盘。",
+        "工具筒里有扳手吗？没有。"
+      ],
+      "sub_questions": {
+        "wrench-check": {
+          "stem": "工具筒里有扳手吗？",
+          "options": {
+            "yes": "有。（there is）",
+            "no-isnt": "没有。（there isn't）",
+            "no-arent": "没有。（there aren't）"
+          }
+        },
+        "next-to-sensor": {
+          "stem": "哪两样东西在传感器旁边？",
+          "options": {
+            "pins": "十二根金属销钉。",
+            "trays": "四个干净的托盘。",
+            "pass-box": "一个绿色合格品盒。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "wrench-check",
@@ -3249,6 +3361,35 @@
         "text": "Keep the scissors between the two boxes, and leave the blue tape under the table."
       }
     ],
+    "study_translation": {
+      "material": [
+        "莉娜，我该把绿色合格品盒和黄色废品盒放在哪里？",
+        "把绿色合格品盒放在左边，把黄色废品盒放在右边。",
+        "明白了。剪刀和蓝色胶带呢？",
+        "把剪刀放在两个盒子之间，把蓝色胶带放在桌子下面。"
+      ],
+      "sub_questions": {
+        "green-location": {
+          "stem": "绿色合格品盒应该放在哪里？",
+          "options": {
+            "left": "在左边。",
+            "right": "在右边。",
+            "under": "在桌子下面。"
+          }
+        },
+        "tape-check": {
+          "stem": "蓝色胶带放在两个盒子之间。"
+        },
+        "layout-pair": {
+          "stem": "哪两项摆放位置符合莉娜的指示？",
+          "options": {
+            "yellow-right": "黄色废品盒在右边。",
+            "scissors-between": "剪刀在两个盒子之间。",
+            "tape-on": "蓝色胶带在桌上。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "green-location",
@@ -3498,6 +3639,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "工位布局",
+        "相机在轨道正上方，零件托盘在相机下方。",
+        "红色停止按钮在机器前面，电源插头在桌子后面。",
+        "油瓶始终放在电机旁边。"
+      ],
+      "sub_questions": {
+        "stop-button": {
+          "stem": "红色停止按钮在哪里？",
+          "options": {
+            "front": "在机器前面。",
+            "behind": "在桌子后面。",
+            "under": "在相机下方。"
+          }
+        },
+        "layout-true": {
+          "stem": "哪两项符合布局指南？",
+          "options": {
+            "tray-under": "零件托盘在相机下方。",
+            "oil-next": "油瓶一直放在电机旁边。",
+            "plug-front": "电源插头在桌子前面。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "stop-button",
@@ -3943,7 +4110,36 @@
       "mode": "passage",
       "voice_female": "stella"
     },
-    "passage": "Good morning, everyone. Today our line starts at eight thirty in the morning. Please take your first check at a quarter past ten, and stop the machine at a quarter to five in the afternoon for handover.",
+    "passage": [
+      {"type": "text", "text": "Good morning, everyone."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Today our line starts at eight thirty in the morning."},
+      {"type": "text", "text": " "},
+      {"type": "text", "text": "Please take your first check at a quarter past ten, and stop the machine at a quarter to five in the afternoon for handover."}
+    ],
+    "study_translation": {
+      "material": [
+        "大家早上好。",
+        "今天我们的生产线上午八点半启动。",
+        "请在十点一刻进行第一次检查，下午差一刻到五点时停机交班。"
+      ],
+      "sub_questions": {
+        "line-start": {
+          "stem": "今天生产线什么时候启动？",
+          "options": {
+            "eight-thirty": "上午八点半。",
+            "ten-fifteen": "上午十点一刻。",
+            "four-forty-five": "下午四点四十五分。"
+          }
+        },
+        "first-check-tf": {
+          "stem": "第一次检查在上午九点一刻。"
+        },
+        "stop-minutes": {
+          "stem": "差一刻到五点时，离五点还有多少分钟？"
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "line-start",
@@ -4163,6 +4359,32 @@
         }
       }
     ],
+    "study_translation": {
+      "material": [
+        "班次时间表",
+        "为了迎接早班，车间大门上午七点半开放。",
+        "小组简报会八点开始，午休从十二点到下午一点。",
+        "交班前的下午清洁从四点四十五分开始。"
+      ],
+      "sub_questions": {
+        "gate-open": {
+          "stem": "车间大门什么时候开放？",
+          "options": {
+            "half-past-seven": "上午七点半。",
+            "eight-oclock": "上午八点。",
+            "quarter-to-five": "下午四点四十五分。"
+          }
+        },
+        "schedule-pair": {
+          "stem": "时间表中的哪两项是正确的？",
+          "options": {
+            "briefing": "小组简报会八点开始。",
+            "cleaning": "下午清洁从四点四十五分开始。",
+            "lunch": "午休下午两点结束。"
+          }
+        }
+      }
+    },
     "sub_questions": [
       {
         "id": "gate-open",

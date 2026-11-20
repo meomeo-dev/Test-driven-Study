@@ -1,10 +1,29 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { readCourseTranscript } from '../api/courses';
+import type { RichText } from '../api/generated/types.gen';
 import { AudioControls } from './AudioControls';
 import type { DialogueLine } from './DialoguePlayer';
+import { StudyPassage } from './StudyPassage';
 
-function DialogueLinesView({ lines }: { lines: DialogueLine[] }) {
+export type ListeningStudyTranslation = {
+  material: string[];
+  passage?: RichText;
+  visible: boolean;
+};
+
+function DialogueLinesView({
+  lines,
+  studyTranslation,
+}: {
+  lines: DialogueLine[];
+  studyTranslation?: ListeningStudyTranslation;
+}) {
+  const [firstLine] = lines;
+  const translations = studyTranslation?.visible
+    && studyTranslation.material.length === lines.length
+    ? studyTranslation.material
+    : undefined;
   return (
     <div
       className="question-transcript-text"
@@ -12,7 +31,20 @@ function DialogueLinesView({ lines }: { lines: DialogueLine[] }) {
       aria-label="本题逐字稿"
       tabIndex={0}
     >
-      {lines.map((line, idx) => (
+      {studyTranslation?.passage && firstLine && lines.length === 1 ? (
+        <>
+          <StudyPassage
+            passage={studyTranslation.passage}
+            translations={studyTranslation.material}
+            showTranslation={studyTranslation.visible}
+          />
+          <AudioControls
+            text={firstLine.speech || firstLine.text}
+            voice={firstLine.voice}
+            speed={firstLine.speed}
+          />
+        </>
+      ) : lines.map((line, idx) => (
         <div
           key={idx}
           style={{
@@ -28,7 +60,12 @@ function DialogueLinesView({ lines }: { lines: DialogueLine[] }) {
               {line.speaker}:
             </span>
           )}
-          <span style={{ flex: 1 }}>{line.text}</span>
+          <span style={{ flex: 1, minWidth: 0 }}>
+            <span>{line.text}</span>
+            {translations && (
+              <span className="study-translation" lang="zh-Hans">{translations[idx]}</span>
+            )}
+          </span>
           <AudioControls
             text={line.speech || line.text}
             voice={line.voice}
@@ -44,9 +81,11 @@ function TranscriptBody({
   dialogueLines,
   inlineText,
   script,
+  studyTranslation,
 }: {
   dialogueLines?: DialogueLine[];
   inlineText?: string;
+  studyTranslation?: ListeningStudyTranslation;
   script: {
     isPending: boolean;
     isError: boolean;
@@ -56,7 +95,7 @@ function TranscriptBody({
   };
 }) {
   if (dialogueLines && dialogueLines.length > 0) {
-    return <DialogueLinesView lines={dialogueLines} />;
+    return <DialogueLinesView lines={dialogueLines} studyTranslation={studyTranslation} />;
   }
   if (inlineText) {
     return (
@@ -98,10 +137,12 @@ export function ListeningTranscript({
   url,
   inlineText,
   dialogueLines,
+  studyTranslation,
 }: {
   url?: string;
   inlineText?: string;
   dialogueLines?: DialogueLine[];
+  studyTranslation?: ListeningStudyTranslation;
 }) {
   const [expanded, setExpanded] = useState(false);
   const script = useQuery({
@@ -117,12 +158,13 @@ export function ListeningTranscript({
       className="question-transcript"
       onToggle={event => setExpanded(event.currentTarget.open)}
     >
-      <summary>查看逐字稿</summary>
+      <summary>{studyTranslation?.visible ? '查看英中逐字稿' : '查看逐字稿'}</summary>
       {expanded && (
         <TranscriptBody
           dialogueLines={dialogueLines}
           inlineText={inlineText}
           script={script}
+          studyTranslation={studyTranslation}
         />
       )}
     </details>

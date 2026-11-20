@@ -3,6 +3,7 @@ import type {
   CourseGrading,
   CourseOption,
   ExtendedResponse,
+  StudySubQuestionTranslation,
   SubAnswers,
   SubQuestionPrompt,
   SubQuestionReview,
@@ -77,6 +78,7 @@ export function SubQuestionRow({
   grading,
   studyRows,
   submitted,
+  optionTranslations,
 }: {
   sub: SubQuestionPrompt;
   value?: SubAnswers[string];
@@ -86,6 +88,7 @@ export function SubQuestionRow({
   grading?: CourseGrading;
   studyRows: boolean;
   submitted: boolean;
+  optionTranslations?: Readonly<Record<string, string>>;
 }) {
   if (sub.type === 'numeric') {
     return (
@@ -128,6 +131,7 @@ export function SubQuestionRow({
         correct={correct}
         judgment={isBoolean}
         studyRows={studyRows}
+        translations={optionTranslations}
       />
       {submitted && <p>你的答案：{submission.join('、') || '未作答'}</p>}
     </>
@@ -142,6 +146,7 @@ export function SubQuestionList({
   partIdPrefix,
   reviewSubs,
   studyRows,
+  translations,
 }: {
   subQuestions: SubQuestionPrompt[];
   value?: ExtendedResponse;
@@ -150,6 +155,7 @@ export function SubQuestionList({
   partIdPrefix?: string;
   reviewSubs?: SubQuestionReview[];
   studyRows: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   const fallbackId = useId();
   const id = partIdPrefix ?? fallbackId;
@@ -157,28 +163,37 @@ export function SubQuestionList({
   const submitted = Boolean(value) && Boolean(reviewSubs);
   return (
     <>
-      {subQuestions.map((sub, index) => (
-        <fieldset key={sub.id} className="extended-part">
-          <legend>小题 {index + 1}</legend>
-          <div>
-            <RichContent content={sub.stem} />
-          </div>
-          <SubQuestionRow
-            sub={sub}
-            name={`${id}-${index}`}
-            disabled={readOnly}
-            studyRows={studyRows}
-            submitted={submitted}
-            value={value?.sub_answers?.[sub.id]}
-            grading={reviewSubs?.find(item => item.id === sub.id)?.grading}
-            onChange={answer =>
-              onChange?.({
-                sub_answers: { ...value?.sub_answers, [sub.id]: answer },
-              })
-            }
-          />
-        </fieldset>
-      ))}
+      {subQuestions.map((sub, index) => {
+        const translation = translations && Object.hasOwn(translations, sub.id)
+          ? translations[sub.id]
+          : undefined;
+        return (
+          <fieldset key={sub.id} className="extended-part">
+            <legend>小题 {index + 1}</legend>
+            <div>
+              <RichContent content={sub.stem} />
+              {translation?.stem && (
+                <span className="study-translation" lang="zh-Hans">{translation.stem}</span>
+              )}
+            </div>
+            <SubQuestionRow
+              sub={sub}
+              name={`${id}-${index}`}
+              disabled={readOnly}
+              studyRows={studyRows}
+              submitted={submitted}
+              value={value?.sub_answers?.[sub.id]}
+              grading={reviewSubs?.find(item => item.id === sub.id)?.grading}
+              optionTranslations={translation?.options}
+              onChange={answer =>
+                onChange?.({
+                  sub_answers: { ...value?.sub_answers, [sub.id]: answer },
+                })
+              }
+            />
+          </fieldset>
+        );
+      })}
     </>
   );
 }
