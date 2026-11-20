@@ -9,37 +9,58 @@ import (
 	"testing"
 )
 
-// readmeRelations is the README-backed relation set recorded in the evidence
-// review of docs/features/course-roadmap/README.md. A bundled relation that is
-// not in this table, or a table row without data, fails the test.
-var readmeRelations = map[string]Roadmap{
-	"algebra-geometry": {Note: "小数和百分数可先练项目内的《基础数学》。",
+// fixtureRelations is the README-backed relation set under
+// tests/fixtures/courses/ matching docs/features/course-roadmap/README.md rules.
+var fixtureRelations = map[string]Roadmap{
+	"roadmap-after-math": {Note: "小数和百分数可先练项目内的《基础数学》。",
 		Prerequisites: []CoursePrerequisite{{AllOf: []string{"basic-math"},
 			Strength: StrengthRecommended}}},
-	"embedded-mcu": {Note: "先学电路基础与 C 语言的条件、循环和函数。",
-		Prerequisites: []CoursePrerequisite{{AllOf: []string{"circuit-fundamentals",
-			"c-programming"}, Strength: StrengthRequired}}},
-	"industrial-automation": {Note: "建议先完成单片机状态机。",
-		Prerequisites: []CoursePrerequisite{{AllOf: []string{"embedded-mcu"},
-			Strength: StrengthRecommended}}},
-	"pcb-design": {Note: "选修。建议先完成电路基础与单片机样机，并确认器件和接线方案。",
-		Prerequisites: []CoursePrerequisite{{AllOf: []string{"circuit-fundamentals",
-			"embedded-mcu"}, Strength: StrengthRecommended}}},
-	"probability-statistics": {Note: "系统学习概率分布与估计时再配合高数。",
-		ParallelWith: []string{"engineering-calculus"}},
-	"tolerances-metrology": {Note: "建议与参数化建模并行。",
-		ParallelWith: []string{"cad-fdm-printing"}},
+	"roadmap-b": {Note: "建议与工程并联样例同步练习。",
+		ParallelWith: []string{"roadmap-p"}},
+	"roadmap-mid": {Note: "先学 C 样例与电路样例。",
+		Prerequisites: []CoursePrerequisite{{AllOf: []string{"roadmap-a",
+			"roadmap-b"}, Strength: StrengthRequired}}},
+	"roadmap-p": {Note: "建议与电路样例同步练习。",
+		ParallelWith: []string{"roadmap-b"}},
+	"roadmap-top": {Note: "建议先完成电路样例与单片机样例。",
+		Prerequisites: []CoursePrerequisite{{AllOf: []string{"roadmap-b",
+			"roadmap-mid"}, Strength: StrengthRecommended}}},
 }
 
 func TestBundledRoadmapsMatchReadmeEvidence(t *testing.T) {
-	entries, err := os.ReadDir("../../courses")
+	bundledEntries, err := os.ReadDir("../../courses")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var bundled []Manifest
+	for _, entry := range bundledEntries {
+		directory := filepath.Join("../../courses", entry.Name())
+		if _, err := os.Stat(filepath.Join(directory, ManifestFile)); err != nil {
+			continue
+		}
+		pkg, err := Load(directory)
+		if err != nil {
+			t.Fatalf("%s: %v", entry.Name(), err)
+		}
+		bundled = append(bundled, pkg.Manifest)
+		if pkg.Manifest.Roadmap != nil {
+			t.Fatalf("unexpected bundled roadmap on %s: %+v", pkg.Manifest.ID, pkg.Manifest.Roadmap)
+		}
+	}
+	for _, manifest := range bundled {
+		if err := CheckRoadmapCycles(manifest, bundled); err != nil {
+			t.Fatalf("bundled courses: %v", err)
+		}
+	}
+
+	entries, err := os.ReadDir("../../tests/fixtures/courses")
 	if err != nil {
 		t.Fatal(err)
 	}
 	found := map[string]Roadmap{}
 	var active []Manifest
 	for _, entry := range entries {
-		directory := filepath.Join("../../courses", entry.Name())
+		directory := filepath.Join("../../tests/fixtures/courses", entry.Name())
 		if _, err := os.Stat(filepath.Join(directory, ManifestFile)); err != nil {
 			continue
 		}
@@ -65,13 +86,13 @@ func TestBundledRoadmapsMatchReadmeEvidence(t *testing.T) {
 				pkg.Manifest.ID, pkg.Manifest.Roadmap.Note)
 		}
 	}
-	if !reflect.DeepEqual(found, readmeRelations) {
-		t.Fatalf("bundled relations differ from the evidence review:\n got %+v\nwant %+v",
-			found, readmeRelations)
+	if !reflect.DeepEqual(found, fixtureRelations) {
+		t.Fatalf("fixture relations differ from expected:\n got %+v\nwant %+v",
+			found, fixtureRelations)
 	}
 	for _, manifest := range active {
 		if err := CheckRoadmapCycles(manifest, active); err != nil {
-			t.Fatalf("bundled courses: %v", err)
+			t.Fatalf("fixture courses: %v", err)
 		}
 	}
 }

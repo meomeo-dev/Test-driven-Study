@@ -67,12 +67,12 @@ func (h *conceptHarness) expectCourse(id, state string, met bool) study.RoadmapC
 	return value
 }
 
-// installProbe installs a copy of the Python course under another ID with the
-// given version and roadmap.
+// installProbe installs a copy of the roadmap-a fixture under another ID with
+// the given version and roadmap.
 func (h *conceptHarness) installProbe(version string, roadmap map[string]any) {
 	h.t.Helper()
 	target := filepath.Join(h.t.TempDir(), "roadmap-probe")
-	source := filepath.Join(h.root, "courses", "python-programming")
+	source := filepath.Join(h.root, "tests", "fixtures", "courses", "roadmap-a")
 	if err := os.CopyFS(target, os.DirFS(source)); err != nil {
 		h.t.Fatal(err)
 	}
@@ -101,35 +101,33 @@ func (h *conceptHarness) installProbe(version string, roadmap map[string]any) {
 func TestRoadmapStatesFollowCompletion(t *testing.T) {
 	h := newConceptHarness(t)
 	ctx := context.Background()
-	embedded := h.expectCourse("embedded-mcu", study.CourseWaiting, false)
-	want := []study.RoadmapGroup{{AllOf: []string{"circuit-fundamentals", "c-programming"},
+	mid := h.expectCourse("roadmap-mid", study.CourseWaiting, false)
+	want := []study.RoadmapGroup{{AllOf: []string{"roadmap-a", "roadmap-b"},
 		Strength: "required"}}
-	if !reflect.DeepEqual(embedded.Prerequisites, want) || embedded.Note == "" {
-		t.Fatalf("embedded-mcu relations: %+v", embedded)
+	if !reflect.DeepEqual(mid.Prerequisites, want) || mid.Note == "" {
+		t.Fatalf("roadmap-mid relations: %+v", mid)
 	}
-	h.expectCourse("circuit-fundamentals", study.CourseReady, true)
-	h.completeCourse("circuit-fundamentals", true)
-	h.expectCourse("embedded-mcu", study.CourseWaiting, false)
-	h.completeCourse("c-programming", true)
-	h.expectCourse("embedded-mcu", study.CourseReady, true)
-	if value := h.expectCourse("c-programming", study.CourseCompleted, true); value.MarkedCompleted {
+	h.expectCourse("roadmap-b", study.CourseReady, true)
+	h.completeCourse("roadmap-b", true)
+	h.expectCourse("roadmap-mid", study.CourseWaiting, false)
+	h.completeCourse("roadmap-a", true)
+	h.expectCourse("roadmap-mid", study.CourseReady, true)
+	if value := h.expectCourse("roadmap-a", study.CourseCompleted, true); value.MarkedCompleted {
 		t.Fatalf("a concept course reports a mark: %+v", value)
 	}
-	h.completeCourse("c-programming", false)
-	h.expectCourse("embedded-mcu", study.CourseWaiting, false)
+	h.completeCourse("roadmap-a", false)
+	h.expectCourse("roadmap-mid", study.CourseWaiting, false)
 	// Recommended groups decide readiness the same way.
-	h.expectCourse("pcb-design", study.CourseWaiting, false)
-	h.completeCourse("embedded-mcu", true)
-	h.expectCourse("pcb-design", study.CourseReady, true)
+	h.expectCourse("roadmap-top", study.CourseWaiting, false)
+	h.completeCourse("roadmap-mid", true)
+	h.expectCourse("roadmap-top", study.CourseReady, true)
 	// A course without concepts completes through its mark.
 	h.markCompleted("basic-math", true)
 	if value := h.expectCourse("basic-math", study.CourseCompleted, true); !value.MarkedCompleted {
 		t.Fatalf("mark not reported: %+v", value)
 	}
 
-	for id, partner := range map[string]string{"probability-statistics": "engineering-calculus",
-		"engineering-calculus": "probability-statistics", "cad-fdm-printing": "tolerances-metrology",
-		"tolerances-metrology": "cad-fdm-printing"} {
+	for id, partner := range map[string]string{"roadmap-b": "roadmap-p", "roadmap-p": "roadmap-b"} {
 		if value := h.roadmapCourse(id); !reflect.DeepEqual(value.ParallelWith, []string{partner}) {
 			t.Fatalf("%s parallel: %v", id, value.ParallelWith)
 		}
@@ -166,19 +164,19 @@ func TestRoadmapStatesFollowCompletion(t *testing.T) {
 
 func TestRoadmapReportsMissingCourses(t *testing.T) {
 	h := newConceptHarness(t)
-	h.installProbe("1.0.0", map[string]any{"note": "先学 Python 与传感器。",
-		"prerequisites": []any{map[string]any{"all_of": []any{"python-programming",
+	h.installProbe("1.0.0", map[string]any{"note": "先学 C 样例与传感器。",
+		"prerequisites": []any{map[string]any{"all_of": []any{"roadmap-a",
 			"sensor-basics"}, "strength": "required"}},
-		"parallel_with": []any{"lab-safety", "linear-algebra"}})
+		"parallel_with": []any{"lab-safety", "roadmap-p"}})
 	probe := h.expectCourse("roadmap-probe", study.CourseWaiting, false)
 	if !reflect.DeepEqual(probe.Missing, []string{"sensor-basics", "lab-safety"}) ||
-		!reflect.DeepEqual(probe.ParallelWith, []string{"linear-algebra"}) {
+		!reflect.DeepEqual(probe.ParallelWith, []string{"roadmap-p"}) {
 		t.Fatalf("missing courses: %+v", probe)
 	}
 	// A missing course cannot be completed here, so readiness ignores it.
-	h.completeCourse("python-programming", true)
+	h.completeCourse("roadmap-a", true)
 	h.expectCourse("roadmap-probe", study.CourseReady, true)
-	h.completeCourse("python-programming", false)
+	h.completeCourse("roadmap-a", false)
 	h.installProbe("1.0.1", map[string]any{"note": "先学传感器。", "prerequisites": []any{
 		map[string]any{"all_of": []any{"sensor-basics"}, "strength": "required"}}})
 	h.expectCourse("roadmap-probe", study.CourseReady, true)
@@ -214,30 +212,30 @@ func TestRoadmapPathLifecycle(t *testing.T) {
 		t.Fatalf("no route yet: %+v, %v", view, err)
 	}
 	created, err := h.service.CreateRoadmapPath(ctx,
-		study.RoadmapPathRequest{Targets: []string{"pcb-design"}})
+		study.RoadmapPathRequest{Targets: []string{"roadmap-top"}})
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := []string{"c-programming", "circuit-fundamentals", "embedded-mcu", "pcb-design"}
+	want := []string{"roadmap-a", "roadmap-b", "roadmap-mid", "roadmap-top"}
 	last := created.Steps[3]
 	if got := roadmapStepIDs(&created); !reflect.DeepEqual(got, want) ||
 		created.Steps[2].Strength != "required" || last.Strength != "recommended" ||
-		!reflect.DeepEqual(last.Group, []string{"circuit-fundamentals", "embedded-mcu"}) ||
-		created.NextCourse != "c-programming" || created.RemainingSteps != 4 {
+		!reflect.DeepEqual(last.Group, []string{"roadmap-b", "roadmap-mid"}) ||
+		created.NextCourse != "roadmap-a" || created.RemainingSteps != 4 {
 		t.Fatalf("route: %+v", created)
 	}
 	// Completing a later course out of order makes a shorter route available.
-	h.completeCourse("embedded-mcu", true)
+	h.completeCourse("roadmap-mid", true)
 	path := h.readRoadmapPath()
-	if path.CompletedSteps != 1 || !path.Steps[2].Done || path.NextCourse != "c-programming" ||
+	if path.CompletedSteps != 1 || !path.Steps[2].Done || path.NextCourse != "roadmap-a" ||
 		!path.ReplanSuggested || path.Stale {
 		t.Fatalf("replan suggestion: %+v", path)
 	}
 	h.expectRoadmapSurvivesRestart(path)
 	replanned, err := h.service.CreateRoadmapPath(ctx,
-		study.RoadmapPathRequest{Targets: []string{"pcb-design"}})
+		study.RoadmapPathRequest{Targets: []string{"roadmap-top"}})
 	if err != nil || !reflect.DeepEqual(roadmapStepIDs(&replanned),
-		[]string{"circuit-fundamentals", "pcb-design"}) || replanned.ID == path.ID {
+		[]string{"roadmap-b", "roadmap-top"}) || replanned.ID == path.ID {
 		t.Fatalf("replanned route: %+v, %v", replanned, err)
 	}
 	var archived int
@@ -246,18 +244,18 @@ func TestRoadmapPathLifecycle(t *testing.T) {
 	if err != nil || archived != 1 {
 		t.Fatalf("archived routes: %d, %v", archived, err)
 	}
-	h.completeCourse("circuit-fundamentals", true)
-	if path = h.readRoadmapPath(); path.CompletedSteps != 1 || path.NextCourse != "pcb-design" ||
+	h.completeCourse("roadmap-b", true)
+	if path = h.readRoadmapPath(); path.CompletedSteps != 1 || path.NextCourse != "roadmap-top" ||
 		path.ReplanSuggested {
 		t.Fatalf("progress: %+v", path)
 	}
-	h.completeCourse("pcb-design", true)
+	h.completeCourse("roadmap-top", true)
 	if path = h.readRoadmapPath(); !path.Completed || path.RemainingSteps != 0 ||
 		path.NextCourse != "" {
 		t.Fatalf("completed route: %+v", path)
 	}
 	h.installProbe("1.0.0", map[string]any{"note": "并行。",
-		"parallel_with": []any{"pcb-design"}})
+		"parallel_with": []any{"roadmap-top"}})
 	if path = h.readRoadmapPath(); !path.Stale {
 		t.Fatalf("a newly installed course changes the relation digest: %+v", path)
 	}
@@ -303,7 +301,7 @@ func TestRoadmapPathRejectsInvalidRequests(t *testing.T) {
 		message string
 	}{
 		{many, study.ErrInvalid, "学习目标最多选择 16 门课程"},
-		{[]string{"pcb-design", "pcb-design"}, study.ErrInvalid, "学习目标包含重复的课程"},
+		{[]string{"roadmap-top", "roadmap-top"}, study.ErrInvalid, "学习目标包含重复的课程"},
 		{[]string{"missing-course"}, study.ErrNotFound, "课程不存在"},
 	}
 	for _, test := range cases {

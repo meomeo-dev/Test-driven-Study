@@ -19,6 +19,9 @@ func TestWorkspaceImportsTypedHistoryOnce(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if _, err := InstallCourse(ctx, db, filepath.Join(root, "tests", "fixtures", "courses", "basic-math")); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := db.ExecContext(ctx, `INSERT INTO course_presentations
 		(course_id,id,version,unit_id,item_id,opened_at_ms)
 		VALUES ('basic-math','typed-legacy-presentation',

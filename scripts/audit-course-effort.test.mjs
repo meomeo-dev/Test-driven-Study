@@ -28,18 +28,54 @@ test("golden-course-template passes default quality gate (errorCount=0)", () => 
   assert.ok(res.ratio >= 0.7 && res.ratio <= 1.6, `unexpected template ratio ${res.ratio}`);
 });
 
-test("recalibrated beginner-english passes strict gate while cad-fdm-printing fails inflated hours", () => {
+test("recalibrated beginner-english passes strict gate while under-stuffed course fails inflated hours", () => {
   const be = auditCourseEffort(resolve("courses/beginner-english"), { strict: true });
   assert.equal(be.ok, true, JSON.stringify(be.issues));
   assert.equal(be.errorCount, 0);
   assert.equal(be.warningCount, 0);
   assert.ok(be.ratio >= 0.7 && be.ratio <= 1.4, `expected balanced ratio, got ${be.ratio}`);
 
-  const cad = auditCourseEffort(resolve("courses/cad-fdm-printing"));
-  assert.equal(cad.ok, false);
-  assert.ok(
-    cad.issues.some((i) => i.target === "fixtures/base-plate-lab" && i.rule === "SEVERE_UNDER_STUFFED_CONCEPT"),
+  const dir = makeTempCourse(
+    {
+      protocol_version: 2,
+      course_id: "inflated-fixture",
+      version: "1.0.0",
+      title: "虚高课时测试",
+      language: "zh-CN",
+      units: [
+        {
+          id: "u1",
+          title: "U1",
+          question_file: "questions/u1.json",
+          lessons: [{ id: "l1", title: "L1", file: "lessons/l1.md" }],
+          concepts: [{ id: "c1", title: "C1", estimated_minutes: 120, lesson: "l1" }],
+        },
+      ],
+    },
+    { "l1.md": "# L1\n\n简短讲义三十字内容。" },
+    {
+      "u1.json": [
+        {
+          id: "q1",
+          type: "single_choice",
+          stem: "Q1",
+          options: [{ sign: "A", text: "1" }, { sign: "B", text: "2" }],
+          answer: "A",
+          analysis: [{ type: "text", text: "解析" }],
+          concepts: ["c1"],
+        },
+      ],
+    },
   );
+  try {
+    const res = auditCourseEffort(dir);
+    assert.equal(res.ok, false);
+    assert.ok(
+      res.issues.some((i) => i.target === "u1/c1" && i.rule === "SEVERE_UNDER_STUFFED_CONCEPT"),
+    );
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("attributeLesson conserves total reading minutes across shared N:1 concepts", () => {

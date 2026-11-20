@@ -1,0 +1,41 @@
+{
+  "protocol_version": 1,
+  "course_id": "roadmap-top",
+  "version": "1.0.0",
+  "title": "PCB 选修样例",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "basics",
+      "title": "基础单元",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "基础讲义",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "roadmap-top-c1",
+          "title": "PCB 选修样例核心",
+          "estimated_minutes": 15,
+          "lesson": "basics"
+        }
+      ]
+    }
+  ],
+  "roadmap": {
+    "note": "建议先完成电路样例与单片机样例。",
+    "prerequisites": [
+      {
+        "all_of": [
+          "roadmap-b",
+          "roadmap-mid"
+        ],
+        "strength": "recommended"
+      }
+    ]
+  }
+}

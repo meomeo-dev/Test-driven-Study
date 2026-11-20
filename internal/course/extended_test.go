@@ -40,7 +40,7 @@ func TestV2ValidatesNewItemsAndRetainsV1(t *testing.T) {
 	if _, err := decodeFile[[]Item](extended, "questions.json", versions[1].items); err == nil {
 		t.Fatal("v1 should not silently accept a v2 question")
 	}
-	if _, err := Load(filepath.Join("..", "..", "courses", "basic-math")); err != nil {
+	if _, err := Load(filepath.Join("..", "..", "courses", "elementary-chinese")); err != nil {
 		t.Fatalf("v1 course no longer loads: %v", err)
 	}
 }

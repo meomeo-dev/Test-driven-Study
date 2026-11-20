@@ -24,25 +24,30 @@ func TestInstallRefusesRoadmapCycle(t *testing.T) {
 		t.Fatal(err)
 	}
 	defer db.Close()
-	// The bundled embedded-mcu requires c-programming.
-	cyclic := releaseCourse(t, filepath.Join(root, "courses", "c-programming"), "1.1.1",
-		map[string]any{"note": "先学单片机。", "prerequisites": []any{
-			map[string]any{"all_of": []any{"embedded-mcu"}, "strength": "required"}}})
+	for _, id := range []string{"roadmap-a", "roadmap-b", "roadmap-p", "roadmap-mid"} {
+		if _, err := InstallCourse(ctx, db, filepath.Join(root, "tests", "fixtures", "courses", id)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	// The fixture roadmap-mid requires roadmap-a.
+	cyclic := releaseCourse(t, filepath.Join(root, "tests", "fixtures", "courses", "roadmap-a"), "1.0.1",
+		map[string]any{"note": "先学单片机样例。", "prerequisites": []any{
+			map[string]any{"all_of": []any{"roadmap-mid"}, "strength": "required"}}})
 	_, err = InstallCourse(ctx, db, cyclic)
-	want := `course "c-programming": roadmap prerequisite cycle ` +
-		`c-programming requires embedded-mcu requires c-programming`
+	want := `course "roadmap-a": roadmap prerequisite cycle ` +
+		`roadmap-a requires roadmap-mid requires roadmap-a`
 	if err == nil || err.Error() != want {
 		t.Fatalf("got %v, want %s", err, want)
 	}
-	active, err := storedb.New(db).GetActiveCourse(ctx, "c-programming")
-	if err != nil || active.Version != "1.1.0" {
+	active, err := storedb.New(db).GetActiveCourse(ctx, "roadmap-a")
+	if err != nil || active.Version != "1.0.0" {
 		t.Fatalf("previous version must stay active: %+v, %v", active.Version, err)
 	}
-	acyclic := releaseCourse(t, filepath.Join(root, "courses", "c-programming"), "1.1.2",
-		map[string]any{"note": "建议先学 Python。", "prerequisites": []any{
-			map[string]any{"all_of": []any{"python-programming"}, "strength": "recommended"}}})
+	acyclic := releaseCourse(t, filepath.Join(root, "tests", "fixtures", "courses", "roadmap-a"), "1.0.2",
+		map[string]any{"note": "建议先学工程并联样例。", "prerequisites": []any{
+			map[string]any{"all_of": []any{"roadmap-p"}, "strength": "recommended"}}})
 	if manifest, err := InstallCourse(ctx, db, acyclic); err != nil ||
-		manifest.Roadmap == nil || manifest.Version != "1.1.2" {
+		manifest.Roadmap == nil || manifest.Version != "1.0.2" {
 		t.Fatalf("acyclic release: %+v, %v", manifest, err)
 	}
 }

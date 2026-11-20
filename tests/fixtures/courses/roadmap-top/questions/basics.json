@@ -1,0 +1,26 @@
+[
+  {
+    "id": "roadmap-top-q1",
+    "type": "single_choice",
+    "stem": "PCB 选修样例测试题",
+    "options": [
+      {
+        "id": "a",
+        "text": "正确选项"
+      },
+      {
+        "id": "b",
+        "text": "干扰选项"
+      }
+    ],
+    "explanation": "解析。",
+    "concepts": [
+      "roadmap-top-c1"
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  }
+]

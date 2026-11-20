@@ -1,20 +1,5 @@
 [
-  "basic-math",
   "elementary-chinese",
-  "cad-fdm-printing",
-  "circuit-fundamentals",
-  "c-programming",
-  "embedded-mcu",
-  "python-programming",
-  "machine-vision",
-  "tolerances-metrology",
-  "applied-machine-learning",
-  "industrial-automation",
-  "pcb-design",
-  "algebra-geometry",
-  "engineering-calculus",
-  "linear-algebra",
-  "probability-statistics",
-  "automatic-control",
-  "beginner-english"
+  "beginner-english",
+  "golden-course-template"
 ]

@@ -1,0 +1,40 @@
+{
+  "protocol_version": 1,
+  "course_id": "roadmap-after-math",
+  "version": "1.0.0",
+  "title": "几何后置样例",
+  "language": "zh-CN",
+  "roadmap": {
+    "note": "小数和百分数可先练项目内的《基础数学》。",
+    "prerequisites": [
+      {
+        "all_of": [
+          "basic-math"
+        ],
+        "strength": "recommended"
+      }
+    ]
+  },
+  "units": [
+    {
+      "id": "basics",
+      "title": "几何基础",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "几何讲义",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "roadmap-after-math-c1",
+          "title": "比例应用",
+          "estimated_minutes": 15,
+          "lesson": "basics"
+        }
+      ]
+    }
+  ]
+}

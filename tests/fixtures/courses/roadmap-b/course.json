@@ -1,0 +1,35 @@
+{
+  "protocol_version": 1,
+  "course_id": "roadmap-b",
+  "version": "1.0.0",
+  "title": "电路样例",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "basics",
+      "title": "基础单元",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "基础讲义",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "roadmap-b-c1",
+          "title": "电路样例核心",
+          "estimated_minutes": 15,
+          "lesson": "basics"
+        }
+      ]
+    }
+  ],
+  "roadmap": {
+    "note": "建议与工程并联样例同步练习。",
+    "parallel_with": [
+      "roadmap-p"
+    ]
+  }
+}

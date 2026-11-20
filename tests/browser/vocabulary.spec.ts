@@ -108,8 +108,8 @@ test('beginner English vocabulary falls back to the unit and stays usable on mob
 test('the vocabulary button is limited to supported subjects in memorization', async ({
   page, request,
 }) => {
-  const math = await studyTarget(request, 'basic-math', 'intro');
-  await page.goto(math.memorizeUrl);
+  const chinese = await studyTarget(request, 'elementary-chinese', 'grade-1-term-1-pinyin');
+  await page.goto(chinese.memorizeUrl);
   await expect(page.locator('.question-card')).toBeVisible();
   await expect(page.getByRole('button', { name: '生词本' })).toHaveCount(0);
 

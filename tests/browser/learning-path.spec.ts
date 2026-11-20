@@ -112,11 +112,11 @@ test('the golden course template demonstrates learning paths and tagged practice
 });
 
 test('courses without concepts show no learning path entry and an empty state', async ({ page, request }) => {
-  const subject = await subjectOf(request, 'basic-math', 'intro');
-  await page.goto(`/practice?subject=${subject}&course=basic-math`);
+  const subject = await subjectOf(request, 'elementary-chinese', 'grade-1-term-1-pinyin');
+  await page.goto(`/practice?subject=${subject}&course=elementary-chinese`);
   const navigation = page.getByRole('navigation', { name: '主导航' });
   await expect(navigation.getByRole('link', { name: '答题模式' })).toBeVisible();
   await expect(navigation.getByRole('link', { name: '学习路径' })).toHaveCount(0);
-  await page.goto(`/learning?subject=${subject}&course=basic-math`);
+  await page.goto(`/learning?subject=${subject}&course=elementary-chinese`);
   await expect(page.getByRole('heading', { name: '本课程尚未定义知识图谱' })).toBeVisible();
 });

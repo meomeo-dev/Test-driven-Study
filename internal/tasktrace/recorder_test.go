@@ -17,6 +17,9 @@ func traceQueries(t *testing.T) *storedb.Queries {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if _, err := storage.InstallCourse(context.Background(), db, filepath.Join(root, "tests", "fixtures", "courses", "basic-math")); err != nil {
+		t.Fatal(err)
+	}
 	t.Cleanup(func() { db.Close() })
 	queries := storedb.New(db)
 	question, err := queries.GetWorkspaceQuestionID(context.Background(), storedb.GetWorkspaceQuestionIDParams{

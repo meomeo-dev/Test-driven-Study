@@ -1,0 +1,29 @@
+{
+  "protocol_version": 1,
+  "course_id": "roadmap-a",
+  "version": "1.0.0",
+  "title": "C 样例",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "basics",
+      "title": "基础单元",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "基础讲义",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "roadmap-a-c1",
+          "title": "C 样例核心",
+          "estimated_minutes": 15,
+          "lesson": "basics"
+        }
+      ]
+    }
+  ]
+}

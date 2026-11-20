@@ -15,8 +15,8 @@ func TestRoadmapEndpoints(t *testing.T) {
 	for _, value := range roadmap.Courses {
 		states[value.ID] = value.State
 	}
-	if response.StatusCode != 200 || states["embedded-mcu"] != study.CourseWaiting ||
-		states["circuit-fundamentals"] != study.CourseReady || len(states) != len(roadmap.Courses) {
+	if response.StatusCode != 200 || states["roadmap-mid"] != study.CourseWaiting ||
+		states["roadmap-b"] != study.CourseReady || len(states) != len(roadmap.Courses) {
 		t.Fatalf("roadmap: %d %s", response.StatusCode, payload)
 	}
 
@@ -32,7 +32,7 @@ func TestRoadmapEndpoints(t *testing.T) {
 	}
 	expectProblem(t, server, "PUT", completed, `{}`, 400, "请说明是否标记为已学完")
 	expectProblem(t, server, "PUT", completed, `{"completed":"yes"}`, 400, "请求内容无效")
-	for _, course := range []string{"concept-graph", "circuit-fundamentals"} {
+	for _, course := range []string{"concept-graph", "roadmap-b"} {
 		expectProblem(t, server, "PUT", "/api/courses/"+course+"/completed",
 			`{"completed":true}`, 400, "该课程按知识点进度判断是否学完")
 	}
@@ -52,16 +52,16 @@ func TestRoadmapEndpoints(t *testing.T) {
 	expectProblem(t, server, "POST", "/api/roadmap/path", string(many), 400,
 		"学习目标最多选择 16 门课程")
 	expectProblem(t, server, "POST", "/api/roadmap/path",
-		`{"targets":["pcb-design","pcb-design"]}`, 400, "学习目标包含重复的课程")
+		`{"targets":["roadmap-top","roadmap-top"]}`, 400, "学习目标包含重复的课程")
 	expectProblem(t, server, "POST", "/api/roadmap/path", `{"targets":["missing-course"]}`,
 		404, "课程不存在")
 	expectProblem(t, server, "POST", "/api/roadmap/path", `{"daily_minutes":30}`, 400,
 		"请求内容无效")
 	response, payload = call(t, server, "POST", "/api/roadmap/path",
-		`{"targets":["embedded-mcu"]}`, "")
+		`{"targets":["roadmap-mid"]}`, "")
 	created := decode[study.RoadmapPath](t, payload)
 	if response.StatusCode != 201 || len(created.Steps) != 3 || created.CompletedSteps != 0 ||
-		created.NextCourse != "c-programming" {
+		created.NextCourse != "roadmap-a" {
 		t.Fatalf("create route: %d %s", response.StatusCode, payload)
 	}
 	_, payload = call(t, server, "GET", "/api/roadmap/path", "", "")

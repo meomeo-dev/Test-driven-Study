@@ -1,0 +1,26 @@
+[
+  {
+    "id": "roadmap-p-q1",
+    "type": "single_choice",
+    "stem": "工程并联样例测试题",
+    "options": [
+      {
+        "id": "a",
+        "text": "正确选项"
+      },
+      {
+        "id": "b",
+        "text": "干扰选项"
+      }
+    ],
+    "explanation": "解析。",
+    "concepts": [
+      "roadmap-p-c1"
+    ],
+    "grading": {
+      "choice_ids": [
+        "a"
+      ]
+    }
+  }
+]

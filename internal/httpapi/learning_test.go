@@ -24,9 +24,14 @@ func conceptServer(t *testing.T) *httptest.Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	fixture := filepath.Join(root, "tests", "fixtures", "courses", "concept-graph")
-	if _, err := storage.InstallCourse(context.Background(), db, fixture); err != nil {
-		t.Fatal(err)
+	for _, id := range []string{
+		"concept-graph", "basic-math", "roadmap-a", "roadmap-b", "roadmap-p",
+		"roadmap-mid", "roadmap-top", "roadmap-after-math",
+	} {
+		fixture := filepath.Join(root, "tests", "fixtures", "courses", id)
+		if _, err := storage.InstallCourse(context.Background(), db, fixture); err != nil {
+			t.Fatal(err)
+		}
 	}
 	server := httptest.NewServer(httpapi.New(study.New(db, root), nil, root, "43188", "43187"))
 	t.Cleanup(func() { server.Close(); db.Close() })
@@ -58,7 +63,7 @@ func TestLearningEndpoints(t *testing.T) {
 	subjects := map[string]int64{}
 	for _, summary := range decode[[]study.CourseSummary](t, payload) {
 		if summary.ID == "concept-graph" && summary.ConceptCount != 6 ||
-			summary.ID == "basic-math" && summary.ConceptCount != 0 {
+			summary.ID == "elementary-chinese" && summary.ConceptCount != 0 {
 			t.Fatalf("concept count for %s: %d", summary.ID, summary.ConceptCount)
 		}
 		for _, unit := range summary.Units {
@@ -113,7 +118,7 @@ func checkLearningPathEndpoints(t *testing.T, server *httptest.Server) {
 	expectProblem(t, server, "POST", path, many, 400, "学习目标最多选择 16 个知识点")
 	expectProblem(t, server, "POST", path, `{"daily_minutes":5}`, 400, "每天学习时间需在 10–480 分钟之间")
 	expectProblem(t, server, "POST", path, `{"targets":["missing"],"daily_minutes":30}`, 404, "知识点不存在")
-	expectProblem(t, server, "POST", "/api/courses/basic-math/learning-path",
+	expectProblem(t, server, "POST", "/api/courses/elementary-chinese/learning-path",
 		`{"daily_minutes":30}`, 400, "该课程尚未定义知识点")
 }
 

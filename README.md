@@ -14,12 +14,17 @@
 </p>
 
 A local course study application with a Go backend, React and TypeScript
-frontend, and SQLite storage. It bundles 18 default courses (including Basic Math
-and [Elementary Chinese](courses/elementary-chinese/course.json)) alongside an
-installable v2 template course ([黄金标准课程模板](courses/golden-course-template/README.md)).
+frontend, and SQLite storage. It bundles three default courses—[Beginner
+English](courses/beginner-english/README.md), [Elementary
+Chinese](courses/elementary-chinese/course.json), and the installable v2
+template course ([黄金标准课程模板](courses/golden-course-template/README.md)).
 Version 1.4.0 demonstrates all nine question types, a concept-based learning
 path, bilingual reading and listening materials, and a vocabulary notebook with
 TTS playback and minimalist grammar notes.
+
+Additional engineering and mathematics courses previously developed here are now
+maintained in the separate `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`
+repository and can be installed into any workspace with `course:install`.
 
 The interface is in Chinese. Studying does not require an account, API key,
 or external database.
@@ -34,30 +39,17 @@ or external database.
 | **Learning Analysis & Error Tracking** | **Timed Mock Examination Terminal** |
 | ![Learning Analysis](docs/ui/learning-analysis/desktop.png) | ![Mock Examination](docs/ui/mock-exam/exam-desktop.png) |
 
-## Desktop inspection and sorting study track
+## Bundled courses
 
-Build a printed fixture, use a microcontroller to detect a part and actuate a
-sorting gate, and use a fixed camera to check for a hole. Validate this sequence
-on one type of part before comparing a learned classifier with the rule-based
-baseline on a separate batch. Record missed defects, false rejects, and cycle time.
+| Course | Version | Focus |
+| --- | --- | --- |
+| [Beginner English](courses/beginner-english/README.md) | 2.4.0 | 10 units, 41 concepts, and 424 questions across all nine v2 question types, study translations for all 39 reading and 59 listening items, plus a 71-entry vocabulary notebook with TTS overrides and targeted grammar notes. |
+| [Elementary Chinese](courses/elementary-chinese/course.json) | 1.0.4 | Local Pinyin recordings for the seven fill-in prompts and combined Pinyin and Han speech for the explanations. |
+| [黄金标准课程模板](courses/golden-course-template/README.md) | 1.4.0 | Reference v2 template covering all nine question types, a five-concept learning path, study translations, and a 12-entry vocabulary notebook. |
 
-| Stage | Courses |
-| --- | --- |
-| Fixture | [CAD and FDM printing](courses/cad-fdm-printing/README.md) |
-| Electronics and firmware | [Circuits](courses/circuit-fundamentals/README.md), [C](courses/c-programming/README.md), [Microcontrollers](courses/embedded-mcu/README.md) |
-| Inspection | [Python](courses/python-programming/README.md), [Machine vision](courses/machine-vision/README.md), [Tolerances and metrology](courses/tolerances-metrology/README.md) |
-| Evaluation and automation | [Machine learning](courses/applied-machine-learning/README.md), [Industrial automation and PLCs](courses/industrial-automation/README.md), [PCB design elective](courses/pcb-design/README.md) |
-| Supporting mathematics | [Algebra, trigonometry and geometry](courses/algebra-geometry/README.md), [Calculus](courses/engineering-calculus/README.md), [Linear algebra](courses/linear-algebra/README.md), [Probability and statistics](courses/probability-statistics/README.md), [Automatic control](courses/automatic-control/README.md) |
-| Language | [Beginner English](courses/beginner-english/README.md) |
-
-The technical courses in this track provide lessons, concept graphs, graded
-practice, and a self-check project. The course roadmap shows the prerequisites
-named in each course README. For example, Microcontrollers requires Circuits
-and C. Beginner English 2.4.0 has 10 units, 41 concepts, and 424 questions
-across all nine v2 question types. It includes English–Chinese study
-translations for all 39 reading and 59 listening questions, plus a 71-entry
-vocabulary notebook with TTS overrides, part-of-speech tags, and targeted grammar
-notes.
+The 16 extracted engineering, software, and mathematics courses live in the
+separate `Test-driven-Study-Courses` repository (`/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`)
+and remain compatible via `npm run course:check -- <path>` and `npm run course:install -- <path>`.
 
 ## Features
 

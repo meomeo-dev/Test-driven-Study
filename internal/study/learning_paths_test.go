@@ -28,9 +28,14 @@ type conceptHarness struct {
 func newConceptHarness(t *testing.T) *conceptHarness {
 	t.Helper()
 	service, db, root, data := practiceDB(t)
-	fixture := filepath.Join(root, "tests", "fixtures", "courses", conceptCourse)
-	if _, err := storage.InstallCourse(context.Background(), db, fixture); err != nil {
-		t.Fatal(err)
+	for _, id := range []string{
+		conceptCourse, "basic-math", "roadmap-a", "roadmap-b", "roadmap-p",
+		"roadmap-mid", "roadmap-top", "roadmap-after-math",
+	} {
+		fixture := filepath.Join(root, "tests", "fixtures", "courses", id)
+		if _, err := storage.InstallCourse(context.Background(), db, fixture); err != nil {
+			t.Fatal(err)
+		}
 	}
 	return &conceptHarness{t: t, service: service, db: db, root: root, data: data}
 }
@@ -233,7 +238,7 @@ func TestLearningPathRejectsInvalidRequests(t *testing.T) {
 			study.ErrNotFound, "知识点不存在"},
 		{"missing-course", study.LearningPathRequest{DailyMinutes: 30},
 			study.ErrNotFound, "课程不存在"},
-		{"basic-math", study.LearningPathRequest{DailyMinutes: 30},
+		{"elementary-chinese", study.LearningPathRequest{DailyMinutes: 30},
 			study.ErrInvalid, "该课程尚未定义知识点"},
 	}
 	for _, test := range cases {
@@ -242,7 +247,7 @@ func TestLearningPathRejectsInvalidRequests(t *testing.T) {
 			t.Errorf("%s %+v: got %v, want %s", test.course, test.request, err, test.message)
 		}
 	}
-	if view, err := h.service.LearningPath(ctx, "basic-math"); err != nil || view.Path != nil {
+	if view, err := h.service.LearningPath(ctx, "elementary-chinese"); err != nil || view.Path != nil {
 		t.Fatalf("course without concepts: %+v, %v", view, err)
 	}
 }

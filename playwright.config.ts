@@ -22,7 +22,14 @@ export default defineConfig({
   }, {
     command: 'npm run course:install -- tests/fixtures/courses/intro-geometry'
       + ' && npm run course:install -- tests/fixtures/courses/concept-graph'
-      + ' && npm run course:install -- courses/golden-course-template && npm run dev',
+      + ' && npm run course:install -- tests/fixtures/courses/basic-math'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-a'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-b'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-p'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-mid'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-top'
+      + ' && npm run course:install -- tests/fixtures/courses/roadmap-after-math'
+      + ' && npm run dev',
     url: 'http://127.0.0.1:43287/api/health',
     reuseExistingServer: false,
     timeout: 180_000,

@@ -1,0 +1,41 @@
+{
+  "protocol_version": 1,
+  "course_id": "roadmap-mid",
+  "version": "1.0.0",
+  "title": "单片机样例",
+  "language": "zh-CN",
+  "units": [
+    {
+      "id": "basics",
+      "title": "基础单元",
+      "question_file": "questions/basics.json",
+      "lessons": [
+        {
+          "id": "basics",
+          "title": "基础讲义",
+          "file": "lessons/basics.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "roadmap-mid-c1",
+          "title": "单片机样例核心",
+          "estimated_minutes": 15,
+          "lesson": "basics"
+        }
+      ]
+    }
+  ],
+  "roadmap": {
+    "note": "先学 C 样例与电路样例。",
+    "prerequisites": [
+      {
+        "all_of": [
+          "roadmap-a",
+          "roadmap-b"
+        ],
+        "strength": "required"
+      }
+    ]
+  }
+}

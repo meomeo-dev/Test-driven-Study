@@ -13,7 +13,7 @@
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript 5"></a>
 </p>
 
-**Test-driven Study** 是一个完全自包含的本地化工程与学科课程学习系统。采用 Go 后端服务、React 19 + TypeScript 前端与嵌入式 SQLite 本地持久化存储。项目内置 18 门自研标准化课程，涵盖工业机械、电子嵌入式、软件编程、工程数学及基础学科。
+**Test-driven Study** 是一个完全自包含的本地化课程学习系统。采用 Go 后端服务、React 19 + TypeScript 前端与嵌入式 SQLite 本地持久化存储。当前主仓库默认内置三套核心课程包：[零基础英语](courses/beginner-english/README.md)、[小学语文拼音](courses/elementary-chinese/course.json) 与 [黄金标准课程模板](courses/golden-course-template/README.md)；其余 16 门理工与数学课程已拆分至独立课程仓库 `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`，可按需通过 `npm run course:install` 导入使用。
 
 日常学习与刷题完全在本地离线运行，无需注册账号、无需外置数据库、无需联网或配置付费 AI Key。
 
@@ -31,20 +31,15 @@
 
 ---
 
-## 桌面工业分拣技术学习主线
+## 主仓库内置课程
 
-系统设计以“桌面零件视觉检测与分拣工作站”为主线场景，将 18 门学科贯穿为一条清晰的工程学习与技能树：
+| 课程 | 版本 | 内容说明 |
+| :--- | :--- | :--- |
+| **[零基础英语](courses/beginner-english/README.md)** | `2.4.0` | 10 个单元、41 个知识点、424 道覆盖全部 v2 题型的题目，全部阅读/听力题均配英中对照，含 71 条生词本与 TTS/极简语法点拨。 |
+| **[小学语文拼音](courses/elementary-chinese/course.json)** | `1.0.4` | 填空题干配本地拼音录音，选项与解析支持汉字 TTS 与本地拼音串联朗读。 |
+| **[黄金标准课程模板](courses/golden-course-template/README.md)** | `1.4.0` | 覆盖全部 9 类 v2 题型、5 节点知识图谱、阅读/听力英中对照及 12 条生词本示例。 |
 
-| 工程阶段 | 涵盖课程 |
-| :--- | :--- |
-| **机械夹具** | [CAD 与 FDM 3D 打印](courses/cad-fdm-printing/README.md) |
-| **电子硬件与固件** | [电路基础](courses/circuit-fundamentals/README.md)、[C 语言编程](courses/c-programming/README.md)、[嵌入式微控制器 MCU](courses/embedded-mcu/README.md) |
-| **视觉检测与公差** | [Python 编程](courses/python-programming/README.md)、[机器视觉](courses/machine-vision/README.md)、[公差配合与几何测量](courses/tolerances-metrology/README.md) |
-| **算法评估与产线自动化** | [应用机器学习](courses/applied-machine-learning/README.md)、[工业自动化与 PLC 控制](courses/industrial-automation/README.md)、[PCB 设计选修](courses/pcb-design/README.md) |
-| **工程数学支撑底座** | [代数、三角与几何](courses/algebra-geometry/README.md)、[工程微积分](courses/engineering-calculus/README.md)、[线性代数](courses/linear-algebra/README.md)、[概率论与数理统计](courses/probability-statistics/README.md)、[自动控制原理](courses/automatic-control/README.md) |
-| **语言与通识基础** | [初级英语（含听力原声与听写文本）](courses/beginner-english/README.md)、[小学语文拼音](courses/elementary-chinese/course.json)、[基础数学](courses/basic-math/course.json) |
-
-每个标准课程包均包含独立的 7~8 个单元课件、概念知识图谱（Concept Graph）、124~159 道精编题目（支持单选、多选、判断、数值填空四类题型）以及自检实践项目。
+其余 16 门工程与数学拓展课程统一存放在独立仓库 `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`。
 
 ---
 

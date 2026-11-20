@@ -64,6 +64,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Modularized frontend `web/src/features/question-types/` into 9 independent
   question-type modules (`types/`) arranged in an acyclic 5-layer DAG behind
   typed registry and facade components.
+- Split the 16 non-flagship engineering, mathematics, and legacy sample courses
+  out into the separate `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`
+  repository, leaving only `beginner-english`, `elementary-chinese`, and
+  `golden-course-template` in `courses/` (`defaults.json`) and isolating
+  roadmap/math test fixtures under `tests/fixtures/courses/`.
 - Beginner English 2.1.0 (`protocol_version: 2`, upgraded from `1.4.1`) migrates
   all 10 units (41 concepts, 2,240 minutes) to v2 contracts and recalibrates
   lecture depth (`<!-- concepts -->` / `effort-lab` anchors) and typed item
