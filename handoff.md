@@ -28,6 +28,9 @@ Updated 2026-11-20 (America/New_York). Functional baseline `aaf6fed` on `main`.
   `grammar_note` schema support, `design-course-tts` vocabulary auditing, and
   updated glossaries in Golden Template `1.4.0` (12 entries) and Beginner
   English `2.4.0` (71 entries).
+  [#81](issues/0081-fix-align-vocabulary-tts-controls-with-shared-inline-pair.md)
+  (`4d8c6cd`) restores the two-button `(play/stop + regenerate)` pair inline at
+  the end of vocabulary terms and examples.
   See the [vocabulary authoring guide](docs/features/vocabulary/README.md) and
   [vocabulary design skill](.agents/skills/design-course-vocabulary/SKILL.md).
 

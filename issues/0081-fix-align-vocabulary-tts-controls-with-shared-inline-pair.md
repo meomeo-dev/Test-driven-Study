@@ -1,7 +1,8 @@
 ---
 id: 0081
 type: fix
-status: open
+status: closed
+closed-by: 4d8c6cd
 labels: [ui, tts, vocabulary]
 branch: fix/0081-align-vocabulary-tts-controls-with-shared-inline-pair
 created: 2026-11-20
@@ -51,3 +52,12 @@ play/stop + regenerate pair directly after the text like `RichContent`.
 Using inline `<p className="vocabulary-example-line"><span>{example}</span><AudioControls /></p>`
 inherits `.tts-audio-controls` inline spacing (`margin-left: 6px; vertical-align: middle`)
 directly from `study.css` without drifting across wide modals.
+
+### Verification
+
+- `npm run typecheck`: passed (`tsc --noEmit` exited 0).
+- `npm run test:unit`: `15` test files, `62/62` passed.
+- `npx playwright test tests/browser/vocabulary.spec.ts`: `5/5` passed (`22.9s`),
+  verifying both play/stop and regenerate buttons, `{ force: true }` regeneration,
+  inline proximity `< 20px` after example text, mutual exclusion, modal cleanup,
+  error banner handling, and 375px mobile layout.
