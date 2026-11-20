@@ -193,21 +193,26 @@ test('vocabulary entries play term and example TTS, render selective grammar, an
   await expect(gloveItem.locator('.vocabulary-grammar-note')).toHaveCount(0);
 
   const termPlay = gloveItem.getByRole('button', { name: '播放词条发音：glove' });
+  const termRegen = gloveItem.getByRole('button', { name: '重新生成词条发音：glove' });
   const examplePlay = gloveItem.getByRole('button', { name: '播放例句发音：glove' });
+  const exampleRegen = gloveItem.getByRole('button', { name: '重新生成例句发音：glove' });
   await expect(termPlay).toBeInViewport();
+  await expect(termRegen).toBeInViewport();
   await expect(examplePlay).toBeInViewport();
-  await expect(gloveItem.getByRole('button', { name: '重新生成发音' })).toHaveCount(0);
+  await expect(exampleRegen).toBeInViewport();
 
   await termPlay.click();
   await expect.poll(() => speechRequests[0]).toEqual({ text: 'glove', force: false });
+  await termRegen.click();
+  await expect.poll(() => speechRequests[1]).toEqual({ text: 'glove', force: true });
   await examplePlay.click();
-  await expect.poll(() => speechRequests[1]).toEqual({
+  await expect.poll(() => speechRequests[2]).toEqual({
     text: 'Put on your gloves before you touch the parts.',
     force: false,
   });
 
   await items.nth(2).getByRole('button', { name: '播放词条发音：My name is …' }).click();
-  await expect.poll(() => speechRequests[2]).toEqual({
+  await expect.poll(() => speechRequests[3]).toEqual({
     text: 'My name is',
     voice: 'tide',
     force: false,
@@ -268,6 +273,15 @@ test('vocabulary TTS enforces mutual exclusion and stops on modal close', async 
   await page.goto(target.memorizeUrl);
   await page.getByRole('button', { name: '生词本' }).click();
   const dialog = page.getByRole('dialog', { name: '生词本' });
+
+  const inlineGap = await dialog.locator('.vocabulary-example-line').first().evaluate(line => {
+    const text = line.querySelector('span')?.getBoundingClientRect();
+    const controls = line.querySelector('.tts-audio-controls')?.getBoundingClientRect();
+    if (!text || !controls) return null;
+    return controls.left - text.right;
+  });
+  expect(inlineGap).not.toBeNull();
+  expect(Math.abs(inlineGap!)).toBeLessThan(20);
 
   await dialog.getByRole('button', { name: '播放词条发音：glove' }).click();
   const stopGlove = dialog.getByRole('button', { name: '停止词条发音：glove' });

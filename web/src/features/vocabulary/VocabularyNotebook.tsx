@@ -45,8 +45,8 @@ function VocabularyEntryItem({
           <h3 lang="en">{entry.term}</h3>
           {termSpeech && (
             <AudioControls text={termSpeech.text} voice={termSpeech.voice}
-              speed={termSpeech.speed} allowRegenerate={false}
-              targetLabel={`词条发音：${entry.term}`} onError={onTtsError} />
+              speed={termSpeech.speed} targetLabel={`词条发音：${entry.term}`}
+              onError={onTtsError} />
           )}
         </span>
         <span className="vocabulary-category">{categories[entry.category]}</span>
@@ -59,14 +59,14 @@ function VocabularyEntryItem({
       )}
       {entry.example && (
         <div className="vocabulary-example">
-          <div className="vocabulary-example-line">
-            <p lang="en">{entry.example}</p>
+          <p className="vocabulary-example-line" lang="en">
+            <span>{entry.example}</span>
             {exampleSpeech && (
               <AudioControls text={exampleSpeech.text} voice={exampleSpeech.voice}
-                speed={exampleSpeech.speed} allowRegenerate={false}
-                targetLabel={`例句发音：${entry.term}`} onError={onTtsError} />
+                speed={exampleSpeech.speed} targetLabel={`例句发音：${entry.term}`}
+                onError={onTtsError} />
             )}
-          </div>
+          </p>
           <p>{entry.example_translation}</p>
         </div>
       )}

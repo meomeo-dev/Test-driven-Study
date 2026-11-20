@@ -154,6 +154,8 @@ export function AudioControls(props: AudioControlsProps) {
   const stopLabel = targetLabel ? `停止${targetLabel}` : '停止发音';
   const label = sequence ? (playing ? '停止解析' : '播放解析')
     : playing ? stopLabel : pinyin ? `播放拼音：${text}` : playLabel;
+  const regenLabel = sequence ? '重新生成解析语音'
+    : targetLabel ? `重新生成${targetLabel}` : '重新生成发音';
   return (
     <span className="tts-audio-controls">
       <button
@@ -177,7 +179,7 @@ export function AudioControls(props: AudioControlsProps) {
       {hasSpeech && allowRegenerate && <button
         type="button"
         className="tts-btn tts-regen-btn"
-        aria-label={sequence ? '重新生成解析语音' : '重新生成发音'}
+        aria-label={regenLabel}
         title={sequence ? '强制重新合成解析语音' : '强制重新合成语音'}
         disabled={status === 'loading'}
         onClick={event => handleClick(event, true)}
