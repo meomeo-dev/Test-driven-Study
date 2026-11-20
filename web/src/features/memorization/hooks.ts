@@ -4,12 +4,21 @@ import * as api from '../../api/client';
 import { exposure } from '../../api/practice';
 
 export function useStudyQueries(filters: api.Filters) {
-  const overview = useQuery({ queryKey: ['overview', filters.subject],
-    queryFn: ({ signal }) => api.overview(filters.subject, signal) });
-  const list = useQuery({ queryKey: ['questions', filters],
-    queryFn: ({ signal }) => api.questions(filters, signal) });
-  return { overview, list };
+  return useQuery<StudySnapshot>({
+    queryKey: ['memorization', filters],
+    queryFn: async ({ signal }) => {
+      const [overview, rows] = await Promise.all([
+        api.overview(filters.subject, signal), api.questions(filters, signal),
+      ]);
+      return { overview, rows };
+    },
+    placeholderData: previous => previous?.overview.subject_id === filters.subject
+      ? { overview: previous.overview, rows: [] }
+      : undefined,
+  });
 }
+
+export type StudySnapshot = { overview: api.Overview; rows: api.Summary[] };
 
 export function useQuestionQuery(id: number) {
   return useQuery({ queryKey: ['question', id], enabled: id > 0,
@@ -18,14 +27,15 @@ export function useQuestionQuery(id: number) {
     placeholderData: keepPreviousData,
     queryFn: ({ signal }) => api.detail(id, signal) });
 }
-export function useProgressMutation(subject: number) {
+export function useProgressMutation() {
   const client = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, state }: { id: number; state: api.ProgressState }) => api.progress(id, state),
+    mutationFn: ({ id, state }: { subject: number; id: number; state: api.ProgressState }) =>
+      api.progress(id, state),
     onSuccess: async (_, input) => {
       await Promise.all([
-        client.invalidateQueries({ queryKey: ['overview', subject] }),
-        client.invalidateQueries({ queryKey: ['questions'] }),
+        client.invalidateQueries({ queryKey: ['memorization', { subject: input.subject }] }),
+        client.invalidateQueries({ queryKey: ['overview', input.subject] }),
         client.invalidateQueries({ queryKey: ['question', input.id] }),
       ]);
     },

@@ -57,8 +57,10 @@
 .grid-question.mastered { background: var(--success-bg); color: var(--success); }
 .grid-question.review { background: var(--warning-bg); color: var(--warning); }
 .grid-question.current {
-  border: 2px solid var(--primary); background: var(--primary-soft);
-  color: var(--link); font-weight: 650;
+  border: 2px solid var(--primary); font-weight: 650;
+}
+.grid-question.current:where(.unlearned, .unanswered) {
+  background: var(--primary-soft); color: var(--link);
 }
 .grid-question.correct, .navigation-legend i.correct {
   background: var(--success-bg); color: var(--success);
