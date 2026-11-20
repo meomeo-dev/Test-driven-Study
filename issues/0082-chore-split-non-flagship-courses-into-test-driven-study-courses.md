@@ -1,7 +1,8 @@
 ---
 id: 0082
 type: chore
-status: open
+status: closed
+closed-by: 1733272
 labels: [course, repository]
 branch: chore/0082-split-non-flagship-courses-into-test-driven-study-courses
 created: 2026-11-20
@@ -63,3 +64,16 @@ Moving test dependencies (roadmap graph fixtures and math palace/exam fixture)
 into `tests/fixtures/courses/` isolates acceptance and Go tests cleanly from
 bundled product courses while keeping user installations focused on the three
 retained courses.
+
+### Verification
+
+- `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses` initialized on `main`
+  (`5163522`, 324 files across 16 course packages + `courses/defaults.json` +
+  `README.md`).
+- `courses/` retains `beginner-english`, `elementary-chinese`,
+  `golden-course-template`, `defaults.json`, `starter/`, and `prompts.go`;
+  `npm run course:check` passed on all three retained packages.
+- `node --test scripts/audit-course-effort.test.mjs`: `6/6` passed.
+- `npm run check`: `issue:check` (`0001–0082`), `check:generated`, `test:unit`
+  (`62/62`), `test:go` (all packages), `test:startup` (`4/4`), `build`, and
+  `test:e2e` (`29/29` Playwright specs) all passed cleanly.

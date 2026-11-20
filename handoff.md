@@ -1,6 +1,6 @@
 # Development Handoff
 
-Updated 2026-11-20 (America/New_York). Baseline `95be005` on `main`.
+Updated 2026-11-20 (America/New_York). Baseline `1733272` on `main`.
 
 ## Current learning behavior
 
@@ -48,6 +48,10 @@ updates are recorded in
 [#75](issues/0075-docs-document-bilingual-transcripts-in-course-authoring-skills.md).
 The English curriculum research remains in the
 [progress tracker](docs/research/step-up-english-1/progress.json).
+The 16 non-flagship engineering, mathematics, and legacy courses were extracted to
+`/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses` (`#82`, `1733272`), leaving
+only `beginner-english`, `elementary-chinese`, and `golden-course-template` in
+`courses/defaults.json`.
 
 ## Verification
 
