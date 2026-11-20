@@ -1,7 +1,8 @@
 ---
 id: 0078
 type: feat
-status: open
+status: closed
+closed-by: ea6db16
 labels: []
 branch: feat/0078-add-vocabulary-notebook-to-english-memorization
 created: 2026-11-20
@@ -34,3 +35,13 @@ Personal vocabulary editing, automatic extraction, paid services, and changes to
 ## 讨论
 
 Course manifests declare a versioned asset. Its presence gates the notebook because the existing language field describes course presentation.
+
+### Verification
+
+- Both packages passed course validation and TTS audits. Beginner English
+  passed its strict effort audit. Independent verification confirmed 83
+  entries and 133 question references across the 11 units.
+- Generated bindings, 57 frontend unit tests, Go tests, four startup tests,
+  and the application build passed.
+- Browser coverage passed for all 27 cases. Two notebook tests passed on a
+  focused rerun after accounting for the cancelled development-mode request.

@@ -1,6 +1,6 @@
 # Development Handoff
 
-Updated 2026-11-20 (America/New_York). Functional baseline `6cb347d` on `main`.
+Updated 2026-11-20 (America/New_York). Functional baseline `ea6db16` on `main`.
 
 ## Current learning behavior
 
@@ -17,6 +17,16 @@ Updated 2026-11-20 (America/New_York). Functional baseline `6cb347d` on `main`.
   [#76](issues/0076-fix-synchronize-memorization-progress-and-question-navigation.md).
 - The memorization footer shows the filtered ordinal and total between Previous
   and Next. See [#77](issues/0077-fix-move-memorization-question-position-between-navigation-butto.md).
+
+## Vocabulary notebook
+
+- [#78](issues/0078-feat-add-vocabulary-notebook-to-english-memorization.md) adds
+  an offline course-provided glossary to memorization, with question, unit, and
+  course scopes. The repository packages provide 12 entries in Golden Template
+  1.3.0 and 71 in Beginner English 2.3.0.
+- The new versions were validated and installed in isolated browser fixtures.
+  The live catalog still lists the earlier versions in the table below.
+  See the [vocabulary authoring guide](docs/features/vocabulary/README.md).
 
 ## Course packages and authoring
 
