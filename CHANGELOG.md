@@ -88,6 +88,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   when the filter removes that question. Selected tiles retain learning colors.
 - Wrapped long original question IDs inside navigator tiles and enabled
   independent scrolling in the shared study sidebar.
+- Restored the shared two-button `(play/stop + regenerate)` TTS control pair
+  inline directly after vocabulary terms and examples, and scoped regenerate
+  accessibility labels when `targetLabel` is provided.
 
 ## [0.1.0] - 2026-11-17
 

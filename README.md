@@ -17,8 +17,9 @@ A local course study application with a Go backend, React and TypeScript
 frontend, and SQLite storage. It bundles 18 default courses (including Basic Math
 and [Elementary Chinese](courses/elementary-chinese/course.json)) alongside an
 installable v2 template course ([黄金标准课程模板](courses/golden-course-template/README.md)).
-Version 1.3.0 demonstrates all nine question types, a concept-based learning
-path, and bilingual reading and listening materials.
+Version 1.4.0 demonstrates all nine question types, a concept-based learning
+path, bilingual reading and listening materials, and a vocabulary notebook with
+TTS playback and minimalist grammar notes.
 
 The interface is in Chinese. Studying does not require an account, API key,
 or external database.
@@ -52,9 +53,11 @@ baseline on a separate batch. Record missed defects, false rejects, and cycle ti
 The technical courses in this track provide lessons, concept graphs, graded
 practice, and a self-check project. The course roadmap shows the prerequisites
 named in each course README. For example, Microcontrollers requires Circuits
-and C. Beginner English 2.3.0 has 10 units and 424 questions across all nine
-v2 question types. It includes English–Chinese study translations for all 39
-reading and 59 listening questions.
+and C. Beginner English 2.4.0 has 10 units, 41 concepts, and 424 questions
+across all nine v2 question types. It includes English–Chinese study
+translations for all 39 reading and 59 listening questions, plus a 71-entry
+vocabulary notebook with TTS overrides, part-of-speech tags, and targeted grammar
+notes.
 
 ## Features
 
@@ -70,10 +73,12 @@ reading and 59 listening questions.
   The toolbar shows subject-wide study counts. The footer shows the current
   position and filtered total between Previous and Next.
 - **Vocabulary notebook (生词本):** in memorization, open the notebook for
-  the current question, unit, or course. Search in English or Chinese and
-  filter words, word groups, phrases, collocations, idioms, or function phrases.
-  The English course packages include definitions and bilingual examples for
-  offline study.
+  the current question, unit, or course. Search in English or Chinese, filter
+  words, word groups, phrases, collocations, idioms, or function phrases, and
+  play or regenerate term and example audio inline after the text. Entries
+  include definitions, optional part-of-speech labels and minimalist grammar
+  notes, and bilingual examples; see the
+  [vocabulary guide](docs/features/vocabulary/README.md).
 - **Practice (答题模式):** select answers with number keys, submit for grading,
   then view the explanation. Every submitted attempt is saved separately.
 - **[Mock exams (模拟考试)](docs/features/mock-exam/README.md):** use the same

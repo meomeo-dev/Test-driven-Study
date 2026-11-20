@@ -43,6 +43,7 @@ relevant issue and feature documentation before changing behavior.
 | `contracts/course/`, `contracts/http/`, `db/` | Course schemas, OpenAPI and SQL queries. |
 | `data/`, `assets/img/` | Original question exports and local question media. |
 | `assets/audio/pinyin/` | Bundled Pinyin recordings and source attribution. |
+| `.agents/skills/`, `scripts/` | Repository course/TTS/vocabulary/swarm skills, effort gate, and tooling. |
 | `issues/`, `docs/` | Requirements, frozen inputs, feature evidence and UI references. |
 
 Change the source of generated code:
@@ -114,8 +115,16 @@ inspect their state before restarting services or changing configuration.
 - Declare audio in course data. Use local recordings for Pinyin and TTS for Han
   text in Elementary Chinese. Explicit TTS voices take precedence over the
   saved default, and the selected voice determines the cache entry. Keep
-  playback controls consistent across options before grading. Use
-  `design-course-tts` to audit course audio segmentation and all-caps overrides.
+  playback controls consistent across options before grading, and keep inline
+  `(play/stop + regenerate)` controls attached directly after spoken text. Use
+  `design-course-tts` to audit course audio segmentation, vocabulary speech
+  overrides (`term_tts`/`example_tts`), and all-caps overrides.
+- Author and recalibrate v2 course packages with `design-course-package` and
+  `scripts/audit-course-effort.mjs` so concept `estimated_minutes` align with
+  lecture depth, anchored labs, and typed question workloads. For v2 vocabulary
+  assets (`vocabulary_file`), follow `design-course-vocabulary`: assign `pos`
+  only on `word` entries, write `grammar_note` only when non-obvious rules apply,
+  and audit with `audit-course-vocabulary.mjs --strict` alongside `course:check`.
 - Use v2 `study_translation` for aligned study text in reading and listening.
   Match `material` to nonblank `passage` text segments or structured
   `transcript` lines in order, and key sub-question and option translations by

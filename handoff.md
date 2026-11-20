@@ -1,6 +1,6 @@
 # Development Handoff
 
-Updated 2026-11-20 (America/New_York). Functional baseline `aaf6fed` on `main`.
+Updated 2026-11-20 (America/New_York). Baseline `95be005` on `main`.
 
 ## Current learning behavior
 
@@ -65,6 +65,13 @@ The English curriculum research remains in the
   `tests/browser/vocabulary.spec.ts`), plus `design-course-tts` (9 tests, 0
   audit issues) and strict effort audit passing for `golden-course-template@1.4.0`
   and `beginner-english@2.4.0`.
+- [#80](issues/0080-chore-add-design-course-vocabulary-repository-skill.md)
+  (`7cd142e`) adds the `design-course-vocabulary` skill and CLI gate (`4/4` unit
+  tests passed; `--strict` passed with 0 errors/warnings on both English courses).
+- [#81](issues/0081-fix-align-vocabulary-tts-controls-with-shared-inline-pair.md)
+  (`4d8c6cd`) records `npm run typecheck`, `npm run test:unit` (15 files / 62
+  tests), `tests/browser/vocabulary.spec.ts` (`5/5`), `npm run issue:check`,
+  `npm run build`, and a live restart verification on ports `43387`/`43388`.
 
 See [README.md](README.md) for setup, [AGENTS.md](AGENTS.md) for repository
 rules, and [CHANGELOG.md](CHANGELOG.md) for unreleased changes.
