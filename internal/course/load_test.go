@@ -18,8 +18,19 @@ func TestScaffoldAndValidateCourse(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if first.Manifest.ID != "basic-math" || len(first.Units["intro"].Items) != 1 {
-		t.Fatalf("unexpected package: %+v", first)
+	if first.Manifest.ProtocolVersion != 2 || first.Manifest.ID != "basic-math" ||
+		len(first.Units["intro"].Items) != 3 {
+		t.Fatalf("unexpected v2 scaffold package: %+v", first)
+	}
+	summary := first.ConceptSummary()
+	if summary.Concepts != 1 || summary.TaggedItems != 3 ||
+		summary.UntaggedItems != 0 || len(summary.SparseConcepts) != 0 {
+		t.Fatalf("unexpected scaffold concept summary: %+v", summary)
+	}
+	tfItem := first.Units["intro"].Items[2]
+	if tfItem.Type != TrueFalse || tfItem.Grading.Boolean == nil ||
+		!*tfItem.Grading.Boolean || tfItem.Analysis == nil {
+		t.Fatalf("expected v2 true_false item with grading.value and analysis: %+v", tfItem)
 	}
 	profile := first.Manifest.AIProfile
 	if profile == nil || !first.IsStoredAsset(profile.PalaceTemplate) ||

@@ -10,32 +10,44 @@ const chromeLocations = [
 const channel = process.env.PLAYWRIGHT_CHANNEL
   ?? (!existsSync(chromium.executablePath()) && chromeLocations.some(existsSync) ? 'chrome' : undefined);
 
+const fixtureCourses = [
+  'tests/fixtures/courses/intro-geometry',
+  'tests/fixtures/courses/concept-graph',
+  'tests/fixtures/courses/basic-math',
+  'tests/fixtures/courses/roadmap-a',
+  'tests/fixtures/courses/roadmap-b',
+  'tests/fixtures/courses/roadmap-p',
+  'tests/fixtures/courses/roadmap-mid',
+  'tests/fixtures/courses/roadmap-top',
+  'tests/fixtures/courses/roadmap-after-math',
+];
+
+const dataDir = path.resolve('var/browser-acceptance', `run-${process.pid}-${Date.now()}`);
+const serverBinary = path.resolve(
+  'var/bin',
+  process.platform === 'win32' ? 'test-driven-study.exe' : 'test-driven-study',
+);
+const distIndex = path.resolve('dist/index.html');
+const buildStep = existsSync(serverBinary) && existsSync(distIndex) ? '' : 'npm run build && ';
+const installFixtures = `go run ./cmd/course install --data-dir "${dataDir}" ${fixtureCourses.join(' ')}`;
+
 export default defineConfig({
   testDir: './tests/browser',
   fullyParallel: false,
   workers: 1,
-  use: { baseURL: 'http://127.0.0.1:43287', trace: 'retain-on-failure' },
+  use: { baseURL: 'http://127.0.0.1:43288', trace: 'retain-on-failure' },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'], channel } }],
   webServer: [{
     command: 'node tests/fixtures/image-provider.mjs',
     url: 'http://127.0.0.1:43289/health', reuseExistingServer: false,
   }, {
-    command: 'npm run course:install -- tests/fixtures/courses/intro-geometry'
-      + ' && npm run course:install -- tests/fixtures/courses/concept-graph'
-      + ' && npm run course:install -- tests/fixtures/courses/basic-math'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-a'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-b'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-p'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-mid'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-top'
-      + ' && npm run course:install -- tests/fixtures/courses/roadmap-after-math'
-      + ' && npm run dev',
-    url: 'http://127.0.0.1:43287/api/health',
+    command: `${buildStep}${installFixtures} && "${serverBinary}"`,
+    url: 'http://127.0.0.1:43288/api/health',
     reuseExistingServer: false,
     timeout: 180_000,
     env: {
       STUDY_API_PORT: '43288', STUDY_WEB_PORT: '43287',
-      STUDY_DATA_DIR: path.resolve('var/browser-acceptance', `run-${process.pid}-${Date.now()}`),
+      STUDY_DATA_DIR: dataDir,
       STUDY_LLM_CONFIG_FILE: path.resolve('var/browser-acceptance/absent-llm-config'),
       GPT_1_BASE_URL: 'http://127.0.0.1:43289/v1', GPT_1_API_KEY: 'isolated-llm-fixture',
       GPT_1_MODELS: 'fixture-reasoner, fixture-secondary', GPT_1_PROXY_URL: '',
@@ -45,7 +57,9 @@ export default defineConfig({
       STUDY_IMAGE_CONFIG_FILE: path.resolve('var/browser-acceptance/absent-image-config'),
       GPT_IMAGE2_1_BASE_URL: 'http://127.0.0.1:43289/v1',
       GPT_IMAGE2_1_API_KEY: 'isolated-browser-fixture',
-      GPT_IMAGE2_1_MODELS: 'gpt-image-2', GPT_IMAGE2_1_PROXY_URL: '', HTTPS_PROXY: '',
+      GPT_IMAGE2_1_MODELS: 'gpt-image-2', GPT_IMAGE2_1_PROXY_URL: '',
+      STUDY_TTS_API_KEY: '', DEEPSEEK_API_KEY: '', STUDY_TTS_PROXY_URL: '',
+      HTTP_PROXY: '', HTTPS_PROXY: '',
     },
   }],
 });

@@ -21,17 +21,72 @@ func Scaffold(parent, id, title, language string) (string, error) {
 	}
 	directory := filepath.Join(parent, id)
 	return createPackage(directory, func(directory string) error {
-		manifest := Manifest{ProtocolVersion: 1, ID: id, Version: "1.0.0",
-			Title: title, Language: language, AIProfile: &starterPalaceRef, Units: []Unit{{
-				ID: "intro", Title: "Introduction", QuestionFile: "questions/intro.json",
-				Lessons: []LessonRef{{ID: "intro", Title: "Getting started",
-					File: "lessons/intro.md"}},
-			}}}
-		items := []Item{{
-			Prompt:      Prompt{ID: "1", Type: Numeric, Stem: RichContent{Text: "What is 1 divided by 4?"}},
-			Grading:     Grading{Value: "0.25", AbsoluteTolerance: "0"},
-			Explanation: "Dividing one by four gives one quarter.",
-		}}
+		manifest := Manifest{
+			ProtocolVersion: 2,
+			ID:              id,
+			Version:         "1.0.0",
+			Title:           title,
+			Language:        language,
+			AIProfile:       &starterPalaceRef,
+			Units: []Unit{{
+				ID:           "intro",
+				Title:        "Introduction",
+				QuestionFile: "questions/intro.json",
+				Lessons: []LessonRef{{
+					ID:    "intro",
+					Title: "Getting started",
+					File:  "lessons/intro.md",
+				}},
+				Concepts: []Concept{{
+					ID:               "intro-basics",
+					Title:            "Getting Started",
+					Summary:          "Core fraction, decimal, and percentage conversions for this starter unit.",
+					EstimatedMinutes: 5,
+				}},
+			}},
+		}
+		trueVal, falseVal := true, false
+		items := []Item{
+			{
+				Prompt: Prompt{
+					ID:   "1",
+					Type: Numeric,
+					Stem: RichContent{Text: "What is 1 divided by 4?"},
+				},
+				Grading:  Grading{Value: "0.25", AbsoluteTolerance: "0"},
+				Analysis: &RichContent{Text: "1 除以 4 等于 0.25。"},
+				Concepts: []string{"intro-basics"},
+			},
+			{
+				Prompt: Prompt{
+					ID:   "2",
+					Type: SingleChoice,
+					Stem: RichContent{Text: "0.5 等价于哪一项？"},
+					Options: []Option{
+						{ID: "a", Text: "1/2"},
+						{ID: "b", Text: "1/4"},
+						{ID: "c", Text: "3/4"},
+					},
+				},
+				Grading:  Grading{ChoiceIDs: []string{"a"}},
+				Analysis: &RichContent{Text: "1/2 等于 0.5，其余选项分别等于 0.25 和 0.75。"},
+				Concepts: []string{"intro-basics"},
+			},
+			{
+				Prompt: Prompt{
+					ID:   "3",
+					Type: TrueFalse,
+					Stem: RichContent{Text: "0.25 与 25% 数值相等。"},
+					Options: []Option{
+						{ID: "t", Text: "正确", Value: &trueVal},
+						{ID: "f", Text: "错误", Value: &falseVal},
+					},
+				},
+				Grading:  Grading{Boolean: &trueVal, booleanValueKey: true},
+				Analysis: &RichContent{Text: "0.25 乘以 100% 等于 25%，两者数值相等。"},
+				Concepts: []string{"intro-basics"},
+			},
+		}
 		if err := writeJSON(directory, ManifestFile, manifest); err != nil {
 			return err
 		}
@@ -41,8 +96,18 @@ func Scaffold(parent, id, title, language string) (string, error) {
 		if err := writeStarterPalace(directory); err != nil {
 			return err
 		}
-		return writeContent(directory, "lessons/intro.md",
-			[]byte("Replace this lesson and the sample exercise with your course content.\n"))
+		lesson := strings.Join([]string{
+			"# Getting Started",
+			"",
+			"## Getting Started",
+			"",
+			"<!-- concepts: intro-basics -->",
+			"",
+			"This starter lesson introduces basic decimal, fraction, and percentage conversions.",
+			"Review the examples, then complete the three starter exercises to confirm mastery.",
+			"",
+		}, "\n")
+		return writeContent(directory, "lessons/intro.md", []byte(lesson))
 	})
 }
 

@@ -85,8 +85,10 @@ func install(args []string) error {
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
-	if flags.NArg() != 1 {
-		return errors.New("usage: course install [--data-dir <directory>] <directory-or-zip>")
+	if flags.NArg() < 1 {
+		return errors.New(
+			"usage: course install [--data-dir <directory>] <directory-or-zip> [path ...]",
+		)
 	}
 	ctx := context.Background()
 	db, err := openDB(ctx, *dataDirectory)
@@ -94,11 +96,14 @@ func install(args []string) error {
 		return err
 	}
 	defer db.Close()
-	manifest, err := storage.InstallCourse(ctx, db, flags.Arg(0))
-	if err == nil {
+	for _, target := range flags.Args() {
+		manifest, err := storage.InstallCourse(ctx, db, target)
+		if err != nil {
+			return fmt.Errorf("install %s: %w", target, err)
+		}
 		fmt.Printf("installed %s@%s\n", manifest.ID, manifest.Version)
 	}
-	return err
+	return nil
 }
 
 func pack(args []string) error {

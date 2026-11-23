@@ -8,6 +8,7 @@
     "course:new": "go run ./cmd/course new",
     "course:check": "go run ./cmd/course check",
     "course:install": "go run ./cmd/course install",
+    "course:audit": "node scripts/course-audit.mjs",
     "issue:new": "node scripts/issue-new.mjs",
     "issue:check": "node scripts/issue-check.mjs",
     "issue:worktree": "node scripts/issue-worktree.mjs",

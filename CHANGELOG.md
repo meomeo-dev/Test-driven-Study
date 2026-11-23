@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Explicit manually-checked `"Allow direct HTTPS"` (`allow_direct_https`,
+  default `false`) opt-in across LLM, Image/Palace, and TTS settings, HTTP
+  contracts, Go transports, and Settings UI while enforcing explicit
+  proxy-by-default and zero silent direct fallback (`#86`).
+- Append-only immutable `attempt_evaluations` table (`00017`), persisted cached
+  LLM written feedback (`cached: true`), and offline rubric/reference self-check
+  mastery wired across practice, review book, learning analysis, and concept
+  progression (`#87`).
+- Safe local `.zip` course import and deterministic packing
+  (`internal/course/archive.go`), `cmd/course` `pack`/`deactivate`/`rollback`
+  commands, non-destructive course lifecycle HTTP APIs (`GET /api/courses/packages`,
+  multipart `POST /api/courses/install`, version activate/deactivate) preserving
+  `question_keys` and learner history, and `/courses` package management UI
+  (`#88`).
+- Unified `npm run course:audit` CLI (`scripts/course-audit.mjs`) combining
+  `course:check`, effort, TTS, and conditional vocabulary gates, plus GitHub
+  Actions CI workflow (`.github/workflows/ci.yml`) (`#89`).
 - Five v2 course question types (`cloze`, `listening`, `reading_comprehension`,
   `writing`, `translation`) with schema validation, structured evaluation,
   optional AI feedback, and the installable v2 showcase package
@@ -52,6 +69,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Upgraded `course:new` (`course.Scaffold`) to emit valid `protocol_version: 2`
+  course packages with concept graphs and tagged v2 items, extended
+  `cmd/course install` to accept multiple paths/zips in one invocation, and
+  updated Playwright E2E (`playwright.config.ts`) to batch-install fixtures and
+  serve the compiled `var/bin/test-driven-study` binary (`#89`).
 - Modularized `scripts/curriculum_batch_workflow.py` into the Python 3.9+ stdlib
   package `scripts/curriculum_workflow/` (plus the thin
   `scripts/curriculum_batch_run_workflow.py` shim), defaulting to headless
@@ -86,6 +108,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Added `/learning` to built-mode SPA routing (`isFrontendRoute`), extended
+  `written_feedback` HTTP write deadlines and upgraded evaluation prompts to
+  strict `json_schema` (with aligned mock fixture routing), fixed DeepSeek TTS
+  `Test()` to send `"voice_id"`, and excluded 24h-cooldown `learning` items from
+  active review practice queues while preserving review-book counts (`#85`).
 - Unified `cloze`, `listening`, `reading_comprehension`, `writing`, and
   `translation` layout boundaries across memorization, practice, exam review,
   and memory palace reference views.

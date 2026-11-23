@@ -80,6 +80,58 @@ func TestCourseCLIPackCheckInstallRollbackDeactivate(t *testing.T) {
 	assertCourseActiveState(t, workDir, dataDir, "cli-zip-demo", false, "")
 }
 
+func TestCourseCLIInstallMultiplePaths(t *testing.T) {
+	workDir := t.TempDir()
+	dataDir := filepath.Join(workDir, "data")
+	coursesDir := filepath.Join(workDir, "courses")
+
+	origWD, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chdir(workDir); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = os.Chdir(origWD) })
+
+	dirA, err := course.Scaffold(coursesDir, "batch-alpha", "Batch Alpha", "en")
+	if err != nil {
+		t.Fatal(err)
+	}
+	dirB, err := course.Scaffold(coursesDir, "batch-beta", "Batch Beta", "zh-CN")
+	if err != nil {
+		t.Fatal(err)
+	}
+	zipB := filepath.Join(workDir, "batch-beta.zip")
+	if err := course.PackZip(dirB, zipB); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := run([]string{"install", "--data-dir", dataDir, dirA, zipB}); err != nil {
+		t.Fatalf("multi-path course install failed: %v", err)
+	}
+
+	ctx := context.Background()
+	db, err := storage.Open(ctx, workDir, dataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	pkgs, err := storage.ListInstalledPackages(ctx, db)
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := map[string]bool{}
+	for _, pkg := range pkgs {
+		if pkg.Active && pkg.ActiveVersion == "1.0.0" {
+			found[pkg.CourseID] = true
+		}
+	}
+	if !found["batch-alpha"] || !found["batch-beta"] {
+		t.Fatalf("expected both batch courses installed and active, got %+v", pkgs)
+	}
+}
+
 func TestCourseCLIUsageErrors(t *testing.T) {
 	cases := [][]string{
 		nil,
