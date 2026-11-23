@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Repository skill `desktop-gui-design-knowledge`
+  (`.agents/skills/desktop-gui-design-knowledge/`) providing desktop platform
+  guidelines, design tokens, and Tauri 2 native-shell references (`#83`).
 - Explicit manually-checked `"Allow direct HTTPS"` (`allow_direct_https`,
   default `false`) opt-in across LLM, Image/Palace, and TTS settings, HTTP
   contracts, Go transports, and Settings UI while enforcing explicit

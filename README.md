@@ -54,9 +54,11 @@ and remain compatible via `npm run course:check -- <path>` and `npm run course:i
 ## Features
 
 - **Courses (所有课程):** select a package and open the shared learning
-  workspace. Each course keeps its own progress, practice, exams and AI
-  history. They support single choice, multiple choice, true/false and decimal
-  answers, plus [five v2 question types](docs/features/question-types/README.md).
+  workspace, import local `.zip` course packages directly in the catalog UI, and
+  switch active versions, deactivate, or reactivate installed courses while
+  preserving learner history. Each course keeps its own progress, practice, exams
+  and AI history. They support single choice, multiple choice, true/false and
+  decimal answers, plus [five v2 question types](docs/features/question-types/README.md).
 
 - **Subject guide (科目指南):** read the selected unit's lessons in a
   full-width reading pane with study guidance.
@@ -72,7 +74,11 @@ and remain compatible via `npm run course:check -- <path>` and `npm run course:i
   notes, and bilingual examples; see the
   [vocabulary guide](docs/features/vocabulary/README.md).
 - **Practice (答题模式):** select answers with number keys, submit for grading,
-  then view the explanation. Every submitted attempt is saved separately.
+  then view the explanation. Every submitted attempt is saved separately. For
+  `writing` and `translation` items, post-submit review supports offline
+  rubric/reference self-check (`自评通过` / `仍需改进`) alongside optional
+  persisted AI rubric feedback (`attempt_evaluations`), feeding directly into
+  the review book, learning analysis, and concept mastery.
 - **[Mock exams (模拟考试)](docs/features/mock-exam/README.md):** use the same
   timed terminal, saved papers and graded feedback for every question bank.
 - **Learning analysis (学习分析):** inspect chapter errors, recent accuracy,
@@ -170,6 +176,7 @@ Open [the built app](http://127.0.0.1:43388/courses).
 
 ```sh
 npm run course:new -- --id my-course --title "My Course" --language en
+npm run course:audit -- --strict courses/my-course
 npm run course:check -- courses/my-course
 npm run course:install -- courses/my-course
 ```
@@ -177,14 +184,22 @@ npm run course:install -- courses/my-course
 When using `pnpm run` instead of `npm run`, omit the standalone `--` separator
 before script arguments (`pnpm run course:check courses/my-course`).
 
-Edit the generated `course.json` and sample question before installing. The
-scaffold also supplies editable research, scene planning and image prompts
-under `profiles/`. Its `PROMPT-AUTHORING.md` includes fill-ins, worked examples
-and a review rubric for the three stages. The Markdown lesson is optional.
-The Go loader validates local references and typed answers in both `check`
-and `install`. Reload the catalog after installation. Use
+`course:new` scaffolds a `protocol_version: 2` package with a concept graph,
+tagged v2 sample items, and editable research, scene planning and image prompts
+under `profiles/` (`PROMPT-AUTHORING.md` includes fill-ins, worked examples, and
+a review rubric). `course:audit` runs `course:check`, effort auditing
+(`scripts/audit-course-effort.mjs`), TTS auditing, and conditional vocabulary
+auditing in one command. Both `course:check` and `course:install` accept a
+directory or a `.zip` archive (`course:install` also accepts multiple paths in
+one invocation). Reload the catalog after installation, or import `.zip`
+packages and switch/deactivate versions directly on `/courses`. Use
 `--data-dir <directory>` before the package path if your server gets
 `STUDY_DATA_DIR` from a dotenv file.
+
+Additional CLI lifecycle commands are available via `go run ./cmd/course`:
+`pack <dir> [out.zip]` builds a deterministic validated `.zip` package,
+`deactivate <course-id>` hides a course without deleting learner history, and
+`rollback <course-id> [version]` reactivates an installed version.
 
 A course update preserves the course ID and existing item IDs and uses a new
 package version. Startup installs only bundled courses that are missing, so an
@@ -264,11 +279,16 @@ Resolution offers 1K/2K/4K tiers with visible pixel dimensions. All presets obey
 the model's multiple-of-16, edge, ratio, and pixel-area limits. The top 2:3 tier
 is capped at 2336×3504 and labeled accordingly; 9:16 4K is 2160×3840.
 
-Remote model requests and result downloads require a proxy and never fall back
-to direct access. Generation has no automatic paid-request retries. Failed or
-interrupted jobs require explicit regeneration. Canceling local waiting does
-not guarantee upstream cancellation or no charge. AI labels and explanations
-need review; the image service does not verify current regulations.
+Remote model and TTS requests and result downloads require an explicit proxy by
+default and never silently fall back to direct access. To connect directly to a
+remote HTTPS endpoint without a proxy, manually check **允许直连 HTTPS（Allow
+direct HTTPS）** (`allow_direct_https`, default `false`) on that provider tab;
+non-loopback plaintext HTTP remains rejected and any configured proxy is always
+used without falling back to direct. Generation has no automatic paid-request
+retries. Failed or interrupted jobs require explicit regeneration. Canceling
+local waiting does not guarantee upstream cancellation or no charge. AI labels
+and explanations need review; the image service does not verify current
+regulations.
 
 Images are saved under `var/palaces/`, or the configured data directory. Back up
 that directory with `study.sqlite`. Ordinary study modes work without AI settings.
@@ -374,14 +394,19 @@ npm run typecheck
 npm run test:unit
 npm run test:go
 npm run test:e2e
+npm run course:audit -- --strict courses/beginner-english
 npm run check
 ```
 
-Browser tests use isolated databases and a loopback image-provider fixture on
-port 43289; they never use real AI keys or make paid requests. They require Playwright Chromium or an
-installed Google Chrome. Historical browser scenarios are under
-`tests/legacy-browser/`. Install Chromium when neither browser is available with
-`npx playwright install chromium` through your configured proxy.
+Browser tests batch-install fixture courses and run against the compiled
+`var/bin/test-driven-study` binary with isolated databases and a loopback
+image-provider fixture on port 43289; they never use real AI keys or make paid
+requests. They require Playwright Chromium or an installed Google Chrome.
+GitHub Actions CI (`.github/workflows/ci.yml`) runs `npm run check`, `go vet`,
+script unit tests, and `course:audit` on pushes to `main` and pull requests.
+Historical browser scenarios are under `tests/legacy-browser/`. Install Chromium
+when neither browser is available with `npx playwright install chromium` through
+your configured proxy.
 
 `npm run generate` regenerates HTTP types and SQL bindings. SQL generation runs
 without network access and requires sqlc v1.31.1 in the Go module cache. Prepare

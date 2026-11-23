@@ -27,10 +27,10 @@ relevant issue and feature documentation before changing behavior.
 
 | Location | Responsibility |
 | --- | --- |
-| `cmd/server/` | Server startup, service wiring and pipeline adapter. |
-| `internal/course/`, `courses/` | Course validation and versioned course packages. |
-| `internal/study/` | Questions, memorization, grading, analysis and mock exams. |
-| `internal/storage/` | SQLite opening, import, embedded migrations and generated bindings. |
+| `cmd/server/`, `cmd/course/` | Server startup, service wiring, pipeline adapter, and course lifecycle CLI (`new`/`check`/`install`/`pack`/`deactivate`/`rollback`). |
+| `internal/course/`, `courses/` | Course v1/v2 validation, safe `.zip` archive loading/packing (`archive.go`), v2 scaffold (`author.go`), and versioned course packages. |
+| `internal/study/` | Questions, memorization, grading, written evaluations, analysis and mock exams. |
+| `internal/storage/` | SQLite opening, course lifecycle import/activation, embedded migrations and generated bindings. |
 | `internal/httpapi/` | HTTP validation, endpoints and static frontend serving. |
 | `internal/llm/` | Responses planning, research, budgets, compaction and checkpoints. |
 | `internal/palace/` | Image provider, durable task queue, controls and saved images. |
@@ -41,9 +41,8 @@ relevant issue and feature documentation before changing behavior.
 | `web/src/api/` | Handwritten HTTP clients and generated API types. |
 | `tests/browser/`, `tests/startup/`, `tests/fixtures/` | Browser checks, process checks and local providers. |
 | `contracts/course/`, `contracts/http/`, `db/` | Course schemas, OpenAPI and SQL queries. |
-| `data/`, `assets/img/` | Original question exports and local question media. |
 | `assets/audio/pinyin/` | Bundled Pinyin recordings and source attribution. |
-| `.agents/skills/`, `scripts/` | Repository course/TTS/vocabulary/swarm skills, effort gate, and tooling. |
+| `.agents/skills/`, `scripts/`, `.github/workflows/` | Repository course/TTS/vocabulary/desktop-GUI/swarm skills, unified `course:audit`, effort gate, `curriculum_workflow/`, and CI (`ci.yml`). |
 | `issues/`, `docs/` | Requirements, frozen inputs, feature evidence and UI references. |
 
 Change the source of generated code:
@@ -73,8 +72,10 @@ root; server asset resolution depends on the working directory.
 | `npm run dev:down` | Stop the background development services. |
 | `npm run build` | Typecheck, build `dist/` and compile the Go binary in `var/bin/`. |
 | `npm start` | Serve the built application on API port 43388. |
-| `npm run course:check -- <directory>` | Validate one course package (`pnpm run course:check <directory>` without `--`). |
-| `npm run course:install -- <directory>` | Install or activate a validated version (`pnpm run course:install <directory>` without `--`). |
+| `npm run course:new -- --id <id> --title "<title>" --language <lang>` | Scaffold a valid v2 course package with concept graph and sample items. |
+| `npm run course:audit -- [--strict] <directory>` | Run unified `course:check`, effort, TTS, and conditional vocabulary audits. |
+| `npm run course:check -- <directory-or-zip>` | Validate one course directory or `.zip` archive (`pnpm run course:check <path>` without `--`). |
+| `npm run course:install -- <path...>` | Install or activate one or more validated course directories or `.zip` archives. |
 
 Configuration examples are `.env.example`, `.env.gpt.example` and
 `.env.gpt-image2.example`. `STUDY_WEB_PORT`, `STUDY_API_PORT` and `STUDY_DATA_DIR`
@@ -97,8 +98,23 @@ inspect their state before restarting services or changing configuration.
   `var/palaces/`, and resumable LLM state in `var/llm-checkpoints/`. Respect a
   configured data directory. Back up these together while the service is stopped.
   Keep test data separate from learner data.
-- Every submitted practice attempt remains a separate record. Estimates describe
-  question-bank performance, not a calibrated official score or pass probability.
+- Every submitted practice attempt remains a separate record (`answer_attempts`
+  is immutable). Written and translation evaluations are persisted in the
+  append-only immutable `attempt_evaluations` table (`00017`) and joined via
+  `COALESCE(ev.passed, a.is_correct)` across review book, analysis, practice,
+  and concept mastery. Cached LLM evaluations (`cached: true`) are reused
+  without re-billing, and offline rubric/reference self-check provides
+  offline-first mastery; never allow evaluations on unanswered practice items or
+  mock exams. Estimates describe question-bank performance, not a calibrated
+  official score or pass probability.
+- Local `.zip` course imports (`POST /api/courses/install` and `cmd/course`)
+  extract and validate archives strictly outside SQLite transactions (confined
+  via `os.OpenRoot` with bounded entry count, file size, and total size;
+  rejecting zip-slip and symlinks). Deactivating or rolling back a course hides
+  or reprojects active workspace rows without deleting `course_versions`,
+  `question_keys`, or learner history.
+- Before designing or reviewing a Tauri 2 desktop shell or native desktop GUI
+  refinements, consult `.agents/skills/desktop-gui-design-knowledge/SKILL.md`.
 - Mock exams retain server-owned deadlines, saved paper/rule snapshots, stable
   option signs and atomic answer/navigation updates. Recovery must not reset time
   or duplicate papers or learning attempts. Restart finalizes and retains the old
@@ -191,9 +207,10 @@ outputs in their canonical feature/data/UI directory. Synchronize
   acceptance gate is `npm run check`; do not repeat passed gates without a reason.
 - For documentation-only changes, check local links, whitespace and relevant
   issue records. Application tests are needed when application behavior changes.
-- Browser checks use isolated databases and local AI fixtures on frontend/API/
-  provider ports 43287/43288/43289. Keep these isolated from learner data and paid
-  services. Chromium or installed Chrome is required.
+- Browser checks batch-install fixture courses and run against the compiled
+  `var/bin/test-driven-study` binary using isolated databases and local AI
+  fixtures on frontend/API/provider ports 43287/43288/43289. Keep these isolated
+  from learner data and paid services. Chromium or installed Chrome is required.
 - Report checks actually run, their outcomes and material gaps. Historical
   acceptance reports are evidence of earlier runs, not a current verification.
 - Keep [handoff.md](handoff.md) dated and concise: baseline commit, completed work,
