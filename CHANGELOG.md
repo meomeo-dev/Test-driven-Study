@@ -52,6 +52,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Modularized `scripts/curriculum_batch_workflow.py` into the Python 3.9+ stdlib
+  package `scripts/curriculum_workflow/` (plus the thin
+  `scripts/curriculum_batch_run_workflow.py` shim), defaulting to headless
+  `agy-ultra` (`gemini-4-hydrogen-high`) with deadlock-free bounded parallelism,
+  atomic locked `progress.json` writes, deterministic cycle-safe manifest updates,
+  error isolation, conditional strict vocabulary auditing, and 53 offline unit tests.
 - `golden-course-template@1.1.0` adds a five-concept learning graph, a handover
   lesson, and practice tags for all 15 existing items.
 - `golden-course-template@1.2.0` and `beginner-english@2.2.0` add aligned

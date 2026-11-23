@@ -1,7 +1,8 @@
 ---
 id: 0084
 type: feat
-status: open
+status: closed
+closed-by: de981e2
 labels: [tooling, workflow, courses]
 branch: feat/0084-upgrade-curriculum-batch-workflow-to-agy-ultra-and-bounded-p
 created: 2026-11-23
@@ -103,3 +104,18 @@ isolation.
   `agy-ultra` is commonly defined as a zsh alias (`SSH_CONNECTION=1 agy
   --app_data_dir=antigravity-cli-ultra`), so subprocess fallback handling is
   required for non-interactive shells.
+
+### Verification
+
+- `python3 -m unittest discover -s scripts/curriculum_workflow/tests -p "test_*.py" -v`:
+  53/53 passed across consecutive runs (Python 3.9.6 stdlib only, zero live LLM calls,
+  all temp dirs isolated via `tempfile.TemporaryDirectory()`).
+- AST & compile gate across all 17 `.py` files (`scripts/curriculum_batch_workflow.py`,
+  `scripts/curriculum_batch_run_workflow.py`, `scripts/curriculum_workflow/*.py`, and
+  `scripts/curriculum_workflow/tests/*.py`): 17/17 pass (`py_compile` for standalone
+  modules, `PyCF_ALLOW_TOP_LEVEL_AWAIT` for the `run_workflow` shim), every file
+  `<= 491` lines (`<= 500`), every function/method `<= 40` lines.
+- `python3 scripts/curriculum_batch_workflow.py --help`, `--print-config`, and
+  `--dry-run` on `beginner-english` and `step-up-english-1`: exit `0` with zero disk
+  writes.
+- `npm run issue:check`: passed across all 84 issue files.
