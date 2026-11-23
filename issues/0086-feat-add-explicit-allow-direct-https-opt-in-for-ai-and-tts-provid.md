@@ -1,7 +1,8 @@
 ---
 id: 0086
 type: feat
-status: open
+status: closed
+closed-by: 09fd0c8
 labels: [security, llm, palace, tts, ui, api]
 branch: feat/0086-add-explicit-allow-direct-https-opt-in-for-ai-and-tts-provid
 created: 2026-11-23
@@ -88,3 +89,21 @@ while preserving strict proxy-required-by-default security invariants.
 - Keeping `transport.Proxy = nil` when `AllowDirectHTTPS == true` and
   `ProxyURL == ""` prevents `http.ProxyFromEnvironment` from silently routing
   traffic through ambient shell proxy variables.
+
+### Verification
+
+- `go test -count=1 ./...`: passed (`9/9` packages ok).
+- Focused security and contract tests (`TestAllowDirectHTTPS*`,
+  `TestTTSAllowDirectHTTPS*`, `TestLLMSettingsAllowDirectHTTPSContract`,
+  `TestPalaceSettingsAllowDirectHTTPSContract`, `TestTTSRoutes`) across
+  `internal/{llm,palace,tts,httpapi}`: `8/8` suites passed (`0` skips).
+- `go vet ./...`: passed.
+- `npm run typecheck && npm run test:unit`: passed (`tsc --noEmit` clean;
+  Vitest `16/16` files, `66/66` tests passed).
+- `npm run build`: passed (`tsc --noEmit`, `vite build` 3365 modules, and
+  `go build ./cmd/server`).
+- `npm run generate:api` SHA-256 check: zero drift on
+  `web/src/api/generated/*`. Material gap on `npm run check:generated`: its
+  `generate:db` step requires cached `sqlc v1.31.1` (unavailable offline in
+  this environment); `db/` and `internal/storage/` were untouched in `#86`.
+- `git diff --check`, `gofmt -l`, and `node scripts/issue-check.mjs`: all clean.
