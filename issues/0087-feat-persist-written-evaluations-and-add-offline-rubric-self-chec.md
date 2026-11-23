@@ -1,7 +1,8 @@
 ---
 id: 0087
 type: feat
-status: open
+status: closed
+closed-by: a24c65c
 labels: [study, storage, httpapi, ui, pedagogy]
 branch: feat/0087-persist-written-evaluations-and-add-offline-rubric-self-chec
 created: 2026-11-23
@@ -107,3 +108,16 @@ self-check flow so written/translation mastery works cleanly without AI.
   achieve honest offline mastery or persist optional AI rubric grades.
 - Keeping `internal/study` independent of `internal/llm` preserves existing
   package layering (`httpapi` orchestrates `study` + `llm`).
+
+### Verification
+
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run check:generated`: passed
+  (`Generated HTTP types and SQL bindings are current.`).
+- `go test -count=1 ./...`: passed (`9/9` packages ok).
+- `go vet ./...`: passed.
+- `npm run typecheck && npm run test:unit`: passed (`tsc --noEmit` 0 errors;
+  Vitest `17/17` files, `75/75` tests passed, including `registry.test.ts` `6/6`
+  and `written-evaluation.test.ts` `9/9`).
+- `npm run build`: passed (`tsc --noEmit`, `vite build` 3366 modules, and
+  `go build ./cmd/server`).
+- `git diff --check`, `gofmt -l`, and `node scripts/issue-check.mjs`: all clean.
