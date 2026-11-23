@@ -1,7 +1,8 @@
 ---
 id: 0085
 type: fix
-status: open
+status: closed
+closed-by: a154e57
 labels: [backend, httpapi, llm, tts, study]
 branch: fix/0085-fix-learning-route-written-feedback-tts-test-and-review-cool
 created: 2026-11-23
@@ -84,3 +85,17 @@ alignment.
 - Updating `tests/fixtures/image-provider.mjs` alongside the strict
   `json_schema` change keeps local browser/fixture tests (`question-types.spec.ts`
   and palace flows) deterministic without affecting production provider calls.
+
+### Verification
+
+- `go test -count=1 ./...`: passed (`9/9` packages ok).
+- Focused regression tests across `internal/{httpapi,llm,tts,study}`
+  (`TestFrontendRoutesServeIndexHTML`, `TestWrittenFeedback*`,
+  `TestEvaluateWritten*`, `TestTTSServiceTestSendsVoiceIDPayload`,
+  `TestReviewPracticeExcludesCooldownLearningAndMastered`,
+  `TestIsReviewPracticeDue`): `8/8` suites, `20/20` subtests passed (`0` skips).
+- `go vet ./...`: passed.
+- `npm run typecheck && npm run test:unit`: passed (`tsc --noEmit` clean;
+  Vitest `15/15` files, `62/62` tests passed).
+- `git diff --check`, `node --check tests/fixtures/image-provider.mjs`,
+  `gofmt -l`, and `node scripts/issue-check.mjs`: all clean.
