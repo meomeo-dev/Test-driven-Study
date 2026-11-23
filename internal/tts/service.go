@@ -249,6 +249,12 @@ func (s *Service) httpClient(proxyURL string) *http.Client {
 	}
 }
 
+type ttsRequest struct {
+	Text    string `json:"text"`
+	VoiceID string `json:"voice_id"`
+	Format  string `json:"format"`
+}
+
 func (s *Service) Test(ctx context.Context, update ProviderUpdate, token string) (string, error) {
 	if !s.AuthorizeSettings(token) {
 		return "", errors.New("会话已过期，请刷新页面重试")
@@ -275,11 +281,14 @@ func (s *Service) Test(ctx context.Context, update ProviderUpdate, token string)
 	}
 
 	client := s.httpClient(proxy)
-	reqBody, _ := json.Marshal(map[string]string{
-		"text":   "OK",
-		"voice":  "stella",
-		"format": "pcm",
+	reqBody, err := json.Marshal(ttsRequest{
+		Text:    "OK",
+		VoiceID: "stella",
+		Format:  "pcm",
 	})
+	if err != nil {
+		return "", fmt.Errorf("构建请求失败: %w", err)
+	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, baseURL, bytes.NewReader(reqBody))
 	if err != nil {
@@ -399,10 +408,10 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 		}
 
 		client := s.httpClient(config.ProxyURL)
-		reqPayload, err := json.Marshal(map[string]string{
-			"text":     text,
-			"voice_id": voice,
-			"format":   "pcm",
+		reqPayload, err := json.Marshal(ttsRequest{
+			Text:    text,
+			VoiceID: voice,
+			Format:  "pcm",
 		})
 		if err != nil {
 			return synthOutcome{}, err

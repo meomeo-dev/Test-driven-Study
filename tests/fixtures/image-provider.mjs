@@ -38,8 +38,10 @@ createServer(async (req, res) => {
       instructions:body.instructions,
       has_gap:body.instructions?.includes('Unresolved evidence gap') });
     const format=body.text?.format;
-    if (format?.type === 'json_object') {
+    if (format?.type === 'json_schema' && format.name === 'written_feedback') {
       if (req.headers.authorization !== 'Bearer isolated-llm-fixture' || body.store !== false
+        || format.strict !== true || format.schema?.additionalProperties !== false
+        || !Number.isInteger(body.max_output_tokens)
         || body.tools || body.stream || typeof body.input !== 'string') {
         res.writeHead(400).end(); return;
       }

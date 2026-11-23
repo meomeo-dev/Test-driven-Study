@@ -70,3 +70,73 @@ func TestReviewHelpReopensMasteryWithoutScoringAnError(t *testing.T) {
 		t.Fatalf("delayed answer should clear help without postponing the scheduled review: %+v", items)
 	}
 }
+
+func TestIsReviewPracticeDue(t *testing.T) {
+	now := 100 * reviewDayMS
+	cases := []struct {
+		name string
+		item ReviewItem
+		want bool
+	}{
+		{
+			name: "needs_review is due",
+			item: ReviewItem{Status: "needs_review"},
+			want: true,
+		},
+		{
+			name: "due status is due",
+			item: ReviewItem{Status: "due", Confirmations: 1},
+			want: true,
+		},
+		{
+			name: "mastered is excluded",
+			item: ReviewItem{Status: "mastered", Confirmations: 3},
+			want: false,
+		},
+		{
+			name: "learning retry within 24h cooldown is excluded",
+			item: ReviewItem{
+				Status:           "learning",
+				Confirmations:    0,
+				LastAnsweredAtMS: now - reviewDayMS + 1,
+			},
+			want: false,
+		},
+		{
+			name: "learning retry after 24h cooldown re-enters queue",
+			item: ReviewItem{
+				Status:           "learning",
+				Confirmations:    0,
+				LastAnsweredAtMS: now - reviewDayMS,
+			},
+			want: true,
+		},
+		{
+			name: "learning with confirmation 1 in interval is excluded",
+			item: ReviewItem{
+				Status:           "learning",
+				Confirmations:    1,
+				LastAnsweredAtMS: now - reviewDayMS,
+				NextReviewAtMS:   now + 1000,
+			},
+			want: false,
+		},
+		{
+			name: "learning with confirmation 2 in 3-day interval is excluded",
+			item: ReviewItem{
+				Status:           "learning",
+				Confirmations:    2,
+				LastAnsweredAtMS: now - 2*reviewDayMS,
+				NextReviewAtMS:   now + reviewDayMS,
+			},
+			want: false,
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := isReviewPracticeDue(tc.item, now); got != tc.want {
+				t.Fatalf("isReviewPracticeDue(%+v) = %v, want %v", tc.item, got, tc.want)
+			}
+		})
+	}
+}

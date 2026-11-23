@@ -112,7 +112,28 @@ func buildReviewItems(events []reviewEvent, questions []storedb.ListQuestionsRow
 	return items
 }
 
-func (s *Service) reviewPracticeQuestions(ctx context.Context, f Filter) ([]storedb.ListPracticeQuestionsRow, error) {
+// isReviewPracticeDue reports whether a review-book item should enter active
+// review practice. Cooldown "learning" items and "mastered" items stay in the
+// review book overview but are excluded from the due practice queue.
+func isReviewPracticeDue(item ReviewItem, now int64) bool {
+	switch item.Status {
+	case "needs_review", "due":
+		return true
+	case "learning":
+		// Wrong answers corrected within 24h stay "learning" with 0
+		// confirmations and no scheduled NextReviewAtMS; re-include them once
+		// 24h elapse so an independent recall can earn confirmation #1.
+		return item.Confirmations == 0 &&
+			item.LastAnsweredAtMS > 0 &&
+			now-item.LastAnsweredAtMS >= reviewDayMS
+	default:
+		return false
+	}
+}
+
+func (s *Service) reviewPracticeQuestions(
+	ctx context.Context, f Filter,
+) ([]storedb.ListPracticeQuestionsRow, error) {
 	book, err := s.ReviewBook(ctx, f.SubjectID)
 	if err != nil {
 		return nil, err
@@ -128,7 +149,8 @@ func (s *Service) reviewPracticeQuestions(ctx context.Context, f Filter) ([]stor
 	}
 	result := []storedb.ListPracticeQuestionsRow{}
 	for _, item := range book.Items {
-		if row, found := byID[item.QuestionID]; found && item.Status != "mastered" {
+		if row, found := byID[item.QuestionID]; found &&
+			isReviewPracticeDue(item, book.AsOfMS) {
 			result = append(result, row)
 		}
 	}

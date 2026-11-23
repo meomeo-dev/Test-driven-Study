@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/binary"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -234,5 +235,69 @@ func TestSynthesizeUsesConfiguredVoiceWhenOmitted(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestTTSServiceTestSendsVoiceIDPayload(t *testing.T) {
+	var gotMethod, gotContentType, gotAuth string
+	var gotRaw []byte
+	server := httptest.NewServer(http.HandlerFunc(func(
+		w http.ResponseWriter, r *http.Request,
+	) {
+		gotMethod = r.Method
+		gotContentType = r.Header.Get("Content-Type")
+		gotAuth = r.Header.Get("Authorization")
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "read failed", http.StatusInternalServerError)
+			return
+		}
+		gotRaw = body
+		var fields map[string]any
+		if err := json.Unmarshal(body, &fields); err != nil {
+			http.Error(w, "invalid json", http.StatusBadRequest)
+			return
+		}
+		if _, hasLegacy := fields["voice"]; hasLegacy {
+			http.Error(w, "unexpected field: voice", http.StatusBadRequest)
+			return
+		}
+		if fields["voice_id"] != "stella" ||
+			fields["text"] != "OK" ||
+			fields["format"] != "pcm" ||
+			len(fields) != 3 {
+			http.Error(w, "invalid payload", http.StatusBadRequest)
+			return
+		}
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write(make([]byte, 480))
+	}))
+	defer server.Close()
+
+	dir := t.TempDir()
+	svc := NewWithCredentials(dir, dir, newMemoryCredentials())
+	key := "test-api-key"
+	msg, err := svc.Test(t.Context(), ProviderUpdate{
+		BaseURL: server.URL,
+		APIKey:  &key,
+	}, svc.Settings().WriteToken)
+	if err != nil {
+		t.Fatalf("Test() failed: %v", err)
+	}
+	if msg == "" {
+		t.Fatal("expected non-empty success message")
+	}
+	if gotMethod != http.MethodPost {
+		t.Fatalf("expected POST, got %q", gotMethod)
+	}
+	if gotContentType != "application/json" {
+		t.Fatalf("expected application/json, got %q", gotContentType)
+	}
+	if gotAuth != "Bearer test-api-key" {
+		t.Fatalf("expected Bearer auth header, got %q", gotAuth)
+	}
+	const wantBody = `{"text":"OK","voice_id":"stella","format":"pcm"}`
+	if string(gotRaw) != wantBody {
+		t.Fatalf("expected JSON body %s, got %s", wantBody, string(gotRaw))
 	}
 }

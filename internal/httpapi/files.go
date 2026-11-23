@@ -67,7 +67,8 @@ func (s *Server) frontend(w http.ResponseWriter, r *http.Request) {
 
 func isFrontendRoute(path string) bool {
 	switch path {
-	case "/", "/memorize", "/practice", "/analysis", "/palace", "/guide", "/exam", "/courses":
+	case "/", "/memorize", "/practice", "/analysis", "/palace", "/guide", "/exam",
+		"/learning", "/courses":
 		return true
 	default:
 		return strings.HasPrefix(path, "/courses/")
