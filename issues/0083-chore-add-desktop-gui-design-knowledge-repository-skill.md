@@ -1,7 +1,8 @@
 ---
 id: 0083
 type: chore
-status: open
+status: closed
+closed-by: 138cbc8
 labels: [tooling, skills]
 branch: chore/0083-add-desktop-gui-design-knowledge-repository-skill
 created: 2026-11-23
@@ -48,3 +49,10 @@ native desktop GUI refinements for Test-driven-Study.
 Adding the explicit `.gitignore` unignore rule matches `design-course-package`,
 `design-course-tts`, `design-course-vocabulary`, and `orchestrate-agent-swarm` so
 repository skill tracking stays symmetric.
+
+### Verification
+
+- Installed `.agents/skills/desktop-gui-design-knowledge/` (13 files: `SKILL.md`,
+  `agents/openai.yaml`, `index/knowledge-index.yaml`, and 10 `references/*.md`
+  files; `.DS_Store` excluded).
+- `node scripts/issue-check.mjs`: passed across all 83 issue files.
