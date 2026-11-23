@@ -7,6 +7,7 @@ import { useCatalog, workspaceLink } from '../../app/workspace';
 import { Tabs } from '../../components/Tabs';
 import { ThemeToggle } from '../../components/ThemeToggle';
 import { RoadmapTab } from '../roadmap/RoadmapTab';
+import { CoursePackageManager } from './CoursePackageManager';
 import './courses.css';
 
 const catalogTabs = [{ id: 'courses', label: '所有课程' }, { id: 'roadmap', label: '学习路线' }] as const;
@@ -38,9 +39,14 @@ export function CourseCatalogPage() {
     <div id={`catalog-panel-${tab}`} role="tabpanel" aria-labelledby={`catalog-tab-${tab}`}>
       {catalog.isPending && <p role="status">正在读取课程…</p>}
       {catalog.error && <p role="alert">{catalog.error.message}</p>}
-      {catalog.data?.length === 0 && <p>尚无已安装的课程。</p>}
+      {catalog.data?.length === 0 && (
+        <p className="muted">
+          当前没有已启用的课程，可在下方导入本地课程包或重新启用已安装的课程。
+        </p>
+      )}
       {catalog.data && (tab === 'roadmap' ? <RoadmapTab catalog={catalog.data} />
         : <CourseCards courses={catalog.data} />)}
+      {tab === 'courses' && <CoursePackageManager />}
     </div>
   </CourseShell>;
 }

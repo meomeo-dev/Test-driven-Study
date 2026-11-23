@@ -72,6 +72,19 @@ func projectWorkspace(ctx context.Context, tx *sql.Tx, version storedb.CourseVer
 	return err
 }
 
+func deactivateWorkspace(ctx context.Context, tx *sql.Tx, courseID string) error {
+	if _, err := tx.ExecContext(ctx, `UPDATE questions SET subject_id=0
+		WHERE question_id IN (SELECT question_id FROM question_keys WHERE course_id=?)`,
+		courseID); err != nil {
+		return err
+	}
+	if _, err := tx.ExecContext(ctx, "UPDATE course_units SET active=0 WHERE course_id=?",
+		courseID); err != nil {
+		return err
+	}
+	return storedb.New(tx).DeleteImportMetadata(ctx, "workspace:"+courseID)
+}
+
 func ensureWorkspaceUnit(
 	ctx context.Context, tx *sql.Tx, courseID, unitID, title string,
 ) (int64, error) {

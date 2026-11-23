@@ -219,6 +219,17 @@ func (q *Queries) CountAttempts(ctx context.Context, questionID int64) (int64, e
 	return count, err
 }
 
+const countCourseVersions = `-- name: CountCourseVersions :one
+SELECT COUNT(*) FROM course_versions WHERE course_id = ?
+`
+
+func (q *Queries) CountCourseVersions(ctx context.Context, courseID string) (int64, error) {
+	row := q.db.QueryRowContext(ctx, countCourseVersions, courseID)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const countTraceEvents = `-- name: CountTraceEvents :one
 SELECT COUNT(*) FROM task_trace_events WHERE job_id = ?
 `
@@ -391,6 +402,36 @@ func (q *Queries) CreatePresentation(ctx context.Context, arg CreatePresentation
 		arg.OpenedAtMs,
 		arg.PriorExposure,
 	)
+	return err
+}
+
+const deactivateCourse = `-- name: DeactivateCourse :execrows
+DELETE FROM active_courses WHERE course_id = ?
+`
+
+func (q *Queries) DeactivateCourse(ctx context.Context, courseID string) (int64, error) {
+	result, err := q.db.ExecContext(ctx, deactivateCourse, courseID)
+	if err != nil {
+		return 0, err
+	}
+	return result.RowsAffected()
+}
+
+const deleteCourseCursors = `-- name: DeleteCourseCursors :exec
+DELETE FROM course_cursors WHERE course_id = ?
+`
+
+func (q *Queries) DeleteCourseCursors(ctx context.Context, courseID string) error {
+	_, err := q.db.ExecContext(ctx, deleteCourseCursors, courseID)
+	return err
+}
+
+const deleteImportMetadata = `-- name: DeleteImportMetadata :exec
+DELETE FROM import_metadata WHERE key = ?
+`
+
+func (q *Queries) DeleteImportMetadata(ctx context.Context, key string) error {
+	_, err := q.db.ExecContext(ctx, deleteImportMetadata, key)
 	return err
 }
 
@@ -1512,6 +1553,107 @@ func (q *Queries) ListCourseMarks(ctx context.Context) ([]string, error) {
 	return items, nil
 }
 
+const listCourseVersionsByCourse = `-- name: ListCourseVersionsByCourse :many
+SELECT cv.course_id, cv.version, cv.digest, cv.manifest_json,
+    CAST(CASE WHEN ac.version = cv.version THEN 1 ELSE 0 END AS INTEGER) AS active,
+    CAST(COALESCE(m.value, '0') AS INTEGER) AS installed_at_ms
+FROM course_versions cv
+LEFT JOIN active_courses ac ON ac.course_id = cv.course_id
+LEFT JOIN import_metadata m
+    ON m.key = 'course_installed_at:' || cv.course_id || '@' || cv.version
+WHERE cv.course_id = ?
+ORDER BY cv.rowid DESC
+`
+
+type ListCourseVersionsByCourseRow struct {
+	CourseID      string `json:"course_id"`
+	Version       string `json:"version"`
+	Digest        string `json:"digest"`
+	ManifestJson  string `json:"manifest_json"`
+	Active        int64  `json:"active"`
+	InstalledAtMs int64  `json:"installed_at_ms"`
+}
+
+func (q *Queries) ListCourseVersionsByCourse(ctx context.Context, courseID string) ([]ListCourseVersionsByCourseRow, error) {
+	rows, err := q.db.QueryContext(ctx, listCourseVersionsByCourse, courseID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []ListCourseVersionsByCourseRow{}
+	for rows.Next() {
+		var i ListCourseVersionsByCourseRow
+		if err := rows.Scan(
+			&i.CourseID,
+			&i.Version,
+			&i.Digest,
+			&i.ManifestJson,
+			&i.Active,
+			&i.InstalledAtMs,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listInstalledCourseVersions = `-- name: ListInstalledCourseVersions :many
+SELECT cv.course_id, cv.version, cv.digest, cv.manifest_json,
+    CAST(CASE WHEN ac.version = cv.version THEN 1 ELSE 0 END AS INTEGER) AS active,
+    CAST(COALESCE(m.value, '0') AS INTEGER) AS installed_at_ms
+FROM course_versions cv
+LEFT JOIN active_courses ac ON ac.course_id = cv.course_id
+LEFT JOIN import_metadata m
+    ON m.key = 'course_installed_at:' || cv.course_id || '@' || cv.version
+ORDER BY cv.course_id, cv.rowid DESC
+`
+
+type ListInstalledCourseVersionsRow struct {
+	CourseID      string `json:"course_id"`
+	Version       string `json:"version"`
+	Digest        string `json:"digest"`
+	ManifestJson  string `json:"manifest_json"`
+	Active        int64  `json:"active"`
+	InstalledAtMs int64  `json:"installed_at_ms"`
+}
+
+func (q *Queries) ListInstalledCourseVersions(ctx context.Context) ([]ListInstalledCourseVersionsRow, error) {
+	rows, err := q.db.QueryContext(ctx, listInstalledCourseVersions)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []ListInstalledCourseVersionsRow{}
+	for rows.Next() {
+		var i ListInstalledCourseVersionsRow
+		if err := rows.Scan(
+			&i.CourseID,
+			&i.Version,
+			&i.Digest,
+			&i.ManifestJson,
+			&i.Active,
+			&i.InstalledAtMs,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listMockExams = `-- name: ListMockExams :many
 SELECT id, subject_id, status, rule_json, paper_json, answers_json, started_at_ms, deadline_at_ms, finished_at_ms, reason, score, current_index FROM mock_exams WHERE subject_id = ? ORDER BY started_at_ms DESC,id DESC LIMIT 30
 `
@@ -2281,6 +2423,21 @@ type SetCursorParams struct {
 
 func (q *Queries) SetCursor(ctx context.Context, arg SetCursorParams) error {
 	_, err := q.db.ExecContext(ctx, setCursor, arg.SubjectID, arg.QuestionID)
+	return err
+}
+
+const setImportMetadata = `-- name: SetImportMetadata :exec
+INSERT INTO import_metadata(key, value) VALUES (?, ?)
+ON CONFLICT(key) DO UPDATE SET value = excluded.value
+`
+
+type SetImportMetadataParams struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}
+
+func (q *Queries) SetImportMetadata(ctx context.Context, arg SetImportMetadataParams) error {
+	_, err := q.db.ExecContext(ctx, setImportMetadata, arg.Key, arg.Value)
 	return err
 }
 

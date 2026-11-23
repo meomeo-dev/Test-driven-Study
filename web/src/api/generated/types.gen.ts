@@ -42,6 +42,45 @@ export type CourseGuideStage = {
     };
 };
 
+export type CoursePackageVersion = {
+    version: string;
+    protocol_version: number;
+    digest: string;
+    installed_at_ms: number;
+    active: boolean;
+};
+
+export type CoursePackageSummary = {
+    course_id: string;
+    title: string;
+    active_version: string;
+    active: boolean;
+    versions: Array<CoursePackageVersion>;
+};
+
+export type CoursePackagesResponse = {
+    packages: Array<CoursePackageSummary>;
+};
+
+export type CourseInstallResponse = {
+    course_id: string;
+    version: string;
+    title: string;
+    active: boolean;
+    packages: Array<CoursePackageSummary>;
+};
+
+export type CourseActivateResponse = {
+    course_id: string;
+    version: string;
+    active: boolean;
+};
+
+export type CourseDeactivateResponse = {
+    course_id: string;
+    active: boolean;
+};
+
 export type CourseSummary = {
     id: string;
     version: string;
@@ -1580,6 +1619,125 @@ export type ListCoursesResponses = {
 };
 
 export type ListCoursesResponse = ListCoursesResponses[keyof ListCoursesResponses];
+
+export type ListCoursePackagesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/courses/packages';
+};
+
+export type ListCoursePackagesErrors = {
+    /**
+     * Course request failed
+     */
+    default: Error;
+};
+
+export type ListCoursePackagesError = ListCoursePackagesErrors[keyof ListCoursePackagesErrors];
+
+export type ListCoursePackagesResponses = {
+    /**
+     * Installed course packages and version history
+     */
+    200: CoursePackagesResponse;
+};
+
+export type ListCoursePackagesResponse = ListCoursePackagesResponses[keyof ListCoursePackagesResponses];
+
+export type InstallCoursePackageData = {
+    body: {
+        file: Blob | File;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/courses/install';
+};
+
+export type InstallCoursePackageErrors = {
+    /**
+     * Invalid archive or course validation failed
+     */
+    400: Error;
+    /**
+     * Package conflicts with existing version or active roadmap graph
+     */
+    409: Error;
+    /**
+     * Uploaded or extracted archive exceeds size limit
+     */
+    413: Error;
+    /**
+     * Course request failed
+     */
+    default: Error;
+};
+
+export type InstallCoursePackageError = InstallCoursePackageErrors[keyof InstallCoursePackageErrors];
+
+export type InstallCoursePackageResponses = {
+    /**
+     * Installed and activated course package with refreshed package list
+     */
+    200: CourseInstallResponse;
+};
+
+export type InstallCoursePackageResponse = InstallCoursePackageResponses[keyof InstallCoursePackageResponses];
+
+export type ActivateCourseVersionData = {
+    body?: never;
+    path: {
+        course: string;
+        version: string;
+    };
+    query?: never;
+    url: '/api/courses/{course}/versions/{version}/activate';
+};
+
+export type ActivateCourseVersionErrors = {
+    /**
+     * Course request failed
+     */
+    default: Error;
+};
+
+export type ActivateCourseVersionError = ActivateCourseVersionErrors[keyof ActivateCourseVersionErrors];
+
+export type ActivateCourseVersionResponses = {
+    /**
+     * Activated course version
+     */
+    200: CourseActivateResponse;
+};
+
+export type ActivateCourseVersionResponse = ActivateCourseVersionResponses[keyof ActivateCourseVersionResponses];
+
+export type DeactivateCourseData = {
+    body?: never;
+    path: {
+        course: string;
+    };
+    query?: never;
+    url: '/api/courses/{course}/deactivate';
+};
+
+export type DeactivateCourseErrors = {
+    /**
+     * Course request failed
+     */
+    default: Error;
+};
+
+export type DeactivateCourseError = DeactivateCourseErrors[keyof DeactivateCourseErrors];
+
+export type DeactivateCourseResponses = {
+    /**
+     * Deactivated course
+     */
+    200: CourseDeactivateResponse;
+};
+
+export type DeactivateCourseResponse = DeactivateCourseResponses[keyof DeactivateCourseResponses];
 
 export type ReadGuideData = {
     body?: never;

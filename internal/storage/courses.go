@@ -8,10 +8,18 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
+	"time"
 
 	"test-driven-study/internal/course"
 	"test-driven-study/internal/storage/storedb"
+	"test-driven-study/internal/study"
 )
+
+type courseConflictError struct{ err error }
+
+func (e courseConflictError) Error() string   { return e.err.Error() }
+func (e courseConflictError) Unwrap() []error { return []error{study.ErrConflict, e.err} }
 
 func seedCourses(ctx context.Context, db *sql.DB, root string) error {
 	names := []string{}
@@ -42,25 +50,44 @@ func seedCourse(ctx context.Context, db *sql.DB, directory, id string) error {
 		}
 		return err
 	}
-	_, err := storedb.New(db).GetActiveCourse(ctx, id)
-	if !errors.Is(err, sql.ErrNoRows) {
+	count, err := storedb.New(db).CountCourseVersions(ctx, id)
+	if err != nil || count > 0 {
 		return err
 	}
 	_, err = installCourse(ctx, db, directory, id)
 	return err
 }
 
-func InstallCourse(ctx context.Context, db *sql.DB, directory string) (course.Manifest, error) {
-	return installCourse(ctx, db, directory, "")
+func InstallCourse(ctx context.Context, db *sql.DB, pathOrZip string) (course.Manifest, error) {
+	return installCourse(ctx, db, pathOrZip, "")
+}
+
+// InstallCourseZip validates and extracts a local .zip archive strictly outside
+// any SQLite transaction, then installs and activates it atomically.
+func InstallCourseZip(ctx context.Context, db *sql.DB, data []byte) (course.Manifest, error) {
+	pkg, err := course.LoadZipBytes(data)
+	if err != nil {
+		if errors.Is(err, course.ErrArchiveTooLarge) || errors.Is(err, course.ErrInvalidArchive) {
+			return course.Manifest{}, err
+		}
+		return course.Manifest{}, fmt.Errorf("%w: %v", course.ErrInvalidArchive, err)
+	}
+	return installLoadedPackage(ctx, db, *pkg, "")
 }
 
 func installCourse(
-	ctx context.Context, db *sql.DB, directory, expectedID string,
+	ctx context.Context, db *sql.DB, pathOrZip, expectedID string,
 ) (course.Manifest, error) {
-	pkg, err := course.Load(directory)
+	pkg, err := course.LoadPath(pathOrZip)
 	if err != nil {
 		return course.Manifest{}, err
 	}
+	return installLoadedPackage(ctx, db, *pkg, expectedID)
+}
+
+func installLoadedPackage(
+	ctx context.Context, db *sql.DB, pkg course.Package, expectedID string,
+) (course.Manifest, error) {
 	manifest := pkg.Manifest
 	if expectedID != "" && manifest.ID != expectedID {
 		return course.Manifest{}, fmt.Errorf("manifest course ID %q differs from %q",
@@ -91,14 +118,24 @@ func installCourse(
 			return course.Manifest{}, err
 		}
 		if existing.Digest != pkg.Digest {
-			return course.Manifest{}, fmt.Errorf("%s@%s has different content; use a new version",
-				manifest.ID, manifest.Version)
+			return course.Manifest{}, courseConflictError{fmt.Errorf(
+				"%s@%s has different content; use a new version",
+				manifest.ID, manifest.Version,
+			)}
 		}
-	} else if err := insertCourseContent(ctx, queries, directory, pkg); err != nil {
-		return course.Manifest{}, err
+	} else {
+		if err := insertCourseContent(ctx, queries, pkg); err != nil {
+			return course.Manifest{}, err
+		}
+		if err := queries.SetImportMetadata(ctx, storedb.SetImportMetadataParams{
+			Key:   installedAtMetadataKey(manifest.ID, manifest.Version),
+			Value: strconv.FormatInt(time.Now().UTC().UnixMilli(), 10),
+		}); err != nil {
+			return course.Manifest{}, err
+		}
 	}
 	if err := checkRoadmapCycles(ctx, queries, manifest); err != nil {
-		return course.Manifest{}, err
+		return course.Manifest{}, courseConflictError{err}
 	}
 	if err := queries.ActivateCourseVersion(ctx, storedb.ActivateCourseVersionParams{
 		CourseID: manifest.ID, Version: manifest.Version,
@@ -135,7 +172,7 @@ func checkRoadmapCycles(
 }
 
 func insertCourseContent(
-	ctx context.Context, queries *storedb.Queries, directory string, pkg course.Package,
+	ctx context.Context, queries *storedb.Queries, pkg course.Package,
 ) error {
 	id, version := pkg.Manifest.ID, pkg.Manifest.Version
 	for _, unit := range pkg.Manifest.Units {
@@ -165,7 +202,7 @@ func insertCourseContent(
 			}
 		}
 	}
-	return insertCourseAssets(ctx, queries, directory, pkg)
+	return insertCourseAssets(ctx, queries, pkg)
 }
 
 func legacyItemID(courseID, itemID string) (sql.NullInt64, error) {
@@ -173,18 +210,13 @@ func legacyItemID(courseID, itemID string) (sql.NullInt64, error) {
 }
 
 func insertCourseAssets(
-	ctx context.Context, queries *storedb.Queries, directory string, pkg course.Package,
+	ctx context.Context, queries *storedb.Queries, pkg course.Package,
 ) error {
-	root, err := os.OpenRoot(directory)
-	if err != nil {
-		return err
-	}
-	defer root.Close()
 	for _, filename := range pkg.Files {
 		if !pkg.IsStoredAsset(filename) {
 			continue
 		}
-		data, err := pkg.ReadAsset(root, filename)
+		data, err := pkg.AssetData(filename)
 		if err != nil {
 			return err
 		}

@@ -19,6 +19,81 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/Error' }
+  /api/courses/packages:
+    get:
+      operationId: listCoursePackages
+      description: Lists all installed course packages (active and inactive) with their versions.
+      responses:
+        '200':
+          description: Installed course packages and version history
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CoursePackagesResponse' }
+        default: *course_error
+  /api/courses/install:
+    post:
+      operationId: installCoursePackage
+      description: Validates and installs a local .zip course archive (max 64 MiB).
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Installed and activated course package with refreshed package list
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseInstallResponse' }
+        '400':
+          description: Invalid archive or course validation failed
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '409':
+          description: Package conflicts with existing version or active roadmap graph
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '413':
+          description: Uploaded or extracted archive exceeds size limit
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        default: *course_error
+  /api/courses/{course}/versions/{version}/activate:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+      - { name: version, in: path, required: true, schema: { type: string } }
+    post:
+      operationId: activateCourseVersion
+      description: Activates an installed version of a course and reprojects the workspace.
+      responses:
+        '200':
+          description: Activated course version
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseActivateResponse' }
+        default: *course_error
+  /api/courses/{course}/deactivate:
+    parameters:
+      - { name: course, in: path, required: true, schema: { type: string } }
+    post:
+      operationId: deactivateCourse
+      description: Deactivates an active course without deleting versions or learner history.
+      responses:
+        '200':
+          description: Deactivated course
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CourseDeactivateResponse' }
+        default: *course_error
   /api/guide:
     get:
       operationId: readGuide
@@ -2731,6 +2806,63 @@ components:
           properties:
             C1: { type: array, items: { type: string } }
             C2: { type: array, items: { type: string } }
+    CoursePackageVersion:
+      type: object
+      additionalProperties: false
+      required: [version, protocol_version, digest, installed_at_ms, active]
+      properties:
+        version: { type: string }
+        protocol_version: { type: integer }
+        digest: { type: string }
+        installed_at_ms: { type: integer, format: int64 }
+        active: { type: boolean }
+    CoursePackageSummary:
+      type: object
+      additionalProperties: false
+      required: [course_id, title, active_version, active, versions]
+      properties:
+        course_id: { type: string }
+        title: { type: string }
+        active_version: { type: string }
+        active: { type: boolean }
+        versions:
+          type: array
+          items: { $ref: '#/components/schemas/CoursePackageVersion' }
+    CoursePackagesResponse:
+      type: object
+      additionalProperties: false
+      required: [packages]
+      properties:
+        packages:
+          type: array
+          items: { $ref: '#/components/schemas/CoursePackageSummary' }
+    CourseInstallResponse:
+      type: object
+      additionalProperties: false
+      required: [course_id, version, title, active, packages]
+      properties:
+        course_id: { type: string }
+        version: { type: string }
+        title: { type: string }
+        active: { type: boolean }
+        packages:
+          type: array
+          items: { $ref: '#/components/schemas/CoursePackageSummary' }
+    CourseActivateResponse:
+      type: object
+      additionalProperties: false
+      required: [course_id, version, active]
+      properties:
+        course_id: { type: string }
+        version: { type: string }
+        active: { type: boolean }
+    CourseDeactivateResponse:
+      type: object
+      additionalProperties: false
+      required: [course_id, active]
+      properties:
+        course_id: { type: string }
+        active: { type: boolean }
     CourseSummary:
       type: object
       required: [id, version, title, language, legacy, units, concept_count]

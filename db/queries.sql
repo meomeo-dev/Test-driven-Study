@@ -339,6 +339,43 @@ JOIN active_courses ac USING(course_id,version) WHERE cv.course_id=?;
 SELECT cv.* FROM course_versions cv JOIN active_courses ac USING(course_id,version)
 ORDER BY cv.course_id;
 
+-- name: CountCourseVersions :one
+SELECT COUNT(*) FROM course_versions WHERE course_id = ?;
+
+-- name: ListInstalledCourseVersions :many
+SELECT cv.course_id, cv.version, cv.digest, cv.manifest_json,
+    CAST(CASE WHEN ac.version = cv.version THEN 1 ELSE 0 END AS INTEGER) AS active,
+    CAST(COALESCE(m.value, '0') AS INTEGER) AS installed_at_ms
+FROM course_versions cv
+LEFT JOIN active_courses ac ON ac.course_id = cv.course_id
+LEFT JOIN import_metadata m
+    ON m.key = 'course_installed_at:' || cv.course_id || '@' || cv.version
+ORDER BY cv.course_id, cv.rowid DESC;
+
+-- name: ListCourseVersionsByCourse :many
+SELECT cv.course_id, cv.version, cv.digest, cv.manifest_json,
+    CAST(CASE WHEN ac.version = cv.version THEN 1 ELSE 0 END AS INTEGER) AS active,
+    CAST(COALESCE(m.value, '0') AS INTEGER) AS installed_at_ms
+FROM course_versions cv
+LEFT JOIN active_courses ac ON ac.course_id = cv.course_id
+LEFT JOIN import_metadata m
+    ON m.key = 'course_installed_at:' || cv.course_id || '@' || cv.version
+WHERE cv.course_id = ?
+ORDER BY cv.rowid DESC;
+
+-- name: DeleteCourseCursors :exec
+DELETE FROM course_cursors WHERE course_id = ?;
+
+-- name: DeactivateCourse :execrows
+DELETE FROM active_courses WHERE course_id = ?;
+
+-- name: SetImportMetadata :exec
+INSERT INTO import_metadata(key, value) VALUES (?, ?)
+ON CONFLICT(key) DO UPDATE SET value = excluded.value;
+
+-- name: DeleteImportMetadata :exec
+DELETE FROM import_metadata WHERE key = ?;
+
 -- name: InsertCourseItem :exec
 INSERT INTO course_items(course_id,version,item_id,unit_id,position,payload_json,legacy_question_id)
 VALUES (?,?,?,?,?,?,?);

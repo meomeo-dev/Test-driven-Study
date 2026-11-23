@@ -81,3 +81,6 @@ func (s *Service) QuestionTranscript(ctx context.Context, q Question) (string, e
 	}
 	return h.TranscriptText(ctx, s, q)
 }
+
+// DB exposes the SQLite handle for package lifecycle operations owned by internal/storage.
+func (s *Service) DB() *sql.DB { return s.db }

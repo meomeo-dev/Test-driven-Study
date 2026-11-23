@@ -48,6 +48,10 @@ func New(service *study.Service, palaces *palace.Service, root, apiPort, webPort
 	mux.HandleFunc("GET /api/courses/{course}/versions/{version}/assets/{asset...}", server.courseAsset)
 	mux.HandleFunc("GET /api/audio/pinyin/{file}", server.pinyinAudio)
 	mux.HandleFunc("GET /api/courses", server.courses)
+	mux.HandleFunc("GET /api/courses/packages", server.coursePackages)
+	mux.HandleFunc("POST /api/courses/install", server.installCoursePackage)
+	mux.HandleFunc("POST /api/courses/{course}/versions/{version}/activate", server.activateCourseVersion)
+	mux.HandleFunc("POST /api/courses/{course}/deactivate", server.deactivateCourse)
 	mux.HandleFunc("GET /api/guide", server.guide)
 	server.registerStudyRoutes(mux)
 	server.registerLearningRoutes(mux)
@@ -150,7 +154,13 @@ func (s *Server) localOnly(next http.Handler) http.Handler {
 				problem(w, 403, "请求来源无效")
 				return
 			}
-			if !strings.HasPrefix(r.Header.Get("Content-Type"), "application/json") {
+			contentType := r.Header.Get("Content-Type")
+			if r.Method == http.MethodPost && r.URL.Path == "/api/courses/install" {
+				if !strings.HasPrefix(contentType, "multipart/form-data") {
+					problem(w, http.StatusUnsupportedMediaType, "请使用 multipart/form-data 上传课程包")
+					return
+				}
+			} else if !strings.HasPrefix(contentType, "application/json") {
 				problem(w, 415, "请使用 JSON 请求")
 				return
 			}

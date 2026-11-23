@@ -23,6 +23,7 @@ type Package struct {
 	Units    map[string]UnitContent
 	Files    []string
 	hashes   map[string]string
+	assets   map[string][]byte
 }
 
 type UnitContent struct {

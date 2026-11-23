@@ -40,3 +40,182 @@
 .course-card:hover { background: var(--surface-hover); }
 .course-card img { width: 44px; height: 44px; border-radius: 8px; object-fit: contain; }
 .course-card p { margin-top: 4px; }
+
+.course-packages {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 14px;
+}
+.course-packages-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.course-packages-header h2 {
+  margin: 0;
+}
+.course-packages-note {
+  margin: 4px 0 0;
+  font-size: var(--font-size-control);
+  line-height: 1.6;
+  max-width: 660px;
+}
+.course-import-control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.course-package-notice {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--success-border);
+  background: var(--success-bg);
+  color: var(--success);
+  font-size: var(--font-size-control);
+}
+.course-package-error,
+.course-package-error-row {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--danger-border);
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: var(--font-size-control);
+}
+.course-package-error-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.course-package-list {
+  display: grid;
+  gap: 12px;
+}
+.course-package-card {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.course-package-card[data-active="false"] {
+  background: var(--surface-muted);
+}
+.course-package-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.course-package-identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.course-package-identity h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+.course-package-id {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-family: ui-monospace, monospace;
+}
+.course-package-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+}
+.course-package-badge.is-active {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
+}
+.course-package-badge.is-inactive {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.course-package-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course-package-confirm {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--warning-border);
+  background: var(--warning-bg);
+  color: var(--warning);
+  font-size: var(--font-size-control);
+}
+.course-package-confirm p {
+  margin: 0;
+  line-height: 1.6;
+}
+.course-package-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.course-version-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.course-version-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-muted);
+  font-size: var(--font-size-control);
+}
+.course-version-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+.course-version-meta strong {
+  color: var(--text);
+}
+.course-version-meta code {
+  font-size: var(--font-size-caption);
+  font-family: ui-monospace, monospace;
+  color: var(--muted);
+}
+.course-version-current {
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  color: var(--success);
+}
