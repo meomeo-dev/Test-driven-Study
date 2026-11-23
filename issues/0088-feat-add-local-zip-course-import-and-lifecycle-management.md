@@ -1,7 +1,8 @@
 ---
 id: 0088
 type: feat
-status: open
+status: closed
+closed-by: 07c5fea
 labels: [courses, storage, httpapi, cli, ui]
 branch: feat/0088-add-local-zip-course-import-and-lifecycle-management
 created: 2026-11-23
@@ -101,3 +102,22 @@ management UI that preserves `question_keys` and learner study history.
 - Extracting and running full `course.Load` validation in a temporary directory
   before opening any SQLite write transaction ensures malformed archives never
   hold database write locks or leave partial state behind.
+
+### Verification
+
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run check:generated`: passed
+  (`Generated HTTP types and SQL bindings are current.`).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod go test -count=1 ./...`: passed (`10/10`
+  packages ok, including `cmd/course`).
+- Targeted Wave 4 tests (`TestPackZip*`, `TestLoadZip*`, `TestCourseCLI*`,
+  `TestCourseZipLifecycle*`, `TestCourseLifecycleErrorGuards`,
+  `TestCoursePackageUpload*`, `TestCourseInstallRejects*`,
+  `TestCourseMutationLocalOnly`): `10/10` suites, `14/14` subtests passed
+  (`0` skips).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod go vet ./...`: passed.
+- `npm run typecheck && npm run test:unit`: passed (`tsc --noEmit` 0 errors;
+  Vitest `18/18` files, `81/81` tests passed, including `package-model.test.ts`
+  `6/6` and `registry.test.ts` `6/6`).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run build`: passed (`tsc --noEmit`,
+  `vite build` 3369 modules, and `go build ./cmd/server`).
+- `git diff --check`, `gofmt -l`, and `node scripts/issue-check.mjs`: all clean.
