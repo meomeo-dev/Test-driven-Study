@@ -97,6 +97,7 @@ func (s *Server) saveTTSSettings(w http.ResponseWriter, r *http.Request) {
 	}
 	var update tts.ProviderUpdate
 	decoder := json.NewDecoder(http.MaxBytesReader(w, r.Body, 8*1024))
+	decoder.DisallowUnknownFields()
 	if err := decoder.Decode(&update); err != nil {
 		problem(w, http.StatusBadRequest, "请求体格式无效")
 		return
@@ -119,6 +120,7 @@ func (s *Server) testTTSSettings(w http.ResponseWriter, r *http.Request) {
 	}
 	var update tts.ProviderUpdate
 	decoder := json.NewDecoder(http.MaxBytesReader(w, r.Body, 8*1024))
+	decoder.DisallowUnknownFields()
 	if err := decoder.Decode(&update); err != nil && !errors.Is(err, io.EOF) {
 		problem(w, http.StatusBadRequest, "请求体格式无效")
 		return

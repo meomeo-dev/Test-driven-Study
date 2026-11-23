@@ -110,8 +110,12 @@ inspect their state before restarting services or changing configuration.
   banks and unit configurations.
 - LLM, image, and TTS services have independent settings and OS credential entries.
   Never expose saved keys or proxy credentials in responses, logs or committed
-  files. Remote AI calls and downloads require an explicit proxy, with no direct
-  fallback; local test fixtures are the isolated development alternative.
+  files. Remote AI/TTS calls and downloads require an explicit proxy by default,
+  with no silent direct fallback; direct remote HTTPS is allowed only when the
+  user explicitly opts in via "Allow direct HTTPS" (`allow_direct_https`, default
+  `false`), while non-loopback plaintext HTTP remains rejected and any configured
+  proxy is always used without falling back to direct. Local test fixtures remain
+  the isolated development alternative.
 - Declare audio in course data. Use local recordings for Pinyin and TTS for Han
   text in Elementary Chinese. Explicit TTS voices take precedence over the
   saved default, and the selected voice determines the cache entry. Keep

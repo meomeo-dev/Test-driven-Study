@@ -8,10 +8,10 @@ import (
 	"net/http/httptest"
 	"os"
 	"strings"
-	"testing"
 	"test-driven-study/internal/httpapi"
 	"test-driven-study/internal/study"
 	"test-driven-study/internal/tts"
+	"testing"
 )
 
 type mockMemoryCreds struct {
@@ -55,18 +55,18 @@ func TestTTSRoutes(t *testing.T) {
 	if err := json.NewDecoder(resp.Body).Decode(&settings); err != nil {
 		t.Fatalf("failed to decode settings: %v", err)
 	}
-	if settings.Ready {
-		t.Fatalf("expected unready before configuring key")
+	if settings.Ready || settings.AllowDirectHTTPS {
+		t.Fatalf("expected unready and allow_direct_https=false before configuring")
 	}
 
 	// 2. PUT /api/tts/settings without valid token should fail with 403
 	key := "mock-api-key"
-	saveBody, _ := json.Marshal(tts.ProviderUpdate{
+	saveNoDirectBody, _ := json.Marshal(tts.ProviderUpdate{
 		BaseURL:      "https://api.deepseek.com/v1/tools/tts",
 		DefaultVoice: "tide",
 		APIKey:       &key,
 	})
-	req, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings", bytes.NewReader(saveBody))
+	req, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings", bytes.NewReader(saveNoDirectBody))
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Settings-Token", "invalid-token")
 	resp2, err := http.DefaultClient.Do(req)
@@ -75,20 +75,75 @@ func TestTTSRoutes(t *testing.T) {
 	}
 	resp2.Body.Close()
 
-	// 3. PUT /api/tts/settings with valid token should succeed
+	// 2b. Remote HTTPS without proxy or allow_direct_https must fail with 400 on save & test
+	reqBlocked, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings", bytes.NewReader(saveNoDirectBody))
+	reqBlocked.Header.Set("Content-Type", "application/json")
+	reqBlocked.Header.Set("X-Settings-Token", settings.WriteToken)
+	respBlocked, err := http.DefaultClient.Do(reqBlocked)
+	if err != nil || respBlocked.StatusCode != http.StatusBadRequest {
+		t.Fatalf("expected 400 for remote HTTPS without proxy/opt-in, got %v / %d",
+			err, respBlocked.StatusCode)
+	}
+	respBlocked.Body.Close()
+
+	reqTestBlocked, _ := http.NewRequest(http.MethodPost, server.URL+"/api/tts/settings/test", bytes.NewReader(saveNoDirectBody))
+	reqTestBlocked.Header.Set("Content-Type", "application/json")
+	reqTestBlocked.Header.Set("X-Settings-Token", settings.WriteToken)
+	respTestBlocked, err := http.DefaultClient.Do(reqTestBlocked)
+	if err != nil || respTestBlocked.StatusCode != http.StatusBadRequest {
+		t.Fatalf("expected 400 for test remote HTTPS without proxy/opt-in, got %v / %d",
+			err, respTestBlocked.StatusCode)
+	}
+	respTestBlocked.Body.Close()
+
+	// 2c. Remote plaintext HTTP must still fail with 400 even when allow_direct_https=true
+	plainHTTPBody, _ := json.Marshal(tts.ProviderUpdate{
+		BaseURL:          "http://api.deepseek.com/v1/tools/tts",
+		DefaultVoice:     "tide",
+		AllowDirectHTTPS: true,
+		APIKey:           &key,
+	})
+	reqPlainHTTP, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings", bytes.NewReader(plainHTTPBody))
+	reqPlainHTTP.Header.Set("Content-Type", "application/json")
+	reqPlainHTTP.Header.Set("X-Settings-Token", settings.WriteToken)
+	respPlainHTTP, err := http.DefaultClient.Do(reqPlainHTTP)
+	if err != nil || respPlainHTTP.StatusCode != http.StatusBadRequest {
+		t.Fatalf("expected 400 for remote plaintext HTTP, got %v / %d",
+			err, respPlainHTTP.StatusCode)
+	}
+	respPlainHTTP.Body.Close()
+
+	// 2d. Unknown JSON fields must fail with 400
+	reqUnknown, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings",
+		strings.NewReader(`{"base_url":"http://127.0.0.1:1/tts","default_voice":"stella","unknown":1}`))
+	reqUnknown.Header.Set("Content-Type", "application/json")
+	reqUnknown.Header.Set("X-Settings-Token", settings.WriteToken)
+	respUnknown, err := http.DefaultClient.Do(reqUnknown)
+	if err != nil || respUnknown.StatusCode != http.StatusBadRequest {
+		t.Fatalf("expected 400 for unknown field, got %v / %d", err, respUnknown.StatusCode)
+	}
+	respUnknown.Body.Close()
+
+	// 3. PUT /api/tts/settings with valid token and allow_direct_https=true should succeed
+	saveBody, _ := json.Marshal(tts.ProviderUpdate{
+		BaseURL:          "https://api.deepseek.com/v1/tools/tts",
+		DefaultVoice:     "tide",
+		AllowDirectHTTPS: true,
+		APIKey:           &key,
+	})
 	reqOk, _ := http.NewRequest(http.MethodPut, server.URL+"/api/tts/settings", bytes.NewReader(saveBody))
 	reqOk.Header.Set("Content-Type", "application/json")
 	reqOk.Header.Set("X-Settings-Token", settings.WriteToken)
 	resp3, err := http.DefaultClient.Do(reqOk)
 	if err != nil || resp3.StatusCode != http.StatusOK {
-		t.Fatalf("expected 200 for valid token, got %v / %d", err, resp3.StatusCode)
+		t.Fatalf("expected 200 for valid token with allow_direct_https, got %v / %d", err, resp3.StatusCode)
 	}
 	var updatedSettings tts.ProviderSettings
 	_ = json.NewDecoder(resp3.Body).Decode(&updatedSettings)
 	resp3.Body.Close()
 
-	if !updatedSettings.Ready || !updatedSettings.KeyConfigured {
-		t.Fatalf("expected ready service after save")
+	if !updatedSettings.Ready || !updatedSettings.KeyConfigured || !updatedSettings.AllowDirectHTTPS {
+		t.Fatalf("expected ready service with allow_direct_https=true after save: %+v", updatedSettings)
 	}
 	if updatedSettings.DefaultVoice != "tide" {
 		t.Fatalf("expected default voice tide, got %s", updatedSettings.DefaultVoice)

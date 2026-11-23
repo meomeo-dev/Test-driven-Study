@@ -4109,6 +4109,7 @@ components:
         - base_url
         - models
         - proxy_url
+        - allow_direct_https
         - proxy_auth_configured
         - key_configured
         - storage
@@ -4124,6 +4125,8 @@ components:
             type: string
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
         proxy_auth_configured:
           type: boolean
         key_configured:
@@ -4153,6 +4156,9 @@ components:
             type: string
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
+          default: false
         api_key:
           type: string
         clear_key:
@@ -4407,6 +4413,8 @@ components:
             type: string
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
         proxy_auth_configured:
           type: boolean
         key_configured:
@@ -4457,6 +4465,7 @@ components:
         - base_url
         - models
         - proxy_url
+        - allow_direct_https
         - proxy_auth_configured
         - key_configured
         - storage
@@ -4479,6 +4488,9 @@ components:
             type: string
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
+          default: false
         default_model:
           type: string
         reasoning_effort:
@@ -5490,6 +5502,7 @@ components:
         - voices
         - default_voice
         - proxy_url
+        - allow_direct_https
         - proxy_auth_configured
         - key_configured
         - storage
@@ -5508,6 +5521,8 @@ components:
           enum: [stella, tide]
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
         proxy_auth_configured:
           type: boolean
         key_configured:
@@ -5536,6 +5551,9 @@ components:
           type: boolean
         proxy_url:
           type: string
+        allow_direct_https:
+          type: boolean
+          default: false
     TTSSynthesizeInput:
       type: object
       required: [text]

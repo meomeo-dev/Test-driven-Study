@@ -50,7 +50,12 @@ func (m *memoryCredentials) Delete(id string) error {
 func memoryStore() *memoryCredentials { return &memoryCredentials{data: map[string]string{}} }
 func settingsInput(s *Service) ProviderUpdate {
 	value := s.ProviderSettings()
-	return ProviderUpdate{BaseURL: value.BaseURL, Models: value.Models, ProxyURL: value.ProxyURL}
+	return ProviderUpdate{
+		BaseURL:          value.BaseURL,
+		Models:           value.Models,
+		ProxyURL:         value.ProxyURL,
+		AllowDirectHTTPS: value.AllowDirectHTTPS,
+	}
 }
 
 func TestKeyringSettingsRetainReplaceClearAndRestart(t *testing.T) {
@@ -191,5 +196,85 @@ func TestProxyCredentialsStayOutOfReadMetadata(t *testing.T) {
 	candidate, err := s.candidate(settingsInput(s))
 	if err != nil || candidate.ProxyURL != options.Config.ProxyURL {
 		t.Fatal("redacted proxy round-trip lost authentication")
+	}
+}
+
+func TestAllowDirectHTTPSPersistenceAndLegacyDefault(t *testing.T) {
+	options := testOptions(t, nil)
+	store := memoryStore()
+	options.Credentials = store
+	s, err := New(context.Background(), options)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if s.ProviderSettings().AllowDirectHTTPS {
+		t.Fatal("expected AllowDirectHTTPS default false")
+	}
+
+	// Remote HTTPS without proxy must fail when AllowDirectHTTPS is false.
+	input := settingsInput(s)
+	input.BaseURL = "https://images.example.invalid/v1"
+	input.ProxyURL = ""
+	input.ReuseKey = true
+	if _, err := s.SaveProvider(context.Background(), input); err == nil {
+		t.Fatal("saved remote HTTPS without proxy or opt-in")
+	}
+	if _, err := s.TestProvider(context.Background(), input); err == nil {
+		t.Fatal("tested remote HTTPS without proxy or opt-in")
+	}
+
+	// Remote plaintext HTTP must fail even when AllowDirectHTTPS is true.
+	plain := input
+	plain.BaseURL = "http://images.example.invalid/v1"
+	plain.AllowDirectHTTPS = true
+	if _, err := s.SaveProvider(context.Background(), plain); err == nil {
+		t.Fatal("saved remote plaintext HTTP with AllowDirectHTTPS=true")
+	}
+
+	// Opting in allows saving and persists allow_direct_https in image-provider.json.
+	input.AllowDirectHTTPS = true
+	saved, err := s.SaveProvider(context.Background(), input)
+	if err != nil {
+		t.Fatalf("SaveProvider direct HTTPS failed: %v", err)
+	}
+	if !saved.AllowDirectHTTPS || !saved.Ready {
+		t.Fatalf("expected direct HTTPS ready, got %+v", saved)
+	}
+	raw, err := os.ReadFile(s.settingsFile)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(raw), `"allow_direct_https": true`) {
+		t.Fatalf("image-provider.json missing allow_direct_https: %s", raw)
+	}
+	s.Close()
+
+	reloaded, err := New(context.Background(), options)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if view := reloaded.ProviderSettings(); !view.AllowDirectHTTPS || !view.Ready {
+		reloaded.Close()
+		t.Fatalf("reloaded direct HTTPS mismatch: %+v", view)
+	}
+	account := reloaded.credentialAccount
+	reloaded.Close()
+
+	// Legacy files omitting allow_direct_https default to false and reject empty proxy.
+	legacyMarker := `{"version":1,"account":"` + account + `","base_url":"https://images.example.invalid/v1","models":["gpt-image-2"],"proxy_url":""}`
+	if err := os.WriteFile(s.settingsFile, []byte(legacyMarker), 0600); err != nil {
+		t.Fatal(err)
+	}
+	legacySecret := `{"BaseURL":"https://images.example.invalid/v1","APIKey":"test-key","ProxyURL":"","Models":["gpt-image-2"],"DefaultModel":"gpt-image-2"}`
+	if err := store.Set(account, legacySecret); err != nil {
+		t.Fatal(err)
+	}
+	legacy, err := New(context.Background(), options)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer legacy.Close()
+	if view := legacy.ProviderSettings(); view.AllowDirectHTTPS || view.Ready {
+		t.Fatalf("legacy settings without allow_direct_https should default false & unready: %+v", view)
 	}
 }

@@ -39,6 +39,7 @@ type savedProvider struct {
 	BaseURL           string   `json:"base_url"`
 	Models            []string `json:"models"`
 	ProxyURL          string   `json:"proxy_url"`
+	AllowDirectHTTPS  bool     `json:"allow_direct_https"`
 	ReasoningEffort   string   `json:"reasoning_effort"`
 	MaxOutputTokensK  int      `json:"max_output_tokens_k"`
 	ContextBudgetK    int      `json:"context_budget_k"`
@@ -58,7 +59,8 @@ func (s *Service) loadSavedProvider() {
 		return
 	}
 	s.credentialAccount = marker.Account
-	s.config = Config{BaseURL: marker.BaseURL, Models: marker.Models, ProxyURL: marker.ProxyURL, DefaultModel: marker.DefaultModel,
+	s.config = Config{BaseURL: marker.BaseURL, Models: marker.Models, ProxyURL: marker.ProxyURL,
+		AllowDirectHTTPS: marker.AllowDirectHTTPS, DefaultModel: marker.DefaultModel,
 		ReasoningEffort: marker.ReasoningEffort, MaxOutputTokensK: marker.MaxOutputTokensK,
 		ContextBudgetK: marker.ContextBudgetK, CompactThresholdK: marker.CompactThresholdK, CompactReserveK: marker.CompactReserveK, WebSearch: marker.WebSearch,
 		Message: "无法读取系统凭据，请解锁钥匙串或重新输入密钥保存"}
@@ -100,7 +102,7 @@ func (s *Service) persistProvider(config Config) error {
 		return &SettingsError{"未能验证系统凭据保存结果，原设置保持不变"}
 	}
 	marker := savedProvider{DefaultModel: config.DefaultModel, Version: 1, Account: account, BaseURL: config.BaseURL,
-		Models: config.Models, ProxyURL: safeProxy(config.ProxyURL),
+		Models: config.Models, ProxyURL: safeProxy(config.ProxyURL), AllowDirectHTTPS: config.AllowDirectHTTPS,
 		ReasoningEffort: config.ReasoningEffort, MaxOutputTokensK: config.MaxOutputTokensK, ContextBudgetK: config.ContextBudgetK, CompactThresholdK: config.CompactThresholdK, CompactReserveK: config.CompactReserveK, WebSearch: config.WebSearch}
 	data, _ := json.MarshalIndent(marker, "", "  ")
 	if err := atomicSettingsFile(s.settingsFile, append(data, '\n')); err != nil {

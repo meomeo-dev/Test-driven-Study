@@ -20,19 +20,30 @@ const post = (body: unknown): RequestInit => ({
   body: JSON.stringify(body),
 });
 
+const normalizeSettings = (value: TtsProviderSettings): TtsProviderSettings => ({
+  ...value,
+  allow_direct_https: Boolean(value.allow_direct_https),
+});
+
+const normalizeUpdate = (input: TtsProviderUpdate): TtsProviderUpdate => ({
+  ...input,
+  allow_direct_https: Boolean(input.allow_direct_https),
+});
+
 export const settings = (signal?: AbortSignal) =>
-  request<TtsProviderSettings>('/api/tts/settings', { signal, cache: 'no-store' });
+  request<TtsProviderSettings>('/api/tts/settings', { signal, cache: 'no-store' })
+    .then(normalizeSettings);
 
 export const save = (input: TtsProviderUpdate, token: string) =>
   request<TtsProviderSettings>('/api/tts/settings', {
-    ...post(input),
+    ...post(normalizeUpdate(input)),
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token },
-  });
+  }).then(normalizeSettings);
 
 export const test = (input: TtsProviderUpdate, token: string) =>
   request<ProviderConnection>('/api/tts/settings/test', {
-    ...post(input),
+    ...post(normalizeUpdate(input)),
     headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token },
   });
 

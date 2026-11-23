@@ -21,6 +21,7 @@ type ProviderSettings struct {
 	BaseURL             string   `json:"base_url"`
 	Models              []string `json:"models"`
 	ProxyURL            string   `json:"proxy_url"`
+	AllowDirectHTTPS    bool     `json:"allow_direct_https"`
 	ProxyAuthConfigured bool     `json:"proxy_auth_configured"`
 	KeyConfigured       bool     `json:"key_configured"`
 	Storage             string   `json:"storage"`
@@ -41,6 +42,7 @@ type ProviderUpdate struct {
 	BaseURL           string   `json:"base_url"`
 	Models            []string `json:"models"`
 	ProxyURL          string   `json:"proxy_url"`
+	AllowDirectHTTPS  bool     `json:"allow_direct_https"`
 	APIKey            *string  `json:"api_key,omitempty"`
 	ClearKey          bool     `json:"clear_key"`
 	ReuseKey          bool     `json:"reuse_key"`
@@ -96,6 +98,7 @@ func (s *Service) ProviderSettings() ProviderSettings {
 	}
 	policy, _ := normalizePolicy(c.parameters())
 	return ProviderSettings{BaseURL: safeProxy(c.BaseURL), Models: models, ProxyURL: safeProxy(c.ProxyURL),
+		AllowDirectHTTPS:    c.AllowDirectHTTPS,
 		ProxyAuthConfigured: safeProxy(c.ProxyURL) != c.ProxyURL, KeyConfigured: c.APIKey != "",
 		Storage: storage, WriteToken: s.settingsToken, Ready: s.provider != nil, Message: c.Message,
 		DefaultModel: c.DefaultModel, ReasoningEffort: c.ReasoningEffort,
@@ -162,6 +165,7 @@ func (s *Service) candidate(input ProviderUpdate) (Config, error) {
 	if c.ProxyURL == safeProxy(oldProxy) {
 		c.ProxyURL = oldProxy
 	}
+	c.AllowDirectHTTPS = input.AllowDirectHTTPS
 	if input.ClearKey && input.APIKey != nil && strings.TrimSpace(*input.APIKey) != "" {
 		return Config{}, &SettingsError{"不能同时清除和替换密钥"}
 	}
@@ -248,6 +252,9 @@ func (s *Service) TestProvider(ctx context.Context, input ProviderUpdate) (Conne
 	request.Header.Set("Authorization", "Bearer "+config.APIKey)
 	response, err := provider.client.Do(request)
 	if err != nil {
+		if config.ProxyURL == "" && config.AllowDirectHTTPS {
+			return ConnectionResult{}, &SettingsError{"无法直连远程 HTTPS 服务，请检查接口地址与网络"}
+		}
 		return ConnectionResult{}, &SettingsError{"无法通过配置的代理连接服务，请检查地址和代理"}
 	}
 	defer response.Body.Close()

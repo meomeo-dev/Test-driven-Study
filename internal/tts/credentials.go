@@ -34,11 +34,12 @@ func (systemCredentials) Delete(account string) error {
 }
 
 type savedProvider struct {
-	Version      int    `json:"version"`
-	Account      string `json:"account"`
-	BaseURL      string `json:"base_url"`
-	DefaultVoice string `json:"default_voice"`
-	ProxyURL     string `json:"proxy_url"`
+	Version          int    `json:"version"`
+	Account          string `json:"account"`
+	BaseURL          string `json:"base_url"`
+	DefaultVoice     string `json:"default_voice"`
+	ProxyURL         string `json:"proxy_url"`
+	AllowDirectHTTPS bool   `json:"allow_direct_https"`
 }
 
 type secretPayload struct {
@@ -82,6 +83,7 @@ func (s *Service) loadSavedProvider() {
 	s.config.BaseURL = marker.BaseURL
 	s.config.DefaultVoice = marker.DefaultVoice
 	s.config.ProxyURL = marker.ProxyURL
+	s.config.AllowDirectHTTPS = marker.AllowDirectHTTPS
 	s.config.Message = "无法读取系统凭据，请解锁钥匙串或重新输入密钥保存"
 
 	rawSecret, err := s.credentials.Get(marker.Account)
@@ -92,7 +94,9 @@ func (s *Service) loadSavedProvider() {
 	var secret secretPayload
 	if err := json.Unmarshal([]byte(rawSecret), &secret); err == nil && secret.APIKey != "" {
 		s.config.APIKey = secret.APIKey
-		s.config.Message = ""
+		s.config.Message = validateEndpoint(
+			s.config.BaseURL, s.config.ProxyURL, s.config.AllowDirectHTTPS,
+		)
 	}
 }
 
@@ -103,12 +107,20 @@ func (s *Service) loadEnvConfig() {
 		s.config.APIKey = key
 	}
 	if base := strings.TrimSpace(os.Getenv("STUDY_TTS_BASE_URL")); base != "" {
-		s.config.BaseURL = base
+		s.config.BaseURL = strings.TrimRight(base, "/")
 	}
 	if voice := strings.TrimSpace(os.Getenv("STUDY_TTS_DEFAULT_VOICE")); voice == "tide" {
 		s.config.DefaultVoice = "tide"
 	}
 	if proxy := strings.TrimSpace(os.Getenv("STUDY_TTS_PROXY_URL")); proxy != "" {
 		s.config.ProxyURL = proxy
+	}
+	if raw := strings.TrimSpace(os.Getenv("STUDY_TTS_ALLOW_DIRECT_HTTPS")); raw != "" {
+		s.config.AllowDirectHTTPS = strings.EqualFold(raw, "true") || raw == "1"
+	}
+	if s.config.APIKey != "" {
+		s.config.Message = validateEndpoint(
+			s.config.BaseURL, s.config.ProxyURL, s.config.AllowDirectHTTPS,
+		)
 	}
 }

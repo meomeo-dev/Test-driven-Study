@@ -22,6 +22,7 @@ type ProviderSettings struct {
 	Models              []string `json:"models"`
 	ProxyURL            string   `json:"proxy_url"`
 	ProxyAuthConfigured bool     `json:"proxy_auth_configured"`
+	AllowDirectHTTPS    bool     `json:"allow_direct_https"`
 	KeyConfigured       bool     `json:"key_configured"`
 	Storage             string   `json:"storage"`
 	WriteToken          string   `json:"write_token"`
@@ -30,12 +31,13 @@ type ProviderSettings struct {
 }
 
 type ProviderUpdate struct {
-	BaseURL  string   `json:"base_url"`
-	Models   []string `json:"models"`
-	ProxyURL string   `json:"proxy_url"`
-	APIKey   *string  `json:"api_key,omitempty"`
-	ClearKey bool     `json:"clear_key"`
-	ReuseKey bool     `json:"reuse_key"`
+	BaseURL          string   `json:"base_url"`
+	Models           []string `json:"models"`
+	ProxyURL         string   `json:"proxy_url"`
+	AllowDirectHTTPS bool     `json:"allow_direct_https"`
+	APIKey           *string  `json:"api_key,omitempty"`
+	ClearKey         bool     `json:"clear_key"`
+	ReuseKey         bool     `json:"reuse_key"`
 }
 
 type ConnectionResult struct {
@@ -70,9 +72,18 @@ func (s *Service) ProviderSettings() ProviderSettings {
 	if len(models) == 0 {
 		models = []string{"gpt-image-2"}
 	}
-	return ProviderSettings{BaseURL: safeProxy(c.BaseURL), Models: models, ProxyURL: safeProxy(c.ProxyURL),
-		ProxyAuthConfigured: safeProxy(c.ProxyURL) != c.ProxyURL, KeyConfigured: c.APIKey != "",
-		Storage: storage, WriteToken: s.settingsToken, Ready: s.provider != nil, Message: c.Message}
+	return ProviderSettings{
+		BaseURL:             safeProxy(c.BaseURL),
+		Models:              models,
+		ProxyURL:            safeProxy(c.ProxyURL),
+		ProxyAuthConfigured: safeProxy(c.ProxyURL) != c.ProxyURL,
+		AllowDirectHTTPS:    c.AllowDirectHTTPS,
+		KeyConfigured:       c.APIKey != "",
+		Storage:             storage,
+		WriteToken:          s.settingsToken,
+		Ready:               s.provider != nil,
+		Message:             c.Message,
+	}
 }
 
 func (s *Service) AuthorizeSettings(token string) bool {
@@ -121,6 +132,7 @@ func (s *Service) candidate(input ProviderUpdate) (Config, error) {
 	if c.ProxyURL == safeProxy(oldProxy) {
 		c.ProxyURL = oldProxy
 	}
+	c.AllowDirectHTTPS = input.AllowDirectHTTPS
 	if input.ClearKey && input.APIKey != nil && strings.TrimSpace(*input.APIKey) != "" {
 		return Config{}, &SettingsError{"不能同时清除和替换密钥"}
 	}
@@ -205,6 +217,9 @@ func (s *Service) TestProvider(ctx context.Context, input ProviderUpdate) (Conne
 	request.Header.Set("Authorization", "Bearer "+config.APIKey)
 	response, err := provider.client.Do(request)
 	if err != nil {
+		if config.ProxyURL == "" && config.AllowDirectHTTPS {
+			return ConnectionResult{}, &SettingsError{"无法直连生图服务，请检查端点地址和网络"}
+		}
 		return ConnectionResult{}, &SettingsError{"无法通过配置的代理连接服务，请检查地址和代理"}
 	}
 	defer response.Body.Close()

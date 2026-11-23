@@ -26,11 +26,12 @@ import (
 var keyHexRegex = regexp.MustCompile(`^[a-f0-9]{16}$`)
 
 type Config struct {
-	BaseURL      string
-	DefaultVoice string
-	ProxyURL     string
-	APIKey       string
-	Message      string
+	BaseURL          string
+	DefaultVoice     string
+	ProxyURL         string
+	AllowDirectHTTPS bool
+	APIKey           string
+	Message          string
 }
 
 type ProviderSettings struct {
@@ -39,6 +40,7 @@ type ProviderSettings struct {
 	DefaultVoice        string   `json:"default_voice"`
 	ProxyURL            string   `json:"proxy_url"`
 	ProxyAuthConfigured bool     `json:"proxy_auth_configured"`
+	AllowDirectHTTPS    bool     `json:"allow_direct_https"`
 	KeyConfigured       bool     `json:"key_configured"`
 	Storage             string   `json:"storage"`
 	WriteToken          string   `json:"write_token"`
@@ -47,11 +49,12 @@ type ProviderSettings struct {
 }
 
 type ProviderUpdate struct {
-	BaseURL      string  `json:"base_url"`
-	DefaultVoice string  `json:"default_voice"`
-	APIKey       *string `json:"api_key,omitempty"`
-	ClearKey     bool    `json:"clear_key"`
-	ProxyURL     string  `json:"proxy_url"`
+	BaseURL          string  `json:"base_url"`
+	DefaultVoice     string  `json:"default_voice"`
+	APIKey           *string `json:"api_key,omitempty"`
+	ClearKey         bool    `json:"clear_key"`
+	ProxyURL         string  `json:"proxy_url"`
+	AllowDirectHTTPS bool    `json:"allow_direct_https"`
 }
 
 type SynthesizeResult struct {
@@ -119,6 +122,40 @@ func safeProxy(raw string) string {
 	return parsed.String()
 }
 
+func loopback(host string) bool {
+	if host == "localhost" {
+		return true
+	}
+	ip := net.ParseIP(host)
+	return ip != nil && ip.IsLoopback()
+}
+
+func validateEndpoint(baseURL, proxyURL string, allowDirectHTTPS bool) string {
+	if len(baseURL) > 1024 || len(proxyURL) > 1024 {
+		return "TTS 接口或代理地址无效"
+	}
+	u, err := url.Parse(baseURL)
+	if err != nil || u.Hostname() == "" || u.User != nil ||
+		u.RawQuery != "" || u.Fragment != "" {
+		return "TTS 端点地址无效"
+	}
+	if u.Scheme != "https" && !(u.Scheme == "http" && loopback(u.Hostname())) {
+		return "远程 TTS 端点必须使用 HTTPS"
+	}
+	if proxyURL == "" && !loopback(u.Hostname()) && !allowDirectHTTPS {
+		return "请为远程 TTS 配置显式代理，或手动勾选允许直连 HTTPS"
+	}
+	if proxyURL != "" {
+		p, err := url.Parse(proxyURL)
+		if err != nil || p.Hostname() == "" || p.RawQuery != "" ||
+			p.Fragment != "" || (p.Scheme != "http" && p.Scheme != "https" &&
+			p.Scheme != "socks5" && p.Scheme != "socks5h") {
+			return "TTS 代理地址无效"
+		}
+	}
+	return ""
+}
+
 func (s *Service) Settings() ProviderSettings {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
@@ -137,6 +174,12 @@ func (s *Service) Settings() ProviderSettings {
 	if voice != "tide" {
 		voice = "stella"
 	}
+	msg := c.Message
+	validationMsg := validateEndpoint(base, c.ProxyURL, c.AllowDirectHTTPS)
+	if c.APIKey != "" && msg == "" {
+		msg = validationMsg
+	}
+	ready := c.APIKey != "" && msg == "" && validationMsg == ""
 
 	return ProviderSettings{
 		BaseURL:             safeProxy(base),
@@ -144,11 +187,12 @@ func (s *Service) Settings() ProviderSettings {
 		DefaultVoice:        voice,
 		ProxyURL:            safeProxy(c.ProxyURL),
 		ProxyAuthConfigured: safeProxy(c.ProxyURL) != c.ProxyURL,
+		AllowDirectHTTPS:    c.AllowDirectHTTPS,
 		KeyConfigured:       c.APIKey != "",
 		Storage:             storage,
 		WriteToken:          s.settingsToken,
-		Ready:               c.APIKey != "",
-		Message:             c.Message,
+		Ready:               ready,
+		Message:             msg,
 	}
 }
 
@@ -160,13 +204,18 @@ func (s *Service) Save(update ProviderUpdate, token string) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	base := strings.TrimSpace(update.BaseURL)
+	base := strings.TrimRight(strings.TrimSpace(update.BaseURL), "/")
 	if base == "" {
 		base = "https://api.deepseek.com/v1/tools/tts"
 	}
 	voice := update.DefaultVoice
 	if voice != "tide" {
 		voice = "stella"
+	}
+	proxy := strings.TrimSpace(update.ProxyURL)
+	// A redacted proxy URL round-trips without discarding existing credentials.
+	if proxy == safeProxy(s.config.ProxyURL) {
+		proxy = s.config.ProxyURL
 	}
 
 	account := s.credentialAccount
@@ -180,11 +229,15 @@ func (s *Service) Save(update ProviderUpdate, token string) error {
 
 	apiKey := s.config.APIKey
 	if update.ClearKey {
-		apiKey = ""
 		_ = s.credentials.Delete(account)
 		_ = os.Remove(s.settingsFile)
 		s.credentialAccount = ""
-		s.config = Config{BaseURL: base, DefaultVoice: voice, ProxyURL: strings.TrimSpace(update.ProxyURL)}
+		s.config = Config{
+			BaseURL:          base,
+			DefaultVoice:     voice,
+			ProxyURL:         proxy,
+			AllowDirectHTTPS: update.AllowDirectHTTPS,
+		}
 		s.settingsToken = generateToken()
 		return nil
 	}
@@ -196,6 +249,9 @@ func (s *Service) Save(update ProviderUpdate, token string) error {
 	if apiKey == "" {
 		return errors.New("API Key 不能为空")
 	}
+	if msg := validateEndpoint(base, proxy, update.AllowDirectHTTPS); msg != "" {
+		return errors.New(msg)
+	}
 
 	secretJSON, err := json.Marshal(secretPayload{APIKey: apiKey})
 	if err != nil {
@@ -206,11 +262,12 @@ func (s *Service) Save(update ProviderUpdate, token string) error {
 	}
 
 	marker := savedProvider{
-		Version:      1,
-		Account:      account,
-		BaseURL:      base,
-		DefaultVoice: voice,
-		ProxyURL:     strings.TrimSpace(update.ProxyURL),
+		Version:          1,
+		Account:          account,
+		BaseURL:          base,
+		DefaultVoice:     voice,
+		ProxyURL:         proxy,
+		AllowDirectHTTPS: update.AllowDirectHTTPS,
 	}
 	markerJSON, err := json.Marshal(marker)
 	if err != nil {
@@ -222,31 +279,34 @@ func (s *Service) Save(update ProviderUpdate, token string) error {
 
 	s.credentialAccount = account
 	s.config = Config{
-		BaseURL:      base,
-		DefaultVoice: voice,
-		ProxyURL:     strings.TrimSpace(update.ProxyURL),
-		APIKey:       apiKey,
+		BaseURL:          base,
+		DefaultVoice:     voice,
+		ProxyURL:         proxy,
+		AllowDirectHTTPS: update.AllowDirectHTTPS,
+		APIKey:           apiKey,
 	}
 	s.settingsToken = generateToken()
 	return nil
 }
 
-func (s *Service) httpClient(proxyURL string) *http.Client {
+func (s *Service) httpClient(proxyURL string) (*http.Client, error) {
 	transport := http.DefaultTransport.(*http.Transport).Clone()
 	transport.Proxy = nil
 	transport.DialContext = (&net.Dialer{Timeout: 15 * time.Second}).DialContext
 	transport.TLSHandshakeTimeout = 15 * time.Second
 
 	if proxyURL != "" {
-		if proxy, err := url.Parse(proxyURL); err == nil {
-			transport.Proxy = http.ProxyURL(proxy)
+		proxy, err := url.Parse(proxyURL)
+		if err != nil {
+			return nil, errors.New("TTS 代理地址无效")
 		}
+		transport.Proxy = http.ProxyURL(proxy)
 	}
 
 	return &http.Client{
 		Transport: transport,
 		Timeout:   30 * time.Second,
-	}
+	}, nil
 }
 
 type ttsRequest struct {
@@ -262,15 +322,26 @@ func (s *Service) Test(ctx context.Context, update ProviderUpdate, token string)
 
 	s.mu.RLock()
 	apiKey := s.config.APIKey
-	proxy := s.config.ProxyURL
+	savedProxy := s.config.ProxyURL
+	proxy := savedProxy
 	baseURL := s.config.BaseURL
+	allowDirect := s.config.AllowDirectHTTPS
 	s.mu.RUnlock()
 
-	if update.BaseURL != "" {
-		baseURL = update.BaseURL
-	}
-	if update.ProxyURL != "" {
-		proxy = update.ProxyURL
+	if base := strings.TrimRight(strings.TrimSpace(update.BaseURL), "/"); base != "" {
+		baseURL = base
+		proxy = strings.TrimSpace(update.ProxyURL)
+		if proxy == safeProxy(savedProxy) {
+			proxy = savedProxy
+		}
+		allowDirect = update.AllowDirectHTTPS
+	} else {
+		if p := strings.TrimSpace(update.ProxyURL); p != "" {
+			proxy = p
+		}
+		if update.AllowDirectHTTPS {
+			allowDirect = true
+		}
 	}
 	if update.APIKey != nil && strings.TrimSpace(*update.APIKey) != "" {
 		apiKey = strings.TrimSpace(*update.APIKey)
@@ -279,8 +350,14 @@ func (s *Service) Test(ctx context.Context, update ProviderUpdate, token string)
 	if apiKey == "" {
 		return "", errors.New("API Key 尚未配置，请输入有效密钥后测试")
 	}
+	if msg := validateEndpoint(baseURL, proxy, allowDirect); msg != "" {
+		return "", errors.New(msg)
+	}
 
-	client := s.httpClient(proxy)
+	client, err := s.httpClient(proxy)
+	if err != nil {
+		return "", err
+	}
 	reqBody, err := json.Marshal(ttsRequest{
 		Text:    "OK",
 		VoiceID: "stella",
@@ -389,6 +466,11 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 	if config.APIKey == "" {
 		return nil, errors.New("TTS 服务尚未配置 API Key，请在「服务设置」中配置")
 	}
+	if msg := validateEndpoint(
+		config.BaseURL, config.ProxyURL, config.AllowDirectHTTPS,
+	); msg != "" {
+		return nil, errors.New(msg)
+	}
 
 	sfKey := fmt.Sprintf("%s:%s:%t", voice, key, force)
 	val, err, _ := s.sf.Do(sfKey, func() (any, error) {
@@ -407,7 +489,10 @@ func (s *Service) Synthesize(ctx context.Context, text, voice string, force bool
 			prevMod = fi.ModTime().UnixNano()
 		}
 
-		client := s.httpClient(config.ProxyURL)
+		client, err := s.httpClient(config.ProxyURL)
+		if err != nil {
+			return synthOutcome{}, err
+		}
 		reqPayload, err := json.Marshal(ttsRequest{
 			Text:    text,
 			VoiceID: voice,

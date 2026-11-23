@@ -69,7 +69,8 @@ func testOptions(t *testing.T, base string) Options {
 func updateInput(s *Service) ProviderUpdate {
 	v := s.ProviderSettings()
 	return ProviderUpdate{BaseURL: v.BaseURL, Models: v.Models, ProxyURL: v.ProxyURL,
-		DefaultModel: v.DefaultModel, ReasoningEffort: v.ReasoningEffort, MaxOutputTokensK: v.MaxOutputTokensK}
+		AllowDirectHTTPS: v.AllowDirectHTTPS,
+		DefaultModel:     v.DefaultModel, ReasoningEffort: v.ReasoningEffort, MaxOutputTokensK: v.MaxOutputTokensK}
 }
 func TestIndependentSettingsRetentionFailureAndRestart(t *testing.T) {
 	options := testOptions(t, "http://127.0.0.1:1/v1")

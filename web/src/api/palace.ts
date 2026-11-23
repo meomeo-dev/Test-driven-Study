@@ -44,15 +44,29 @@ export const events = (id: string, signal?: AbortSignal) =>
   request<TaskEvent[]>(`/api/tasks/${id}/events`, {signal});
 
 export type { ProviderSettings, ProviderUpdate } from './generated/types.gen';
+const normalizeProviderSettings = (value: ProviderSettings): ProviderSettings => ({
+  ...value,
+  allow_direct_https: Boolean(value.allow_direct_https),
+});
+const normalizeProviderUpdate = (input: ProviderUpdate): ProviderUpdate => ({
+  ...input,
+  allow_direct_https: Boolean(input.allow_direct_https),
+});
 export const providerSettings = (signal?: AbortSignal) =>
-  request<ProviderSettings>('/api/palaces/settings', { signal, cache: 'no-store' });
+  request<ProviderSettings>('/api/palaces/settings', { signal, cache: 'no-store' })
+    .then(normalizeProviderSettings);
 export function saveProvider(input: ProviderUpdate, token: string) {
-  return request<ProviderSettings>('/api/palaces/settings', { ...post(input), method: 'PUT',
-    headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token } });
+  return request<ProviderSettings>('/api/palaces/settings', {
+    ...post(normalizeProviderUpdate(input)),
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token },
+  }).then(normalizeProviderSettings);
 }
 export function testProvider(input: ProviderUpdate, token: string) {
-  return request<ProviderConnection>('/api/palaces/settings/test', { ...post(input),
-    headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token } });
+  return request<ProviderConnection>('/api/palaces/settings/test', {
+    ...post(normalizeProviderUpdate(input)),
+    headers: { 'Content-Type': 'application/json', 'X-Settings-Token': token },
+  });
 }
 
 export function stageLabel(job: PalaceJob) {

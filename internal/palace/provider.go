@@ -59,6 +59,9 @@ func (p *HTTPProvider) Generate(ctx context.Context, input ProviderInput) (Provi
 		if ctx.Err() != nil {
 			return ProviderOutput{}, ctx.Err()
 		}
+		if p.config.ProxyURL == "" && p.config.AllowDirectHTTPS {
+			return ProviderOutput{}, &Failure{"connection_failed", "无法直连生图服务，请检查网络或稍后重试"}
+		}
 		return ProviderOutput{}, &Failure{"connection_failed", "无法通过代理连接生图服务，请检查代理或稍后重试"}
 	}
 	defer response.Body.Close()
@@ -150,7 +153,7 @@ func (p *HTTPProvider) download(ctx context.Context, raw string) ([]byte, error)
 	base, _ := url.Parse(p.config.BaseURL)
 	local := loopback(u.Hostname()) && loopback(base.Hostname()) && u.Host == base.Host
 	if !local {
-		if u.Scheme != "https" || p.config.ProxyURL == "" {
+		if u.Scheme != "https" || (p.config.ProxyURL == "" && !p.config.AllowDirectHTTPS) {
 			return nil, ErrInvalid
 		}
 		ip := net.ParseIP(u.Hostname())
@@ -165,6 +168,9 @@ func (p *HTTPProvider) download(ctx context.Context, raw string) ([]byte, error)
 	// Download requests deliberately have no provider Authorization header.
 	response, err := p.client.Do(request)
 	if err != nil {
+		if p.config.ProxyURL == "" && p.config.AllowDirectHTTPS {
+			return nil, &Failure{"download_failed", "无法直连下载生成图片"}
+		}
 		return nil, &Failure{"download_failed", "无法通过代理下载生成图片"}
 	}
 	defer response.Body.Close()

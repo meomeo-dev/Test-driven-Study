@@ -33,11 +33,12 @@ func (systemCredentials) Delete(account string) error {
 }
 
 type savedProvider struct {
-	Version  int      `json:"version"`
-	Account  string   `json:"account"`
-	BaseURL  string   `json:"base_url"`
-	Models   []string `json:"models"`
-	ProxyURL string   `json:"proxy_url"`
+	Version          int      `json:"version"`
+	Account          string   `json:"account"`
+	BaseURL          string   `json:"base_url"`
+	Models           []string `json:"models"`
+	ProxyURL         string   `json:"proxy_url"`
+	AllowDirectHTTPS bool     `json:"allow_direct_https"`
 }
 
 func (s *Service) loadSavedProvider() {
@@ -51,8 +52,13 @@ func (s *Service) loadSavedProvider() {
 		return
 	}
 	s.credentialAccount = marker.Account
-	s.config = Config{BaseURL: marker.BaseURL, Models: marker.Models, ProxyURL: marker.ProxyURL,
-		Message: "无法读取系统凭据，请解锁钥匙串或重新输入密钥保存"}
+	s.config = Config{
+		BaseURL:          marker.BaseURL,
+		Models:           marker.Models,
+		ProxyURL:         marker.ProxyURL,
+		AllowDirectHTTPS: marker.AllowDirectHTTPS,
+		Message:          "无法读取系统凭据，请解锁钥匙串或重新输入密钥保存",
+	}
 	value, err := s.credentials.Get(marker.Account)
 	var config Config
 	if err != nil || len(value) > 2300 || json.Unmarshal([]byte(value), &config) != nil {
@@ -90,8 +96,14 @@ func (s *Service) persistProvider(config Config) error {
 		s.credentials.Delete(account)
 		return &SettingsError{"未能验证系统凭据保存结果，原设置保持不变"}
 	}
-	marker := savedProvider{Version: 1, Account: account, BaseURL: config.BaseURL,
-		Models: config.Models, ProxyURL: safeProxy(config.ProxyURL)}
+	marker := savedProvider{
+		Version:          1,
+		Account:          account,
+		BaseURL:          config.BaseURL,
+		Models:           config.Models,
+		ProxyURL:         safeProxy(config.ProxyURL),
+		AllowDirectHTTPS: config.AllowDirectHTTPS,
+	}
 	data, _ := json.MarshalIndent(marker, "", "  ")
 	if err := atomicSettingsFile(s.settingsFile, append(data, '\n')); err != nil {
 		s.credentials.Delete(account)

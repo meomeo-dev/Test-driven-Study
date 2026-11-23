@@ -80,3 +80,79 @@ func TestProviderSettingsCSRFAndMaskedReadContract(t *testing.T) {
 		t.Fatal("unknown settings field accepted")
 	}
 }
+
+func TestPalaceSettingsAllowDirectHTTPSContract(t *testing.T) {
+	root, _ := filepath.Abs("../..")
+	directory := t.TempDir()
+	db, err := storage.Open(context.Background(), root, directory)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	studyService := study.New(db, root)
+	palaces, err := palace.New(context.Background(), palace.Options{
+		DB: db, Study: studyService, Root: root, DataDirectory: directory,
+		Config: palace.Config{Message: "unconfigured"}, Credentials: testCredentials{},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer palaces.Close()
+	server := httptest.NewServer(httpapi.New(studyService, palaces, root, "43188", "43187"))
+	defer server.Close()
+
+	_, data := call(t, server, "GET", "/api/palaces/settings", "", "")
+	var initial palace.ProviderSettings
+	if err := json.Unmarshal(data, &initial); err != nil {
+		t.Fatal(err)
+	}
+	if initial.AllowDirectHTTPS {
+		t.Fatalf("expected default allow_direct_https=false: %s", data)
+	}
+	send := func(method, path, payload string) (int, []byte) {
+		req, _ := http.NewRequest(method, server.URL+path, strings.NewReader(payload))
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("Origin", "http://127.0.0.1:43187")
+		req.Header.Set("X-Settings-Token", initial.WriteToken)
+		res, err := server.Client().Do(req)
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer res.Body.Close()
+		out, _ := io.ReadAll(res.Body)
+		return res.StatusCode, out
+	}
+
+	remoteNoDirect := `{"base_url":"https://remote.example.test/v1","models":["gpt-image-2"],"proxy_url":"","allow_direct_https":false,"api_key":"img-key","clear_key":false,"reuse_key":false}`
+	if code, body := send("PUT", "/api/palaces/settings", remoteNoDirect); code != 400 {
+		t.Fatalf("expected 400 without proxy or opt-in, got %d: %s", code, body)
+	}
+	if code, body := send("POST", "/api/palaces/settings/test", remoteNoDirect); code != 400 {
+		t.Fatalf("expected 400 on test without proxy or opt-in, got %d: %s", code, body)
+	}
+
+	remotePlainHTTP := strings.Replace(
+		strings.Replace(remoteNoDirect, `"allow_direct_https":false`, `"allow_direct_https":true`, 1),
+		"https://remote.example.test/v1", "http://remote.example.test/v1", 1,
+	)
+	if code, body := send("PUT", "/api/palaces/settings", remotePlainHTTP); code != 400 {
+		t.Fatalf("expected 400 for remote plaintext HTTP, got %d: %s", code, body)
+	}
+
+	remoteDirect := strings.Replace(
+		remoteNoDirect, `"allow_direct_https":false`, `"allow_direct_https":true`, 1,
+	)
+	code, out := send("PUT", "/api/palaces/settings", remoteDirect)
+	if code != 200 || strings.Contains(string(out), "img-key") {
+		t.Fatalf("direct HTTPS save failed or leaked key: %d %s", code, out)
+	}
+	var saved palace.ProviderSettings
+	if err := json.Unmarshal(out, &saved); err != nil || !saved.AllowDirectHTTPS || !saved.Ready {
+		t.Fatalf("expected ready direct HTTPS settings: %s %v", out, err)
+	}
+	_, reread := call(t, server, "GET", "/api/palaces/settings", "", "")
+	var fetched palace.ProviderSettings
+	if err := json.Unmarshal(reread, &fetched); err != nil || !fetched.AllowDirectHTTPS {
+		t.Fatalf("GET /api/palaces/settings lost allow_direct_https: %s %v", reread, err)
+	}
+}

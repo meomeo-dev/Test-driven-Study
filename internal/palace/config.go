@@ -14,8 +14,13 @@ import (
 
 type Config struct {
 	BaseURL, APIKey, ProxyURL string
+	AllowDirectHTTPS          bool `json:"allow_direct_https"`
 	Models                    []string
 	DefaultModel, Message     string
+}
+
+func parseBoolEnv(raw string) bool {
+	return strings.EqualFold(raw, "true") || raw == "1"
 }
 
 func LoadConfig(root string) Config {
@@ -33,9 +38,14 @@ func LoadConfig(root string) Config {
 		}
 		return strings.TrimSpace(values[name])
 	}
-	c := Config{BaseURL: strings.TrimRight(get("GPT_IMAGE2_1_BASE_URL"), "/"),
-		APIKey: get("GPT_IMAGE2_1_API_KEY"), ProxyURL: get("GPT_IMAGE2_1_PROXY_URL"), Models: []string{}}
-	if c.ProxyURL == "" {
+	c := Config{
+		BaseURL:          strings.TrimRight(get("GPT_IMAGE2_1_BASE_URL"), "/"),
+		APIKey:           get("GPT_IMAGE2_1_API_KEY"),
+		ProxyURL:         get("GPT_IMAGE2_1_PROXY_URL"),
+		AllowDirectHTTPS: parseBoolEnv(get("GPT_IMAGE2_1_ALLOW_DIRECT_HTTPS")),
+		Models:           []string{},
+	}
+	if c.ProxyURL == "" && !c.AllowDirectHTTPS {
 		c.ProxyURL = get("HTTPS_PROXY")
 	}
 	for _, model := range strings.Split(get("GPT_IMAGE2_1_MODELS"), ",") {
@@ -103,8 +113,8 @@ func validateConfig(c Config) string {
 	if u.Scheme != "https" && !(u.Scheme == "http" && loopback(u.Hostname())) {
 		return "远程生图端点必须使用 HTTPS"
 	}
-	if c.ProxyURL == "" && !loopback(u.Hostname()) {
-		return "请为远程生图配置显式代理"
+	if c.ProxyURL == "" && !loopback(u.Hostname()) && !c.AllowDirectHTTPS {
+		return "请为远程生图配置显式代理，或手动勾选允许直连 HTTPS"
 	}
 	if c.ProxyURL != "" {
 		p, err := url.Parse(c.ProxyURL)

@@ -759,6 +759,7 @@ export type ProviderSettings = {
     base_url: string;
     models: Array<string>;
     proxy_url: string;
+    allow_direct_https: boolean;
     proxy_auth_configured: boolean;
     key_configured: boolean;
     storage: string;
@@ -771,6 +772,7 @@ export type ProviderUpdate = {
     base_url: string;
     models: Array<string>;
     proxy_url: string;
+    allow_direct_https?: boolean;
     api_key?: string;
     clear_key: boolean;
     reuse_key: boolean;
@@ -888,6 +890,7 @@ export type LlmProviderSettings = {
     base_url: string;
     models: Array<string>;
     proxy_url: string;
+    allow_direct_https: boolean;
     proxy_auth_configured: boolean;
     key_configured: boolean;
     storage: string;
@@ -908,6 +911,7 @@ export type LlmProviderUpdate = {
     base_url: string;
     models: Array<string>;
     proxy_url: string;
+    allow_direct_https?: boolean;
     default_model: string;
     reasoning_effort: 'default' | 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh' | 'max';
     /**
@@ -1487,6 +1491,7 @@ export type TtsProviderSettings = {
     voices: Array<'stella' | 'tide'>;
     default_voice: 'stella' | 'tide';
     proxy_url: string;
+    allow_direct_https: boolean;
     proxy_auth_configured: boolean;
     key_configured: boolean;
     storage: string;
@@ -1500,6 +1505,7 @@ export type TtsProviderUpdate = {
     api_key?: string;
     clear_key?: boolean;
     proxy_url?: string;
+    allow_direct_https?: boolean;
 };
 
 export type TtsSynthesizeInput = {
