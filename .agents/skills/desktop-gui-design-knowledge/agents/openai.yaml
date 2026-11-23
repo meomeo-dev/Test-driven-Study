@@ -1,0 +1,6 @@
+interface:
+  display_name: "桌面专业 GUI 设计知识"
+  short_description: >-
+    桌面客户端与高密度工作台的平台规范数值、密度与令牌、组件库版本与许可证、功能分区与交互层级、专业软件界面惯例
+  default_prompt: >-
+    使用 $desktop-gui-design-knowledge 为这个桌面工作台界面确定字号、表格行高与密度，并给出依据和核验日期。

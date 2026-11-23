@@ -1,0 +1,186 @@
+schema_version: 1
+skill: desktop-gui-design-knowledge
+entries:
+  - id: platform-conventions
+    title: macOS 与 Windows 平台规范（Platform Conventions）
+    path: references/platform-conventions.md
+    kind: reference
+    summary: >-
+      macOS 文字样式表（字号/行高/字重）、菜单栏与标准快捷键、侧边栏层级与审核条款 2.5.1；Windows
+      type ramp、4 epx 间距、圆角、触控目标、标题栏高度与 Mica/Acrylic；跨平台字体栈与快捷键写法。
+    aliases: [HIG, 平台规范, 字号, type ramp, 标题栏, 菜单栏, 快捷键, Mica, Acrylic, Segoe UI, SF Pro]
+    source: >-
+      https://developer.apple.com/design/human-interface-guidelines/typography ;
+      https://developer.apple.com/design/human-interface-guidelines/layout ;
+      https://developer.apple.com/design/human-interface-guidelines/keyboards ;
+      https://developer.apple.com/design/human-interface-guidelines/sidebars ;
+      https://developer.apple.com/design/human-interface-guidelines/the-menu-bar ;
+      https://developer.apple.com/app-store/review/guidelines/ ;
+      https://learn.microsoft.com/en-us/windows/apps/design/signature-experiences/typography ;
+      https://learn.microsoft.com/en-us/windows/apps/design/basics/content-basics ;
+      https://learn.microsoft.com/en-us/windows/apps/design/signature-experiences/geometry ;
+      https://learn.microsoft.com/en-us/windows/apps/develop/input/guidelines-for-targeting ;
+      https://learn.microsoft.com/en-us/windows/apps/design/basics/titlebar-design ;
+      https://learn.microsoft.com/en-us/windows/apps/desktop/modernize/ui/apply-snap-layout-menu ;
+      https://learn.microsoft.com/en-us/windows/apps/design/style/mica ;
+      https://learn.microsoft.com/en-us/windows/apps/design/style/acrylic
+    verified_at: 2026-11-17
+    review_after_days: 180
+    status: active
+  - id: accessibility-baseline
+    title: 可访问性基线（Accessibility Baseline）
+    path: references/accessibility-baseline.md
+    kind: reference
+    summary: >-
+      WCAG 2.2 的对比度（1.4.3、1.4.6、1.4.11）、颜色（1.4.1）、目标尺寸 24×24（2.5.8）、焦点
+      不被遮挡（2.4.11）与顺序条款的级别与阈值；地标、焦点环、复合控件焦点管理与 F6 惯例的出处。
+    aliases: [WCAG, 对比度, contrast, 目标尺寸, target size, 焦点, focus, landmark, roving tabindex, F6]
+    source: >-
+      https://www.w3.org/TR/WCAG22/ ;
+      https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html ;
+      https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/ ;
+      https://learn.microsoft.com/en-us/windows/apps/design/accessibility/keyboard-accessibility
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active
+  - id: design-systems-and-tokens
+    title: 企业设计体系的密度模式与设计令牌（Design Systems and Tokens）
+    path: references/design-systems-and-tokens.md
+    kind: reference
+    summary: >-
+      公开设计体系的密度档位与表格行高（24/32/40/48/64、Cozy 44 px 触控区等）、间距与颜色命名的
+      共同做法、令牌三层结构、用根节点属性切换主题与密度、DTCG 2025.10 格式的地位与字段规则。
+    aliases: [密度, density, compact, 紧凑, 行高, row height, 设计令牌, design tokens, DTCG, 深色主题]
+    source: >-
+      https://carbondesignsystem.com/components/data-table/style/ ;
+      https://www.sap.com/design-system/fiori-design-web/v1-136/foundations/visual/cozy-compact ;
+      https://www.lightningdesignsystem.com/2e1ef8501/p/805bbe-display-density ;
+      https://opensource.adobe.com/spectrum-web-components/tools/theme/ ;
+      https://ant.design/docs/react/customize-theme/ ;
+      https://fluent2.microsoft.design/design-tokens ;
+      https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/ ;
+      标「经验」的条目为多个体系共同做法的归纳，没有单一出处
+    verified_at: 2026-11-17
+    review_after_days: 180
+    status: active
+  - id: react-component-libraries
+    title: React 组件库与无样式原语（React Component Libraries）
+    path: references/react-component-libraries.md
+    kind: reference
+    summary: >-
+      无样式原语、完整组件库、分栏与停靠、命令面板、表格逻辑与虚拟滚动各包的许可证、最新版本与
+      发布日期快照、覆盖范围与代价，Blueprint 的 React 19 迁移，WKWebView 与 WebView2 的 CSS 差异。
+    aliases: [组件库, headless, 无样式, react-aria-components, radix-ui, base-ui, ariakit, blueprint, fluentui, dockview, cmdk, tanstack, 许可证, license]
+    source: >-
+      npm 注册表 https://registry.npmjs.org/<包名>（版本、许可证与该版本的发布时间） ;
+      https://github.com/palantir/blueprint/wiki/React-19-Support ;
+      https://base-ui.com/react/overview/releases/v1-0-0 ;
+      https://github.com/ariakit/ariakit/releases/tag/@ariakit/react@0.1.0 ;
+      https://react-aria.adobe.com/ ;
+      https://www.radix-ui.com/primitives/docs/components ;
+      https://dockview.dev/docs/core/state/save/ ;
+      https://github.com/bvaughn/react-resizable-panels ;
+      https://caniuse.com/css-backdrop-filter ;
+      https://caniuse.com/mdn-css_types_color_color-mix ;
+      标「经验」的条目为使用判断
+    verified_at: 2026-11-17
+    review_after_days: 90
+    status: active
+  - id: layout-and-regions
+    title: 功能分区与布局（Layout and Regions）
+    path: references/layout-and-regions.md
+    kind: reference
+    summary: >-
+      五块通用骨架，导航栏、列表栏、工具栏、工作区、检查器、底部面板、状态栏各放什么不放什么，
+      页签与分隔条规则，布局保存与重置，主窗口加常驻小窗的分工与窗口属性。
+    aliases: [功能分区, 布局, layout, 检查器, inspector, 状态栏, 底部面板, 导航栏, 常驻小窗, 停靠]
+    source: >-
+      经验归纳：桌面专业软件公开界面的共同做法，按区域总结；侧边栏层级与分栏规则见条目
+      platform-conventions 的来源；数值未逐条核实
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active
+  - id: visual-hierarchy-and-dense-tables
+    title: 视觉与文字层级、高密度表格（Visual Hierarchy and Dense Tables）
+    path: references/visual-hierarchy-and-dense-tables.md
+    kind: reference
+    summary: >-
+      视觉层级手段、四级文字层级与三档明度；高密度表格的对齐、等宽数字、分隔、冻结、
+      极值标记、空单元格、概览到细节的组织、键盘、虚拟滚动与空态加载态错误态。
+    aliases: [视觉层级, 文字层级, 字号, 表格, data table, tabular-nums, 斑马纹, 空状态, 骨架屏]
+    source: >-
+      Shneiderman, B. (1996) The Eyes Have It: A Task by Data Type Taxonomy for Information
+      Visualizations, IEEE Symposium on Visual Languages, pp. 336-343 ;
+      https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric ;
+      其余为经验归纳，文字层级字号未核实
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active
+  - id: interaction-layers
+    title: 披露、反馈、键盘、结构与叠放层级（Interaction Layers）
+    path: references/interaction-layers.md
+    kind: reference
+    summary: >-
+      六层信息披露（行内到独立窗口）各自用与不用，五层反馈与撤销优于确认，四层键盘体系，
+      结构层级的边界手段，z-order 顺序、公开库之间的差异与叠放令牌示例。
+    aliases: [披露层级, progressive disclosure, tooltip, popover, modal, toast, 反馈, 快捷键, 命令面板, z-index, z-order, 叠放]
+    source: >-
+      https://www.nngroup.com/articles/confirmation-dialog/ ;
+      https://mui.com/material-ui/customization/z-index/ ;
+      https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/ ;
+      其余为经验归纳
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active
+  - id: professional-software-conventions
+    title: 各类专业软件的界面惯例（Professional Software Conventions）
+    path: references/professional-software-conventions.md
+    kind: reference
+    summary: >-
+      五种布局变体及适用的软件类别，金融终端与行情监控的联动、新鲜度、涨跌色与告警惯例，
+      各类专业软件改版的共同方向与按类别的问题和做法。
+    aliases: [金融终端, 行情, 交易界面, blotter, FDC3, 集成开发环境, 影音后期, 设计工具, 改版, redesign]
+    source: >-
+      https://fdc3.finos.org/docs/fdc3-standard ;
+      其余为经验归纳：公开产品界面与改版说明按软件类别总结，不对应单一来源，未逐条核实
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active
+  - id: webview-shell-tauri
+    title: WebView 壳的原生化（Tauri 2）与去网页行为（WebView Shell）
+    path: references/webview-shell-tauri.md
+    kind: reference
+    summary: >-
+      Tauri 2 的 titleBarStyle、拖动区与权限、阴影白边、原生菜单与右键菜单、window-state 与
+      single-instance、global-shortcut 与托盘、windowEffects 取值与性能、拖放与缩放、capabilities，
+      以及去掉 WebView 网页行为的 CSS 与事件做法。
+    aliases: [Tauri, WebView, 网页套壳, titleBarStyle, data-tauri-drag-region, 原生菜单, 托盘, windowEffects, capabilities, user-select]
+    source: >-
+      https://v2.tauri.app/release/ ;
+      https://v2.tauri.app/reference/config/ ;
+      https://docs.rs/tauri-utils/latest/tauri_utils/config/struct.WindowConfig.html ;
+      https://docs.rs/tauri-utils/latest/tauri_utils/enum.WindowEffect.html ;
+      https://v2.tauri.app/learn/window-customization/ ;
+      https://v2.tauri.app/learn/window-menu/ ;
+      https://v2.tauri.app/reference/javascript/api/namespacemenu/ ;
+      https://v2.tauri.app/plugin/window-state/ ;
+      https://v2.tauri.app/plugin/single-instance/ ;
+      https://v2.tauri.app/plugin/global-shortcut/ ;
+      https://v2.tauri.app/learn/system-tray/ ;
+      https://v2.tauri.app/security/capabilities/ ;
+      去网页行为的 CSS 做法为经验归纳
+    verified_at: 2026-11-17
+    review_after_days: 90
+    status: active
+  - id: anti-patterns
+    title: 桌面专业 GUI 反模式（Anti-patterns）
+    path: references/anti-patterns.md
+    kind: reference
+    summary: >-
+      网页感的五个来源与十三条反模式，每条指向给出正面做法的 reference；用于评审桌面客户端是否
+      像网页套壳。
+    aliases: [反模式, anti-pattern, 网页感, 像网页, 不像客户端, 评审]
+    source: 经验归纳：桌面客户端与网页后台界面的对比总结，不对应单一来源
+    verified_at: 2026-11-17
+    review_after_days: 365
+    status: active

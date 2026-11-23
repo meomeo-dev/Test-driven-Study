@@ -23,6 +23,7 @@ var/
 !.agents/skills/design-course-package/
 !.agents/skills/design-course-tts/
 !.agents/skills/design-course-vocabulary/
+!.agents/skills/desktop-gui-design-knowledge/
 !.agents/skills/orchestrate-agent-swarm/
 .claude/skills/
 .todo_tasks/
