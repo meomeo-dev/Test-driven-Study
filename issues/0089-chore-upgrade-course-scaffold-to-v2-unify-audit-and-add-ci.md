@@ -1,7 +1,8 @@
 ---
 id: 0089
 type: chore
-status: open
+status: closed
+closed-by: bc1aeb3
 labels: [courses, tooling, ci, testing]
 branch: chore/0089-upgrade-course-scaffold-to-v2-unify-audit-and-add-ci
 created: 2026-11-23
@@ -99,3 +100,34 @@ This chore resolves all four tooling gaps and updates `handoff.md` and
   exercises the exact production SPA + API routing path (including `/learning`
   from `#85`) while cutting startup overhead and keeping full port and data
   isolation.
+- Per coordinator confirmation, `course:audit --strict` stays strict: CI runs
+  default `npm run course:audit -- courses/golden-course-template` (preserving
+  its 5 documented demo effort warnings matching `audit-course-effort.test.mjs`)
+  and `npm run course:audit -- --strict` on `courses/beginner-english` and
+  `courses/elementary-chinese`.
+
+### Verification
+
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run check:generated`: passed
+  (`Generated HTTP types and SQL bindings are current.`).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod go test -count=1 ./...` and
+  `go vet ./...`: passed (`10/10` packages ok).
+- `npm run typecheck && npm run test:unit`: passed (`tsc --noEmit` 0 errors;
+  Vitest `18/18` files, `81/81` tests passed).
+- `node --test scripts/course-audit.test.mjs scripts/audit-course-effort.test.mjs`:
+  passed (`12/12` tests).
+- `npm run course:audit -- courses/golden-course-template`: passed (`4` pass,
+  `0` skip, `0` fail).
+- `npm run course:audit -- --strict courses/beginner-english`: passed (`4` pass,
+  `0` skip, `0` fail; `η=1.04`).
+- `npm run course:audit -- --strict courses/elementary-chinese`: passed
+  (`3` pass, `1` skipped vocabulary, `0` fail).
+- Fresh `course:new` v2 smoke test + `course:audit --strict`: passed (`3` pass,
+  `1` skipped vocabulary, `0` fail; `η=1.06`).
+- `npm run test:startup`: passed (`4/4` tests).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run build`: passed (`tsc --noEmit`,
+  `vite build` 3369 modules, and `go build ./cmd/server`).
+- `GOMODCACHE=/Users/luojin/go/pkg/mod npm run test:e2e`: passed (`29/29`
+  Playwright browser tests in `1.1m` against compiled `var/bin/test-driven-study`).
+- `git diff --check`, `gofmt -l`, and `node scripts/issue-check.mjs`: all clean
+  (`89/89` issues valid).
