@@ -1,7 +1,8 @@
 ---
 id: 0052
 type: feat
-status: open
+status: closed
+closed-by: 1733272
 labels: []
 branch: feat/0052-expand-sample-courses-to-180-hour-standard-curriculum
 created: 2026-11-14
@@ -75,3 +76,7 @@ hallucinated or pseudo-scientific vocabulary).
 Subagents execute targeted, bounded research and review tasks with bounded
 context windows. Research and review artifacts remain archived in the repository
 for auditability and source verification.
+
+Closed on 2026-11-23: all 16 targeted non-flagship sample courses were extracted
+out of this application repository into `Test-driven-Study-Courses` in #82
+(`1733272`).

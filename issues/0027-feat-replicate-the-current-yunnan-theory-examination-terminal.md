@@ -1,7 +1,8 @@
 ---
 id: 0027
 type: feat
-status: in-progress
+status: closed
+closed-by: fb76c7a
 labels: []
 branch: feat/0027-replicate-the-current-yunnan-theory-examination-terminal
 created: 2026-11-03
@@ -69,3 +70,8 @@ build. The live 43187 service displays the new terminal. The original active pap
 and deadline are retained. Current official Yunnan deployment and local-content
 quota verification remain outstanding; this issue is not closed as full official
 equivalence.
+
+Closed on 2026-11-23: the Yunnan theory examination course package has been
+removed and this replica requirement is no longer used. The standalone
+examination terminal remains available for general local mock exams, and future
+custom exam configurations belong under general v2 `ExamBlueprint` support.
