@@ -3,6 +3,7 @@ package study
 import (
 	"context"
 	"encoding/json"
+	"strings"
 
 	"test-driven-study/internal/course"
 )
@@ -12,7 +13,7 @@ import (
 func (s *Service) WrittenFeedbackSource(ctx context.Context, id string) (
 	course.Item, course.ExtendedResponse, error,
 ) {
-	if !validEventID(id) {
+	if !validEventID(id) || strings.HasPrefix(id, "exam-") {
 		return course.Item{}, course.ExtendedResponse{}, ErrInvalid
 	}
 	row, err := s.queries.GetAttempt(ctx, id)

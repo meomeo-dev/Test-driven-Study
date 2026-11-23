@@ -47,7 +47,12 @@ export const translationModule: QuestionTypeModule<'translation'> = {
           />
         )}
         {ctx.result && (
-          <WrittenFeedback presentation={ctx.presentationId} writing={false} />
+          <WrittenFeedback
+            presentation={ctx.presentationId}
+            writing={false}
+            translationReview={review}
+            onEvaluated={ctx.onEvaluated}
+          />
         )}
       </>
     );

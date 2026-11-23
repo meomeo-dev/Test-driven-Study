@@ -78,6 +78,8 @@ func (s *Server) registerStudyRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("POST /api/practice/presentations", s.openPresentation)
 	mux.HandleFunc("POST /api/practice/presentations/{presentation}/answer", s.answer)
 	mux.HandleFunc("POST /api/practice/presentations/{presentation}/feedback", s.writtenFeedback)
+	mux.HandleFunc("POST /api/practice/presentations/{presentation}/self-check", s.recordSelfCheck)
+	mux.HandleFunc("GET /api/practice/presentations/{presentation}/evaluation", s.attemptEvaluation)
 	mux.HandleFunc("PUT /api/practice/cursor", s.practiceCursor)
 	mux.HandleFunc("POST /api/study/exposures", s.exposure)
 	mux.HandleFunc("GET /api/analysis", s.analysis)

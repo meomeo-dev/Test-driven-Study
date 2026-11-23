@@ -520,9 +520,18 @@ func (q *Queries) GetActiveLearningPath(ctx context.Context, courseID string) (L
 }
 
 const getAttempt = `-- name: GetAttempt :one
-SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id, a.chapter_name, a.question_title, a.question_revision, a.selected_json, a.correct_answer_json, a.is_correct, a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms, q.question_type
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id,
+    a.chapter_name, a.question_title, a.question_revision, a.selected_json,
+    a.correct_answer_json,
+    CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+    a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms,
+    q.question_type
 FROM answer_attempts a
 JOIN questions q ON q.question_id = a.question_id
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 WHERE a.presentation_id = ?
 `
 
@@ -709,6 +718,55 @@ func (q *Queries) GetLLMPlan(ctx context.Context, id string) (string, error) {
 	return record_json, err
 }
 
+const getLatestAttemptEvaluation = `-- name: GetLatestAttemptEvaluation :one
+SELECT id, presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms FROM attempt_evaluations
+WHERE presentation_id = ?
+ORDER BY id DESC
+LIMIT 1
+`
+
+func (q *Queries) GetLatestAttemptEvaluation(ctx context.Context, presentationID string) (AttemptEvaluation, error) {
+	row := q.db.QueryRowContext(ctx, getLatestAttemptEvaluation, presentationID)
+	var i AttemptEvaluation
+	err := row.Scan(
+		&i.ID,
+		&i.PresentationID,
+		&i.Source,
+		&i.Passed,
+		&i.ScorePct,
+		&i.FeedbackJson,
+		&i.EvaluatedAtMs,
+	)
+	return i, err
+}
+
+const getLatestAttemptEvaluationBySource = `-- name: GetLatestAttemptEvaluationBySource :one
+SELECT id, presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms FROM attempt_evaluations
+WHERE presentation_id = ? AND source = ?
+ORDER BY id DESC
+LIMIT 1
+`
+
+type GetLatestAttemptEvaluationBySourceParams struct {
+	PresentationID string `json:"presentation_id"`
+	Source         string `json:"source"`
+}
+
+func (q *Queries) GetLatestAttemptEvaluationBySource(ctx context.Context, arg GetLatestAttemptEvaluationBySourceParams) (AttemptEvaluation, error) {
+	row := q.db.QueryRowContext(ctx, getLatestAttemptEvaluationBySource, arg.PresentationID, arg.Source)
+	var i AttemptEvaluation
+	err := row.Scan(
+		&i.ID,
+		&i.PresentationID,
+		&i.Source,
+		&i.Passed,
+		&i.ScorePct,
+		&i.FeedbackJson,
+		&i.EvaluatedAtMs,
+	)
+	return i, err
+}
+
 const getMockExam = `-- name: GetMockExam :one
 SELECT id, subject_id, status, rule_json, paper_json, answers_json, started_at_ms, deadline_at_ms, finished_at_ms, reason, score, current_index FROM mock_exams WHERE id = ?
 `
@@ -845,6 +903,44 @@ func (q *Queries) GetWorkspaceUnit(ctx context.Context, id int64) (CourseUnit, e
 		&i.UnitID,
 		&i.Title,
 		&i.Active,
+	)
+	return i, err
+}
+
+const insertAttemptEvaluation = `-- name: InsertAttemptEvaluation :one
+INSERT INTO attempt_evaluations (
+    presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms
+) VALUES (?, ?, ?, ?, ?, ?)
+RETURNING id, presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms
+`
+
+type InsertAttemptEvaluationParams struct {
+	PresentationID string `json:"presentation_id"`
+	Source         string `json:"source"`
+	Passed         int64  `json:"passed"`
+	ScorePct       int64  `json:"score_pct"`
+	FeedbackJson   string `json:"feedback_json"`
+	EvaluatedAtMs  int64  `json:"evaluated_at_ms"`
+}
+
+func (q *Queries) InsertAttemptEvaluation(ctx context.Context, arg InsertAttemptEvaluationParams) (AttemptEvaluation, error) {
+	row := q.db.QueryRowContext(ctx, insertAttemptEvaluation,
+		arg.PresentationID,
+		arg.Source,
+		arg.Passed,
+		arg.ScorePct,
+		arg.FeedbackJson,
+		arg.EvaluatedAtMs,
+	)
+	var i AttemptEvaluation
+	err := row.Scan(
+		&i.ID,
+		&i.PresentationID,
+		&i.Source,
+		&i.Passed,
+		&i.ScorePct,
+		&i.FeedbackJson,
+		&i.EvaluatedAtMs,
 	)
 	return i, err
 }
@@ -1105,10 +1201,56 @@ func (q *Queries) ListActiveCourses(ctx context.Context) ([]CourseVersion, error
 	return items, nil
 }
 
+const listAttemptEvaluations = `-- name: ListAttemptEvaluations :many
+SELECT id, presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms FROM attempt_evaluations
+WHERE presentation_id = ?
+ORDER BY id DESC
+`
+
+func (q *Queries) ListAttemptEvaluations(ctx context.Context, presentationID string) ([]AttemptEvaluation, error) {
+	rows, err := q.db.QueryContext(ctx, listAttemptEvaluations, presentationID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []AttemptEvaluation{}
+	for rows.Next() {
+		var i AttemptEvaluation
+		if err := rows.Scan(
+			&i.ID,
+			&i.PresentationID,
+			&i.Source,
+			&i.Passed,
+			&i.ScorePct,
+			&i.FeedbackJson,
+			&i.EvaluatedAtMs,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listAttempts = `-- name: ListAttempts :many
-SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id, a.chapter_name, a.question_title, a.question_revision, a.selected_json, a.correct_answer_json, a.is_correct, a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms, q.question_type
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id,
+    a.chapter_name, a.question_title, a.question_revision, a.selected_json,
+    a.correct_answer_json,
+    CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+    a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms,
+    q.question_type
 FROM answer_attempts a
 JOIN questions q ON q.question_id = a.question_id
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 WHERE a.subject_id = ?
 ORDER BY a.answered_at_ms, a.id
 `
@@ -1549,9 +1691,14 @@ func (q *Queries) ListPalaceTasks(ctx context.Context, arg ListPalaceTasksParams
 
 const listPracticeQuestions = `-- name: ListPracticeQuestions :many
 WITH latest AS (
-    SELECT question_id, is_correct,
-        ROW_NUMBER() OVER (PARTITION BY question_id ORDER BY answered_at_ms DESC, id DESC) AS rn
-    FROM answer_attempts
+    SELECT a.question_id,
+        CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+        ROW_NUMBER() OVER (PARTITION BY a.question_id ORDER BY a.answered_at_ms DESC, a.id DESC) AS rn
+    FROM answer_attempts a
+    LEFT JOIN attempt_evaluations ev ON ev.id = (
+        SELECT MAX(e2.id) FROM attempt_evaluations e2
+        WHERE e2.presentation_id = a.presentation_id
+    )
 )
 SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
     q.difficulty, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
@@ -1701,9 +1848,13 @@ func (q *Queries) ListQuestions(ctx context.Context, arg ListQuestionsParams) ([
 
 const listReviewAnswers = `-- name: ListReviewAnswers :many
 SELECT a.question_id, a.answered_at_ms,
-    CAST(CASE WHEN a.is_correct=1 THEN 'correct'
+    CAST(CASE WHEN COALESCE(ev.passed, a.is_correct)=1 THEN 'correct'
         WHEN e.id IS NOT NULL THEN 'exam_wrong' ELSE 'practice_wrong' END AS TEXT) AS kind
 FROM answer_attempts a
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 LEFT JOIN mock_exams e ON substr(a.presentation_id, 1, 5)='exam-'
     AND substr(a.presentation_id, 6, 36)=e.id AND e.status='finished'
 WHERE a.subject_id=? ORDER BY a.answered_at_ms, a.id

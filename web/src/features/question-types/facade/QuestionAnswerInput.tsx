@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import type {
   Attempt,
+  AttemptEvaluation,
   ExtendedResponse,
   PublicQuestion,
   Question,
@@ -30,6 +31,7 @@ export function PracticeAnswerBody({
   onChoose,
   onDraft,
   onNumeric,
+  onEvaluated,
 }: {
   question: PublicQuestion;
   reviewQuestion?: Question;
@@ -49,6 +51,7 @@ export function PracticeAnswerBody({
   onChoose: (sign: number) => void;
   onDraft: (draft: ExtendedResponse) => void;
   onNumeric: (value: string) => void;
+  onEvaluated?: (evaluation: AttemptEvaluation) => void;
 }) {
   const fallbackId = useId();
   const prefix = partIdPrefix ?? fallbackId;
@@ -71,6 +74,7 @@ export function PracticeAnswerBody({
       onChoose,
       onDraft,
       onNumeric,
+      onEvaluated,
     });
   });
 }

@@ -30,6 +30,11 @@ export {
 } from './facade/QuestionExplanations';
 export { WrittenFeedback } from './shared/WrittenFeedback';
 export {
+  evaluationOutcomeLabel,
+  evaluationSourceLabel,
+  evaluationStateBadgeLabel,
+} from './shared/written-evaluation';
+export {
   creditLabel,
   hasCourseReviewExplanation,
   hasRichContent,

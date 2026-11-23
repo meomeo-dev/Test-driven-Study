@@ -1459,14 +1459,45 @@ export type CourseItemReview = ({
     type: 'translation';
 } & TranslationItemReview);
 
+export type WrittenCriterion = {
+    name: string;
+    points: number;
+    max_points: number;
+    comment: string;
+};
+
 export type WrittenFeedback = {
-    criteria: Array<{
-        name: string;
-        points: number;
-        max_points: number;
-        comment: string;
-    }>;
+    id: number;
+    presentation_id: string;
+    criteria: Array<WrittenCriterion>;
     summary: string;
+    source: 'llm';
+    passed: boolean;
+    score_pct: number;
+    evaluated_at_ms: number;
+    cached: boolean;
+};
+
+export type AttemptEvaluation = {
+    id: number;
+    presentation_id: string;
+    source: 'llm' | 'self_check';
+    passed: boolean;
+    score_pct: number;
+    evaluated_at_ms: number;
+    cached?: boolean;
+    summary?: string;
+    criteria?: Array<WrittenCriterion>;
+    checked_criteria?: Array<string>;
+};
+
+export type SelfCheckInput = {
+    passed: boolean;
+    checked_criteria?: Array<string>;
+};
+
+export type AttemptEvaluationView = {
+    evaluation: AttemptEvaluation | null;
 };
 
 export type TtsConfig = {
@@ -2186,12 +2217,86 @@ export type EvaluateWrittenAttemptError = EvaluateWrittenAttemptErrors[keyof Eva
 
 export type EvaluateWrittenAttemptResponses = {
     /**
-     * Advisory feedback. The saved local score is unchanged.
+     * Persisted AI rubric evaluation (fresh or cached).
      */
     200: WrittenFeedback;
 };
 
 export type EvaluateWrittenAttemptResponse = EvaluateWrittenAttemptResponses[keyof EvaluateWrittenAttemptResponses];
+
+export type RecordSelfCheckEvaluationData = {
+    body: SelfCheckInput;
+    path: {
+        presentation: string;
+    };
+    query?: never;
+    url: '/api/practice/presentations/{presentation}/self-check';
+};
+
+export type RecordSelfCheckEvaluationErrors = {
+    /**
+     * Invalid self-check input or non-written attempt.
+     */
+    400: Error;
+    /**
+     * Attempt not found.
+     */
+    404: Error;
+    /**
+     * Request conflicts with saved state.
+     */
+    409: Error;
+    /**
+     * Internal server error.
+     */
+    500: Error;
+};
+
+export type RecordSelfCheckEvaluationError = RecordSelfCheckEvaluationErrors[keyof RecordSelfCheckEvaluationErrors];
+
+export type RecordSelfCheckEvaluationResponses = {
+    /**
+     * Persisted self-check evaluation.
+     */
+    200: AttemptEvaluation;
+};
+
+export type RecordSelfCheckEvaluationResponse = RecordSelfCheckEvaluationResponses[keyof RecordSelfCheckEvaluationResponses];
+
+export type GetAttemptEvaluationData = {
+    body?: never;
+    path: {
+        presentation: string;
+    };
+    query?: never;
+    url: '/api/practice/presentations/{presentation}/evaluation';
+};
+
+export type GetAttemptEvaluationErrors = {
+    /**
+     * Invalid presentation identifier or non-written attempt.
+     */
+    400: Error;
+    /**
+     * Attempt not found.
+     */
+    404: Error;
+    /**
+     * Internal server error.
+     */
+    500: Error;
+};
+
+export type GetAttemptEvaluationError = GetAttemptEvaluationErrors[keyof GetAttemptEvaluationErrors];
+
+export type GetAttemptEvaluationResponses = {
+    /**
+     * Latest persisted attempt evaluation, or null.
+     */
+    200: AttemptEvaluationView;
+};
+
+export type GetAttemptEvaluationResponse = GetAttemptEvaluationResponses[keyof GetAttemptEvaluationResponses];
 
 export type RecordExposureData = {
     body: {

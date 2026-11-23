@@ -1,8 +1,36 @@
 import { request, type Filters } from './client';
-import type { AnswerInput, WrittenFeedback, Presentation, AttemptResult, PracticeSummary, PracticeOverview, Analysis, ReviewBook } from './generated/types.gen';
-export type { PracticeDetail as Detail, PracticeSummary as Summary,
-  PracticeOverview as Overview, Presentation, AttemptResult, Attempt,
-  PublicQuestion, Analysis, ChapterAnalysis, Rate, ReviewBook, ReviewItem } from './generated/types.gen';
+import type {
+  Analysis,
+  AnswerInput,
+  AttemptEvaluation,
+  AttemptEvaluationView,
+  AttemptResult,
+  PracticeOverview,
+  PracticeSummary,
+  Presentation,
+  ReviewBook,
+  SelfCheckInput,
+  WrittenFeedback,
+} from './generated/types.gen';
+export type {
+  Analysis,
+  Attempt,
+  AttemptEvaluation,
+  AttemptEvaluationView,
+  AttemptResult,
+  ChapterAnalysis,
+  PracticeDetail as Detail,
+  PracticeOverview as Overview,
+  PracticeSummary as Summary,
+  Presentation,
+  PublicQuestion,
+  Rate,
+  ReviewBook,
+  ReviewItem,
+  SelfCheckInput,
+  WrittenCriterion,
+  WrittenFeedback,
+} from './generated/types.gen';
 export type { Filters } from './client';
 
 const json = (body: unknown): RequestInit => ({ method: 'POST',
@@ -19,9 +47,19 @@ export const overview = (subject: number, signal?: AbortSignal) =>
 export const presentation = (id: string, question: number, signal?: AbortSignal) =>
   request<Presentation>('/api/practice/presentations', { ...json({ id, question_id: question }), signal });
 export const answer = (id: string, response: AnswerInput) =>
-  request<AttemptResult>(`/api/practice/presentations/${id}/answer`, json(response));
+  request<AttemptResult>(`/api/practice/presentations/${encodeURIComponent(id)}/answer`, json(response));
 export const evaluateWritten = (id: string) =>
-  request<WrittenFeedback>(`/api/practice/presentations/${id}/feedback`, json({}));
+  request<WrittenFeedback>(`/api/practice/presentations/${encodeURIComponent(id)}/feedback`, json({}));
+export const selfCheckWritten = (id: string, input: SelfCheckInput) =>
+  request<AttemptEvaluation>(
+    `/api/practice/presentations/${encodeURIComponent(id)}/self-check`,
+    json(input),
+  );
+export const attemptEvaluation = (id: string, signal?: AbortSignal) =>
+  request<AttemptEvaluationView>(
+    `/api/practice/presentations/${encodeURIComponent(id)}/evaluation`,
+    { signal, cache: 'no-store' },
+  );
 export const cursor = (subject: number, id: number, signal?: AbortSignal) =>
   request<{ saved: boolean }>('/api/practice/cursor', { ...json({ subject_id: subject, question_id: id }), method: 'PUT', signal });
 export const analysis = (subject: number, days: number, signal?: AbortSignal) =>

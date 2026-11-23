@@ -33,6 +33,16 @@ type AnswerAttempt struct {
 	AnsweredAtMs      int64  `json:"answered_at_ms"`
 }
 
+type AttemptEvaluation struct {
+	ID             int64  `json:"id"`
+	PresentationID string `json:"presentation_id"`
+	Source         string `json:"source"`
+	Passed         int64  `json:"passed"`
+	ScorePct       int64  `json:"score_pct"`
+	FeedbackJson   string `json:"feedback_json"`
+	EvaluatedAtMs  int64  `json:"evaluated_at_ms"`
+}
+
 type ChatConversation struct {
 	ID           string `json:"id"`
 	QuestionID   int64  `json:"question_id"`

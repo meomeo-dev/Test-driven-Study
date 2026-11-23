@@ -1,4 +1,4 @@
-import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
+import { useCallback, useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
 import * as api from '../../api/practice';
@@ -26,6 +26,7 @@ type Props = {
   onPending: (pending: boolean) => void;
   onRevealed: (value: boolean) => void;
   onResult: (result: api.AttemptResult) => void;
+  onEvaluated?: (questionID: number, evaluation: api.AttemptEvaluation) => void;
 };
 
 export function PracticeSession(props: Props) {
@@ -43,6 +44,7 @@ function AnswerRound({
   onNext,
   onPending,
   onResult,
+  onEvaluated,
   onRetry,
   onRevealed,
 }: Props & { onRetry: () => void }) {
@@ -57,6 +59,7 @@ function AnswerRound({
   const [draft, setDraft] = useState<ExtendedResponse>();
   const response = readyResponse(draft);
   const [result, setResult] = useState<api.AttemptResult>();
+  const [evaluation, setEvaluation] = useState<api.AttemptEvaluation>();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [preview, setPreview] = useState(false);
@@ -64,6 +67,13 @@ function AnswerRound({
   const locked = useRef(false);
   const image = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
+  const handleEvaluated = useCallback(
+    (next: api.AttemptEvaluation) => {
+      setEvaluation(next);
+      onEvaluated?.(id, next);
+    },
+    [id, onEvaluated],
+  );
   useEffect(() => () => onPending(false), [onPending]);
   useEffect(() => onRevealed(false), [onRevealed]);
 
@@ -164,6 +174,7 @@ function AnswerRound({
       <QuestionCard
         presentation={query.data}
         result={result}
+        evaluation={evaluation}
         selected={selected}
         numeric={numeric}
         onNumeric={setNumeric}
@@ -178,6 +189,7 @@ function AnswerRound({
         onChoose={choose}
         onSubmit={() => void submit()}
         onRetry={onRetry}
+        onEvaluated={handleEvaluated}
         onPrevious={onPrevious}
         onNext={onNext}
         onDetails={openDetails}

@@ -559,7 +559,10 @@ paths:
   /api/practice/presentations/{presentation}/feedback:
     post:
       operationId: evaluateWrittenAttempt
-      description: Requests optional AI feedback for a saved writing or translation attempt.
+      description: >-
+        Requests optional AI feedback for a saved writing or translation attempt.
+        Reuses a persisted LLM evaluation when already stored; otherwise evaluates
+        via LLM and persists the append-only result.
       parameters:
         - name: presentation
           in: path
@@ -567,7 +570,7 @@ paths:
           schema: { type: string }
       responses:
         '200':
-          description: Advisory feedback. The saved local score is unchanged.
+          description: Persisted AI rubric evaluation (fresh or cached).
           content:
             application/json:
               schema: { $ref: '#/components/schemas/WrittenFeedback' }
@@ -598,6 +601,80 @@ paths:
               schema: { $ref: '#/components/schemas/Error' }
         '503':
           description: LLM is not configured.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /api/practice/presentations/{presentation}/self-check:
+    post:
+      operationId: recordSelfCheckEvaluation
+      description: >-
+        Records an append-only offline self-check evaluation for a submitted
+        writing or translation practice attempt.
+      parameters:
+        - name: presentation
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SelfCheckInput' }
+      responses:
+        '200':
+          description: Persisted self-check evaluation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AttemptEvaluation' }
+        '400':
+          description: Invalid self-check input or non-written attempt.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Attempt not found.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '409':
+          description: Request conflicts with saved state.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /api/practice/presentations/{presentation}/evaluation:
+    get:
+      operationId: getAttemptEvaluation
+      description: >-
+        Returns the latest persisted LLM or self-check evaluation for a submitted
+        writing or translation practice attempt, or null if none exists.
+      parameters:
+        - name: presentation
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Latest persisted attempt evaluation, or null.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AttemptEvaluationView' }
+        '400':
+          description: Invalid presentation identifier or non-written attempt.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '404':
+          description: Attempt not found.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '500':
+          description: Internal server error.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/Error' }
@@ -5444,21 +5521,88 @@ components:
           reading_comprehension: '#/components/schemas/ReadingItemReview'
           writing: '#/components/schemas/WritingItemReview'
           translation: '#/components/schemas/TranslationItemReview'
+    WrittenCriterion:
+      type: object
+      additionalProperties: false
+      required: [name, points, max_points, comment]
+      properties:
+        name: { type: string }
+        points: { type: integer }
+        max_points: { type: integer }
+        comment: { type: string }
     WrittenFeedback:
       type: object
-      required: [criteria, summary]
+      additionalProperties: false
+      required:
+        - id
+        - presentation_id
+        - criteria
+        - summary
+        - source
+        - passed
+        - score_pct
+        - evaluated_at_ms
+        - cached
       properties:
+        id: { type: integer, format: int64 }
+        presentation_id: { type: string }
         criteria:
           type: array
-          items:
-            type: object
-            required: [name, points, max_points, comment]
-            properties:
-              name: { type: string }
-              points: { type: integer }
-              max_points: { type: integer }
-              comment: { type: string }
+          items: { $ref: '#/components/schemas/WrittenCriterion' }
         summary: { type: string }
+        source:
+          type: string
+          enum: [llm]
+        passed: { type: boolean }
+        score_pct: { type: integer, minimum: 0, maximum: 100 }
+        evaluated_at_ms: { type: integer, format: int64 }
+        cached: { type: boolean }
+    AttemptEvaluation:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - presentation_id
+        - source
+        - passed
+        - score_pct
+        - evaluated_at_ms
+      properties:
+        id: { type: integer, format: int64 }
+        presentation_id: { type: string }
+        source:
+          type: string
+          enum: [llm, self_check]
+        passed: { type: boolean }
+        score_pct: { type: integer, minimum: 0, maximum: 100 }
+        evaluated_at_ms: { type: integer, format: int64 }
+        cached: { type: boolean }
+        summary: { type: string }
+        criteria:
+          type: array
+          items: { $ref: '#/components/schemas/WrittenCriterion' }
+        checked_criteria:
+          type: array
+          items: { type: string }
+    SelfCheckInput:
+      type: object
+      additionalProperties: false
+      required: [passed]
+      properties:
+        passed: { type: boolean }
+        checked_criteria:
+          type: array
+          maxItems: 32
+          items: { type: string }
+    AttemptEvaluationView:
+      type: object
+      additionalProperties: false
+      required: [evaluation]
+      properties:
+        evaluation:
+          oneOf:
+            - $ref: '#/components/schemas/AttemptEvaluation'
+            - type: 'null'
     TTSConfig:
       type: object
       additionalProperties: false

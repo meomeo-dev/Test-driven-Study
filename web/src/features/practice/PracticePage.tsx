@@ -3,7 +3,7 @@ import { usePalaceCoverage } from '../palace/hooks';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
-import type { Summary, AttemptResult } from '../../api/practice';
+import type { AttemptEvaluation, AttemptResult, Summary } from '../../api/practice';
 import { Sidebar } from '../../components/Sidebar';
 import { QuestionNavigation } from '../question-navigation';
 import { PageHeader } from './PageHeader';
@@ -38,6 +38,8 @@ export function PracticePage() {
   const concepts = useConceptGraph(filters.concept ? course?.id : undefined);
   const conceptTitle = concepts.data?.concepts.find(value => value.id === filters.concept)?.title;
   const rows = heldRows ?? list.data ?? [];
+  const rowsRef = useRef(rows);
+  rowsRef.current = rows;
   const reviewing = filters.state === 'review';
   const ready = !!overview.data && !!list.data && (!reviewing || list.isFetchedAfterMount);
   const id = ready ? activeQuestion(rows, params.get('question'), overview.data.last_question_id) : 0;
@@ -75,9 +77,21 @@ export function PracticePage() {
   function saved(result: AttemptResult) {
     // Keep this question visible while showing feedback, even if the updated
     // unanswered/wrong filter would otherwise remove it immediately.
-    setHeldRows(rows.map(row => row.question_id === result.attempt.question_id
+    setHeldRows(current => (current ?? rows).map(row => row.question_id === result.attempt.question_id
       ? { ...row, state: result.attempt.correct ? 'correct' as const : 'incorrect' as const } : row));
   }
+  const evaluated = useCallback((questionID: number, evaluation: AttemptEvaluation) => {
+    const nextState = evaluation.passed ? 'correct' as const : 'incorrect' as const;
+    setHeldRows(current => {
+      const base = current ?? rowsRef.current;
+      if (base.find(row => row.question_id === questionID)?.state === nextState) {
+        return current;
+      }
+      return base.map(row =>
+        row.question_id === questionID ? { ...row, state: nextState } : row,
+      );
+    });
+  }, []);
   useStudyShortcuts(shortcuts.enabled, {
     next, previous,
     first: () => { if (rows[0] && !pending.current) go(rows[0].question_id); },
@@ -120,7 +134,7 @@ export function PracticePage() {
               <p>请调整关键词、章节或学习状态。</p><button className="button outline" onClick={() => setParams({ subject: String(filters.subject) })}>重置筛选</button></div>
             : <PracticeSession key={id} id={id} position={position} total={rows.length}
               shortcuts={shortcuts.enabled} commands={session} onPending={onPending} onRevealed={setHasResult}
-              onPrevious={previous} onNext={next} onResult={saved} />}
+              onPrevious={previous} onNext={next} onResult={saved} onEvaluated={evaluated} />}
         </section>
       </div>
       <div className={`save-notice ${notice ? 'visible' : ''}`} role="status" aria-live="polite">{notice}</div>

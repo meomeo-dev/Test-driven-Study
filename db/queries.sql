@@ -124,15 +124,33 @@ VALUES (sqlc.arg(presentation_id), sqlc.arg(question_id), sqlc.arg(subject_id),
 ON CONFLICT(presentation_id) DO NOTHING;
 
 -- name: GetAttempt :one
-SELECT a.*, q.question_type
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id,
+    a.chapter_name, a.question_title, a.question_revision, a.selected_json,
+    a.correct_answer_json,
+    CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+    a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms,
+    q.question_type
 FROM answer_attempts a
 JOIN questions q ON q.question_id = a.question_id
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 WHERE a.presentation_id = ?;
 
 -- name: ListAttempts :many
-SELECT a.*, q.question_type
+SELECT a.id, a.presentation_id, a.question_id, a.subject_id, a.chapter_id,
+    a.chapter_name, a.question_title, a.question_revision, a.selected_json,
+    a.correct_answer_json,
+    CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+    a.is_first_attempt, a.prior_exposure, a.opened_at_ms, a.answered_at_ms,
+    q.question_type
 FROM answer_attempts a
 JOIN questions q ON q.question_id = a.question_id
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 WHERE a.subject_id = ?
 ORDER BY a.answered_at_ms, a.id;
 
@@ -152,9 +170,14 @@ ON CONFLICT(subject_id) DO UPDATE SET question_id = excluded.question_id;
 
 -- name: ListPracticeQuestions :many
 WITH latest AS (
-    SELECT question_id, is_correct,
-        ROW_NUMBER() OVER (PARTITION BY question_id ORDER BY answered_at_ms DESC, id DESC) AS rn
-    FROM answer_attempts
+    SELECT a.question_id,
+        CAST(COALESCE(ev.passed, a.is_correct) AS INTEGER) AS is_correct,
+        ROW_NUMBER() OVER (PARTITION BY a.question_id ORDER BY a.answered_at_ms DESC, a.id DESC) AS rn
+    FROM answer_attempts a
+    LEFT JOIN attempt_evaluations ev ON ev.id = (
+        SELECT MAX(e2.id) FROM attempt_evaluations e2
+        WHERE e2.presentation_id = a.presentation_id
+    )
 )
 SELECT q.question_id, q.title, q.question_type, q.chapter_id, q.chapter_name,
     q.difficulty, CAST(COALESCE(k.item_id, '') AS TEXT) AS source_item_id,
@@ -279,9 +302,13 @@ GROUP BY c.question_id ORDER BY c.question_id;
 
 -- name: ListReviewAnswers :many
 SELECT a.question_id, a.answered_at_ms,
-    CAST(CASE WHEN a.is_correct=1 THEN 'correct'
+    CAST(CASE WHEN COALESCE(ev.passed, a.is_correct)=1 THEN 'correct'
         WHEN e.id IS NOT NULL THEN 'exam_wrong' ELSE 'practice_wrong' END AS TEXT) AS kind
 FROM answer_attempts a
+LEFT JOIN attempt_evaluations ev ON ev.id = (
+    SELECT MAX(e2.id) FROM attempt_evaluations e2
+    WHERE e2.presentation_id = a.presentation_id
+)
 LEFT JOIN mock_exams e ON substr(a.presentation_id, 1, 5)='exam-'
     AND substr(a.presentation_id, 6, 36)=e.id AND e.status='finished'
 WHERE a.subject_id=? ORDER BY a.answered_at_ms, a.id;
@@ -392,3 +419,26 @@ UPDATE course_roadmaps SET archived_at_ms = ? WHERE archived_at_ms IS NULL;
 INSERT INTO course_roadmaps(relation_digest, targets_json, steps_json, created_at_ms)
 VALUES (?, ?, ?, ?)
 RETURNING *;
+
+-- name: InsertAttemptEvaluation :one
+INSERT INTO attempt_evaluations (
+    presentation_id, source, passed, score_pct, feedback_json, evaluated_at_ms
+) VALUES (?, ?, ?, ?, ?, ?)
+RETURNING *;
+
+-- name: GetLatestAttemptEvaluation :one
+SELECT * FROM attempt_evaluations
+WHERE presentation_id = ?
+ORDER BY id DESC
+LIMIT 1;
+
+-- name: GetLatestAttemptEvaluationBySource :one
+SELECT * FROM attempt_evaluations
+WHERE presentation_id = ? AND source = ?
+ORDER BY id DESC
+LIMIT 1;
+
+-- name: ListAttemptEvaluations :many
+SELECT * FROM attempt_evaluations
+WHERE presentation_id = ?
+ORDER BY id DESC;

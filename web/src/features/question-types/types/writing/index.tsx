@@ -44,7 +44,12 @@ export const writingModule: QuestionTypeModule<'writing'> = {
             response={ctx.result.response}
             credit={ctx.result.score}
           />
-          <WrittenFeedback presentation={ctx.presentationId} writing />
+          <WrittenFeedback
+            presentation={ctx.presentationId}
+            writing
+            writingReview={ctx.reviewQuestion?.question_review}
+            onEvaluated={ctx.onEvaluated}
+          />
         </>
       )}
     </>

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type {
   Attempt,
+  AttemptEvaluation,
   CourseItemReview,
   ExtendedResponse,
   PublicQuestion,
@@ -73,6 +74,7 @@ export type PracticeAnswerContext<T extends QuestionType> = {
   onChoose: (sign: number) => void;
   onDraft: (draft: ExtendedResponse) => void;
   onNumeric: (value: string) => void;
+  onEvaluated?: (evaluation: AttemptEvaluation) => void;
 };
 
 export type ExamStemContext<T extends QuestionType> = {

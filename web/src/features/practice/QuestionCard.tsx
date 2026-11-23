@@ -2,9 +2,10 @@ import { useId, type Ref } from 'react';
 import { ChevronLeft, ChevronRight, Expand, RotateCcw, Send } from 'lucide-react';
 import type { Question } from '../../api/client';
 import type { ExtendedResponse } from '../../api/generated/types.gen';
-import type { AttemptResult, Presentation } from '../../api/practice';
+import type { AttemptEvaluation, AttemptResult, Presentation } from '../../api/practice';
 import { RichContent } from '../../components/RichContent';
 import {
+  evaluationStateBadgeLabel,
   hasDraftAnswer,
   PracticeAnswerBody,
   QUESTION_TYPE_REGISTRY,
@@ -36,6 +37,7 @@ export function AnswerOptions({
 type Props = {
   presentation: Presentation;
   result?: AttemptResult;
+  evaluation?: AttemptEvaluation;
   selected: number[];
   draft?: ExtendedResponse;
   onDraft: (draft: ExtendedResponse) => void;
@@ -50,6 +52,7 @@ type Props = {
   onChoose: (sign: number) => void;
   onSubmit: () => void;
   onRetry: () => void;
+  onEvaluated?: (evaluation: AttemptEvaluation) => void;
   onDetails: (tab: DetailsTab, trigger?: HTMLElement) => void;
   onPrevious: () => void;
   onNext: () => void;
@@ -58,6 +61,7 @@ type Props = {
 export function QuestionCard({
   presentation,
   result,
+  evaluation,
   selected,
   position,
   total,
@@ -72,6 +76,7 @@ export function QuestionCard({
   onChoose,
   onSubmit,
   onRetry,
+  onEvaluated,
   onDetails,
   onPrevious,
   onNext,
@@ -81,6 +86,7 @@ export function QuestionCard({
   const clozeId = useId();
   const spec = QUESTION_TYPE_REGISTRY[question.question_type];
   const written = spec.isWritten && Boolean(result);
+  const effectiveCorrect = evaluation ? evaluation.passed : result?.attempt.correct;
   const hint = (key: string) =>
     shortcuts || key === 'Enter' ? <kbd aria-hidden="true">{key}</kbd> : null;
   const ready = hasDraftAnswer(question, { selected, numeric, canSubmitExtended });
@@ -115,12 +121,14 @@ export function QuestionCard({
               <span
                 role="status"
                 className={`state-label ${
-                  result ? (result.attempt.correct ? 'correct' : 'incorrect') : ''
+                  result ? (effectiveCorrect ? 'correct' : 'incorrect') : ''
                 }`}
               >
                 {result
                   ? written
-                    ? '已完成本地检查'
+                    ? evaluation
+                      ? evaluationStateBadgeLabel(evaluation)
+                      : '已完成本地检查'
                     : result.attempt.correct
                       ? '回答正确'
                       : result.attempt.score
@@ -187,6 +195,7 @@ export function QuestionCard({
               shortcuts={shortcuts}
               partIdPrefix={clozeId}
               onChoose={onChoose}
+              onEvaluated={onEvaluated}
             />
           </section>
         </div>
