@@ -23,7 +23,6 @@ from .io_store import (
 )
 from .planning import existing_concept_effort
 from .prompts import (
-    RESEARCH_ROLES,
     build_author_prompt,
     build_effort_repair_prompt,
     build_questions_prompt,
@@ -31,8 +30,10 @@ from .prompts import (
     build_review_prompts,
     build_revise_prompt,
     build_tts_repair_prompt,
+    build_vocab_author_prompt,
     build_vocab_repair_prompt,
 )
+from .track_profiles import get_research_roles
 
 TTS_AUDIT_SCRIPT = ".agents/skills/design-course-tts/scripts/audit-course-tts.mjs"
 VOCAB_AUDIT_SCRIPT = (
@@ -85,8 +86,9 @@ async def research_lesson(ctx: Mapping[str, Any], deps: RuntimeDeps) -> None:
         )
         return
     instr = deps.backend.completion_instruction(SUMMARY_SCHEMA)
+    roles = get_research_roles(str(ctx.get("track") or "stem"))
     pending: List[Tuple[str, Awaitable[Any]]] = []
-    for idx, (tag, role_zh, focus) in enumerate(RESEARCH_ROLES):
+    for idx, (tag, role_zh, focus) in enumerate(roles):
         note_path = str(ctx["notes"][idx])
         if not ctx["force_research"] and has_real_content(note_path, min_bytes=200):
             continue
@@ -290,7 +292,7 @@ async def author_unit_questions(
     model: str,
     deps: RuntimeDeps,
 ) -> None:
-    """Author v2 questions per concept matching upfront practice_design_min."""
+    """Author v2 questions per graded concept matching upfront practice_design_min."""
     q_path = f"{package_dir}/{unit['question_file']}"
     existing = load_json(q_path, default=[])
     have_effort = existing_concept_effort(existing)
@@ -298,19 +300,69 @@ async def author_unit_questions(
         {**cs, "lesson_file": ctx["pkg_lesson_path"]}
         for ctx in approved_ctxs
         for cs in ctx["concepts"]
-        if have_effort.get(str(cs["id"]), 0.0)
+        if not cs.get("zero_item_self_check")
+        and have_effort.get(str(cs["id"]), 0.0)
         < float(cs["practice_design_min"]) * 0.7
     ]
-    if not specs and existing:
+    if not specs:
+        if not os.path.exists(q_path):
+            atomic_write_json(q_path, existing)
         return
     atomic_write_json(q_path, existing)
+    track = str(approved_ctxs[0].get("track") or "language") if approved_ctxs else "language"
+    desc = str(approved_ctxs[0].get("course_description") or "") if approved_ctxs else ""
     instr = deps.backend.completion_instruction(SUMMARY_SCHEMA)
-    prompt = build_questions_prompt(q_path, specs, instr)
+    prompt = build_questions_prompt(
+        q_path, specs, instr, track=track, course_description=desc
+    )
     res = await deps.backend.invoke(
         prompt, SUMMARY_SCHEMA, role=f"Questions-{unit['id']}", model=model
     )
     if not res.get("ok") or not load_json(q_path, default=[]):
         raise RuntimeError(f"failed authoring questions at {q_path}")
+
+
+async def author_unit_vocabulary(
+    package_dir: str,
+    manifest: Mapping[str, Any],
+    unit: Mapping[str, Any],
+    approved_ctxs: Sequence[Mapping[str, Any]],
+    model: str,
+    deps: RuntimeDeps,
+) -> None:
+    """Proactively author vocabulary entries for newly added units when configured."""
+    vocab_file = str(manifest.get("vocabulary_file") or "").strip()
+    if not vocab_file:
+        return
+    vocab_path = f"{package_dir}/{vocab_file}"
+    target = sum(
+        int(cs.get("vocab_target") or 0)
+        for ctx in approved_ctxs
+        for cs in ctx["concepts"]
+    )
+    if not os.path.exists(vocab_path) and target <= 0:
+        return
+    existing = load_json(vocab_path, default=[])
+    if not isinstance(existing, list):
+        return
+    uid = str(unit["id"])
+    have_unit = sum(1 for entry in existing if entry.get("unit_id") == uid)
+    desired = target if target > 0 else 8
+    if have_unit >= max(3, desired // 2):
+        return
+    q_path = f"{package_dir}/{unit['question_file']}"
+    if not load_json(q_path, default=[]):
+        return
+    instr = deps.backend.completion_instruction(SUMMARY_SCHEMA)
+    prompt = build_vocab_author_prompt(
+        package_dir, vocab_file, uid, str(unit.get("title") or uid),
+        q_path, desired, instr,
+    )
+    res = await deps.backend.invoke(
+        prompt, SUMMARY_SCHEMA, role=f"Vocab-{uid}", model=model
+    )
+    if not res.get("ok"):
+        raise RuntimeError(f"failed authoring vocabulary for unit {uid}")
 
 
 def _parse_audit_json(res: CommandResult) -> Dict[str, Any]:

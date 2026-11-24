@@ -19,6 +19,7 @@ from .io_store import (
     run_cmd_async,
 )
 from .planning import (
+    assert_acyclic_manifest,
     build_base_manifest,
     build_lesson_ctx,
     group_approved_by_unit,
@@ -33,6 +34,7 @@ from .stages import (
     LessonOutcome,
     RuntimeDeps,
     author_unit_questions,
+    author_unit_vocabulary,
     run_one_lesson,
     validate_package,
 )
@@ -97,6 +99,7 @@ def _commit_manifest_once(
         unit = upsert_unit_in_manifest(manifest, unit_id, unit_title, ctxs)
         unit_tasks.append((unit, ctxs))
     validate_distinct_question_files(manifest.get("units", []))
+    assert_acyclic_manifest(manifest)
     atomic_write_json(f"{package_dir}/course.json", manifest)
     readme_path = f"{package_dir}/README.md"
     if not os.path.exists(readme_path):
@@ -167,6 +170,10 @@ async def package_and_verify(
         await _author_units_concurrently(
             package_dir, unit_tasks, str(course_cfg["model"]), unit_sem, deps
         )
+        for unit, ctxs in unit_tasks:
+            await author_unit_vocabulary(
+                package_dir, manifest, unit, ctxs, str(course_cfg["model"]), deps
+            )
         validation = await validate_package(package_dir, manifest, course_cfg, deps)
     except Exception as exc:
         updates = _validation_progress_updates(
@@ -385,6 +392,7 @@ async def process_course(
     package_dir, research_root = config.resolve_course_paths(course_id)
     syllabus_path = resolve_syllabus_path(course_id, course_cfg)
     syllabus = load_json(syllabus_path)
+    course_cfg["syllabus_description"] = str(syllabus.get("description") or "")
     selected = select_syllabus_lessons(
         syllabus, config.start_lesson, config.end_lesson
     )
@@ -471,9 +479,13 @@ async def run_batch(
     course_sem = asyncio.Semaphore(config.concurrency.max_courses)
     agent_sem = asyncio.Semaphore(config.concurrency.max_agents)
     validate_sem = asyncio.Semaphore(config.concurrency.max_subprocesses)
-    active = backend or _create_default_backend(config, agent_sem, log, cli_cmd_runner)
+    active = (
+        backend
+        if backend is not None or config.dry_run
+        else _create_default_backend(config, agent_sem, log, cli_cmd_runner)
+    )
     deps = RuntimeDeps(
-        backend=active, validate_sem=validate_sem, log_fn=log,
+        backend=active, validate_sem=validate_sem, log_fn=log,  # type: ignore[arg-type]
         validate_timeout=config.validate_timeout_seconds, cmd_runner=cmd_runner,
     )
     mode = "Dry-Run" if config.dry_run else f"Backend={config.backend}"

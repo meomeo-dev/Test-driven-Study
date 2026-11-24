@@ -5,12 +5,14 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import shutil
 import tempfile
 import weakref
 from dataclasses import dataclass
 from typing import Any, Dict, Mapping, Optional, Sequence, Tuple
 
 NO_DATA_MARKER = "无资料"
+_FALLBACK_BIN_DIRS = ("/opt/homebrew/bin", "/usr/local/bin")
 
 _LockMap = Dict[str, asyncio.Lock]
 _LOOP_FILE_LOCKS: "weakref.WeakKeyDictionary[asyncio.AbstractEventLoop, _LockMap]" = (
@@ -170,6 +172,26 @@ async def terminate_process(
         return await proc.communicate()
 
 
+def resolve_exec_env(
+    cmd: Sequence[str], env: Optional[Mapping[str, str]]
+) -> Optional[Dict[str, str]]:
+    """Augment PATH with standard Homebrew dirs when node/go is not in current PATH."""
+    if not cmd or os.path.isabs(cmd[0]) or cmd[0] not in ("node", "go"):
+        return dict(env) if env is not None else None
+    merged = dict(env) if env is not None else dict(os.environ)
+    cur_path = merged.get("PATH", "")
+    if shutil.which(cmd[0], path=cur_path):
+        return merged if env is not None else None
+    extras = [
+        d for d in _FALLBACK_BIN_DIRS
+        if os.path.isdir(d) and d not in cur_path.split(os.pathsep)
+    ]
+    if not extras:
+        return merged if env is not None else None
+    merged["PATH"] = os.pathsep.join(extras + ([cur_path] if cur_path else []))
+    return merged
+
+
 async def _exec_subprocess(
     cmd: Sequence[str],
     cwd: Optional[str],
@@ -184,13 +206,14 @@ async def _exec_subprocess(
         if stdin_data is not None
         else asyncio.subprocess.DEVNULL
     )
+    resolved_env = resolve_exec_env(cmd, env)
     proc = await asyncio.create_subprocess_exec(
         *cmd,
         stdin=stdin_pipe,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
         cwd=cwd,
-        env=dict(env) if env is not None else None,
+        env=resolved_env,
     )
     timed_out = False
     try:

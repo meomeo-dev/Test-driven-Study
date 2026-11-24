@@ -7,22 +7,17 @@ import re
 from typing import Any, Dict, List, Mapping, Optional, Sequence, Set, Tuple
 
 from .config import DEFAULT_MODEL
+from .dag_validation import (
+    _prereq_ids,
+    _would_create_cycle,
+    assert_acyclic_concepts,
+    assert_acyclic_manifest,
+)
 from .io_store import atomic_write_json, has_real_content, load_json
+from .track_profiles import DESIGN_ITEM_MINUTES, allocate_concept_quota
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 UNIT_PREFIX_RE = re.compile(r"^第\s*\d+\s*单元[：:]\s*")
-
-DESIGN_ITEM_MINUTES: Dict[str, float] = {
-    "listening": 5.0,
-    "reading_comprehension": 5.0,
-    "cloze": 3.5,
-    "translation": 3.2,
-    "writing": 5.5,
-    "numeric": 2.6,
-    "multiple_choice": 2.3,
-    "single_choice": 2.0,
-    "true_false": 1.5,
-}
 
 
 def to_slug(raw: Any, max_len: int = 64) -> str:
@@ -50,43 +45,37 @@ def detect_track(course_id: str, cfg: Mapping[str, Any]) -> str:
     return "language" if ("english" in cid or "chinese" in cid) else "stem"
 
 
-def allocate_concept_quota(est_min: int, track: str) -> Dict[str, Any]:
-    """Decompose concept estimated_minutes into lecture effort and typed quotas."""
-    lec_min = round(est_min * 0.35, 1)
-    prac_min = round(est_min - lec_min, 1)
-    read_equiv_units = max(550, int((lec_min / 1.8) * 250))
-    quota: Dict[str, int] = {}
-    if track == "language":
-        heavy = (
-            [("listening", 1), ("cloze", 1), ("translation", 1)]
-            if est_min >= 25
-            else [("cloze", 1)]
-        )
-        if est_min >= 45:
-            heavy.append(("writing", 1))
-    else:
-        heavy = [("numeric", 2), ("cloze", 1)]
-        if est_min >= 45:
-            heavy.append(("reading_comprehension", 1))
-    for qtype, cnt in heavy:
-        quota[qtype] = cnt
-    covered = sum(DESIGN_ITEM_MINUTES[k] * v for k, v in quota.items())
-    cycle = ("single_choice", "multiple_choice", "true_false")
-    idx = 0
-    while covered < prac_min or sum(quota.values()) < 3:
-        qt = cycle[idx % len(cycle)]
-        quota[qt] = quota.get(qt, 0) + 1
-        covered += DESIGN_ITEM_MINUTES[qt]
-        idx += 1
-    return {
-        "estimated_minutes": est_min,
-        "lecture_design_min": lec_min,
-        "practice_design_min": prac_min,
-        "planned_item_design_min": round(covered, 1),
-        "target_read_units": read_equiv_units,
-        "min_examples": max(1, est_min // 15),
-        "question_quota": quota,
-    }
+def _normalize_prereq_groups(raw: Any) -> List[Dict[str, List[str]]]:
+    """Normalize declarative DNF prerequisite groups from syllabus metadata."""
+    if not isinstance(raw, Sequence) or isinstance(raw, (str, bytes)):
+        return []
+    groups: List[Dict[str, List[str]]] = []
+    for entry in raw:
+        if isinstance(entry, Mapping) and isinstance(entry.get("all_of"), list):
+            members = [to_slug(m) for m in entry["all_of"] if str(m).strip()]
+            if members:
+                groups.append({"all_of": members})
+    return groups
+
+
+def _attach_concept_meta(
+    concept: Dict[str, Any], meta: Optional[Mapping[str, Any]]
+) -> Dict[str, Any]:
+    """Attach optional declarative summary, prerequisites, and metadata."""
+    if not meta:
+        return concept
+    if meta.get("summary"):
+        concept["summary"] = str(meta["summary"]).strip()
+    if meta.get("skill_focus"):
+        concept["skill_focus"] = str(meta["skill_focus"]).strip()
+    if meta.get("cefr_level"):
+        concept["cefr_level"] = str(meta["cefr_level"]).strip()
+    prereqs = _normalize_prereq_groups(meta.get("prerequisites"))
+    if prereqs:
+        concept["prerequisites"] = prereqs
+    if meta.get("vocab_target") is not None:
+        concept["vocab_target"] = max(0, int(meta["vocab_target"]))
+    return concept
 
 
 def plan_lesson_concepts(
@@ -96,19 +85,30 @@ def plan_lesson_concepts(
     duration_min: Any,
     track: str,
     cfg: Mapping[str, Any],
+    meta: Optional[Mapping[str, Any]] = None,
 ) -> List[Dict[str, Any]]:
     """Split a lesson's duration_minutes into 1-2 micro-concepts with quotas."""
     cmap = cfg.get("concept_map") or {}
     total = clamp_minutes(duration_min)
-    if l_id in cmap or not cfg.get("split_concepts", True) or total < 45:
-        cid = to_slug(cmap.get(l_id) or f"concept-{l_slug}")
-        return [
-            {
-                "id": cid,
-                "title": l_title[:80],
-                **allocate_concept_quota(total, track),
-            }
-        ]
+    explicit_cid = (meta or {}).get("concept_id")
+    has_lab = bool((meta or {}).get("effort_lab"))
+    single = (
+        l_id in cmap
+        or bool(explicit_cid)
+        or has_lab
+        or not cfg.get("split_concepts", True)
+        or total < 45
+    )
+    if single:
+        cid = to_slug(cmap.get(l_id) or explicit_cid or f"concept-{l_slug}")
+        quota = allocate_concept_quota(
+            total,
+            track,
+            skill_focus=(meta or {}).get("skill_focus"),
+            recommended_quota=(meta or {}).get("recommended_quota"),
+            effort_lab=(meta or {}).get("effort_lab"),
+        )
+        return [_attach_concept_meta({"id": cid, "title": l_title[:80], **quota}, meta)]
     m1 = total // 2
     specs = (
         (to_slug(f"c-{l_slug}-core"), f"{l_title[:66]}（核心概念）", m1),
@@ -205,13 +205,16 @@ def build_lesson_ctx(
     l_slug = to_slug(l_id)
     u_id, u_title = resolve_unit_target(meta, cfg.get("unit_map") or {}, existing_units)
     track, est = detect_track(course_id, cfg), clamp_minutes(meta.get("duration_minutes"))
-    concepts = plan_lesson_concepts(l_id, l_slug, title, est, track, cfg)
+    concepts = plan_lesson_concepts(l_id, l_slug, title, est, track, cfg, meta=meta)
     base = f"{research_root}/{l_id}"
     return {
         "course_id": course_id, "lesson_id": l_id, "lesson_slug": l_slug,
         "lesson_number": int(meta["lesson_number"]), "lesson_title": title,
         "unit_id": u_id, "unit_title": u_title, "estimated_minutes": est,
         "track": track, "concepts": concepts, "budget_file": f"{base}/budget_plan.json",
+        "course_description": str(cfg.get("syllabus_description") or ""),
+        "cefr_level": str(meta.get("cefr_level") or ""),
+        "skill_focus": str(meta.get("skill_focus") or ""),
         "budget_payload": {
             "lesson_id": l_id, "duration_minutes": est,
             "track": track, "concepts": concepts,
@@ -344,71 +347,6 @@ def validate_distinct_question_files(units: Sequence[Mapping[str, Any]]) -> None
         seen[key] = uid
 
 
-def _prereq_ids(node: Mapping[str, Any]) -> List[str]:
-    """Extract referenced prerequisite concept IDs from a concept node."""
-    ids: List[str] = []
-    for entry in node.get("prerequisites") or ():
-        if isinstance(entry, str):
-            ids.append(entry)
-        elif isinstance(entry, Mapping):
-            for key in ("all_of", "any_of"):
-                for cid in entry.get(key) or ():
-                    ids.append(str(cid))
-    return ids
-
-
-def _would_create_cycle(
-    concepts_by_id: Mapping[str, Mapping[str, Any]],
-    source_cid: str,
-    target_prereq: str,
-) -> bool:
-    """Return True if adding edge source_cid -> target_prereq introduces a cycle."""
-    if source_cid == target_prereq:
-        return True
-    stack = [target_prereq]
-    visited: Set[str] = set()
-    while stack:
-        cur = stack.pop()
-        if cur == source_cid:
-            return True
-        if cur in visited:
-            continue
-        visited.add(cur)
-        node = concepts_by_id.get(cur)
-        if node:
-            stack.extend(_prereq_ids(node))
-    return False
-
-
-def assert_acyclic_concepts(concepts: Sequence[Mapping[str, Any]]) -> None:
-    """Verify concept prerequisite graph within a unit has no directed cycles."""
-    by_id = {str(c["id"]): c for c in concepts}
-    state: Dict[str, int] = {}
-    for cid in by_id:
-        if state.get(cid, 0) != 0:
-            continue
-        stack: List[Tuple[str, bool]] = [(cid, False)]
-        while stack:
-            node_id, exiting = stack.pop()
-            if exiting:
-                state[node_id] = 2
-                continue
-            cur_state = state.get(node_id, 0)
-            if cur_state == 2:
-                continue
-            state[node_id] = 1
-            stack.append((node_id, True))
-            for dep in _prereq_ids(by_id[node_id]):
-                if dep not in by_id:
-                    continue
-                if state.get(dep, 0) == 1:
-                    raise ValueError(
-                        f"prerequisite cycle detected involving {node_id!r} -> {dep!r}"
-                    )
-                if state.get(dep, 0) == 0:
-                    stack.append((dep, False))
-
-
 def _ensure_unit(
     manifest: Dict[str, Any], unit_id: str, unit_title: str
 ) -> Dict[str, Any]:
@@ -445,16 +383,19 @@ def _merge_unit_entries(
         }
         for cs in ctx["concepts"]:
             cid = str(cs["id"])
+            summary = str(cs.get("summary") or f"掌握{cs['title']}的核心概念与应用。")
             node = concepts_by_id.get(
                 cid,
-                {
-                    "id": cid,
-                    "title": str(cs["title"]),
-                    "summary": f"掌握{cs['title']}的核心概念与应用。",
-                },
+                {"id": cid, "title": str(cs["title"]), "summary": summary},
             )
+            if cs.get("summary"):
+                node["summary"] = summary
             node["estimated_minutes"] = int(cs["estimated_minutes"])
             node["lesson"] = l_slug
+            if cs.get("prerequisites"):
+                node["prerequisites"] = [
+                    {"all_of": list(g["all_of"])} for g in cs["prerequisites"]
+                ]
             if cid not in concepts_by_id:
                 ordered_cids.append(cid)
             concepts_by_id[cid] = node
