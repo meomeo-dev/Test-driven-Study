@@ -18,7 +18,9 @@ if _SCRIPTS_DIR not in sys.path:
     sys.path.insert(0, _SCRIPTS_DIR)
 
 from curriculum_workflow.io_store import (  # noqa: E402
+    ProgressStore,
     atomic_write_json,
+    atomic_write_text,
     load_json,
     resolve_exec_env,
 )
@@ -40,6 +42,7 @@ from curriculum_workflow.stages import (  # noqa: E402
     RuntimeDeps,
     author_unit_questions,
     author_unit_vocabulary,
+    run_one_lesson,
 )
 from curriculum_workflow.tests import REPO_ROOT, SCRIPTS_DIR  # noqa: E402
 from curriculum_workflow.track_profiles import (  # noqa: E402
@@ -275,6 +278,35 @@ class TestManifestDagAndStages(unittest.TestCase):
             self.assertEqual([c["role"] for c in backend.calls], ["Questions-u11", "Vocab-u11"])
             self.assertIn("c-graded", backend.calls[0]["prompt"])
             self.assertNotIn("c-oral", backend.calls[0]["prompt"])
+
+    def test_run_one_lesson_reuses_promoted_final_without_reinvoking_agents(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            final_p = f"{tmp}/res/l1/lesson_final.md"
+            pkg_p = f"{tmp}/pkg/lessons/l1.md"
+            body = "# Approved Lesson\n\n" + ("Grounded English lesson content. " * 12)
+            atomic_write_text(final_p, body)
+            atomic_write_text(pkg_p, body)
+            backend = _RecordingBackend()
+            ctx = {
+                "course_id": "beginner-english",
+                "lesson_id": "l1",
+                "lesson_slug": "l1",
+                "lesson_number": 1,
+                "unit_id": "u11",
+                "force_research": False,
+                "ingest_archived": False,
+                "final_path": final_p,
+                "pkg_lesson_path": pkg_p,
+            }
+
+            async def _run() -> Any:
+                deps = RuntimeDeps(backend=backend, validate_sem=asyncio.Semaphore(1))
+                return await run_one_lesson(ctx, ProgressStore(f"{tmp}/progress.json"), f"{tmp}/pkg", deps)
+
+            out = asyncio.run(_run())
+            self.assertTrue(out.approved)
+            self.assertEqual(out.status, "REVIEW_APPROVED")
+            self.assertEqual(backend.calls, [])
 
     def test_resolve_exec_env_and_dry_run_with_run_workflow_config(self) -> None:
         env = resolve_exec_env(["node", "-v"], {"PATH": "/usr/bin:/bin"})

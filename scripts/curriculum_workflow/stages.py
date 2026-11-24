@@ -267,6 +267,15 @@ async def run_one_lesson(
 ) -> LessonOutcome:
     """Run research -> author -> dual review for one lesson with error isolation."""
     l_id, l_num, u_id = str(ctx["lesson_id"]), int(ctx["lesson_number"]), str(ctx["unit_id"])
+    if (
+        not ctx["force_research"]
+        and not ctx["ingest_archived"]
+        and has_real_content(ctx["final_path"], 200)
+        and has_real_content(ctx["pkg_lesson_path"], 200)
+        and read_text(ctx["final_path"]) == read_text(ctx["pkg_lesson_path"])
+    ):
+        deps.log_fn(f"[{ctx['course_id']}] {l_id} reusing previously approved lesson.")
+        return LessonOutcome(l_id, l_num, u_id, "REVIEW_APPROVED", True, False)
     stage = "RESEARCH"
     try:
         await research_lesson(ctx, deps)
