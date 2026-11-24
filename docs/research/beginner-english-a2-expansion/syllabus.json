@@ -1,0 +1,1029 @@
+{
+  "course_id": "beginner-english",
+  "course_title": "零基础英语（听说与基础语法 → 通用日常与职场 A2 进阶）",
+  "description": "在保留现有第 1–10 单元（37.33 小时、41 个知识点）与全部既有 ID 不变的前提下，弱化车间背景，按通用 CEFR A1+→A2 听说读写体系扩展第 11–16 单元（+23.00 小时、+30 个微知识点，总课时 60.33 小时）。",
+  "expansion_scope": {
+    "base_version": "2.4.0",
+    "target_version": "2.5.0",
+    "cefr_band": "A1+ to A2",
+    "theme": "General Everyday & Workplace English (non-workshop)",
+    "base_minutes": 2240,
+    "added_minutes": 1380,
+    "projected_total_minutes": 3620,
+    "projected_total_hours": 60.33
+  },
+  "total_hours": 23.0,
+  "total_lessons": 30,
+  "units_count": 6,
+  "lessons": [
+    {
+      "lesson_number": 1,
+      "lesson_id": "countable-articles",
+      "concept_id": "countable-articles",
+      "unit_slug": "everyday-shopping",
+      "unit_title": "第11单元：生活采购、数量与日常消费",
+      "lesson_title": "冠词与名词可数性（a / an / the 与复数）",
+      "summary": "区分日常高频可数与不可数名词，掌握不定冠词 a/an、定冠词 the 与零冠词在购物、餐饮与办公表达中的基本规则。",
+      "cefr_level": "A1+",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 40,
+      "topic_1": "CEFR A1+ 可数/不可数名词分类与不定冠词 a/an（按音素判定）、定冠词 the（特指与二次提及）及零冠词核心规则",
+      "topic_2": "超市、咖啡馆与日常办公常见物品短语（a cup of coffee, some paper, the receipt, an umbrella）与情景对话",
+      "topic_3": "中文母语者高频偏误（漏用冠词、不可数名词加 -s、an hour / a university 误判）与分层练习设计",
+      "prerequisites": [
+        {
+          "all_of": [
+            "there-is-are",
+            "demonstratives"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 2,
+      "lesson_id": "quantifiers-amounts",
+      "concept_id": "quantifiers-amounts",
+      "unit_slug": "everyday-shopping",
+      "unit_title": "第11单元：生活采购、数量与日常消费",
+      "lesson_title": "数量表达（some / any / much / many / a lot of）",
+      "summary": "准确使用 some、any、much、many、a lot of、a few 与 a little 谈论食物、日用品与库存数量，并在礼貌提议中正确选用 some。",
+      "cefr_level": "A1+",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 40,
+      "topic_1": "肯定/否定/疑问句中 some 与 any 的规则（含 Would you like some…? 提议特例）及 much/many/a lot of/a few/a little 搭配矩阵",
+      "topic_2": "采购清单、厨房补货、茶水间与办公文具清点的实用对话与量词短语（a bottle of, two packets of, enough time）",
+      "topic_3": "常见误区（how much 与 how many 混用、否定句误用 much/many 搭配、a little 与 a few 混淆）与多题型训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "countable-articles",
+            "numbers"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 3,
+      "lesson_id": "shopping-dining-phrases",
+      "concept_id": "shopping-dining-phrases",
+      "unit_slug": "everyday-shopping",
+      "unit_title": "第11单元：生活采购、数量与日常消费",
+      "lesson_title": "购物、点餐与价格询问",
+      "summary": "听懂并运用超市购物、餐厅点餐、试穿选码、询价与结账（How much is…? / I'd like… / Could I pay by card?）的高频对话。",
+      "cefr_level": "A2",
+      "skill_focus": "listening_speaking",
+      "duration_minutes": 45,
+      "topic_1": "礼貌点餐与购物句型结构（I'd like / Can I try… on / How much does… cost / take away vs eat in）与语调礼貌度",
+      "topic_2": "超市收银、咖啡店点单、服装选码换货、刷卡/找零与索要小票的真实日常对话语料",
+      "topic_3": "价格听辨（$14.50 vs $40.15、折扣 20% off）、直译生硬表达（I want…）纠偏与情景听力训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "quantifiers-amounts",
+            "polite-requests",
+            "wh-questions"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 4,
+      "lesson_id": "receipts-menus-reading",
+      "concept_id": "receipts-menus-reading",
+      "unit_slug": "everyday-shopping",
+      "unit_title": "第11单元：生活采购、数量与日常消费",
+      "lesson_title": "菜单、价签与消费小票阅读",
+      "summary": "读懂英文餐厅菜单、超市促销价签、网购商品页与消费收据，准确核对单价、折扣、税费、总额与退换货期限。",
+      "cefr_level": "A2",
+      "skill_focus": "reading_comprehension",
+      "duration_minutes": 45,
+      "topic_1": "日常消费文本体裁特征（Menu 分区、Price Tag 促销规则、Receipt 字段 subtotal/tax/total/change、退换政策关键短语）",
+      "topic_2": "午餐套餐菜单、买一送一（Buy one get one 50% off）海报与含退换条款的购物小票完整示范材料",
+      "topic_3": "忽略条件限制（valid until / excluding drinks / with original receipt）与价格计算失误纠偏",
+      "prerequisites": [
+        {
+          "all_of": [
+            "shopping-dining-phrases",
+            "comparatives"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "reading_comprehension": 2,
+        "cloze": 1,
+        "translation": 1,
+        "numeric": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 5,
+      "lesson_id": "oral-shopping-roleplay",
+      "concept_id": "oral-shopping-roleplay",
+      "unit_slug": "everyday-shopping",
+      "unit_title": "第11单元：生活采购、数量与日常消费",
+      "lesson_title": "口语购物与点餐情景演练（自评）",
+      "summary": "脱稿完成一次包含询问数量/价格、点餐或换尺码及付款确认的 45 秒日常口语演练，录音并对照核对清单自评。",
+      "cefr_level": "A2",
+      "skill_focus": "oral_self_check",
+      "duration_minutes": 40,
+      "topic_1": "A2 实用口语情景对话结构（开场礼貌请求 → 确认规格/数量/价格 → 付款与道别）与连读重音要点",
+      "topic_2": "两套生活场景口语脚本模板（咖啡馆点餐修改饮品、商场询问尺码与折扣）与跟读节奏指导",
+      "topic_3": "脱稿录音常见卡顿、单复数漏读与生硬祈使句自查清单（含 4 步实操与评分细则）",
+      "prerequisites": [
+        {
+          "all_of": [
+            "shopping-dining-phrases"
+          ]
+        }
+      ],
+      "recommended_quota": {},
+      "effort_lab": {
+        "shadowing": 8,
+        "script_outlining": 8,
+        "mock_recordings": 12,
+        "rubric_audit": 6
+      },
+      "vocab_target": 0
+    },
+    {
+      "lesson_number": 6,
+      "lesson_id": "directions-transport",
+      "concept_id": "directions-transport",
+      "unit_slug": "travel-plans",
+      "unit_title": "第12单元：出行问路与将来计划",
+      "lesson_title": "问路、交通出行与地点导航",
+      "summary": "掌握地铁、公交、步行与打车问路指路表达（go straight, turn left at, get off at, how long does it take），听懂日常换乘与到达指引。",
+      "cefr_level": "A2",
+      "skill_focus": "listening_speaking",
+      "duration_minutes": 45,
+      "topic_1": "方位动态介词与指路动词短语（go past, cross the street, on your right, take Line 2, transfer at）及交通方式表达（by train / on foot）",
+      "topic_2": "街头问路、地铁站换乘广播、赴约路线指引与打车报目的地的真实生活与通勤对话",
+      "topic_3": "介词混用（get on/off vs get in/out of, arrive in/at）、左右转与路口序号听辨失误及导航练习设计",
+      "prerequisites": [
+        {
+          "all_of": [
+            "positions",
+            "imperatives",
+            "wh-questions"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 7,
+      "lesson_id": "future-going-to",
+      "concept_id": "future-going-to",
+      "unit_slug": "travel-plans",
+      "unit_title": "第12单元：出行问路与将来计划",
+      "lesson_title": "计划与打算（be going to 与进行时表安排）",
+      "summary": "掌握 be going to + 动词原形表达事先计划与有迹象的预测，以及用现在进行时（be + doing）表达已敲定的日程与约会。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "be going to 肯定/否定/疑问结构、现在进行时表确定日程（fixed arrangements）及将来时间状语（next week, this weekend, tomorrow evening）",
+      "topic_2": "周末出游规划、下周会议/看牙医预约、出差行程安排等日常与职场对话语料",
+      "topic_3": "常见错误（漏掉 be 动词、going to 后误加 -ing 或 -s、going to go 冗余表达）与语境辨析训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "present-continuous-actions",
+            "days-dates"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 8,
+      "lesson_id": "future-will",
+      "concept_id": "future-will",
+      "unit_slug": "travel-plans",
+      "unit_title": "第12单元：出行问路与将来计划",
+      "lesson_title": "临时决定、承诺与预测（will / won't / Shall we）",
+      "summary": "掌握 will / won't 表达当场决定、主动提供帮助、承诺与一般预测，用 Shall we / Shall I 提出建议，并能与 be going to 准确区分。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "will / 'll / won't 语法形态、四大核心语用功能（instant decision / offer / promise / prediction）及 will vs be going to 决策树",
+      "topic_2": "办公临时响应（I'll send you the file right now）、生活主动帮忙与周末邀约（Shall we meet at 6?）高频对话",
+      "topic_3": "常见误区（will 后加 to、won't 拼写与 want 发音混淆、在已定计划语境中滥用 will）与针对性练习",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-going-to",
+            "can-permission"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 9,
+      "lesson_id": "hotel-trip-booking",
+      "concept_id": "hotel-trip-booking",
+      "unit_slug": "travel-plans",
+      "unit_title": "第12单元：出行问路与将来计划",
+      "lesson_title": "行程单、酒店预订与出行通知阅读",
+      "summary": "读懂电子车票/机票确认单、酒店入住须知与航班/列车变更通知，快速核对出发到达时间、登机口/站台、行李额度与免费取消期限。",
+      "cefr_level": "A2",
+      "skill_focus": "reading_comprehension",
+      "duration_minutes": 45,
+      "topic_1": "出行确认文档高频术语（check-in/check-out, booking reference, departure/arrival, boarding gate, free cancellation, luggage allowance）",
+      "topic_2": "酒店预订确认邮件、高铁/航班电子行程单与晚点改签通知三类真实 A2 阅读语料",
+      "topic_3": "12/24 小时制时间换算、截止时间前置条件（24 hours prior to arrival）误读与细节计算训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "directions-transport",
+            "future-will",
+            "clock-time"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "reading_comprehension": 2,
+        "cloze": 1,
+        "translation": 1,
+        "numeric": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 10,
+      "lesson_id": "trip-plan-writing",
+      "concept_id": "trip-plan-writing",
+      "unit_slug": "travel-plans",
+      "unit_title": "第12单元：出行问路与将来计划",
+      "lesson_title": "出行与周末计划短文写作",
+      "summary": "综合运用 be going to、will、交通表达与时间顺序词（first, then, after that, finally），写出 50–70 词结构清晰的出行或周末计划短文。",
+      "cefr_level": "A2",
+      "skill_focus": "writing_application",
+      "duration_minutes": 40,
+      "topic_1": "A2 计划类短文（short_essay）三段式谋篇（出行目的与时间 → 交通/行程细节 → 预期感受或邀约）与顺序衔接词",
+      "topic_2": "周末短途旅行计划、接待来访同事行程安排两篇高分范文拆解与句型替换库",
+      "topic_3": "常见写作失误（通篇一般现在时代替将来时、中式逐字翻译、时间地点状语语序颠倒）与改错练习",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-will",
+            "hotel-trip-booking"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "writing_short": 1,
+        "writing_sentence": 1,
+        "cloze": 1,
+        "translation": 1,
+        "single_choice": 2,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 11,
+      "lesson_id": "present-perfect-forms",
+      "concept_id": "present-perfect-forms",
+      "unit_slug": "experiences-progress",
+      "unit_title": "第13单元：个人经历与进度追踪",
+      "lesson_title": "现在完成时构成与过去分词（have / has + done）",
+      "summary": "掌握现在完成时 have/has + 过去分词的肯定、否定、疑问与缩写形式，熟记日常与职场最高频不规则动词过去分词。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 50,
+      "topic_1": "现在完成时语法框架（have/has + past participle）、缩写（'ve/'s/haven't/hasn't）与高频不规则三态分组记忆（be-was-been, go-went-gone, do-did-done, see-saw-seen, write-wrote-written, send-sent-sent）",
+      "topic_2": "日常任务完成确认与生活变化陈述（I've finished the report. / She's sent the email. / Have you booked the tickets?）",
+      "topic_3": "典型错题（混用过去式与过去分词、has/have 主谓不一致、have been to vs have gone to 混淆）与多题型强化",
+      "prerequisites": [
+        {
+          "all_of": [
+            "past-irregular",
+            "did-questions"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 2,
+        "translation": 2,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 12,
+      "lesson_id": "ever-never-already-yet",
+      "concept_id": "ever-never-already-yet",
+      "unit_slug": "experiences-progress",
+      "unit_title": "第13单元：个人经历与进度追踪",
+      "lesson_title": "经历与进度副词（ever / never / just / already / yet）",
+      "summary": "用 ever/never 交流旅行与生活经历，用 just/already/yet 精准汇报事项“刚刚完成 / 已经完成 / 尚未完成”及其在句中的正确位置。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "ever、never、just、already（多置于 have/has 与过去分词之间）与 yet（置于否定/疑问句末）的语用分工与语序规则",
+      "topic_2": "朋友畅聊旅行与美食经历（Have you ever tried…?）与团队事项核对清单（I've already updated the slides, but I haven't printed them yet.）",
+      "topic_3": "常见偏误（否定句误用 already、肯定句误用 yet、not 与 never 双重否定）与语境填空辨析",
+      "prerequisites": [
+        {
+          "all_of": [
+            "present-perfect-forms"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 13,
+      "lesson_id": "for-since-duration",
+      "concept_id": "for-since-duration",
+      "unit_slug": "experiences-progress",
+      "unit_title": "第13单元：个人经历与进度追踪",
+      "lesson_title": "持续时长与对比（for / since 与一般过去时辨析）",
+      "summary": "掌握 How long…?、for + 时间段与 since + 时间点，清晰辨别“延续至今/强调当前影响（现在完成时）”与“已结束的过去时间点（一般过去时）”。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "for + duration（for three years / for two weeks）vs since + starting point（since 2022 / since Monday）及现在完成时与一般过去时的时间标志对比",
+      "topic_2": "自我履历介绍（I've lived here for five years / I've worked in marketing since 2023）与追问细节转一般过去时（When did you move?）的真实对话",
+      "topic_3": "高频错误（现在完成时误配 yesterday/last year/ago、for 与 since 互换、用一般现在时代替持续状态 I live here for 3 years）",
+      "prerequisites": [
+        {
+          "all_of": [
+            "ever-never-already-yet",
+            "days-dates"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 14,
+      "lesson_id": "progress-update-listening",
+      "concept_id": "progress-update-listening",
+      "unit_slug": "experiences-progress",
+      "unit_title": "第13单元：个人经历与进度追踪",
+      "lesson_title": "日常分享与工作进度同步听力",
+      "summary": "听懂朋友近况分享与办公室项目进度晨会（check-in），精准区分已完成项、进行中项、尚未完成项与持续时长。",
+      "cefr_level": "A2",
+      "skill_focus": "listening_speaking",
+      "duration_minutes": 50,
+      "topic_1": "听力中缩写 've/'s 与过去分词弱读辨音技巧，以及进度核对信号词（so far, not yet, still waiting for, just finished）",
+      "topic_2": "两类典型场景录音（团队周中进度同步对话、搬家/旅行近况语音留言独白）与英中逐字稿设计",
+      "topic_3": "易错听辨陷阱（把已完成与待办事项张冠李戴、for/since 时间换算失误）与多小题听力测评",
+      "prerequisites": [
+        {
+          "all_of": [
+            "for-since-duration",
+            "future-will"
+          ]
+        },
+        {
+          "all_of": [
+            "for-since-duration",
+            "schedule-coordination"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 2,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 15,
+      "lesson_id": "status-summary-writing",
+      "concept_id": "status-summary-writing",
+      "unit_slug": "experiences-progress",
+      "unit_title": "第13单元：个人经历与进度追踪",
+      "lesson_title": "阶段总结与进度汇报写作",
+      "summary": "合理混用现在完成时、一般过去时与将来时，撰写 60–80 词条理清晰的个人学习小结或工作周报更新（short_essay）。",
+      "cefr_level": "A2",
+      "skill_focus": "writing_application",
+      "duration_minutes": 45,
+      "topic_1": "进度更新短文三要素结构（已完成成果 have already… → 关键过去节点 Yesterday I… → 下一步计划 Next week I will…）",
+      "topic_2": "远程办公周报更新、语言学习打卡阶段总结两篇示范短文及常用进展动词短语库",
+      "topic_3": "时态切换混乱、遗漏 yet/already 语序与流水账句式优化训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "for-since-duration",
+            "progress-update-listening"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "writing_short": 1,
+        "writing_sentence": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 16,
+      "lesson_id": "past-continuous-stories",
+      "concept_id": "past-continuous-stories",
+      "unit_slug": "opinions-advice",
+      "unit_title": "第14单元：观点表达、建议与日常叙事",
+      "lesson_title": "过去进行时与事件经过（was/were doing + when / while）",
+      "summary": "用过去进行时描述过去某一时刻正在进行的背景状态，结合 when/while 与一般过去时流畅讲述通勤插曲、生活趣事与突发状况。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "was/were + doing 结构、背景持续动作（Past Continuous）与打断动作（Past Simple）的配合，以及 when 与 while 的典型用法",
+      "topic_2": "日常叙事场景（雨天忘带伞、开会时断网、地铁巧遇老友）对话与小故事示范",
+      "topic_3": "常见误区（状态动词 know/want 误用进行时、两个并行持续动作与瞬间打断动作混淆）与综合练习",
+      "prerequisites": [
+        {
+          "all_of": [
+            "past-be",
+            "present-continuous-actions",
+            "past-irregular"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 17,
+      "lesson_id": "superlatives-comparisons",
+      "concept_id": "superlatives-comparisons",
+      "unit_slug": "opinions-advice",
+      "unit_title": "第14单元：观点表达、建议与日常叙事",
+      "lesson_title": "最高级、同级比较与程度表达（the -est / as…as / too / enough）",
+      "summary": "掌握形容词/副词最高级、as…as 同级比较以及 too…to / (not) … enough 程度表达，用于对比餐厅、租房、工具软件与通勤方案。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "最高级变化规则（the -est / the most + adj / best / worst / farthest）、not as…as 同级对比及 too + adj vs adj + enough / enough + noun 语序",
+      "topic_2": "对比租房地段、挑选笔记本电脑、评价餐厅性价比与比较线上课程的日常职场语料",
+      "topic_3": "高频错误（最高级漏写 the、more + -er 双重比较、enough 位置错放于形容词前）与对比题型设计",
+      "prerequisites": [
+        {
+          "all_of": [
+            "comparatives",
+            "countable-articles"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 18,
+      "lesson_id": "advice-obligation-modals",
+      "concept_id": "advice-obligation-modals",
+      "unit_slug": "opinions-advice",
+      "unit_title": "第14单元：观点表达、建议与日常叙事",
+      "lesson_title": "建议、推测与必要性（should / have to / might）",
+      "summary": "准确区分 should/shouldn't（建议）、have to / don't have to（客观必须与不必）、mustn't（禁止）以及 might（不确定推测），得体给出生活与工作建议。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "情态动词强度梯度（should 建议、have to 外部要求、don't have to 不必 vs mustn't 禁止、might/may 可能性）与疑问/过去式（had to）",
+      "topic_2": "健康作息建议、旅行行前提醒、办公室着装与请假制度问答、天气与日程不确定性推测对话",
+      "topic_3": "经典重灾区（把 don't have to 误解为“禁止”、should 后加 to、三单 has to 与 doesn't have to 形态出错）",
+      "prerequisites": [
+        {
+          "all_of": [
+            "modal-must",
+            "can-permission"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 19,
+      "lesson_id": "reasons-contrast-connectors",
+      "concept_id": "reasons-contrast-connectors",
+      "unit_slug": "opinions-advice",
+      "unit_title": "第14单元：观点表达、建议与日常叙事",
+      "lesson_title": "因果、转折与观点连接词（because / so / although / however）",
+      "summary": "掌握 because、so、but、although、however 与观点引出语（I think / In my opinion / For example），把零散短句组织成有逻辑的观点表达。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "并列连词（and, but, so）与从属连词（because, although）的句法边界，以及副词 however 的标点规范与观点引导词",
+      "topic_2": "讨论远程办公利弊、选择通勤方式、推荐城市景点与给出餐厅评价的实用观点句型",
+      "topic_3": "中国学习者最典型句法负迁移（because…so… 与 although…but… 连用、however 当连词直接逗号拼接两句）",
+      "prerequisites": [
+        {
+          "all_of": [
+            "advice-obligation-modals",
+            "superlatives-comparisons"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 20,
+      "lesson_id": "reviews-articles-reading",
+      "concept_id": "reviews-articles-reading",
+      "unit_slug": "opinions-advice",
+      "unit_title": "第14单元：观点表达、建议与日常叙事",
+      "lesson_title": "生活短评、健康建议与职场博客阅读",
+      "summary": "读懂商品/酒店评价、健康生活指南与职场效率短文，快速提取作者核心态度、优缺点对比与具体建议。",
+      "cefr_level": "A2",
+      "skill_focus": "reading_comprehension",
+      "duration_minutes": 50,
+      "topic_1": "A2 观点与评价类语篇阅读策略（识别情感极性词、转折词 however/although 后的真实态度、区分事实与观点）",
+      "topic_2": "精选用户商品/酒店多星级评论合集与居家办公效率建议专栏短文（120–160 词）",
+      "topic_3": "过度推断与忽略转折让步信息的阅读陷阱及英中对照精读训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "past-continuous-stories",
+            "reasons-contrast-connectors"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "reading_comprehension": 2,
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 21,
+      "lesson_id": "zero-first-conditionals",
+      "concept_id": "zero-first-conditionals",
+      "unit_slug": "conditions-processes",
+      "unit_title": "第15单元：条件判断、规则说明与被动表达",
+      "lesson_title": "零条件句与第一条件句（If / When 条件与结果）",
+      "summary": "用零条件句陈述通用事实与规则，用第一条件句（If + 一般现在时, will / can / 祈使句）讨论现实可能、天气备选方案与合作前提。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 50,
+      "topic_1": "零条件句（If + Present Simple, Present Simple）与第一条件句（主将从现：If + Present Simple, will/can/imperative）及逗号规则、unless 初识",
+      "topic_2": "出行天气预案、客服退改条件、项目延期应对方案与日常提醒（If it rains tomorrow, we'll hold the event indoors.）",
+      "topic_3": "最高频错误（if 从句误用 will：If it will rain…、主从句时态不匹配、when 与 if 语境差异）与强化题组",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-will",
+            "reasons-contrast-connectors"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 2,
+        "translation": 2,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 22,
+      "lesson_id": "verb-patterns-to-ing",
+      "concept_id": "verb-patterns-to-ing",
+      "unit_slug": "conditions-processes",
+      "unit_title": "第15单元：条件判断、规则说明与被动表达",
+      "lesson_title": "常见动词搭配（verb + to do 与 verb + -ing）",
+      "summary": "掌握高频动词后接不定式（want/need/decide/plan/hope/agree to do）与动名词（enjoy/finish/avoid/mind/suggest doing）及介词后接 -ing 规则。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "A2 核心动词配价分组（to-infinitive 组、gerund -ing 组、介词后必接 -ing：look forward to / good at / thank you for）与目的不定式（to + verb）",
+      "topic_2": "日常兴趣爱好、求职与职场计划、礼貌沟通句型（Would you mind sending…? / I look forward to hearing from you.）",
+      "topic_3": "常见偏误（enjoy to do、suggest sb to do、look forward to hear 等经典错搭）与高频语块训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-going-to",
+            "workbench-actions"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 23,
+      "lesson_id": "basic-passive-voice",
+      "concept_id": "basic-passive-voice",
+      "unit_slug": "conditions-processes",
+      "unit_title": "第15单元：条件判断、规则说明与被动表达",
+      "lesson_title": "基础被动语态（is/are done 与 was/were done）",
+      "summary": "理解英文被动语态的语用场景（强调对象、结果或流程而非执行者），掌握一般现在时与一般过去时被动语态及 by 短语用法。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 50,
+      "topic_1": "主动转被动结构公式（be + 过去分词：am/is/are done & was/were done）、否定与疑问形式及省略 by 的典型条件",
+      "topic_2": "生活服务与办公通知高频被动句（Breakfast is served from 7 to 10. / Orders are shipped within 24 hours. / The meeting was moved to Friday.）",
+      "topic_3": "常见错误（漏写 be 动词、不及物动词 happen/arrive 误用被动、过去分词形态错误）与多维题型练习",
+      "prerequisites": [
+        {
+          "all_of": [
+            "present-perfect-forms",
+            "past-be"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 2,
+        "translation": 2,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 24,
+      "lesson_id": "notices-policies-reading",
+      "concept_id": "notices-policies-reading",
+      "unit_slug": "conditions-processes",
+      "unit_title": "第15单元：条件判断、规则说明与被动表达",
+      "lesson_title": "公共须知、服务条款与办公指引阅读",
+      "summary": "读懂含条件句与被动语态的客服退换政策、活动报名须知、图书馆/健身房规定与公司办公制度，准确判断适用条件与例外情形。",
+      "cefr_level": "A2",
+      "skill_focus": "reading_comprehension",
+      "duration_minutes": 45,
+      "topic_1": "实用须知与条款文本结构（适用范围、条件触发 If…、流程被动表达 is refunded / must be submitted、例外提示 Note / Except）",
+      "topic_2": "网购退换货政策公告、社区/办公楼访客与会议室预约指引两篇真实情景阅读材料",
+      "topic_3": "否定与例外条文（non-refundable, unless cancelled 48 hours in advance）误读纠偏与信息匹配训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "zero-first-conditionals",
+            "basic-passive-voice"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "reading_comprehension": 2,
+        "cloze": 1,
+        "translation": 1,
+        "numeric": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 25,
+      "lesson_id": "problem-solving-listening",
+      "concept_id": "problem-solving-listening",
+      "unit_slug": "conditions-processes",
+      "unit_title": "第15单元：条件判断、规则说明与被动表达",
+      "lesson_title": "日常问题处理、客服沟通与协商听力",
+      "summary": "听懂快递延误、账单误差、预约冲突与服务反馈沟通录音，准确抓取问题原因、双方提出的条件与最终解决方案。",
+      "cefr_level": "A2",
+      "skill_focus": "listening_speaking",
+      "duration_minutes": 45,
+      "topic_1": "礼貌反馈问题与协商解决常用语块（I'm calling about…, There seems to be a mistake, Could we reschedule?, We can offer a refund or replacement）",
+      "topic_2": "网购包裹破损致电客服、公寓物业报修与活动场地临时变更协商对话及语音通知",
+      "topic_3": "听力中先提方案后被否决的“干扰项修正”识别（Actually, let's do… instead）与细节听辨训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "zero-first-conditionals",
+            "verb-patterns-to-ing",
+            "advice-obligation-modals"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "vocab_target": 2
+    },
+    {
+      "lesson_number": 26,
+      "lesson_id": "meetings-appointments",
+      "concept_id": "meetings-appointments",
+      "unit_slug": "workplace-communication",
+      "unit_title": "第16单元：职场沟通、英文邮件与综合应用",
+      "lesson_title": "会议约定、改期与电话/线上沟通",
+      "summary": "掌握预约会议、礼貌改期、确认议程、听不清时请求重复及线上视频会议开场与收尾用语，听懂日常办公通话与会议录音。",
+      "cefr_level": "A2",
+      "skill_focus": "listening_speaking",
+      "duration_minutes": 50,
+      "topic_1": "电话与线上会议核心交际功能（预约与改期 Does Tuesday at 2 work? / Could we move it to…、确认信号 Can you hear me? / Sorry, you're breaking up、收尾总结）",
+      "topic_2": "跨部门约会改期电话、小型线上项目例会开场与议程确认两类真实职场音频语料",
+      "topic_3": "时间/星期改期后的最终生效时间听辨陷阱、过度直接拒绝（I can't）的委婉改写训练",
+      "prerequisites": [
+        {
+          "all_of": [
+            "problem-solving-listening",
+            "future-will"
+          ]
+        },
+        {
+          "all_of": [
+            "problem-solving-listening",
+            "radio-calls"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 2,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 27,
+      "lesson_id": "email-structure-etiquette",
+      "concept_id": "email-structure-etiquette",
+      "unit_slug": "workplace-communication",
+      "unit_title": "第16单元：职场沟通、英文邮件与综合应用",
+      "lesson_title": "英文邮件结构、称呼与礼貌语域",
+      "summary": "掌握日常与职场英文邮件的五大标准模块（主题行、称呼语、来信目的、行动请求/附件提示、结尾与落款），准确区分半正式与正式礼貌语域。",
+      "cefr_level": "A2",
+      "skill_focus": "grammar_core",
+      "duration_minutes": 45,
+      "topic_1": "标准英文邮件五段式框架与高复用语块（Subject line, Dear/Hi, I'm writing to…, Please find attached…, Could you please let me know by…, Best regards）",
+      "topic_2": "请假告知、会议纪要发送、客户询价回复三类标准邮件模板对照（正式 vs 同事半正式）",
+      "topic_3": "常见邮件失礼或中式习惯（空白/笼统主题行、称呼后误用冒号或直呼姓氏、用 imperative 代替礼貌请求、落款大小写失误）",
+      "prerequisites": [
+        {
+          "all_of": [
+            "polite-requests",
+            "verb-patterns-to-ing",
+            "reasons-contrast-connectors"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing_sentence": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 28,
+      "lesson_id": "workplace-reading-synthesis",
+      "concept_id": "workplace-reading-synthesis",
+      "unit_slug": "workplace-communication",
+      "unit_title": "第16单元：职场沟通、英文邮件与综合应用",
+      "lesson_title": "往来邮件、备忘录与公告综合阅读",
+      "summary": "综合阅读多封往来邮件、内部备忘录与活动/日程变更公告，交叉核对人物职责、截止日期、已落实变更与待回复动作。",
+      "cefr_level": "A2",
+      "skill_focus": "reading_comprehension",
+      "duration_minutes": 50,
+      "topic_1": "多文本交叉阅读定位法（按时间线追踪邮件 thread 变更、识别 CC/Attachment/Deadline 与隐含行动项）",
+      "topic_2": "两套完整 A2 综合职场阅读组（办公室搬迁/培训通知备忘录 + 客户预约改期往来邮件链）",
+      "topic_3": "把旧邮件中的原始时间误当作最终约定、混淆发件人与执行人的综合审题纠偏",
+      "prerequisites": [
+        {
+          "all_of": [
+            "email-structure-etiquette",
+            "notices-policies-reading",
+            "reviews-articles-reading"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "reading_comprehension": 2,
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 29,
+      "lesson_id": "email-memo-full-writing",
+      "concept_id": "email-memo-full-writing",
+      "unit_slug": "workplace-communication",
+      "unit_title": "第16单元：职场沟通、英文邮件与综合应用",
+      "lesson_title": "完整英文邮件与通知实战写作（含长篇写作）",
+      "summary": "独立撰写 110–150 词完整英文邮件或活动/进度通知（首次引入 full_essay 写作题型），综合运用多时态、条件句、礼貌请求与规范落款。",
+      "cefr_level": "A2",
+      "skill_focus": "writing_application",
+      "duration_minutes": 60,
+      "topic_1": "110–150 词长篇实用邮件（full_essay）评分维度（要点完整度、语域得体性、时态与连词准确度、段落清晰度）与多段范文结构",
+      "topic_2": "两篇高分多段范文精析（向客户说明日程变更并提备选方案 full_essay + 部门活动邀请与报名须知 short_essay）",
+      "topic_3": "长篇写作高频失分项（漏答题目全部要点、段落不分块、时态前后漂移、中式结尾）与自查清单",
+      "prerequisites": [
+        {
+          "all_of": [
+            "email-structure-etiquette",
+            "status-summary-writing",
+            "trip-plan-writing"
+          ]
+        }
+      ],
+      "recommended_quota": {
+        "writing_full": 1,
+        "writing_short": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 1,
+        "true_false": 1
+      },
+      "vocab_target": 3
+    },
+    {
+      "lesson_number": 30,
+      "lesson_id": "oral-a2-capstone",
+      "concept_id": "oral-a2-capstone",
+      "unit_slug": "workplace-communication",
+      "unit_title": "第16单元：职场沟通、英文邮件与综合应用",
+      "lesson_title": "A2 综合口语自述与职场情景演练（自评）",
+      "summary": "脱稿完成 60–90 秒综合英文口述（近况进展、下周安排、一项问题与建议及礼貌请求），录音后对照 CEFR A2 口语维度清单自评。",
+      "cefr_level": "A2",
+      "skill_focus": "oral_self_check",
+      "duration_minutes": 45,
+      "topic_1": "CEFR A2 综合口语四段提纲（近期已完成 have done → 遇到的插曲 was doing / if → 后续计划 going to / will → 礼貌请求与建议 should / could you）",
+      "topic_2": "两套完整 60–90 秒 A2 口语范例脚本（日常社交近况与周末计划、跨团队项目同步与约会改期）与停顿重音标注",
+      "topic_3": "口语连贯度、时态切换准确性与核心关键词清晰度的 4 步录音实训及 6 项自评验收清单",
+      "prerequisites": [
+        {
+          "all_of": [
+            "meetings-appointments",
+            "progress-update-listening",
+            "oral-shopping-roleplay"
+          ]
+        }
+      ],
+      "recommended_quota": {},
+      "effort_lab": {
+        "shadowing": 10,
+        "script_outlining": 8,
+        "mock_recordings": 14,
+        "rubric_audit": 6
+      },
+      "vocab_target": 0
+    }
+  ]
+}

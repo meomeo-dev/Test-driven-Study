@@ -1,0 +1,85 @@
+{
+  "courses": [
+    "beginner-english"
+  ],
+  "start_lesson": 1,
+  "end_lesson": 30,
+  "backend": "run_workflow",
+  "run_workflow_model": "inherit",
+  "track": "language",
+  "syllabus_file": "docs/research/beginner-english-a2-expansion/syllabus.json",
+  "base_manifest": "courses/beginner-english/course.json",
+  "package_dir": "var/generated-courses/beginner-english",
+  "research_dir": "docs/research/beginner-english-a2-expansion",
+  "version": "2.5.0",
+  "language": "zh-CN",
+  "split_concepts": false,
+  "strict_effort": true,
+  "max_revisions": 3,
+  "package_on_partial_failure": true,
+  "concurrency": {
+    "max_courses": 1,
+    "max_lessons_per_course": 3,
+    "max_units_per_course": 2,
+    "max_agents": 6,
+    "max_subprocesses": 4
+  },
+  "unit_map": {
+    "everyday-shopping": {
+      "id": "everyday-shopping",
+      "title": "生活采购、数量与日常消费"
+    },
+    "travel-plans": {
+      "id": "travel-plans",
+      "title": "出行问路与将来计划"
+    },
+    "experiences-progress": {
+      "id": "experiences-progress",
+      "title": "个人经历与进度追踪"
+    },
+    "opinions-advice": {
+      "id": "opinions-advice",
+      "title": "观点表达、建议与日常叙事"
+    },
+    "conditions-processes": {
+      "id": "conditions-processes",
+      "title": "条件判断、规则说明与被动表达"
+    },
+    "workplace-communication": {
+      "id": "workplace-communication",
+      "title": "职场沟通、英文邮件与综合应用"
+    }
+  },
+  "concept_map": {
+    "countable-articles": "countable-articles",
+    "quantifiers-amounts": "quantifiers-amounts",
+    "shopping-dining-phrases": "shopping-dining-phrases",
+    "receipts-menus-reading": "receipts-menus-reading",
+    "oral-shopping-roleplay": "oral-shopping-roleplay",
+    "directions-transport": "directions-transport",
+    "future-going-to": "future-going-to",
+    "future-will": "future-will",
+    "hotel-trip-booking": "hotel-trip-booking",
+    "trip-plan-writing": "trip-plan-writing",
+    "present-perfect-forms": "present-perfect-forms",
+    "ever-never-already-yet": "ever-never-already-yet",
+    "for-since-duration": "for-since-duration",
+    "progress-update-listening": "progress-update-listening",
+    "status-summary-writing": "status-summary-writing",
+    "past-continuous-stories": "past-continuous-stories",
+    "superlatives-comparisons": "superlatives-comparisons",
+    "advice-obligation-modals": "advice-obligation-modals",
+    "reasons-contrast-connectors": "reasons-contrast-connectors",
+    "reviews-articles-reading": "reviews-articles-reading",
+    "zero-first-conditionals": "zero-first-conditionals",
+    "verb-patterns-to-ing": "verb-patterns-to-ing",
+    "basic-passive-voice": "basic-passive-voice",
+    "notices-policies-reading": "notices-policies-reading",
+    "problem-solving-listening": "problem-solving-listening",
+    "meetings-appointments": "meetings-appointments",
+    "email-structure-etiquette": "email-structure-etiquette",
+    "workplace-reading-synthesis": "workplace-reading-synthesis",
+    "email-memo-full-writing": "email-memo-full-writing",
+    "oral-a2-capstone": "oral-a2-capstone"
+  }
+}
