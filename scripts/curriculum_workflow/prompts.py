@@ -41,6 +41,7 @@ def build_research_prompt(
             f"{_theme_hint(ctx)}"
             f"主题：{ctx['topics'][idx]}\n"
             f"侧重：{focus}。场景面向通用日常生活与现代职场（避免车间/工位术语），"
+            f"保持精炼实用（约 1,500–3,000 字结构化要点、对比表与地道例句，勿写冗长论文），"
             f"必要时可用 search_web 核对地道搭配，严禁编造或写 `{NO_DATA_MARKER}`，"
             f"写入 `{note_path}`。\n"
             f"{completion_instruction}"
@@ -81,7 +82,7 @@ def build_author_prompt(
     has_lab = any(c.get("effort_lab") for c in ctx["concepts"])
     if ctx.get("track") == "language":
         lab_rule = (
-            "4. 零题口语自评小节须在 `<!-- concepts: <id> -->` 下方写入对应的 "
+            "5. 零题口语自评小节须在 `<!-- concepts: <id> -->` 下方写入对应的 "
             "`effort_lab_anchor` 注释，并给出 >= 4 条编号实操步骤（`1.`..`4.`）"
             "与 >= 5 条 `-` 自评核对清单，以及两套完整口语示范脚本。\n"
             if has_lab
@@ -100,6 +101,9 @@ def build_author_prompt(
             f"3. 每节包含核心规则/句型表、自然双语情景对话、至少 `min_examples` 道"
             f" `### 例题` 与 `### 常见错误`（覆盖中文母语负迁移）；等效阅读量"
             f"（中文字数 + 3×英文词数）须达 `min_read_units`，严禁 `{NO_DATA_MARKER}`。\n"
+            f"4. Markdown 渲染约束：表格与正文中**严禁使用 `<br>` 等原始 HTML 标签**"
+            f"（前端 `skipHtml` 会剥离导致文字粘连），确保粗体 `**...**` 与中文/英文"
+            f"标点边界正确闭合，且规则表述与例句严格自洽无矛盾。\n"
             f"{lab_rule}{completion_instruction}"
         )
     return (
