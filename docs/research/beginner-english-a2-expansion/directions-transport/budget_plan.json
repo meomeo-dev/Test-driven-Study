@@ -1,0 +1,38 @@
+{
+  "lesson_id": "directions-transport",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "directions-transport",
+      "title": "问路、交通出行与地点导航",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.2,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "summary": "掌握地铁、公交、步行与打车问路指路表达（go straight, turn left at, get off at, how long does it take），听懂日常换乘与到达指引。",
+      "skill_focus": "listening_speaking",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "positions",
+            "imperatives",
+            "wh-questions"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}

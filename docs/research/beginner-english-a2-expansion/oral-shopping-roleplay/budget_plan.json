@@ -1,0 +1,36 @@
+{
+  "lesson_id": "oral-shopping-roleplay",
+  "duration_minutes": 40,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "oral-shopping-roleplay",
+      "title": "口语购物与点餐情景演练（自评）",
+      "estimated_minutes": 40,
+      "lecture_design_min": 6.0,
+      "practice_design_min": 0.0,
+      "planned_item_design_min": 0.0,
+      "target_read_units": 833,
+      "min_examples": 2,
+      "question_quota": {},
+      "zero_item_self_check": true,
+      "effort_lab": {
+        "shadowing": 8,
+        "script_outlining": 8,
+        "mock_recordings": 12,
+        "rubric_audit": 6
+      },
+      "summary": "脱稿完成一次包含询问数量/价格、点餐或换尺码及付款确认的 45 秒日常口语演练，录音并对照核对清单自评。",
+      "skill_focus": "oral_self_check",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "shopping-dining-phrases"
+          ]
+        }
+      ],
+      "vocab_target": 0
+    }
+  ]
+}

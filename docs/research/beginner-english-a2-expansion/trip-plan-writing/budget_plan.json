@@ -1,0 +1,40 @@
+{
+  "lesson_id": "trip-plan-writing",
+  "duration_minutes": 40,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "trip-plan-writing",
+      "title": "出行与周末计划短文写作",
+      "estimated_minutes": 40,
+      "lecture_design_min": 14.0,
+      "practice_design_min": 26.0,
+      "planned_item_design_min": 27.2,
+      "target_read_units": 1944,
+      "min_examples": 2,
+      "question_quota": {
+        "writing": 2,
+        "cloze": 1,
+        "translation": 1,
+        "single_choice": 2,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "short_essay": 1,
+        "sentence_making": 1
+      },
+      "summary": "综合运用 be going to、will、交通表达与时间顺序词（first, then, after that, finally），写出 50–70 词结构清晰的出行或周末计划短文。",
+      "skill_focus": "writing_application",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-will",
+            "hotel-trip-booking"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

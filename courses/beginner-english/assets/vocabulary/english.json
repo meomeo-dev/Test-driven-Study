@@ -948,5 +948,373 @@
     ],
     "example": "Copy that. I will send the parts now.",
     "example_translation": "收到。我现在就把零件送过去。"
+  },
+  {
+    "id": "receipt",
+    "unit_id": "everyday-shopping",
+    "term": "receipt",
+    "meaning": "小票；收据",
+    "category": "word",
+    "pos": "n",
+    "question_ids": [
+      "ca-cloze-01",
+      "ca-trans-01",
+      "ca-write-01",
+      "sd-listen-01",
+      "sd-listen-02",
+      "sd-trans-02",
+      "rm-cloze-01",
+      "rm-read-02",
+      "rm-trans-01"
+    ],
+    "example": "Keep the receipt in case you need a refund.",
+    "example_translation": "请保留小票，以防需要退款。"
+  },
+  {
+    "id": "a-sheet-of-paper",
+    "unit_id": "everyday-shopping",
+    "term": "a sheet of paper",
+    "meaning": "一张纸",
+    "category": "phrase",
+    "grammar_note": "paper 作纸张讲不可数；表多张时只把量词 sheet 变复数（two sheets of paper）。",
+    "question_ids": [
+      "ca-sc-02",
+      "ca-listen-01",
+      "ca-trans-01"
+    ],
+    "example": "Could you hand me a sheet of paper for the list?",
+    "example_translation": "你能递给我一张纸写清单吗？"
+  },
+  {
+    "id": "pay-by-card",
+    "unit_id": "everyday-shopping",
+    "term": "pay by card",
+    "meaning": "刷卡付款",
+    "category": "collocation",
+    "grammar_note": "支付方式用零冠词，card 前不加 a 或 the；pay 过去式为 paid。",
+    "question_ids": [
+      "ca-mc-01",
+      "ca-cloze-01",
+      "ca-trans-02",
+      "sd-mc-01",
+      "sd-cloze-01",
+      "sd-trans-02"
+    ],
+    "example": "I usually pay by card at the supermarket.",
+    "example_translation": "我在超市通常刷卡付款。"
+  },
+  {
+    "id": "carton",
+    "unit_id": "everyday-shopping",
+    "term": "carton",
+    "meaning": "纸盒；盒装容器（常用于牛奶、果汁等）",
+    "category": "word",
+    "pos": "n",
+    "question_ids": [
+      "qa-mc-01",
+      "qa-listen-01"
+    ],
+    "example": "We need a carton of orange juice for breakfast.",
+    "example_translation": "我们早餐需要一盒橙汁。"
+  },
+  {
+    "id": "a-little",
+    "unit_id": "everyday-shopping",
+    "term": "a little",
+    "meaning": "一点；少许",
+    "category": "function_phrase",
+    "grammar_note": "修饰不可数名词，带肯定意味“还有一点”；省略 a 的 little 表“几乎没有”。",
+    "question_ids": [
+      "qa-mc-01",
+      "qa-tf-01",
+      "qa-listen-01",
+      "qa-trans-01"
+    ],
+    "example": "Would you like a little honey in your tea?",
+    "example_translation": "你的茶里要加一点蜂蜜吗？"
+  },
+  {
+    "id": "id-like",
+    "unit_id": "everyday-shopping",
+    "term": "I'd like …",
+    "meaning": "我想要……（礼貌点餐或购物用语）",
+    "category": "phrase",
+    "grammar_note": "I would like 的缩写，后接名词或 to + 动词原形；语气比 I want 更礼貌。",
+    "question_ids": [
+      "sd-sc-01",
+      "sd-listen-01",
+      "sd-trans-01",
+      "sd-trans-02"
+    ],
+    "term_tts": {
+      "voice": "stella",
+      "text": "I'd like"
+    },
+    "example": "I'd like a bowl of hot soup, please.",
+    "example_translation": "请给我来一碗热汤。"
+  },
+  {
+    "id": "try-on",
+    "unit_id": "everyday-shopping",
+    "term": "try on",
+    "meaning": "试穿",
+    "category": "phrase",
+    "grammar_note": "动副短语，代词作宾语须放中间（try them on）；过去式为 tried on。",
+    "question_ids": [
+      "sd-sc-02",
+      "sd-trans-01"
+    ],
+    "example": "May I try this coat on first?",
+    "example_translation": "我可以先试穿一下这件外套吗？"
+  },
+  {
+    "id": "to-go",
+    "unit_id": "everyday-shopping",
+    "term": "to go",
+    "meaning": "外带；打包带走（餐饮用语）",
+    "category": "idiom",
+    "question_ids": [
+      "sd-sc-01",
+      "sd-tf-02",
+      "sd-listen-01"
+    ],
+    "example": "Two cups of black tea to go, please.",
+    "example_translation": "麻烦来两杯红茶外带。"
+  },
+  {
+    "id": "change",
+    "unit_id": "everyday-shopping",
+    "term": "change",
+    "meaning": "找零；零钱",
+    "category": "word",
+    "pos": "n",
+    "grammar_note": "表“找零／零钱”时为不可数名词，不加 -s，作主语时谓语用单数。",
+    "question_ids": [
+      "sd-mc-01",
+      "sd-listen-02",
+      "rm-sc-02",
+      "rm-read-02"
+    ],
+    "example": "Please check your change before leaving the shop.",
+    "example_translation": "离开商店前请核对您的找零。"
+  },
+  {
+    "id": "sales-tax",
+    "unit_id": "everyday-shopping",
+    "term": "sales tax",
+    "meaning": "消费税；销售税",
+    "category": "word_group",
+    "question_ids": [
+      "rm-sc-02",
+      "rm-cloze-01",
+      "rm-read-01",
+      "rm-read-02"
+    ],
+    "example": "The receipt lists the subtotal and the sales tax separately.",
+    "example_translation": "小票把税前小计和消费税分开列了出来。"
+  },
+  {
+    "id": "traffic-light",
+    "unit_id": "travel-plans",
+    "term": "traffic light",
+    "meaning": "红绿灯；交通信号灯",
+    "category": "word_group",
+    "question_ids": [
+      "dt-sc-01",
+      "dt-tf-02",
+      "dt-listen-01"
+    ],
+    "example": "Turn right at the next traffic light.",
+    "example_translation": "在下一个红绿灯处右转。"
+  },
+  {
+    "id": "get-off",
+    "unit_id": "travel-plans",
+    "term": "get off",
+    "meaning": "下车（指公交、地铁、火车等公共交通）",
+    "category": "phrase",
+    "grammar_note": "用于公交、地铁、火车等大型公共交通，后接站点用 at；小车下车用 get out of。",
+    "question_ids": [
+      "dt-mc-01",
+      "dt-cloze-01",
+      "dt-listen-02",
+      "dt-trans-01"
+    ],
+    "example": "We need to get off at East Station.",
+    "example_translation": "我们需要在东站下车。"
+  },
+  {
+    "id": "on-foot",
+    "unit_id": "travel-plans",
+    "term": "on foot",
+    "meaning": "步行",
+    "category": "function_phrase",
+    "grammar_note": "表“步行”的固定搭配，介词用 on 且 foot 保持单数，禁写 by foot 或 on feet。",
+    "question_ids": [
+      "dt-mc-01",
+      "dt-tf-01",
+      "dt-trans-02"
+    ],
+    "example": "The subway station is ten minutes away on foot.",
+    "example_translation": "步行到地铁站需要十分钟。"
+  },
+  {
+    "id": "be-going-to",
+    "unit_id": "travel-plans",
+    "term": "be going to",
+    "meaning": "打算……；将要……",
+    "category": "phrase",
+    "grammar_note": "be 随主语变为 am / is / are，to 后必接动词原形；疑问直接提 be，禁借 do。",
+    "question_ids": [
+      "fg-sc-01",
+      "fg-sc-02",
+      "fg-mc-01",
+      "fg-tf-01",
+      "fg-cloze-01",
+      "fg-listen-01",
+      "fg-read-01",
+      "fg-trans-01",
+      "fg-write-01",
+      "tw-sc-01",
+      "tw-cloze-01",
+      "tw-write-01",
+      "tw-write-02"
+    ],
+    "example": "We are going to visit the science museum this Sunday.",
+    "example_translation": "我们打算这周日去参观科学博物馆。"
+  },
+  {
+    "id": "book",
+    "unit_id": "travel-plans",
+    "term": "book",
+    "meaning": "预订；预约（房间、票务、餐桌等）",
+    "category": "word",
+    "pos": "v",
+    "question_ids": [
+      "fg-read-01",
+      "fw-read-01"
+    ],
+    "example": "I will book a quiet room near the station.",
+    "example_translation": "我会预订一间车站附近的安静房间。"
+  },
+  {
+    "id": "shall-we",
+    "unit_id": "travel-plans",
+    "term": "Shall we …?",
+    "meaning": "我们……好吗？（提出共同建议或邀约）",
+    "category": "phrase",
+    "grammar_note": "用于第一人称提出建议（Shall we / Shall I），后直接接动词原形，不加 to。",
+    "question_ids": [
+      "fw-mc-01",
+      "fw-read-01",
+      "fw-trans-01"
+    ],
+    "term_tts": {
+      "voice": "stella",
+      "text": "Shall we?"
+    },
+    "example": "Shall we meet at the subway exit at seven?",
+    "example_translation": "我们七点在地铁口碰面好吗？"
+  },
+  {
+    "id": "probably",
+    "unit_id": "travel-plans",
+    "term": "probably",
+    "meaning": "大概；很可能",
+    "category": "word",
+    "pos": "adv",
+    "grammar_note": "肯定句放在 will 后（will probably），否定句放在 won't 前（probably won't）。",
+    "question_ids": [
+      "fw-mc-01",
+      "fw-listen-01",
+      "fw-read-01"
+    ],
+    "example": "The evening train will probably arrive on time.",
+    "example_translation": "晚班火车大概会准点到达。"
+  },
+  {
+    "id": "departure",
+    "unit_id": "travel-plans",
+    "term": "departure",
+    "meaning": "出发；起飞；发车",
+    "category": "word",
+    "pos": "n",
+    "question_ids": [
+      "hb-cloze-01",
+      "hb-read-02",
+      "hb-trans-01"
+    ],
+    "example": "Boarding starts forty minutes before departure.",
+    "example_translation": "起飞前四十分钟开始登机。"
+  },
+  {
+    "id": "valid-photo-id",
+    "unit_id": "travel-plans",
+    "term": "valid photo ID",
+    "meaning": "带照片的有效身份证件（如身份证或护照）",
+    "category": "word_group",
+    "question_ids": [
+      "hb-tf-02",
+      "hb-read-01",
+      "hb-trans-01"
+    ],
+    "term_tts": {
+      "voice": "stella",
+      "text": "valid photo I D"
+    },
+    "example": "Guests must show a valid photo ID at the front desk.",
+    "example_translation": "客人必须在酒店前台出示带照片的有效身份证件。",
+    "example_tts": {
+      "voice": "stella",
+      "text": "Guests must show a valid photo I D at the front desk."
+    }
+  },
+  {
+    "id": "prior-to",
+    "unit_id": "travel-plans",
+    "term": "prior to",
+    "meaning": "在……之前（常用于航班、酒店条款）",
+    "category": "function_phrase",
+    "grammar_note": "复合介词，后接名词或动名词（V-ing），如 prior to check-in / departure。",
+    "question_ids": [
+      "hb-mc-01",
+      "hb-tf-01",
+      "hb-cloze-01",
+      "hb-read-01",
+      "hb-read-02"
+    ],
+    "example": "Please confirm your booking one day prior to arrival.",
+    "example_translation": "请在到达前一天确认您的预订。"
+  },
+  {
+    "id": "delayed-by",
+    "unit_id": "travel-plans",
+    "term": "delayed by",
+    "meaning": "延误了……（接延误时长）",
+    "category": "collocation",
+    "grammar_note": "by 后接具体延误时长（如 delayed by twenty minutes）；改后的新时刻用 until 或 rescheduled to。",
+    "question_ids": [
+      "hb-sc-02",
+      "hb-cloze-01",
+      "hb-read-02"
+    ],
+    "example": "The morning train is delayed by twenty minutes.",
+    "example_translation": "早班火车延误了二十分钟。"
+  },
+  {
+    "id": "relaxing",
+    "unit_id": "travel-plans",
+    "term": "relaxing",
+    "meaning": "令人放松的；惬意的",
+    "category": "word",
+    "pos": "adj",
+    "grammar_note": "-ing 形容词描述事物或旅程“令人放松”；形容人“感到放松”用 relaxed。",
+    "question_ids": [
+      "tw-sc-02",
+      "tw-trans-01",
+      "tw-write-02"
+    ],
+    "example": "It will be a quiet and relaxing trip.",
+    "example_translation": "这将会是一次安静又放松的旅行。"
   }
 ]

@@ -1,0 +1,41 @@
+{
+  "lesson_id": "quantifiers-amounts",
+  "duration_minutes": 40,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "quantifiers-amounts",
+      "title": "数量表达（some / any / much / many / a lot of）",
+      "estimated_minutes": 40,
+      "lecture_design_min": 14.0,
+      "practice_design_min": 26.0,
+      "planned_item_design_min": 27.5,
+      "target_read_units": 1944,
+      "min_examples": 2,
+      "question_quota": {
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "准确使用 some、any、much、many、a lot of、a few 与 a little 谈论食物、日用品与库存数量，并在礼貌提议中正确选用 some。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A1+",
+      "prerequisites": [
+        {
+          "all_of": [
+            "countable-articles",
+            "numbers"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

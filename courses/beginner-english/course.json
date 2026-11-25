@@ -1,7 +1,7 @@
 {
   "protocol_version": 2,
   "course_id": "beginner-english",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "title": "零基础英语（听说与基础语法）",
   "language": "zh-CN",
   "description": "从自我介绍、数字和简短指令开始，逐步衔接工程英语。",
@@ -696,6 +696,226 @@
               "all_of": [
                 "present-continuous-actions",
                 "radio-calls"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everyday-shopping",
+      "title": "生活采购、数量与日常消费",
+      "question_file": "questions/everyday-shopping.json",
+      "lessons": [
+        {
+          "id": "countable-articles",
+          "title": "冠词与名词可数性（a / an / the 与复数）",
+          "file": "lessons/countable-articles.md"
+        },
+        {
+          "id": "quantifiers-amounts",
+          "title": "数量表达（some / any / much / many / a lot of）",
+          "file": "lessons/quantifiers-amounts.md"
+        },
+        {
+          "id": "shopping-dining-phrases",
+          "title": "购物、点餐与价格询问",
+          "file": "lessons/shopping-dining-phrases.md"
+        },
+        {
+          "id": "receipts-menus-reading",
+          "title": "菜单、价签与消费小票阅读",
+          "file": "lessons/receipts-menus-reading.md"
+        },
+        {
+          "id": "oral-shopping-roleplay",
+          "title": "口语购物与点餐情景演练（自评）",
+          "file": "lessons/oral-shopping-roleplay.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "countable-articles",
+          "title": "冠词与名词可数性（a / an / the 与复数）",
+          "summary": "区分日常高频可数与不可数名词，掌握不定冠词 a/an、定冠词 the 与零冠词在购物、餐饮与办公表达中的基本规则。",
+          "estimated_minutes": 40,
+          "lesson": "countable-articles",
+          "prerequisites": [
+            {
+              "all_of": [
+                "there-is-are",
+                "demonstratives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "quantifiers-amounts",
+          "title": "数量表达（some / any / much / many / a lot of）",
+          "summary": "准确使用 some、any、much、many、a lot of、a few 与 a little 谈论食物、日用品与库存数量，并在礼貌提议中正确选用 some。",
+          "estimated_minutes": 40,
+          "lesson": "quantifiers-amounts",
+          "prerequisites": [
+            {
+              "all_of": [
+                "countable-articles",
+                "numbers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "shopping-dining-phrases",
+          "title": "购物、点餐与价格询问",
+          "summary": "听懂并运用超市购物、餐厅点餐、试穿选码、询价与结账（How much is…? / I'd like… / Could I pay by card?）的高频对话。",
+          "estimated_minutes": 45,
+          "lesson": "shopping-dining-phrases",
+          "prerequisites": [
+            {
+              "all_of": [
+                "quantifiers-amounts",
+                "polite-requests",
+                "wh-questions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "receipts-menus-reading",
+          "title": "菜单、价签与消费小票阅读",
+          "summary": "读懂英文餐厅菜单、超市促销价签、网购商品页与消费收据，准确核对单价、折扣、税费、总额与退换货期限。",
+          "estimated_minutes": 45,
+          "lesson": "receipts-menus-reading",
+          "prerequisites": [
+            {
+              "all_of": [
+                "shopping-dining-phrases",
+                "comparatives"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "oral-shopping-roleplay",
+          "title": "口语购物与点餐情景演练（自评）",
+          "summary": "脱稿完成一次包含询问数量/价格、点餐或换尺码及付款确认的 45 秒日常口语演练，录音并对照核对清单自评。",
+          "estimated_minutes": 40,
+          "lesson": "oral-shopping-roleplay",
+          "prerequisites": [
+            {
+              "all_of": [
+                "shopping-dining-phrases"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "travel-plans",
+      "title": "出行问路与将来计划",
+      "question_file": "questions/travel-plans.json",
+      "lessons": [
+        {
+          "id": "directions-transport",
+          "title": "问路、交通出行与地点导航",
+          "file": "lessons/directions-transport.md"
+        },
+        {
+          "id": "future-going-to",
+          "title": "计划与打算（be going to 与进行时表安排）",
+          "file": "lessons/future-going-to.md"
+        },
+        {
+          "id": "future-will",
+          "title": "临时决定、承诺与预测（will / won't / Shall we）",
+          "file": "lessons/future-will.md"
+        },
+        {
+          "id": "hotel-trip-booking",
+          "title": "行程单、酒店预订与出行通知阅读",
+          "file": "lessons/hotel-trip-booking.md"
+        },
+        {
+          "id": "trip-plan-writing",
+          "title": "出行与周末计划短文写作",
+          "file": "lessons/trip-plan-writing.md"
+        }
+      ],
+      "concepts": [
+        {
+          "id": "directions-transport",
+          "title": "问路、交通出行与地点导航",
+          "summary": "掌握地铁、公交、步行与打车问路指路表达（go straight, turn left at, get off at, how long does it take），听懂日常换乘与到达指引。",
+          "estimated_minutes": 45,
+          "lesson": "directions-transport",
+          "prerequisites": [
+            {
+              "all_of": [
+                "positions",
+                "imperatives",
+                "wh-questions"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "future-going-to",
+          "title": "计划与打算（be going to 与进行时表安排）",
+          "summary": "掌握 be going to + 动词原形表达事先计划与有迹象的预测，以及用现在进行时（be + doing）表达已敲定的日程与约会。",
+          "estimated_minutes": 45,
+          "lesson": "future-going-to",
+          "prerequisites": [
+            {
+              "all_of": [
+                "present-continuous-actions",
+                "days-dates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "future-will",
+          "title": "临时决定、承诺与预测（will / won't / Shall we）",
+          "summary": "掌握 will / won't 表达当场决定、主动提供帮助、承诺与一般预测，用 Shall we / Shall I 提出建议，并能与 be going to 准确区分。",
+          "estimated_minutes": 45,
+          "lesson": "future-will",
+          "prerequisites": [
+            {
+              "all_of": [
+                "future-going-to",
+                "can-permission"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hotel-trip-booking",
+          "title": "行程单、酒店预订与出行通知阅读",
+          "summary": "读懂电子车票/机票确认单、酒店入住须知与航班/列车变更通知，快速核对出发到达时间、登机口/站台、行李额度与免费取消期限。",
+          "estimated_minutes": 45,
+          "lesson": "hotel-trip-booking",
+          "prerequisites": [
+            {
+              "all_of": [
+                "directions-transport",
+                "future-will",
+                "clock-time"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "trip-plan-writing",
+          "title": "出行与周末计划短文写作",
+          "summary": "综合运用 be going to、will、交通表达与时间顺序词（first, then, after that, finally），写出 50–70 词结构清晰的出行或周末计划短文。",
+          "estimated_minutes": 40,
+          "lesson": "trip-plan-writing",
+          "prerequisites": [
+            {
+              "all_of": [
+                "future-will",
+                "hotel-trip-booking"
               ]
             }
           ]

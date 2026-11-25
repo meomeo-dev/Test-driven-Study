@@ -1,0 +1,42 @@
+{
+  "lesson_id": "future-going-to",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "future-going-to",
+      "title": "计划与打算（be going to 与进行时表安排）",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.3,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "掌握 be going to + 动词原形表达事先计划与有迹象的预测，以及用现在进行时（be + doing）表达已敲定的日程与约会。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "present-continuous-actions",
+            "days-dates"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

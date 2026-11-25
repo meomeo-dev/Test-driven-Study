@@ -1,0 +1,38 @@
+{
+  "lesson_id": "receipts-menus-reading",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "receipts-menus-reading",
+      "title": "菜单、价签与消费小票阅读",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 28.6,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "reading_comprehension": 2,
+        "cloze": 1,
+        "translation": 1,
+        "numeric": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "summary": "读懂英文餐厅菜单、超市促销价签、网购商品页与消费收据，准确核对单价、折扣、税费、总额与退换货期限。",
+      "skill_focus": "reading_comprehension",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "shopping-dining-phrases",
+            "comparatives"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}

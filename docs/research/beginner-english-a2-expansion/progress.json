@@ -1,0 +1,182 @@
+{
+  "shopping-dining-phrases": {
+    "lesson_number": 3,
+    "lesson_slug": "shopping-dining-phrases",
+    "unit_id": "everyday-shopping",
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
+    "estimated_minutes": 45,
+    "title": "购物、点餐与价格询问",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "receipts-menus-reading": {
+    "lesson_number": 4,
+    "lesson_slug": "receipts-menus-reading",
+    "unit_id": "everyday-shopping",
+    "concepts": [
+      "receipts-menus-reading"
+    ],
+    "estimated_minutes": 45,
+    "title": "菜单、价签与消费小票阅读",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "oral-shopping-roleplay": {
+    "lesson_number": 5,
+    "lesson_slug": "oral-shopping-roleplay",
+    "unit_id": "everyday-shopping",
+    "concepts": [
+      "oral-shopping-roleplay"
+    ],
+    "estimated_minutes": 40,
+    "title": "口语购物与点餐情景演练（自评）",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "quantifiers-amounts": {
+    "lesson_number": 2,
+    "lesson_slug": "quantifiers-amounts",
+    "unit_id": "everyday-shopping",
+    "concepts": [
+      "quantifiers-amounts"
+    ],
+    "estimated_minutes": 40,
+    "title": "数量表达（some / any / much / many / a lot of）",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "countable-articles": {
+    "lesson_number": 1,
+    "lesson_slug": "countable-articles",
+    "unit_id": "everyday-shopping",
+    "concepts": [
+      "countable-articles"
+    ],
+    "estimated_minutes": 40,
+    "title": "冠词与名词可数性（a / an / the 与复数）",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "directions-transport": {
+    "lesson_number": 6,
+    "lesson_slug": "directions-transport",
+    "unit_id": "travel-plans",
+    "concepts": [
+      "directions-transport"
+    ],
+    "estimated_minutes": 45,
+    "title": "问路、交通出行与地点导航",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "future-going-to": {
+    "lesson_number": 7,
+    "lesson_slug": "future-going-to",
+    "unit_id": "travel-plans",
+    "concepts": [
+      "future-going-to"
+    ],
+    "estimated_minutes": 45,
+    "title": "计划与打算（be going to 与进行时表安排）",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "hotel-trip-booking": {
+    "lesson_number": 9,
+    "lesson_slug": "hotel-trip-booking",
+    "unit_id": "travel-plans",
+    "concepts": [
+      "hotel-trip-booking"
+    ],
+    "estimated_minutes": 45,
+    "title": "行程单、酒店预订与出行通知阅读",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "trip-plan-writing": {
+    "lesson_number": 10,
+    "lesson_slug": "trip-plan-writing",
+    "unit_id": "travel-plans",
+    "concepts": [
+      "trip-plan-writing"
+    ],
+    "estimated_minutes": 40,
+    "title": "出行与周末计划短文写作",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  },
+  "future-will": {
+    "lesson_number": 8,
+    "lesson_slug": "future-will",
+    "unit_id": "travel-plans",
+    "concepts": [
+      "future-will"
+    ],
+    "estimated_minutes": 45,
+    "title": "临时决定、承诺与预测（will / won't / Shall we）",
+    "status": "COMPLETED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED",
+    "tts_audit": "PASSED",
+    "effort_audit": "PASSED",
+    "course_check": "PASSED",
+    "vocabulary_audit": "PASSED"
+  }
+}

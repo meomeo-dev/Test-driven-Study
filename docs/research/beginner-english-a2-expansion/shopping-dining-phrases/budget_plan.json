@@ -1,0 +1,38 @@
+{
+  "lesson_id": "shopping-dining-phrases",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "shopping-dining-phrases",
+      "title": "购物、点餐与价格询问",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.2,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "summary": "听懂并运用超市购物、餐厅点餐、试穿选码、询价与结账（How much is…? / I'd like… / Could I pay by card?）的高频对话。",
+      "skill_focus": "listening_speaking",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "quantifiers-amounts",
+            "polite-requests",
+            "wh-questions"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}

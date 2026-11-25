@@ -1,0 +1,2356 @@
+[
+  {
+    "id": "dt-sc-01",
+    "type": "single_choice",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "你在街头给游客指路，想说“经过那家咖啡馆，在第二个红绿灯左转，书店就在你右手边”，下面哪一句表达完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Go passed the cafe, turn to left at the second traffic light, and the bookstore is on right.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Go past the cafe, turn left at the second traffic light, and the bookstore is on your right.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Go past the cafe, turn to the left at second traffic light, and the bookstore is on the your right.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Go pass the cafe, turn left on the second traffic light, and the bookstore is in your right.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "analysis": [
+      { "type": "text", "text": "指路表示“经过”用介词短语 " },
+      { "type": "text", "text": "go past", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（不写成 `*go passed` 或 `*go pass`）；" },
+      { "type": "text", "text": "turn left", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 直接接方向词不加 `to`；路口节点用 " },
+      { "type": "text", "text": "at the second traffic light", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；右手边固定说 " },
+      { "type": "text", "text": "on your right", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（不可省限定词或叠用 `*the your`）。" }
+    ]
+  },
+  {
+    "id": "dt-sc-02",
+    "type": "single_choice",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "商务出行打车去火车站时，下面哪一句关于上车、让司机落客和到达站点的搭配完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Let's get on the taxi and arrive to the station before noon.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Could you drop off me at the north entrance when we arrive in the station?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Please get in the taxi. Could you drop me off at the north entrance when we arrive at the station?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Please get on the taxi. Could you drop me off when we reach to the north entrance?",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["c"] },
+    "analysis": [
+      { "type": "text", "text": "封闭小车上车用 " },
+      { "type": "text", "text": "get in the taxi", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（不用 `*get on`）；让某人下车接人称代词时须把代词放中间，写作 " },
+      { "type": "text", "text": "drop me off", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；到达车站等具体地点用 " },
+      { "type": "text", "text": "arrive at", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（`arrive` 不配 `to`，`arrive in` 用于城市或国家，`reach` 直接接地点不加 `to`）。" }
+    ]
+  },
+  {
+    "id": "dt-mc-01",
+    "type": "multiple_choice",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "关于地铁线路编号、通勤方式与耗时句型，以下哪两句表达完全正确？（请选择两项）",
+    "options": [
+      {
+        "id": "a",
+        "text": "She goes to work by a subway and usually walks home by foot.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Take Line 2 for three stops, get off at Park Square, and use Exit B.",
+        "tts": {
+          "voice": "stella",
+          "text": "Take Line two for three stops, get off at Park Square, and use Exit B."
+        }
+      },
+      {
+        "id": "c",
+        "text": "How long does it take to get to the airport by taxi? It takes about twenty minutes.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "How long do I spend to get to the museum on feet? It needs a ten-minutes walk.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b", "c"] },
+    "analysis": [
+      { "type": "text", "text": "名词加编号或字母（" },
+      { "type": "text", "text": "Line 2", "tts": { "voice": "stella", "text": "Line two" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "Exit B", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）用零冠词，地铁下车用 " },
+      { "type": "text", "text": "get off at", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；耗时固定用 " },
+      { "type": "text", "text": "How long does it take", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "It takes", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，`by` 后接零冠词单数（" },
+      { "type": "text", "text": "by taxi", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "by subway", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。步行应说 " },
+      { "type": "text", "text": "on foot", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，连字符定语应写作 " },
+      { "type": "text", "text": "a ten-minute walk", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "dt-tf-01",
+    "type": "true_false",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": [
+      { "type": "text", "text": "判断下列通勤句子的介词与交通搭配是否正确：\n" },
+      {
+        "type": "text",
+        "text": "I usually go to work by bus and arrive home on foot after buying groceries.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "value": true },
+    "analysis": [
+      { "type": "text", "text": "by bus", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 符合 `by` 后零冠词单数规则；" },
+      { "type": "text", "text": "home", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 为地点副词，前不加介词，直接说 " },
+      { "type": "text", "text": "arrive home", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；步行固定用单数 " },
+      { "type": "text", "text": "on foot", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，全句完全正确。" }
+    ]
+  },
+  {
+    "id": "dt-tf-02",
+    "type": "true_false",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": [
+      { "type": "text", "text": "判断下列指路说明的理解是否正确：指路人说 " },
+      {
+        "type": "text",
+        "text": "Go past the first traffic light and take the second right.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "，意思是在第一个红绿灯处向右转。" }
+    ],
+    "grading": { "value": false },
+    "analysis": [
+      { "type": "text", "text": "Go past the first traffic light", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示直接经过第一个红绿灯而不转弯，真正的转弯指令是 " },
+      { "type": "text", "text": "take the second right", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（在第二个路口右转）。" }
+    ]
+  },
+  {
+    "id": "dt-cloze-01",
+    "type": "cloze",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "阅读地铁出行与步行导航指引，根据上下车和方位表达选词填空。",
+    "passage": "Take Line 4 for two stops and {{1}} at River Park. Walk straight for five minutes, and the museum is across {{2}} the library.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Take Line four for two stops and get off at River Park. Walk straight for five minutes, and the museum is across from the library."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "get off", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "get out", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "get down", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "地铁、公交等可站立的大型公共交通下车固定用 " },
+          { "type": "text", "text": "get off", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，不能用 `*get down` 或用于小车的 `get out of`。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "a", "text": "to", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "from", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "in", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["b"] },
+        "explanation": [
+          { "type": "text", "text": "表示“在……对面”的美式固定介词短语是 " },
+          { "type": "text", "text": "across from", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "第 1 空考查地铁下车固定短语 " },
+      { "type": "text", "text": "get off at", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；第 2 空考查方位短语 " },
+      { "type": "text", "text": "across from", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（等同于英式 " },
+      { "type": "text", "text": "opposite", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。" }
+    ]
+  },
+  {
+    "id": "dt-listen-01",
+    "type": "listening",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "听街头问路去市立图书馆的对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "Excuse me, could you tell me the way to the city library?"
+      },
+      {
+        "speaker": "M",
+        "text": "Sure! Go straight ahead for two blocks, walk past a bakery, and turn left at the third traffic light."
+      },
+      {
+        "speaker": "W",
+        "text": "Sorry, the first traffic light or the third traffic light?"
+      },
+      {
+        "speaker": "M",
+        "text": "The third traffic light. The library is on your left, opposite the post office. It is a ten-minute walk.",
+        "tts": { "speed": 0.95 }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "打扰一下，能告诉我去市立图书馆怎么走吗？",
+        "当然！一直往前走两个街区，经过一家面包店，在第三个红绿灯左转。",
+        "不好意思，是第一个红绿灯还是第三个红绿灯？",
+        "第三个红绿灯。图书馆就在你左手边、邮局对面。步行大约十分钟。"
+      ],
+      "sub_questions": {
+        "turn-point": {
+          "stem": "女士应该在哪里左转？",
+          "options": {
+            "third-light": "在第三个红绿灯处。",
+            "first-light": "在第一个红绿灯处。",
+            "bakery": "在面包店门口。"
+          }
+        },
+        "library-location": {
+          "stem": "市立图书馆在邮局对面，步行大约十分钟。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "turn-point",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should the woman turn left?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "third-light",
+            "text": "At the third traffic light.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "first-light",
+            "text": "At the first traffic light.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "bakery",
+            "text": "Right in front of the bakery.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "choice_ids": ["third-light"] },
+        "analysis": [
+          { "type": "text", "text": "男士先说明经过面包店（" },
+          { "type": "text", "text": "walk past a bakery", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）不转弯，并在答复复述核对时再次确认是在第三个红绿灯（" },
+          { "type": "text", "text": "the third traffic light", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）左转。" }
+        ]
+      },
+      {
+        "id": "library-location",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The city library is opposite the post office and is a ten-minute walk.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": true },
+        "analysis": [
+          { "type": "text", "text": "对话最后一句明确指出图书馆在邮局对面（" },
+          { "type": "text", "text": "opposite the post office", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "），且步行十分钟（" },
+          { "type": "text", "text": "a ten-minute walk", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "本段问路对话重点训练区分 " },
+      { "type": "text", "text": "first", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与 " },
+      { "type": "text", "text": "third", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、辨别经过诱饵（" },
+      { "type": "text", "text": "walk past", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）与最终方位及步行时长。" }
+    ]
+  },
+  {
+    "id": "dt-listen-02",
+    "type": "listening",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "stem": "听出差同事到达火车站后询问地铁换乘与打车路线的对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Hi Rachel, I just arrived at South Station. How do I get to your office?"
+      },
+      {
+        "speaker": "W",
+        "text": "Take Line two for four stops and transfer to Line five at Central Square. Then get off at Green Park and use Exit C."
+      },
+      {
+        "speaker": "M",
+        "text": "Thanks! I have a heavy suitcase. How long does it take by taxi?"
+      },
+      {
+        "speaker": "W",
+        "text": "About fifteen minutes, and the fare is around twenty dollars. Ask the driver to drop you off at the west entrance.",
+        "tts": { "speed": 0.95 }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "嗨瑞秋，我刚到南站。去你们办公室怎么走？",
+        "坐 2 号线坐四站，在中央广场站换乘 5 号线。然后在绿园站下车走 C 口。",
+        "谢谢！我带了个大行李箱。打车要多久？",
+        "大约十五分钟，车费大概二十美元。让司机在西入口让你下车就行。"
+      ],
+      "sub_questions": {
+        "subway-exit": {
+          "stem": "男士在绿园站下车后应该走哪个出口？",
+          "options": {
+            "exit-a": "A 出口。",
+            "exit-b": "B 出口。",
+            "exit-c": "C 出口。"
+          }
+        },
+        "taxi-time": {
+          "stem": "打车去办公室大约需要多少分钟？只填写数字。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "subway-exit",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Which subway exit should the man use at Green Park?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          { "id": "exit-a", "text": "Exit A.", "tts": { "voice": "stella" } },
+          { "id": "exit-b", "text": "Exit B.", "tts": { "voice": "stella" } },
+          { "id": "exit-c", "text": "Exit C.", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["exit-c"] },
+        "analysis": [
+          { "type": "text", "text": "女士在第二轮对话结尾明确说明在绿园站下车并走 " },
+          { "type": "text", "text": "Exit C", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      },
+      {
+        "id": "taxi-time",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many minutes does it take by taxi?",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": " " },
+          {
+            "type": "text",
+            "text": "Enter the number only.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": "15", "absolute_tolerance": "0" },
+        "analysis": [
+          { "type": "text", "text": "女士回答打车耗时约十五分钟（" },
+          { "type": "text", "text": "About fifteen minutes", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "），二十美元（" },
+          { "type": "text", "text": "twenty dollars", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）是车费。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "听取地铁换乘与打车指引时，按「线路—站数—换乘站—出口」抓取关键信息，同时分清耗时 " },
+      { "type": "text", "text": "fifteen minutes", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与车费 " },
+      { "type": "text", "text": "twenty dollars", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "dt-trans-01",
+    "type": "translation",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "direction": "en_to_zh",
+    "stem": "将下列地铁换乘与出站指引译成中文。",
+    "source_text": "Transfer to Line 4 at Central Station, get off at Park Square, and take Exit B.",
+    "source_text_tts": {
+      "voice": "stella",
+      "text": "Transfer to Line four at Central Station, get off at Park Square, and take Exit B."
+    },
+    "reference_translation": "在中央站换乘 4 号线，在公园广场站下车，走 B 出口。",
+    "acceptable_alternates": [
+      "在中央站转乘四号线，在公园广场站下车并从B口出站。",
+      "在中央站换乘4号线，到公园广场站下车，走B口。"
+    ],
+    "key_terms": [
+      { "term": "换乘", "variants": ["转乘"] },
+      { "term": "下车" },
+      { "term": "B 出口", "variants": ["B出口", "B口"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "transfer to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示换乘某条线路，换乘站点用介词 `at`；" },
+      { "type": "text", "text": "get off at", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示在某站下车；" },
+      { "type": "text", "text": "take Exit B", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示走 B 出口。" }
+    ]
+  },
+  {
+    "id": "dt-trans-02",
+    "type": "translation",
+    "chapter": "问路、交通出行与地点导航",
+    "concepts": ["directions-transport"],
+    "direction": "zh_to_en",
+    "stem": "将下列街头问路与询问步行耗时的句子译成英文。",
+    "source_text": "打扰一下，去最近的地铁站怎么走？步行要多久？",
+    "reference_translation": "Excuse me, how do I get to the nearest subway station? How long does it take on foot?",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "Excuse me, could you tell me the way to the nearest subway station? How long does it take on foot?",
+      "Excuse me, how do I get to the nearest underground station? How long does it take to walk there?"
+    ],
+    "key_terms": [
+      { "term": "Excuse me" },
+      { "term": "how do I get to", "variants": ["the way to"] },
+      { "term": "How long does it take" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "向陌生人问路先说 " },
+      { "type": "text", "text": "Excuse me", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，再接礼貌问句 " },
+      { "type": "text", "text": "how do I get to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；询问耗时用 " },
+      { "type": "text", "text": "How long does it take", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，步行固定写作 " },
+      { "type": "text", "text": "on foot", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fg-sc-01",
+    "type": "single_choice",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "同事询问你今晚是否打算做完客户会议用的幻灯片，下面哪一组问答的语法完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Do you going to finish the slides tonight? Yes, I am.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Are you going to finishing the slides tonight? Yes, I'm.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Are you going to finish the slides tonight? Yes, I am.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "You going to finish the slides tonight? Yes, I'm.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["c"] },
+    "analysis": [
+      { "type": "text", "text": "一般疑问句直接将 `be` 动词提前为 " },
+      { "type": "text", "text": "Are you going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（禁借 `do`），`to` 后必须接动词原形 " },
+      { "type": "text", "text": "finish", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，且肯定简答 " },
+      { "type": "text", "text": "Yes, I am.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 不可缩写为 `*Yes, I'm.`。" }
+    ]
+  },
+  {
+    "id": "fg-sc-02",
+    "type": "single_choice",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "抬头看到天空乌云密布、风越来越大，你想提醒朋友马上就要下雨了，应该说哪一句？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Look at those dark clouds. It is raining soon.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Look at those dark clouds. It is going to rain soon.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Look at those dark clouds. It going to rains soon.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Look at those dark clouds. It is going to raining soon.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "analysis": [
+      { "type": "text", "text": "根据眼前乌云作出的迹象预测必须用 " },
+      { "type": "text", "text": "is going to rain", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（`be` 不可漏，`to` 后接原形）；现在进行时不能用于天气预测。" }
+    ]
+  },
+  {
+    "id": "fg-mc-01",
+    "type": "multiple_choice",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "关于用现在进行时或 `be going to` 表达将来日程与时间状语的用法，以下哪两句完全正确？（请选择两项）",
+    "options": [
+      {
+        "id": "a",
+        "text": "I am seeing the dentist at three thirty on Tuesday afternoon.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "She is flying to Chengdu on next Monday and staying at a hotel.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "We are going to meet at the cafe at six on Friday.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "He is going to clean his room in this night.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["a", "c"] },
+    "analysis": [
+      { "type": "text", "text": "已预约日程可用现在进行时配将来时间，并遵守小时间在前、大时间在后（" },
+      { "type": "text", "text": "at three thirty on Tuesday afternoon", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）及先地点后时间（" },
+      { "type": "text", "text": "at the cafe at six on Friday", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。`next` 前用零介词（应写 " },
+      { "type": "text", "text": "next Monday", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "），“今晚”固定说 " },
+      { "type": "text", "text": "tonight", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（禁写 `*in this night`）。" }
+    ]
+  },
+  {
+    "id": "fg-tf-01",
+    "type": "true_false",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": [
+      { "type": "text", "text": "判断下列表示下周很忙的英语句子语法是否正确：\n" },
+      {
+        "type": "text",
+        "text": "Next week is being very busy because we have three client meetings.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "value": false },
+    "analysis": [
+      { "type": "text", "text": "静态动词 `be` 表将来状态或预测时不能使用现在进行时（`*is being`），应改为 " },
+      { "type": "text", "text": "Next week is going to be very busy", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fg-cloze-01",
+    "type": "cloze",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "阅读个人与职场日程备忘，根据已定预约与静态动词规则选词填空。",
+    "passage": "I made an appointment last week, so I {{1}} the dentist at three thirty tomorrow. Next week {{2}} busy, so I am going to finish my report tonight.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "I made an appointment last week, so I am seeing the dentist at three thirty tomorrow. Next week is going to be busy, so I am going to finish my report tonight."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "am seeing", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "see", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "am going to seeing", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "已预约且有明确将来时间（" },
+          { "type": "text", "text": "at three thirty tomorrow", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "）的确定日程首选现在进行时 " },
+          { "type": "text", "text": "am seeing", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "；`*am going to seeing` 在 `to` 后误用了 `-ing`。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "a", "text": "is being", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "is going to be", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "going to be", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["b"] },
+        "explanation": [
+          { "type": "text", "text": "静态动词 `be` 表将来用 " },
+          { "type": "text", "text": "is going to be", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，不能用现在进行时或省略助动词 `is`。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "第 1 空区分已预约确定日程用现在进行时 " },
+      { "type": "text", "text": "am seeing", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；第 2 空考查静态动词 `be` 的将来表达 " },
+      { "type": "text", "text": "is going to be", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fg-listen-01",
+    "type": "listening",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "听两位同事核对下周日程与周末出游计划的对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "W",
+        "text": "David, we are having our team meeting at ten on Monday morning, right?"
+      },
+      {
+        "speaker": "M",
+        "text": "Yes, that is right. On Tuesday, I am seeing the dentist at three thirty, so I am leaving the office early."
+      },
+      {
+        "speaker": "W",
+        "text": "Got it. What are you going to do this weekend?"
+      },
+      {
+        "speaker": "M",
+        "text": "My sister and I are taking the morning train to Green Lake. It is going to rain on Sunday, so we are going to visit a museum.",
+        "tts": { "speed": 0.95 }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "大卫，我们周一上午十点开团队会，对吧？",
+        "对，没错。周二下午三点半我去看牙医，所以会早点离开办公室。",
+        "明白。你这周末打算做什么？",
+        "我和妹妹坐早班火车去绿湖。周日要下雨，所以我们打算去逛博物馆。"
+      ],
+      "sub_questions": {
+        "tuesday-plan": {
+          "stem": "大卫周二下午有什么安排？",
+          "options": {
+            "dentist": "三点半看牙医。",
+            "team-meeting": "十点开团队会。",
+            "green-lake": "坐火车去绿湖。"
+          }
+        },
+        "sunday-museum": {
+          "stem": "大卫周日打算逛博物馆，因为天气预报显示周日要下雨。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "tuesday-plan",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What is David doing on Tuesday afternoon?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "dentist",
+            "text": "Seeing the dentist at 3:30.",
+            "tts": { "voice": "stella", "text": "Seeing the dentist at three thirty." }
+          },
+          {
+            "id": "team-meeting",
+            "text": "Having the team meeting at 10:00.",
+            "tts": { "voice": "stella", "text": "Having the team meeting at ten." }
+          },
+          {
+            "id": "green-lake",
+            "text": "Taking the train to Green Lake.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "choice_ids": ["dentist"] },
+        "analysis": [
+          { "type": "text", "text": "大卫明确说明周二下午三点半看牙医（" },
+          {
+            "type": "text",
+            "text": "seeing the dentist at three thirty",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": "）；团队会在周一上午十点，绿湖出游在本周末。" }
+        ]
+      },
+      {
+        "id": "sunday-museum",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "David plans to visit a museum on Sunday because it is going to rain.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": true },
+        "analysis": [
+          { "type": "text", "text": "大卫在最后一句用 " },
+          { "type": "text", "text": "It is going to rain on Sunday", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 说明周日有雨，因此安排 " },
+          { "type": "text", "text": "visit a museum", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "对话集中呈现了已定日程用现在进行时（" },
+      { "type": "text", "text": "are having", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "am seeing", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "are taking", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）以及天气预测与打算用 " },
+      { "type": "text", "text": "be going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 的区别。" }
+    ]
+  },
+  {
+    "id": "fg-read-01",
+    "type": "reading_comprehension",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "stem": "阅读汉娜发给朋友本的周末出行便条，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "WEEKEND TRIP NOTE",
+        "tts": { "voice": "stella", "text": "Weekend trip note." }
+      },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Hi Ben, my parents are visiting me this Saturday, and we are taking the 9:00 a.m. bus to River Town.",
+        "tts": {
+          "voice": "stella",
+          "text": "Hi Ben, my parents are visiting me this Saturday, and we are taking the nine a.m. bus to River Town."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "We already booked two rooms at Lake Hotel near the park.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "We are going to walk around the old street in the afternoon, but we are not going to drive because parking is difficult.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "The sky looks clear, so it is going to be a warm day.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "周末出行便条",
+        "嗨本，我父母这周六来看我，我们坐上午九点的公交车去河镇。",
+        "我们已经在公园附近的湖景酒店订了两间房。",
+        "我们打算下午逛逛老街，但不打算开车，因为那边不好停车。",
+        "天看起来很晴朗，所以会是暖和的一天。"
+      ],
+      "sub_questions": {
+        "transport-choice": {
+          "stem": "汉娜和父母打算怎么去河镇？",
+          "options": {
+            "bus-nine": "坐上午九点的公交车。",
+            "car-afternoon": "下午开车去。",
+            "train-sunday": "周日坐火车去。"
+          }
+        },
+        "driving-plan": {
+          "stem": "汉娜和父母打算开车去河镇。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "transport-choice",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How are Hannah and her parents going to River Town?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "bus-nine",
+            "text": "By bus at 9:00 a.m.",
+            "tts": { "voice": "stella", "text": "By bus at nine a.m." }
+          },
+          {
+            "id": "car-afternoon",
+            "text": "By car in the afternoon.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "train-sunday",
+            "text": "By train on Sunday.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "choice_ids": ["bus-nine"] },
+        "analysis": [
+          { "type": "text", "text": "第一句写明 " },
+          {
+            "type": "text",
+            "text": "taking the 9:00 a.m. bus to River Town",
+            "tts": { "voice": "stella", "text": "taking the nine a.m. bus to River Town" }
+          },
+          { "type": "text", "text": "，即乘上午九点的公交车前往。" }
+        ]
+      },
+      {
+        "id": "driving-plan",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Hannah and her parents are going to drive to River Town.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "文中明确写出否定计划 " },
+          { "type": "text", "text": "we are not going to drive", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，因为当地停车困难。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "便条综合运用了现在进行时表已定出行日程、肯定与否定 " },
+      { "type": "text", "text": "be going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表活动打算，以及基于晴空迹象的预测 " },
+      { "type": "text", "text": "is going to be a warm day", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fg-trans-01",
+    "type": "translation",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "direction": "zh_to_en",
+    "stem": "将下列关于周末个人打算的句子译成英文。",
+    "source_text": "我这周末打算整理房间，不打算查工作邮件。",
+    "reference_translation": "I am going to clean my room this weekend, and I am not going to check work emails.",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "I'm going to clean my room this weekend. I'm not going to check work emails.",
+      "I am going to tidy my room this weekend and I am not going to check work emails."
+    ],
+    "key_terms": [
+      { "term": "going to clean", "variants": ["going to tidy"] },
+      { "term": "this weekend" },
+      { "term": "not going to check" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "个人事先打算用 " },
+      { "type": "text", "text": "am going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与否定式 " },
+      { "type": "text", "text": "am not going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 后接动词原形；" },
+      { "type": "text", "text": "this weekend", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 前不加介词。" }
+    ]
+  },
+  {
+    "id": "fg-write-01",
+    "type": "writing",
+    "chapter": "计划与打算（be going to 与进行时表安排）",
+    "concepts": ["future-going-to"],
+    "subtype": "sentence_making",
+    "stem": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "umbrella", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 写一句完整的英文，说明你今晚打算装一把雨伞，因为明天要下雨。" }
+    ],
+    "requirements": [
+      "正确使用 be going to + 动词原形。",
+      "包含关键词 going to 和 umbrella。",
+      "写出意思完整、标点规范的一个英语句子。"
+    ],
+    "keywords": ["going to", "umbrella"],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "I am going to pack an umbrella tonight because it is going to rain tomorrow.",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": {
+      "task_completion": 40,
+      "grammar_accuracy": 40,
+      "language_accuracy": 20
+    },
+    "analysis": [
+      { "type": "text", "text": "前半句 " },
+      { "type": "text", "text": "I am going to pack an umbrella tonight", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表达个人打算，后半句 " },
+      { "type": "text", "text": "it is going to rain tomorrow", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表达天气预测，`tonight` 与 `tomorrow` 前均不加介词。" }
+    ]
+  },
+  {
+    "id": "fw-sc-01",
+    "type": "single_choice",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "朋友问你明晚会不会来参加聚餐，你想肯定回答并承诺不会迟到，下面哪一句完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, I'll. I want be late.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Yes, I will. I willn't to be late.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Yes, I will. I won't be late.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Yes, I will. I won't late.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["c"] },
+    "analysis": [
+      { "type": "text", "text": "肯定简答 " },
+      { "type": "text", "text": "Yes, I will.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 不能缩写为 `*Yes, I'll.`；否定缩写为 " },
+      { "type": "text", "text": "won't", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（区别于动词 `want`，无 `*willn't`）；形容词 `late` 前必须补系动词 `be`，构成 " },
+      { "type": "text", "text": "I won't be late.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fw-sc-02",
+    "type": "single_choice",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "同事走进会议室时手里拎着两个很重的箱子，你当场主动提出帮忙拎一个，下面哪一句最地道？",
+    "options": [
+      {
+        "id": "a",
+        "text": "Shall you carry one box for me?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "I'll carry one of those boxes for you.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "I am carrying one of those boxes tomorrow.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "I will to carry one of those boxes for you.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "analysis": [
+      { "type": "text", "text": "说话当下见对方需要而主动帮忙用 " },
+      { "type": "text", "text": "I'll", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 加动词原形（不加 `to`）；提议句 `Shall` 只与第一人称 `I` 或 `we` 搭配，不能说 `*Shall you`。" }
+    ]
+  },
+  {
+    "id": "fw-mc-01",
+    "type": "multiple_choice",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "关于 `will / won't` 预测语序与 `Shall` 提议句的用法，以下哪两句完全正确？（请选择两项）",
+    "options": [
+      {
+        "id": "a",
+        "text": "I don't think it will rain tonight, so walking will be nice.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "The meeting won't probably take long, so we can leave early.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Shall we meet at the new restaurant at six on Saturday?",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Shall we to book a table? Do you will come with us?",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["a", "c"] },
+    "analysis": [
+      { "type": "text", "text": "用 `think` 作否定预测时习惯把否定放在 `think` 上（" },
+      { "type": "text", "text": "I don't think it will rain", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）；发出共同邀约用 " },
+      { "type": "text", "text": "Shall we", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 加动词原形（不加 `to`）。`probably` 在否定句须放在 `won't` 之前（" },
+      { "type": "text", "text": "probably won't take long", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "），疑问句直接提 `Will` 而非借 `Do`。" }
+    ]
+  },
+  {
+    "id": "fw-tf-01",
+    "type": "true_false",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": [
+      { "type": "text", "text": "判断下列日常口语句子的理解是否正确：入住酒店时说 " },
+      {
+        "type": "text",
+        "text": "The Wi-Fi won't connect.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "，表示“Wi-Fi 连不上”，属于用 " },
+      { "type": "text", "text": "won't", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 描述物品或设备失灵的常见口语用法。" }
+    ],
+    "grading": { "value": true },
+    "analysis": [
+      { "type": "text", "text": "日常英语中常用 " },
+      { "type": "text", "text": "won't", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示物品打不开、连不上或无法运转，如 " },
+      { "type": "text", "text": "The door won't open.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "The Wi-Fi won't connect.", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，并非字面的“将来不连”。" }
+    ]
+  },
+  {
+    "id": "fw-cloze-01",
+    "type": "cloze",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "阅读办公室会前突发状况对话，根据当场决定与主动提议规则选词填空。",
+    "passage": "Wait, there is no paper in the printer! Do not worry, I {{1}} bring a new pack right now. {{2}} print four copies for the client meeting?",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Wait, there is no paper in the printer! Do not worry, I will bring a new pack right now. Shall I print four copies for the client meeting?"
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "will", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "am going", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "want", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "面对突发缺纸当场决定去取纸，应使用 " },
+          { "type": "text", "text": "will", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 接动词原形；`am going` 缺 `to`，`want` 须接 `to`。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "a", "text": "Shall I", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "Shall you", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "Do I will", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "主动提出帮对方做事用 " },
+          { "type": "text", "text": "Shall I", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 加动词原形，不能用 `*Shall you` 或 `*Do I will`。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "第 1 空考查突发状况下当场决定用 " },
+      { "type": "text", "text": "will", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；第 2 空考查第一人称主动帮忙提议 " },
+      { "type": "text", "text": "Shall I", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fw-listen-01",
+    "type": "listening",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "听两位同事在客户会议前核对报价单并临时分工的对话，再回答两个问题。",
+    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "transcript": [
+      {
+        "speaker": "M",
+        "text": "Maya, is the new price list ready for our three thirty client meeting?"
+      },
+      {
+        "speaker": "W",
+        "text": "Oh, wait—page two still has the old numbers. I will check them and send you the new file before two."
+      },
+      {
+        "speaker": "M",
+        "text": "Thanks! It will probably be busy after lunch. Shall I print four copies at two thirty?"
+      },
+      {
+        "speaker": "W",
+        "text": "Yes, please! I promise I won't be late for the meeting.",
+        "tts": { "speed": 0.95 }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "玛雅，三点半客户会议要用的新版报价单准备好了吗？",
+        "哎呀，等等——第二页还是旧数据。我核对一下，两点前把新文件发给你。",
+        "谢谢！午饭后大概会很忙。要我两点半打印四份吗？",
+        "好呀，麻烦了！我保证开会不会迟到。"
+      ],
+      "sub_questions": {
+        "send-deadline": {
+          "stem": "玛雅会在什么时候之前发送新版报价单？",
+          "options": {
+            "before-two": "下午两点前。",
+            "two-thirty": "下午两点半。",
+            "three-thirty": "下午三点半。"
+          }
+        },
+        "print-offer": {
+          "stem": "男士主动提议在两点半打印四份文件。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "send-deadline",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When will Maya send the updated price list?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "before-two",
+            "text": "Before 2:00 p.m.",
+            "tts": { "voice": "stella", "text": "Before two p.m." }
+          },
+          {
+            "id": "two-thirty",
+            "text": "At 2:30 p.m.",
+            "tts": { "voice": "stella", "text": "At two thirty p.m." }
+          },
+          {
+            "id": "three-thirty",
+            "text": "At 3:30 p.m.",
+            "tts": { "voice": "stella", "text": "At three thirty p.m." }
+          }
+        ],
+        "grading": { "choice_ids": ["before-two"] },
+        "analysis": [
+          { "type": "text", "text": "玛雅明确承诺 " },
+          { "type": "text", "text": "send you the new file before two", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "；两点半是打印时间，三点半是客户会议时间。" }
+        ]
+      },
+      {
+        "id": "print-offer",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "The man offers to print four copies at two thirty.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": true },
+        "analysis": [
+          { "type": "text", "text": "男士用 " },
+          {
+            "type": "text",
+            "text": "Shall I print four copies at two thirty?",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": " 主动提出帮忙打印四份。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "本段对话综合了发现问题后的临时决定（" },
+      { "type": "text", "text": "I will check", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）、预测（" },
+      { "type": "text", "text": "will probably be busy", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）、主动帮忙（" },
+      { "type": "text", "text": "Shall I print", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）与郑重承诺（" },
+      { "type": "text", "text": "I promise I won't be late", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。" }
+    ]
+  },
+  {
+    "id": "fw-read-01",
+    "type": "reading_comprehension",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "stem": "阅读埃里克发给朋友克洛伊的周末聚餐留言，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "SATURDAY DINNER MESSAGE",
+        "tts": { "voice": "stella", "text": "Saturday dinner message." }
+      },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Hi Chloe, shall we walk to the new noodle restaurant near the park at 6:00 p.m. on Saturday?",
+        "tts": {
+          "voice": "stella",
+          "text": "Hi Chloe, shall we walk to the new noodle restaurant near the park at six p.m. on Saturday?"
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "It will probably be busy, so I will book a table for two right now.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "I don't think it will rain, and walking there will be very pleasant.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Shall I pick up dessert on the way? I promise I won't be late!",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "周六聚餐留言",
+        "嗨克洛伊，我们周六晚上六点走去公园附近那家新面馆好吗？",
+        "那时候大概人会很多，所以我现在就订一张两人桌。",
+        "我觉得不会下雨，走过去会非常惬意。",
+        "要我顺路买点甜点吗？我保证不会迟到！"
+      ],
+      "sub_questions": {
+        "eric-actions": {
+          "stem": "埃里克在留言中决定或主动提出要做什么？",
+          "options": {
+            "book-table": "现在就订一张两人桌。",
+            "buy-dessert": "顺路买甜点。",
+            "drive-car": "开车去面馆。"
+          }
+        },
+        "rain-prediction": {
+          "stem": "埃里克认为周六晚上会下雨。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "eric-actions",
+        "type": "multiple_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "What does Eric decide or offer to do?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "book-table",
+            "text": "Book a table for two right now.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "buy-dessert",
+            "text": "Pick up dessert on the way.",
+            "tts": { "voice": "stella" }
+          },
+          {
+            "id": "drive-car",
+            "text": "Drive his car to the restaurant.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "choice_ids": ["book-table", "buy-dessert"] },
+        "analysis": [
+          { "type": "text", "text": "埃里克先决定立刻订桌（" },
+          { "type": "text", "text": "I will book a table for two", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "），又用 " },
+          { "type": "text", "text": "Shall I pick up dessert", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 提议顺路买甜点；出行方式是步行而非开车。" }
+        ]
+      },
+      {
+        "id": "rain-prediction",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Eric thinks it will rain on Saturday evening.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "第三句写明 " },
+          { "type": "text", "text": "I don't think it will rain", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，表示他认为不会下雨。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "阅读邀约留言时要识别 " },
+      { "type": "text", "text": "Shall we", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（共同提议）、" },
+      { "type": "text", "text": "Shall I", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（主动帮忙）以及否定转移结构 " },
+      { "type": "text", "text": "I don't think it will", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "fw-trans-01",
+    "type": "translation",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "direction": "zh_to_en",
+    "stem": "将下列包含否定预测与共同邀约的句子译成英文。",
+    "source_text": "我觉得明天不会下雨。我们三点在咖啡馆见好吗？",
+    "reference_translation": "I don't think it will rain tomorrow. Shall we meet at the cafe at three?",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "I do not think it will rain tomorrow. Shall we meet at the cafe at 3:00?",
+      "I don't think it'll rain tomorrow. Shall we meet at the cafe at 3 p.m.?"
+    ],
+    "key_terms": [
+      { "term": "don't think", "variants": ["do not think"] },
+      { "term": "will rain", "variants": ["'ll rain"] },
+      { "term": "Shall we meet" }
+    ],
+    "analysis": [
+      { "type": "text", "text": "用 `think` 表否定预测时把否定放到 `think` 上，写作 " },
+      { "type": "text", "text": "I don't think it will rain", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；共同邀约用 " },
+      { "type": "text", "text": "Shall we meet", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，句尾遵守先地点后时间。" }
+    ]
+  },
+  {
+    "id": "fw-write-01",
+    "type": "writing",
+    "chapter": "临时决定、承诺与预测（will / won't / Shall we）",
+    "concepts": ["future-will"],
+    "subtype": "sentence_making",
+    "stem": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "won't", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "send", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 写一句完整的英文承诺句，说明你保证不会忘记今晚把行程单发给同事。" }
+    ],
+    "requirements": [
+      "正确使用 won't + 动词原形表达承诺。",
+      "包含关键词 won't 和 send。",
+      "写一个语法和标点规范的完整英语句子。"
+    ],
+    "keywords": ["won't", "send"],
+    "min_words": 8,
+    "max_words": 20,
+    "sample_response": "I promise I won't forget to send the travel schedule to my colleague tonight.",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": {
+      "task_completion": 40,
+      "grammar_accuracy": 40,
+      "language_accuracy": 20
+    },
+    "analysis": [
+      { "type": "text", "text": "以 " },
+      { "type": "text", "text": "I promise", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 引出承诺，接 " },
+      { "type": "text", "text": "I won't forget to send", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，注意 `won't` 后用动词原形 `forget` 并且 `tonight` 前不加介词。" }
+    ]
+  },
+  {
+    "id": "hb-sc-01",
+    "type": "single_choice",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": "核对机票和酒店确认单上的 12/24 小时制时刻时，下列哪一项理解完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "5 月 12 日 00:25 出发的航班等于中午 12:25，应在 5 月 12 日上午前往机场"
+      },
+      {
+        "id": "b",
+        "text": "退房时间写 by 12:00 p.m. 表示必须在半夜零点之前办完退房"
+      },
+      {
+        "id": "c",
+        "text": "入住时间 from 15:00 对应下午 3:00，5 月 12 日 00:25 的航班须在 5 月 11 日晚到机场"
+      },
+      {
+        "id": "d",
+        "text": "行程单可以把晚上七点半写作 19:30 p.m. 或 7:30 p.m. in the evening"
+      }
+    ],
+    "grading": { "choice_ids": ["c"] },
+    "analysis": [
+      { "type": "text", "text": "24 小时制 `15:00` 减 12 为下午三点（" },
+      { "type": "text", "text": "3:00 p.m.", "tts": { "voice": "stella", "text": "three p.m." } },
+      { "type": "text", "text": "）；`00:25` 即凌晨 " },
+      { "type": "text", "text": "12:25 a.m.", "tts": { "voice": "stella", "text": "twelve twenty-five a.m." } },
+      { "type": "text", "text": "，须在前一晚到机场候机；" },
+      { "type": "text", "text": "12:00 p.m.", "tts": { "voice": "stella", "text": "twelve p.m." } },
+      { "type": "text", "text": " 是正午 12 点；24 小时制不加 `p.m.`，且 `p.m.` 不与 `in the evening` 叠用。" }
+    ]
+  },
+  {
+    "id": "hb-sc-02",
+    "type": "single_choice",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": "在酒店和机场出行沟通中，下面哪一句的介词搭配与名词可数性完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "We have two luggages and must check out the hotel until eleven a.m.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "Passengers can board on the plane now because the flight is delayed to thirty minutes.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "Please check out of the hotel by eleven a.m. Our flight is delayed by thirty minutes.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "Please check out of the hotel by eleven a.m. Our flight is delayed until thirty minutes.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["c"] },
+    "analysis": [
+      { "type": "text", "text": "退房接酒店名须保留 `of`（" },
+      { "type": "text", "text": "check out of the hotel", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "），单次截止时间用 `by`；表延误时长用 " },
+      { "type": "text", "text": "delayed by", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（新时刻才用 `until` 或 `rescheduled to`）；`luggage` 不可数，`board` 直接接 `the plane` 不加 `on`。" }
+    ]
+  },
+  {
+    "id": "hb-mc-01",
+    "type": "multiple_choice",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": [
+      { "type": "text", "text": "酒店预订确认单写着：6 月 12 日 15:00 入住，6 月 14 日 11:00 退房，房价含早但标注 " },
+      { "type": "text", "text": "excluding tax", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，退改条款为 " },
+      {
+        "type": "text",
+        "text": "Free cancellation up to 24 hours prior to check-in.",
+        "tts": {
+          "voice": "stella",
+          "text": "Free cancellation up to twenty-four hours prior to check-in."
+        }
+      },
+      { "type": "text", "text": " 以下哪两项理解正确？（请选择两项）" }
+    ],
+    "options": [
+      {
+        "id": "a",
+        "text": "本次预订一共入住 2 晚，免费取消的最晚截止时间是 6 月 11 日 15:00"
+      },
+      {
+        "id": "b",
+        "text": "本次预订一共入住 3 晚，只要在下单后 24 小时内都可以免费取消"
+      },
+      {
+        "id": "c",
+        "text": "标注 excluding tax 说明所列房费尚未包含税费，结账时需另计税费"
+      },
+      {
+        "id": "d",
+        "text": "若延迟退房写 available until 14:00，表示必须等到 14:00 之后才能退房"
+      }
+    ],
+    "grading": { "choice_ids": ["a", "c"] },
+    "analysis": [
+      { "type": "text", "text": "6 月 12 日入住至 14 日退房为 `14 − 12 = 2` 晚；" },
+      { "type": "text", "text": "prior to check-in", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 从入住时刻倒推 24 小时，即 6 月 11 日 `15:00`；" },
+      { "type": "text", "text": "excluding tax", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示不含税费；" },
+      { "type": "text", "text": "until", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示持续开放至 `14:00`，并非 `14:00` 之后。" }
+    ]
+  },
+  {
+    "id": "hb-tf-01",
+    "type": "true_false",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": [
+      { "type": "text", "text": "判断下列酒店取消条款的理解是否正确：确认邮件写着 " },
+      {
+        "type": "text",
+        "text": "Free cancellation up to 48 hours prior to arrival.",
+        "tts": {
+          "voice": "stella",
+          "text": "Free cancellation up to forty-eight hours prior to arrival."
+        }
+      },
+      { "type": "text", "text": "，表示从下单付款起 48 小时内可以免费取消，超时即扣费。" }
+    ],
+    "grading": { "value": false },
+    "analysis": [
+      { "type": "text", "text": "prior to arrival", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 的时间锚点是到达或入住时刻（提前 48 小时），而非下单付款时刻。" }
+    ]
+  },
+  {
+    "id": "hb-tf-02",
+    "type": "true_false",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": [
+      { "type": "text", "text": "判断下列酒店入住须知的理解是否正确：确认单写着 " },
+      {
+        "type": "text",
+        "text": "Please show a valid photo ID at check-in and check out by 11:00 a.m.",
+        "tts": {
+          "voice": "stella",
+          "text": "Please show a valid photo I D at check-in and check out by eleven a.m."
+        }
+      },
+      { "type": "text", "text": "，表示入住时须出示带照片的有效身份证件，最晚在上午 11:00 前办完退房。" }
+    ],
+    "grading": { "value": true },
+    "analysis": [
+      { "type": "text", "text": "valid photo ID", "tts": { "voice": "stella", "text": "valid photo I D" } },
+      { "type": "text", "text": " 指带照片的有效身份证件（如身份证或护照）；" },
+      { "type": "text", "text": "check out by 11:00 a.m.", "tts": { "voice": "stella", "text": "check out by eleven a.m." } },
+      { "type": "text", "text": " 用 `by` 限定单次退房动作的最晚截止时间。" }
+    ]
+  },
+  {
+    "id": "hb-num-01",
+    "type": "numeric",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": [
+      { "type": "text", "text": "机票确认单写明托运行李限重 " },
+      { "type": "text", "text": "20 kg", "tts": { "voice": "stella", "text": "twenty kilograms" } },
+      { "type": "text", "text": "，超重费为 " },
+      {
+        "type": "text",
+        "text": "excess $12/kg",
+        "tts": { "voice": "stella", "text": "excess twelve dollars per kilogram" }
+      },
+      { "type": "text", "text": "。若你的托运箱重 23 公斤，需支付多少美元超重费？填数字。" }
+    ],
+    "grading": { "value": "36", "absolute_tolerance": "0" },
+    "analysis": [
+      { "type": "text", "text": "excess", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表示超出限额的部分。托运箱超出限重 `23 − 20 = 3` 公斤，按每公斤 `$12` 计算，需支付 `3 × 12 = 36` 美元。" }
+    ]
+  },
+  {
+    "id": "hb-cloze-01",
+    "type": "cloze",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": "阅读航班晚点与登机截止通知，选出正确的介词或短语填空。",
+    "passage": "Flight SL-418 is delayed {{1}} 45 minutes due to rain. Boarding closes 15 minutes {{2}} departure at Gate C08.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Flight S L four eighteen is delayed by forty-five minutes due to rain. Boarding closes fifteen minutes prior to departure at Gate C zero eight."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "by", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "to", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "until", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "表示延误具体时长固定用 " },
+          { "type": "text", "text": "delayed by", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "；`until` 与 `rescheduled to` 后接新的具体时刻。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "a", "text": "after", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "prior to", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "within", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["b"] },
+        "explanation": [
+          { "type": "text", "text": "prior to", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 接名词表示“在……之前”，起飞前 15 分钟停止登机。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "出行通知中，延误时长配 " },
+      { "type": "text", "text": "delayed by", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，截止锚点“在起飞前”配 " },
+      { "type": "text", "text": "prior to departure", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "hb-read-01",
+    "type": "reading_comprehension",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": "阅读海湾酒店的预订确认邮件，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "BAYVIEW HOTEL CONFIRMATION",
+        "tts": { "voice": "stella", "text": "Bayview Hotel confirmation." }
+      },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Booking Ref: BV-4820. Room: Standard Twin for 2 nights, Friday June 12 to Sunday June 14.",
+        "tts": {
+          "voice": "stella",
+          "text": "Booking reference B V four eight two zero. Room: Standard Twin for two nights, Friday June twelfth to Sunday June fourteenth."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Check-in is from 15:00, and check-out is by 11:00. Rate is $95 per night, breakfast included, excluding tax.",
+        "tts": {
+          "voice": "stella",
+          "text": "Check-in is from three p.m., and check-out is by eleven a.m. Rate is ninety-five dollars per night, breakfast included, excluding tax."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Late check-out is available until 14:00 for an extra $20.",
+        "tts": {
+          "voice": "stella",
+          "text": "Late check-out is available until two p.m. for an extra twenty dollars."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Please show a valid photo ID at check-in.",
+        "tts": {
+          "voice": "stella",
+          "text": "Please show a valid photo I D at check-in."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Free cancellation is allowed up to 24 hours prior to check-in; after that, a $95 fee will be charged.",
+        "tts": {
+          "voice": "stella",
+          "text": "Free cancellation is allowed up to twenty-four hours prior to check-in; after that, a ninety-five dollar fee will be charged."
+        }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "海湾酒店预订确认单",
+        "预订参考号：BV-4820。房型：标准双床房，住 2 晚，6 月 12 日周五至 6 月 14 日周日。",
+        "15:00 起办理入住，11:00 前办理退房。房价每晚 95 美元，含早餐，不含税费。",
+        "延迟退房可延至 14:00，需另付 20 美元。",
+        "入住时请出示带照片的有效身份证件。",
+        "入住前 24 小时之前可免费取消；超过截止时间将收取 95 美元费用。"
+      ],
+      "sub_questions": {
+        "free-cancel-deadline": {
+          "stem": "最晚在什么时候之前可以免费取消这笔预订？",
+          "options": {
+            "thu-1500": "6 月 11 日周四 15:00。",
+            "fri-1100": "6 月 12 日周五 11:00。",
+            "sat-1400": "6 月 13 日周六 14:00。"
+          }
+        },
+        "tax-included": {
+          "stem": "每晚 95 美元的房价已经同时包含早餐和税费。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "free-cancel-deadline",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "When is the latest time to cancel the room for free?",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "options": [
+          {
+            "id": "thu-1500",
+            "text": "Thursday June 11 at 15:00.",
+            "tts": { "voice": "stella", "text": "Thursday June eleventh at three p.m." }
+          },
+          {
+            "id": "fri-1100",
+            "text": "Friday June 12 at 11:00.",
+            "tts": { "voice": "stella", "text": "Friday June twelfth at eleven a.m." }
+          },
+          {
+            "id": "sat-1400",
+            "text": "Saturday June 13 at 14:00.",
+            "tts": { "voice": "stella", "text": "Saturday June thirteenth at two p.m." }
+          }
+        ],
+        "grading": { "choice_ids": ["thu-1500"] },
+        "analysis": [
+          { "type": "text", "text": "入住时间为 6 月 12 日周五 `15:00`，按 " },
+          {
+            "type": "text",
+            "text": "24 hours prior to check-in",
+            "tts": { "voice": "stella", "text": "twenty-four hours prior to check-in" }
+          },
+          { "type": "text", "text": " 倒推 24 小时，免费取消截止为 6 月 11 日周四 `15:00`。" }
+        ]
+      },
+      {
+        "id": "tax-included",
+        "type": "true_false",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Both breakfast and tax are included in the $95 nightly rate.",
+            "tts": {
+              "voice": "stella",
+              "text": "Both breakfast and tax are included in the ninety-five dollar nightly rate."
+            }
+          }
+        ],
+        "grading": { "value": false },
+        "analysis": [
+          { "type": "text", "text": "确认单写明 " },
+          { "type": "text", "text": "breakfast included", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "（含早餐），但同时标注 " },
+          { "type": "text", "text": "excluding tax", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "（不含税费）。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "核对酒店确认单时要抓住入住时刻锚点、区分 " },
+      { "type": "text", "text": "included", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与 " },
+      { "type": "text", "text": "excluding", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，并从入住时刻倒推免费取消截止时间。" }
+    ]
+  },
+  {
+    "id": "hb-read-02",
+    "type": "reading_comprehension",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "stem": "阅读航空公司的航班延误与登机口变更通知，再回答两个问题。",
+    "passage": [
+      {
+        "type": "text",
+        "text": "FLIGHT SCHEDULE ALERT",
+        "tts": { "voice": "stella", "text": "Flight schedule alert." }
+      },
+      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "Flight SL-206 from Terminal 2 is delayed by 40 minutes due to heavy rain.",
+        "tts": {
+          "voice": "stella",
+          "text": "Flight S L two zero six from Terminal two is delayed by forty minutes due to heavy rain."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Departure is rescheduled from 09:30 to 10:10, and the gate has changed from B12 to C05.",
+        "tts": {
+          "voice": "stella",
+          "text": "Departure is rescheduled from nine thirty to ten ten, and the gate has changed from B twelve to C zero five."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Boarding closes 15 minutes prior to the new departure time.",
+        "tts": {
+          "voice": "stella",
+          "text": "Boarding closes fifteen minutes prior to the new departure time."
+        }
+      },
+      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": "Passengers may rebook for free before 09:45 or pick up a $15 meal voucher at Gate C05.",
+        "tts": {
+          "voice": "stella",
+          "text": "Passengers may rebook for free before nine forty-five or pick up a fifteen dollar meal voucher at Gate C zero five."
+        }
+      }
+    ],
+    "study_translation": {
+      "material": [
+        "航班时刻变更提醒",
+        "2 号航站楼的 SL-206 次航班因大雨延误 40 分钟。",
+        "起飞时间由 09:30 调整为 10:10，登机口已由 B12 变更为 C05。",
+        "新起飞时间前 15 分钟停止登机。",
+        "乘客可在 09:45 前免费改签，或在 C05 登机口领取 15 美元餐券。"
+      ],
+      "sub_questions": {
+        "new-gate": {
+          "stem": "乘客现在应该去哪里登机乘坐 SL-206 次航班？",
+          "options": {
+            "c05-t2": "2 号航站楼 C05 登机口。",
+            "b12-t2": "2 号航站楼 B12 登机口。",
+            "c08-t1": "1 号航站楼 C08 登机口。"
+          }
+        },
+        "delay-minutes": {
+          "stem": "这趟航班延误了多少分钟？只填写数字。"
+        }
+      }
+    },
+    "sub_questions": [
+      {
+        "id": "new-gate",
+        "type": "single_choice",
+        "stem": [
+          {
+            "type": "text",
+            "text": "Where should passengers go to board Flight SL-206 now?",
+            "tts": {
+              "voice": "stella",
+              "text": "Where should passengers go to board Flight S L two zero six now?"
+            }
+          }
+        ],
+        "options": [
+          {
+            "id": "c05-t2",
+            "text": "Gate C05 in Terminal 2.",
+            "tts": { "voice": "stella", "text": "Gate C zero five in Terminal two." }
+          },
+          {
+            "id": "b12-t2",
+            "text": "Gate B12 in Terminal 2.",
+            "tts": { "voice": "stella", "text": "Gate B twelve in Terminal two." }
+          },
+          {
+            "id": "c08-t1",
+            "text": "Gate C08 in Terminal 1.",
+            "tts": { "voice": "stella", "text": "Gate C zero eight in Terminal one." }
+          }
+        ],
+        "grading": { "choice_ids": ["c05-t2"] },
+        "analysis": [
+          { "type": "text", "text": "通知明确指出航班位于 2 号航站楼（" },
+          { "type": "text", "text": "Terminal 2", "tts": { "voice": "stella", "text": "Terminal two" } },
+          { "type": "text", "text": "），登机口已从旧的 `B12` 变更为 " },
+          { "type": "text", "text": "Gate C05", "tts": { "voice": "stella", "text": "Gate C zero five" } },
+          { "type": "text", "text": "。" }
+        ]
+      },
+      {
+        "id": "delay-minutes",
+        "type": "numeric",
+        "stem": [
+          {
+            "type": "text",
+            "text": "How many minutes is the flight delayed by?",
+            "tts": { "voice": "stella" }
+          },
+          { "type": "text", "text": " " },
+          {
+            "type": "text",
+            "text": "Enter the number only.",
+            "tts": { "voice": "stella" }
+          }
+        ],
+        "grading": { "value": "40", "absolute_tolerance": "0" },
+        "analysis": [
+          { "type": "text", "text": "第一句说明 " },
+          {
+            "type": "text",
+            "text": "delayed by 40 minutes",
+            "tts": { "voice": "stella", "text": "delayed by forty minutes" }
+          },
+          { "type": "text", "text": "，且起飞时刻由 `09:30` 推迟至 `10:10`，同样相差 40 分钟。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "阅读航班变更提醒时重点锁定 " },
+      { "type": "text", "text": "from A to B", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 后的新起飞时刻与新登机口，勿沿用变更前的旧信息。" }
+    ]
+  },
+  {
+    "id": "hb-trans-01",
+    "type": "translation",
+    "chapter": "行程单、酒店预订与出行通知阅读",
+    "concepts": ["hotel-trip-booking"],
+    "direction": "en_to_zh",
+    "stem": "将下列高铁电子行程单上的检票与证件须知译成中文。",
+    "source_text": "Ticket check closes five minutes before departure. Passengers must carry a valid photo ID.",
+    "source_text_tts": {
+      "voice": "stella",
+      "text": "Ticket check closes five minutes before departure. Passengers must carry a valid photo I D."
+    },
+    "reference_translation": "发车前五分钟停止检票。乘客必须携带带照片的有效身份证件。",
+    "acceptable_alternates": [
+      "检票口于发车前5分钟关闭。乘客须携带有效带照片证件。",
+      "出发前5分钟停止检票，旅客必须携带有效身份证件。"
+    ],
+    "key_terms": [
+      { "term": "停止检票", "variants": ["检票关闭", "关闭检票"] },
+      { "term": "发车前", "variants": ["出发前", "开车前"] },
+      { "term": "有效身份证件", "variants": ["带照片的有效身份证件", "有效证件"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "Ticket check closes", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 用一般现在时表铁路固定检票规则；" },
+      { "type": "text", "text": "before departure", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 表发车前；" },
+      { "type": "text", "text": "valid photo ID", "tts": { "voice": "stella", "text": "valid photo I D" } },
+      { "type": "text", "text": " 指带照片的有效身份证件。" }
+    ]
+  },
+  {
+    "id": "tw-sc-01",
+    "type": "single_choice",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "stem": "写周末出行计划短文时，你想表达“周五晚上我们要住酒店，我很期待逛博物馆”，下面哪一句完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "In Friday evening, we live in a hotel, and I look forward to visit the museum.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "On Friday evening, we are going to stay at a hotel, and I am looking forward to visiting the museum.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "On Friday evening, we are going to play in a hotel, and I look forward to see the museum.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "At Friday evening, we are going to stay at a hotel, and I hope you to visit the museum.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "analysis": [
+      { "type": "text", "text": "具体星期加时段用介词 `on`（" },
+      { "type": "text", "text": "On Friday evening", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）；出游短住用 " },
+      { "type": "text", "text": "stay at a hotel", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（非 `live in`）；" },
+      { "type": "text", "text": "look forward to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 中 `to` 为介词，后接动名词 " },
+      { "type": "text", "text": "visiting", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；希望别人做某事时 `I hope` 后接完整从句，不可说 `*I hope you to`。" }
+    ]
+  },
+  {
+    "id": "tw-sc-02",
+    "type": "single_choice",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "stem": "撰写同事来访接待计划短文时，下面哪一组句子的衔接词、代词位置与语序完全正确？",
+    "options": [
+      {
+        "id": "a",
+        "text": "After, I will pick up him at the station, then we by taxi go to the office.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "b",
+        "text": "First, I will pick him up at the station. After that, we are going to the office by taxi.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "c",
+        "text": "At first, I pick him up at the station, and finally we will discuss about the project.",
+        "tts": { "voice": "stella" }
+      },
+      {
+        "id": "d",
+        "text": "First, I am going to pick up him at the station. Then, it will relaxing.",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "choice_ids": ["b"] },
+    "analysis": [
+      { "type": "text", "text": "可分离短语接代词须把代词放中间，写作 " },
+      { "type": "text", "text": "pick him up", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；承接上一步用 " },
+      { "type": "text", "text": "After that", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "（不可省 `that`）；交通方式放在目的地之后（" },
+      { "type": "text", "text": "to the office by taxi", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）；`discuss` 直接接宾语不加 `about`，形容词 `relaxing` 前不可漏 `be`。" }
+    ]
+  },
+  {
+    "id": "tw-tf-01",
+    "type": "true_false",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "stem": [
+      { "type": "text", "text": "判断下列周末计划短文句子的时态与标点是否规范：\n" },
+      {
+        "type": "text",
+        "text": "First, we take the morning train to Hangzhou, then we walk around West Lake. It will nice!",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "grading": { "value": false },
+    "analysis": [
+      { "type": "text", "text": "句子存在三处问题：个人将来安排须使用将来表达（如 " },
+      { "type": "text", "text": "are taking", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "are going to walk", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）；逗号加 `then` 连接两完整句属于逗号黏连，应拆句或改用 " },
+      { "type": "text", "text": "and then", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；末句形容词 `nice` 前漏了 `be`，应写 " },
+      { "type": "text", "text": "It will be nice!", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "。" }
+    ]
+  },
+  {
+    "id": "tw-cloze-01",
+    "type": "cloze",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "stem": "阅读同事来访接待短文，根据代词位置与时间顺序衔接词选词填空。",
+    "passage": "Our colleague Leo is visiting next Tuesday. First, I will {{1}} at the station. {{2}}, we are going to show him around the office and have lunch nearby.",
+    "passage_tts": {
+      "voice": "stella",
+      "text": "Our colleague Leo is visiting next Tuesday. First, I will pick him up at the station. After that, we are going to show him around the office and have lunch nearby."
+    },
+    "blanks": [
+      {
+        "index": 1,
+        "options": [
+          { "id": "a", "text": "pick him up", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "pick up him", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "picking him up", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["a"] },
+        "explanation": [
+          { "type": "text", "text": "will", "tts": { "voice": "stella" } },
+          { "type": "text", "text": " 后接动词原形，且代词 `him` 必须放在动词与副词之间，构成 " },
+          { "type": "text", "text": "pick him up", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "。" }
+        ]
+      },
+      {
+        "index": 2,
+        "options": [
+          { "id": "a", "text": "After", "tts": { "voice": "stella" } },
+          { "id": "b", "text": "After that", "tts": { "voice": "stella" } },
+          { "id": "c", "text": "At last", "tts": { "voice": "stella" } }
+        ],
+        "grading": { "choice_ids": ["b"] },
+        "explanation": [
+          { "type": "text", "text": "句首承接上一步应写 " },
+          { "type": "text", "text": "After that", "tts": { "voice": "stella" } },
+          { "type": "text", "text": "，`After` 不能单独加逗号置句首，而 `At last` 表“历经波折终于”。" }
+        ]
+      }
+    ],
+    "analysis": [
+      { "type": "text", "text": "接待计划写作须兼顾可分离短语代词中置（" },
+      { "type": "text", "text": "pick him up", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）与规范顺序衔接词（" },
+      { "type": "text", "text": "After that", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）。" }
+    ]
+  },
+  {
+    "id": "tw-trans-01",
+    "type": "translation",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "direction": "zh_to_en",
+    "stem": "将下列周末计划短文的收尾句子译成英文。",
+    "source_text": "最后，我们周日坐火车回家。这将会是一个令人放松的周末！",
+    "reference_translation": "Finally, we are going home by train on Sunday. It will be a relaxing weekend!",
+    "reference_translation_tts": { "voice": "stella" },
+    "acceptable_alternates": [
+      "Finally, we're going home by train on Sunday. It'll be a relaxing weekend!",
+      "Finally, we are going to go home by train on Sunday. This will be a relaxing weekend!"
+    ],
+    "key_terms": [
+      { "term": "Finally" },
+      { "term": "by train on Sunday" },
+      { "term": "will be a relaxing weekend", "variants": ["'ll be a relaxing weekend"] }
+    ],
+    "analysis": [
+      { "type": "text", "text": "常规末项用 " },
+      { "type": "text", "text": "Finally", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 引出；移动动词后按目的地 + 交通 + 时间排列为 " },
+      { "type": "text", "text": "going home by train on Sunday", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "；形容周末令人放松用 `-ing` 形容词 " },
+      { "type": "text", "text": "relaxing", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "，并用 " },
+      { "type": "text", "text": "will be", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 收尾。" }
+    ]
+  },
+  {
+    "id": "tw-write-01",
+    "type": "writing",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "subtype": "sentence_making",
+    "stem": [
+      { "type": "text", "text": "用 " },
+      { "type": "text", "text": "First", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "going to", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 和 " },
+      { "type": "text", "text": "hotel", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 写一句完整的英文，说明你们先去酒店放行李，然后步行去公园。" }
+    ],
+    "requirements": [
+      "正确使用 First、going to 和 hotel。",
+      "使用 and then 或规范断句，避免逗号黏连。",
+      "写一个语法和标点规范的完整英语句子。"
+    ],
+    "keywords": ["First", "going to", "hotel"],
+    "min_words": 10,
+    "max_words": 22,
+    "sample_response": "First, we are going to leave our bags at the hotel and then walk to the park.",
+    "sample_response_tts": { "voice": "stella" },
+    "rubric": {
+      "task_completion": 40,
+      "grammar_accuracy": 35,
+      "coherence": 25
+    },
+    "analysis": [
+      { "type": "text", "text": "句首用 " },
+      { "type": "text", "text": "First", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 加逗号引出第一步，用 " },
+      { "type": "text", "text": "and then", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 顺畅衔接同主语的第二个动作，避免逗号直连两句。" }
+    ]
+  },
+  {
+    "id": "tw-write-02",
+    "type": "writing",
+    "chapter": "出行与周末计划短文写作",
+    "concepts": ["trip-plan-writing"],
+    "subtype": "short_essay",
+    "stem": "写一篇 50–70 词的英文周末出行计划短文：说明这周六你和朋友坐八点半的火车去杭州，先去酒店放行李，再逛西湖并品尝当地美食，最后周日坐火车回家，并在结尾表达你对这次放松之旅的期待。",
+    "requirements": [
+      "写明出行时间、同行人、目的地以及火车发车时间。",
+      "使用至少三个时间顺序词（如 First, Then, Finally）串联行程。",
+      "综合运用现在进行时、一般现在时（车次时刻）、be going to 与 will。",
+      "词数控制在 50–70 词之间，结构清晰分成三段。"
+    ],
+    "keywords": ["First", "Then", "Finally", "going to", "will"],
+    "min_words": 50,
+    "max_words": 70,
+    "sample_response": [
+      {
+        "type": "text",
+        "text": "This Saturday, my friend and I are visiting Hangzhou for the weekend. Our train leaves at 8:30.",
+        "tts": {
+          "voice": "stella",
+          "text": "This Saturday, my friend and I are visiting Hangzhou for the weekend. Our train leaves at eight thirty."
+        }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "First, we are going to leave our bags at the hotel. Then we are going to walk around West Lake and try local dishes. Finally, we are going home by train on Sunday.",
+        "tts": { "voice": "stella" }
+      },
+      { "type": "text", "text": "\n\n" },
+      {
+        "type": "text",
+        "text": "Everything is ready, so it will be a fun and relaxing trip!",
+        "tts": { "voice": "stella" }
+      }
+    ],
+    "rubric": {
+      "task_completion": 40,
+      "grammar_accuracy": 35,
+      "coherence": 25
+    },
+    "analysis": [
+      { "type": "text", "text": "第一段用现在进行时（" },
+      { "type": "text", "text": "are visiting", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）交代已定出行，并用一般现在时（" },
+      { "type": "text", "text": "leaves", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "）说明列车时刻；第二段用 " },
+      { "type": "text", "text": "First", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "Then", "tts": { "voice": "stella" } },
+      { "type": "text", "text": "、" },
+      { "type": "text", "text": "Finally", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 有序衔接行程；第三段用 " },
+      { "type": "text", "text": "will be", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 与 " },
+      { "type": "text", "text": "relaxing", "tts": { "voice": "stella" } },
+      { "type": "text", "text": " 自然收尾，全文共 62 词。" }
+    ]
+  }
+]

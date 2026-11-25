@@ -1,0 +1,42 @@
+{
+  "lesson_id": "future-will",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "future-will",
+      "title": "临时决定、承诺与预测（will / won't / Shall we）",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.3,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "掌握 will / won't 表达当场决定、主动提供帮助、承诺与一般预测，用 Shall we / Shall I 提出建议，并能与 be going to 准确区分。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "future-going-to",
+            "can-permission"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

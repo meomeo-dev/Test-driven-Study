@@ -1,0 +1,39 @@
+{
+  "lesson_id": "hotel-trip-booking",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "hotel-trip-booking",
+      "title": "行程单、酒店预订与出行通知阅读",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 28.6,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "reading_comprehension": 2,
+        "cloze": 1,
+        "translation": 1,
+        "numeric": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 2
+      },
+      "summary": "读懂电子车票/机票确认单、酒店入住须知与航班/列车变更通知，快速核对出发到达时间、登机口/站台、行李额度与免费取消期限。",
+      "skill_focus": "reading_comprehension",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "directions-transport",
+            "future-will",
+            "clock-time"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}

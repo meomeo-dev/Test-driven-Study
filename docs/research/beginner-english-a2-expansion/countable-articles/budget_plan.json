@@ -1,0 +1,41 @@
+{
+  "lesson_id": "countable-articles",
+  "duration_minutes": 40,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "countable-articles",
+      "title": "冠词与名词可数性（a / an / the 与复数）",
+      "estimated_minutes": 40,
+      "lecture_design_min": 14.0,
+      "practice_design_min": 26.0,
+      "planned_item_design_min": 27.5,
+      "target_read_units": 1944,
+      "min_examples": 2,
+      "question_quota": {
+        "listening": 1,
+        "cloze": 1,
+        "translation": 2,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "区分日常高频可数与不可数名词，掌握不定冠词 a/an、定冠词 the 与零冠词在购物、餐饮与办公表达中的基本规则。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A1+",
+      "prerequisites": [
+        {
+          "all_of": [
+            "there-is-are",
+            "demonstratives"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}
