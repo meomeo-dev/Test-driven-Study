@@ -225,7 +225,7 @@ func (s *Service) TestProvider(ctx context.Context, input ProviderUpdate) (Conne
 	defer response.Body.Close()
 	if response.StatusCode < 200 || response.StatusCode >= 300 {
 		var failure *Failure
-		if errors.As(providerFailure(response.StatusCode), &failure) {
+		if errors.As(providerResponseFailure(response.StatusCode, response.Body), &failure) {
 			return ConnectionResult{}, &SettingsError{failure.Message}
 		}
 	}

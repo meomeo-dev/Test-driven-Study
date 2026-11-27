@@ -174,6 +174,27 @@ func TestNestedProviderParameterCannotLeakPrivateLabels(t *testing.T) {
 	}
 }
 
+func TestForbiddenInsufficientBalanceMapsToQuota(t *testing.T) {
+	server := newModelServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusForbidden)
+		w.Write([]byte(`{"code":"INSUFFICIENT_BALANCE","message":"Insufficient account balance for private-user"}`))
+	}))
+	defer server.Close()
+	provider, _ := NewHTTPProvider(testConfig(server.URL))
+	_, _, err := provider.Generate(context.Background(),
+		Parameters{Model: "fixture-reasoner", ReasoningEffort: "low"}, "source")
+	failure, ok := err.(*Failure)
+	if !ok || failure.Code != "quota" || !strings.Contains(failure.Message, "额度不足") ||
+		strings.Contains(failure.Message, "private-user") {
+		t.Fatalf("unexpected failure: %#v", err)
+	}
+	if safeLogToken("permission_error", 64) != "permission_error" ||
+		safeLogToken("Bearer secret key", 64) != "" {
+		t.Fatal("safeLogToken failed sanitization invariant")
+	}
+}
+
 func newModelServer(handler http.Handler) *httptest.Server {
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path == "/responses/input_tokens" {

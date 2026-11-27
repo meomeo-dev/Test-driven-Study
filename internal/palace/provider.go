@@ -66,7 +66,7 @@ func (p *HTTPProvider) Generate(ctx context.Context, input ProviderInput) (Provi
 	}
 	defer response.Body.Close()
 	if response.StatusCode < 200 || response.StatusCode >= 300 {
-		return ProviderOutput{}, providerFailure(response.StatusCode)
+		return ProviderOutput{}, providerResponseFailure(response.StatusCode, response.Body)
 	}
 	payload, err := readBounded(response.Body, maxResponseBytes)
 	if err != nil {
@@ -178,6 +178,49 @@ func (p *HTTPProvider) download(ctx context.Context, raw string) ([]byte, error)
 		return nil, providerFailure(response.StatusCode)
 	}
 	return readBounded(response.Body, maxImageBytes)
+}
+
+func providerResponseFailure(status int, body io.Reader) error {
+	if status == http.StatusForbidden && body != nil {
+		if data, err := readBounded(body, 64<<10); err == nil && isQuotaExceededBody(data) {
+			return providerFailure(http.StatusPaymentRequired)
+		}
+	}
+	return providerFailure(status)
+}
+
+func isQuotaExceededBody(data []byte) bool {
+	var payload struct {
+		Code    string `json:"code"`
+		Type    string `json:"type"`
+		Message string `json:"message"`
+		Error   struct {
+			Code    string `json:"code"`
+			Type    string `json:"type"`
+			Message string `json:"message"`
+		} `json:"error"`
+	}
+	if json.Unmarshal(data, &payload) != nil {
+		return false
+	}
+	for _, token := range []string{payload.Code, payload.Type, payload.Error.Code, payload.Error.Type} {
+		switch strings.ToLower(strings.TrimSpace(token)) {
+		case "insufficient_balance", "insufficient_quota", "billing_hard_limit_reached",
+			"quota_exceeded", "insufficient_credit", "insufficient_credits":
+			return true
+		}
+	}
+	for _, msg := range []string{payload.Message, payload.Error.Message} {
+		lower := strings.ToLower(msg)
+		if strings.Contains(lower, "insufficient account balance") ||
+			strings.Contains(lower, "insufficient balance") ||
+			strings.Contains(lower, "insufficient quota") ||
+			strings.Contains(lower, "exceeded your current quota") ||
+			strings.Contains(msg, "余额不足") {
+			return true
+		}
+	}
+	return false
 }
 
 func providerFailure(status int) error {

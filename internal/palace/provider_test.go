@@ -271,3 +271,49 @@ func TestAllowDirectHTTPSInvariants(t *testing.T) {
 		t.Fatalf("LoadConfig direct HTTPS failed: %+v", loaded)
 	}
 }
+
+func TestForbiddenInsufficientBalanceMapsToQuotaWithoutLeak(t *testing.T) {
+	cases := []struct {
+		name     string
+		body     string
+		wantCode string
+	}{
+		{
+			name:     "flat insufficient balance",
+			body:     `{"code":"INSUFFICIENT_BALANCE","message":"Insufficient account balance for secret-user"}`,
+			wantCode: "quota",
+		},
+		{
+			name:     "nested insufficient quota",
+			body:     `{"error":{"code":"insufficient_quota","message":"You exceeded your current quota"}}`,
+			wantCode: "quota",
+		},
+		{
+			name:     "ordinary forbidden stays authentication",
+			body:     `{"error":{"code":"access_denied","message":"secret-token rejected"}}`,
+			wantCode: "authentication",
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(http.StatusForbidden)
+				io.WriteString(w, tc.body)
+			}))
+			defer server.Close()
+			provider, err := NewHTTPProvider(testConfig(server.URL + "/v1"))
+			if err != nil {
+				t.Fatal(err)
+			}
+			_, err = provider.Generate(context.Background(), ProviderInput{Model: "gpt-image-2", Prompt: "test"})
+			failure, ok := err.(*Failure)
+			if !ok || failure.Code != tc.wantCode {
+				t.Fatalf("got %#v, want code %q", err, tc.wantCode)
+			}
+			if strings.Contains(failure.Message, "secret-") {
+				t.Fatalf("failure leaked upstream text: %q", failure.Message)
+			}
+		})
+	}
+}

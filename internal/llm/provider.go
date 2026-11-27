@@ -6,6 +6,8 @@ import (
 	_ "embed"
 	"encoding/json"
 	"io"
+	"log/slog"
+	"mime"
 	"net"
 	"net/http"
 	"net/url"
@@ -75,7 +77,8 @@ func (p *HTTPProvider) postObservedJSON(ctx context.Context, path string, body a
 	}
 	defer response.Body.Close()
 	if response.StatusCode < 200 || response.StatusCode >= 300 {
-		failure := providerFailure(response.StatusCode)
+		data, readErr := readBounded(response.Body, 64<<10)
+		failure := providerFailureForBody(response.StatusCode, data)
 		if typed, ok := failure.(*Failure); ok {
 			typed.HTTPStatus = response.StatusCode
 		}
@@ -85,7 +88,6 @@ func (p *HTTPProvider) postObservedJSON(ctx context.Context, path string, body a
 				Message string `json:"message"`
 			} `json:"error"`
 		}
-		data, readErr := readBounded(response.Body, 64<<10)
 		if readErr == nil && json.Unmarshal(data, &diagnostic) == nil {
 			parameter := diagnostic.Error.Param
 			if parameter == "" {
@@ -120,6 +122,7 @@ func (p *HTTPProvider) postObservedJSON(ctx context.Context, path string, body a
 				typed.Message = "LLM 端点拒绝了构思结构中的长度约束"
 			}
 		}
+		logProviderRejection(path, body, response, data, failure)
 		return nil, failure
 	}
 	if strings.HasPrefix(response.Header.Get("Content-Type"), "text/event-stream") {
@@ -169,6 +172,122 @@ func readBounded(reader io.Reader, limit int64) ([]byte, error) {
 
 func validText(text string, max int) bool {
 	return strings.TrimSpace(text) != "" && len([]rune(text)) <= max && !strings.ContainsRune(text, '\x00')
+}
+
+func safeLogToken(raw string, max int) string {
+	raw = strings.TrimSpace(raw)
+	if raw == "" || len(raw) > max {
+		return ""
+	}
+	for _, r := range raw {
+		if !((r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') ||
+			(r >= '0' && r <= '9') || r == '_' || r == '-' || r == '.' || r == '/') {
+			return ""
+		}
+	}
+	return raw
+}
+
+func requestShapeMeta(body any) (format string, hasTools bool, inputItems int) {
+	object, ok := body.(map[string]any)
+	if !ok {
+		return "", false, 0
+	}
+	if tools, ok := object["tools"].([]any); ok && len(tools) > 0 {
+		hasTools = true
+	}
+	if input, ok := object["input"].([]json.RawMessage); ok {
+		inputItems = len(input)
+	}
+	if textMap, ok := object["text"].(map[string]any); ok {
+		switch fmtObj := textMap["format"].(type) {
+		case map[string]any:
+			if t, ok := fmtObj["type"].(string); ok {
+				format = safeLogToken(t, 32)
+			}
+		case map[string]string:
+			format = safeLogToken(fmtObj["type"], 32)
+		}
+	}
+	return format, hasTools, inputItems
+}
+
+func logProviderRejection(path string, body any, response *http.Response, data []byte, failure error) {
+	mediaType, _, _ := mime.ParseMediaType(response.Header.Get("Content-Type"))
+	var payload struct {
+		Code  string `json:"code"`
+		Type  string `json:"type"`
+		Error struct {
+			Code string `json:"code"`
+			Type string `json:"type"`
+		} `json:"error"`
+	}
+	_ = json.Unmarshal(data, &payload)
+	code := safeLogToken(payload.Code, 64)
+	if code == "" {
+		code = safeLogToken(payload.Error.Code, 64)
+	}
+	errType := safeLogToken(payload.Type, 64)
+	if errType == "" {
+		errType = safeLogToken(payload.Error.Type, 64)
+	}
+	failureCode, param := "", ""
+	if typed, ok := failure.(*Failure); ok {
+		failureCode, param = typed.Code, typed.Parameter
+	}
+	reqFormat, hasTools, inputItems := requestShapeMeta(body)
+	slog.Warn("llm upstream rejected request",
+		"path", path, "status", response.StatusCode,
+		"content_type", safeLogToken(mediaType, 64),
+		"server", safeLogToken(response.Header.Get("Server"), 48),
+		"upstream_code", code, "upstream_type", errType,
+		"failure_code", failureCode, "param", param,
+		"body_bytes", len(data), "request_format", reqFormat,
+		"has_tools", hasTools, "input_items", inputItems)
+}
+
+func providerFailureForBody(status int, data []byte) error {
+	if status == http.StatusForbidden && isQuotaExceededBody(data) {
+		return providerFailure(http.StatusPaymentRequired)
+	}
+	return providerFailure(status)
+}
+
+func isQuotaExceededBody(data []byte) bool {
+	if len(data) == 0 {
+		return false
+	}
+	var payload struct {
+		Code    string `json:"code"`
+		Type    string `json:"type"`
+		Message string `json:"message"`
+		Error   struct {
+			Code    string `json:"code"`
+			Type    string `json:"type"`
+			Message string `json:"message"`
+		} `json:"error"`
+	}
+	if json.Unmarshal(data, &payload) != nil {
+		return false
+	}
+	for _, token := range []string{payload.Code, payload.Type, payload.Error.Code, payload.Error.Type} {
+		switch strings.ToLower(strings.TrimSpace(token)) {
+		case "insufficient_balance", "insufficient_quota", "billing_hard_limit_reached",
+			"quota_exceeded", "insufficient_credit", "insufficient_credits":
+			return true
+		}
+	}
+	for _, msg := range []string{payload.Message, payload.Error.Message} {
+		lower := strings.ToLower(msg)
+		if strings.Contains(lower, "insufficient account balance") ||
+			strings.Contains(lower, "insufficient balance") ||
+			strings.Contains(lower, "insufficient quota") ||
+			strings.Contains(lower, "exceeded your current quota") ||
+			strings.Contains(msg, "余额不足") {
+			return true
+		}
+	}
+	return false
 }
 
 func providerFailure(status int) error {

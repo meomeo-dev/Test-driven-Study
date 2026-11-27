@@ -278,3 +278,20 @@ func TestAllowDirectHTTPSPersistenceAndLegacyDefault(t *testing.T) {
 		t.Fatalf("legacy settings without allow_direct_https should default false & unready: %+v", view)
 	}
 }
+
+func TestProviderTestClassifiesForbiddenInsufficientBalanceAsQuota(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusForbidden)
+		w.Write([]byte(`{"code":"INSUFFICIENT_BALANCE","message":"Insufficient account balance"}`))
+	}))
+	defer server.Close()
+	options := testOptions(t, nil)
+	options.Config = testConfig(server.URL + "/v1")
+	options.Credentials = memoryStore()
+	s := newService(t, options)
+	_, err := s.TestProvider(context.Background(), settingsInput(s))
+	if err == nil || !strings.Contains(err.Error(), "额度不足") {
+		t.Fatalf("expected quota message, got %v", err)
+	}
+}
