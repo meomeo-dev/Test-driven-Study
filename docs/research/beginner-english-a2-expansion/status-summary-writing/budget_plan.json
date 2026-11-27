@@ -1,0 +1,40 @@
+{
+  "lesson_id": "status-summary-writing",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "status-summary-writing",
+      "title": "阶段总结与进度汇报写作",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 30.4,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "writing": 2,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "short_essay": 1,
+        "sentence_making": 1
+      },
+      "summary": "合理混用现在完成时、一般过去时与将来时，撰写 60–80 词条理清晰的个人学习小结或工作周报更新（short_essay）。",
+      "skill_focus": "writing_application",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "for-since-duration",
+            "progress-update-listening"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

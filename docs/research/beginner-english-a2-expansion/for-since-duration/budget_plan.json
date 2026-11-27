@@ -1,0 +1,42 @@
+{
+  "lesson_id": "for-since-duration",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "for-since-duration",
+      "title": "持续时长与对比（for / since 与一般过去时辨析）",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.3,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "掌握 How long…?、for + 时间段与 since + 时间点，清晰辨别“延续至今/强调当前影响（现在完成时）”与“已结束的过去时间点（一般过去时）”。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "ever-never-already-yet",
+            "days-dates"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

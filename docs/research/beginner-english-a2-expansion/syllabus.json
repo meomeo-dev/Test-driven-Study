@@ -4,7 +4,7 @@
   "description": "在保留现有第 1–10 单元（37.33 小时、41 个知识点）与全部既有 ID 不变的前提下，弱化车间背景，按通用 CEFR A1+→A2 听说读写体系扩展第 11–16 单元（+23.00 小时、+30 个微知识点，总课时 60.33 小时）。",
   "expansion_scope": {
     "base_version": "2.4.0",
-    "target_version": "2.5.0",
+    "target_version": "2.6.0",
     "cefr_band": "A1+ to A2",
     "theme": "General Everyday & Workplace English (non-workshop)",
     "base_minutes": 2240,

@@ -1,0 +1,41 @@
+{
+  "lesson_id": "ever-never-already-yet",
+  "duration_minutes": 45,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "ever-never-already-yet",
+      "title": "经历与进度副词（ever / never / just / already / yet）",
+      "estimated_minutes": 45,
+      "lecture_design_min": 15.7,
+      "practice_design_min": 29.3,
+      "planned_item_design_min": 29.3,
+      "target_read_units": 2180,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 1,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "用 ever/never 交流旅行与生活经历，用 just/already/yet 精准汇报事项“刚刚完成 / 已经完成 / 尚未完成”及其在句中的正确位置。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "present-perfect-forms"
+          ]
+        }
+      ],
+      "vocab_target": 2
+    }
+  ]
+}

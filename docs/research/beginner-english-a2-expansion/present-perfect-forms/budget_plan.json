@@ -1,0 +1,41 @@
+{
+  "lesson_id": "present-perfect-forms",
+  "duration_minutes": 50,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "present-perfect-forms",
+      "title": "现在完成时构成与过去分词（have / has + done）",
+      "estimated_minutes": 50,
+      "lecture_design_min": 17.5,
+      "practice_design_min": 32.5,
+      "planned_item_design_min": 34.5,
+      "target_read_units": 2430,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 1,
+        "reading_comprehension": 1,
+        "cloze": 2,
+        "translation": 2,
+        "writing": 1,
+        "single_choice": 2,
+        "multiple_choice": 1
+      },
+      "writing_subtypes": {
+        "sentence_making": 1
+      },
+      "summary": "掌握现在完成时 have/has + 过去分词的肯定、否定、疑问与缩写形式，熟记日常与职场最高频不规则动词过去分词。",
+      "skill_focus": "grammar_core",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "past-irregular",
+            "did-questions"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}

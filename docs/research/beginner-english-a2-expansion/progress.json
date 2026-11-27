@@ -178,5 +178,61 @@
     "effort_audit": "PASSED",
     "course_check": "PASSED",
     "vocabulary_audit": "PASSED"
+  },
+  "ever-never-already-yet": {
+    "lesson_number": 12,
+    "lesson_slug": "ever-never-already-yet",
+    "unit_id": "experiences-progress",
+    "concepts": [
+      "ever-never-already-yet"
+    ],
+    "estimated_minutes": 45,
+    "title": "经历与进度副词（ever / never / just / already / yet）",
+    "status": "REVIEW_APPROVED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED"
+  },
+  "present-perfect-forms": {
+    "lesson_number": 11,
+    "lesson_slug": "present-perfect-forms",
+    "unit_id": "experiences-progress",
+    "concepts": [
+      "present-perfect-forms"
+    ],
+    "estimated_minutes": 50,
+    "title": "现在完成时构成与过去分词（have / has + done）",
+    "status": "REVIEW_APPROVED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED"
+  },
+  "for-since-duration": {
+    "lesson_number": 13,
+    "lesson_slug": "for-since-duration",
+    "unit_id": "experiences-progress",
+    "concepts": [
+      "for-since-duration"
+    ],
+    "estimated_minutes": 45,
+    "title": "持续时长与对比（for / since 与一般过去时辨析）",
+    "status": "REVIEW_APPROVED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED"
+  },
+  "progress-update-listening": {
+    "lesson_number": 14,
+    "lesson_slug": "progress-update-listening",
+    "unit_id": "experiences-progress",
+    "concepts": [
+      "progress-update-listening"
+    ],
+    "estimated_minutes": 50,
+    "title": "日常分享与工作进度同步听力",
+    "status": "REVIEW_APPROVED",
+    "package_dir": "var/generated-courses/beginner-english",
+    "fact_review": "PASSED",
+    "lang_review": "PASSED"
   }
 }

@@ -1,0 +1,44 @@
+{
+  "lesson_id": "progress-update-listening",
+  "duration_minutes": 50,
+  "track": "language",
+  "concepts": [
+    {
+      "id": "progress-update-listening",
+      "title": "日常分享与工作进度同步听力",
+      "estimated_minutes": 50,
+      "lecture_design_min": 17.5,
+      "practice_design_min": 32.5,
+      "planned_item_design_min": 32.7,
+      "target_read_units": 2430,
+      "min_examples": 3,
+      "question_quota": {
+        "listening": 2,
+        "reading_comprehension": 1,
+        "cloze": 1,
+        "translation": 2,
+        "single_choice": 2,
+        "multiple_choice": 1,
+        "true_false": 1
+      },
+      "summary": "听懂朋友近况分享与办公室项目进度晨会（check-in），精准区分已完成项、进行中项、尚未完成项与持续时长。",
+      "skill_focus": "listening_speaking",
+      "cefr_level": "A2",
+      "prerequisites": [
+        {
+          "all_of": [
+            "for-since-duration",
+            "future-will"
+          ]
+        },
+        {
+          "all_of": [
+            "for-since-duration",
+            "schedule-coordination"
+          ]
+        }
+      ],
+      "vocab_target": 3
+    }
+  ]
+}
