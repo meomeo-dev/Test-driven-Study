@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Floating **Typing Study (打字学习)** module
+  (`web/src/features/typing/`) across memorization, memory palace, and
+  post-submit practice (disabled pre-submit; excluded from mock exams). Extracts
+  sentence-by-sentence drills from the current question and its correct answer
+  across all nine question types (with cloze blank highlights, aligned
+  `study_translation` hints, inline audio controls, scope filters, recall mode,
+  and `Tab` hints), guards Chinese IME composition and uncommitted Pinyin
+  against premature errors, and smoothly auto-scrolls multi-sentence items like
+  a typewriter roll (`#91`).
+- Language-track curriculum workflow upgrades (`scripts/curriculum_workflow/`)
+  adding `track_profiles.py`, cross-unit prerequisite DAG validation, proactive
+  unit vocabulary authoring hooks, lecture/research length caps, and promoted
+  lesson reuse on resume (`#90`, in progress).
 - Repository skill `desktop-gui-design-knowledge`
   (`.agents/skills/desktop-gui-design-knowledge/`) providing desktop platform
   guidelines, design tokens, and Tauri 2 native-shell references (`#83`).
@@ -72,6 +85,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Expanded `beginner-english` to `2.5.0` (`#90`, Units 11–12:
+  `everyday-shopping` and `travel-plans`), reaching **12 units, 51 concepts
+  (2,670 minutes / 44.50 hours), 507 questions across all 9 v2 types, 45 reading
+  and 67 listening study translations, and 93 vocabulary entries** while
+  preserving all legacy IDs; checkpointed Unit 13 (`experiences-progress`)
+  research drafts under `docs/research/beginner-english-a2-expansion/`.
 - Upgraded `course:new` (`course.Scaffold`) to emit valid `protocol_version: 2`
   course packages with concept graphs and tagged v2 items, extended
   `cmd/course install` to accept multiple paths/zips in one invocation, and
@@ -111,6 +130,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Classified upstream HTTP 403 `INSUFFICIENT_BALANCE` / `insufficient_quota`
+  responses as `quota` failures across `internal/llm/` and `internal/palace/`
+  without leaking upstream text, and added sanitized upstream rejection
+  diagnostics in `internal/llm/provider.go`.
 - Added `/learning` to built-mode SPA routing (`isFrontendRoute`), extended
   `written_feedback` HTTP write deadlines and upgraded evaluation prompts to
   strict `json_schema` (with aligned mock fixture routing), fixed DeepSeek TTS

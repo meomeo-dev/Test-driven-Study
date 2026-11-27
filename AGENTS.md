@@ -36,7 +36,7 @@ relevant issue and feature documentation before changing behavior.
 | `internal/palace/` | Image provider, durable task queue, controls and saved images. |
 | `internal/tts/` | Speech synthesis, provider settings and voice-specific cache. |
 | `internal/tasktrace/` | Observed execution-event recording. |
-| `web/src/features/` | React pages, mode hooks, and the 9-type `question-types/` L0–L5 package (`registry.test.ts` enforces zero `types/` cross-imports and `<= 300` lines/file). |
+| `web/src/features/` | React pages, mode hooks, floating `assistant/` and `typing/` windows, and the 9-type `question-types/` L0–L5 package (`registry.test.ts` enforces zero `types/` cross-imports and `<= 300` lines/file). |
 | `web/src/components/`, `web/src/styles/` | Shared controls and application styles. |
 | `web/src/api/` | Handwritten HTTP clients and generated API types. |
 | `tests/browser/`, `tests/startup/`, `tests/fixtures/` | Browser checks, process checks and local providers. |
@@ -159,6 +159,13 @@ inspect their state before restarting services or changing configuration.
   graded review and memorization payloads; never expose them in active unanswered
   exam or pre-submit practice payloads. Regeneration applies to synthesized speech.
   Record the source and license of bundled recordings in the audio asset README.
+- Floating typing study (`web/src/features/typing/`) stays strictly client-side
+  and offline-first, reusing persisted floating-window bounds. Never expose it
+  in mock exams or before practice answer submission (`revealedQuestion` only).
+  Preserve Chinese IME composition deferral (`compositionstart`/`update`/`end`
+  and the CJK pending-Pinyin guard) so uncommitted Pinyin never triggers false
+  errors or accuracy penalties, and call `focus({ preventScroll: true })`
+  before smooth typewriter auto-scrolling.
 - Accepted palace jobs belong to the backend and survive page navigation.
   Preserve pause checkpoints, explicit continuation and image-only retry behavior.
   Uncertain paid requests must never be silently replayed. After restart, only

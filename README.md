@@ -43,7 +43,7 @@ or external database.
 
 | Course | Version | Focus |
 | --- | --- | --- |
-| [Beginner English](courses/beginner-english/README.md) | 2.4.0 | 10 units, 41 concepts, and 424 questions across all nine v2 question types, study translations for all 39 reading and 59 listening items, plus a 71-entry vocabulary notebook with TTS overrides and targeted grammar notes. |
+| [Beginner English](courses/beginner-english/README.md) | 2.5.0 | 12 units, 51 concepts, and 507 questions across all nine v2 question types, study translations for all 45 reading and 67 listening items, plus a 93-entry vocabulary notebook with TTS overrides and targeted grammar notes. |
 | [Elementary Chinese](courses/elementary-chinese/course.json) | 1.0.4 | Local Pinyin recordings for the seven fill-in prompts and combined Pinyin and Han speech for the explanations. |
 | [黄金标准课程模板](courses/golden-course-template/README.md) | 1.4.0 | Reference v2 template covering all nine question types, a five-concept learning path, study translations, and a 12-entry vocabulary notebook. |
 
@@ -113,6 +113,15 @@ and remain compatible via `npm run course:check -- <path>` and `npm run course:i
   practice mode. Explanation playback uses local recordings for Pinyin and
   TTS for Han text.
 - **Light and dark themes:** switch from the toolbar and retain your choice across pages.
+- **Typing study (打字学习):** open the floating typing window in
+  memorization, memory palace, or post-submit practice (disabled before grading
+  to prevent answer leaks) to practice the current question and its correct
+  answer sentence by sentence across all nine question types. Supports English,
+  Chinese, and mixed sentences with Chinese IME composition protection (never
+  grading half-typed Pinyin before Hanzi commit), smooth typewriter auto-scroll
+  on multi-sentence items, scope filters (`全部（题+答）`, `仅英文`, `仅答案`),
+  guided vs. recall (`默写提示`) mode, `Tab` word/character hints, inline TTS
+  playback, and draggable/resizable geometry remembered locally.
 - **[Question assistant (学习助手)](docs/features/assistant/README.md):** click
   the practice toolbar button or the floating assistant in memorization and
   memory palace to ask about the current question. Replies stream with sources
