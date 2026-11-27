@@ -1,5 +1,6 @@
 import type { QuestionTypeModule } from '../../shared/contracts';
 import { creditLabel, hasRichContent } from '../../shared/format';
+import { visibleStudyTranslation } from '../../shared/study-translation';
 import { ClozeBlankList, ClozePassage, ClozeReview } from './components';
 
 export const clozeModule: QuestionTypeModule<'cloze'> = {
@@ -16,19 +17,27 @@ export const clozeModule: QuestionTypeModule<'cloze'> = {
     hasMedia: false,
   },
 
-  renderStimulus: ({ question, reviewQuestion, cloze }) => (
-    <ClozePassage
-      passage={question.content.passage}
-      blanks={question.content.blanks}
-      review={
-        'question_review' in question
-          ? question.question_review
-          : reviewQuestion?.question_review
-      }
-      value={cloze?.value}
-      onJump={cloze?.onJump}
-    />
-  ),
+  renderStimulus: ({
+    question,
+    reviewQuestion,
+    cloze,
+    showStudyTranslation,
+    translationSurface,
+  }) => {
+    const reviewSrc = 'question_review' in question ? question : reviewQuestion;
+    const surface = translationSurface ?? (reviewQuestion ? 'practice_review' : 'memorize');
+    const tr = visibleStudyTranslation(reviewSrc, surface, showStudyTranslation ?? true);
+    return (
+      <ClozePassage
+        passage={question.content.passage}
+        blanks={question.content.blanks}
+        review={reviewSrc?.question_review}
+        value={cloze?.value}
+        translations={tr?.material}
+        onJump={cloze?.onJump}
+      />
+    );
+  },
 
   renderPracticeAnswer: ctx => {
     const review = ctx.reviewQuestion?.question_review;
@@ -86,6 +95,7 @@ export const clozeModule: QuestionTypeModule<'cloze'> = {
       blanks={question.content.blanks}
       value={response}
       review={review?.question_review}
+      translations={visibleStudyTranslation(review, 'exam_review')?.material}
     />
   ),
 

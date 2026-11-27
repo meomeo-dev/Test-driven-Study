@@ -8,6 +8,7 @@ import type {
   Question,
   QuestionType,
   RichText,
+  StudyTranslationSurface,
 } from '../../../api/generated/types.gen';
 import type { ProtectedAudio, QuestionAudioSource } from '../../../components/QuestionAudio';
 
@@ -53,6 +54,7 @@ export type StimulusContext<T extends QuestionType> = {
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
   showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
 };
 
 export type PracticeAnswerContext<T extends QuestionType> = {
@@ -71,6 +73,8 @@ export type PracticeAnswerContext<T extends QuestionType> = {
   pending: boolean;
   shortcuts: boolean;
   partIdPrefix: string;
+  showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
   onChoose: (sign: number) => void;
   onDraft: (draft: ExtendedResponse) => void;
   onNumeric: (value: string) => void;
@@ -123,6 +127,7 @@ export type ReferenceContext<T extends QuestionType> = {
   mode?: 'compact' | 'full';
   includeWritingSample?: boolean;
   showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
 };
 
 export type ReviewContext<T extends QuestionType> = {
@@ -166,7 +171,13 @@ export interface QuestionTypeModule<T extends QuestionType> {
   getExplanationParts: (question: QuestionOf<T>) => ExplanationPart[];
   hasReviewExplanation: (question: QuestionOf<T>) => boolean;
   shouldShowPracticeExplanation: (question: QuestionOf<T>) => boolean;
-  renderWritingSample?: (question: QuestionOf<T>) => ReactNode;
+  renderWritingSample?: (
+    question: QuestionOf<T>,
+    options?: {
+      showStudyTranslation?: boolean;
+      translationSurface?: StudyTranslationSurface;
+    },
+  ) => ReactNode;
   renderWritingCriteria?: (question: QuestionOf<T>) => ReactNode;
   hasWritingCriteria?: (question: QuestionOf<T>) => boolean;
 

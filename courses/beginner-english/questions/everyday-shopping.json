@@ -3,218 +3,639 @@
     "id": "ca-sc-01",
     "type": "single_choice",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": "外出开会前，你想用英文说“我一小时后回来，带一把蓝色的雨伞”，下面哪一句冠词使用完全正确？",
     "options": [
       {
         "id": "a",
         "text": "I will be back in a hour with an blue umbrella.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "I will be back in an hour with a blue umbrella.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "I will be back in a hour with a blue umbrella.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "I will be back in an hour with an blue umbrella.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["b"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我一小时后回来，带一把蓝色的雨伞。（两处冠词均有误）",
+        "b": "我一小时后回来，带一把蓝色的雨伞。",
+        "c": "我一小时后回来，带一把蓝色的雨伞。（a hour 冠词有误）",
+        "d": "我一小时后回来，带一把蓝色的雨伞。（an blue 冠词有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "不定冠词按紧邻词的首音素而非拼写字母选择：" },
-      { "type": "text", "text": "hour", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 的首字母 `h` 不发音，以元音音素开头，须用 " },
-      { "type": "text", "text": "an hour", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；" },
-      { "type": "text", "text": "umbrella", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 前插入形容词 " },
-      { "type": "text", "text": "blue", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后，紧邻词首音为辅音，因此须改为 " },
-      { "type": "text", "text": "a blue umbrella", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "不定冠词按紧邻词的首音素而非拼写字母选择："
+      },
+      {
+        "type": "text",
+        "text": "hour",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的首字母 `h` 不发音，以元音音素开头，须用 "
+      },
+      {
+        "type": "text",
+        "text": "an hour",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "umbrella",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 前插入形容词 "
+      },
+      {
+        "type": "text",
+        "text": "blue",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后，紧邻词首音为辅音，因此须改为 "
+      },
+      {
+        "type": "text",
+        "text": "a blue umbrella",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-sc-02",
     "type": "single_choice",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": "在办公室请同事给打印机添纸并分享好消息时，下面哪一句名词单复数与动词搭配完全正确？",
     "options": [
       {
         "id": "a",
         "text": "Please add two papers to the printer. The news are great.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "Please add an information and two papers to the printer.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "Please add two sheets of paper to the printer. The news is great.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "Please add two sheet of papers to the printer. The news is great.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "请给打印机加两张纸。这个消息很棒。（不可数名词与谓语均有误）",
+        "b": "请给打印机加一条信息和两张纸。（不可数名词用法有误）",
+        "c": "请给打印机加两张纸。这个消息很棒。",
+        "d": "请给打印机加两张纸。这个消息很棒。（量词单复数有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "作打印纸讲的 " },
-      { "type": "text", "text": "paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "news", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "information", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 均为不可数名词：计量打印纸时只将单位词变为复数，写作 " },
-      { "type": "text", "text": "two sheets of paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；" },
-      { "type": "text", "text": "news", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 虽以 `-s` 结尾但一律配单数动词 " },
-      { "type": "text", "text": "is", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "作打印纸讲的 "
+      },
+      {
+        "type": "text",
+        "text": "paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "news",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "information",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均为不可数名词：计量打印纸时只将单位词变为复数，写作 "
+      },
+      {
+        "type": "text",
+        "text": "two sheets of paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "news",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 虽以 `-s` 结尾但一律配单数动词 "
+      },
+      {
+        "type": "text",
+        "text": "is",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-mc-01",
     "type": "multiple_choice",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": "关于定冠词 `the` 与零冠词在通勤、饮食与购物表达中的用法，以下哪两句完全正确？（请选择两项）",
     "options": [
       {
         "id": "a",
         "text": "She goes to work by the subway and has the lunch at noon.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "I go to work by subway and pay for coffee by card.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "I bought a sandwich. The sandwich is fresh.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "He is accountant and drinks the water every morning.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["b", "c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "她坐地铁去上班，中午吃午饭。（冠词多余）",
+        "b": "我坐地铁去上班，刷卡买咖啡。",
+        "c": "我买了一个三明治。这个三明治很新鲜。",
+        "d": "他是会计，每天早上喝水。（冠词使用有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "交通与支付固定搭配 " },
-      { "type": "text", "text": "by subway", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 及泛指饮品 " },
-      { "type": "text", "text": "coffee", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 用零冠词；前文首次提及用 " },
-      { "type": "text", "text": "a sandwich", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，二次提及特指用 " },
-      { "type": "text", "text": "The sandwich", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。三餐固定说 " },
-      { "type": "text", "text": "have lunch", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，单数职业前不可漏冠词，应说 " },
-      { "type": "text", "text": "an accountant", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "交通与支付固定搭配 "
+      },
+      {
+        "type": "text",
+        "text": "by subway",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 及泛指饮品 "
+      },
+      {
+        "type": "text",
+        "text": "coffee",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用零冠词；前文首次提及用 "
+      },
+      {
+        "type": "text",
+        "text": "a sandwich",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，二次提及特指用 "
+      },
+      {
+        "type": "text",
+        "text": "The sandwich",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。三餐固定说 "
+      },
+      {
+        "type": "text",
+        "text": "have lunch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，单数职业前不可漏冠词，应说 "
+      },
+      {
+        "type": "text",
+        "text": "an accountant",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-tf-01",
     "type": "true_false",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": [
-      { "type": "text", "text": "判断下列日常购物句子的语法是否正确：\n" },
+      {
+        "type": "text",
+        "text": "判断下列日常购物句子的语法是否正确：\n"
+      },
       {
         "type": "text",
         "text": "Two people are waiting at the counter with a lot of luggages.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "value": false },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "有两个人带着很多行李在柜台前等候。"
+    },
+    "grading": {
+      "value": false
+    },
     "analysis": [
-      { "type": "text", "text": "不规则复数 " },
-      { "type": "text", "text": "Two people are", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 搭配正确，但 " },
-      { "type": "text", "text": "luggage", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 是不可数名词，不能加 `-s` 写成 `*luggages`，应改为 " },
-      { "type": "text", "text": "a lot of luggage", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "不规则复数 "
+      },
+      {
+        "type": "text",
+        "text": "Two people are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配正确，但 "
+      },
+      {
+        "type": "text",
+        "text": "luggage",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是不可数名词，不能加 `-s` 写成 `*luggages`，应改为 "
+      },
+      {
+        "type": "text",
+        "text": "a lot of luggage",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-cloze-01",
     "type": "cloze",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": "阅读日常购物与办公报销短文，根据冠词和固定搭配规则选词填空。",
     "passage": "I bought {{1}} umbrella and a cup of coffee near the office. I paid {{2}} and kept the receipt for work.",
     "passage_tts": {
       "voice": "stella",
       "text": "I bought an umbrella and a cup of coffee near the office. I paid by card and kept the receipt for work."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我在办公室附近买了一把雨伞和一杯咖啡。我刷卡付了款，并留了小票供工作报销。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
         "options": [
-          { "id": "a", "text": "a", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "an", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "the", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "a",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "an",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "the",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["b"] },
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "umbrella", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 为首次提及的单数可数名词，且首音为元音音素，因此填 " },
-          { "type": "text", "text": "an", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "umbrella",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为首次提及的单数可数名词，且首音为元音音素，因此填 "
+          },
+          {
+            "type": "text",
+            "text": "an",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       },
       {
         "index": 2,
         "options": [
-          { "id": "a", "text": "by card", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "by a card", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "by the card", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "by card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "by a card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "by the card",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["a"] },
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "刷卡付款为固定零冠词搭配 " },
-          { "type": "text", "text": "pay by card", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，中间不加 `a` 或 `the`。" }
+          {
+            "type": "text",
+            "text": "刷卡付款为固定零冠词搭配 "
+          },
+          {
+            "type": "text",
+            "text": "pay by card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，中间不加 `a` 或 `the`。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "第 1 空考查元音音素开头的单数可数名词首次提及用 " },
-      { "type": "text", "text": "an umbrella", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；第 2 空考查支付方式零冠词固定短语 " },
-      { "type": "text", "text": "by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "第 1 空考查元音音素开头的单数可数名词首次提及用 "
+      },
+      {
+        "type": "text",
+        "text": "an umbrella",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；第 2 空考查支付方式零冠词固定短语 "
+      },
+      {
+        "type": "text",
+        "text": "by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-listen-01",
     "type": "listening",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "stem": "听办公室同事关于咖啡馆购物与打印材料的对话，再回答两个问题。",
-    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "M",
@@ -231,10 +652,19 @@
       {
         "speaker": "W",
         "text": "Sure. I also printed two sheets of paper for our notes.",
-        "tts": { "speed": 0.95 }
+        "tts": {
+          "speed": 0.95
+        }
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好！门旁那把绿色的雨伞是你的吗？",
         "是的，是我的。我刚在咖啡馆买了一杯咖啡和一块蛋糕。",
@@ -263,35 +693,55 @@
           {
             "type": "text",
             "text": "What did the woman buy at the cafe?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "coffee-cake",
             "text": "A cup of coffee and a slice of cake.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "tea-bread",
             "text": "A cup of tea and a loaf of bread.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "water-sandwich",
             "text": "A bottle of water and a sandwich.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "choice_ids": ["coffee-cake"] },
+        "grading": {
+          "choice_ids": [
+            "coffee-cake"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "女士在第二句明确说道 " },
+          {
+            "type": "text",
+            "text": "女士在第二句明确说道 "
+          },
           {
             "type": "text",
             "text": "a cup of coffee and a slice of cake",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       },
       {
@@ -301,369 +751,1099 @@
           {
             "type": "text",
             "text": "The man asks the woman to send the meeting file by email before lunch.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": true },
+        "grading": {
+          "value": true
+        },
         "analysis": [
-          { "type": "text", "text": "男士请求女士 " },
+          {
+            "type": "text",
+            "text": "男士请求女士 "
+          },
           {
             "type": "text",
             "text": "send me the meeting file by email before lunch",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "，与陈述完全一致。" }
+          {
+            "type": "text",
+            "text": "，与陈述完全一致。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "对话集中呈现了不可数名词的量词计数 " },
-      { "type": "text", "text": "a cup of coffee", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "a slice of cake", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "two sheets of paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 以及零冠词搭配 " },
-      { "type": "text", "text": "by email", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 和 " },
-      { "type": "text", "text": "before lunch", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "对话集中呈现了不可数名词的量词计数 "
+      },
+      {
+        "type": "text",
+        "text": "a cup of coffee",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "a slice of cake",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "two sheets of paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及零冠词搭配 "
+      },
+      {
+        "type": "text",
+        "text": "by email",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "before lunch",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-trans-01",
     "type": "translation",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "direction": "en_to_zh",
     "stem": "将下列办公与日常场景句子译成中文。",
     "source_text": "Here is the receipt, and there are two sheets of paper on the desk.",
-    "source_text_tts": { "voice": "stella" },
+    "source_text_tts": {
+      "voice": "stella"
+    },
     "reference_translation": "这是小票，桌上有两张纸。",
     "acceptable_alternates": [
       "这是那张小票，桌子上有两张纸。",
       "小票在这里，桌上有两张打印纸。"
     ],
     "key_terms": [
-      { "term": "小票", "variants": ["收据"] },
-      { "term": "两张纸", "variants": ["两张打印纸"] }
+      {
+        "term": "小票",
+        "variants": [
+          "收据"
+        ]
+      },
+      {
+        "term": "两张纸",
+        "variants": [
+          "两张打印纸"
+        ]
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "the receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 指双方共知的那张小票；" },
-      { "type": "text", "text": "two sheets of paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 通过量词复数 " },
-      { "type": "text", "text": "sheets", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 表达“两张纸”，因此存在句用 " },
-      { "type": "text", "text": "there are", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "the receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指双方共知的那张小票；"
+      },
+      {
+        "type": "text",
+        "text": "two sheets of paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 通过量词复数 "
+      },
+      {
+        "type": "text",
+        "text": "sheets",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表达“两张纸”，因此存在句用 "
+      },
+      {
+        "type": "text",
+        "text": "there are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-trans-02",
     "type": "translation",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "direction": "zh_to_en",
     "stem": "将下列日常购物句子译成英文。",
     "source_text": "我买了一瓶水和两片面包，然后刷卡付款。",
     "reference_translation": "I bought a bottle of water and two slices of bread, and then I paid by card.",
-    "reference_translation_tts": { "voice": "stella" },
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
     "acceptable_alternates": [
       "I bought a bottle of water and two slices of bread and paid by card.",
       "I bought a bottle of water and two pieces of bread, then paid by card."
     ],
     "key_terms": [
-      { "term": "a bottle of water" },
-      { "term": "two slices of bread", "variants": ["two pieces of bread"] },
-      { "term": "by card" }
+      {
+        "term": "a bottle of water"
+      },
+      {
+        "term": "two slices of bread",
+        "variants": [
+          "two pieces of bread"
+        ]
+      },
+      {
+        "term": "by card"
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "water", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "bread", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 均为不可数名词，需分别借容器和单位词写作 " },
-      { "type": "text", "text": "a bottle of water", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "two slices of bread", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；刷卡用零冠词短语 " },
-      { "type": "text", "text": "pay by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "water",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "bread",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 均为不可数名词，需分别借容器和单位词写作 "
+      },
+      {
+        "type": "text",
+        "text": "a bottle of water",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "two slices of bread",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；刷卡用零冠词短语 "
+      },
+      {
+        "type": "text",
+        "text": "pay by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "ca-write-01",
     "type": "writing",
     "chapter": "冠词与名词可数性（a / an / the 与复数）",
-    "concepts": ["countable-articles"],
+    "concepts": [
+      "countable-articles"
+    ],
     "subtype": "sentence_making",
     "stem": [
-      { "type": "text", "text": "用 " },
-      { "type": "text", "text": "an umbrella", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "in cash", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 和 " },
-      { "type": "text", "text": "a receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 写一句完整的英文，说明你在商店用现金买了一把伞并拿到了小票。" }
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "an umbrella",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "in cash",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "a receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的英文，说明你在商店用现金买了一把伞并拿到了小票。"
+      }
     ],
     "requirements": [
       "正确包含 an umbrella、in cash 和 a receipt。",
       "写一个语法完整、时态一致的英语句子。"
     ],
-    "keywords": ["an umbrella", "in cash", "a receipt"],
+    "keywords": [
+      "an umbrella",
+      "in cash",
+      "a receipt"
+    ],
     "min_words": 6,
     "max_words": 16,
     "sample_response": "I bought an umbrella in cash and got a receipt.",
-    "sample_response_tts": { "voice": "stella" },
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "我用现金买了一把雨伞，并拿到了一张小票。"
+      ]
+    },
     "rubric": {
       "task_completion": 40,
       "article_and_countability": 40,
       "language_accuracy": 20
     },
     "analysis": [
-      { "type": "text", "text": "单数可数名词 " },
-      { "type": "text", "text": "umbrella", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 首次提及配 " },
-      { "type": "text", "text": "an", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，" },
-      { "type": "text", "text": "receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 不可裸用须加 " },
-      { "type": "text", "text": "a", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，现金支付固定用零冠词 " },
-      { "type": "text", "text": "in cash", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "单数可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "umbrella",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 首次提及配 "
+      },
+      {
+        "type": "text",
+        "text": "an",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，"
+      },
+      {
+        "type": "text",
+        "text": "receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不可裸用须加 "
+      },
+      {
+        "type": "text",
+        "text": "a",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，现金支付固定用零冠词 "
+      },
+      {
+        "type": "text",
+        "text": "in cash",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-sc-01",
     "type": "single_choice",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": "在办公室茶水间，你想礼貌地问来宾“要不要喝点茶”，并顺便向同事核实“还有没有剩纸杯”。下列哪组问句最地道准确？",
     "options": [
       {
         "id": "a",
         "text": "Would you like any tea? Is there some paper cups left?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "Would you like some tea? Are there any paper cups left?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "Would you like some tea? Are there some paper cups left?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "Would you like any tea? Are there any paper cups left?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["b"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你想喝点茶吗？还有剩纸杯吗？（量词与单复数均有误）",
+        "b": "你想喝点茶吗？还有剩纸杯吗？",
+        "c": "你想喝点茶吗？还有剩纸杯吗？（第二句 some 用法有误）",
+        "d": "你想喝点茶吗？还有剩纸杯吗？（第一句 any 用法有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "礼貌提议或招待用 " },
-      { "type": "text", "text": "Would you like some tea?", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；普通信息核实有无用 " },
-      { "type": "text", "text": "any", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，且复数名词 " },
-      { "type": "text", "text": "paper cups", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 须搭配 " },
-      { "type": "text", "text": "Are there", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "礼貌提议或招待用 "
+      },
+      {
+        "type": "text",
+        "text": "Would you like some tea?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；普通信息核实有无用 "
+      },
+      {
+        "type": "text",
+        "text": "any",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，且复数名词 "
+      },
+      {
+        "type": "text",
+        "text": "paper cups",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 须搭配 "
+      },
+      {
+        "type": "text",
+        "text": "Are there",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-sc-02",
     "type": "single_choice",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": "超市采购时需要问三个问题：① 还剩多少牛奶；② 需要买几瓶水；③ 这些苹果多少钱。以下哪组问法完全正确？",
     "options": [
       {
         "id": "a",
         "text": "How many milk? How much bottles of water? How many are these apples?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "How much milk? How much bottles of water? How much are these apples?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "How much milk? How many bottles of water? How much are these apples?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "How much milk? How many bottles of water? How many are these apples?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "多少牛奶？几瓶水？这些苹果多少钱？（三处疑问词均有误）",
+        "b": "多少牛奶？几瓶水？这些苹果多少钱？（第二句 How much 有误）",
+        "c": "多少牛奶？几瓶水？这些苹果多少钱？",
+        "d": "多少牛奶？几瓶水？这些苹果多少钱？（第三句 How many 有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "不可数名词 " },
-      { "type": "text", "text": "milk", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 用 " },
-      { "type": "text", "text": "How much", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；加了可数容器复数 " },
-      { "type": "text", "text": "bottles", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后改用 " },
-      { "type": "text", "text": "How many", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；询问价格无论商品单复数一律用 " },
-      { "type": "text", "text": "How much", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，动词随 " },
-      { "type": "text", "text": "these apples", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 用 " },
-      { "type": "text", "text": "are", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "不可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "milk",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用 "
+      },
+      {
+        "type": "text",
+        "text": "How much",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；加了可数容器复数 "
+      },
+      {
+        "type": "text",
+        "text": "bottles",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后改用 "
+      },
+      {
+        "type": "text",
+        "text": "How many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；询问价格无论商品单复数一律用 "
+      },
+      {
+        "type": "text",
+        "text": "How much",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，动词随 "
+      },
+      {
+        "type": "text",
+        "text": "these apples",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用 "
+      },
+      {
+        "type": "text",
+        "text": "are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-mc-01",
     "type": "multiple_choice",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": "关于数量词在家庭厨房与办公室补货中的搭配，以下哪两句完全正确？（请选择两项）",
     "options": [
       {
         "id": "a",
         "text": "There is only a little milk left, and we only have a few eggs.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "We have a few money left, so we can buy a carton of juice.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "There aren't many chairs in the meeting room, and we don't have much printer paper.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "There isn't no rice at home, and we need a lots of bread.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["a", "c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "只剩一点牛奶了，我们也只剩几个鸡蛋。",
+        "b": "我们还剩一点钱，所以可以买一盒果汁。（a few 修饰不可数名词有误）",
+        "c": "会议室里椅子不多，而且我们的打印纸也不多了。",
+        "d": "家里没有大米了，而且我们需要很多面包。（双重否定与量词拼写有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "a little", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "much", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 修饰不可数名词（" },
-      { "type": "text", "text": "milk", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "printer paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "），" },
-      { "type": "text", "text": "a few", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "many", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 修饰复数可数名词（" },
-      { "type": "text", "text": "eggs", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "chairs", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）。`money` 不可数不能配 `a few`，同时应避免双重否定 `*isn't no` 与错拼 `*a lots of`。" }
+      {
+        "type": "text",
+        "text": "a little",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "much",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰不可数名词（"
+      },
+      {
+        "type": "text",
+        "text": "milk",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "printer paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），"
+      },
+      {
+        "type": "text",
+        "text": "a few",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "many",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰复数可数名词（"
+      },
+      {
+        "type": "text",
+        "text": "eggs",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "chairs",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。`money` 不可数不能配 `a few`，同时应避免双重否定 `*isn't no` 与错拼 `*a lots of`。"
+      }
     ]
   },
   {
     "id": "qa-tf-01",
     "type": "true_false",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": [
-      { "type": "text", "text": "判断下列语义理解是否正确：" },
+      {
+        "type": "text",
+        "text": "判断下列语义理解是否正确："
+      },
       {
         "type": "text",
         "text": "We have little time left before the store closes.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
-      { "type": "text", "text": " 与 " },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
       {
         "type": "text",
         "text": "We have a little time left before the store closes.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
-      { "type": "text", "text": " 表达的是完全相同的积极含义“还有一点时间、够用”。" }
+      {
+        "type": "text",
+        "text": " 表达的是完全相同的积极含义“还有一点时间、够用”。"
+      }
     ],
-    "grading": { "value": false },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "商店关门前我们几乎没有时间了；对比：商店关门前我们还有一点时间。"
+    },
+    "grading": {
+      "value": false
+    },
     "analysis": [
-      { "type": "text", "text": "a little time", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 带积极意味，表示“还有一点时间”；省略 `a` 的 " },
-      { "type": "text", "text": "little time", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 转为否定意味，表示“几乎没有时间了”，两者语气相反。" }
+      {
+        "type": "text",
+        "text": "a little time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 带积极意味，表示“还有一点时间”；省略 `a` 的 "
+      },
+      {
+        "type": "text",
+        "text": "little time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 转为否定意味，表示“几乎没有时间了”，两者语气相反。"
+      }
     ]
   },
   {
     "id": "qa-cloze-01",
     "type": "cloze",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": "阅读办公室文具盘点便条，根据句式与名词可数性选词填空。",
     "passage": "We still have {{1}} notebooks in the cabinet, so we do not need more. However, we do not have {{2}} printer paper left.",
     "passage_tts": {
       "voice": "stella",
       "text": "We still have a lot of notebooks in the cabinet, so we do not need more. However, we do not have much printer paper left."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "柜子里还有很多笔记本，所以我们不需要再买了。不过，我们剩下的打印纸不多了。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
         "options": [
-          { "id": "a", "text": "a lot of", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "much", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "a little", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "a lot of",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "a little",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["a"] },
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "肯定句中修饰复数可数名词 " },
-          { "type": "text", "text": "notebooks", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 表“很多”首选 " },
-          { "type": "text", "text": "a lot of", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "；" },
-          { "type": "text", "text": "much", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 和 " },
-          { "type": "text", "text": "a little", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 只修饰不可数名词。" }
+          {
+            "type": "text",
+            "text": "肯定句中修饰复数可数名词 "
+          },
+          {
+            "type": "text",
+            "text": "notebooks",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表“很多”首选 "
+          },
+          {
+            "type": "text",
+            "text": "a lot of",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "；"
+          },
+          {
+            "type": "text",
+            "text": "much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 和 "
+          },
+          {
+            "type": "text",
+            "text": "a little",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 只修饰不可数名词。"
+          }
         ]
       },
       {
         "index": 2,
         "options": [
-          { "id": "a", "text": "many", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "much", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "a few", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "many",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "a few",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["b"] },
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "否定句修饰不可数名词 " },
-          { "type": "text", "text": "printer paper", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 须用 " },
-          { "type": "text", "text": "much", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "否定句修饰不可数名词 "
+          },
+          {
+            "type": "text",
+            "text": "printer paper",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 须用 "
+          },
+          {
+            "type": "text",
+            "text": "much",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "日常肯定句表“很多”优先用 " },
-      { "type": "text", "text": "a lot of", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；否定句中不可数名词 " },
-      { "type": "text", "text": "printer paper", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 搭配 " },
-      { "type": "text", "text": "much", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "日常肯定句表“很多”优先用 "
+      },
+      {
+        "type": "text",
+        "text": "a lot of",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；否定句中不可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "printer paper",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 搭配 "
+      },
+      {
+        "type": "text",
+        "text": "much",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-listen-01",
     "type": "listening",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "stem": "听两位室友周末采购前清点食物库存的对话，再回答两个问题。",
-    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
       {
         "speaker": "W",
@@ -676,7 +1856,9 @@
       {
         "speaker": "W",
         "text": "Okay, let's buy a carton of milk and some apples. How much rice do we have?",
-        "tts": { "speed": 0.95 }
+        "tts": {
+          "speed": 0.95
+        }
       },
       {
         "speaker": "M",
@@ -684,6 +1866,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "我们早餐还剩牛奶或苹果吗？",
         "牛奶只剩一点了，苹果也不多，只剩两个。",
@@ -712,35 +1901,55 @@
           {
             "type": "text",
             "text": "What do they plan to buy today?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "milk-apples",
             "text": "A carton of milk and some apples.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "rice-juice",
             "text": "A bag of rice and a bottle of juice.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "bread-eggs",
             "text": "A loaf of bread and a carton of eggs.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "choice_ids": ["milk-apples"] },
+        "grading": {
+          "choice_ids": [
+            "milk-apples"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "女士在第三句明确提议 " },
+          {
+            "type": "text",
+            "text": "女士在第三句明确提议 "
+          },
           {
             "type": "text",
             "text": "buy a carton of milk and some apples",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       },
       {
@@ -750,391 +1959,1120 @@
           {
             "type": "text",
             "text": "They need to buy more rice because there is very little left.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": false },
+        "grading": {
+          "value": false
+        },
         "analysis": [
-          { "type": "text", "text": "男士在最后一句说 " },
+          {
+            "type": "text",
+            "text": "男士在最后一句说 "
+          },
           {
             "type": "text",
             "text": "We have a lot of rice, so we do not need any today.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "，大米充足，无需购买。" }
+          {
+            "type": "text",
+            "text": "，大米充足，无需购买。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "对话覆盖了普通疑问用 " },
-      { "type": "text", "text": "any", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、少量区分 " },
-      { "type": "text", "text": "a little milk", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "not many apples", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，以及肯定句数量表达 " },
-      { "type": "text", "text": "a lot of rice", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "对话覆盖了普通疑问用 "
+      },
+      {
+        "type": "text",
+        "text": "any",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、少量区分 "
+      },
+      {
+        "type": "text",
+        "text": "a little milk",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "not many apples",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，以及肯定句数量表达 "
+      },
+      {
+        "type": "text",
+        "text": "a lot of rice",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-trans-01",
     "type": "translation",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "direction": "en_to_zh",
     "stem": "将下列礼貌点饮品的问句译成中文。",
     "source_text": "Can I have some coffee with a little milk, please?",
-    "source_text_tts": { "voice": "stella" },
+    "source_text_tts": {
+      "voice": "stella"
+    },
     "reference_translation": "请问能给我来点加少许牛奶的咖啡吗？",
     "acceptable_alternates": [
       "请问可以给我点咖啡加一点牛奶吗？",
       "能给我来些加一点牛奶的咖啡吗，谢谢？"
     ],
     "key_terms": [
-      { "term": "咖啡" },
-      { "term": "一点牛奶", "variants": ["少许牛奶", "一点儿牛奶"] }
+      {
+        "term": "咖啡"
+      },
+      {
+        "term": "一点牛奶",
+        "variants": [
+          "少许牛奶",
+          "一点儿牛奶"
+        ]
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "Can I have some", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 属于礼貌请求问句，习惯用 " },
-      { "type": "text", "text": "some", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 而非 `any`；" },
-      { "type": "text", "text": "a little milk", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 修饰不可数名词表示“少许牛奶”。" }
+      {
+        "type": "text",
+        "text": "Can I have some",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 属于礼貌请求问句，习惯用 "
+      },
+      {
+        "type": "text",
+        "text": "some",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 而非 `any`；"
+      },
+      {
+        "type": "text",
+        "text": "a little milk",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 修饰不可数名词表示“少许牛奶”。"
+      }
     ]
   },
   {
     "id": "qa-trans-02",
     "type": "translation",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "direction": "zh_to_en",
     "stem": "将下列日常采购句子译成英文。",
     "source_text": "我们有足够的时间买两瓶水和一些面包。",
     "reference_translation": "We have enough time to buy two bottles of water and some bread.",
-    "reference_translation_tts": { "voice": "stella" },
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
     "acceptable_alternates": [
       "We have enough time to buy 2 bottles of water and some bread."
     ],
     "key_terms": [
-      { "term": "enough time" },
-      { "term": "two bottles of water", "variants": ["2 bottles of water"] },
-      { "term": "some bread" }
+      {
+        "term": "enough time"
+      },
+      {
+        "term": "two bottles of water",
+        "variants": [
+          "2 bottles of water"
+        ]
+      },
+      {
+        "term": "some bread"
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "enough", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 放在不可数名词 " },
-      { "type": "text", "text": "time", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 之前；“两瓶水”只把容器变为复数写作 " },
-      { "type": "text", "text": "two bottles of water", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，肯定句中“一些面包”用 " },
-      { "type": "text", "text": "some bread", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "enough",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 放在不可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "time",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 之前；“两瓶水”只把容器变为复数写作 "
+      },
+      {
+        "type": "text",
+        "text": "two bottles of water",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，肯定句中“一些面包”用 "
+      },
+      {
+        "type": "text",
+        "text": "some bread",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "qa-write-01",
     "type": "writing",
     "chapter": "数量表达（some / any / much / many / a lot of）",
-    "concepts": ["quantifiers-amounts"],
+    "concepts": [
+      "quantifiers-amounts"
+    ],
     "subtype": "sentence_making",
     "stem": [
-      { "type": "text", "text": "用 " },
-      { "type": "text", "text": "a few", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、" },
-      { "type": "text", "text": "any", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 和 " },
-      { "type": "text", "text": "tea", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 写一句完整的英文，说明办公室里还有几个纸杯，但没有剩茶了。" }
+      {
+        "type": "text",
+        "text": "用 "
+      },
+      {
+        "type": "text",
+        "text": "a few",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、"
+      },
+      {
+        "type": "text",
+        "text": "any",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 和 "
+      },
+      {
+        "type": "text",
+        "text": "tea",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 写一句完整的英文，说明办公室里还有几个纸杯，但没有剩茶了。"
+      }
     ],
     "requirements": [
       "正确包含 a few、any 和 tea。",
       "可数复数与不可数名词的主谓一致准确。"
     ],
-    "keywords": ["a few", "any", "tea"],
+    "keywords": [
+      "a few",
+      "any",
+      "tea"
+    ],
     "min_words": 8,
     "max_words": 22,
     "sample_response": "There are a few paper cups in the office, but there is not any tea left.",
-    "sample_response_tts": { "voice": "stella" },
+    "sample_response_tts": {
+      "voice": "stella"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "办公室里还有几个纸杯，但已经没有剩茶了。"
+      ]
+    },
     "rubric": {
       "task_completion": 40,
       "quantifier_accuracy": 40,
       "language_accuracy": 20
     },
     "analysis": [
-      { "type": "text", "text": "a few", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后接复数可数名词 " },
-      { "type": "text", "text": "paper cups", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 配 " },
-      { "type": "text", "text": "There are", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；否定句中不可数名词 " },
-      { "type": "text", "text": "tea", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 配 " },
-      { "type": "text", "text": "there is not any tea", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "a few",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后接复数可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "paper cups",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 配 "
+      },
+      {
+        "type": "text",
+        "text": "There are",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；否定句中不可数名词 "
+      },
+      {
+        "type": "text",
+        "text": "tea",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 配 "
+      },
+      {
+        "type": "text",
+        "text": "there is not any tea",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "sd-sc-01",
     "type": "single_choice",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "在写字楼楼下的咖啡馆点一杯中杯冰拿铁带走，下面哪一句最礼貌地道？",
     "options": [
       {
         "id": "a",
         "text": "I want a medium iced latte to bring.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "I like a medium iced latte to go.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "I'd like a medium iced latte to go, please.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "Give me a medium iced latte to take.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我要一杯中杯冰拿铁带走。（语气生硬且 to bring 用法有误）",
+        "b": "我平时喜欢喝外带的中杯冰拿铁。（不宜用于点单）",
+        "c": "请问我要一杯中杯冰拿铁外带。",
+        "d": "给我一杯中杯冰拿铁拿着。（语气生硬且 to take 用法有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "点单表达此刻需求应用礼貌句型（如 " },
-      { "type": "text", "text": "I'd like a medium iced latte to go, please.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "），而不是表示平时爱好的 " },
-      { "type": "text", "text": "I like", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 或偏生硬的 `I want` / `Give me`）；外带应说 " },
-      { "type": "text", "text": "to go", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 或英式 " },
-      { "type": "text", "text": "to take away", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "点单表达此刻需求应用礼貌句型（如 "
+      },
+      {
+        "type": "text",
+        "text": "I'd like a medium iced latte to go, please.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），而不是表示平时爱好的 "
+      },
+      {
+        "type": "text",
+        "text": "I like",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或偏生硬的 `I want` / `Give me`）；外带应说 "
+      },
+      {
+        "type": "text",
+        "text": "to go",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或英式 "
+      },
+      {
+        "type": "text",
+        "text": "to take away",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "sd-sc-02",
     "type": "single_choice",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "在商店看到一双运动鞋想询价并试穿，以下哪一组英文问句完全正确？",
     "options": [
       {
         "id": "a",
         "text": "How much money is these sneakers? Can I try on them?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "How much are these sneakers? Can I try them on?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "How much does these sneakers cost? Can I try on them?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "How much is it cost for these sneakers? Can I try them on?",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["b"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这双运动鞋多少钱？我可以试穿一下吗？（询价、谓语与代词位置均有误）",
+        "b": "这双运动鞋多少钱？我可以试穿一下吗？",
+        "c": "这双运动鞋多少钱？我可以试穿一下吗？（助动词与代词位置有误）",
+        "d": "这双运动鞋多少钱？我可以试穿一下吗？（询价句式有误）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "b"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "成双鞋类名词 " },
-      { "type": "text", "text": "sneakers", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 为复数，询价用 " },
-      { "type": "text", "text": "How much are these sneakers?", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，不加 `money` 且禁混拼 `*is it cost`；代词作宾语时必须放在 " },
-      { "type": "text", "text": "try", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "on", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 中间，即 " },
-      { "type": "text", "text": "try them on", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "成双鞋类名词 "
+      },
+      {
+        "type": "text",
+        "text": "sneakers",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 为复数，询价用 "
+      },
+      {
+        "type": "text",
+        "text": "How much are these sneakers?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，不加 `money` 且禁混拼 `*is it cost`；代词作宾语时必须放在 "
+      },
+      {
+        "type": "text",
+        "text": "try",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 中间，即 "
+      },
+      {
+        "type": "text",
+        "text": "try them on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "sd-mc-01",
     "type": "multiple_choice",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "关于服装试穿评价、换货与结账的英文表达，以下哪两句完全正确地道？（请选择两项）",
     "options": [
       {
         "id": "a",
         "text": "The price of this coat is too expensive, so I cannot buy it.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "b",
         "text": "That blue color really suits you, and the jacket fits well.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "c",
         "text": "Could I exchange this shirt for a medium? I paid by card.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
       {
         "id": "d",
         "text": "Here are your changes and your bill after you paid.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
-    "grading": { "choice_ids": ["b", "c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这件外套的价格太贵了，所以我买不起。（price 应配 high，搭配有误）",
+        "b": "那种蓝色很衬你，而且这件夹克很合身。",
+        "c": "我能把这件衬衫换成中号吗？我是刷卡付的款。",
+        "d": "这是您付款后的找零和账单。（change 不可数且应用 receipt）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "b",
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "suit", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 表颜色款式衬人，" },
-      { "type": "text", "text": "fit", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 表尺码合身；换货固定用 `exchange A for B`（如 " },
-      { "type": "text", "text": "exchange this shirt for a medium", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "），刷卡用 " },
-      { "type": "text", "text": "pay by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。价格高低应配 `high` 或 `low`（商品才用 `expensive`）；付款后的小票是 " },
-      { "type": "text", "text": "receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，找零 " },
-      { "type": "text", "text": "change", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 不可数不能加 `-s`。" }
+      {
+        "type": "text",
+        "text": "suit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表颜色款式衬人，"
+      },
+      {
+        "type": "text",
+        "text": "fit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表尺码合身；换货固定用 `exchange A for B`（如 "
+      },
+      {
+        "type": "text",
+        "text": "exchange this shirt for a medium",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），刷卡用 "
+      },
+      {
+        "type": "text",
+        "text": "pay by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。价格高低应配 `high` 或 `low`（商品才用 `expensive`）；付款后的小票是 "
+      },
+      {
+        "type": "text",
+        "text": "receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，找零 "
+      },
+      {
+        "type": "text",
+        "text": "change",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 不可数不能加 `-s`。"
+      }
     ]
   },
   {
     "id": "sd-tf-01",
     "type": "true_false",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": [
-      { "type": "text", "text": "判断下列折扣换算是否正确：一件原价 50 美元的外套标着 " },
+      {
+        "type": "text",
+        "text": "判断下列折扣换算是否正确：一件原价 50 美元的外套标着 "
+      },
       {
         "type": "text",
         "text": "20% off today",
-        "tts": { "voice": "stella", "text": "twenty percent off today" }
+        "tts": {
+          "voice": "stella",
+          "text": "twenty percent off today"
+        }
       },
-      { "type": "text", "text": "，意思是打中文里的两折，顾客只需付 10 美元。" }
+      {
+        "type": "text",
+        "text": "，意思是打中文里的两折，顾客只需付 10 美元。"
+      }
     ],
-    "grading": { "value": false },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "今日减价 20%（打八折）。"
+    },
+    "grading": {
+      "value": false
+    },
     "analysis": [
-      { "type": "text", "text": "英文折扣标的是减掉的比例，" },
+      {
+        "type": "text",
+        "text": "英文折扣标的是减掉的比例，"
+      },
       {
         "type": "text",
         "text": "20% off",
-        "tts": { "voice": "stella", "text": "twenty percent off" }
+        "tts": {
+          "voice": "stella",
+          "text": "twenty percent off"
+        }
       },
-      { "type": "text", "text": " 表示减价 20%，实付 80%（中文八折）。原价 50 美元的外套打八折应实付 40 美元，而非 10 美元。" }
+      {
+        "type": "text",
+        "text": " 表示减价 20%，实付 80%（中文八折）。原价 50 美元的外套打八折应实付 40 美元，而非 10 美元。"
+      }
     ]
   },
   {
     "id": "sd-tf-02",
     "type": "true_false",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
-    "stem": [
-      { "type": "text", "text": "判断下列餐厅应答说法是否正确：店员用选择疑问句问 " },
-      { "type": "text", "text": "For here or to go?", "tts": { "voice": "tide" } },
-      { "type": "text", "text": " 时，应直接回答 " },
-      { "type": "text", "text": "For here, please.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 或 " },
-      { "type": "text", "text": "To go, please.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，而不是简单回答 " },
-      { "type": "text", "text": "Yes.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "。" }
+    "concepts": [
+      "shopping-dining-phrases"
     ],
-    "grading": { "value": true },
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列餐厅应答说法是否正确：店员用选择疑问句问 "
+      },
+      {
+        "type": "text",
+        "text": "For here or to go?",
+        "tts": {
+          "voice": "tide"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 时，应直接回答 "
+      },
+      {
+        "type": "text",
+        "text": "For here, please.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "To go, please.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，而不是简单回答 "
+      },
+      {
+        "type": "text",
+        "text": "Yes.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
+    ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "堂食还是外带？——请堂食。／请外带。"
+    },
+    "grading": {
+      "value": true
+    },
     "analysis": [
-      { "type": "text", "text": "For here or to go?", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "（英式 " },
-      { "type": "text", "text": "Eat in or take away?", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）是选择疑问句，读作前升后降，直接选答堂食或外带并加 " },
-      { "type": "text", "text": "please", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 才清晰礼貌。" }
+      {
+        "type": "text",
+        "text": "For here or to go?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（英式 "
+      },
+      {
+        "type": "text",
+        "text": "Eat in or take away?",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）是选择疑问句，读作前升后降，直接选答堂食或外带并加 "
+      },
+      {
+        "type": "text",
+        "text": "please",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 才清晰礼貌。"
+      }
     ]
   },
   {
     "id": "sd-cloze-01",
     "type": "cloze",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "阅读服装店选码与结账的对话句子，选出恰当的介词短语填空。",
     "passage": "Excuse me, this sweater is a bit tight. Do you have it {{1}}? Also, can I {{2}} at the counter?",
     "passage_tts": {
       "voice": "stella",
       "text": "Excuse me, this sweater is a bit tight. Do you have it in a larger size? Also, can I pay by card at the counter?"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "打扰一下，这件毛衣有点紧。你们有大一号的吗？另外，我可以在柜台刷卡付款吗？"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
         "options": [
-          { "id": "a", "text": "in a larger size", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "on larger size", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "at a larger size", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "in a larger size",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "on larger size",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "at a larger size",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["a"] },
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "询问尺码或颜色用介词 " },
-          { "type": "text", "text": "in", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，形容词修饰 " },
-          { "type": "text", "text": "size", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 时须带冠词 `a`，即 " },
-          { "type": "text", "text": "in a larger size", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "询问尺码或颜色用介词 "
+          },
+          {
+            "type": "text",
+            "text": "in",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，形容词修饰 "
+          },
+          {
+            "type": "text",
+            "text": "size",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 时须带冠词 `a`，即 "
+          },
+          {
+            "type": "text",
+            "text": "in a larger size",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       },
       {
         "index": 2,
         "options": [
-          { "id": "a", "text": "pay by a card", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "pay by card", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "pay in card", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "pay by a card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "pay by card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "pay in card",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["b"] },
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "刷卡付款固定用 " },
-          { "type": "text", "text": "pay by card", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，现金才用 " },
-          { "type": "text", "text": "pay in cash", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "。" }
+          {
+            "type": "text",
+            "text": "刷卡付款固定用 "
+          },
+          {
+            "type": "text",
+            "text": "pay by card",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，现金才用 "
+          },
+          {
+            "type": "text",
+            "text": "pay in cash",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "选码用 " },
-      { "type": "text", "text": "in a larger size", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，刷卡付款用零冠词 " },
-      { "type": "text", "text": "pay by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，两者均为服装购物高频句型。" }
+      {
+        "type": "text",
+        "text": "选码用 "
+      },
+      {
+        "type": "text",
+        "text": "in a larger size",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，刷卡付款用零冠词 "
+      },
+      {
+        "type": "text",
+        "text": "pay by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，两者均为服装购物高频句型。"
+      }
     ]
   },
   {
     "id": "sd-listen-01",
     "type": "listening",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "听一段咖啡馆点单、核对价格与索要小票的对话，再回答两个问题。",
-    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
-      { "speaker": "M", "text": "Good morning! What can I get for you?" },
+      {
+        "speaker": "M",
+        "text": "Good morning! What can I get for you?"
+      },
       {
         "speaker": "W",
         "text": "I'd like a green tea and a chicken sandwich to go, please."
       },
-      { "speaker": "M", "text": "Sure. That comes to fourteen fifty in total." },
+      {
+        "speaker": "M",
+        "text": "Sure. That comes to fourteen fifty in total."
+      },
       {
         "speaker": "W",
         "text": "Sorry, did you say fourteen fifty or forty fifteen?",
-        "tts": { "speed": 0.95 }
+        "tts": {
+          "speed": 0.95
+        }
       },
-      { "speaker": "M", "text": "Fourteen fifty. Cash or card?" },
+      {
+        "speaker": "M",
+        "text": "Fourteen fifty. Cash or card?"
+      },
       {
         "speaker": "W",
         "text": "Card, please. Could I have a printed receipt for work?"
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好！请问想点什么？",
         "我要一杯绿茶和一份鸡肉三明治外带，谢谢。",
@@ -1165,31 +3103,58 @@
           {
             "type": "text",
             "text": "How much is the woman's order?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "p1450",
             "text": "$14.50",
-            "tts": { "voice": "stella", "text": "Fourteen dollars fifty cents." }
+            "tts": {
+              "voice": "stella",
+              "text": "Fourteen dollars fifty cents."
+            }
           },
           {
             "id": "p4015",
             "text": "$40.15",
-            "tts": { "voice": "stella", "text": "Forty dollars fifteen cents." }
+            "tts": {
+              "voice": "stella",
+              "text": "Forty dollars fifteen cents."
+            }
           },
           {
             "id": "p1415",
             "text": "$14.15",
-            "tts": { "voice": "stella", "text": "Fourteen dollars fifteen cents." }
+            "tts": {
+              "voice": "stella",
+              "text": "Fourteen dollars fifteen cents."
+            }
           }
         ],
-        "grading": { "choice_ids": ["p1450"] },
+        "grading": {
+          "choice_ids": [
+            "p1450"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "店员再次确认金额为 " },
-          { "type": "text", "text": "fourteen fifty", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，即 `$14.50`，注意区分 `-teen` 尾重带鼻音与 `-ty` 头重轻收。" }
+          {
+            "type": "text",
+            "text": "店员再次确认金额为 "
+          },
+          {
+            "type": "text",
+            "text": "fourteen fifty",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 `$14.50`，注意区分 `-teen` 尾重带鼻音与 `-ty` 头重轻收。"
+          }
         ]
       },
       {
@@ -1199,36 +3164,91 @@
           {
             "type": "text",
             "text": "The woman plans to eat her sandwich inside the cafe.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": false },
+        "grading": {
+          "value": false
+        },
         "analysis": [
-          { "type": "text", "text": "女士点单时说了 " },
-          { "type": "text", "text": "to go", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，表示外带而非堂食。" }
+          {
+            "type": "text",
+            "text": "女士点单时说了 "
+          },
+          {
+            "type": "text",
+            "text": "to go",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，表示外带而非堂食。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "本段咖啡馆点单听力重点考查外带用语 " },
-      { "type": "text", "text": "to go", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、易混价格 " },
-      { "type": "text", "text": "fourteen fifty", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与 " },
-      { "type": "text", "text": "forty fifteen", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 的听辨，以及索要报销小票的表达。" }
+      {
+        "type": "text",
+        "text": "本段咖啡馆点单听力重点考查外带用语 "
+      },
+      {
+        "type": "text",
+        "text": "to go",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、易混价格 "
+      },
+      {
+        "type": "text",
+        "text": "fourteen fifty",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与 "
+      },
+      {
+        "type": "text",
+        "text": "forty fifteen",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 的听辨，以及索要报销小票的表达。"
+      }
     ]
   },
   {
     "id": "sd-listen-02",
     "type": "listening",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "stem": "听一段服装店换码试穿、八折优惠与现金找零的对话，再回答两个问题。",
-    "audio": { "mode": "dialogue", "voice_male": "tide", "voice_female": "stella" },
+    "audio": {
+      "mode": "dialogue",
+      "voice_male": "tide",
+      "voice_female": "stella"
+    },
     "transcript": [
-      { "speaker": "W", "text": "Hello! Can I help you today?" },
+      {
+        "speaker": "W",
+        "text": "Hello! Can I help you today?"
+      },
       {
         "speaker": "M",
         "text": "Yes, please. Do you have this blue jacket in a large? The medium is a bit tight."
@@ -1236,7 +3256,9 @@
       {
         "speaker": "W",
         "text": "Here you are. It is normally fifty dollars, but it is twenty percent off today.",
-        "tts": { "speed": 0.95 }
+        "tts": {
+          "speed": 0.95
+        }
       },
       {
         "speaker": "M",
@@ -1248,6 +3270,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "您好！今天需要帮忙吗？",
         "是的，谢谢。这件蓝色夹克有大号吗？中号有点紧。",
@@ -1277,35 +3306,55 @@
           {
             "type": "text",
             "text": "Why does the man ask for a large?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "tight",
             "text": "Because the medium is a bit tight.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "loose",
             "text": "Because the medium is too loose.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "color",
             "text": "Because he wants a different color.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "choice_ids": ["tight"] },
+        "grading": {
+          "choice_ids": [
+            "tight"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "男士在第二句明确说明 " },
+          {
+            "type": "text",
+            "text": "男士在第二句明确说明 "
+          },
           {
             "type": "text",
             "text": "The medium is a bit tight.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "，因此换大号。" }
+          {
+            "type": "text",
+            "text": "，因此换大号。"
+          }
         ]
       },
       {
@@ -1315,315 +3364,921 @@
           {
             "type": "text",
             "text": "How many dollars in change does the man receive?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": " " },
+          {
+            "type": "text",
+            "text": " "
+          },
           {
             "type": "text",
             "text": "Enter only the number.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": "10", "absolute_tolerance": "0" },
+        "grading": {
+          "value": "10",
+          "absolute_tolerance": "0"
+        },
         "analysis": [
-          { "type": "text", "text": "夹克八折后实付 40 美元，男士付 50 美元现金，店员最后递回找零 " },
-          { "type": "text", "text": "ten dollars", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，即 10 美元。" }
+          {
+            "type": "text",
+            "text": "夹克八折后实付 40 美元，男士付 50 美元现金，店员最后递回找零 "
+          },
+          {
+            "type": "text",
+            "text": "ten dollars",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，即 10 美元。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "对话涵盖选码表达 " },
-      { "type": "text", "text": "in a large", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、八折 " },
-      { "type": "text", "text": "twenty percent off", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 以及当场决定购买 " },
-      { "type": "text", "text": "I'll take it.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 与现金找零核对。" }
+      {
+        "type": "text",
+        "text": "对话涵盖选码表达 "
+      },
+      {
+        "type": "text",
+        "text": "in a large",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、八折 "
+      },
+      {
+        "type": "text",
+        "text": "twenty percent off",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 以及当场决定购买 "
+      },
+      {
+        "type": "text",
+        "text": "I'll take it.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 与现金找零核对。"
+      }
     ]
   },
   {
     "id": "sd-trans-01",
     "type": "translation",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "direction": "en_to_zh",
     "stem": "将下列服装店购物用语译成中文。",
     "source_text": "Excuse me, where is the fitting room? I would like to try this jacket on.",
-    "source_text_tts": { "voice": "stella" },
+    "source_text_tts": {
+      "voice": "stella"
+    },
     "reference_translation": "打扰一下，试衣间在哪里？我想试穿一下这件夹克。",
     "acceptable_alternates": [
       "请问试衣间在哪儿？我想试穿这件夹克。",
       "不好意思，试衣间在哪里？我想试试这件外套。"
     ],
     "key_terms": [
-      { "term": "试衣间", "variants": ["更衣室"] },
-      { "term": "试穿" }
+      {
+        "term": "试衣间",
+        "variants": [
+          "更衣室"
+        ]
+      },
+      {
+        "term": "试穿"
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "Excuse me", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 用于礼貌招呼店员；" },
-      { "type": "text", "text": "fitting room", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "（英式 " },
-      { "type": "text", "text": "changing room", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）表示试衣间；" },
-      { "type": "text", "text": "try this jacket on", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 表示试穿这件夹克。" }
+      {
+        "type": "text",
+        "text": "Excuse me",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 用于礼貌招呼店员；"
+      },
+      {
+        "type": "text",
+        "text": "fitting room",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（英式 "
+      },
+      {
+        "type": "text",
+        "text": "changing room",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）表示试衣间；"
+      },
+      {
+        "type": "text",
+        "text": "try this jacket on",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示试穿这件夹克。"
+      }
     ]
   },
   {
     "id": "sd-trans-02",
     "type": "translation",
     "chapter": "购物、点餐与价格询问",
-    "concepts": ["shopping-dining-phrases"],
+    "concepts": [
+      "shopping-dining-phrases"
+    ],
     "direction": "zh_to_en",
     "stem": "将下列餐厅买单与索要小票的请求译成英文。",
     "source_text": "请问可以买单吗？我想刷卡付款并要一张小票。",
     "reference_translation": "Could I have the bill, please? I would like to pay by card and get a receipt.",
-    "reference_translation_tts": { "voice": "stella" },
+    "reference_translation_tts": {
+      "voice": "stella"
+    },
     "acceptable_alternates": [
       "Could we have the check, please? I'd like to pay by card and have a receipt.",
       "Can I have the bill, please? I'd like to pay by card and get a receipt."
     ],
     "key_terms": [
-      { "term": "bill", "variants": ["check"] },
-      { "term": "pay by card" },
-      { "term": "receipt" }
+      {
+        "term": "bill",
+        "variants": [
+          "check"
+        ]
+      },
+      {
+        "term": "pay by card"
+      },
+      {
+        "term": "receipt"
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "付款前结账用 " },
-      { "type": "text", "text": "bill", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "（美式 " },
-      { "type": "text", "text": "check", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "），付款后凭证用 " },
-      { "type": "text", "text": "receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "；" },
-      { "type": "text", "text": "would like", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后接动词须带 `to`（" },
-      { "type": "text", "text": "to pay by card", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）。" }
+      {
+        "type": "text",
+        "text": "付款前结账用 "
+      },
+      {
+        "type": "text",
+        "text": "bill",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "（美式 "
+      },
+      {
+        "type": "text",
+        "text": "check",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），付款后凭证用 "
+      },
+      {
+        "type": "text",
+        "text": "receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "；"
+      },
+      {
+        "type": "text",
+        "text": "would like",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后接动词须带 `to`（"
+      },
+      {
+        "type": "text",
+        "text": "to pay by card",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
     ]
   },
   {
     "id": "rm-sc-01",
     "type": "single_choice",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": [
-      { "type": "text", "text": "商超货架上两件原价 `$40.00` 的背包，第一件价签写着 " },
+      {
+        "type": "text",
+        "text": "商超货架上两件原价 `$40.00` 的背包，第一件价签写着 "
+      },
       {
         "type": "text",
         "text": "Reduced by $12",
-        "tts": { "voice": "stella", "text": "Reduced by twelve dollars." }
+        "tts": {
+          "voice": "stella",
+          "text": "Reduced by twelve dollars."
+        }
       },
-      { "type": "text", "text": "，第二件写着 " },
+      {
+        "type": "text",
+        "text": "，第二件写着 "
+      },
       {
         "type": "text",
         "text": "Reduced to $28",
-        "tts": { "voice": "stella", "text": "Reduced to twenty-eight dollars." }
+        "tts": {
+          "voice": "stella",
+          "text": "Reduced to twenty-eight dollars."
+        }
       },
-      { "type": "text", "text": "。这两件背包的现价分别是多少？" }
+      {
+        "type": "text",
+        "text": "。这两件背包的现价分别是多少？"
+      }
     ],
     "options": [
-      { "id": "a", "text": "第一件现价 $12.00，第二件现价 $28.00" },
-      { "id": "b", "text": "第一件现价 $28.00，第二件现价 $12.00" },
-      { "id": "c", "text": "两件现价均为 $28.00" },
-      { "id": "d", "text": "两件现价均为 $12.00" }
+      {
+        "id": "a",
+        "text": "第一件现价 $12.00，第二件现价 $28.00"
+      },
+      {
+        "id": "b",
+        "text": "第一件现价 $28.00，第二件现价 $12.00"
+      },
+      {
+        "id": "c",
+        "text": "两件现价均为 $28.00"
+      },
+      {
+        "id": "d",
+        "text": "两件现价均为 $12.00"
+      }
     ],
-    "grading": { "choice_ids": ["c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "Reduced by $12（降价 12 美元）；Reduced to $28（降至 28 美元）。"
+    },
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "reduced by", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后接降价幅度（`$40 − $12 = $28`），" },
-      { "type": "text", "text": "reduced to", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 后直接接降后现价（`$28`），因此两件背包现价同为 `$28.00`。" }
+      {
+        "type": "text",
+        "text": "reduced by",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后接降价幅度（`$40 − $12 = $28`），"
+      },
+      {
+        "type": "text",
+        "text": "reduced to",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 后直接接降后现价（`$28`），因此两件背包现价同为 `$28.00`。"
+      }
     ]
   },
   {
     "id": "rm-sc-02",
     "type": "single_choice",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": "结账后核对英文购物小票时，下列哪一项票面字段与其含义完全对应？",
     "options": [
-      { "id": "a", "text": "Subtotal：已加消费税的最终实付总额" },
-      { "id": "b", "text": "Cash Tendered：收银员应退还给顾客的找零" },
-      { "id": "c", "text": "Change Due：实交现金减去实付总额后的应找零钱" },
-      { "id": "d", "text": "Sales Tax：只对会员发放的商品立减金额" }
+      {
+        "id": "a",
+        "text": "Subtotal：已加消费税的最终实付总额"
+      },
+      {
+        "id": "b",
+        "text": "Cash Tendered：收银员应退还给顾客的找零"
+      },
+      {
+        "id": "c",
+        "text": "Change Due：实交现金减去实付总额后的应找零钱"
+      },
+      {
+        "id": "d",
+        "text": "Sales Tax：只对会员发放的商品立减金额"
+      }
     ],
-    "grading": { "choice_ids": ["c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "Subtotal（税前小计）",
+        "b": "Cash Tendered（实交现金）",
+        "c": "Change Due（应找零钱）",
+        "d": "Sales Tax（消费税）"
+      }
+    },
+    "grading": {
+      "choice_ids": [
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "Subtotal", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 是税前小计，" },
-      { "type": "text", "text": "Cash Tendered", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 是顾客实交现金，" },
-      { "type": "text", "text": "Sales Tax", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 是消费税，而 " },
-      { "type": "text", "text": "Change Due", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 才是实交现金减实付总额后的应找零钱。" }
+      {
+        "type": "text",
+        "text": "Subtotal",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是税前小计，"
+      },
+      {
+        "type": "text",
+        "text": "Cash Tendered",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是顾客实交现金，"
+      },
+      {
+        "type": "text",
+        "text": "Sales Tax",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 是消费税，而 "
+      },
+      {
+        "type": "text",
+        "text": "Change Due",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 才是实交现金减实付总额后的应找零钱。"
+      }
     ]
   },
   {
     "id": "rm-mc-01",
     "type": "multiple_choice",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": "商店退换政策写明：购买 14 天内凭原小票、商品未使用且吊牌完好可原路退款；无小票仅退门店抵用额；清仓品标 `FINAL SALE` 不可退换。以下哪两项理解正确？（请选择两项）",
     "options": [
-      { "id": "a", "text": "第 10 天持原始小票退回未使用且带吊牌的正价保温杯，可原路退款" },
-      { "id": "b", "text": "标有 FINAL SALE 的清仓品只要在 14 天内且有原小票，也能退现金" },
-      { "id": "c", "text": "遗失原小票但商品未拆封且在期限内，按条款通常仅换门店抵用额（store credit）" },
-      { "id": "d", "text": "打八折买到的促销商品退货时，门店应按打折前的原价退款" }
+      {
+        "id": "a",
+        "text": "第 10 天持原始小票退回未使用且带吊牌的正价保温杯，可原路退款"
+      },
+      {
+        "id": "b",
+        "text": "标有 FINAL SALE 的清仓品只要在 14 天内且有原小票，也能退现金"
+      },
+      {
+        "id": "c",
+        "text": "遗失原小票但商品未拆封且在期限内，按条款通常仅换门店抵用额（store credit）"
+      },
+      {
+        "id": "d",
+        "text": "打八折买到的促销商品退货时，门店应按打折前的原价退款"
+      }
     ],
-    "grading": { "choice_ids": ["a", "c"] },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "FINAL SALE（最终特卖 / 清仓特价，售出不可退换）。"
+    },
+    "grading": {
+      "choice_ids": [
+        "a",
+        "c"
+      ]
+    },
     "analysis": [
-      { "type": "text", "text": "全额原路退款须同时满足期限内、持 " },
-      { "type": "text", "text": "original receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、未使用带吊牌及非清仓品四条件；无原票一般仅退 " },
-      { "type": "text", "text": "store credit", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，清仓 " },
-      { "type": "text", "text": "final sale", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 商品不可退换，折后商品仅按实付折后价及对应税费退款。" }
+      {
+        "type": "text",
+        "text": "全额原路退款须同时满足期限内、持 "
+      },
+      {
+        "type": "text",
+        "text": "original receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、未使用带吊牌及非清仓品四条件；无原票一般仅退 "
+      },
+      {
+        "type": "text",
+        "text": "store credit",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，清仓 "
+      },
+      {
+        "type": "text",
+        "text": "final sale",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 商品不可退换，折后商品仅按实付折后价及对应税费退款。"
+      }
     ]
   },
   {
     "id": "rm-tf-01",
     "type": "true_false",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": [
-      { "type": "text", "text": "判断下列促销价签理解是否正确：商店海报写着 " },
+      {
+        "type": "text",
+        "text": "判断下列促销价签理解是否正确：商店海报写着 "
+      },
       {
         "type": "text",
         "text": "Summer Sale: Up to 50% off selected items.",
-        "tts": { "voice": "stella", "text": "Summer sale: up to fifty percent off selected items." }
+        "tts": {
+          "voice": "stella",
+          "text": "Summer sale: up to fifty percent off selected items."
+        }
       },
-      { "type": "text", "text": "，表示店内所有商品一律五折。" }
+      {
+        "type": "text",
+        "text": "，表示店内所有商品一律五折。"
+      }
     ],
-    "grading": { "value": false },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "夏季大促：指定商品最高减价 50%（低至五折）。"
+    },
+    "grading": {
+      "value": false
+    },
     "analysis": [
       {
         "type": "text",
         "text": "up to 50% off",
-        "tts": { "voice": "stella", "text": "up to fifty percent off" }
+        "tts": {
+          "voice": "stella",
+          "text": "up to fifty percent off"
+        }
       },
-      { "type": "text", "text": " 只表示最高减价 50%，并非全场五折；且 " },
-      { "type": "text", "text": "selected items", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 限定仅指定商品参与活动。" }
+      {
+        "type": "text",
+        "text": " 只表示最高减价 50%，并非全场五折；且 "
+      },
+      {
+        "type": "text",
+        "text": "selected items",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 限定仅指定商品参与活动。"
+      }
     ]
   },
   {
     "id": "rm-tf-02",
     "type": "true_false",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
-    "stem": [
-      { "type": "text", "text": "判断下列美式餐厅菜单阅读是否正确：" },
-      { "type": "text", "text": "Entrees", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 栏目下通常列出主菜，若菜品下方注明 " },
-      { "type": "text", "text": "Served with a side salad.", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，则配菜沙拉已含在主菜价格内。" }
+    "concepts": [
+      "receipts-menus-reading"
     ],
-    "grading": { "value": true },
+    "stem": [
+      {
+        "type": "text",
+        "text": "判断下列美式餐厅菜单阅读是否正确："
+      },
+      {
+        "type": "text",
+        "text": "Entrees",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 栏目下通常列出主菜，若菜品下方注明 "
+      },
+      {
+        "type": "text",
+        "text": "Served with a side salad.",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，则配菜沙拉已含在主菜价格内。"
+      }
+    ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "主菜；随餐附一份配菜沙拉。"
+    },
+    "grading": {
+      "value": true
+    },
     "analysis": [
-      { "type": "text", "text": "美式菜单中 " },
-      { "type": "text", "text": "Entrees", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 指主菜（区别于前菜 " },
-      { "type": "text", "text": "Appetizers", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "），写明 " },
-      { "type": "text", "text": "served with", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 或 " },
-      { "type": "text", "text": "comes with", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 表示配菜已包含在价格中。" }
+      {
+        "type": "text",
+        "text": "美式菜单中 "
+      },
+      {
+        "type": "text",
+        "text": "Entrees",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指主菜（区别于前菜 "
+      },
+      {
+        "type": "text",
+        "text": "Appetizers",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "），写明 "
+      },
+      {
+        "type": "text",
+        "text": "served with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 或 "
+      },
+      {
+        "type": "text",
+        "text": "comes with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 表示配菜已包含在价格中。"
+      }
     ]
   },
   {
     "id": "rm-num-01",
     "type": "numeric",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": [
-      { "type": "text", "text": "商超周末促销写着 " },
+      {
+        "type": "text",
+        "text": "商超周末促销写着 "
+      },
       {
         "type": "text",
         "text": "Buy one, get one 50% off",
-        "tts": { "voice": "stella", "text": "Buy one, get one fifty percent off." }
+        "tts": {
+          "voice": "stella",
+          "text": "Buy one, get one fifty percent off."
+        }
       },
-      { "type": "text", "text": "（较低价件半价）。买 `$12` 咖啡豆和 `$8` 绿茶各一件，税前共付多少美元？填数字。" }
+      {
+        "type": "text",
+        "text": "（较低价件半价）。买 `$12` 咖啡豆和 `$8` 绿茶各一件，税前共付多少美元？填数字。"
+      }
     ],
-    "grading": { "value": "16", "absolute_tolerance": "0" },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "买一件、第二件半价（减价 50%）；买 12 美元咖啡豆和 8 美元绿茶各一件。"
+    },
+    "grading": {
+      "value": "16",
+      "absolute_tolerance": "0"
+    },
     "analysis": [
-      { "type": "text", "text": "按第二件半价（" },
+      {
+        "type": "text",
+        "text": "按第二件半价（"
+      },
       {
         "type": "text",
         "text": "of equal or lesser value",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
-      { "type": "text", "text": "）规则，应对更便宜的 `$8` 绿茶打半价（减 `$4`），税前合计 `$12 + $4 = $16`。" }
+      {
+        "type": "text",
+        "text": "）规则，应对更便宜的 `$8` 绿茶打半价（减 `$4`），税前合计 `$12 + $4 = $16`。"
+      }
     ]
   },
   {
     "id": "rm-cloze-01",
     "type": "cloze",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": "阅读餐厅菜单与小票退换说明，选出正确的英文词填空。",
     "passage": "Lunch prices are listed {{1}} sales tax. Unused items may be returned {{2}} 14 days with the original receipt.",
     "passage_tts": {
       "voice": "stella",
       "text": "Lunch prices are listed excluding sales tax. Unused items may be returned within fourteen days with the original receipt."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "午餐标价不含消费税。未使用的商品可在 14 天内凭原始小票退货。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
         "options": [
-          { "id": "a", "text": "excluding", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "except", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "between", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "excluding",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "except",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "between",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["a"] },
+        "grading": {
+          "choice_ids": [
+            "a"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "菜单和价签说明价格“不含税费或附加项”用 " },
-          { "type": "text", "text": "excluding", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，不能用 `except` 替代。" }
+          {
+            "type": "text",
+            "text": "菜单和价签说明价格“不含税费或附加项”用 "
+          },
+          {
+            "type": "text",
+            "text": "excluding",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，不能用 `except` 替代。"
+          }
         ]
       },
       {
         "index": 2,
         "options": [
-          { "id": "a", "text": "after", "tts": { "voice": "stella" } },
-          { "id": "b", "text": "within", "tts": { "voice": "stella" } },
-          { "id": "c", "text": "from", "tts": { "voice": "stella" } }
+          {
+            "id": "a",
+            "text": "after",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "b",
+            "text": "within",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "id": "c",
+            "text": "from",
+            "tts": {
+              "voice": "stella"
+            }
+          }
         ],
-        "grading": { "choice_ids": ["b"] },
+        "grading": {
+          "choice_ids": [
+            "b"
+          ]
+        },
         "explanation": [
-          { "type": "text", "text": "within", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 表示“在……期限内”（含截止日），而 " },
-          { "type": "text", "text": "after", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 表示“在……之后”。" }
+          {
+            "type": "text",
+            "text": "within",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示“在……期限内”（含截止日），而 "
+          },
+          {
+            "type": "text",
+            "text": "after",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 表示“在……之后”。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "消费文本中“不含税费”固定用 " },
-      { "type": "text", "text": "excluding", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "，退换货“14 天内”固定用 " },
-      { "type": "text", "text": "within 14 days", "tts": { "voice": "stella", "text": "within fourteen days" } },
-      { "type": "text", "text": "。" }
+      {
+        "type": "text",
+        "text": "消费文本中“不含税费”固定用 "
+      },
+      {
+        "type": "text",
+        "text": "excluding",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "，退换货“14 天内”固定用 "
+      },
+      {
+        "type": "text",
+        "text": "within 14 days",
+        "tts": {
+          "voice": "stella",
+          "text": "within fourteen days"
+        }
+      },
+      {
+        "type": "text",
+        "text": "。"
+      }
     ]
   },
   {
     "id": "rm-read-01",
     "type": "reading_comprehension",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": "阅读绿叶咖啡馆的工作日午餐特惠菜单，再回答两个问题。",
     "passage": [
       {
         "type": "text",
         "text": "GREEN LEAF CAFE — LUNCH SPECIALS",
-        "tts": { "voice": "stella", "text": "Green Leaf Cafe lunch specials." }
+        "tts": {
+          "voice": "stella",
+          "text": "Green Leaf Cafe lunch specials."
+        }
       },
-      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "\n"
+      },
       {
         "type": "text",
         "text": "Mon-Fri, 11:30 a.m. to 2:30 p.m. for dine-in or takeout.",
@@ -1632,7 +4287,10 @@
           "text": "Monday to Friday, eleven thirty in the morning to two thirty in the afternoon, for dine-in or takeout."
         }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Grilled chicken sandwich is $11.50, and roasted vegetable wrap (V) is $10.00.",
@@ -1641,13 +4299,21 @@
           "text": "Grilled chicken sandwich is eleven dollars fifty, and roasted vegetable wrap, vegetarian, is ten dollars."
         }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Each meal is served with a side salad or soup of the day.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Coffee or iced tea is $2.00 extra; prices exclude tax and bottled drinks.",
@@ -1658,6 +4324,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "绿叶咖啡馆——午市特惠",
         "周一至周五上午 11:30 至下午 2:30 供应，可堂食或外带。",
@@ -1687,35 +4360,55 @@
           {
             "type": "text",
             "text": "What is already included in the lunch special price?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "salad-soup",
             "text": "A side salad or soup of the day.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "coffee-tea",
             "text": "Coffee or iced tea.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "bottled-drink",
             "text": "Bottled drinks and sales tax.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "choice_ids": ["salad-soup"] },
+        "grading": {
+          "choice_ids": [
+            "salad-soup"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "菜单写明 " },
+          {
+            "type": "text",
+            "text": "菜单写明 "
+          },
           {
             "type": "text",
             "text": "served with a side salad or soup of the day",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": "，咖啡与冰茶需另加 `$2.00`，税费和瓶装饮品均不包含在内。" }
+          {
+            "type": "text",
+            "text": "，咖啡与冰茶需另加 `$2.00`，税费和瓶装饮品均不包含在内。"
+          }
         ]
       },
       {
@@ -1725,40 +4418,94 @@
           {
             "type": "text",
             "text": "Customers can order these lunch specials on Saturday at noon.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": false },
+        "grading": {
+          "value": false
+        },
         "analysis": [
-          { "type": "text", "text": "供应时间明确限定为周一至周五（" },
-          { "type": "text", "text": "Monday to Friday", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "），周六不供应此工作日午市特惠。" }
+          {
+            "type": "text",
+            "text": "供应时间明确限定为周一至周五（"
+          },
+          {
+            "type": "text",
+            "text": "Monday to Friday",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "），周六不供应此工作日午市特惠。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "阅读英文菜单应先核对供应时段，再区分已含配菜（" },
-      { "type": "text", "text": "served with", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）、加价项目（" },
-      { "type": "text", "text": "extra", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）与排除条款（" },
-      { "type": "text", "text": "exclude", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "）。" }
+      {
+        "type": "text",
+        "text": "阅读英文菜单应先核对供应时段，再区分已含配菜（"
+      },
+      {
+        "type": "text",
+        "text": "served with",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）、加价项目（"
+      },
+      {
+        "type": "text",
+        "text": "extra",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）与排除条款（"
+      },
+      {
+        "type": "text",
+        "text": "exclude",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "）。"
+      }
     ]
   },
   {
     "id": "rm-read-02",
     "type": "reading_comprehension",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "stem": "阅读海港超市的消费小票与退换货条款，再回答两个问题。",
     "passage": [
       {
         "type": "text",
         "text": "HARBOR MARKET RECEIPT",
-        "tts": { "voice": "stella", "text": "Harbor Market receipt." }
+        "tts": {
+          "voice": "stella",
+          "text": "Harbor Market receipt."
+        }
       },
-      { "type": "text", "text": "\n" },
+      {
+        "type": "text",
+        "text": "\n"
+      },
       {
         "type": "text",
         "text": "Date: May 9. Travel Mug $15.00, Member 20% off -$3.00, Desk Organizer (Final Sale) $8.00.",
@@ -1767,7 +4514,10 @@
           "text": "Date, May ninth. Travel mug fifteen dollars, member twenty percent off minus three dollars, desk organizer, final sale, eight dollars."
         }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Subtotal $20.00, Sales Tax $1.60, Total $21.60. Cash Tendered $25.00, Change Due $3.40.",
@@ -1776,7 +4526,10 @@
           "text": "Subtotal twenty dollars, sales tax one dollar sixty, total twenty-one dollars sixty. Cash tendered twenty-five dollars, change due three dollars forty."
         }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Returns are accepted within 14 days with the original receipt if items are unused with tags attached.",
@@ -1785,14 +4538,26 @@
           "text": "Returns are accepted within fourteen days with the original receipt if items are unused with tags attached."
         }
       },
-      { "type": "text", "text": " " },
+      {
+        "type": "text",
+        "text": " "
+      },
       {
         "type": "text",
         "text": "Without a receipt, store credit only. Final sale items are non-returnable and non-refundable.",
-        "tts": { "voice": "stella" }
+        "tts": {
+          "voice": "stella"
+        }
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "海港超市消费小票",
         "日期：5 月 9 日。保温杯 15.00 美元，会员八折减 3.00 美元；桌面收纳盒（清仓特价）8.00 美元。",
@@ -1822,31 +4587,56 @@
           {
             "type": "text",
             "text": "Which item cannot be returned even with the original receipt?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
         "options": [
           {
             "id": "desk-organizer",
             "text": "The desk organizer marked Final Sale.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "travel-mug",
             "text": "The unused travel mug with tags attached.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
           {
             "id": "both-items",
             "text": "Both items bought on May 9.",
-            "tts": { "voice": "stella", "text": "Both items bought on May ninth." }
+            "tts": {
+              "voice": "stella",
+              "text": "Both items bought on May ninth."
+            }
           }
         ],
-        "grading": { "choice_ids": ["desk-organizer"] },
+        "grading": {
+          "choice_ids": [
+            "desk-organizer"
+          ]
+        },
         "analysis": [
-          { "type": "text", "text": "桌面收纳盒标有 " },
-          { "type": "text", "text": "Final Sale", "tts": { "voice": "stella" } },
-          { "type": "text", "text": "，末句明确写明此类商品不可退换也不可退款。" }
+          {
+            "type": "text",
+            "text": "桌面收纳盒标有 "
+          },
+          {
+            "type": "text",
+            "text": "Final Sale",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": "，末句明确写明此类商品不可退换也不可退款。"
+          }
         ]
       },
       {
@@ -1856,61 +4646,170 @@
           {
             "type": "text",
             "text": "What is the final total amount paid in dollars?",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           },
-          { "type": "text", "text": " " },
+          {
+            "type": "text",
+            "text": " "
+          },
           {
             "type": "text",
             "text": "Enter the decimal number.",
-            "tts": { "voice": "stella" }
+            "tts": {
+              "voice": "stella"
+            }
           }
         ],
-        "grading": { "value": "21.60", "absolute_tolerance": "0" },
+        "grading": {
+          "value": "21.60",
+          "absolute_tolerance": "0"
+        },
         "analysis": [
-          { "type": "text", "text": "税前小计 " },
-          { "type": "text", "text": "Subtotal", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 为 `$20.00`，加上消费税 `$1.60` 后，最终实付总额 " },
-          { "type": "text", "text": "Total", "tts": { "voice": "stella" } },
-          { "type": "text", "text": " 为 `$21.60`。" }
+          {
+            "type": "text",
+            "text": "税前小计 "
+          },
+          {
+            "type": "text",
+            "text": "Subtotal",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为 `$20.00`，加上消费税 `$1.60` 后，最终实付总额 "
+          },
+          {
+            "type": "text",
+            "text": "Total",
+            "tts": {
+              "voice": "stella"
+            }
+          },
+          {
+            "type": "text",
+            "text": " 为 `$21.60`。"
+          }
         ]
       }
     ],
     "analysis": [
-      { "type": "text", "text": "核对小票时要分清税前 " },
-      { "type": "text", "text": "Subtotal", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、实付 " },
-      { "type": "text", "text": "Total", "tts": { "voice": "stella" } },
-      { "type": "text", "text": "、实交现金与应找零钱，并在办理退货前核查 " },
-      { "type": "text", "text": "Final Sale", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 例外条款。" }
+      {
+        "type": "text",
+        "text": "核对小票时要分清税前 "
+      },
+      {
+        "type": "text",
+        "text": "Subtotal",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、实付 "
+      },
+      {
+        "type": "text",
+        "text": "Total",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": "、实交现金与应找零钱，并在办理退货前核查 "
+      },
+      {
+        "type": "text",
+        "text": "Final Sale",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 例外条款。"
+      }
     ]
   },
   {
     "id": "rm-trans-01",
     "type": "translation",
     "chapter": "菜单、价签与消费小票阅读",
-    "concepts": ["receipts-menus-reading"],
+    "concepts": [
+      "receipts-menus-reading"
+    ],
     "direction": "en_to_zh",
     "stem": "将下列购物小票上的退换货条款译成中文。",
     "source_text": "Unused items may be returned within fourteen days with the original receipt.",
-    "source_text_tts": { "voice": "stella" },
+    "source_text_tts": {
+      "voice": "stella"
+    },
     "reference_translation": "未使用的商品可在十四天内凭原始小票退货。",
     "acceptable_alternates": [
       "未使用的商品可在14天内携带原小票退货。",
       "商品未使用时，可在14天内凭原始收据退货。"
     ],
     "key_terms": [
-      { "term": "未使用", "variants": ["没用过"] },
-      { "term": "十四天内", "variants": ["14天内", "14 天内"] },
-      { "term": "原始小票", "variants": ["原小票", "原始收据"] }
+      {
+        "term": "未使用",
+        "variants": [
+          "没用过"
+        ]
+      },
+      {
+        "term": "十四天内",
+        "variants": [
+          "14天内",
+          "14 天内"
+        ]
+      },
+      {
+        "term": "原始小票",
+        "variants": [
+          "原小票",
+          "原始收据"
+        ]
+      }
     ],
     "analysis": [
-      { "type": "text", "text": "Unused", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 含否定前缀 `un-` 表“未使用的”；" },
-      { "type": "text", "text": "within fourteen days", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 指 14 天期限内；" },
-      { "type": "text", "text": "the original receipt", "tts": { "voice": "stella" } },
-      { "type": "text", "text": " 指原始购物小票。" }
+      {
+        "type": "text",
+        "text": "Unused",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 含否定前缀 `un-` 表“未使用的”；"
+      },
+      {
+        "type": "text",
+        "text": "within fourteen days",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指 14 天期限内；"
+      },
+      {
+        "type": "text",
+        "text": "the original receipt",
+        "tts": {
+          "voice": "stella"
+        }
+      },
+      {
+        "type": "text",
+        "text": " 指原始购物小票。"
+      }
     ]
   }
 ]

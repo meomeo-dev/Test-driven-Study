@@ -19,10 +19,13 @@ func TestV2StudyTranslationsAreReviewOnly(t *testing.T) {
 		t.Fatal(err)
 	}
 	assertStudyTranslationVisibility(t, paper, false)
-	indices := make([]int, 0, 2)
+	indices := make([]int, 0, 5)
 	for _, test := range []struct{ sourceID, response string }{
 		{"sue1-extended-listening", `{"sub_answers":{"location":["second"],"checklist":false}}`},
 		{"sue1-extended-reading", `{"sub_answers":{"opening":"8","visitors":["badge","sign"]}}`},
+		{"sue1-extended-cloze", `{"blanks":{"1":["must"],"2":["start"]}}`},
+		{"sue1-extended-writing", `{"text":"The delivery has been moved to Friday."}`},
+		{"numbers-1", `{"selected":[1]}`},
 	} {
 		index := slices.IndexFunc(paper.Items, func(item study.ExamItem) bool {
 			return item.Detail.Question.SourceItemID == test.sourceID
@@ -45,6 +48,20 @@ func TestV2StudyTranslationsAreReviewOnly(t *testing.T) {
 	for _, index := range indices {
 		assertStudyTranslationVisibility(t, final.Items[index].Review, true)
 		assertStudyTranslationVisibility(t, final.Items[index].Detail, false)
+	}
+	numIdx := slices.IndexFunc(final.Items, func(item study.ExamItem) bool {
+		return item.Detail.Question.SourceItemID == "numbers-1"
+	})
+	if numIdx < 0 || final.Items[numIdx].Review == nil {
+		t.Fatal("missing numbers-1 review")
+	}
+	rev := final.Items[numIdx].Review
+	if rev.StudyTranslation == nil || len(rev.StudyTranslation.DisplayIn) != 5 ||
+		rev.StudyTranslation.Options["b"] == "" {
+		t.Fatalf("numbers-1 study_translation missing display_in or options: %+v", rev.StudyTranslation)
+	}
+	if !slices.ContainsFunc(rev.Items, func(opt study.Option) bool { return opt.ID == "b" }) {
+		t.Fatalf("numbers-1 projected options lost authored ID: %+v", rev.Items)
 	}
 }
 

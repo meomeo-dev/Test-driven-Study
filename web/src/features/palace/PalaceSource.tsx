@@ -11,10 +11,12 @@ import {
   questionHasWritingCriteria,
   QuestionStimulus,
   QuestionWritingCriteria,
+  visibleStudyTranslation,
 } from '../question-types';
 
 export function PalaceSource({ detail }: { detail: Detail }) {
   const q = detail.question;
+  const stemTranslation = visibleStudyTranslation(q, 'palace')?.stem;
   const hasAnalysis = hasRichContent(q.analysis_content) || Boolean(q.analysis);
   const hasAudio = Boolean(q.analysis_audio?.length);
   const showFallback =
@@ -33,7 +35,10 @@ export function PalaceSource({ detail }: { detail: Detail }) {
       <h2 className="question-text">
         <RichContent content={q.rich_content ?? q.title} />
       </h2>
-      <QuestionStimulus question={q} />
+      {stemTranslation && (
+        <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+      )}
+      <QuestionStimulus question={q} translationSurface="palace" />
       <QuestionImage key={`image-${q.question_id}`} detail={detail} />
       <PalaceAnswers question={q} />
       <details className="palace-explanation">

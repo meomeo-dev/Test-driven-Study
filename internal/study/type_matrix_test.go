@@ -67,7 +67,7 @@ func TestProjectorVisibilityAndCrossTypeIsolationMatrix(t *testing.T) {
 			if err != nil {
 				t.Fatalf("marshal public %s: %v", q.QuestionType, err)
 			}
-			for _, secret := range []string{`"answer":`, `"analysis":`, `"skill":`, `"question_review":`, `"number_tolerance":`} {
+			for _, secret := range []string{`"answer":`, `"analysis":`, `"skill":`, `"question_review":`, `"study_translation":`, `"number_tolerance":`} {
 				if bytes.Contains(wire, []byte(secret)) {
 					t.Fatalf("%s (vis=%d) leaked %s: %s", q.QuestionType, vis, secret, wire)
 				}

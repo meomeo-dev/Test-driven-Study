@@ -1,6 +1,11 @@
 import { QuestionAudio } from '../../../../components/QuestionAudio';
 import type { QuestionTypeModule } from '../../shared/contracts';
 import { creditLabel, hasRichContent, normalizeSubAnswers } from '../../shared/format';
+import {
+  canDisplayStudyTranslation,
+  getStudyTranslation,
+  visibleStudyTranslation,
+} from '../../shared/study-translation';
 import { extractSubQuestionExplanations } from '../../shared/SubQuestionReview';
 import { ListeningQuestions, ListeningReview } from './components';
 
@@ -18,25 +23,47 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
     hasMedia: true,
   },
 
-  renderStimulus: ({ question, protectedAudio, showStudyTranslation }) => {
-    const review = 'question_review' in question ? question.question_review : undefined;
-    const material = review?.study_translation?.material;
+  renderStimulus: ({
+    question,
+    reviewQuestion,
+    protectedAudio,
+    showStudyTranslation,
+    translationSurface,
+  }) => {
+    const reviewSrc = 'question_review' in question ? question : reviewQuestion;
+    const review = reviewSrc?.question_review;
+    const surface = translationSurface ?? (reviewQuestion ? 'practice_review' : 'memorize');
+    const rawTr = getStudyTranslation(reviewSrc);
+    const allowed = canDisplayStudyTranslation(rawTr, surface);
+    const material = allowed ? rawTr?.material : undefined;
+    const visible = allowed && (showStudyTranslation ?? true);
     return (
       <QuestionAudio
         key={`audio-${question.question_id}`}
-        question={question}
+        question={reviewSrc ?? question}
         protectedAudio={protectedAudio}
-        studyTranslation={material && showStudyTranslation !== undefined ? {
-          material,
-          passage: Array.isArray(review?.transcript) ? undefined : review?.passage,
-          visible: showStudyTranslation,
-        } : undefined}
+        studyTranslation={
+          material
+            ? {
+                material,
+                passage: Array.isArray(review?.transcript) ? undefined : review?.passage,
+                visible,
+              }
+            : undefined
+        }
       />
     );
   },
 
   renderPracticeAnswer: ctx => {
     const review = ctx.reviewQuestion?.question_review;
+    const translations = ctx.result
+      ? visibleStudyTranslation(
+          ctx.reviewQuestion,
+          ctx.translationSurface ?? 'practice_review',
+          ctx.showStudyTranslation ?? true,
+        )?.sub_questions
+      : undefined;
     return (
       <>
         <ListeningQuestions
@@ -44,6 +71,7 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
           value={ctx.result?.response ?? ctx.draft}
           disabled={ctx.pending || Boolean(ctx.result)}
           onChange={ctx.onDraft}
+          translations={translations}
         />
         {review && ctx.result && (
           <ListeningReview
@@ -82,16 +110,27 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
     </>
   ),
 
-  renderReferenceAnswers: ({ question, showStudyTranslation }) => (
+  renderReferenceAnswers: ({
+    question,
+    showStudyTranslation,
+    translationSurface = 'memorize',
+  }) => (
     <ListeningQuestions
       content={question.content}
       review={question.question_review}
-      showStudyTranslation={showStudyTranslation}
+      translations={
+        visibleStudyTranslation(question, translationSurface, showStudyTranslation ?? true)
+          ?.sub_questions
+      }
     />
   ),
 
   renderPalaceAnswers: question => (
-    <ListeningQuestions content={question.content} review={question.question_review} />
+    <ListeningQuestions
+      content={question.content}
+      review={question.question_review}
+      translations={visibleStudyTranslation(question, 'palace')?.sub_questions}
+    />
   ),
 
   renderFeedbackBody: () => null,
@@ -102,6 +141,7 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
         item={review.question_review}
         response={response}
         credit={credit}
+        translations={visibleStudyTranslation(review, 'exam_review')?.sub_questions}
       />
     ) : null,
 
@@ -112,6 +152,7 @@ export const listeningModule: QuestionTypeModule<'listening'> = {
           item={review.question_review}
           response={response}
           credit={credit}
+          translations={visibleStudyTranslation(review, 'exam_review')?.sub_questions}
         />
       )}
       {renderAnalysis()}

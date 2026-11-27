@@ -53,6 +53,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你看到几个盒子？",
+      "options": {
+        "a": "我看到 30 个盒子。",
+        "b": "我看到 13 个盒子。",
+        "c": "我看到 3 个盒子。",
+        "d": "我看到第三盒子。（表达有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -158,6 +174,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "5",
+        "b": "15",
+        "c": "50",
+        "d": "第五"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -267,6 +298,14 @@
         "text": "需要的物品是螺丝（screws）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "我们需要 24 个干净的托盘。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -333,6 +372,16 @@
         "text": "（判断：他的意思是他手里一个螺丝也没有。）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "我手里有 0 个螺丝。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -374,6 +423,13 @@
         "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "工作台上有 8 个红色零件和 7 个蓝色零件。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -439,6 +495,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "你好。我叫莉娜。",
         "桌上有三个零件。",
@@ -541,6 +604,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "工作台上有一台扫码枪。",
+        "b": "工作台上有一台扫码枪。（语法有误）",
+        "c": "工作台上有两台扫码枪。（语法有误）",
+        "d": "工作台上有一台扫码枪。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -646,6 +724,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "料盒里有螺丝吗？（语法有误）",
+        "b": "料盒里有螺丝吗？（语序有误）",
+        "c": "料盒里有螺丝吗？",
+        "d": "料盒里有螺丝吗？（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -718,6 +811,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "工作台前有 3 名工人。",
+        "b": "杯子里有 5 支笔。（语法有误）",
+        "c": "门旁边有 10 个箱子。",
+        "d": "面板上有一个按钮。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -850,6 +958,16 @@
         "text": "（判断：这是在询问架子上是否有扳手。）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "架子上有一把扳手吗？"
+    },
     "analysis": [
       {
         "type": "text",
@@ -913,6 +1031,13 @@
         "text": " 托盘里一共有多少个螺栓（bolts）？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "这个托盘里有 5 个大螺栓和 9 个小螺栓。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -966,6 +1091,16 @@
         "text": " 判断：按钮在左边。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "按钮在左边。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1036,6 +1171,16 @@
         "text": "在工作台后面"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "蓝色胶带在工作台下面。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1097,6 +1242,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "剪刀在两个盒子后面。",
+        "b": "剪刀在两个盒子上面。",
+        "c": "剪刀在两个盒子旁边。",
+        "d": "剪刀在两个盒子之间。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1173,6 +1333,14 @@
         "text": "黄色料盒放在右边"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "把绿色料盒放在左边，把黄色料盒放在右边。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1250,6 +1418,16 @@
         "text": "（判断：这表示电源按钮在机器的背面或后方。）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "电源按钮在机器前面。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1324,6 +1502,16 @@
         "text": "在底下"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "油瓶在电机旁边。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1389,6 +1577,16 @@
         "text": "8点45分"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "现在是八点半。该开工了。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1457,6 +1655,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "现在几点了？",
+        "b": "它们有几个小时？（表达有误）",
+        "c": "时钟在哪里？",
+        "d": "这是多少时间？（表达有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1522,6 +1735,14 @@
         "text": "具体开工时间是 9:45"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "班次在上午九点十五分开始。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1588,6 +1809,16 @@
         "text": "（判断：通知要求工人在下午 4 点整休息。）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "请在下午四点整休息。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1640,6 +1871,13 @@
         "text": " 距离机器停机还剩多少个小时？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "机器在两点停机。现在是一点。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1705,6 +1943,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "莉娜，A 盒里有多少个黄色盖子？",
         "A 盒里有十四个黄色盖子，B 盒里有四十个绿色盖子。",
@@ -1991,6 +2236,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "零件清点表",
         "每个干净的托盘可装二十五颗小螺栓。",
@@ -2224,6 +2476,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "We need forty clean trays and twenty-eight spare boxes."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我们需要 40 个干净的托盘和 28 个备用箱子。"
+      ]
     },
     "blanks": [
       {
@@ -2569,6 +2833,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "山姆，你好：",
+        "这是我们的早班盘点结果。工作台上有 18 个合格零件和 30 个待检零件。另外两个托盘里装有 42 颗螺丝，我们还需要 10 个干净料盒。",
+        "祝好，\n莉娜"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
@@ -2660,13 +2938,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Station Two is ready for the morning shift."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "There is one clean barcode scanner on the desk, and there are six spare batteries in the blue drawer."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "However, there aren't any clean rags on the shelf today."}
+      {
+        "type": "text",
+        "text": "Station Two is ready for the morning shift."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "There is one clean barcode scanner on the desk, and there are six spare batteries in the blue drawer."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "However, there aren't any clean rags on the shelf today."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "二号工位已为早班准备就绪。",
         "桌上有一台干净的条码扫描器，蓝色抽屉里有六节备用电池。",
@@ -2871,6 +3171,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工作台检查清单",
         "三号工作台左侧有一个绿色合格品盒。",
@@ -3051,6 +3358,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "There is one red button on the panel. Are there any bolts in the small tray?"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "面板上有一个红色按钮。小托盘里有螺栓吗？"
+      ]
     },
     "blanks": [
       {
@@ -3301,6 +3620,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "红色料盒里有备用螺丝吗？"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3362,6 +3693,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "莉娜，我该把绿色合格品盒和黄色废品盒放在哪里？",
         "把绿色合格品盒放在左边，把黄色废品盒放在右边。",
@@ -3640,6 +3978,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位布局",
         "相机在轨道正上方，零件托盘在相机下方。",
@@ -3831,6 +4176,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Put the pass box on the left, and place the servo flap between the two boxes."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "把合格品盒放在左边，把伺服挡板放在两个盒子之间。"
+      ]
     },
     "blanks": [
       {
@@ -4065,6 +4422,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "按钮在机器前面，料盒在右边。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4111,13 +4480,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Good morning, everyone."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Today our line starts at eight thirty in the morning."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Please take your first check at a quarter past ten, and stop the machine at a quarter to five in the afternoon for handover."}
+      {
+        "type": "text",
+        "text": "Good morning, everyone."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Today our line starts at eight thirty in the morning."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Please take your first check at a quarter past ten, and stop the machine at a quarter to five in the afternoon for handover."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "大家早上好。",
         "今天我们的生产线上午八点半启动。",
@@ -4360,6 +4751,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "班次时间表",
         "为了迎接早班，车间大门上午七点半开放。",
@@ -4545,6 +4943,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The morning check is at half past eight, and the afternoon break ends at a quarter to four."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "早间检查在八点半（8:30）进行，下午休息在三点四十五分（3:45）结束。"
+      ]
     },
     "blanks": [
       {
@@ -4801,6 +5211,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "晚班在四点四十五分开始点检。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4858,6 +5280,13 @@
         "text": " 才停机准备午休。请问从早间自检开始到上午停机，一共连续运行了多少分钟？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "早间开机自检在 8:30（八点半）开始，一直工作到 11:45（十一点四十五分）停机准备午休。"
+    },
     "analysis": [
       {
         "type": "text",

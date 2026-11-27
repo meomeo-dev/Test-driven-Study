@@ -1,22 +1,20 @@
 .typing-launcher {
-  position: fixed; right: 22px; bottom: 204px; z-index: 50;
-  display: flex; flex-direction: column; align-items: center;
-  width: 78px; padding: 0; background: transparent; border-radius: 18px;
-  color: var(--text); filter: drop-shadow(0 3px 5px var(--shadow));
+  position: fixed; right: 22px; bottom: 72px; z-index: 50;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-secondary); box-shadow: 0 3px 8px var(--shadow);
 }
+.typing-launcher:hover { border-color: var(--primary); color: var(--primary); }
 .typing-launcher-badge {
-  position: absolute; top: 3px; right: 0; padding: 2px 5px;
-  border: 2px solid var(--surface); border-radius: 8px;
+  padding: 1px 5px; border-radius: 6px;
   background: var(--success); color: var(--on-primary); font-size: 9px;
   font-weight: 750; letter-spacing: .4px;
 }
 .typing-launcher-label {
-  margin-top: -2px; padding: 5px 10px; border-radius: 12px;
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text-secondary); font-size: var(--font-size-control); font-weight: 650;
+  font-size: var(--font-size-control); font-weight: 650;
   white-space: nowrap;
 }
-.typing-launcher:hover .typing-launcher-label { color: var(--primary); }
 .typing-launcher[data-state="open"] { display: none; }
 .typing-launcher-inline[data-state="open"] { visibility: hidden; }
 
@@ -224,8 +222,8 @@
 .typing-resize-handle:hover { color: var(--primary); background: var(--primary-soft); }
 
 @media (max-width: 600px) {
-  .typing-launcher { right: 14px; bottom: 196px; width: 64px; }
-  .typing-launcher-label { font-size: 11px; padding: 4px 8px; }
+  .typing-launcher { right: 12px; bottom: 68px; padding: 5px 10px; }
+  .typing-launcher-label { font-size: 11px; }
   .typing-roll { padding: 14px 12px 100px; }
   .typing-prompt { font-size: 16px; }
   .typing-underline-input { font-size: 16px; }

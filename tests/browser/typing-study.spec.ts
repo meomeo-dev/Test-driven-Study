@@ -20,6 +20,7 @@ async function studyTarget(
   return {
     memorizeUrl: `/memorize?${params}`,
     practiceUrl: `/practice?${params}`,
+    palaceUrl: `/palace?${params}`,
   };
 }
 
@@ -163,4 +164,77 @@ test('practice disables typing study before submit, unlocks after grading, and s
 
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
+});
+
+test('multi-sentence listening pairs translations in typing study and display_in gates surfaces', async ({
+  page, request,
+}) => {
+  // 1. Multi-sentence listening transcript line pairs sentence 2 with its Chinese translation.
+  const listening = await studyTarget(
+    request, 'beginner-english', 'intro', 'be-verb-v2-listening-1',
+  );
+  await page.goto(listening.memorizeUrl);
+  await page.getByRole('button', { name: '打开打字学习浮窗' }).click();
+  const dialog = page.getByRole('dialog', { name: /打字学习/ });
+  await dialog.getByRole('button', { name: '仅英文' }).click();
+
+  const firstLine = dialog.locator('.typing-line-active');
+  await expect(firstLine).toContainText('Good morning, David.');
+  await expect(firstLine).toContainText('戴维，早上好。');
+  await firstLine.locator('textarea.typing-underline-input').fill('Good morning, David.');
+
+  const secondLine = dialog.locator('.typing-line-active');
+  await expect(secondLine).toContainText('Are you ready for the line check?');
+  await expect(secondLine).toContainText('你准备好检查生产线了吗？');
+  await page.keyboard.press('Escape');
+
+  // 2. Full-surface single_choice (numbers-1) renders translations on memorize, post-submit practice, and palace.
+  const singleChoice = await studyTarget(
+    request, 'golden-course-template', 'extended-practice', 'numbers-1',
+  );
+  await page.goto(singleChoice.memorizeUrl);
+  const toggle = page.getByRole('switch', { name: '英中对照' });
+  await expect(toggle).toHaveAttribute('aria-checked', 'true');
+  await expect(page.locator('.question-card')).toContainText('你看到几个盒子？');
+  await expect(page.locator('.question-card')).toContainText('我看到 13 个盒子。');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-checked', 'false');
+  await expect(page.locator('.question-card')).not.toContainText('我看到 13 个盒子。');
+
+  // Practice pre-submit hides translation; post-submit reveals it.
+  await page.goto(singleChoice.practiceUrl);
+  await expect(page.locator('.question-card')).toBeVisible();
+  await expect(page.locator('.question-card')).not.toContainText('你看到几个盒子？');
+  await expect(page.locator('.question-card')).not.toContainText('我看到 13 个盒子。');
+  await page.locator('.choice-option').first().click();
+  await page.locator('[data-practice-confirm="true"]').click();
+  await expect(page.locator('.question-card')).toContainText('你看到几个盒子？');
+  await expect(page.locator('.question-card')).toContainText('我看到 13 个盒子。');
+
+  // Palace shows translation when included in display_in.
+  await page.goto(singleChoice.palaceUrl);
+  await expect(page.locator('.palace-source')).toContainText('你看到几个盒子？');
+  await expect(page.locator('.palace-source')).toContainText('我看到 13 个盒子。');
+
+  // 3. Selective display_in: ["memorize", "typing"] on numbers-5 shows in memorize & typing, hides in practice & palace.
+  const selective = await studyTarget(
+    request, 'golden-course-template', 'extended-practice', 'numbers-5',
+  );
+  await page.goto(selective.memorizeUrl);
+  await expect(page.locator('.question-card')).toContainText('工作台上有 8 个红色零件和 7 个蓝色零件。');
+  await page.getByRole('button', { name: '打开打字学习浮窗' }).click();
+  await expect(page.getByRole('dialog', { name: /打字学习/ })).toContainText(
+    '工作台上有 8 个红色零件和 7 个蓝色零件。',
+  );
+  await page.keyboard.press('Escape');
+
+  await page.goto(selective.practiceUrl);
+  await page.locator('.numeric-answer input').fill('15');
+  await page.locator('[data-practice-confirm="true"]').click();
+  await expect(page.locator('.question-card')).toContainText('正确答案：15');
+  await expect(page.locator('.question-card')).not.toContainText('工作台上有 8 个红色零件和 7 个蓝色零件。');
+
+  await page.goto(selective.palaceUrl);
+  await expect(page.locator('.palace-source')).toContainText('正确答案：15');
+  await expect(page.locator('.palace-source')).not.toContainText('工作台上有 8 个红色零件和 7 个蓝色零件。');
 });

@@ -9,11 +9,16 @@ V2 adds cloze, listening, reading comprehension, writing and translation to
 the four existing types. V2 true/false items require Boolean `grading.value`
 and rich `analysis`. V1 true/false items retain `grading.boolean`.
 
-Reading comprehension and listening items may declare `study_translation`.
-Its `material` array contains one plain-text translation per nonblank passage
-segment or structured transcript line. Its optional `sub_questions` object
-maps existing sub-question IDs to a translated `stem` and/or `options` keyed by
-existing option IDs. See the guide below for alignment and review visibility.
+Any v2 question type may declare an optional `study_translation` object with an
+optional `display_in` array restricting which study surfaces show the
+translation (`memorize`, `practice_review`, `exam_review`, `typing`, `palace`;
+omitting `display_in` enables all five surfaces). `stem` translates the prompt;
+`options` maps authored option IDs on choice/judgment items; `material` aligns
+one plain-text translation per nonblank passage segment or structured transcript
+line on `cloze`, `reading_comprehension`, and `listening`; `sample_response`
+aligns per nonblank writing sample segment; and `sub_questions` maps existing
+sub-question IDs to translated `stem` and/or `options`. See the guide below for
+alignment and review visibility.
 
 English course packages can declare an optional `vocabulary_file` containing a
 [vocabulary array](vocabulary.schema.json). See the

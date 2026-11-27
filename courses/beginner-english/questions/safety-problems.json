@@ -37,6 +37,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你必须戴手套。（语法有误）",
+        "b": "你必须戴手套。",
+        "c": "你必须戴手套。（语法有误）",
+        "d": "你必须戴手套。（语序有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -175,6 +190,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你必须触碰传送带。",
+        "b": "你不得触碰传送带。（语法有误）",
+        "c": "你不得触碰传送带。（语序有误）",
+        "d": "你严禁触碰传送带。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -313,6 +343,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "启动前你必须检查传感器。",
+        "b": "你严禁把工具放在传送带上。（语法有误）",
+        "c": "操作员必须保持工作台整洁。",
+        "d": "他今天必须佩戴安全眼镜。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -460,6 +505,16 @@
         "text": " 的含义是“你不需要触碰传送带，但如果想碰也可以碰”。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你严禁触碰传送带。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -500,6 +555,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "We have to wear safety shoes in the workshop."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我们在车间里必须穿安全鞋。"
+      ]
     },
     "blanks": [
       {
@@ -691,6 +758,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "安全出口",
+        "b": "当心 / 注意",
+        "c": "紧急停止 / 急停",
+        "d": "禁止入内"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -781,6 +863,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "高温表面",
+        "b": "请勿进入 / 闲人免进",
+        "c": "佩戴安全眼镜",
+        "d": "安全出口"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -871,6 +968,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "佩戴安全眼镜",
+        "b": "禁止入内",
+        "c": "紧急停止 / 急停",
+        "d": "请勿触碰"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -948,6 +1060,16 @@
         "text": " 标识通常指示人员疏散的安全出口方向。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "Exit：安全出口"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1003,6 +1125,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "危险",
+        "b": "警告",
+        "c": "当心 / 注意",
+        "d": "请勿进入 / 闲人免进"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1093,6 +1230,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我会使用扫描枪。（语法有误）",
+        "b": "我会使用扫描枪。（语法有误）",
+        "c": "我会使用扫描枪。",
+        "d": "我会使用扫描枪。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1231,6 +1383,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我可以休息一下吗？（疑问语序有误）",
+        "b": "我可以休息一下吗？",
+        "c": "我可以休息一下吗？（语法有误）",
+        "d": "我可以休息一下吗？（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1347,6 +1514,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你不能站在这里。",
+        "b": "他会检查传感器。（语法有误）",
+        "c": "我们可以开始测试吗？（语法有误）",
+        "d": "她一分钟可以分拣 20 个零件。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1494,6 +1676,14 @@
         "text": " 语法完全正确，符合工位英语规范。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "技术员会修理分拣舵机。（原句 can fixing 语法有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1586,6 +1776,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你不能站在这里。",
+        "b": "你不能站在这里。（语序有误）",
+        "c": "你不能站在这里。（语法有误）",
+        "d": "你不能站在这里。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1713,6 +1918,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "摄像头出了问题。（主谓一致有误）",
+        "b": "摄像头出了问题。（介词搭配有误）",
+        "c": "摄像头出了问题。（语法有误）",
+        "d": "摄像头出了问题。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1840,6 +2060,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "传送带卡住了。（词形有误）",
+        "b": "传送带卡住了。（缺少 be 动词）",
+        "c": "传送带卡住了。",
+        "d": "传送带容易粘住 / 卡滞。（语义不符）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1952,6 +2187,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "指示灯不亮了。（语法有误）",
+        "b": "指示灯不亮了。",
+        "c": "请叫技术员来。",
+        "d": "机器没有运转。（主谓一致有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2055,6 +2305,16 @@
         "text": " 使用现在进行时的否定形式，在分拣工位上可以准确表达“机器当前没有动作/停止运转”的故障状态。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "机器当前没有动作 / 停止运转了。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -2110,6 +2370,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "指示灯不工作。（语法有误）",
+        "b": "指示灯不工作。",
+        "c": "指示灯不工作。（助动词有误）",
+        "d": "指示灯不工作。（语法有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2207,6 +2482,13 @@
       "modal-must"
     ],
     "stem": "车间规定操作区环境噪音超过 85 分贝必须佩戴耳塞。当前噪音监测读数为 92 分贝，超过强制防护阈值多少分贝？",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "车间规定操作区环境噪音超过 85 分贝必须佩戴耳塞。当前噪音监测读数为 92 分贝，超过强制防护阈值多少分贝？"
+    },
     "grading": {
       "value": "7",
       "absolute_tolerance": "0"
@@ -2243,6 +2525,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "安全员，1 号线有几个急停按钮？",
         "沿着 1 号线有四个急停按钮。"
@@ -2336,6 +2625,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "全体工作人员请注意：立即撤离 2 区，到 B 集合点集合。",
         "收到。全体工作人员现在前往 B 集合点。"
@@ -2456,6 +2752,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好，梅。启动分拣工位前，你必须戴好护目镜和手套。",
         "我已经戴好手套和护目镜了。现在就得把空推车挪走吗？",
@@ -2727,6 +3030,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "安全检查清单",
         "所有操作员都必须穿安全鞋，并在上午 8 点前签字。",
@@ -2909,6 +3219,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Before starting the line, every worker must wear safety glasses. You must not touch the moving belt."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "启动产线前，每位工人都必须佩戴安全眼镜。你严禁触碰正在运转的传送带。"
+      ]
     },
     "blanks": [
       {
@@ -3250,6 +3572,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "工人在工位上必须戴手套，且严禁触碰正在运转的传送带。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3346,6 +3680,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "车间安全标志",
         "主电源箱上有一个红色的「危险」标志。",
@@ -3575,13 +3916,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Attention, new staff in Zone B."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "The storage room on the left has a No entry sign, so please keep out."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "The green Exit sign at the back leads to the safe yard outside."}
+      {
+        "type": "text",
+        "text": "Attention, new staff in Zone B."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The storage room on the left has a No entry sign, so please keep out."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The green Exit sign at the back leads to the safe yard outside."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "B 区新员工请注意。",
         "左边的储物间挂有「禁止入内」标志，请勿进入。",
@@ -3719,6 +4082,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The yellow label on the lamp says Hot surface, so do not touch it. When the belt jams, press the red Emergency stop button right away."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "灯上的黄色标签写着「高温表面」，所以请勿触碰。传送带卡住时，请立即按下红色的「急停」按钮。"
+      ]
     },
     "blanks": [
       {
@@ -3977,6 +4352,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "照明灯上有「高温表面」标志，急停按钮在控制箱旁边。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4042,6 +4429,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "我完成了培训。我会用条码扫描器，但还不会校准摄像头。",
         "没关系。如果摄像头需要校准，就叫技术员来。",
@@ -4236,6 +4630,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位规则",
         "受过培训的操作员可以运行分拣工位，并查看每天的合格数量。",
@@ -4405,6 +4806,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "I have finished my training, so I can operate the barcode scanner now. Can I borrow your wrench for five minutes?"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我已经完成了培训，现在会操作条码扫描枪了。我可以借用你的扳手五分钟吗？"
+      ]
     },
     "blanks": [
       {
@@ -4698,6 +5111,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "我能熟练操作条码扫描枪，但还不会修理伺服电机。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4797,6 +5222,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "陈先生，你好：",
+        "2 号分拣工位现在出了问题。一个塑料零件卡住了闸门，所以传送带卡住了，机器没有运转。另外，摄像头补光灯也不亮了。我已经关掉了电源开关。您有空时请过来检查一下工位。",
+        "祝好，\n林"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
@@ -4916,6 +5355,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "故障报告指南",
         "如果机器停止运转，请先按下急停按钮。",
@@ -5119,6 +5565,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "打扰一下，李先生。3 号工位出了问题。",
         "怎么了？摄像头支架又松了吗？",
@@ -5300,6 +5753,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "There is a problem with the sorting station. The light doesn't work, and the servo flap is stuck."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "分拣工位出了问题。指示灯不亮了，而且伺服挡板卡住了。"
+      ]
     },
     "blanks": [
       {

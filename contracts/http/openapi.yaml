@@ -3145,6 +3145,7 @@ components:
     QuestionOption:
       type: object
       properties:
+        id: { type: string }
         sign: *ref_3
         item_title: *ref_6
         title: {}
@@ -3158,6 +3159,7 @@ components:
     TrueFalseOption:
       type: object
       properties:
+        id: { type: string }
         sign: *ref_3
         item_title: *ref_6
         boolean_value: { type: boolean }
@@ -3178,6 +3180,7 @@ components:
     QuestionBase:
       type: object
       properties:
+        study_translation: { $ref: '#/components/schemas/StudyTranslation' }
         analysis_content: { $ref: '#/components/schemas/RichText' }
         package_id: { type: string }
         package_version: { type: string }
@@ -5460,6 +5463,7 @@ components:
         explanation: { type: string }
         explanation_audio: { type: array, items: { $ref: '#/components/schemas/ContentSegment' } }
         hint: { type: string }
+        study_translation: { $ref: '#/components/schemas/StudyTranslation' }
     CourseItemMediaFields:
       type: object
       properties:
@@ -5539,13 +5543,37 @@ components:
           type: object
           minProperties: 1
           additionalProperties: { type: string, minLength: 1 }
+    StudyTranslationSurface:
+      type: string
+      enum: [memorize, practice_review, exam_review, typing, palace]
     StudyTranslation:
       type: object
       additionalProperties: false
-      required: [material]
+      minProperties: 1
       properties:
+        display_in:
+          description: Surfaces where aligned translations should be displayed. Omitted defaults to all surfaces.
+          type: array
+          minItems: 1
+          maxItems: 5
+          uniqueItems: true
+          items: { $ref: '#/components/schemas/StudyTranslationSurface' }
+        stem:
+          description: Translation of the question stem.
+          type: string
+          minLength: 1
+        options:
+          description: Translations keyed by authored option ID for choice and true/false items.
+          type: object
+          minProperties: 1
+          additionalProperties: { type: string, minLength: 1 }
         material:
           description: Translations in the order of the source passage segments or transcript lines.
+          type: array
+          minItems: 1
+          items: { type: string, minLength: 1 }
+        sample_response:
+          description: Translations in the order of nonblank writing sample_response segments.
           type: array
           minItems: 1
           items: { type: string, minLength: 1 }
@@ -5582,7 +5610,6 @@ components:
             type: { type: string, enum: [listening] }
             passage: { $ref: '#/components/schemas/RichText' }
             sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
-            study_translation: { $ref: '#/components/schemas/StudyTranslation' }
     ReadingItemReview:
       allOf:
         - $ref: '#/components/schemas/CourseItemReviewBase'
@@ -5592,7 +5619,6 @@ components:
             type: { type: string, enum: [reading_comprehension] }
             passage: { $ref: '#/components/schemas/RichText' }
             sub_questions: { type: array, items: { $ref: '#/components/schemas/SubQuestionReview' } }
-            study_translation: { $ref: '#/components/schemas/StudyTranslation' }
     WritingItemReview:
       allOf:
         - $ref: '#/components/schemas/CourseItemReviewBase'

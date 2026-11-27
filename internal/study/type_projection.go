@@ -51,6 +51,7 @@ func projectChoice(base Question, item course.Item) (Question, error) {
 		sign := int64(i + 1)
 		signs[option.ID] = strconv.FormatInt(sign, 10)
 		base.Items = append(base.Items, Option{
+			ID:        option.ID,
 			Sign:      sign,
 			ItemTitle: option.Text,
 			Pinyin:    option.Pinyin,
@@ -62,6 +63,7 @@ func projectChoice(base Question, item course.Item) (Question, error) {
 		answers = append(answers, signs[id])
 	}
 	base.Answer = strings.Join(answers, ",")
+	base.StudyTranslation = item.StudyTranslation
 	return base, nil
 }
 
@@ -79,6 +81,7 @@ func projectTrueFalse(base Question, item course.Item) (Question, error) {
 	for i, option := range options {
 		sign := int64(i + 1)
 		base.Items = append(base.Items, Option{
+			ID:           option.ID,
 			Sign:         sign,
 			ItemTitle:    option.Text,
 			BooleanValue: option.Value,
@@ -89,6 +92,7 @@ func projectTrueFalse(base Question, item course.Item) (Question, error) {
 			base.Answer = strconv.FormatInt(sign, 10)
 		}
 	}
+	base.StudyTranslation = item.StudyTranslation
 	return base, nil
 }
 
@@ -97,6 +101,7 @@ func projectNumeric(base Question, item course.Item) (Question, error) {
 	base.Items = nil
 	base.Answer = item.Grading.Value
 	base.NumberTolerance = item.Grading.AbsoluteTolerance
+	base.StudyTranslation = item.StudyTranslation
 	return base, nil
 }
 

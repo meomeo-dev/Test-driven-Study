@@ -10,6 +10,12 @@
       "voice": "stella",
       "text": "Every worker must sign the checklist. Do not start the equipment without permission."
     },
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "material": [
+        "每位工人都必须在清单上签字。未经许可，不得启动设备。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
@@ -221,6 +227,10 @@
     "max_words": 20,
     "sample_response": "The delivery has been moved to Friday.",
     "sample_response_tts": { "voice": "stella" },
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "sample_response": ["送货时间已改为星期五。"]
+    },
     "rubric": { "task_completion": 50, "language_accuracy": 50 },
     "analysis": [
       { "type": "text", "text": "以 " },
@@ -270,6 +280,10 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "stem": "单词 equipment 通常使用复数形式 equipments。"
+    },
     "grading": { "value": false },
     "analysis": [
       { "type": "text", "text": "equipment", "tts": { "voice": "stella" } },
@@ -294,6 +308,16 @@
       { "id": "c", "text": "I see three boxes.", "tts": { "voice": "stella" } },
       { "id": "d", "text": "I see third boxes.", "tts": { "voice": "stella" } }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "stem": "你看到几个盒子？",
+      "options": {
+        "a": "我看到 30 个盒子。",
+        "b": "我看到 13 个盒子。",
+        "c": "我看到 3 个盒子。",
+        "d": "我看到第三盒子。（表达有误）"
+      }
+    },
     "analysis": [
       { "type": "text", "text": "数字 13 的英文是 " },
       { "type": "text", "text": "thirteen", "tts": { "voice": "stella" } },
@@ -325,6 +349,10 @@
       { "id": "c", "text": "需要的物品是托盘（trays）" },
       { "id": "d", "text": "需要的物品是螺丝（screws）" }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "typing"],
+      "stem": "我们需要 24 个干净的托盘。"
+    },
     "analysis": [
       { "type": "text", "text": "twenty-four", "tts": { "voice": "stella" } },
       { "type": "text", "text": " 表示数字 24，" },
@@ -349,6 +377,10 @@
       },
       { "type": "text", "text": " 工作台上一共有多少个零件？请用阿拉伯数字作答。" }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "typing"],
+      "stem": "工作台上有 8 个红色零件和 7 个蓝色零件。"
+    },
     "analysis": [
       { "type": "text", "text": "eight", "tts": { "voice": "stella" } },
       { "type": "text", "text": " 表示 8，" },
@@ -387,6 +419,14 @@
         "tts": { "voice": "stella", "text": "Best, Sam" }
       }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "sample_response": [
+        "米娅，你好：",
+        "货车需要检修，今天的送货已改为星期五上午十点。请确认届时是否有人方便收货。很抱歉带来变动，感谢你的协助。",
+        "祝好，\n山姆"
+      ]
+    },
     "rubric": { "task_completion": 50, "language_accuracy": 30, "coherence": 20 },
     "analysis": [
       { "type": "text", "text": "先用 " },
@@ -430,6 +470,14 @@
         "tts": { "voice": "stella" }
       }
     ],
+    "study_translation": {
+      "display_in": ["memorize", "practice_review", "exam_review", "typing", "palace"],
+      "sample_response": [
+        "清晰的交班能帮助下一班不必猜测就能直接开工。纸质清单和电子清单各有帮助，但优势不同。",
+        "网络中断时，纸质清单仍很容易使用。不过，纸页容易丢失，手写字迹也可能难以辨认。电子清单能让两班在同一处看到最新记录，也更容易查找历史记录。主要问题是平板电脑可能会没电。",
+        "我会在日常使用电子清单，并保留纸质打印件作为备份。如果平板电脑无法使用，工人可以在纸上写明日期、时间和未完成的任务，随后由班长把这些记录补录进电子清单。"
+      ]
+    },
     "rubric": { "task_completion": 45, "language_accuracy": 30, "coherence": 25 },
     "analysis": [
       { "type": "text", "text": "第一段说明交班记录的目的，第二段用 " },

@@ -11,6 +11,7 @@ import {
 } from '../shared/ChoicePrimitives';
 import type { QuestionTypeModule } from '../shared/contracts';
 import { parseAnswerSigns } from '../shared/format';
+import { optionTranslationsBySign, visibleStudyTranslation } from '../shared/study-translation';
 
 export const singleChoiceModule: QuestionTypeModule<'single_choice'> = {
   spec: {
@@ -34,18 +35,31 @@ export const singleChoiceModule: QuestionTypeModule<'single_choice'> = {
     />
   ),
 
-  renderPracticeAnswer: ctx => (
-    <ChoiceOptionButtons
-      items={ctx.question.items}
-      multiple={false}
-      selected={ctx.selected}
-      correctAnswer={ctx.result?.correctAnswer}
-      submitted={Boolean(ctx.result)}
-      disabled={ctx.pending || Boolean(ctx.result)}
-      shortcuts={ctx.shortcuts}
-      onChoose={ctx.onChoose}
-    />
-  ),
+  renderPracticeAnswer: ctx => {
+    const translations = ctx.result
+      ? optionTranslationsBySign(
+          ctx.question.items,
+          visibleStudyTranslation(
+            ctx.reviewQuestion,
+            ctx.translationSurface ?? 'practice_review',
+            ctx.showStudyTranslation ?? true,
+          ),
+        )
+      : undefined;
+    return (
+      <ChoiceOptionButtons
+        items={ctx.question.items}
+        multiple={false}
+        selected={ctx.selected}
+        correctAnswer={ctx.result?.correctAnswer}
+        submitted={Boolean(ctx.result)}
+        disabled={ctx.pending || Boolean(ctx.result)}
+        shortcuts={ctx.shortcuts}
+        translations={translations}
+        onChoose={ctx.onChoose}
+      />
+    );
+  },
 
   renderExamStem: ({ question, protectedAudio }) => (
     <>
@@ -78,12 +92,21 @@ export const singleChoiceModule: QuestionTypeModule<'single_choice'> = {
     </>
   ),
 
-  renderReferenceAnswers: ({ question, mode = 'compact' }) => (
+  renderReferenceAnswers: ({
+    question,
+    mode = 'compact',
+    showStudyTranslation,
+    translationSurface = 'memorize',
+  }) => (
     <AnswerOptionList
       options={question.items}
       correct={new Set(parseAnswerSigns(question.answer))}
       judgment={false}
       expanded={mode === 'full'}
+      translations={optionTranslationsBySign(
+        question.items,
+        visibleStudyTranslation(question, translationSurface, showStudyTranslation ?? true),
+      )}
     />
   ),
 
@@ -91,10 +114,22 @@ export const singleChoiceModule: QuestionTypeModule<'single_choice'> = {
     <PalaceChoiceList
       items={question.items}
       answers={parseAnswerSigns(question.answer)}
+      translations={optionTranslationsBySign(
+        question.items,
+        visibleStudyTranslation(question, 'palace'),
+      )}
     />
   ),
 
-  renderFeedbackBody: question => <OptionTextList question={question} />,
+  renderFeedbackBody: (question, _response, review) => (
+    <OptionTextList
+      question={question}
+      translations={optionTranslationsBySign(
+        question.items,
+        visibleStudyTranslation(review, 'exam_review'),
+      )}
+    />
+  ),
 
   renderFeedbackAnswer: ({ question, review, selected }) => (
     <p>
@@ -103,12 +138,19 @@ export const singleChoiceModule: QuestionTypeModule<'single_choice'> = {
     </p>
   ),
 
-  renderDialogReview: ({ question, review, renderAnalysis }) => (
-    <>
-      <p>正确答案：{answerSymbols(question, parseAnswerSigns(review.answer))}</p>
-      {renderAnalysis()}
-    </>
-  ),
+  renderDialogReview: ({ question, review, renderAnalysis }) => {
+    const translations = optionTranslationsBySign(
+      question.items,
+      visibleStudyTranslation(review, 'exam_review'),
+    );
+    return (
+      <>
+        <p>正确答案：{answerSymbols(question, parseAnswerSigns(review.answer))}</p>
+        {translations && <OptionTextList question={question} translations={translations} />}
+        {renderAnalysis()}
+      </>
+    );
+  },
 
   renderReview: () => null,
   getExplanationParts: () => [],

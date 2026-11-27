@@ -147,7 +147,13 @@ func (item Item) validate(protocol int) error {
 	if !ok || kind.Validate == nil {
 		return fmt.Errorf("unsupported question type %q", item.Type)
 	}
-	return kind.Validate(item, protocol)
+	if err := kind.Validate(item, protocol); err != nil {
+		return err
+	}
+	if protocol == 2 {
+		return item.validateStudyTranslation()
+	}
+	return nil
 }
 
 func uniformOptionAudio(options []Option) error {
@@ -206,9 +212,6 @@ func (item Item) validateComposite() error {
 		if err := sub.validate(2); err != nil {
 			return fmt.Errorf("sub-question %q: %w", sub.ID, err)
 		}
-	}
-	if item.StudyTranslation != nil {
-		return item.validateStudyTranslation(optionsBySubID)
 	}
 	return nil
 }

@@ -15,6 +15,7 @@ import {
   QUESTION_TYPE_REGISTRY,
   QuestionReferenceAnswers,
   QuestionStimulus,
+  visibleStudyTranslation,
 } from '../question-types';
 import { questionType, stateLabel } from './model';
 import { QuestionExplanation } from './QuestionExplanation';
@@ -50,6 +51,7 @@ export function AnswerOptions({
       question={question}
       mode={mode}
       showStudyTranslation={showStudyTranslation}
+      translationSurface="memorize"
     />
   );
 }
@@ -69,6 +71,11 @@ export function QuestionCard({
 }: Props) {
   const question = detail.question;
   const spec = QUESTION_TYPE_REGISTRY[question.question_type];
+  const stemTranslation = visibleStudyTranslation(
+    question,
+    'memorize',
+    translationControl?.visible ?? true,
+  )?.stem;
   const reading = question.question_type === 'reading_comprehension';
   const writing = question.question_type === 'writing';
   const extended = isExtendedType(question.question_type);
@@ -111,9 +118,13 @@ export function QuestionCard({
               question.title
             )}
           </h2>
+          {stemTranslation && (
+            <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+          )}
           <QuestionStimulus
             question={question}
             showStudyTranslation={translationControl?.visible}
+            translationSurface="memorize"
           />
           <QuestionImage
             key={`image-${question.question_id}`}

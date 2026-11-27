@@ -44,9 +44,9 @@ export function TypingStudy({
     </>
   ) : (
     <>
-      <Keyboard size={24} aria-hidden="true" />
-      <span className="typing-launcher-badge">打字</span>
+      <Keyboard size={16} aria-hidden="true" />
       <span className="typing-launcher-label">打字学习</span>
+      <span className="typing-launcher-badge">打字</span>
     </>
   );
 

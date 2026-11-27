@@ -400,6 +400,7 @@ func redactMediaReview(q Question, finished bool) Question {
 	if !finished {
 		q.TranscriptURL = ""
 		q.TranscriptLines = nil
+		q.StudyTranslation = nil
 	}
 	return q
 }
@@ -408,6 +409,7 @@ func redactListeningReview(q Question, finished bool) Question {
 	if !finished {
 		q.TranscriptURL = ""
 		q.TranscriptLines = nil
+		q.StudyTranslation = nil
 		if q.QuestionReview != nil {
 			key := *q.QuestionReview
 			key.Transcript = nil
@@ -422,8 +424,13 @@ func redactListeningReview(q Question, finished bool) Question {
 func nonMediaExamReview(q Question, finished bool) Question {
 	// Sanitize a copy of the authored review before redacting it for an active paper.
 	q.sanitizeMedia()
-	if !finished && q.QuestionReview != nil {
-		q.QuestionReview.StudyTranslation = nil
+	if !finished {
+		q.StudyTranslation = nil
+		if q.QuestionReview != nil {
+			key := *q.QuestionReview
+			key.StudyTranslation = nil
+			q.QuestionReview = &key
+		}
 	}
 	return q
 }

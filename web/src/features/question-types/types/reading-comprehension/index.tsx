@@ -1,5 +1,10 @@
 import type { QuestionTypeModule } from '../../shared/contracts';
 import { creditLabel, hasRichContent, normalizeSubAnswers } from '../../shared/format';
+import {
+  canDisplayStudyTranslation,
+  getStudyTranslation,
+  visibleStudyTranslation,
+} from '../../shared/study-translation';
 import { extractSubQuestionExplanations } from '../../shared/SubQuestionReview';
 import { ReadingPassage, ReadingQuestions, ReadingReview } from './components';
 
@@ -17,31 +22,50 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
     hasMedia: false,
   },
 
-  renderStimulus: ({ question, showStudyTranslation }) => (
-    <ReadingPassage
-      passage={question.content.passage}
-      translations={'question_review' in question
-        ? question.question_review?.study_translation?.material
-        : undefined}
-      showStudyTranslation={showStudyTranslation}
-    />
-  ),
-
-  renderPracticeAnswer: ctx => (
-    <>
-      <ReadingQuestions
-        content={ctx.question.content}
-        value={ctx.result?.response ?? ctx.draft}
-        disabled={ctx.pending || Boolean(ctx.result)}
-        onChange={ctx.onDraft}
-        hidePassage
-        review={ctx.reviewQuestion?.question_review}
+  renderStimulus: ({
+    question,
+    reviewQuestion,
+    showStudyTranslation,
+    translationSurface,
+  }) => {
+    const reviewSrc = 'question_review' in question ? question : reviewQuestion;
+    const surface = translationSurface ?? (reviewQuestion ? 'practice_review' : 'memorize');
+    const rawTr = getStudyTranslation(reviewSrc);
+    const allowed = canDisplayStudyTranslation(rawTr, surface);
+    return (
+      <ReadingPassage
+        passage={question.content.passage}
+        translations={allowed ? rawTr?.material : undefined}
+        showStudyTranslation={allowed ? (showStudyTranslation ?? true) : undefined}
       />
-      {ctx.result?.score !== undefined && (
-        <p role="status">本题得分比例：{creditLabel(ctx.result.score)}</p>
-      )}
-    </>
-  ),
+    );
+  },
+
+  renderPracticeAnswer: ctx => {
+    const translations = ctx.result
+      ? visibleStudyTranslation(
+          ctx.reviewQuestion,
+          ctx.translationSurface ?? 'practice_review',
+          ctx.showStudyTranslation ?? true,
+        )?.sub_questions
+      : undefined;
+    return (
+      <>
+        <ReadingQuestions
+          content={ctx.question.content}
+          value={ctx.result?.response ?? ctx.draft}
+          disabled={ctx.pending || Boolean(ctx.result)}
+          onChange={ctx.onDraft}
+          hidePassage
+          review={ctx.reviewQuestion?.question_review}
+          translations={translations}
+        />
+        {ctx.result?.score !== undefined && (
+          <p role="status">本题得分比例：{creditLabel(ctx.result.score)}</p>
+        )}
+      </>
+    );
+  },
 
   renderExamStem: ({ question, draft, onDraft, disabled }) => (
     <ReadingQuestions
@@ -54,12 +78,19 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
 
   renderExamSelection: () => null,
   renderPreviewBody: question => <ReadingQuestions content={question.content} />,
-  renderReferenceAnswers: ({ question, showStudyTranslation }) => (
+  renderReferenceAnswers: ({
+    question,
+    showStudyTranslation,
+    translationSurface = 'memorize',
+  }) => (
     <ReadingQuestions
       content={question.content}
       hidePassage
       review={question.question_review}
-      showStudyTranslation={showStudyTranslation}
+      translations={
+        visibleStudyTranslation(question, translationSurface, showStudyTranslation ?? true)
+          ?.sub_questions
+      }
     />
   ),
   renderPalaceAnswers: question => (
@@ -67,16 +98,29 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
       content={question.content}
       hidePassage
       review={question.question_review}
+      translations={visibleStudyTranslation(question, 'palace')?.sub_questions}
     />
   ),
 
-  renderFeedbackBody: question => (
-    <ReadingPassage passage={question.content.passage} />
-  ),
+  renderFeedbackBody: (question, _response, review) => {
+    const tr = visibleStudyTranslation(review, 'exam_review');
+    return (
+      <ReadingPassage
+        passage={question.content.passage}
+        translations={tr?.material}
+        showStudyTranslation={tr?.material ? true : undefined}
+      />
+    );
+  },
 
   renderFeedbackAnswer: ({ review, response, credit }) =>
     review?.question_review ? (
-      <ReadingReview item={review.question_review} response={response} credit={credit} />
+      <ReadingReview
+        item={review.question_review}
+        response={response}
+        credit={credit}
+        translations={visibleStudyTranslation(review, 'exam_review')?.sub_questions}
+      />
     ) : null,
 
   renderDialogReview: ({ review, response, credit, renderAnalysis }) => (
@@ -86,6 +130,7 @@ export const readingModule: QuestionTypeModule<'reading_comprehension'> = {
           item={review.question_review}
           response={response}
           credit={credit}
+          translations={visibleStudyTranslation(review, 'exam_review')?.sub_questions}
         />
       )}
       {renderAnalysis()}

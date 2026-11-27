@@ -14,7 +14,8 @@
       "image": { "$ref": "../v1/items.schema.json#/items/properties/image" },
       "explanation_audio": {
         "$ref": "../v1/items.schema.json#/items/properties/explanation_audio"
-      }
+      },
+      "study_translation": { "$ref": "#/$defs/studyTranslation" }
     },
     "oneOf": [
       {
@@ -48,8 +49,7 @@
             ]
           },
           "transcript": { "$ref": "../v1/items.schema.json#/items/properties/transcript" },
-          "sub_questions": { "$ref": "#/$defs/subQuestions" },
-          "study_translation": { "$ref": "#/$defs/studyTranslation" }
+          "sub_questions": { "$ref": "#/$defs/subQuestions" }
         },
         "allOf": [
           {
@@ -85,8 +85,7 @@
         "properties": {
           "type": { "const": "reading_comprehension" },
           "passage": { "$ref": "#/$defs/rich" },
-          "sub_questions": { "$ref": "#/$defs/subQuestions" },
-          "study_translation": { "$ref": "#/$defs/studyTranslation" }
+          "sub_questions": { "$ref": "#/$defs/subQuestions" }
         }
       },
       {
@@ -236,10 +235,27 @@
         "unevaluatedProperties": false
       }
     },
+    "studyTranslationSurface": {
+      "type": "string",
+      "enum": ["memorize", "practice_review", "exam_review", "typing", "palace"]
+    },
     "studyTranslation": {
-      "type": "object", "required": ["material"], "additionalProperties": false,
+      "type": "object", "minProperties": 1, "additionalProperties": false,
       "properties": {
+        "display_in": {
+          "type": "array", "minItems": 1, "maxItems": 5, "uniqueItems": true,
+          "items": { "$ref": "#/$defs/studyTranslationSurface" }
+        },
+        "stem": { "$ref": "#/$defs/text" },
+        "options": {
+          "type": "object", "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/id" },
+          "additionalProperties": { "$ref": "#/$defs/text" }
+        },
         "material": {
+          "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" }
+        },
+        "sample_response": {
           "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" }
         },
         "sub_questions": {

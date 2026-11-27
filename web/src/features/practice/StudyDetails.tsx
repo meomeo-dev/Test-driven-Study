@@ -11,7 +11,12 @@ import {
   QuestionStimulus,
   QuestionWritingCriteria,
   QuestionWritingSample,
+  visibleStudyTranslation,
 } from '../question-types';
+import {
+  StudyTranslationToggle,
+  type StudyTranslationControl,
+} from '../memorization/StudyTranslationToggle';
 import { questionType, stateLabel } from './model';
 import { AnswerOptions } from './QuestionCard';
 import { QuestionImage } from './QuestionImage';
@@ -27,6 +32,7 @@ type Props = {
   tab: DetailsTab | null;
   onTab: (tab: DetailsTab | null) => void;
   returnFocus: RefObject<HTMLElement | null>;
+  translationControl?: StudyTranslationControl;
 };
 
 export function QuestionMetadata({ detail }: { detail: Detail }) {
@@ -56,13 +62,23 @@ export function QuestionMetadata({ detail }: { detail: Detail }) {
   );
 }
 
-export function FullExplanation({ detail }: { detail: Detail }) {
+export function FullExplanation({
+  detail,
+  showStudyTranslation,
+}: {
+  detail: Detail;
+  showStudyTranslation?: boolean;
+}) {
   const hasAnalysis =
     hasRichContent(detail.question.analysis_content) || Boolean(detail.question.analysis);
   return (
     <section className="full-explanation" aria-label="完整答案解析">
       <h3>答案解析</h3>
-      <QuestionWritingSample question={detail.question} />
+      <QuestionWritingSample
+        question={detail.question}
+        showStudyTranslation={showStudyTranslation}
+        translationSurface="practice_review"
+      />
       {(hasAnalysis || Boolean(detail.question.analysis_audio?.length)) && (
         <p>
           <RichContent content={detail.question.analysis_content ?? detail.question.analysis} />
@@ -81,8 +97,13 @@ export function FullExplanation({ detail }: { detail: Detail }) {
   );
 }
 
-export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
+export function StudyDetails({ detail, tab, onTab, returnFocus, translationControl }: Props) {
   if (!detail) return null;
+  const stemTranslation = visibleStudyTranslation(
+    detail.question,
+    'practice_review',
+    translationControl?.visible ?? true,
+  )?.stem;
   return (
     <Modal
       open={tab !== null}
@@ -111,12 +132,26 @@ export function StudyDetails({ detail, tab, onTab, returnFocus }: Props) {
             <h3 className="question-text">
               <RichContent content={detail.question.rich_content ?? detail.question.title} />
             </h3>
-            <QuestionStimulus question={detail.question} />
+            {stemTranslation && (
+              <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+            )}
+            <StudyTranslationToggle control={translationControl} />
+            <QuestionStimulus
+              question={detail.question}
+              showStudyTranslation={translationControl?.visible}
+              translationSurface="practice_review"
+            />
             <QuestionImage key={`image-${detail.question.question_id}`} detail={detail} />
-            <AnswerOptions question={detail.question} mode="full" />
+            <AnswerOptions
+              question={detail.question}
+              mode="full"
+              showStudyTranslation={translationControl?.visible}
+            />
           </div>
         )}
-        {tab === 'analysis' && <FullExplanation detail={detail} />}
+        {tab === 'analysis' && (
+          <FullExplanation detail={detail} showStudyTranslation={translationControl?.visible} />
+        )}
         {tab === 'metadata' && <QuestionMetadata detail={detail} />}
       </section>
     </Modal>

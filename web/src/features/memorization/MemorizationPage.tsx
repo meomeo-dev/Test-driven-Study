@@ -9,6 +9,7 @@ import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
 import type { ProgressState } from '../../api/client';
 import { Sidebar } from '../../components/Sidebar';
 import { QuestionNavigation } from '../question-navigation';
+import { canDisplayStudyTranslation, getStudyTranslation } from '../question-types';
 import { VocabularyNotebook } from '../vocabulary/VocabularyNotebook';
 import { PageHeader } from './PageHeader';
 import { Filters } from './Filters';
@@ -61,15 +62,15 @@ export function MemorizationPage() {
   const detail = row && question.data ? { ...question.data, state: row.state } : undefined;
   const displayedId = detail?.question.question_id ?? 0;
   const currentQuestion = detail?.question;
-  const translationControl =
-    (currentQuestion?.question_type === 'reading_comprehension'
-      || currentQuestion?.question_type === 'listening')
-    && currentQuestion.question_review?.study_translation
-      ? {
-          visible: showStudyTranslation,
-          toggle: () => setShowStudyTranslation(visible => !visible),
-        }
-      : undefined;
+  const translationControl = canDisplayStudyTranslation(
+    getStudyTranslation(currentQuestion),
+    'memorize',
+  )
+    ? {
+        visible: showStudyTranslation,
+        toggle: () => setShowStudyTranslation(visible => !visible),
+      }
+    : undefined;
   const mutation = useProgressMutation();
   const settledId = displayedId === id ? id : 0;
   useMemorizationExposure(settledId);

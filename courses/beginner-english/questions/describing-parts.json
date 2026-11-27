@@ -37,6 +37,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这个盖子是红色且圆形的。",
+        "b": "这个盖子是红色且圆形的。（缺少 be 动词）",
+        "c": "这个盖子是红色且正方形的。",
+        "d": "这个盖子是红色且圆形的。（主谓单复数不一致）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -219,6 +234,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这些垫片是扁平且灰色的。（主谓单复数不一致）",
+        "b": "这些垫片是扁平且绿色的。",
+        "c": "这些垫片是扁平且灰色的。",
+        "d": "这些垫片是圆形且灰色的。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -390,6 +420,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "正方形的",
+        "b": "蓝色的",
+        "c": "短的",
+        "d": "黄色的"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -471,6 +516,14 @@
         "text": " 中，形容词 blue 和 square 位于 be 动词 is 之后，在句中作表语说明主语的外观特征，这种语法结构是完全正确的。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "这个传感器盒是蓝色且正方形的。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -556,6 +609,16 @@
         "text": "扁平的黑色线缆"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "检查那根长的黑色线缆。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -661,6 +724,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "一个弯曲的零件（形容词位置有误）",
+        "b": "一个零件是弯曲的（完整句子，非定语短语）",
+        "c": "一个弯曲的零件（冠词位置有误）",
+        "d": "一个弯曲的零件"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -766,6 +844,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这个零件有裂纹。",
+        "b": "这个零件很干净。",
+        "c": "这个零件松动了。",
+        "d": "这个零件有裂纹。（词性有误，应为形容词 cracked）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -904,6 +997,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "紧的",
+        "b": "破损的",
+        "c": "干净的",
+        "d": "有划痕的"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -985,6 +1093,14 @@
         "text": "；如果改为定语修饰，短语写成 loose the screws 同样符合英语语法规则。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "这些螺丝松动了；松动的螺丝（定语语序有误）。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1054,6 +1170,16 @@
         "text": "外壳破裂损坏"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "错误：表面脏污（ERR_DIRTY）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1159,6 +1285,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这些零件是合格的。（指示代词单复数有误）",
+        "b": "这些零件是合格的。",
+        "c": "那些零件是合格的。（远近指代与 be 动词均有误）",
+        "d": "那些零件是合格的。（指示代词单复数与远近均有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1352,6 +1493,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这些箱子满了吗？（单复数与远近均有误）",
+        "b": "这个箱子满了吗？（指代近处）",
+        "c": "那些箱子满了吗？（名词未用复数）",
+        "d": "那个箱子满了吗？"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1556,6 +1712,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这颗螺栓是紧的。",
+        "b": "这颗螺栓是松的。（指示代词单复数有误）",
+        "c": "那些零件坏了。（指示代词单复数有误）",
+        "d": "那些料盒是干净的。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1747,6 +1918,14 @@
         "text": "。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "那些零件有裂纹。（指示代词搭配有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1843,6 +2022,16 @@
         "text": "远处料架上的那一个物料箱"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "请检查那些物料箱。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1952,6 +2141,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "这根螺栓比那根长 2 毫米。（差值位置有误）",
+        "b": "这根螺栓比那根长 2 毫米。（比较级构成有误）",
+        "c": "这根螺栓比那根长 2 毫米。",
+        "d": "这根螺栓比那根长 2 毫米。（缺少比较词 than）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2128,6 +2332,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "A 零件比 B 零件更重。（比较级构成有误）",
+        "b": "A 零件比 B 零件更重。",
+        "c": "A 零件比 B 零件更重。（误用最高级）",
+        "d": "A 零件比 B 零件更差。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2265,6 +2484,21 @@
         "text": "short -> more short"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "好 → 更好（比较级变化有误）",
+        "b": "好 → 更好",
+        "c": "差 → 更差",
+        "d": "短 → 更短（比较级变化有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2380,6 +2614,14 @@
         "text": " 中，one 是一个代词，用来指代前文提到过的单数名词 pin，以避免名词重复。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "这根销钉比那根短 1 毫米。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -2487,6 +2729,16 @@
         "text": "A 批次比 B 批次的质量更好"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "A 批次比 B 批次更好。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -2562,6 +2814,13 @@
       "adjectives-quality"
     ],
     "stem": "抽检 100 件零件，其中合格品为 96 件。请问不合格（defective）零件有多少件？",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "抽检 100 件零件，合格品 96 件，求不合格（defective）零件件数。"
+    },
     "grading": {
       "value": "4",
       "absolute_tolerance": "0"
@@ -2600,6 +2859,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "A 零件长 35 毫米，B 零件长 30 毫米。",
         "所以 A 零件比 B 零件长 5 毫米。"
@@ -2787,6 +3053,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "这根轴比那根更重。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -2879,6 +3157,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "检验员，哪个托盘里有划伤的零件？",
         "红色托盘里有五个划伤的零件。请把它们分开。"
@@ -3042,6 +3327,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "零件分拣指南",
         "圆形的绿色盖帽放进左边的蓝色托盘。",
@@ -3328,6 +3620,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "传感器盖是黄色且正方形的，金属垫圈是扁平且灰色的。"
+      ]
+    },
     "analysis": "分别考查单数主语与复数主语在描述颜色和形状时对 be 动词的选择。"
   },
   {
@@ -3447,6 +3751,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "工位上的盖子是蓝色且圆形的。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3511,6 +3827,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "停下传送带。有一个盖子开裂了，有两颗螺丝松了。",
         "明白了。把开裂的盖子放进不合格品箱，也请把脏镜头擦干净。"
@@ -3673,6 +3996,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "质量记录",
         "第 4 批的大部分零件合格，也很干净。",
@@ -3913,6 +4243,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "传感器发现一个有划痕的盖子，还有两颗螺栓松动了。"
+      ]
+    },
     "analysis": "注意区分前置定语冠词搭配与表语形容词的正确词形。"
   },
   {
@@ -4036,6 +4378,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "请把有裂纹的零件放进废品箱。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4099,6 +4453,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "我们工作台上的这个托盘可以拿去包装了吗？",
         "可以。这里这些零件都很干净，但远处架子上的那些盒子是空的。"
@@ -4282,6 +4643,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位交接记录",
         "传感器旁边这个蓝色收纳箱里装着 30 个合格盖帽。",
@@ -4525,6 +4893,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我手里的这些销钉弯了，那些箱子是空的吗？是的，它们是空的。"
+      ]
+    },
     "analysis": "考查近指复数代词与疑问句简答代词替换。"
   },
   {
@@ -4641,6 +5021,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "架子上的那些托盘很干净。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4687,15 +5079,43 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "We measured two bolts with the caliper."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Bolt A is forty-two millimeters long, and Bolt B is thirty-eight millimeters long."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "So Bolt A is four millimeters longer than Bolt B."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Batch A is also cleaner and better than Batch B."}
+      {
+        "type": "text",
+        "text": "We measured two bolts with the caliper."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Bolt A is forty-two millimeters long, and Bolt B is thirty-eight millimeters long."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "So Bolt A is four millimeters longer than Bolt B."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Batch A is also cleaner and better than Batch B."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "我们用卡尺测量了两根螺栓。",
         "A 螺栓长 42 毫米，B 螺栓长 38 毫米。",
@@ -4830,6 +5250,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "公差报告",
         "铜垫圈重 45 克，塑料垫圈重 20 克。",
@@ -5080,6 +5507,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "新托盘比旧托盘更大，而且 B 批次比 A 批次更差。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -5222,6 +5661,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "各位同事，你们好：",
+        "今天我检查了 A 批次和 B 批次。A 批次的垫片比 B 批次长两毫米，且重十克。A 批次也比 B 批次更干净、质量更好。",
+        "祝好，\n王"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,

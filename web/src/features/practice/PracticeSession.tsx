@@ -2,7 +2,12 @@ import { useCallback, useEffect, useImperativeHandle, useRef, useState, type Ref
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ExtendedResponse, Question } from '../../api/generated/types.gen';
 import * as api from '../../api/practice';
-import { assertNever, readyResponse } from '../question-types';
+import {
+  assertNever,
+  canDisplayStudyTranslation,
+  getStudyTranslation,
+  readyResponse,
+} from '../question-types';
 import { QuestionCard } from './QuestionCard';
 import { QuestionPreview } from './QuestionPreview';
 import { StudyDetails, type DetailsTab } from './StudyDetails';
@@ -64,7 +69,16 @@ function AnswerRound({
   const [error, setError] = useState('');
   const [preview, setPreview] = useState(false);
   const [tab, setTab] = useState<DetailsTab | null>(null);
+  const [showStudyTranslation, setShowStudyTranslation] = useState(true);
   const locked = useRef(false);
+  const translationControl =
+    result &&
+    canDisplayStudyTranslation(getStudyTranslation(result.detail.question), 'practice_review')
+      ? {
+          visible: showStudyTranslation,
+          toggle: () => setShowStudyTranslation(visible => !visible),
+        }
+      : undefined;
   const image = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
   const handleEvaluated = useCallback(
@@ -193,6 +207,7 @@ function AnswerRound({
         onPrevious={onPrevious}
         onNext={onNext}
         onDetails={openDetails}
+        translationControl={translationControl}
       />
       {error && <div className="practice-error" role="alert">{error}</div>}
       <QuestionPreview
@@ -201,7 +216,13 @@ function AnswerRound({
         onOpenChange={setPreview}
         returnFocus={returnFocus}
       />
-      <StudyDetails detail={result?.detail} tab={tab} onTab={setTab} returnFocus={returnFocus} />
+      <StudyDetails
+        detail={result?.detail}
+        tab={tab}
+        onTab={setTab}
+        returnFocus={returnFocus}
+        translationControl={translationControl}
+      />
     </>
   );
 }

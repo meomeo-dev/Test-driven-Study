@@ -41,6 +41,16 @@
         "text": "手套"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "使用螺丝刀。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -102,6 +112,16 @@
         "text": "托盘"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "把小零件放在托盘上。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -159,6 +179,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "手套",
+        "b": "扳手",
+        "c": "按钮",
+        "d": "螺丝"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -236,6 +271,16 @@
         "text": " 这句话的意思是“绿灯亮着”。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "绿灯亮着。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -289,6 +334,13 @@
         "text": " 请问工人总共需要领取多少个零件？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "拿 5 个螺栓和 3 个螺母。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -362,6 +414,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "15 米",
+        "b": "15 克",
+        "c": "15 毫米",
+        "d": "15 厘米"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -422,6 +489,16 @@
         "text": "米"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "2 千克"
+    },
     "analysis": [
       {
         "type": "text",
@@ -471,6 +548,21 @@
         "text": "m"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "千克",
+        "b": "厘米",
+        "c": "克",
+        "d": "米"
+      }
+    },
     "analysis": "`cm`（厘米）和 `m`（米）属于长度计量单位；`kg`（千克）和 `g`（克）属于重量单位。",
     "grading": {
       "choice_ids": [
@@ -487,6 +579,14 @@
       "measurement-units"
     ],
     "stem": "尺寸图纸上注明：`1 m = 10 cm`。判断：该单位换算关系是否正确？",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "1 米等于 10 厘米。"
+    },
     "analysis": "`1 m`（米）等于 `100 cm`（厘米），因此 `1 m = 10 cm` 是错误的换算。",
     "grading": {
       "value": false
@@ -500,6 +600,13 @@
       "measurement-units"
     ],
     "stem": "操作规程要求切断一段 `3 cm` 长的导线。请问这段导线换算为毫米（mm）是多少？请用阿拉伯数字作答。",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "切断一段 3 厘米（cm）长的导线。"
+    },
     "analysis": "因为 `1 cm = 10 mm`，所以 `3 cm` 等于 3 × 10 = 30 毫米。",
     "grading": {
       "value": "30",
@@ -544,6 +651,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我每天检查零件。（动词三单有误）",
+        "b": "我每天检查零件。",
+        "c": "我每天检查零件。（动词形式有误）",
+        "d": "我每天检查零件。（系动词多余）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -670,6 +792,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "她清点托盘上的螺丝。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -770,6 +904,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "他们拿起箱子。",
+        "b": "她清点螺丝。（缺少三单 -s）",
+        "c": "他擦拭工作台。",
+        "d": "我检查指示灯。（动词三单有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -917,6 +1066,16 @@
         "text": " 这句话的意思是“它移动得很慢”。判断：该理解是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "它移动得很慢。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1026,6 +1185,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "这台机器每天早上停机。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -1130,6 +1301,16 @@
         "text": "把螺丝刀放在桌子左边"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "把螺丝放进左边的盒子里。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1228,6 +1409,16 @@
         "text": "戴上手套并按下按钮"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "拿起扳手并拧紧螺栓。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1300,6 +1491,14 @@
         "text": "移动托盘"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "拿起零件并检查指示灯。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1355,6 +1554,16 @@
         "text": " 工人理解为“把手套放在桌子下面的托盘里”。判断：工人的理解是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "把手套放进右边的盒子里。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1418,6 +1627,16 @@
         "text": "先清理工作台，再关灯"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "清理工作台并关灯。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1470,6 +1689,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "首先，拿起红色螺栓。然后，用扳手拧紧。最后，把零件放进二号盒。"
       ]
@@ -1620,6 +1846,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "琳达，早上好。我需要给三号工位拿四个螺栓和四个螺母。",
         "好，它们在灰色托盘里。你有扳手和手套吗？",
@@ -1912,6 +2145,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工具架使用指南",
         "螺丝刀和扳手用完后放到工具架最上层。",
@@ -2234,6 +2474,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "先戴上手套，然后用扳手拧紧螺栓。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -2420,6 +2672,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "桌上的蓝色托盘里有十颗螺栓。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -2466,13 +2730,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Attention, station two."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "The new steel bolt is twenty-five millimeters long."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Each part weighs fifty grams, and the maximum weight for one blue tray is two kilograms."}
+      {
+        "type": "text",
+        "text": "Attention, station two."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The new steel bolt is twenty-five millimeters long."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Each part weighs fifty grams, and the maximum weight for one blue tray is two kilograms."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "二号工位请注意。",
         "新的钢螺栓长二十五毫米。",
@@ -2643,6 +2929,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "规格卡",
         "把绿线剪成 4 厘米长。",
@@ -2835,6 +3128,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "这颗螺栓长十二毫米，装满的箱子重两千克。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -2977,6 +3282,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "托盘上的这颗螺栓长二十五毫米。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3007,6 +3324,13 @@
       "measurement-units"
     ],
     "stem": "配料单要求从一个总重 `2 kg` 的大箱子里取出 `500 g` 螺母装入小托盘，再从同一箱子里取出 `250 g` 螺栓备用。请问大箱子里现在还剩多少克（g）紧固件？请用阿拉伯数字作答。",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "从总重 2 千克（kg）的大箱子里取出 500 克（g）螺母，再取出 250 克（g）螺栓。"
+    },
     "analysis": "先把总重量换算为克：`2 kg = 2000 g`。两次一共取出 `500 g + 250 g = 750 g`，剩余 `2000 - 750 = 1250` 克。",
     "grading": {
       "value": "1250",
@@ -3057,6 +3381,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "小张，告诉我你和丽莎每天早上在一号工位做什么。",
         "我先检查绿灯，再打开相机。丽莎数出二十个零件，把它们放到传送带上。",
@@ -3372,6 +3703,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位日常操作规程",
         "每天早上，本打开电源并检查黄色托盘。",
@@ -3780,6 +4118,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "技术员每班检查相机，我们把沉重的托盘搬到架子上。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -4015,6 +4365,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "相机检查每个零件并亮起绿灯。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4114,6 +4476,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "各位同事，你们好：",
+        "五颗螺栓已准备好放在左边的绿色盒子里。请把坏掉的螺丝留在右边的红色托盘上。启动机器前，请先戴上手套并按下绿色按钮。完成后请向主管回复“完成”。",
+        "祝好，\n林"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
@@ -4190,6 +4566,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "四号工位操作说明",
         "第一步，从架子上取下小扳手，拧紧支架上的两个螺母。",
@@ -4467,6 +4850,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "戴维，先拿起托盘上的银色螺栓，用扳手拧紧。",
         "明白了。那之后放在哪里？",
@@ -4721,17 +5111,51 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Attention, station two."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Before nine, collect the spare wrenches from the gray cabinet."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "First, clean the table with a dry cloth."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Second, tighten any loose screws with the screwdriver."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Third, leave all finished parts on the blue tray on the left."}
+      {
+        "type": "text",
+        "text": "Attention, station two."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Before nine, collect the spare wrenches from the gray cabinet."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "First, clean the table with a dry cloth."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Second, tighten any loose screws with the screwdriver."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Third, leave all finished parts on the blue tray on the left."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "二号工位请注意。",
         "九点前从灰色柜子里领取备用扳手。",
@@ -5019,6 +5443,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "用扳手拧紧螺母，并把零件放进右边的盒子里。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",

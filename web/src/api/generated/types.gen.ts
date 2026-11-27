@@ -291,6 +291,7 @@ export type QuestionType = 'single_choice' | 'multiple_choice' | 'true_false' | 
 export type ExamQuotaQuestionType = 'single_choice' | 'multiple_choice' | 'true_false';
 
 export type QuestionOption = {
+    id?: string;
     sign: number;
     item_title: string;
     title?: unknown;
@@ -299,6 +300,7 @@ export type QuestionOption = {
 };
 
 export type TrueFalseOption = {
+    id?: string;
     sign: number;
     item_title: string;
     boolean_value?: boolean;
@@ -314,6 +316,7 @@ export type QuestionMediaFields = {
 };
 
 export type QuestionBase = {
+    study_translation?: StudyTranslation;
     analysis_content?: RichText;
     package_id?: string;
     package_version?: string;
@@ -1359,6 +1362,7 @@ export type CourseItemReviewBase = {
     explanation?: string;
     explanation_audio?: Array<ContentSegment>;
     hint?: string;
+    study_translation?: StudyTranslation;
 };
 
 export type CourseItemMediaFields = {
@@ -1411,11 +1415,31 @@ export type StudySubQuestionTranslation = {
     };
 };
 
+export type StudyTranslationSurface = 'memorize' | 'practice_review' | 'exam_review' | 'typing' | 'palace';
+
 export type StudyTranslation = {
+    /**
+     * Surfaces where aligned translations should be displayed. Omitted defaults to all surfaces.
+     */
+    display_in?: Array<StudyTranslationSurface>;
+    /**
+     * Translation of the question stem.
+     */
+    stem?: string;
+    /**
+     * Translations keyed by authored option ID for choice and true/false items.
+     */
+    options?: {
+        [key: string]: string;
+    };
     /**
      * Translations in the order of the source passage segments or transcript lines.
      */
-    material: Array<string>;
+    material?: Array<string>;
+    /**
+     * Translations in the order of nonblank writing sample_response segments.
+     */
+    sample_response?: Array<string>;
     sub_questions?: {
         [key: string]: StudySubQuestionTranslation;
     };
@@ -1437,14 +1461,12 @@ export type ListeningItemReview = CourseItemReviewBase & CourseItemMediaFields &
     type: 'listening';
     passage?: RichText;
     sub_questions: Array<SubQuestionReview>;
-    study_translation?: StudyTranslation;
 };
 
 export type ReadingItemReview = CourseItemReviewBase & {
     type: 'reading_comprehension';
     passage: RichText;
     sub_questions: Array<SubQuestionReview>;
-    study_translation?: StudyTranslation;
 };
 
 export type WritingItemReview = CourseItemReviewBase & {

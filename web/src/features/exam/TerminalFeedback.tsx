@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import type { ExamItem } from '../../api/exams';
 import { RichContent } from '../../components/RichContent';
-import { FeedbackAnswerSummary, FeedbackQuestionBody } from '../question-types';
+import {
+  FeedbackAnswerSummary,
+  FeedbackQuestionBody,
+  visibleStudyTranslation,
+} from '../question-types';
 import { ReviewAnalysis } from './TerminalDialogs';
 import { TerminalImage } from './TerminalImage';
 import { TerminalModal } from './TerminalModal';
@@ -24,12 +28,16 @@ export function TerminalFeedback({
     if (!seconds) onClose();
   }, [seconds, onClose]);
   const q = item.detail.question;
+  const stemTranslation = visibleStudyTranslation(item.review, 'exam_review')?.stem;
   return (
     <TerminalModal title="错题学习" onClose={onClose} wide>
       <div className="terminal-feedback-question">
         <h2>
           {position}. <RichContent content={q.rich_content ?? q.title} />
         </h2>
+        {stemTranslation && (
+          <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+        )}
         <FeedbackQuestionBody
           question={q}
           response={item.response}

@@ -12,7 +12,12 @@ import {
   QuestionReferenceAnswers,
   QuestionStimulus,
   shouldShowExplanation,
+  visibleStudyTranslation,
 } from '../question-types';
+import {
+  StudyTranslationToggle,
+  type StudyTranslationControl,
+} from '../memorization/StudyTranslationToggle';
 import { questionType } from './model';
 import { QuestionExplanation } from './QuestionExplanation';
 import { QuestionImage } from './QuestionImage';
@@ -21,15 +26,19 @@ import type { DetailsTab } from './StudyDetails';
 export function AnswerOptions({
   question,
   mode = 'compact',
+  showStudyTranslation,
 }: {
   question: Question;
   mode?: 'compact' | 'full';
+  showStudyTranslation?: boolean;
 }) {
   return (
     <QuestionReferenceAnswers
       question={question}
       mode={mode}
       includeWritingSample={false}
+      showStudyTranslation={showStudyTranslation}
+      translationSurface="practice_review"
     />
   );
 }
@@ -56,6 +65,7 @@ type Props = {
   onDetails: (tab: DetailsTab, trigger?: HTMLElement) => void;
   onPrevious: () => void;
   onNext: () => void;
+  translationControl?: StudyTranslationControl;
 };
 
 export function QuestionCard({
@@ -80,6 +90,7 @@ export function QuestionCard({
   onDetails,
   onPrevious,
   onNext,
+  translationControl,
 }: Props) {
   const detail = presentation.detail;
   const question = detail.question;
@@ -87,6 +98,13 @@ export function QuestionCard({
   const spec = QUESTION_TYPE_REGISTRY[question.question_type];
   const written = spec.isWritten && Boolean(result);
   const effectiveCorrect = evaluation ? evaluation.passed : result?.attempt.correct;
+  const stemTranslation = result
+    ? visibleStudyTranslation(
+        result.detail.question,
+        'practice_review',
+        translationControl?.visible ?? true,
+      )?.stem
+    : undefined;
   const hint = (key: string) =>
     shortcuts || key === 'Enter' ? <kbd aria-hidden="true">{key}</kbd> : null;
   const ready = hasDraftAnswer(question, { selected, numeric, canSubmitExtended });
@@ -101,6 +119,7 @@ export function QuestionCard({
         <span className="question-position">
           {position} <span>/ {total}</span>
         </span>
+        <StudyTranslationToggle control={translationControl} />
         <button
           type="button"
           className="read-full"
@@ -147,9 +166,14 @@ export function QuestionCard({
                 question.title
               )}
             </h2>
+            {stemTranslation && (
+              <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+            )}
             <QuestionStimulus
               question={question}
               reviewQuestion={result?.detail.question}
+              showStudyTranslation={translationControl?.visible}
+              translationSurface="practice_review"
               cloze={{
                 value: result?.attempt.response ?? draft,
                 onJump:
@@ -194,6 +218,8 @@ export function QuestionCard({
               pending={pending}
               shortcuts={shortcuts}
               partIdPrefix={clozeId}
+              showStudyTranslation={translationControl?.visible}
+              translationSurface="practice_review"
               onChoose={onChoose}
               onEvaluated={onEvaluated}
             />
@@ -244,7 +270,11 @@ export function QuestionCard({
           </div>
         </footer>
         {result && shouldShowExplanation(result.detail.question) && (
-          <QuestionExplanation detail={result.detail} onDetails={onDetails} />
+          <QuestionExplanation
+            detail={result.detail}
+            onDetails={onDetails}
+            showStudyTranslation={translationControl?.visible}
+          />
         )}
       </div>
     </article>

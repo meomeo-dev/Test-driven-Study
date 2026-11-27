@@ -12,6 +12,7 @@ type OptionTTS struct {
 }
 
 type Option struct {
+	ID           string          `json:"id,omitempty"`
 	Sign         int64           `json:"sign"`
 	ItemTitle    string          `json:"item_title"`
 	Title        json.RawMessage `json:"title,omitempty"`
@@ -21,9 +22,10 @@ type Option struct {
 }
 
 type Question struct {
-	Content         *QuestionContent        `json:"content,omitempty"`
-	QuestionReview  *course.Item            `json:"question_review,omitempty"`
-	AnalysisContent *course.RichContent     `json:"analysis_content,omitempty"`
+	Content          *QuestionContent         `json:"content,omitempty"`
+	QuestionReview   *course.Item             `json:"question_review,omitempty"`
+	StudyTranslation *course.StudyTranslation `json:"study_translation,omitempty"`
+	AnalysisContent  *course.RichContent      `json:"analysis_content,omitempty"`
 	QuestionID      int64                   `json:"question_id"`
 	QuestionType    course.QuestionType     `json:"question_type"`
 	Title           string                  `json:"title"`

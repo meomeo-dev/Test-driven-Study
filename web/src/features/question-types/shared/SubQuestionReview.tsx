@@ -1,5 +1,6 @@
 import type {
   ExtendedResponse,
+  StudySubQuestionTranslation,
   SubQuestionReview,
 } from '../../../api/generated/types.gen';
 import { RichContent } from '../../../components/RichContent';
@@ -53,30 +54,40 @@ export function SubQuestionReviewList({
   response,
   credit,
   hideExplanations,
+  translations,
 }: {
   subQuestions: SubQuestionReview[];
   response?: ExtendedResponse;
   credit?: number;
   hideExplanations?: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   return (
     <section className="extended-review" aria-label="作答反馈">
       {credit !== undefined && <p role="status">本题得分比例：{creditLabel(credit)}</p>}
-      {subQuestions.map((sub, index) => (
-        <div key={sub.id}>
-          <strong>
-            小题 {index + 1} · {subAnswer(sub, expectedSubAnswer(sub))}
-          </strong>
-          {response && (
-            <p>你的答案：{subAnswer(sub, response.sub_answers?.[sub.id])}</p>
-          )}
-          {!hideExplanations && (sub.analysis || sub.explanation) && (
-            <p>
-              <RichContent content={sub.analysis ?? sub.explanation} />
-            </p>
-          )}
-        </div>
-      ))}
+      {subQuestions.map((sub, index) => {
+        const subTr = translations && Object.hasOwn(translations, sub.id)
+          ? translations[sub.id]
+          : undefined;
+        return (
+          <div key={sub.id}>
+            <strong>
+              小题 {index + 1} · {subAnswer(sub, expectedSubAnswer(sub))}
+            </strong>
+            {subTr?.stem && (
+              <span className="study-translation" lang="zh-Hans">{subTr.stem}</span>
+            )}
+            {response && (
+              <p>你的答案：{subAnswer(sub, response.sub_answers?.[sub.id])}</p>
+            )}
+            {!hideExplanations && (sub.analysis || sub.explanation) && (
+              <p>
+                <RichContent content={sub.analysis ?? sub.explanation} />
+              </p>
+            )}
+          </div>
+        );
+      })}
     </section>
   );
 }

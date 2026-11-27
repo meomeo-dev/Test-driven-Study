@@ -13,9 +13,10 @@ import type { DetailsTab } from './StudyDetails';
 type Props = {
   detail: Detail;
   onDetails: (tab: DetailsTab, trigger?: HTMLElement) => void;
+  showStudyTranslation?: boolean;
 };
 
-export function QuestionExplanation({ detail, onDetails }: Props) {
+export function QuestionExplanation({ detail, onDetails, showStudyTranslation }: Props) {
   const question = detail.question;
   const hasAnalysis = hasRichContent(question.analysis_content) || Boolean(question.analysis);
   return (
@@ -41,7 +42,11 @@ export function QuestionExplanation({ detail, onDetails }: Props) {
         aria-keyshortcuts="ArrowUp ArrowDown"
         tabIndex={0}
       >
-        <QuestionWritingSample question={question} />
+        <QuestionWritingSample
+          question={question}
+          showStudyTranslation={showStudyTranslation}
+          translationSurface="practice_review"
+        />
         {(hasAnalysis || Boolean(question.analysis_audio?.length)) && (
           <p className="analysis-text">
             <RichContent content={question.analysis_content ?? question.analysis} />

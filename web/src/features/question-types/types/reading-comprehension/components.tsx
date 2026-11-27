@@ -3,6 +3,7 @@ import type {
   ReadingContent,
   ReadingItemReview,
   RichText,
+  StudySubQuestionTranslation,
 } from '../../../../api/generated/types.gen';
 import { RichContent } from '../../../../components/RichContent';
 import { StudyPassage } from '../../../../components/StudyPassage';
@@ -39,7 +40,7 @@ export function ReadingQuestions({
   disabled,
   hidePassage,
   review,
-  showStudyTranslation,
+  translations,
 }: {
   content: ReadingContent;
   value?: ExtendedResponse;
@@ -47,7 +48,7 @@ export function ReadingQuestions({
   disabled?: boolean;
   hidePassage?: boolean;
   review?: ReadingItemReview;
-  showStudyTranslation?: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   const studyRows = Boolean(content.passage) || Boolean(review);
   return (
@@ -63,7 +64,7 @@ export function ReadingQuestions({
         onChange={onChange}
         disabled={disabled}
         reviewSubs={review?.sub_questions}
-        translations={showStudyTranslation ? review?.study_translation?.sub_questions : undefined}
+        translations={translations}
         studyRows={studyRows}
       />
     </div>
@@ -75,11 +76,13 @@ export function ReadingReview({
   response,
   credit,
   hideExplanations,
+  translations,
 }: {
   item: ReadingItemReview;
   response?: ExtendedResponse;
   credit?: number;
   hideExplanations?: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   return (
     <SubQuestionReviewList
@@ -87,6 +90,7 @@ export function ReadingReview({
       response={response}
       credit={credit}
       hideExplanations={hideExplanations}
+      translations={translations}
     />
   );
 }

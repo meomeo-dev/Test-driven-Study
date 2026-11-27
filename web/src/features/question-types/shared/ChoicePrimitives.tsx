@@ -62,6 +62,7 @@ function ChoiceOptionRow({
   disabled,
   shortcuts,
   hasAnyTts,
+  translation,
   onChoose,
 }: {
   option: QuestionOption;
@@ -72,6 +73,7 @@ function ChoiceOptionRow({
   disabled: boolean;
   shortcuts: boolean;
   hasAnyTts: boolean;
+  translation?: string;
   onChoose: (sign: number) => void;
 }) {
   const cls = `answer-option choice-option ${chosen ? 'selected' : ''} ${
@@ -91,7 +93,14 @@ function ChoiceOptionRow({
       >
         <span className="option-letter">{option.sign}</span>
         {multiple && (chosen ? <CircleCheck size={16} /> : <Circle size={16} />)}
-        <span className="option-text">{option.item_title}</span>
+        <span className="option-text">
+          {translation ? (
+            <>
+              <span>{option.item_title}</span>
+              <span className="study-translation" lang="zh-Hans">{translation}</span>
+            </>
+          ) : option.item_title}
+        </span>
         {right && (
           <span className="correct-label">
             <Check size={13} />
@@ -113,6 +122,7 @@ export function ChoiceOptionButtons({
   submitted,
   disabled,
   shortcuts,
+  translations,
   onChoose,
 }: {
   items: QuestionOption[];
@@ -122,6 +132,7 @@ export function ChoiceOptionButtons({
   submitted: boolean;
   disabled: boolean;
   shortcuts: boolean;
+  translations?: Readonly<Record<number, string | undefined>>;
   onChoose: (sign: number) => void;
 }) {
   const correct = new Set(correctAnswer ?? []);
@@ -143,6 +154,7 @@ export function ChoiceOptionButtons({
             disabled={disabled}
             shortcuts={shortcuts}
             hasAnyTts={hasAnyTts}
+            translation={translations?.[option.sign]}
             onChoose={onChoose}
           />
         );
@@ -155,10 +167,12 @@ export function OptionTextList({
   question,
   className,
   ariaLabel,
+  translations,
 }: {
   question: ChoiceQuestion;
   className?: string;
   ariaLabel?: string;
+  translations?: Readonly<Record<number, string | undefined>>;
 }) {
   const hasAnyTts = question.items.some(option => Boolean(option.tts));
   return (
@@ -167,6 +181,11 @@ export function OptionTextList({
         <li key={option.sign}>
           {optionSymbol(question, option.sign)}. {option.item_title}
           <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
+          {translations?.[option.sign] && (
+            <span className="study-translation" lang="zh-Hans">
+              {translations[option.sign]}
+            </span>
+          )}
         </li>
       ))}
     </ol>
@@ -192,9 +211,11 @@ export function PreviewChoiceList({ items }: { items: QuestionOption[] }) {
 export function PalaceChoiceList({
   items,
   answers,
+  translations,
 }: {
   items: QuestionOption[];
   answers: number[];
+  translations?: Readonly<Record<number, string | undefined>>;
 }) {
   const hasAnyTts = items.some(option => Boolean(option.tts));
   return (
@@ -203,6 +224,11 @@ export function PalaceChoiceList({
         <li key={item.sign} className={answers.includes(item.sign) ? 'correct' : ''}>
           <span>
             {item.sign}. {item.item_title}
+            {translations?.[item.sign] && (
+              <span className="study-translation" lang="zh-Hans">
+                {translations[item.sign]}
+              </span>
+            )}
           </span>
           <OptionAudio option={item} allOptionsHaveTts={hasAnyTts} />
           {answers.includes(item.sign) && <b>正确</b>}

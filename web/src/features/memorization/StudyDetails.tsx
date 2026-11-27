@@ -10,6 +10,7 @@ import {
   QuestionExtendedExplanations,
   QuestionStimulus,
   QuestionWritingCriteria,
+  visibleStudyTranslation,
 } from '../question-types';
 import { questionType, stateLabel } from './model';
 import { AnswerOptions } from './QuestionCard';
@@ -83,6 +84,11 @@ export function FullExplanation({ detail }: { detail: Detail }) {
 
 export function StudyDetails({ detail, tab, onTab, returnFocus, translationControl }: Props) {
   if (!detail) return null;
+  const stemTranslation = visibleStudyTranslation(
+    detail.question,
+    'memorize',
+    translationControl?.visible ?? true,
+  )?.stem;
   return (
     <Modal
       open={tab !== null}
@@ -111,10 +117,14 @@ export function StudyDetails({ detail, tab, onTab, returnFocus, translationContr
             <h3 className="question-text">
               <RichContent content={detail.question.rich_content ?? detail.question.title} />
             </h3>
+            {stemTranslation && (
+              <p className="study-translation" lang="zh-Hans">{stemTranslation}</p>
+            )}
             <StudyTranslationToggle control={translationControl} />
             <QuestionStimulus
               question={detail.question}
               showStudyTranslation={translationControl?.visible}
+              translationSurface="memorize"
             />
             <QuestionImage key={`image-${detail.question.question_id}`} detail={detail} />
             <AnswerOptions

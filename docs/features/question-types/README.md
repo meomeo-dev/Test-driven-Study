@@ -33,27 +33,45 @@ is released after the paper finishes.
 
 ### Study translations
 
-`reading_comprehension` and `listening` support optional `study_translation`
-for an aligned translation of their material and sub-questions. Memorization
-shows translations alongside the English. Practice releases them in graded
-review, and mock exams release them in review after the whole paper ends.
+All nine v2 question types support an optional `study_translation` object for
+aligned Chinese translations. Translations are review-only: they are never
+exposed on unanswered practice presentations or active in-progress mock exams.
+Memorization and post-submission practice show translations when allowed, mock
+exams release them only after the whole paper finishes, and Typing Study and
+Memory Palace read them when enabled for those surfaces.
 
-- `material` is a required array of plain strings in source order. For a
-  rich `passage`, count each segment with nonblank `text`, including any
-  title. A plain `passage` string is one part. For dialogue and recorded
-  listening, count one part per authored `transcript` line. A recording needs
-  a structured transcript to use study translations.
+- `display_in` is an optional array of unique surface names chosen from
+  `memorize`, `practice_review`, `exam_review`, `typing`, and `palace`.
+  Omitting `display_in` defaults to all five surfaces. Use a subset when an
+  item should only show translations on selected surfaces (for example
+  `["memorize", "typing"]`).
+- `stem` provides a plain-text translation of the question prompt (or the
+  English sentence embedded in it) on any question type.
+- `options` maps authored option IDs to plain-text translations on
+  `single_choice`, `multiple_choice`, and custom-option `true_false` items.
+- `material` is an array of plain strings in source order for `cloze`,
+  `reading_comprehension`, and `listening` (required when `study_translation`
+  is set on `reading_comprehension` or `listening`). For a rich `passage`,
+  count each segment with nonblank `text`, including any title. A plain
+  `passage` string is one part (on `cloze`, translate the completed passage
+  with the correct blank answers filled in). For dialogue and recorded
+  listening, count one part per authored `transcript` line; recordings need a
+  structured transcript to use study translations.
+- `sample_response` is an array of plain strings for `writing`, matching one
+  entry per nonblank text segment in `sample_response` (length 1 for a plain
+  string).
 - To align a spoken passage to multiple translations, use `ContentSegment[]`
   for `passage`. Preserve whitespace between parts so that joining the segment
   text reproduces the original English. The passage still plays as one track.
-- `sub_questions` may map existing sub-question IDs to a plain `stem`, an
-  `options` map keyed by existing option IDs, or both. Omit entries that
-  already have sufficient Chinese text. Apply the same level of literal
-  detail to correct options and distractors.
+- `sub_questions` (on `reading_comprehension` and `listening`) may map existing
+  sub-question IDs to a plain `stem`, an `options` map keyed by existing option
+  IDs, or both. Omit entries that already have sufficient Chinese text. Apply
+  the same level of literal detail to correct options and distractors.
 
-The [dialogue example](../../../courses/golden-course-template/questions/extended-practice.json)
-has two translated lines in `material` and keys its location-question
-translations as `sub_questions.location.options.second` and `.desk`.
+The [sample unit](../../../courses/golden-course-template/questions/extended-practice.json)
+demonstrates `study_translation` across all question types, including
+multi-surface (`sue1-extended-cloze`, `numbers-1`, `sue1-extended-writing`) and
+selective `display_in` (`numbers-3` and `numbers-5`).
 
 ### Grading and feedback
 

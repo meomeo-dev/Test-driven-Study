@@ -1,4 +1,4 @@
-import type { Question } from '../../../api/generated/types.gen';
+import type { Question, StudyTranslationSurface } from '../../../api/generated/types.gen';
 import { dispatchFullQuestion } from '../registry';
 
 export function QuestionReferenceAnswers({
@@ -6,14 +6,22 @@ export function QuestionReferenceAnswers({
   mode = 'compact',
   includeWritingSample = true,
   showStudyTranslation,
+  translationSurface,
 }: {
   question: Question;
   mode?: 'compact' | 'full';
   includeWritingSample?: boolean;
   showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
 }) {
   return dispatchFullQuestion(question, (mod, q) =>
-    mod.renderReferenceAnswers({ question: q, mode, includeWritingSample, showStudyTranslation }),
+    mod.renderReferenceAnswers({
+      question: q,
+      mode,
+      includeWritingSample,
+      showStudyTranslation,
+      translationSurface,
+    }),
   );
 }
 

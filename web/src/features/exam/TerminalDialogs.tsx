@@ -6,6 +6,7 @@ import {
   DialogReviewContent,
   hasRichContent,
   questionHasReviewExplanation,
+  visibleStudyTranslation,
 } from '../question-types';
 import { ExamNavigation } from './ExamNavigation';
 import { examCounts } from './terminalLabels';
@@ -127,6 +128,11 @@ export function TerminalDialogs({
         )}
         {dialog === 'review' && item.review && (
           <>
+            {visibleStudyTranslation(item.review, 'exam_review')?.stem && (
+              <p className="study-translation" lang="zh-Hans">
+                {visibleStudyTranslation(item.review, 'exam_review')?.stem}
+              </p>
+            )}
             <DialogReviewContent
               question={item.detail.question}
               review={item.review}

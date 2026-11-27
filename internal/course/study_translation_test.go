@@ -88,3 +88,92 @@ func TestV2StudyTranslationListeningUsesOriginalAudioSource(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestV2StudyTranslationDisplayInAndAllQuestionTypes(t *testing.T) {
+	schemas, err := loadSchemas()
+	if err != nil {
+		t.Fatal(err)
+	}
+	cases := []struct {
+		name      string
+		payload   string
+		badShape  bool
+		errorText string
+	}{
+		{
+			name: "single_choice with stem, options, and selective display_in",
+			payload: `[{"id":"sc1","type":"single_choice","stem":"Choose a greeting.",
+				"options":[{"id":"a","text":"Good morning."},{"id":"b","text":"Good night."}],
+				"grading":{"choice_ids":["a"]},
+				"study_translation":{"display_in":["memorize","typing"],
+				"stem":"选择一句问候语。","options":{"a":"早上好。","b":"晚安。"}}}]`,
+		},
+		{
+			name: "cloze with completed passage material and palace surface",
+			payload: `[{"id":"cl1","type":"cloze","stem":"Fill in the blank.",
+				"passage":"Every worker {{1}} sign.","blanks":[{"index":1,
+				"options":[{"id":"a","text":"must"},{"id":"b","text":"can"}],"grading":{"choice_ids":["a"]}}],
+				"study_translation":{"display_in":["memorize","practice_review","exam_review","typing","palace"],
+				"material":["每位工人都必须签字。"]}}]`,
+		},
+		{
+			name: "writing with multi-segment sample_response translation",
+			payload: `[{"id":"wr1","type":"writing","subtype":"short_essay","stem":"Write a note.",
+				"requirements":["Mention Friday."],"sample_response":[
+					{"type":"text","text":"Hi Mia,"},{"type":"text","text":"\n\n"},
+					{"type":"text","text":"See you Friday."}],
+				"rubric":{"task_completion":100},
+				"study_translation":{"display_in":["typing"],
+				"sample_response":["嗨，米娅，","星期五见。"]}}]`,
+		},
+		{
+			name: "display_in only without translation content is rejected",
+			payload: `[{"id":"sc2","type":"single_choice","stem":"Hello",
+				"options":[{"id":"a","text":"Hi"},{"id":"b","text":"Bye"}],"grading":{"choice_ids":["a"]},
+				"study_translation":{"display_in":["typing"]}}]`,
+			errorText: "at least one translation field",
+		},
+		{
+			name: "unknown display_in surface rejected by schema",
+			payload: `[{"id":"sc3","type":"single_choice","stem":"Hello",
+				"options":[{"id":"a","text":"Hi"},{"id":"b","text":"Bye"}],"grading":{"choice_ids":["a"]},
+				"study_translation":{"display_in":["exam_active"],"stem":"你好"}}]`,
+			badShape: true,
+		},
+		{
+			name: "writing sample_response translation count mismatch",
+			payload: `[{"id":"wr2","type":"writing","subtype":"sentence_making","stem":"Write.",
+				"requirements":["One sentence."],"sample_response":"Done.",
+				"rubric":{"task_completion":100},
+				"study_translation":{"sample_response":["完成了。","多余一句。"]}}]`,
+			errorText: "2 translations for 1 sample parts",
+		},
+		{
+			name: "options translation forbidden on numeric",
+			payload: `[{"id":"num1","type":"numeric","stem":"How many?","grading":{"value":"5","absolute_tolerance":"0"},
+				"study_translation":{"options":{"a":"五"}}}]`,
+			errorText: "only supported on choice",
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			items, err := decodeFile[[]Item]([]byte(tc.payload), "items", schemas[2].items)
+			if tc.badShape {
+				if err == nil {
+					t.Fatal("invalid study translation passed the schema")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatal(err)
+			}
+			err = items[0].validate(2)
+			if tc.errorText == "" && err != nil {
+				t.Fatal(err)
+			}
+			if tc.errorText != "" && (err == nil || !strings.Contains(err.Error(), tc.errorText)) {
+				t.Fatalf("wanted %q, got %v", tc.errorText, err)
+			}
+		})
+	}
+}

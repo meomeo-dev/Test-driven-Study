@@ -2,6 +2,7 @@ import type {
   ExtendedResponse,
   ListeningContent,
   ListeningItemReview,
+  StudySubQuestionTranslation,
 } from '../../../../api/generated/types.gen';
 import { SubQuestionList } from '../../shared/SubQuestionParts';
 import { SubQuestionReviewList } from '../../shared/SubQuestionReview';
@@ -12,14 +13,14 @@ export function ListeningQuestions({
   onChange,
   disabled,
   review,
-  showStudyTranslation,
+  translations,
 }: {
   content: ListeningContent;
   value?: ExtendedResponse;
   onChange?: (value: ExtendedResponse) => void;
   disabled?: boolean;
   review?: ListeningItemReview;
-  showStudyTranslation?: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   const studyRows = Boolean(review);
   return (
@@ -30,7 +31,7 @@ export function ListeningQuestions({
         onChange={onChange}
         disabled={disabled}
         reviewSubs={review?.sub_questions}
-        translations={showStudyTranslation ? review?.study_translation?.sub_questions : undefined}
+        translations={translations}
         studyRows={studyRows}
       />
     </div>
@@ -42,11 +43,13 @@ export function ListeningReview({
   response,
   credit,
   hideExplanations,
+  translations,
 }: {
   item: ListeningItemReview;
   response?: ExtendedResponse;
   credit?: number;
   hideExplanations?: boolean;
+  translations?: Readonly<Record<string, StudySubQuestionTranslation>>;
 }) {
   return (
     <SubQuestionReviewList
@@ -54,6 +57,7 @@ export function ListeningReview({
       response={response}
       credit={credit}
       hideExplanations={hideExplanations}
+      translations={translations}
     />
   );
 }

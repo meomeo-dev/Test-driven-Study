@@ -12,6 +12,18 @@
       "voice": "stella",
       "text": "The sensor was clean yesterday."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "昨天传感器是干净的。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
@@ -206,6 +218,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "料盒里有 3 个不合格零件。（主谓一致有误）",
+        "b": "料盒里有 3 个不合格零件。（时态与单复数有误）",
+        "c": "刚才料盒里有 3 个不合格零件。",
+        "d": "料盒里现在有 3 个不合格零件。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -327,6 +354,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "摄像头在 8:00 时就绪了。",
+        "b": "我们昨天在 A 班。（主谓一致有误）",
+        "c": "舵机和传感器都正常。（主谓一致有误）",
+        "d": "这些零件没有缺陷。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -508,6 +550,14 @@
         "text": " 的语法结构完全正确，意思是“今天早上合格品料盒满了吗？”。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "今天早上合格品料盒满了吗？"
+    },
     "analysis": [
       {
         "type": "text",
@@ -552,6 +602,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The camera wasn't connected to the PC this morning."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "今天早上摄像头没有连接到电脑。"
+      ]
     },
     "blanks": [
       {
@@ -718,6 +780,18 @@
       "voice": "stella",
       "text": "The inspector tested the servo baffle last night."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "质检员昨晚测试了舵机挡板。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
@@ -878,6 +952,16 @@
         "text": "/s/"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "舵机移动了零件。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -927,6 +1011,21 @@
         "text": "`tryed`（动词原形为 try）"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "停止的过去式（拼写有误）",
+        "b": "检查的过去式",
+        "c": "停止的过去式",
+        "d": "尝试的过去式（拼写有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1015,6 +1114,14 @@
         "text": "，其末尾 -ed 的读音为 /ɪd/。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "动词 check（检查）的规则过去式 checked，其词尾 -ed 的读音为 /ɪd/。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1044,6 +1151,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "We tried to reconnect the serial port this morning."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "今天早上我们尝试了重新连接串口。"
+      ]
     },
     "blanks": [
       {
@@ -1165,6 +1284,18 @@
       "voice": "stella",
       "text": "The servo baffle broke during the last shift."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "上一班次期间舵机挡板坏了。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
@@ -1273,6 +1404,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The inspector put the NG parts into the red bin last night."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "质检员昨晚把不合格零件放进了红色料盒。"
+      ]
     },
     "blanks": [
       {
@@ -1408,6 +1551,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我在工作台上发现了两颗坏螺丝。",
+        "b": "他在电脑上看到了一条报错信息。（动词过去式有误）",
+        "c": "我们把合格零件拿到了仓库。",
+        "d": "工程师给了我一个新传感器。（时态有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1577,6 +1735,14 @@
         "text": " 表达“我向班组长汇报了这项故障”。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "我向班组长汇报了这项故障。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1617,6 +1783,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "We got one hundred and fifty OK parts this morning."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "今天上午我们得到了 150 个合格零件。"
+      ]
     },
     "blanks": [
       {
@@ -1752,6 +1930,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你检查传感器电线了吗？（助动词后动词未用原形）",
+        "b": "你检查传感器电线了吗？（助动词与动词形式有误）",
+        "c": "你检查传感器电线了吗？",
+        "d": "你检查传感器电线了吗？（误用 be 动词）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1873,6 +2066,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你清洁质检台了吗？",
+      "options": {
+        "a": "是的。（助动词不匹配）",
+        "b": "是的。（时态不匹配）",
+        "c": "是的，我清洁了。（不符合简略回答习惯）",
+        "d": "是的，我清洁了。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2000,6 +2209,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我没有看到红色警示灯。（语法有误）",
+        "b": "他们停下分拣机了吗？",
+        "c": "他没有测试新舵机。（语法有误）",
+        "d": "我们在零件上没有发现任何缺陷。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2191,6 +2415,14 @@
         "text": " 语法正确，表达“我刚才没有接收到来自电脑的串口信号”。判断：该表述是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "我刚才没有接收到来自电脑的串口信号。（原句 didn't received 语法有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -2246,6 +2478,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "We didn't make any mistakes last shift."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "上一班次我们没有出任何错误。"
+      ]
     },
     "blanks": [
       {
@@ -2379,6 +2623,13 @@
         "text": " 请问未完成的台数是多少？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "我们昨天装配了 54 台工件。"
+    },
     "grading": {
       "value": "6",
       "absolute_tolerance": "0"
@@ -2415,6 +2666,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "昨天夜班发现了多少个有缺陷的零件？",
         "我们目视检查时发现了七个有缺陷的零件。"
@@ -2509,6 +2767,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "你们组在交班前完成了最终检验吗？",
         "是的，我们下午 5 点完成了最终检验。"
@@ -2636,6 +2901,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好。夜班时 1 号工位的情况怎么样？",
         "摄像头和传送带都正常。凌晨两点时传感器有点灰尘，我就擦了一下。",
@@ -2878,6 +3150,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "夜班记录",
         "昨晚从八点到午夜，1 号工位很忙。",
@@ -3058,6 +3337,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The camera was ready at eight, and there were five NG parts in the bin."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "摄像头八点时就绪了，料盒里有五个不合格零件。"
+      ]
     },
     "blanks": [
       {
@@ -3357,6 +3648,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "昨天传感器是干净的，红色料盒里有两个不合格零件。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3403,13 +3706,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "This morning, I cleaned the camera lens and tested the sorting flap before eight."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "At ten, a tray dropped near the gate, so I stopped the belt and moved it away."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "In total, I scanned eighty boxes."}
+      {
+        "type": "text",
+        "text": "This morning, I cleaned the camera lens and tested the sorting flap before eight."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "At ten, a tray dropped near the gate, so I stopped the belt and moved it away."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "In total, I scanned eighty boxes."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "今天早上八点前，我清洁了摄像头镜头并测试了分拣挡板。",
         "十点时，有个托盘掉在门附近，所以我停下传送带，把托盘挪开了。",
@@ -3673,6 +3998,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "维护记录",
         "昨天下午，陈检查了气压，并清洁了光学传感器。",
@@ -3922,6 +4254,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Yesterday afternoon, the operator stopped the belt when a tray dropped. Later, she emptied the side bin and saved the report."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "昨天下午一个托盘掉落时，操作员停下了传送带。随后，她倒空了侧边料盒并保存了报告。"
+      ]
     },
     "blanks": [
       {
@@ -4315,6 +4659,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "昨天关闭工位前，我清洁了光学传感器并检查了伺服挡板。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4403,6 +4759,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "各位同事，你好：",
+        "夜班十一点半时我们遇到了一个问题。检测期间塑料伺服挡板断裂了。我通知了夜班技术员，他给了我们一块金属挡板用来更换。随后，我们测得 118 个合格品和 2 个不合格品。我把这两个不合格品放进了红色料盒。",
+        "祝好，\n吴"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
@@ -4544,6 +4914,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "班次异常记录",
         "上午九点，我们发现传感器支架上有道裂纹，不久后支架就断了。",
@@ -4840,6 +5217,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "这是交接单。我把最终数量写在第一行了。",
         "谢谢。我们的数显卡尺在哪儿？我找过垫子上，没在那里。",
@@ -5105,6 +5489,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Last night, the servo flap broke during the test. I told the technician right away, and he came in five minutes."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "昨晚测试期间伺服挡板坏了。我立刻告诉了技术员，他五分钟后就赶到了。"
+      ]
     },
     "blanks": [
       {
@@ -5494,6 +5890,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "你好，梅。A 线上 200 个零件全做完了吗？",
         "没有。电源线松了，传送带三点钟停了。",
@@ -5710,6 +6113,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "交接检查记录",
         "下午四点线缆连接出了故障，所以 B 班没完成第 5 批。",
@@ -5926,6 +6336,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Did you check the sensor before leaving? No, I didn't have enough time after the repair."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "你离开前检查传感器了吗？没有，修好后我没有足够的时间。"
+      ]
     },
     "blanks": [
       {
@@ -6224,6 +6646,18 @@
     "sample_response": "Did you check the sensor yesterday? Yes, I did, and I didn't see any error.",
     "sample_response_tts": {
       "voice": "stella"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "你昨天检查传感器了吗？是的，检查了，我没有看到任何报错。"
+      ]
     },
     "rubric": {
       "task_completion": 50,

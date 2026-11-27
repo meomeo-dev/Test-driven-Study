@@ -35,6 +35,12 @@ export {
   evaluationStateBadgeLabel,
 } from './shared/written-evaluation';
 export {
+  canDisplayStudyTranslation,
+  getStudyTranslation,
+  optionTranslationsBySign,
+  visibleStudyTranslation,
+} from './shared/study-translation';
+export {
   creditLabel,
   hasCourseReviewExplanation,
   hasRichContent,

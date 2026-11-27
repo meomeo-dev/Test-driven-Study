@@ -250,12 +250,125 @@ describe('extractTypingSentences across all 9 question types', () => {
       },
     };
     const t = extractTypingSentences(translation);
-    expect(t.map(s => [s.roleLabel, s.text, s.language])).toEqual([
-      ['题目', '译成中文。', 'zh'],
-      ['翻译原文', 'Leave the checklist here.', 'en'],
-      ['参考译文', '把清单留在这里。', 'zh'],
+    expect(t.map(s => [s.roleLabel, s.text, s.language, s.hint])).toEqual([
+      ['题目', '译成中文。', 'zh', undefined],
+      ['翻译原文', 'Leave the checklist here.', 'en', '把清单留在这里。'],
+      ['参考译文', '把清单留在这里。', 'zh', 'Leave the checklist here.'],
     ]);
     expect(filterTypingSentences(t, 'english').map(s => s.text)).toEqual(['Leave the checklist here.']);
     expect(filterTypingSentences(t, 'answers').map(s => s.text)).toEqual(['把清单留在这里。']);
+  });
+
+  it('pairs multi-sentence listening, choice, cloze, and writing translations and respects display_in', () => {
+    const multiSentenceListening: Question = {
+      ...baseQuestion,
+      question_type: 'listening',
+      title: '听对话。',
+      content: { sub_questions: [] },
+      study_translation: {
+        display_in: ['memorize', 'typing'],
+        material: ['戴维，早上好。你准备好检查生产线了吗？'],
+      },
+      question_review: {
+        id: 'l2',
+        type: 'listening',
+        stem: '听对话。',
+        audio: { mode: 'dialogue', voice_female: 'stella' },
+        transcript: [
+          { speaker: 'W', text: 'Good morning, David. Are you ready for the line check?' },
+        ],
+        sub_questions: [],
+      },
+    };
+    expect(extractTypingSentences(multiSentenceListening).map(s => [s.text, s.hint])).toEqual([
+      ['听对话。', undefined],
+      ['Good morning, David.', '戴维，早上好。'],
+      ['Are you ready for the line check?', '你准备好检查生产线了吗？'],
+    ]);
+
+    const choiceWithScope: Question = {
+      ...baseQuestion,
+      question_type: 'single_choice',
+      title: '班长问：How many boxes do you see? 选出正确回答。',
+      answer: '2',
+      items: [
+        { id: 'b', sign: 1, item_title: 'I see thirty boxes.' },
+        { id: 'a', sign: 2, item_title: 'I see thirteen boxes.' },
+      ],
+      study_translation: {
+        display_in: ['memorize', 'typing'],
+        stem: '你看到几个盒子？',
+        options: { a: '我看到 13 个盒子。', b: '我看到 30 个盒子。' },
+      },
+    };
+    expect(extractTypingSentences(choiceWithScope).map(s => [s.text, s.hint])).toEqual([
+      ['班长问：How many boxes do you see?', '你看到几个盒子？'],
+      ['选出正确回答。', undefined],
+      ['I see thirteen boxes.', '我看到 13 个盒子。'],
+    ]);
+
+    const hiddenFromTyping: Question = {
+      ...choiceWithScope,
+      study_translation: {
+        display_in: ['memorize'],
+        stem: '仅背题可见。',
+        options: { a: '仅背题可见。', b: '仅背题可见。' },
+      },
+    };
+    expect(extractTypingSentences(hiddenFromTyping).every(s => s.hint === undefined)).toBe(true);
+
+    const clozeWithMaterial: Question = {
+      ...baseQuestion,
+      question_type: 'cloze',
+      title: '完形填空。',
+      content: { passage: 'Every worker {{1}} sign. Do not {{2}} now.', blanks: [] },
+      study_translation: {
+        material: ['每位工人都必须签字。现在不要启动。'],
+      },
+      question_review: {
+        id: 'c2',
+        type: 'cloze',
+        stem: '完形填空。',
+        passage: 'Every worker {{1}} sign. Do not {{2}} now.',
+        blanks: [
+          { index: 1, options: [{ id: 'a', text: 'must' }], grading: { choice_ids: ['a'] } },
+          { index: 2, options: [{ id: 'b', text: 'start' }], grading: { choice_ids: ['b'] } },
+        ],
+      },
+    };
+    expect(extractTypingSentences(clozeWithMaterial).map(s => [s.text, s.hint])).toEqual([
+      ['完形填空。', undefined],
+      ['Every worker must sign.', '每位工人都必须签字。'],
+      ['Do not start now.', '现在不要启动。'],
+    ]);
+
+    const writingMultiSeg: Question = {
+      ...baseQuestion,
+      question_type: 'writing',
+      title: '写邮件。',
+      content: { subtype: 'short_essay', requirements: [] },
+      study_translation: {
+        display_in: ['memorize', 'typing'],
+        sample_response: ['嗨，米娅，', '送货改到周五。请确认。'],
+      },
+      question_review: {
+        id: 'w2',
+        type: 'writing',
+        subtype: 'short_essay',
+        stem: '写邮件。',
+        requirements: [],
+        sample_response: [
+          { type: 'text', text: 'Hi Mia,' },
+          { type: 'text', text: '\n\n' },
+          { type: 'text', text: 'The delivery moved to Friday. Please confirm.' },
+        ],
+      },
+    };
+    expect(extractTypingSentences(writingMultiSeg).map(s => [s.text, s.hint])).toEqual([
+      ['写邮件。', undefined],
+      ['Hi Mia,', '嗨，米娅，'],
+      ['The delivery moved to Friday.', '送货改到周五。'],
+      ['Please confirm.', '请确认。'],
+    ]);
   });
 });

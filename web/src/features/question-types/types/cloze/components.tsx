@@ -16,12 +16,14 @@ export function ClozePassage({
   blanks,
   review,
   value,
+  translations,
   onJump,
 }: {
   passage?: RichText;
   blanks?: BlankPrompt[];
   review?: ClozeItemReview;
   value?: ExtendedResponse;
+  translations?: string[];
   onJump?: (index: number) => void;
 }) {
   if (!passage) return null;
@@ -63,6 +65,12 @@ export function ClozePassage({
           speed={review.passage_tts.speed}
         />
       )}
+      {review &&
+        translations?.map((line, index) => (
+          <span key={index} className="study-translation" lang="zh-Hans">
+            {line}
+          </span>
+        ))}
     </section>
   );
 }

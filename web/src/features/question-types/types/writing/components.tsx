@@ -5,6 +5,7 @@ import type {
   WritingItemReview,
 } from '../../../../api/generated/types.gen';
 import { RichContent } from '../../../../components/RichContent';
+import { StudyPassage } from '../../../../components/StudyPassage';
 import { creditLabel, writingRubricLabel } from '../../shared/format';
 
 const writingSubtypes = {
@@ -35,7 +36,13 @@ export function WritingRequirements({ content }: { content: WritingContent }) {
   );
 }
 
-export function WritingSample({ review }: { review?: WritingItemReview }) {
+export function WritingSample({
+  review,
+  translations,
+}: {
+  review?: WritingItemReview;
+  translations?: string[];
+}) {
   if (!review?.sample_response) return null;
   const sample = review.sample_response;
   if (Array.isArray(sample) && !sample.length) return null;
@@ -47,9 +54,15 @@ export function WritingSample({ review }: { review?: WritingItemReview }) {
   return (
     <section className="writing-sample" aria-label="参考范文">
       <h4 className="column-label">参考范文</h4>
-      <p className="analysis-text extended-passage" lang="en">
-        <RichContent content={content} />
-      </p>
+      {translations?.length ? (
+        <div className="analysis-text extended-passage" lang="en">
+          <StudyPassage passage={content} translations={translations} showTranslation />
+        </div>
+      ) : (
+        <p className="analysis-text extended-passage" lang="en">
+          <RichContent content={content} />
+        </p>
+      )}
     </section>
   );
 }

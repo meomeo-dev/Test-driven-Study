@@ -1,4 +1,4 @@
-import type { Question } from '../../../api/generated/types.gen';
+import type { Question, StudyTranslationSurface } from '../../../api/generated/types.gen';
 import { RichContent } from '../../../components/RichContent';
 import { dispatchFullQuestion } from '../registry';
 import { hasRichContent } from '../shared/format';
@@ -20,10 +20,19 @@ export function QuestionExtendedExplanations({ question }: { question: Question 
   );
 }
 
-export function QuestionWritingSample({ question }: { question: Question }) {
+export function QuestionWritingSample({
+  question,
+  showStudyTranslation,
+  translationSurface,
+}: {
+  question: Question;
+  showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
+}) {
   return dispatchFullQuestion(
     question,
-    (mod, q) => mod.renderWritingSample?.(q) ?? null,
+    (mod, q) =>
+      mod.renderWritingSample?.(q, { showStudyTranslation, translationSurface }) ?? null,
   );
 }
 

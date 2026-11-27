@@ -41,6 +41,16 @@
         "text": "打开安全门"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "停止！"
+    },
     "analysis": [
       {
         "type": "text",
@@ -98,6 +108,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "打开指示灯。",
+        "b": "打开灯。（搭配有误）",
+        "c": "关闭指示灯。",
+        "d": "等待指示灯。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -166,6 +191,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "不要碰。",
+        "b": "按下按钮。",
+        "c": "我是一名工人。",
+        "d": "这个箱子是蓝色的。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -221,6 +261,16 @@
         "text": " 判断：这句话的意思是让你把物品放在这里。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "把它放在这里。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -274,6 +324,13 @@
         "text": " 请问师傅要求你按几次红色按钮？请用阿拉伯数字作答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "按红色按钮 3 次。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -351,6 +408,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "它准备好了吗？",
+      "options": {
+        "a": "不。（it isn't）",
+        "b": "是的。（it is）",
+        "c": "是的。（I do）",
+        "d": "不。（I am not）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -461,6 +534,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你有螺丝刀吗？",
+      "options": {
+        "a": "没有。（I don't）",
+        "b": "不是。（I am not）",
+        "c": "是的。（it is）",
+        "d": "没有。（it doesn't）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -544,6 +633,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "现在几点了？",
+        "b": "关掉机器。",
+        "c": "你准备好了吗？",
+        "d": "机器运转正常吗？"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -632,6 +736,16 @@
         "text": " 判断：你的回答在语法和语意上是正确的。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你还好吗？——不，它不是。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -740,6 +854,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "它停下来了吗？",
+      "options": {
+        "a": "是的。（it is）",
+        "b": "不。（I don't）",
+        "c": "是的。（I do）",
+        "d": "不。（it doesn't）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -823,6 +953,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "能请你帮我一下吗？",
+        "b": "你来自哪里？",
+        "c": "很高兴认识你。",
+        "d": "现在是三点钟。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -896,6 +1041,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "请问你能检查一下零件吗？",
+      "options": {
+        "a": "当然可以！",
+        "b": "是的，我是。",
+        "c": "谢谢你。",
+        "d": "抱歉，我现在不行。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -953,6 +1114,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "不要碰这个箱子。",
+        "b": "请把箱子递过来。",
+        "c": "我不是一名工人。",
+        "d": "请问你能在这里等一下吗？"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1030,6 +1206,16 @@
         "text": " 判断：你的回答表示你欣然同意对方的请求。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "请问你能把箱子合上吗？——当然可以！"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1085,6 +1271,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "打开门。",
+        "b": "请打开门。",
+        "c": "门是开着的。",
+        "d": "不要开门。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1138,6 +1339,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "能请你把桌上的蓝色文件夹递给我吗？",
         "当然，给你。"
@@ -1276,6 +1484,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Please turn off the lights before leaving the workbench."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "离开工作台前请关灯。"
+      ]
     },
     "blanks": [
       {
@@ -1418,6 +1638,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "马上停下传送带！不要碰伺服臂。",
         "明白了。灯也要关掉吗？",
@@ -1622,6 +1849,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "下班通知",
         "检查所有托盘，把空箱放到架子上。",
@@ -1930,6 +2164,18 @@
     "sample_response_tts": {
       "voice": "tide"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "关掉指示灯，合上零件盒。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -2018,6 +2264,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好，小林。你准备好做早间检查了吗？",
         "是的，我准备好了。我五分钟前就戴上手套了。",
@@ -2333,6 +2586,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "交班检查清单",
         "每班开始前问两个问题。",
@@ -2561,6 +2821,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Does the scanner work now? No, it doesn't."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "扫码枪现在能用吗？不，不能用。"
+      ]
     },
     "blanks": [
       {
@@ -2917,6 +3189,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "传感器运转正常吗？不，不正常。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -2974,13 +3258,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Hi team, please help check the red trays near door two."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Could you move the full trays to table four before ten?"},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "If you are busy now, just say sorry, I cannot, and finish your current batch first."}
+      {
+        "type": "text",
+        "text": "Hi team, please help check the red trays near door two."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Could you move the full trays to table four before ten?"
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "If you are busy now, just say sorry, I cannot, and finish your current batch first."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "各位好，请帮忙检查二号门附近的红色托盘。",
         "能请你在十点前把装满的托盘移到四号桌吗？",
@@ -3174,6 +3480,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工作台便条",
         "能请你检测二号托盘上的十个蓝色零件吗？",
@@ -3343,6 +3656,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Could you please pass me the screwdriver? Sure, here you are."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "能请你把螺丝刀递给我吗？当然，给你。"
+      ]
     },
     "blanks": [
       {
@@ -3590,6 +3915,18 @@
     "sample_response": "Could you please put the tray on the blue table?",
     "sample_response_tts": {
       "voice": "stella"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "能请你把托盘放到蓝色工作台上吗？"
+      ]
     },
     "rubric": {
       "task_completion": 50,

@@ -5,6 +5,7 @@ import type {
   ExtendedResponse,
   PublicQuestion,
   Question,
+  StudyTranslationSurface,
 } from '../../../api/generated/types.gen';
 import {
   dispatchPublicQuestion,
@@ -28,6 +29,8 @@ export function PracticeAnswerBody({
   pending,
   shortcuts,
   partIdPrefix,
+  showStudyTranslation,
+  translationSurface,
   onChoose,
   onDraft,
   onNumeric,
@@ -48,6 +51,8 @@ export function PracticeAnswerBody({
   pending: boolean;
   shortcuts: boolean;
   partIdPrefix?: string;
+  showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
   onChoose: (sign: number) => void;
   onDraft: (draft: ExtendedResponse) => void;
   onNumeric: (value: string) => void;
@@ -71,6 +76,8 @@ export function PracticeAnswerBody({
       pending,
       shortcuts,
       partIdPrefix: prefix,
+      showStudyTranslation,
+      translationSurface,
       onChoose,
       onDraft,
       onNumeric,

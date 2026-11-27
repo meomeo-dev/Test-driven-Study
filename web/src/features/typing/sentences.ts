@@ -135,6 +135,27 @@ export function splitIntoSentences(text: string): string[] {
     .flatMap(paragraph => splitParagraphWithOffsets(paragraph).map(slice => slice.text));
 }
 
+export function alignSentencesWithTranslation(
+  sentences: readonly string[],
+  translation?: string,
+  courseLanguage?: string,
+): (string | undefined)[] {
+  const trimmed = translation?.trim();
+  if (!trimmed || !sentences.length) return sentences.map(() => undefined);
+  if (sentences.length === 1) return [trimmed];
+  const translatedParts = splitIntoSentences(trimmed);
+  if (translatedParts.length === sentences.length) return translatedParts;
+  const hasEnglish = sentences.some(part => {
+    const lang = detectSentenceLanguage(part, courseLanguage);
+    return lang === 'en' || lang === 'mixed';
+  });
+  return sentences.map(part => {
+    if (!hasEnglish) return trimmed;
+    const lang = detectSentenceLanguage(part, courseLanguage);
+    return lang === 'en' || lang === 'mixed' ? trimmed : undefined;
+  });
+}
+
 export function richTextToPlain(content?: RichText): string {
   if (!content) return '';
   if (typeof content === 'string') return content;

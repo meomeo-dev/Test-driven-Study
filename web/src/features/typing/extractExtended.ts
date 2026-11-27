@@ -7,6 +7,7 @@ import type {
 } from '../../api/generated/types.gen';
 import type { HighlightSpan } from './engine';
 import {
+  alignSentencesWithTranslation,
   configToSpeech,
   detectSentenceLanguage,
   resolveOptionTexts,
@@ -19,6 +20,7 @@ import {
 
 export function buildClozeSentences(
   question: Extract<Question, { question_type: 'cloze' }>,
+  translations?: string[],
   courseLanguage?: string,
 ): TypingSentence[] {
   const blanks = new Map<number, string>();
@@ -76,6 +78,16 @@ export function buildClozeSentences(
     }
     paragraphOffset += paragraph.length + 1;
   }
+  if (translations?.length) {
+    const hints = alignSentencesWithTranslation(
+      sentences.map(item => item.text),
+      translations.join('\n'),
+      courseLanguage,
+    );
+    sentences.forEach((item, index) => {
+      item.hint = hints[index];
+    });
+  }
   if (sentences.length === 1 && question.question_review?.passage_tts) {
     sentences[0]!.speech = configToSpeech(sentences[0]!.text, question.question_review.passage_tts);
   }
@@ -91,14 +103,18 @@ export function appendPassageSentences(
 ) {
   if (!passage) return;
   if (typeof passage === 'string') {
-    splitIntoSentences(passage).forEach((text, index) => {
+    const parts = splitIntoSentences(passage);
+    const hints = translations?.length === parts.length
+      ? translations
+      : alignSentencesWithTranslation(parts, translations?.join('\n'), courseLanguage);
+    parts.forEach((text, index) => {
       target.push({
         id: `passage-${target.length}`,
         role: 'passage',
         roleLabel,
         text,
         language: detectSentenceLanguage(text, courseLanguage),
-        hint: translations?.[index],
+        hint: hints[index],
       });
     });
     return;
@@ -110,6 +126,7 @@ export function appendPassageSentences(
     if (!raw.trim()) continue;
     const hint = translations?.[translationIndex++];
     const parts = splitIntoSentences(raw);
+    const hints = alignSentencesWithTranslation(parts, hint, courseLanguage);
     const speech = parts.length === 1
       ? toSpeech(parts[0]!, segment.tts, segment.pinyin, segment.tts_text)
       : undefined;
@@ -120,7 +137,7 @@ export function appendPassageSentences(
         roleLabel,
         text,
         language: detectSentenceLanguage(text, courseLanguage),
-        hint: partIndex === 0 ? hint : undefined,
+        hint: hints[partIndex],
         speech: partIndex === 0 ? speech : undefined,
       });
     });
@@ -148,6 +165,7 @@ export function appendTranscriptSentences(
         ? undefined
         : voice ? { voice } : true;
     const parts = splitIntoSentences(line.text);
+    const hints = alignSentencesWithTranslation(parts, translations?.[lineIndex], courseLanguage);
     const speech = parts.length === 1 ? toSpeech(parts[0]!, lineTts) : undefined;
     parts.forEach((text, partIndex) => {
       target.push({
@@ -156,7 +174,7 @@ export function appendTranscriptSentences(
         roleLabel,
         text,
         language: detectSentenceLanguage(text, courseLanguage),
-        hint: partIndex === 0 ? translations?.[lineIndex] : undefined,
+        hint: hints[partIndex],
         speech: partIndex === 0 ? speech : undefined,
       });
     });
@@ -174,6 +192,7 @@ export function appendSubQuestionSentences(
     const num = index + 1;
     const subTr = translations?.sub_questions?.[sub.id];
     const stemParts = splitIntoSentences(richTextToPlain(sub.stem));
+    const stemHints = alignSentencesWithTranslation(stemParts, subTr?.stem, courseLanguage);
     const singleSeg = Array.isArray(sub.stem) && sub.stem.length === 1 ? sub.stem[0] : undefined;
     const stemSpeech = stemParts.length === 1 && singleSeg
       ? toSpeech(stemParts[0]!, singleSeg.tts, singleSeg.pinyin, singleSeg.tts_text)
@@ -185,7 +204,7 @@ export function appendSubQuestionSentences(
         roleLabel: `小题 ${num} 题目`,
         text,
         language: detectSentenceLanguage(text, courseLanguage),
-        hint: partIndex === 0 ? subTr?.stem : undefined,
+        hint: stemHints[partIndex],
         speech: partIndex === 0 ? stemSpeech : undefined,
       });
     });
@@ -193,6 +212,11 @@ export function appendSubQuestionSentences(
     if (sub.type === 'single_choice' || sub.type === 'multiple_choice') {
       resolveOptionTexts(sub.options, sub.grading.choice_ids).forEach((option, optIdx) => {
         const parts = splitIntoSentences(option.text);
+        const hints = alignSentencesWithTranslation(
+          parts,
+          subTr?.options?.[option.id],
+          courseLanguage,
+        );
         const speech = parts.length === 1 ? toSpeech(parts[0]!, option.tts, option.pinyin) : undefined;
         parts.forEach((text, partIdx) => {
           target.push({
@@ -201,20 +225,22 @@ export function appendSubQuestionSentences(
             roleLabel: `小题 ${num} 答案`,
             text,
             language: detectSentenceLanguage(text, courseLanguage),
-            hint: partIdx === 0 ? subTr?.options?.[option.id] : undefined,
+            hint: hints[partIdx],
             speech: partIdx === 0 ? speech : undefined,
           });
         });
       });
     } else if (sub.type === 'true_false') {
       const boolValue = sub.grading.boolean ?? sub.grading.value === true;
-      const text = sub.options?.find(item => item.value === boolValue)?.text ?? (boolValue ? '正确' : '错误');
+      const opt = sub.options?.find(item => item.value === boolValue);
+      const text = opt?.text ?? (boolValue ? '正确' : '错误');
       target.push({
         id: `sub-${sub.id}-ans`,
         role: 'answer',
         roleLabel: `小题 ${num} 答案`,
         text,
         language: detectSentenceLanguage(text, courseLanguage),
+        hint: opt?.id ? subTr?.options?.[opt.id] : undefined,
       });
     } else {
       const value = String(sub.grading.value ?? '').trim();

@@ -1,14 +1,19 @@
 # 黄金标准课程模板
 
-`golden-course-template@1.4.0` 是可安装的 v2 课程模板。「题型展示」单元
+`golden-course-template@1.5.0` 是可安装的 v2 课程模板。「题型展示」单元
 （`extended-practice`）包含 15 道题，覆盖全部 9 类题型，并以车间交班为主题演示
 知识图谱、学习路径和按知识点练习。
 
 ## 英中对照示例
 
-两道阅读题和三道听力题（对话、独白、录音）均提供英中对照。
-题库的 `study_translation.material` 按原文片段或逐字稿轮次保存中文，
-`study_translation.sub_questions` 按小题和选项的原有 ID 对应译文。
+全部含英文内容的题型均提供英中对照（翻译题由 `source_text` 与 `reference_translation`
+天然成对；其余题型通过 `study_translation` 提供对照），并可通过 `display_in`
+控制显示范围（`memorize`、`practice_review`、`exam_review`、`typing`、`palace`；
+省略时默认在全部 5 个位置可用）。
+- 听力与阅读题通过 `material` 对齐原文片段或逐字稿轮次，通过 `sub_questions` 按小题与选项 ID 对齐译文；
+- 单选、多选、判断、数值与完形题通过 `stem`、`options`、`material` 提供对照；
+- 写作题通过 `sample_response` 按范文段落顺序对齐译文；
+- `numbers-3` 与 `numbers-5` 分别演示多位置与精简范围的 `display_in` 配置。
 
 ## 生词本示例
 

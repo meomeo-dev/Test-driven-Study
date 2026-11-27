@@ -27,11 +27,9 @@
 
 ## 课程内容
 
-2.5.0 版（协议版本 `protocol_version: 2`）包含十二个单元、51 个知识点（合计 2,670 分钟 / 44.50 学时）和 507 道练习题（涵盖全部 9 类 v2 题型：`single_choice` 94、`multiple_choice` 46、`true_false` 51、`numeric` 21、`cloze` 74、`listening` 67、`reading_comprehension` 45、`translation` 64、`writing` 45）。讲义小节通过 `<!-- concepts: ... -->` / `effort-lab` 锚点与多题型配额自底向上对齐，全面通过 `course:check`、`audit-course-tts`、`audit-course-vocabulary --strict` 与 `audit-course-effort --strict` 质量门。表中同一单元的知识点以分号分隔。
+2.6.0 版（协议版本 `protocol_version: 2`）包含十二个单元、51 个知识点（合计 2,670 分钟 / 44.50 学时）和 507 道练习题（涵盖全部 9 类 v2 题型：`single_choice` 94、`multiple_choice` 46、`true_false` 51、`numeric` 21、`cloze` 74、`listening` 67、`reading_comprehension` 45、`translation` 64、`writing` 45）。讲义小节通过 `<!-- concepts: ... -->` / `effort-lab` 锚点与多题型配额自底向上对齐，全面通过 `course:check`、`audit-course-tts`、`audit-course-vocabulary --strict` 与 `audit-course-effort --strict` 质量门。表中同一单元的知识点以分号分隔。
 
-背题模式为全部 45 道阅读理解和 67 道听力题提供英中对照，涵盖阅读段落、
-听力逐字稿以及英文小题与选项。听力播放器下可展开逐字稿，
-并使用「仅原文」切回英文材料。
+全部 507 道题均已补齐英中对照（64 道翻译题由 `source_text` 与 `reference_translation` 天然成对，其余 443 道覆盖单选、多选、判断、数值、完形、写作、阅读理解与听力，统一声明 `study_translation` 与 `display_in` 显示范围数组），可按题控制译文在背题、答题复盘、模拟考交卷后复盘、打字学习与记忆宫殿中的出现位置；听力播放器下可展开逐字稿，背题与答题复盘支持使用「英中对照 / 仅原文」一键切换。
 
 在背题工具栏打开「生词本」，可查看本题相关词条，或按单元和全课程复习。
 [课程词表](assets/vocabulary/english.json)含 93 条词汇，覆盖十二个单元，

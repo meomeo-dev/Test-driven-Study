@@ -1,5 +1,6 @@
 import type { QuestionTypeModule } from '../../shared/contracts';
 import { creditLabel, hasRichContent } from '../../shared/format';
+import { visibleStudyTranslation } from '../../shared/study-translation';
 import { WrittenFeedback } from '../../shared/WrittenFeedback';
 import {
   WritingCriteria,
@@ -67,11 +68,27 @@ export const writingModule: QuestionTypeModule<'writing'> = {
   renderExamSelection: () => null,
   renderPreviewBody: question => <WritingEditor content={question.content} />,
 
-  renderReferenceAnswers: ({ question, includeWritingSample = true }) =>
-    includeWritingSample ? <WritingSample review={question.question_review} /> : null,
+  renderReferenceAnswers: ({
+    question,
+    includeWritingSample = true,
+    showStudyTranslation,
+    translationSurface = 'memorize',
+  }) =>
+    includeWritingSample ? (
+      <WritingSample
+        review={question.question_review}
+        translations={
+          visibleStudyTranslation(question, translationSurface, showStudyTranslation ?? true)
+            ?.sample_response
+        }
+      />
+    ) : null,
 
   renderPalaceAnswers: question => (
-    <WritingSample review={question.question_review} />
+    <WritingSample
+      review={question.question_review}
+      translations={visibleStudyTranslation(question, 'palace')?.sample_response}
+    />
   ),
 
   renderFeedbackBody: question => (
@@ -82,7 +99,10 @@ export const writingModule: QuestionTypeModule<'writing'> = {
     review?.question_review ? (
       <>
         <WritingReview response={response} credit={credit} />
-        <WritingSample review={review.question_review} />
+        <WritingSample
+          review={review.question_review}
+          translations={visibleStudyTranslation(review, 'exam_review')?.sample_response}
+        />
         <WritingCriteria review={review.question_review} />
       </>
     ) : null,
@@ -90,7 +110,10 @@ export const writingModule: QuestionTypeModule<'writing'> = {
   renderDialogReview: ({ review, response, credit, renderAnalysis }) => (
     <>
       <WritingReview response={response} credit={credit} />
-      <WritingSample review={review.question_review} />
+      <WritingSample
+        review={review.question_review}
+        translations={visibleStudyTranslation(review, 'exam_review')?.sample_response}
+      />
       {renderAnalysis()}
       <WritingCriteria review={review.question_review} />
     </>
@@ -110,8 +133,17 @@ export const writingModule: QuestionTypeModule<'writing'> = {
     hasRichContent(review?.analysis) || Boolean(review?.explanation?.trim()),
 
   shouldShowPracticeExplanation: () => true,
-  renderWritingSample: question => (
-    <WritingSample review={question.question_review} />
+  renderWritingSample: (question, options) => (
+    <WritingSample
+      review={question.question_review}
+      translations={
+        visibleStudyTranslation(
+          question,
+          options?.translationSurface ?? 'practice_review',
+          options?.showStudyTranslation ?? true,
+        )?.sample_response
+      }
+    />
   ),
   renderWritingCriteria: question => (
     <WritingCriteria review={question.question_review} />

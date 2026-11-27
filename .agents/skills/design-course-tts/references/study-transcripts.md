@@ -1,19 +1,35 @@
-# v2 英中逐字稿与阅读对照
+# v2 英中对照与显示范围
 
-编写或审查 `study_translation` 时加载。以下规则于 2026-11-20 对照
+编写或审查 `study_translation` 时加载。以下规则于 2026-11-27 对照
 [课程 Schema](../../../../contracts/course/v2/items.schema.json)、
 [Go 校验](../../../../internal/course/study_translation.go)、
-[英文音频处理](../../../../internal/course/item_kind.go)和
+[英文音频处理](../../../../internal/course/item_kind.go)、
+[显示范围辅助](../../../../web/src/features/question-types/shared/study-translation.ts)和
 [逐字稿视图](../../../../web/src/components/ListeningTranscript.tsx)核验。
 实际样例见 [黄金模板](../../../../courses/golden-course-template/questions/extended-practice.json)
 与 [零基础英语](../../../../courses/beginner-english/README.md)。
 
-## 对齐英文原文
+## 全部 9 类题型与 `display_in` 显示范围
 
-在 v2 `reading_comprehension` 或 `listening` 父题声明可选的
-`study_translation`。其中 `material` 是必填的非空纯文本数组。按下表的原文顺序
-给每段或每行写一条中文。可选的 `sub_questions` 用已有小题 ID 关联中文
-`stem` 和/或 `options`，选项译文再以原选项 ID 为键。
+全部 9 类 v2 题型均可在题目顶层声明可选的 `study_translation`，并通过可选数组
+`display_in` 控制该题译文出现在哪些学习位置（枚举：`memorize`、`practice_review`、
+`exam_review`、`typing`、`palace`；省略时默认在全部 5 个位置显示）。
+
+| 题型 | 可用字段 | 对齐规则 |
+| --- | --- | --- |
+| `single_choice` / `multiple_choice` / `true_false` | `stem`、`options` | `stem` 译题干英文；`options` 以原选项 ID 为键映射英文选项译文（仅含自定义选项的判断题可用 `options`）。 |
+| `numeric` | `stem` | 译题干中的英文句，数字与单位须与原文一致。 |
+| `cloze` | `stem`、`material` | `material` 按 `passage` 非空文本段对齐（纯字符串为长度 1，须译出填入正确答案后的完整句子）。 |
+| `writing` | `stem`、`sample_response` | `sample_response` 按范文非空文本段对齐（纯字符串为长度 1，多段富文本逐段对应，保留段内换行）。 |
+| `reading_comprehension` / `listening` | `stem`、`material`（必填）、`sub_questions` | 见下表原文与逐字稿对齐规则。 |
+| `translation` | `stem`（可选） | `source_text` 与 `reference_translation` 天然成对。 |
+
+## 对齐阅读与听力原文
+
+在 v2 `reading_comprehension` 或 `listening` 父题声明 `study_translation` 时，
+`material` 是必填的非空纯文本数组。按下表的原文顺序给每段或每行写一条中文，
+且在同一段/行包含多句英文时尽量保持句界与中文一致（便于打字练习逐句配对）。
+可选的 `sub_questions` 用已有小题 ID 关联中文 `stem` 和/或 `options`，选项译文再以原选项 ID 为键。
 
 | 原文 | 中文译文对应单位 | 播放来源 |
 | --- | --- | --- |

@@ -2,6 +2,7 @@ import type {
   ExtendedResponse,
   PublicQuestion,
   Question,
+  StudyTranslationSurface,
 } from '../../../api/generated/types.gen';
 import type { ProtectedAudio } from '../../../components/QuestionAudio';
 import { dispatchPublicQuestion, dispatchQuestion } from '../registry';
@@ -13,12 +14,14 @@ export function QuestionStimulus({
   cloze,
   protectedAudio,
   showStudyTranslation,
+  translationSurface,
 }: {
   question: AnyQuestion;
   reviewQuestion?: Question;
   cloze?: { value?: ExtendedResponse; onJump?: (index: number) => void };
   protectedAudio?: ProtectedAudio;
   showStudyTranslation?: boolean;
+  translationSurface?: StudyTranslationSurface;
 }) {
   return dispatchQuestion(question, (mod, q) => {
     const matched =
@@ -31,6 +34,7 @@ export function QuestionStimulus({
       cloze,
       protectedAudio,
       showStudyTranslation,
+      translationSurface,
     });
   });
 }

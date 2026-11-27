@@ -37,6 +37,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你好。",
+        "b": "我叫莉娜。",
+        "c": "关灯。",
+        "d": "有三个零件。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -106,6 +121,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "早上好。",
+        "b": "晚安。",
+        "c": "再见。",
+        "d": "回头见。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -179,6 +209,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你好吗？",
+      "options": {
+        "a": "很高兴认识你。",
+        "b": "我很好，谢谢你。",
+        "c": "再见。",
+        "d": "下午好。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -247,6 +293,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "再见。",
+        "b": "早上好。",
+        "c": "回头见。",
+        "d": "你好。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -324,6 +385,16 @@
         "text": " 这句话的意思是“很高兴认识你”。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "很高兴认识你。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -379,6 +450,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "早上好。",
+        "b": "待会儿见。",
+        "c": "下午好。",
+        "d": "晚安。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -410,6 +496,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "I am Lina."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我是莉娜。"
+      ]
     },
     "blanks": [
       {
@@ -543,6 +641,18 @@
       "voice": "stella",
       "text": "I am a worker."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我是一名工人。"
+      ]
+    },
     "blanks": [
       {
         "index": 1,
@@ -663,6 +773,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "It's broken."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "它坏了。"
+      ]
     },
     "blanks": [
       {
@@ -806,6 +928,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我不是一名工人。（语法有误）",
+        "b": "他还没准备好。",
+        "c": "你没有迟到。（语法有误）",
+        "d": "他们不在这里。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -931,6 +1068,14 @@
         "text": "（你是一名新工人）中，主语是 You，be 动词使用了 is。判断：该语法表达是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "你是一名新工人。（语法有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -997,6 +1142,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "The parts aren't ready."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "这些零件没有准备好。"
+      ]
     },
     "blanks": [
       {
@@ -1144,6 +1301,16 @@
         "text": "你的名字怎么拼写？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你的名字怎么拼写？"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1175,6 +1342,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Worker name on card: Tom."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "工卡上的员工姓名：汤姆"
+      ]
     },
     "blanks": [
       {
@@ -1295,6 +1474,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你的名字怎么拼写？",
+      "options": {
+        "a": "我叫汤姆。",
+        "b": "L、I、N、A。",
+        "c": "D、A、V、I、D。",
+        "d": "我在这里工作。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1363,6 +1558,14 @@
         "text": "，在工牌和表格上书写时每个单词的首字母都必须大写。判断：该规则是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "王明和安娜（英文人名每个单词的首字母都必须大写）。"
+    },
     "analysis": "人名属于英语中的专有名词，每个组成词的首字母都必须大写。",
     "grading": {
       "value": true
@@ -1376,6 +1579,13 @@
       "spelling"
     ],
     "stem": "工位零件箱标签上的英文名字 `MARK`，一共有多少个英文字母？请用阿拉伯数字作答。",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "标签上的英文名是马克（MARK）。"
+    },
     "analysis": "英文名字 `MARK` 依次由 M、A、R、K 共 4 个英文字母组成。",
     "grading": {
       "value": "4",
@@ -1394,6 +1604,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "My name is Wang Wei."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我的名字是王伟。"
+      ]
     },
     "blanks": [
       {
@@ -1485,6 +1707,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "I am from Yunnan."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我来自云南。"
+      ]
     },
     "blanks": [
       {
@@ -1602,6 +1836,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我正在学英语。",
+        "b": "我住在云南。（语法有误）",
+        "c": "我叫陈。（语法有误）",
+        "d": "我在这家工厂工作。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1679,6 +1928,14 @@
         "text": " 是向工友介绍自己姓名的规范英文表达。判断：该说法是否正确？"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "我的名字是李华。（语法有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1763,6 +2020,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Is this your box?"
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "这是你的箱子吗？"
+      ]
     },
     "blanks": [
       {
@@ -1883,6 +2152,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "大家好。我叫戴维，来自装配部。",
         "戴维，欢迎加入我们！"
@@ -1992,6 +2268,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "莉娜，早上好。你今天怎么样？",
         "马克，早上好。我很好，谢谢。很高兴认识我们的新同事汤姆。",
@@ -2196,6 +2479,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "交班问候指南",
         "中午十二点前说“早上好”，午饭后说“下午好”。",
@@ -2365,6 +2655,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Good afternoon, Anna. How are you? I'm fine, thank you. Nice to meet you."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "安娜，下午好。你好吗？我很好，谢谢。很高兴认识你。"
+      ]
     },
     "blanks": [
       {
@@ -2543,6 +2845,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "班长，下午好。你今天怎么样？"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -2608,6 +2922,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "戴维，早上好。你准备好检查生产线了吗？",
         "是的，我准备好了。主传感器指示灯是绿色的，说明它运行正常。",
@@ -2864,6 +3185,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位状态记录",
         "莉娜和萨姆今天在二号工位值班。",
@@ -3066,6 +3394,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "My partner and I are at the inspection bench. The red scanner isn't broken, so we use the blue one."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我和搭档在检验台前。红色扫码枪没有坏，所以我们用蓝色的那台。"
+      ]
     },
     "blanks": [
       {
@@ -3416,6 +3756,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "汤姆，你好：",
+        "我今天上午在一号工位值班。主扫码枪已经准备好，运行正常。不过，绿色托盘还没洗干净，两个备用传感器还在后面的箱子里。开工前请检查一下。",
+        "祝好，\n莉娜"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
@@ -3493,6 +3847,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "早上好。请问你叫什么名字？",
         "我叫本·周。",
@@ -3663,6 +4024,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工牌姓名拼写规则",
         "每位员工都必须在登记表上清楚地写下全名。",
@@ -3805,6 +4173,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Operator: Lina Wang, Station Three."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "操作员：王莉娜，三号工位"
+      ]
     },
     "blanks": [
       {
@@ -4005,6 +4385,18 @@
       "voice": "stella",
       "text": "My name is Lina, L, I, N, A."
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "我叫莉娜，拼作 L-I-N-A。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4040,19 +4432,59 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "Hello, everyone."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "My name is Anna Li."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "I am from Guizhou, and I live in Kunming now."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "I work at the sorting station in the Quality Department."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "I am learning English every evening."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Nice to meet you all!"}
+      {
+        "type": "text",
+        "text": "Hello, everyone."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "My name is Anna Li."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "I am from Guizhou, and I live in Kunming now."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "I work at the sorting station in the Quality Department."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "I am learning English every evening."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Nice to meet you all!"
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "大家好。",
         "我叫安娜·李。",
@@ -4349,6 +4781,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "新同事简介",
         "你好！我叫陈磊。",
@@ -4511,6 +4950,18 @@
     "passage_tts": {
       "voice": "stella",
       "text": "Hello, I live in Kunming and I work at the sorting station."
+    },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "你好，我住在昆明，在分拣工位工作。"
+      ]
     },
     "blanks": [
       {
@@ -4827,6 +5278,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "各位同事，你们好：",
+        "我叫李明。我来自云南，现在住在昆明。我在车间的分拣工位工作，每天都在学英语。很高兴认识大家！",
+        "祝好，\n李明"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,

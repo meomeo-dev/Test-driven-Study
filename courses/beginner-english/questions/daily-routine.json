@@ -80,6 +80,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "校准安排在星期一进行。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -193,6 +205,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "三月三日",
+      "options": {
+        "a": "三月三日（基数词读法有误）",
+        "b": "三月三日（读法有误）",
+        "c": "三月三日（冠词位置有误）",
+        "d": "三月三日"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -287,6 +315,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "新批次在五月到达。",
+        "b": "传感器测试在星期五进行。（星期前介词有误）",
+        "c": "设备维护在五月十二日进行。",
+        "d": "夜班在 2026 年开始。（年份前介词有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -456,6 +499,14 @@
         "text": "）的首字母无论位于句首还是句中，都必须大写。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "星期一（Monday）和七月（July）等星期与月份的首字母必须大写。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -561,6 +612,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "第二十一（序数词）",
+        "b": "二十一（基数词）",
+        "c": "第二十一（拼写有误）",
+        "d": "第十二（序数词）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -655,6 +721,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "不合格品料盒在哪里？（疑问句未倒装）",
+        "b": "不合格品料盒是什么？",
+        "c": "不合格品料盒在哪里？",
+        "d": "不合格品料盒在哪里？（缺少实义动词）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -760,6 +841,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "料盒里有多少个合格零件？",
+        "b": "料盒里有多少个合格零件？（可数复数误用 How much）",
+        "c": "料盒里有多少个合格零件？（be 动词单复数有误）",
+        "d": "合格零件几点在料盒里？"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -891,6 +987,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "分拣几点开始？—— 是的，它开始。（答非所问）",
+        "b": "相机在哪里？—— 在支架上。",
+        "c": "今天的技术员是谁？—— 在车间里。（答非所问）",
+        "d": "有多少个不合格零件？—— 三个零件。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1038,6 +1149,14 @@
         "text": " 简短回答。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "你先检查什么？是的，我检查。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1148,6 +1267,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "舵机挡板什么时候动作？（缺少助动词 does）",
+        "b": "舵机挡板什么时候动作？（实义动词未用助动词提问）",
+        "c": "舵机挡板什么时候动作？（助动词误用 is）",
+        "d": "舵机挡板什么时候动作？"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1302,6 +1436,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我总是检查传感器。（副词位置有误）",
+        "b": "我总是检查传感器。",
+        "c": "我总是检查传感器。（副词置句首语序不当）",
+        "d": "我总是检查传感器。（系动词多余）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1445,6 +1594,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "舵机挡板从不卡顿。（副词位置有误）",
+        "b": "舵机挡板从不卡顿。（副词置句首语序不当）",
+        "c": "舵机挡板从不卡顿。",
+        "d": "舵机挡板从不卡顿。（副词置句尾语序有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1588,6 +1752,22 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "stem": "你多久清洁一次相机镜头？",
+      "options": {
+        "a": "我每周清洁两次。",
+        "b": "我经常清洁它。（副词位置有误）",
+        "c": "我在星期一清洁它。（星期前介词有误）",
+        "d": "我通常每天清洁它。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -1746,6 +1926,14 @@
         "text": " 表示“有时发生”。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "never：从不；sometimes：有时。"
+    },
     "analysis": [
       {
         "type": "text",
@@ -1848,6 +2036,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "你多久清空一次不合格品料盒？"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -1941,6 +2141,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我的班次在上午 8:00 开始。（缺少三单 -s）",
+        "b": "我的班次在上午 8:00 开始。（系动词多余）",
+        "c": "我的班次在上午 8:00 开始。（动词与介词有误）",
+        "d": "我的班次在上午 8:00 开始。"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2051,6 +2266,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "休息时间从 12:00 到 12:30。（between 搭配有误）",
+        "b": "休息时间从 12:00 到 12:30。（介词搭配有误）",
+        "c": "休息时间从 12:00 到 12:30。",
+        "d": "休息时间从 12:00 到 12:30。（动词与介词有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2203,6 +2433,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "我下午 4:00 下班。（时刻前介词有误）",
+        "b": "我这周上夜班。",
+        "c": "白班在下午 4:30 结束。",
+        "d": "我的班次在周一早上开始。（具体某天上午介词有误）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2363,6 +2608,14 @@
         "text": "。"
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "typing"
+      ],
+      "stem": "我本周上早班。（介词 at 有误）"
+    },
     "analysis": [
       {
         "type": "text",
@@ -2444,6 +2697,21 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "options": {
+        "a": "你的班次几点结束？（缺少助动词 does）",
+        "b": "你的班次几点结束？",
+        "c": "你的班次在哪里结束？",
+        "d": "你的班次几点结束？（助动词误用 is）"
+      }
+    },
     "analysis": [
       {
         "type": "text",
@@ -2552,6 +2820,13 @@
       "shift-schedule"
     ],
     "stem": "早班工作时间为上午 8:00 到下午 16:30，扣除中午休息 1.5 小时。请问实际工作工时是多少小时？",
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "typing"
+      ],
+      "stem": "早班上午 8:00 至下午 16:30，扣除午休 1.5 小时，求实际工作工时。"
+    },
     "grading": {
       "value": "7",
       "absolute_tolerance": "0"
@@ -2588,6 +2863,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "主管，我这周有几个夜班？",
         "小李，你这周有两个夜班，在周四和周五。"
@@ -2716,6 +2998,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "各位请记好，明天早会上午七点四十五分开始。",
         "明白了。上午七点四十五分在简报板前集合。"
@@ -2880,6 +3169,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "新一批销钉什么时候到？",
         "五月十二日，也就是周二上午到货。我们的传感器校准安排在周一上午八点半。"
@@ -3081,6 +3377,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "月度检查通知",
         "年度生产线检查安排在七月。",
@@ -3348,6 +3651,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "传感器审核在十月进行，全面测试于十月三日开始。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -3504,6 +3819,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "新批次将于周一上午九点到达。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -3580,6 +3907,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "红色废品箱在哪里？今天谁检查二号工位？",
         "红色箱子在桌子下面。莎拉检查二号工位，箱里有十二根弯曲的销钉。"
@@ -3765,6 +4099,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位问答指南",
         "陈技术员上午七点半检查相机传感器。",
@@ -4089,6 +4430,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "早班检查几点开始，我们有多少个盒子？"
+      ]
+    },
     "analysis": "分别考查实义动词三单疑问句助动词与可数名词数量的疑问词。"
   },
   {
@@ -4293,6 +4646,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "废品盒里有多少个破损盖子？"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4346,13 +4711,35 @@
       "voice_female": "stella"
     },
     "passage": [
-      {"type": "text", "text": "I always clean the camera lens before eight a.m."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "The servo flap is usually smooth, and it is never stuck when we oil it twice a week."},
-      {"type": "text", "text": " "},
-      {"type": "text", "text": "Sometimes small screws fall near the belt, so we sweep the bench every day."}
+      {
+        "type": "text",
+        "text": "I always clean the camera lens before eight a.m."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "The servo flap is usually smooth, and it is never stuck when we oil it twice a week."
+      },
+      {
+        "type": "text",
+        "text": " "
+      },
+      {
+        "type": "text",
+        "text": "Sometimes small screws fall near the belt, so we sweep the bench every day."
+      }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "我总是在上午八点之前清洁相机镜头。",
         "伺服挡板通常动作顺畅。每周给它上两次油，它就从不卡住。",
@@ -4517,6 +4904,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "工位检查清单",
         "测试期间安全门始终关闭。",
@@ -4753,6 +5147,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "传感器总是干净的，我们每天擦拭外壳。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -4899,6 +5305,18 @@
     "sample_response_tts": {
       "voice": "stella"
     },
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "我总是在早班开始前清洁镜头。"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 50
@@ -4983,6 +5401,13 @@
       }
     ],
     "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
       "material": [
         "白班排班表",
         "工作日白班从上午八点到下午五点。",
@@ -5191,6 +5616,18 @@
         ]
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "material": [
+        "我本周上早班，我们的休息时间是从十二点到十二点半。"
+      ]
+    },
     "analysis": [
       {
         "type": "text",
@@ -5369,6 +5806,20 @@
         }
       }
     ],
+    "study_translation": {
+      "display_in": [
+        "memorize",
+        "practice_review",
+        "exam_review",
+        "typing",
+        "palace"
+      ],
+      "sample_response": [
+        "林，你好：",
+        "我本周上早班。我的班次从上午八点开始到下午四点半结束，午休时间为十二点到十二点半。请在早会前清点合格品料盒并签署交班表。",
+        "祝好，\n陈"
+      ]
+    },
     "rubric": {
       "task_completion": 50,
       "language_accuracy": 30,
