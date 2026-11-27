@@ -1,7 +1,8 @@
 ---
 id: 0092
 type: feat
-status: open
+status: closed
+closed-by: ec5307b
 labels: [course, schema, frontend, backend, english]
 branch: feat/0092-extend-study-translations-with-display-scope-across-all-ques
 created: 2026-11-27
@@ -133,3 +134,16 @@ has no declarative surface-visibility control. As a result:
 - Projecting `study_translation` directly onto `study.Question` (never onto
   `PublicQuestion`) and exposing authored `id` on `study.Option` keeps option
   translation lookup resilient to option ordering across all choice types.
+
+### Verification
+
+- `npm run course:audit -- courses/golden-course-template`: PASS (`golden-course-template@1.5.0`, 15/15 items, 4 passed / 0 failed).
+- `npm run course:audit -- --strict courses/beginner-english`: PASS (`beginner-english@2.6.0`, 12 units, 507/507 items, 4 passed / 0 failed).
+- Immutability & coverage audit (`node -e` against `HEAD`): 0 mutated non-translation fields, 0 missing English items (`golden-course-template`: 13 `study_translation` + 2 native `translation`; `beginner-english`: 443 `study_translation` + 64 native `translation`).
+- `npm run check:generated`: PASS (`Generated HTTP types and SQL bindings are current.`).
+- `go vet ./... && go test -count=1 ./...`: PASS (`10/10` packages ok, including all-type `study_translation` + `display_in` schema/validation tests and review-only redaction tests).
+- `npm run typecheck && npm run test:unit`: PASS (`tsc --noEmit` 0 errors; Vitest `21/21` files, `100/100` tests).
+- `npm run build`: PASS (Vite `3379` modules + compiled `var/bin/test-driven-study`).
+- `npx playwright test tests/browser/typing-study.spec.ts tests/browser/question-types.spec.ts`: PASS (`14/14` browser tests, verifying multi-sentence listening pairing on `be-verb-v2-listening-1`, all-type memorization/practice/palace translations, pre-submit protection, and selective `display_in` surface gating).
+- Local installation: `npm run course:install -- courses/golden-course-template courses/beginner-english` installed `golden-course-template@1.5.0` and `beginner-english@2.6.0`.
+- `node scripts/issue-check.mjs && git diff --check`: PASS.

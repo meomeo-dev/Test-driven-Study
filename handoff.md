@@ -1,9 +1,10 @@
 # Development Handoff
 
-Updated 2026-11-27 (America/New_York). Baseline `d6ce83c` on `main` (zero
-linked worktrees; `feat/0090-expand-beginner-english-cefr-a2-path-and-language-workflow`
+Updated 2026-11-27 (America/New_York). Baseline `ec5307b` integrated on `main`
+(zero linked worktrees; `feat/0090-expand-beginner-english-cefr-a2-path-and-language-workflow`
 preserved at `8d0aa78` for remaining `#90` Units 13–16; background dev service
-running on ports `43387`/`43388` for live review).
+running on ports `43387`/`43388` with `golden-course-template@1.5.0` and
+`beginner-english@2.6.0` installed).
 
 > Static architecture, invariants, and workflow rules live in
 > [AGENTS.md](AGENTS.md). This file captures dynamic working memory: recent
@@ -12,6 +13,19 @@ running on ports `43387`/`43388` for live review).
 
 ## Completed work (2026-11-23 – 2026-11-27)
 
+- **All-type `study_translation` + `display_in` surface scope (`#92`, verified, closed, and integrated on `main`)**:
+  - [#92](issues/0092-feat-extend-study-translations-with-display-scope-across-all-ques.md)
+    (`ec5307b`): extended v2 `study_translation` to all nine question types
+    (`stem`, `options`, `material`, `sample_response`, `sub_questions`) with
+    optional `display_in` surface array (`memorize`, `practice_review`,
+    `exam_review`, `typing`, `palace`; omitted defaults to all five), projected
+    `Option.id` for shuffle-safe option translations, preserved review-only
+    redaction (keeping `question_review.study_translation` as single source on
+    extended types), fixed multi-sentence translation pairing in Typing Study
+    and compact pill positioning for `.typing-launcher`, and upgraded
+    `courses/golden-course-template@1.5.0` (15/15) and
+    `courses/beginner-english@2.6.0` (507/507 across 12 units) to 100% aligned
+    Chinese–English translation coverage.
 - **Floating Typing Study module (`#91`, verified, closed, and integrated on `main`)**:
   - [#91](issues/0091-feat-add-floating-typing-study-module.md) (`f3b744b`,
     closed in `d6ce83c`): added draggable/resizable floating **打字学习**
@@ -78,31 +92,33 @@ running on ports `43387`/`43388` for live review).
 
 | Package | Active local version | Coverage |
 | --- | --- | --- |
-| [Golden course template](courses/golden-course-template/README.md) | 1.4.0 | 15 items across all nine question types, a five-concept learning path, aligned reading/listening translations, and 12 vocabulary entries with TTS and grammar notes. |
-| [Beginner English](courses/beginner-english/README.md) | 2.5.0 | 12 units, 51 concepts (2,670 min), 507 items across all 9 v2 types, translations for all 45 reading and 67 listening questions, and 93 vocabulary entries with TTS overrides and minimalist grammar notes. |
+| [Golden course template](courses/golden-course-template/README.md) | 1.5.0 | 15 items across all nine question types, a five-concept learning path, full-course aligned translations with multi-surface and selective `display_in` examples, and 12 vocabulary entries with TTS and grammar notes. |
+| [Beginner English](courses/beginner-english/README.md) | 2.6.0 | 12 units, 51 concepts (2,670 min), 507 items across all 9 v2 types with 100% aligned Chinese–English translations (`study_translation` + `display_in` across 443 items plus 64 native translation items), and 93 vocabulary entries with TTS overrides and minimalist grammar notes. |
 | [Elementary Chinese](courses/elementary-chinese/course.json) | 1.0.4 | Local Pinyin for fill-in stems and combined Pinyin and Han speech for explanations. |
 
 The 16 extracted engineering, mathematics, and legacy courses live in
 `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses` (`#82`, `1733272`).
 
-## Verification (2026-11-27, `#91` & `e2413f9`)
+## Verification (2026-11-27, `#92`)
 
-- `go test -count=1 ./...` & `go vet ./...`: PASS (`10/10` packages ok,
-  including `internal/llm` and `internal/palace` HTTP 403 quota tests).
+- `npm run course:audit -- courses/golden-course-template`: PASS
+  (`golden-course-template@1.5.0`, 15 items, 4 passed / 0 failed).
+- `npm run course:audit -- --strict courses/beginner-english`: PASS
+  (`beginner-english@2.6.0`, 12 units, 507 items, 4 passed / 0 failed).
+- `npm run check:generated`: PASS (`Generated HTTP types and SQL bindings are current.`).
+- `go vet ./... && go test -count=1 ./...`: PASS (`10/10` packages ok).
 - `npm run typecheck && npm run test:unit`: PASS (`tsc --noEmit` 0 errors;
-  Vitest `20/20` files, `96/96` tests, including `web/src/features/typing/engine.test.ts`
-  and `extract.test.ts`).
-- `npx vite build` & `node scripts/build-api.mjs`: PASS (`3378` modules, lazy
-  `TypingPanel` chunk `8.78 kB` gzipped; compiled `var/bin/test-driven-study`).
-- `npx playwright test tests/browser/typing-study.spec.ts`: PASS (`3/3` tests:
-  cloze/writing typewriter auto-scroll, Chinese IME composition + uncommitted
-  Pinyin guard, Practice pre-submit protection & mobile viewport bounds).
-- Full Playwright suite (`npx playwright test`): `31/32` passed; the sole
-  failure is a pre-existing unit-count assertion in
-  `tests/browser/courses.spec.ts:192` still expecting `10` units for
-  `beginner-english` after `8d0aa78` expanded the course to `12` units.
-- `git diff --check` and `node scripts/issue-check.mjs`: PASS (`91/91` issues
+  Vitest `21/21` files, `100/100` tests).
+- `npm run build`: PASS (Vite `3379` modules + compiled `var/bin/test-driven-study`).
+- `npx playwright test tests/browser/typing-study.spec.ts tests/browser/question-types.spec.ts`:
+  PASS (`14/14` browser tests covering multi-sentence listening pairing,
+  all-type translations, pre-submit protection, selective `display_in` gating,
+  and legacy payload compatibility).
+- `git diff --check` and `node scripts/issue-check.mjs`: PASS (`92/92` issues
   valid).
+- Note on full Playwright suite: `tests/browser/courses.spec.ts:192` still has
+  a pre-existing hardcoded unit-count assertion (`10` vs current `12` units in
+  `beginner-english` from `#90` commit `8d0aa78`).
 
 ## Next steps (prioritized backlog)
 

@@ -145,14 +145,21 @@ inspect their state before restarting services or changing configuration.
   assets (`vocabulary_file`), follow `design-course-vocabulary`: assign `pos`
   only on `word` entries, write `grammar_note` only when non-obvious rules apply,
   and audit with `audit-course-vocabulary.mjs --strict` alongside `course:check`.
-- Use v2 `study_translation` for aligned study text in reading and listening.
-  Match `material` to nonblank `passage` text segments or structured
-  `transcript` lines in order, and key sub-question and option translations by
-  their existing IDs. Keep translated strings separate from the source audio
-  inputs. Follow `golden-course-template` and validate with `course:check`.
-  Expose translations through `question_review` in memorization and graded
-  practice, and in mock exam review only after the entire paper ends.
-  The [authoring guide](docs/features/question-types/README.md#study-translations)
+- Use v2 `study_translation` for aligned study text across all nine question
+  types, with optional `display_in` (`memorize`, `practice_review`,
+  `exam_review`, `typing`, `palace`; omitted defaults to all five surfaces) to
+  control where each item's translations appear. Match `material` to nonblank
+  `passage` text segments or structured `transcript` lines (completed passage on
+  `cloze`), match `sample_response` to nonblank writing sample segments, and key
+  `options` / `sub_questions` by their existing authored IDs (`study.Option.ID`
+  preserves IDs across option shuffles). Keep translated strings separate from
+  source audio inputs, follow `golden-course-template`, and validate with
+  `course:check`. Never expose `study_translation` on `PublicQuestion`
+  (pre-submit practice) or active in-progress mock exams; release it only on
+  memorization, palace, post-submit practice review, typing study, and finished
+  exam review (`question_review` for extended types; top-level `Question` for
+  non-extended types). The
+  [authoring guide](docs/features/question-types/README.md#study-translations)
   defines the alignment rules.
 - Keep explanation audio, `cloze.passage_tts`, `writing.sample_response` /
   `sample_response_tts`, and `translation.reference_translation_tts` restricted to

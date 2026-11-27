@@ -18,9 +18,10 @@ frontend, and SQLite storage. It bundles three default courses—[Beginner
 English](courses/beginner-english/README.md), [Elementary
 Chinese](courses/elementary-chinese/course.json), and the installable v2
 template course ([黄金标准课程模板](courses/golden-course-template/README.md)).
-Version 1.4.0 demonstrates all nine question types, a concept-based learning
-path, bilingual reading and listening materials, and a vocabulary notebook with
-TTS playback and minimalist grammar notes.
+Version 1.5.0 demonstrates all nine question types, a concept-based learning
+path, full-course aligned translations with declarative `display_in` surface
+scoping, and a vocabulary notebook with TTS playback and minimalist grammar
+notes.
 
 Additional engineering and mathematics courses previously developed here are now
 maintained in the separate `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`
@@ -43,9 +44,9 @@ or external database.
 
 | Course | Version | Focus |
 | --- | --- | --- |
-| [Beginner English](courses/beginner-english/README.md) | 2.5.0 | 12 units, 51 concepts, and 507 questions across all nine v2 question types, study translations for all 45 reading and 67 listening items, plus a 93-entry vocabulary notebook with TTS overrides and targeted grammar notes. |
+| [Beginner English](courses/beginner-english/README.md) | 2.6.0 | 12 units, 51 concepts, and 507 questions across all nine v2 question types with 100% aligned Chinese–English translations (`study_translation` + `display_in` surface scope across 443 items plus 64 native translation items), and a 93-entry vocabulary notebook with TTS overrides and targeted grammar notes. |
 | [Elementary Chinese](courses/elementary-chinese/course.json) | 1.0.4 | Local Pinyin recordings for the seven fill-in prompts and combined Pinyin and Han speech for the explanations. |
-| [黄金标准课程模板](courses/golden-course-template/README.md) | 1.4.0 | Reference v2 template covering all nine question types, a five-concept learning path, study translations, and a 12-entry vocabulary notebook. |
+| [黄金标准课程模板](courses/golden-course-template/README.md) | 1.5.0 | Reference v2 template covering all nine question types, a five-concept learning path, all-type study translations with multi-surface and selective `display_in` examples, and a 12-entry vocabulary notebook. |
 
 The 16 extracted engineering, software, and mathematics courses live in the
 separate `Test-driven-Study-Courses` repository (`/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`)

@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Full-type v2 `study_translation` with declarative `display_in` surface
+  scoping (`memorize`, `practice_review`, `exam_review`, `typing`, `palace`;
+  omitted defaults to all five surfaces) across all nine question types (`stem`,
+  `options`, `material`, `sample_response`, `sub_questions`), preserving strict
+  review-only redaction on unanswered practice and in-progress mock exams,
+  exposing authored `Option.id` for shuffle-safe option translations, fixing
+  multi-sentence translation pairing in Typing Study, and upgrading
+  `golden-course-template@1.5.0` (15/15 items) and `beginner-english@2.6.0`
+  (507/507 items across 12 units) to 100% Chinese–English translation coverage
+  (`#92`).
 - Floating **Typing Study (打字学习)** module
   (`web/src/features/typing/`) across memorization, memory palace, and
   post-submit practice (disabled pre-submit; excluded from mock exams). Extracts

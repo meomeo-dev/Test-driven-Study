@@ -35,9 +35,9 @@
 
 | 课程 | 版本 | 内容说明 |
 | :--- | :--- | :--- |
-| **[零基础英语](courses/beginner-english/README.md)** | `2.5.0` | 12 个单元、51 个知识点、507 道覆盖全部 9 类 v2 题型的题目，全部 45 道阅读与 67 道听力题均配英中对照，含 93 条生词本与 TTS/极简语法点拨。 |
+| **[零基础英语](courses/beginner-english/README.md)** | `2.6.0` | 12 个单元、51 个知识点、507 道覆盖全部 9 类 v2 题型的题目，全部题目均配英中对照并支持 `display_in` 显示范围控制（443 题声明 `study_translation` + 64 道翻译题天然成对），含 93 条生词本与 TTS/极简语法点拨。 |
 | **[小学语文拼音](courses/elementary-chinese/course.json)** | `1.0.4` | 填空题干配本地拼音录音，选项与解析支持汉字 TTS 与本地拼音串联朗读。 |
-| **[黄金标准课程模板](courses/golden-course-template/README.md)** | `1.4.0` | 覆盖全部 9 类 v2 题型、5 节点知识图谱、阅读/听力英中对照及 12 条生词本示例。 |
+| **[黄金标准课程模板](courses/golden-course-template/README.md)** | `1.5.0` | 覆盖全部 9 类 v2 题型、5 节点知识图谱、全题型英中对照与多位置/精简 `display_in` 范围示例，以及 12 条生词本示例。 |
 
 其余 16 门工程与数学拓展课程统一存放在独立仓库 `/Volumes/1TB-ZYJ/git/Test-driven-Study-Courses`。
 
