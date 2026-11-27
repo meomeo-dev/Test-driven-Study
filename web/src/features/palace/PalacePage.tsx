@@ -1,4 +1,4 @@
-import { readSubject } from '../../app/workspace';
+import { readSubject, useWorkspace } from '../../app/workspace';
 import { useConversationCoverage } from '../assistant/useConversationCoverage';
 import { useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -17,10 +17,12 @@ import { TaskManager } from './TaskManager';
 import { usePalaceCoverage } from './hooks';
 
 import { QuestionAssistant } from '../assistant/QuestionAssistant';
+import { TypingStudy } from '../typing/TypingStudy';
 
 export function PalacePage() {
   const [params, setParams] = useSearchParams();
   const subject = readSubject(params);
+  const { course } = useWorkspace(subject);
   const navigation = useRef<HTMLButtonElement>(null);
   const info = useQuery({ queryKey: ['palace-info'], queryFn: ({ signal }) => api.info(signal) });
   const list = useQuery({ queryKey: ['palace-questions', subject],
@@ -61,6 +63,7 @@ export function PalacePage() {
           onJobID={job => go(id, job)} onSelect={job => go(job.question_id, job.id)} />
           : <div className="page-state" role="status">正在读取题库与生图配置…</div>}
     </main>
+    <TypingStudy question={question.data?.question} courseLanguage={course?.language} />
     <QuestionAssistant questionID={id} />
   </div>;
 }

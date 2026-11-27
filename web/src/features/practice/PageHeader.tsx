@@ -1,19 +1,27 @@
 import type { ReactNode } from 'react';
 import { FileText, Keyboard } from 'lucide-react';
+import type { Question } from '../../api/generated/types.gen';
 import type { Overview } from '../../api/practice';
 import { ThemeToggle } from '../../components/ThemeToggle';
 import { QuestionAssistant } from '../assistant/QuestionAssistant';
+import { TypingStudy } from '../typing/TypingStudy';
 
 type Props = {
   overview?: Overview;
   questionID: number;
   shortcuts: boolean;
   analysisAvailable: boolean;
+  revealedQuestion?: Question;
+  courseLanguage?: string;
   navigation: ReactNode;
+  onNextQuestion?: () => void;
   onHelp: (trigger: HTMLButtonElement) => void;
   onAnalysis: (trigger: HTMLButtonElement) => void;
 };
-export function PageHeader({ overview, questionID, shortcuts, navigation, onHelp, onAnalysis, analysisAvailable }: Props) {
+export function PageHeader({
+  overview, questionID, shortcuts, navigation, onHelp, onAnalysis,
+  analysisAvailable, revealedQuestion, courseLanguage, onNextQuestion,
+}: Props) {
   return <header className="workspace-toolbar">
     <h1 className="sr-only">答题模式</h1>
     <section className="progress-strip" aria-label="科目学习进度">
@@ -30,6 +38,14 @@ export function PageHeader({ overview, questionID, shortcuts, navigation, onHelp
       <ThemeToggle />
       {navigation}
       <QuestionAssistant questionID={questionID} compact />
+      <TypingStudy
+        question={revealedQuestion}
+        courseLanguage={courseLanguage}
+        compact
+        disabled={!revealedQuestion}
+        disabledTitle="提交作答后可进行打字学习"
+        onNextQuestion={onNextQuestion}
+      />
       <button type="button" className="button text analysis-trigger"
         aria-label="查看解析" disabled={!analysisAvailable} onClick={event => onAnalysis(event.currentTarget)}>
         <FileText size={16} /><span>解析</span>

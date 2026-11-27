@@ -1,0 +1,233 @@
+.typing-launcher {
+  position: fixed; right: 22px; bottom: 204px; z-index: 50;
+  display: flex; flex-direction: column; align-items: center;
+  width: 78px; padding: 0; background: transparent; border-radius: 18px;
+  color: var(--text); filter: drop-shadow(0 3px 5px var(--shadow));
+}
+.typing-launcher-badge {
+  position: absolute; top: 3px; right: 0; padding: 2px 5px;
+  border: 2px solid var(--surface); border-radius: 8px;
+  background: var(--success); color: var(--on-primary); font-size: 9px;
+  font-weight: 750; letter-spacing: .4px;
+}
+.typing-launcher-label {
+  margin-top: -2px; padding: 5px 10px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-secondary); font-size: var(--font-size-control); font-weight: 650;
+  white-space: nowrap;
+}
+.typing-launcher:hover .typing-launcher-label { color: var(--primary); }
+.typing-launcher[data-state="open"] { display: none; }
+.typing-launcher-inline[data-state="open"] { visibility: hidden; }
+
+.typing-panel {
+  position: fixed; z-index: 61;
+  display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--border); border-radius: 18px;
+  background: var(--surface); color: var(--text);
+  font-size: var(--font-size-body); line-height: 1.55;
+  box-shadow: 0 12px 48px var(--shadow);
+}
+
+.typing-heading {
+  display: flex; align-items: center; gap: 8px; padding: 6px 12px;
+  background: var(--primary-soft); border-bottom: 1px solid var(--border);
+  cursor: grab; touch-action: none; user-select: none; flex-shrink: 0;
+}
+.typing-heading:active { cursor: grabbing; }
+.typing-heading:focus-visible { outline-offset: -3px; }
+.typing-heading > div { flex: 1; min-width: 0; overflow: hidden; }
+.typing-heading h2 {
+  display: flex; align-items: center; gap: 7px; margin: 0;
+  font-size: var(--font-size-body); font-weight: 720; white-space: nowrap;
+}
+.typing-heading h2 span {
+  padding: 1px 6px; border: 1px solid var(--border); border-radius: 5px;
+  color: var(--primary); font-size: 10px; font-weight: 650;
+}
+.typing-heading .icon-button { flex-shrink: 0; width: 28px; height: 30px; }
+
+.typing-context {
+  display: flex; flex-direction: column; gap: 7px;
+  padding: 8px 14px; background: var(--surface-muted);
+  border-bottom: 1px solid var(--border-subtle); flex-shrink: 0;
+}
+.typing-context-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  font-size: var(--font-size-caption); color: var(--muted);
+}
+.typing-context-row b { color: var(--primary); margin-left: 4px; font-weight: 650; }
+.typing-progress-meta { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.typing-progress-track {
+  height: 4px; border-radius: 999px; background: var(--border-subtle); overflow: hidden;
+}
+.typing-progress-track > div {
+  height: 100%; background: var(--primary); border-radius: inherit;
+  transition: width .22s ease;
+}
+.typing-controls-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;
+}
+.typing-pills { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.typing-pills button, .typing-mode-toggle {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border: 1px solid var(--border); border-radius: 7px;
+  background: var(--surface); color: var(--text-secondary);
+  font-size: var(--font-size-control); font-weight: 550;
+}
+.typing-pills button[aria-pressed="true"], .typing-mode-toggle[aria-pressed="true"] {
+  background: var(--primary-soft); border-color: var(--primary); color: var(--primary);
+}
+.typing-tts-error {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin: 8px 14px 0; padding: 6px 10px; border-radius: 8px;
+  background: var(--danger-bg); border: 1px solid var(--danger-border);
+  color: var(--danger); font-size: var(--font-size-control);
+}
+
+.typing-roll {
+  position: relative; flex: 1; min-height: 0; overflow-y: auto;
+  overscroll-behavior: contain; padding: 18px 16px 140px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.typing-empty { margin: 24px 0; text-align: center; color: var(--muted); }
+
+.typing-line {
+  transition: opacity .22s ease, transform .22s ease, border-color .18s ease;
+}
+.typing-line-done { opacity: .58; }
+.typing-line-skipped { opacity: .5; }
+.typing-line-upcoming { opacity: .45; }
+.typing-line-done:hover, .typing-line-skipped:hover, .typing-line-upcoming:hover { opacity: .88; }
+
+.typing-line-summary {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 8px 11px; border-radius: 10px; text-align: left;
+  background: var(--surface-muted); border: 1px solid var(--border-subtle);
+  color: var(--text-secondary); font-size: var(--font-size-label);
+}
+.typing-line-done .typing-line-icon { color: var(--success); }
+.typing-line-skipped .typing-line-icon { color: var(--warning); }
+.typing-line-icon { display: inline-flex; align-items: center; flex-shrink: 0; color: var(--muted); }
+.typing-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); display: inline-block; }
+.typing-summary-text {
+  flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+.typing-line-active {
+  padding: 16px 16px 14px; border-radius: 14px;
+  background: var(--surface); border: 1.5px solid var(--primary);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+.typing-line-meta {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.typing-role-tag {
+  padding: 2px 7px; border-radius: 5px; font-size: var(--font-size-caption);
+  font-weight: 600; background: var(--surface-muted); color: var(--text-secondary);
+  border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0;
+}
+.typing-role-tag.role-answer {
+  background: var(--success-bg); border-color: var(--success-border); color: var(--success);
+}
+.typing-lang-tag {
+  padding: 2px 6px; border-radius: 5px; font-size: 10px; font-weight: 650;
+  background: var(--primary-soft); color: var(--primary);
+}
+.typing-char-progress {
+  margin-left: auto; font-size: var(--font-size-caption); color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.typing-hint-line {
+  margin: 0 0 8px; font-size: var(--font-size-label); color: var(--muted);
+  line-height: 1.5; overflow-wrap: anywhere;
+}
+
+.typing-prompt {
+  margin: 0 0 12px; font-size: 19px; line-height: 1.7; font-weight: 520;
+  letter-spacing: .01em; white-space: pre-wrap; overflow-wrap: anywhere;
+  user-select: text;
+}
+.typing-char { border-radius: 3px; transition: color .1s ease, background-color .1s ease; }
+.typing-char.correct { color: var(--success); }
+.typing-char.wrong {
+  color: var(--danger); background: var(--danger-bg);
+  text-decoration: underline wavy var(--danger); text-underline-offset: 3px;
+}
+.typing-char.pending {
+  color: var(--primary); border-bottom: 2px dashed var(--primary);
+}
+.typing-char.upcoming { color: var(--text-secondary); }
+.typing-char.blank-answer {
+  background: var(--primary-soft); padding-inline: 1px; font-weight: 650;
+}
+.typing-char.blank-answer.correct { background: var(--success-bg); }
+.typing-char.blank-answer.wrong { background: var(--danger-bg); }
+
+.typing-underline-box {
+  border-bottom: 2px solid var(--border); padding: 4px 2px 6px;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.typing-underline-box:focus-within { border-bottom-color: var(--primary); }
+.typing-underline-box.state-composing {
+  border-bottom-color: var(--primary); border-bottom-style: dashed;
+}
+.typing-underline-box.state-error { border-bottom-color: var(--danger); }
+.typing-underline-box.state-complete { border-bottom-color: var(--success); }
+
+.typing-underline-input {
+  display: block; width: 100%; min-height: 30px; padding: 0; border: 0; outline: 0;
+  resize: none; overflow: hidden; background: transparent; color: var(--text);
+  font-family: inherit; font-size: 18px; line-height: 1.65; letter-spacing: .01em;
+}
+.typing-underline-input::placeholder { color: var(--muted); font-size: var(--font-size-body); }
+
+.typing-status-cue {
+  margin: 8px 0 0; font-size: var(--font-size-caption); color: var(--muted);
+}
+.typing-status-cue.state-composing { color: var(--primary); }
+.typing-status-cue.state-error { color: var(--danger); }
+.typing-status-cue.state-complete { color: var(--success); font-weight: 600; }
+
+.typing-complete-card {
+  margin-top: 8px; padding: 16px; border-radius: 14px;
+  background: var(--success-bg); border: 1px solid var(--success-border);
+  color: var(--text);
+}
+.typing-complete-title {
+  display: flex; align-items: center; gap: 7px; color: var(--success);
+}
+.typing-complete-title h3 { margin: 0; font-size: var(--font-size-body); font-weight: 700; }
+.typing-complete-card p { margin: 6px 0 12px; font-size: var(--font-size-label); color: var(--text-secondary); }
+.typing-complete-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.typing-footer {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  padding: 8px 32px 10px 14px; border-top: 1px solid var(--border-subtle);
+  background: var(--surface-muted); flex-shrink: 0;
+}
+.typing-foot-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 9px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface); color: var(--text-secondary);
+  font-size: var(--font-size-control);
+}
+.typing-foot-btn:hover:not(:disabled) { border-color: var(--primary); color: var(--primary); }
+.typing-next-q { margin-left: auto; background: var(--primary-soft); color: var(--primary); border-color: var(--primary); }
+
+.typing-resize-handle {
+  position: absolute; bottom: 1px; right: 1px; display: grid; place-items: center;
+  width: 24px; height: 24px; padding: 0; background: transparent;
+  border-radius: 0 0 16px 0; color: var(--muted);
+  cursor: nwse-resize; touch-action: none;
+}
+.typing-resize-handle:hover { color: var(--primary); background: var(--primary-soft); }
+
+@media (max-width: 600px) {
+  .typing-launcher { right: 14px; bottom: 196px; width: 64px; }
+  .typing-launcher-label { font-size: 11px; padding: 4px 8px; }
+  .typing-roll { padding: 14px 12px 100px; }
+  .typing-prompt { font-size: 16px; }
+  .typing-underline-input { font-size: 16px; }
+  .typing-footer { padding-left: 10px; padding-right: 28px; }
+}

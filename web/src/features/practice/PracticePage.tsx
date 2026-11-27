@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
 import type { AttemptEvaluation, AttemptResult, Summary } from '../../api/practice';
+import type { Question } from '../../api/generated/types.gen';
 import { Sidebar } from '../../components/Sidebar';
 import { QuestionNavigation } from '../question-navigation';
 import { PageHeader } from './PageHeader';
@@ -22,7 +23,7 @@ export function PracticePage() {
   const palaceImages = usePalaceCoverage(filters.subject);
   const conversations = useConversationCoverage(filters.subject);
   const [notice, setNotice] = useState('');
-  const [hasResult, setHasResult] = useState(false);
+  const [revealedQuestion, setRevealedQuestion] = useState<Question>();
   const [heldRows, setHeldRows] = useState<Summary[] | null>(null);
   const [help, setHelp] = useState(false);
   const shortcuts = useShortcutPreference();
@@ -110,7 +111,11 @@ export function PracticePage() {
       if (!pending.current) { setHeldRows(null); setParams({ subject: String(subject) }); }
     }} />
     <main id="study-main" className="workspace">
-      <PageHeader overview={overview.data} questionID={id} shortcuts={shortcuts.enabled} analysisAvailable={hasResult}
+      <PageHeader overview={overview.data} questionID={id} shortcuts={shortcuts.enabled}
+        analysisAvailable={Boolean(revealedQuestion)}
+        revealedQuestion={revealedQuestion}
+        courseLanguage={course?.language}
+        onNextQuestion={nearbyQuestion(rows, id, 1) ? next : undefined}
         onHelp={openHelp} onAnalysis={trigger => session.current?.analysis(trigger)}
         navigation={<QuestionNavigation rows={rows} current={id} status={navigationStatus}
           palaces={palaceImages.marked} conversations={conversations} onSelect={go}
@@ -133,7 +138,7 @@ export function PracticePage() {
             : rows.length === 0 ? <div className="page-state"><BookOpen size={28} /><h2>没有符合条件的题目</h2>
               <p>请调整关键词、章节或学习状态。</p><button className="button outline" onClick={() => setParams({ subject: String(filters.subject) })}>重置筛选</button></div>
             : <PracticeSession key={id} id={id} position={position} total={rows.length}
-              shortcuts={shortcuts.enabled} commands={session} onPending={onPending} onRevealed={setHasResult}
+              shortcuts={shortcuts.enabled} commands={session} onPending={onPending} onRevealed={setRevealedQuestion}
               onPrevious={previous} onNext={next} onResult={saved} onEvaluated={evaluated} />}
         </section>
       </div>

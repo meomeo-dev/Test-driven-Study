@@ -1,6 +1,8 @@
 import { useConversationCoverage } from '../assistant/useConversationCoverage';
 import { usePalaceCoverage } from '../palace/hooks';
 import { QuestionAssistant } from '../assistant/QuestionAssistant';
+import { TypingStudy } from '../typing/TypingStudy';
+import { useWorkspace } from '../../app/workspace';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 import { AlertCircle, BookOpen, LoaderCircle, RotateCcw } from 'lucide-react';
@@ -43,6 +45,7 @@ export function MemorizationPage() {
   const navigation = useRef<HTMLButtonElement>(null);
   const helpFocus = useRef<HTMLElement | null>(null);
   const study = useStudyQueries(filters);
+  const { course } = useWorkspace(filters.subject);
   const overview = study.data?.overview;
   const rows = study.data?.rows ?? [];
   const ready = Boolean(study.data && !study.isPlaceholderData);
@@ -181,6 +184,11 @@ export function MemorizationPage() {
       <KeyboardHelp open={help} onOpenChange={setHelp} enabled={shortcuts.enabled}
         onEnabled={shortcuts.change} returnFocus={helpFocus} />
     </main>
+    <TypingStudy
+      question={currentQuestion}
+      courseLanguage={course?.language}
+      onNextQuestion={nearbyQuestion(rows, id, 1) && canAct ? next : undefined}
+    />
     <QuestionAssistant questionID={displayedId} />
   </div>;
 }

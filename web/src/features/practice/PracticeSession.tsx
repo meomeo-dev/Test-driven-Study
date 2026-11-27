@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import type { ExtendedResponse } from '../../api/generated/types.gen';
+import type { ExtendedResponse, Question } from '../../api/generated/types.gen';
 import * as api from '../../api/practice';
 import { assertNever, readyResponse } from '../question-types';
 import { QuestionCard } from './QuestionCard';
@@ -24,7 +24,7 @@ type Props = {
   onPrevious: () => void;
   onNext: () => void;
   onPending: (pending: boolean) => void;
-  onRevealed: (value: boolean) => void;
+  onRevealed: (question: Question | undefined) => void;
   onResult: (result: api.AttemptResult) => void;
   onEvaluated?: (questionID: number, evaluation: api.AttemptEvaluation) => void;
 };
@@ -75,7 +75,7 @@ function AnswerRound({
     [id, onEvaluated],
   );
   useEffect(() => () => onPending(false), [onPending]);
-  useEffect(() => onRevealed(false), [onRevealed]);
+  useEffect(() => onRevealed(undefined), [onRevealed]);
 
   function choose(sign: number) {
     const q = query.data?.detail.question;
@@ -126,7 +126,7 @@ function AnswerRound({
     try {
       const saved = await api.answer(presentationID, response ?? { selected, numeric: number });
       setResult(saved);
-      onRevealed(true);
+      onRevealed(saved.detail.question);
       onResult(saved);
       await Promise.all([
         client.invalidateQueries({ queryKey: ['practice-overview'] }),
