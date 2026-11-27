@@ -1,7 +1,8 @@
 ---
 id: 0091
 type: feat
-status: open
+status: closed
+closed-by: f3b744b
 labels: [frontend, study, english, typing]
 branch: feat/0091-add-floating-typing-study-module
 created: 2026-11-27
@@ -122,3 +123,20 @@ auto-scroll effect when a question spans multiple sentences.
   character-by-character feedback line preserves native OS Chinese IME
   candidate popup positioning on macOS and Windows.
 
+### Verification
+
+- `npm run typecheck`: passed (`tsc --noEmit`, 0 errors).
+- `npm run test:unit`: passed (`20/20` Vitest files, `96/96` tests, including
+  `web/src/features/typing/engine.test.ts` and `extract.test.ts`).
+- `npx vite build` & `node scripts/build-api.mjs`: passed (lazy
+  `TypingPanel` chunk `8.78 kB` gzipped; compiled `var/bin/test-driven-study`).
+- `npx playwright test tests/browser/typing-study.spec.ts`: passed (`3/3`
+  Playwright browser tests covering cloze/writing typewriter auto-scroll,
+  Chinese IME composition + uncommitted Pinyin guard, Practice pre-submit
+  protection, and mobile viewport bounds).
+- Full Playwright suite run observed `29/30` existing tests passing; one
+  unrelated pre-existing failure in `tests/browser/courses.spec.ts:192` expects
+  `10` `beginner-english` units while `main` (`8d0aa78`) expanded the course to
+  `12` units.
+- `node scripts/issue-check.mjs` and `git diff --check`: passed (`91/91`
+  issues valid).
