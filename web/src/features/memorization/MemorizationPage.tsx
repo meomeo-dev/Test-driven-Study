@@ -159,6 +159,13 @@ export function MemorizationPage() {
         onHelp={openHelp} onAnalysis={trigger => openDetails('analysis', trigger)}
         vocabulary={<VocabularyNotebook subject={filters.subject}
           questionId={currentQuestion?.source_item_id} />}
+        assistant={<QuestionAssistant questionID={displayedId} compact />}
+        typing={<TypingStudy
+          question={currentQuestion}
+          courseLanguage={course?.language}
+          compact
+          onNextQuestion={nearbyQuestion(rows, id, 1) && canAct ? next : undefined}
+        />}
         navigation={<QuestionNavigation rows={rows} current={displayedId} status={navigationStatus}
           palaces={palaceImages.marked} conversations={conversations} onSelect={go}
           shortcuts={shortcuts.enabled} triggerRef={navigation} />} />
@@ -185,11 +192,5 @@ export function MemorizationPage() {
       <KeyboardHelp open={help} onOpenChange={setHelp} enabled={shortcuts.enabled}
         onEnabled={shortcuts.change} returnFocus={helpFocus} />
     </main>
-    <TypingStudy
-      question={currentQuestion}
-      courseLanguage={course?.language}
-      onNextQuestion={nearbyQuestion(rows, id, 1) && canAct ? next : undefined}
-    />
-    <QuestionAssistant questionID={displayedId} />
   </div>;
 }

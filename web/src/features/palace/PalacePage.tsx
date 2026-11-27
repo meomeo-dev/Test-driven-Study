@@ -49,6 +49,8 @@ export function PalacePage() {
       <header className="palace-toolbar"><h1><Map size={20} />记忆宫殿</h1>
         <span className="palace-subtitle">一题一画面，记住关键规则</span>
         <div className="palace-action-spacer" /><TaskManager subject={subject} /><ProviderDialog /><ThemeToggle />
+        <QuestionAssistant questionID={id} compact />
+        <TypingStudy question={question.data?.question} courseLanguage={course?.language} compact />
         <QuestionNavigation rows={rows} current={id} status={navigationStatus}
           shortcuts={false} triggerRef={navigation}
           palaces={savedImages.marked} conversations={conversations}
@@ -63,7 +65,5 @@ export function PalacePage() {
           onJobID={job => go(id, job)} onSelect={job => go(job.question_id, job.id)} />
           : <div className="page-state" role="status">正在读取题库与生图配置…</div>}
     </main>
-    <TypingStudy question={question.data?.question} courseLanguage={course?.language} />
-    <QuestionAssistant questionID={id} />
   </div>;
 }

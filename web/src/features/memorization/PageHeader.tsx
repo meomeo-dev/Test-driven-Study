@@ -8,11 +8,13 @@ type Props = {
   shortcuts: boolean;
   navigation: ReactNode;
   vocabulary: ReactNode;
+  assistant?: ReactNode;
+  typing?: ReactNode;
   onHelp: (trigger: HTMLButtonElement) => void;
   onAnalysis: (trigger: HTMLButtonElement) => void;
 };
 export function PageHeader({
-  overview, shortcuts, navigation, vocabulary, onHelp, onAnalysis,
+  overview, shortcuts, navigation, vocabulary, assistant, typing, onHelp, onAnalysis,
 }: Props) {
   return <header className="workspace-toolbar">
     <h1 className="sr-only">背题模式</h1>
@@ -30,6 +32,8 @@ export function PageHeader({
       <ThemeToggle />
       {navigation}
       {vocabulary}
+      {assistant}
+      {typing}
       <button type="button" className="button text analysis-trigger"
         aria-label="查看解析" onClick={event => onAnalysis(event.currentTarget)}>
         <FileText size={16} /><span>解析</span>

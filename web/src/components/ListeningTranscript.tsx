@@ -45,22 +45,11 @@ function DialogueLinesView({
           />
         </>
       ) : lines.map((line, idx) => (
-        <div
-          key={idx}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            margin: '4px 0',
-            lineHeight: '1.6',
-          }}
-        >
+        <div key={idx} className="transcript-line">
           {line.speaker && (
-            <span style={{ fontWeight: 600, color: 'var(--primary)', minWidth: '22px' }}>
-              {line.speaker}:
-            </span>
+            <span className="transcript-speaker">{line.speaker}:</span>
           )}
-          <span style={{ flex: 1, minWidth: 0 }}>
+          <span className="transcript-content">
             <span>{line.text}</span>
             {translations && (
               <span className="study-translation" lang="zh-Hans">{translations[idx]}</span>

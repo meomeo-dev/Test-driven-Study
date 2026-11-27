@@ -35,7 +35,7 @@
 /* The reading lane scrolls as one unit when the full task exceeds the viewport. */
 .practice-flow {
   display: flex; flex: 1; flex-direction: column; min-height: 0;
-  overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 4px;
+  overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 4px 10px 4px 4px;
 }
 .practice-flow > .question-stage {
   display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto;
@@ -66,10 +66,11 @@
 }
 @media (min-width: 901px) {
   .practice-flow > .question-analysis {
-    flex: 0 0 auto; max-height: clamp(120px, 30dvh, 240px);
+    flex: 0 0 auto; max-height: none; overflow: visible;
     margin-top: 12px; padding: 12px 0 0;
     border-left: 0; border-top: 1px solid var(--border-subtle); gap: 6px;
   }
+  .practice-flow .question-explanation-body { overflow: visible; }
 }
 @media (max-width: 900px) {
   .practice-shell .review-count, .practice-shell .workspace-tools kbd { display: none; }

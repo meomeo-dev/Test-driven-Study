@@ -58,7 +58,8 @@
   .workspace-tools { gap: 3px; }
   .workspace-tools .button { min-height: 28px; padding: 4px; }
   .workspace-tools .help-trigger > span, .workspace-tools .help-trigger kbd { display: none; }
-  .workspace-tools .theme-toggle > span { display: none; }
+  .workspace-tools .theme-toggle > span,
+  .workspace-tools :is(.tutor-launcher-inline, .typing-launcher-inline) > span { display: none; }
   .workspace-tools .navigation-trigger { font-size: 10px; }
   .workspace-tools .navigation-trigger kbd, .workspace-tools .analysis-trigger > span { display: none; }
   .reading-panel { padding: 8px; gap: 8px; }

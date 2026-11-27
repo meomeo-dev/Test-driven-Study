@@ -53,6 +53,8 @@
 .question-stage:is([data-reading], [data-writing], [data-extended]) > :is(.question-stem, .question-answers) {
   overflow: auto;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-bottom: 12px;
 }
 .reading-parts .extended-part {
   min-width: 0;

@@ -32,8 +32,12 @@ export function AnswerOptionList({
             </>
           ) : option.item_title}
         </span>
-        <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
-        {right && <span className="correct-label"><Check size={13} />正确答案</span>}
+        {(hasAnyTts || right) && (
+          <span className="option-trailing">
+            {right && <span className="correct-label"><Check size={13} />正确答案</span>}
+            <OptionAudio option={option} allOptionsHaveTts={hasAnyTts} />
+          </span>
+        )}
       </div>;
     })}
   </div>;

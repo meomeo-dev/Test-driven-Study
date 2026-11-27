@@ -1,5 +1,5 @@
 .question-card { display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; min-width: 0; border-top: 1px solid var(--border-subtle); padding-top: 12px; }
-.question-text { white-space: pre-line; overflow-wrap: anywhere; }
+.question-text { white-space: pre-line; overflow-wrap: break-word; }
 .question-listening { display: grid; gap: 6px; min-width: 0; flex-shrink: 0; }
 .question-audio { width: min(100%, 360px); }
 .question-listening-bar { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px; border-radius: 8px; background: var(--surface-muted); border: 1px solid var(--border); width: fit-content; }
@@ -7,17 +7,32 @@
 .question-transcript { min-width: 0; font-size: var(--font-size-body); }
 .question-transcript summary { cursor: pointer; color: var(--link); }
 .question-transcript-text {
-  max-height: min(24dvh, 10rem); overflow: auto; overscroll-behavior: contain;
-  white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.55;
+  max-height: min(45dvh, 22rem); overflow: auto; overscroll-behavior: contain;
+  white-space: pre-wrap; overflow-wrap: break-word; line-height: 1.55;
   margin-top: 6px; padding: 8px 10px; border: 1px solid var(--border);
   border-radius: 6px; background: var(--surface-muted); color: var(--text);
 }
+:is(.question-stage[data-extended], .practice-flow, .palace-source, .full-question, .terminal-stem) .question-transcript-text {
+  max-height: none; overflow: visible;
+}
+.transcript-line {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 6px 0; line-height: 1.6;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.transcript-line:first-child { padding-top: 0; }
+.transcript-line:last-child { border-bottom: 0; padding-bottom: 0; }
+.transcript-speaker { font-weight: 650; color: var(--primary); min-width: 22px; flex-shrink: 0; }
+.transcript-content { flex: 1; min-width: 0; overflow-wrap: break-word; }
+.transcript-line .tts-audio-controls { margin-left: 0; margin-top: 1px; flex-shrink: 0; }
 .study-passage { display: grid; gap: 0.65em; }
 .study-translation {
-  display: block; margin-block-start: 0.15em;
+  display: block; margin: 0.2em 0 0;
   color: var(--text-secondary); font-size: var(--font-size-body); line-height: 1.6;
-  white-space: pre-line; overflow-wrap: anywhere;
+  white-space: pre-line; overflow-wrap: break-word;
 }
+p.study-translation { margin: 0; }
+.question-stem > h2 + p.study-translation { margin-top: -8px; }
 .study-translation-toggle {
   flex-shrink: 0; border: 1px solid var(--border); border-radius: 4px;
   padding: 3px 7px; color: var(--text-secondary); background: var(--surface-muted);
@@ -58,7 +73,12 @@
 .answer-option.correct > svg { color: var(--success); }
 .option-letter { width: 24px; height: 24px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; }
 .correct .option-letter { border-color: var(--success-border); background: var(--success-badge); color: var(--success); }
-.option-text { white-space: pre-line; overflow-wrap: anywhere; min-width: 0; }
+.option-text { flex: 1 1 0; white-space: pre-line; overflow-wrap: break-word; min-width: 0; }
+.option-trailing {
+  display: inline-flex; flex-direction: column; align-items: flex-end;
+  gap: 4px; flex-shrink: 0; margin-left: auto;
+}
+.option-trailing .tts-audio-controls, .option-trailing .correct-label { margin-left: 0; }
 .correct-label { display: inline-flex; align-items: center; gap: 3px; margin-left: auto; white-space: nowrap; color: var(--success); font-size: 10px; background: var(--success-badge); border-radius: 4px; padding: 3px 4px; }
 .question-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 10px; border-top: 1px solid var(--border-subtle); flex-shrink: 0; }
 .flip-actions, .mark-actions { display: flex; gap: 6px; align-items: center; }
@@ -74,7 +94,7 @@
 .analysis-heading .inline-action { margin: 0; white-space: nowrap; }
 .question-explanation-body { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; padding-right: 3px; }
 .question-explanation-body:focus-visible { outline-offset: -2px; border-radius: 4px; }
-.analysis-text { margin: 0; font-size: 15px; line-height: 1.9; color: var(--text-secondary); white-space: pre-line; overflow-wrap: anywhere; }
+.analysis-text { margin: 0; font-size: 15px; line-height: 1.9; color: var(--text-secondary); white-space: pre-line; overflow-wrap: break-word; }
 .inline-action { font-size: 11px; color: var(--link); background: transparent; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
 .memory-tip { margin-top: 18px; color: var(--link); }
 .memory-tip summary { display: flex; gap: 7px; align-items: center; font-size: 12px; cursor: pointer; font-weight: 600; }
@@ -92,12 +112,12 @@
 }
 
 /* TTS Audio & RichContent */
-.tts-audio-controls { display: inline-flex; align-items: center; gap: 3px; vertical-align: middle; margin-left: 6px; }
+.tts-audio-controls { display: inline-flex; align-items: center; gap: 3px; vertical-align: middle; margin-left: 4px; }
 .tts-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary); cursor: pointer; padding: 0; transition: color 0.15s, border-color 0.15s, background-color 0.15s; }
 .tts-btn:hover:not(:disabled) { color: var(--primary); border-color: var(--primary); background: var(--surface-muted); }
 .tts-btn[data-playing="true"] { color: var(--primary); border-color: var(--primary); background: var(--primary-soft); }
 .tts-btn:disabled, .tts-btn[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
-.rich-segment-speech { display: inline-flex; align-items: center; gap: 2px; }
+.rich-segment-speech { display: inline; }
 .rich-speech-text { font-weight: 500; }
 .rich-segment-blank { display: inline-block; min-width: 32px; border-bottom: 2px solid var(--text-secondary); margin: 0 4px; text-align: center; }
 .choice-option-row { display: flex; align-items: center; gap: 6px; }

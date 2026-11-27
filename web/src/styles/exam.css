@@ -69,8 +69,11 @@
 .terminal-dialog { position: fixed; z-index: 91; left: 50%; top: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; width: min(800px, calc(100vw - 36px)); max-height: calc(100dvh - 36px); border: 6px solid #1684da; border-radius: 3px; background: #1684da; }
 .terminal-dialog-wide { width: min(1000px, calc(100vw - 36px)); }
 .terminal-dialog > h2 { margin: 0; padding: 13px 16px 17px; color: #fff; font-size: clamp(20px, 2vw, 30px); text-align: center; font-weight: 400; }
-.terminal-modal-body { background: #f8f9ef; min-height: 0; overflow: auto; padding: 22px 32px; font-size: clamp(16px, 1.65vw, 24px); line-height: 1.85; overflow-wrap: anywhere; }
+.terminal-modal-body { background: #f8f9ef; min-height: 0; overflow: auto; padding: 22px 32px; font-size: clamp(16px, 1.65vw, 24px); line-height: 1.85; overflow-wrap: break-word; }
 .terminal-modal-body p { margin: 0 0 12px; white-space: pre-line; }
+.terminal-modal-body ol { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 6px; }
+.terminal-modal-body .study-translation { font-size: 0.82em; color: var(--muted); line-height: 1.5; }
+.terminal-modal-body a { display: inline-block; margin-top: 6px; color: var(--link); text-decoration: underline; text-underline-offset: 3px; font-weight: 550; }
 .terminal-modal-actions { display: flex; justify-content: center; gap: 14px; padding: 15px; font-size: 22px; flex-shrink: 0; }
 .terminal-dialog:has(.terminal-feedback-question) { height: min(680px, 78dvh); }
 .terminal-dialog:has(.terminal-feedback-question) > h2 { padding: 8px 16px; text-align: left; font-size: 22px; }

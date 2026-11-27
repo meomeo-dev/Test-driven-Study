@@ -220,20 +220,27 @@ export function PalaceChoiceList({
   const hasAnyTts = items.some(option => Boolean(option.tts));
   return (
     <ol className="palace-options">
-      {items.map(item => (
-        <li key={item.sign} className={answers.includes(item.sign) ? 'correct' : ''}>
-          <span>
-            {item.sign}. {item.item_title}
-            {translations?.[item.sign] && (
-              <span className="study-translation" lang="zh-Hans">
-                {translations[item.sign]}
+      {items.map(item => {
+        const right = answers.includes(item.sign);
+        return (
+          <li key={item.sign} className={right ? 'correct' : ''}>
+            <span>
+              {item.sign}. {item.item_title}
+              {translations?.[item.sign] && (
+                <span className="study-translation" lang="zh-Hans">
+                  {translations[item.sign]}
+                </span>
+              )}
+            </span>
+            {(hasAnyTts || right) && (
+              <span className="option-trailing">
+                {right && <span className="correct-label">正确</span>}
+                <OptionAudio option={item} allOptionsHaveTts={hasAnyTts} />
               </span>
             )}
-          </span>
-          <OptionAudio option={item} allOptionsHaveTts={hasAnyTts} />
-          {answers.includes(item.sign) && <b>正确</b>}
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ol>
   );
 }
